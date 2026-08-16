@@ -1,0 +1,74 @@
+cff-version: 1.2.0
+message: "If you use CUSP in your research, please cite it as below."
+type: software
+title: "CUSP: Cutoff-conditioned Unseen Scientific Progress"
+version: "1.0.0"
+date-released: "2026-08-16"
+license: MIT
+repository-code: "https://github.com/SeanWu25/cusp-scientific-foresight"
+
+authors:
+  - family-names: "Wu"
+    given-names: "Sean"
+    affiliation: "University of Oxford"
+  - family-names: "Lu"
+    given-names: "Pan"
+    affiliation: "Stanford University"
+  - family-names: "Chen"
+    given-names: "Yupeng"
+    affiliation: "University of Oxford"
+  - family-names: "Bragg"
+    given-names: "Jonathan"
+    affiliation: "Allen Institute for AI"
+  - family-names: "Yamada"
+    given-names: "Yutaro"
+    affiliation: "Sakana AI"
+  - family-names: "Clifton"
+    given-names: "David"
+    affiliation: "University of Oxford"
+  - family-names: "Torr"
+    given-names: "Philip"
+    affiliation: "University of Oxford"
+  - family-names: "Zou"
+    given-names: "James"
+    affiliation: "Stanford University"
+  - family-names: "Yu"
+    given-names: "Junchi"
+    affiliation: "University of Oxford"
+
+abstract: >
+  CUSP is a benchmark for evaluating whether AI systems can forecast scientific progress
+  under historical knowledge cutoffs. Each item is grounded to a published scientific paper
+  and includes binary, multiple-choice, free-response, and date-prediction task variants.
+  Evaluation uses a two-track LLM-as-judge framework with leakage detection.
+
+keywords:
+  - scientific forecasting
+  - AI benchmarking
+  - temporal reasoning
+  - knowledge cutoff
+  - language models
+
+references:
+  - type: article
+    title: "CUSP: Cutoff-conditioned Unseen Scientific Progress (Preprint)"
+    authors:
+      - family-names: "Wu"
+        given-names: "Sean"
+      - family-names: "Lu"
+        given-names: "Pan"
+      - family-names: "Chen"
+        given-names: "Yupeng"
+      - family-names: "Bragg"
+        given-names: "Jonathan"
+      - family-names: "Yamada"
+        given-names: "Yutaro"
+      - family-names: "Clifton"
+        given-names: "David"
+      - family-names: "Torr"
+        given-names: "Philip"
+      - family-names: "Zou"
+        given-names: "James"
+      - family-names: "Yu"
+        given-names: "Junchi"
+    year: 2026
