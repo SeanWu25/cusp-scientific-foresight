@@ -23,6 +23,9 @@ authors:
   - family-names: "Yamada"
     given-names: "Yutaro"
     affiliation: "Sakana AI"
+  - family-names: "Clark"
+    given-names: "Peter"
+    affiliation: "Allen Institute for AI"
   - family-names: "Clifton"
     given-names: "David"
     affiliation: "University of Oxford"
@@ -51,7 +54,8 @@ keywords:
 
 references:
   - type: article
-    title: "CUSP: Cutoff-conditioned Unseen Scientific Progress (Preprint)"
+    title: "Forecasting Scientific Progress with Artificial Intelligence"
+    url: "https://arxiv.org/abs/2605.22681"
     authors:
       - family-names: "Wu"
         given-names: "Sean"
@@ -63,6 +67,8 @@ references:
         given-names: "Jonathan"
       - family-names: "Yamada"
         given-names: "Yutaro"
+      - family-names: "Clark"
+        given-names: "Peter"
       - family-names: "Clifton"
         given-names: "David"
       - family-names: "Torr"

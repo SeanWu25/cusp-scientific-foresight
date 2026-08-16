@@ -9,6 +9,7 @@
     {"name": "Chen, Yupeng", "affiliation": "University of Oxford"},
     {"name": "Bragg, Jonathan", "affiliation": "Allen Institute for AI"},
     {"name": "Yamada, Yutaro", "affiliation": "Sakana AI"},
+    {"name": "Clark, Peter", "affiliation": "Allen Institute for AI"},
     {"name": "Clifton, David", "affiliation": "University of Oxford"},
     {"name": "Torr, Philip", "affiliation": "University of Oxford"},
     {"name": "Zou, James", "affiliation": "Stanford University"},
@@ -22,6 +23,11 @@
     "language models"
   ],
   "related_identifiers": [
+    {
+      "identifier": "arXiv:2605.22681",
+      "relation": "isSupplementTo",
+      "scheme": "arxiv"
+    },
     {
       "identifier": "https://huggingface.co/datasets/SeanWu25/CUSP",
       "relation": "isSupplementTo",
