@@ -1,0 +1,31 @@
+{
+  "title": "CUSP: Cutoff-conditioned Unseen Scientific Progress",
+  "upload_type": "software",
+  "license": "MIT",
+  "description": "CUSP is a benchmark for evaluating whether AI systems can forecast scientific progress under historical knowledge cutoffs. Each item is grounded to a published scientific paper and includes binary, multiple-choice, free-response, and date-prediction task variants. Evaluation uses a two-track LLM-as-judge framework with leakage detection. This repository contains the evaluation harness, analysis code, and visualization code; the dataset is hosted at https://huggingface.co/datasets/SeanWu25/CUSP.",
+  "creators": [
+    {"name": "Wu, Sean", "affiliation": "University of Oxford"},
+    {"name": "Lu, Pan", "affiliation": "Stanford University"},
+    {"name": "Chen, Yupeng", "affiliation": "University of Oxford"},
+    {"name": "Bragg, Jonathan", "affiliation": "Allen Institute for AI"},
+    {"name": "Yamada, Yutaro", "affiliation": "Sakana AI"},
+    {"name": "Clifton, David", "affiliation": "University of Oxford"},
+    {"name": "Torr, Philip", "affiliation": "University of Oxford"},
+    {"name": "Zou, James", "affiliation": "Stanford University"},
+    {"name": "Yu, Junchi", "affiliation": "University of Oxford"}
+  ],
+  "keywords": [
+    "scientific forecasting",
+    "AI benchmarking",
+    "temporal reasoning",
+    "knowledge cutoff",
+    "language models"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://huggingface.co/datasets/SeanWu25/CUSP",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

@@ -55,6 +55,23 @@ python scripts/eval.py --predictions predictions.jsonl --output report.json --pr
 
 Set `OPENAI_API_KEY` or `AZURE_OPENAI_KEY` in your environment or a `.env` file.
 
+## Reproduce Paper Figures & Tables
+
+The analysis and visualization code lives in [`run_evaluation/`](run_evaluation/):
+
+```bash
+# Multi-model comparison figures (leaderboard, radars, bias, calibration, ...)
+python run_evaluation/compare_models.py --results results/ --benchmark CUSP_final.jsonl
+
+# Publication LaTeX tables
+python run_evaluation/make_latex_tables.py --results results/ --benchmark CUSP_final.jsonl
+
+# Web-search ablation figures and tables
+python run_evaluation/compare_web_search.py
+```
+
+See [`run_evaluation/README.md`](run_evaluation/README.md) for details on each script and its outputs.
+
 ## Task Types
 
 | Task | Description | Scoring |
