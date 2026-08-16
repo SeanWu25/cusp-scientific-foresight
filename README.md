@@ -12,6 +12,9 @@
 <a href="https://huggingface.co/datasets/SeanWu25/CUSP">
   <img src="https://img.shields.io/badge/Hugging%20Face-dataset-grey?style=for-the-badge&logo=huggingface&logoColor=yellow" alt="Hugging Face dataset" />
 </a>
+<a href="https://doi.org/10.5281/zenodo.21969037">
+  <img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21969037-1682D4?style=for-the-badge" alt="Zenodo DOI" />
+</a>
 </p>
 <img width="7252" height="3866" alt="CUSP_Fig_1 (1)" src="https://github.com/user-attachments/assets/e2c9cb9d-e526-4a52-bbf9-4df4fac53951" />
 
