@@ -55,6 +55,16 @@ jupyter notebook notebooks/quickstart.ipynb
 
 Set `OPENAI_API_KEY` or `AZURE_OPENAI_KEY` in your environment or a `.env` file.
 
+## Dataset Construction
+
+The full pipeline that built CUSP is included:
+
+1. [`scripts/scrape/`](scripts/scrape/) — collect candidate papers from Nature, Science, Cell, HuggingFace Daily Papers, and weekly AI digests (metadata and abstracts only; see its README for API keys).
+2. [`scripts/build_dataset/`](scripts/build_dataset/) — generate benchmark items from the scraped pool.
+3. [`scripts/validate_questions/`](scripts/validate_questions/) — LLM-verifier quality control per task type, then merge into the final JSONL.
+
+Copy `.env.example` to `.env` and fill in the keys for the steps you run.
+
 ## Reproduce Paper Figures & Tables
 
 The analysis and visualization code lives in [`run_evaluation/`](run_evaluation/):
