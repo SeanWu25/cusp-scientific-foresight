@@ -83,6 +83,9 @@ subdomain_analysis/
 
 # ── Scraped paper content (copyrighted — reproduce with scripts) ─────────────
 scientific_findings/
+scripts/scrape/**/raw_html/
+scripts/scrape/**/*.csv
+scripts/scrape/**/*.json
 
 # ── Generated LaTeX auxiliary files ──────────────────────────────────────────
 *.aux
