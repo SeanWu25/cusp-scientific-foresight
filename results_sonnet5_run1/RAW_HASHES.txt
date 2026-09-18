@@ -1,0 +1,10 @@
+# sha256 of raw run artifacts kept out of git (regenerable from the manifest + scripts)
+
+f43c4d7dc466a725ca30819946a522d77bf5b95a5e2b65feda856ddee5f98088  pilot/frq_cap_probe.json  bytes=231592
+18d5c64332825d82978c9b019f736247695eccff9340673f7188c1d92de9d347  pilot/frq_cap_probe.log  bytes=324
+45d4e1319482fa59cc91f5b282647b095b493e7f6e375831f21d4d34d4cd8230  pilot/judge_medium.log  bytes=7701
+84f377597748b06a5e0b26b3d34054bd63c4edef532e9d2ce0fa04c6a393bd8f  pilot/judged_medium.jsonl  bytes=47309  lines=38
+66e94387f894e1db40fc7ccf59d6764c37cf46597fb55d3045d5ec6f019ba047  pilot/pilot_low.jsonl  bytes=2194329  lines=402
+560eb9c46164b411858576289040f84006fb2cb8e850d0260a94f32f9a8064f1  pilot/pilot_low.log  bytes=18290
+ccae6b6d49bdc2f7d193794aef8ee9f0b29128e237431bb02c2cb25890846bea  pilot/pilot_medium.jsonl  bytes=2340040  lines=402
+28098fce91bb6a33f3ddd7169ae3de0fc037c0a4977b7f721465fca76ea83ccf  pilot/pilot_medium.log  bytes=15231

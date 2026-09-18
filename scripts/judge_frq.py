@@ -10,7 +10,7 @@ re-implements or alters a rubric. Writes one JSONL record per event.
 
 from __future__ import annotations
 
-import argparse, json, os, sys, threading, time
+import argparse, json, os, random, sys, threading, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 
@@ -20,25 +20,56 @@ from eval import LLMClient, judge_frq_combined, judge_leakage  # noqa: E402
 _lock = threading.Lock()
 
 
+# The six published runs judged 100% of FRQ responses WITH web search
+# (web_search_used is True on every stored record). When the Responses API is
+# rate-limited, eval.LLMClient._call_responses_api silently degrades to a plain
+# chat call, which would produce a judgement drawn from a different protocol.
+# We therefore retry until the web-search path succeeds rather than accept a
+# degraded verdict; eval.py itself is left untouched.
+MAX_ATTEMPTS = 6
+
+
+def _with_web_search(fn, *, used, attempts=MAX_ATTEMPTS):
+    """Call fn() until its result actually used web search. Returns (result, tries)."""
+    last = None
+    for i in range(1, attempts + 1):
+        try:
+            r = fn()
+            if used(r):
+                return r, i
+            last = RuntimeError("judge ran without web search (rate-limited fallback)")
+        except Exception as e:
+            last = e
+        if i < attempts:
+            time.sleep(min(2 ** i, 30) + random.random() * 2)
+    raise last if last else RuntimeError("judge failed")
+
+
 def judge_one(row, frq_text, jc):
     out = {"id": row["id"], "publication_date": row.get("publication_date", "")}
     t0 = time.time()
     try:
-        r = judge_frq_combined(row, frq_text, llm_client=jc)
+        r, tries = _with_web_search(
+            lambda: judge_frq_combined(row, frq_text, llm_client=jc),
+            used=lambda r: bool(r.get("web_search_used")))
         out["frq"] = {k: r[k] for k in ("frq_score", "alignment", "specificity",
                                         "novelty", "feasibility", "frq_rationale",
                                         "urls", "web_search_used")}
         out["frq"]["n_web_searches"] = len(r.get("web_searches") or [])
+        out["frq_attempts"] = tries
     except Exception as e:
         out["frq_error"] = f"{type(e).__name__}: {e}"
     out["frq_judge_s"] = round(time.time() - t0, 2)
     t0 = time.time()
     try:
-        lv = judge_leakage(row, frq_text, "", llm_client=jc)
+        lv, tries = _with_web_search(
+            lambda: judge_leakage(row, frq_text, "", llm_client=jc),
+            used=lambda v: bool((v.details or {}).get("web_search_used")))
         out["leakage"] = {"verdict": lv.verdict, "score": lv.score,
                           "reason": lv.reason[:500],
                           "indicators": (lv.details or {}).get("leakage_indicators", []),
                           "web_search_used": (lv.details or {}).get("web_search_used")}
+        out["leakage_attempts"] = tries
     except Exception as e:
         out["leakage_error"] = f"{type(e).__name__}: {e}"
     out["leakage_judge_s"] = round(time.time() - t0, 2)
@@ -52,9 +83,17 @@ def main():
     ap.add_argument("--benchmark",
                     default="archive/data/canonical/merged_validated_cusp_fixed.jsonl")
     ap.add_argument("--output", required=True)
-    ap.add_argument("--concurrency", type=int, default=8)
+    ap.add_argument("--concurrency", type=int, default=3,
+                    help="Keep low: the judge deployment rate-limits, and a "
+                         "rate-limited call degrades to a non-web-search judgement.")
     ap.add_argument("--max-rows", type=int, default=None)
     ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--endpoint", choices=["azure", "openai"], default="azure",
+                    help="Which serving stack judges. 'azure' is the configuration "
+                         "that produced the six published models. 'openai' must be "
+                         "validated against it before use.")
+    ap.add_argument("--judge-model", default=None,
+                    help="Override the judge model id (default: AZURE_OPENAI_DEPLOYMENT).")
     a = ap.parse_args()
 
     try:
@@ -84,11 +123,21 @@ def main():
     if a.max_rows:
         work = work[: a.max_rows]
 
-    jc = LLMClient(model=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-5.4-mini"),
-                   api_key=None, api_base=None)
-    print(f"judging {len(work)} FRQ responses with "
-          f"{os.environ.get('AZURE_OPENAI_DEPLOYMENT')} + web search, "
-          f"concurrency={a.concurrency}", file=sys.stderr)
+    judge_model = a.judge_model or os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-5.4-mini")
+    if a.endpoint == "openai":
+        # eval.LLMClient routes to Azure whenever AZURE_OPENAI_ENDPOINT is set and
+        # reads the deployment name from AZURE_OPENAI_DEPLOYMENT. Clear both inside
+        # this process so the client resolves to api.openai.com. eval.py is untouched.
+        os.environ.pop("AZURE_OPENAI_ENDPOINT", None)
+        os.environ.pop("AZURE_OPENAI_DEPLOYMENT", None)
+        os.environ["OPENAI_API_BASE"] = "https://api.openai.com/v1"
+        jc = LLMClient(model=judge_model,
+                       api_key=os.environ["OPENAI_API_KEY"],
+                       api_base="https://api.openai.com/v1")
+    else:
+        jc = LLMClient(model=judge_model, api_key=None, api_base=None)
+    print(f"judging {len(work)} FRQ responses with {judge_model} + web search "
+          f"via {a.endpoint}, concurrency={a.concurrency}", file=sys.stderr)
 
     os.makedirs(os.path.dirname(os.path.abspath(a.output)), exist_ok=True)
     out = open(a.output, "a", encoding="utf-8")

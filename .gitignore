@@ -142,3 +142,8 @@ data/source/*.jsonl
 # Human evaluator data (contains names/affiliations — keep private)
 human_evaluation/
 *_evaluators.csv
+
+# ── Sonnet 5 run 1: raw model outputs (large; hashes recorded in RAW_HASHES.txt) ──
+results_sonnet5_run1/**/*.jsonl
+results_sonnet5_run1/**/*.log
+results_sonnet5_run1/pilot/frq_cap_probe.json
