@@ -136,6 +136,9 @@ def record_task(pred: dict, task: str, raw: str, meta: dict, parsed: dict | None
     pred[f"{task}_retries"] = meta.get("retries")
     pred[f"{task}_refusal"] = meta.get("refusal")
     pred[f"{task}_stop_reason"] = meta.get("stop_reason")
+    if meta.get("refusal"):
+        pred[f"{task}_refusal_category"] = meta.get("refusal_category")
+        pred[f"{task}_refusal_explanation"] = meta.get("refusal_explanation")
     pred[f"{task}_latency_s"] = meta.get("latency_s")
     pred[f"{task}_input_tokens"] = meta.get("input_tokens")
     pred[f"{task}_output_tokens"] = meta.get("output_tokens")

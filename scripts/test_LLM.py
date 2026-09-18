@@ -617,10 +617,14 @@ def get_claude_response(
 
             if meta_out is not None:
 
+                sd = getattr(response, "stop_details", None)
+
                 meta_out.update(
                     retries=attempt - 1,
                     stop_reason=getattr(response, "stop_reason", None),
                     refusal=getattr(response, "stop_reason", None) == "refusal",
+                    refusal_category=getattr(sd, "category", None) if sd else None,
+                    refusal_explanation=getattr(sd, "explanation", None) if sd else None,
                     model_snapshot=getattr(response, "model", model),
                     input_tokens=getattr(response.usage, "input_tokens", None),
                     output_tokens=getattr(response.usage, "output_tokens", None),
