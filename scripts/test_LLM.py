@@ -178,6 +178,35 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     p.add_argument(
+        "--claude-effort",
+        choices=["low", "medium", "high", "xhigh", "max"],
+        default=None,
+        help="Anthropic output_config.effort (Sonnet 5 / Opus 4.7+). Ignored on "
+        "models that do not expose it.",
+    )
+
+    p.add_argument(
+        "--frq-max-tokens",
+        type=int,
+        default=None,
+        help="Override the FRQ max_tokens cap (default: 250 for ANTHROPIC, "
+        "2048 otherwise — the values the six published models were run with).",
+    )
+
+    p.add_argument(
+        "--run-index",
+        type=int,
+        default=1,
+        help="Repeat-run index, recorded verbatim in every prediction record.",
+    )
+
+    p.add_argument(
+        "--condition",
+        default="base",
+        help="Condition label (base | ws_cutoff | ws), recorded in every record.",
+    )
+
+    p.add_argument(
         "--native-web-search",
         action="store_true",
         help="Use GPT-5.4's built-in web search via the OpenAI Responses API "
@@ -514,6 +543,34 @@ def get_gpt54_web_search_response(
     return f"Error: {last_err}", {"urls": [], "queries": []}
 
 
+# Anthropic models that reject `temperature` / `top_p` / `top_k` outright
+# (Claude Sonnet 5 and later: "`temperature` is deprecated for this model", HTTP 400).
+# Source: https://platform.claude.com/docs/en/models/sonnet-5/overview
+NO_SAMPLING_PARAM_MODELS = (
+    "claude-sonnet-5",
+    "claude-opus-5",
+    "claude-opus-4-8",
+    "claude-opus-4-7",
+    "claude-fable-5",
+    "claude-fable-5-1",
+)
+
+# Anthropic models exposing output_config.effort (low|medium|high|xhigh|max).
+EFFORT_CAPABLE_MODELS = NO_SAMPLING_PARAM_MODELS + ("claude-opus-4-6", "claude-sonnet-4-6")
+
+
+def claude_supports_sampling_params(model: str) -> bool:
+    """True when the Anthropic model still accepts `temperature`."""
+
+    return not any(model.startswith(m) for m in NO_SAMPLING_PARAM_MODELS)
+
+
+def claude_supports_effort(model: str) -> bool:
+    """True when the Anthropic model accepts output_config.effort."""
+
+    return any(model.startswith(m) for m in EFFORT_CAPABLE_MODELS)
+
+
 def get_claude_response(
     client,
     model: str,
@@ -522,24 +579,54 @@ def get_claude_response(
     temperature: float = 0.0,
     max_tokens: int = 2048,
     retries: int = 2,
+    effort: str | None = None,
+    meta_out: dict | None = None,
 ) -> str:
-    """Send a message to the Anthropic Claude API with retry logic."""
+    """Send a message to the Anthropic Claude API with retry logic.
+
+    `temperature` is sent only for models that still accept it; newer models
+    reject any non-default sampling parameter with HTTP 400. `effort` maps to
+    output_config.effort on models that expose it. When `meta_out` is given it
+    is populated with retries / stop_reason / refusal / usage for run logging.
+    """
 
     last_err = None
+
+    kwargs: dict = dict(
+        model=model,
+        max_tokens=max_tokens,
+        system=system_prompt,
+        messages=[{"role": "user", "content": user_prompt}],
+    )
+
+    if claude_supports_sampling_params(model):
+
+        kwargs["temperature"] = temperature
+
+    if effort and claude_supports_effort(model):
+
+        kwargs["output_config"] = {"effort": effort}
 
     for attempt in range(1, retries + 2):
 
         try:
 
-            response = client.messages.create(
-                model=model,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                system=system_prompt,
-                messages=[{"role": "user", "content": user_prompt}],
-            )
+            response = client.messages.create(**kwargs)
 
-            return response.content[0].text.strip()
+            text = "".join(b.text for b in response.content if getattr(b, "type", "") == "text")
+
+            if meta_out is not None:
+
+                meta_out.update(
+                    retries=attempt - 1,
+                    stop_reason=getattr(response, "stop_reason", None),
+                    refusal=getattr(response, "stop_reason", None) == "refusal",
+                    model_snapshot=getattr(response, "model", model),
+                    input_tokens=getattr(response.usage, "input_tokens", None),
+                    output_tokens=getattr(response.usage, "output_tokens", None),
+                )
+
+            return text.strip()
 
         except Exception as e:
 
@@ -556,6 +643,10 @@ def get_claude_response(
                 )
 
                 time.sleep(wait)
+
+    if meta_out is not None:
+
+        meta_out.update(retries=retries + 1, error=str(last_err), refusal=False)
 
     return f"Error: {last_err}"
 
@@ -1023,6 +1114,7 @@ def run_benchmark():
                     user,
                     temperature=args.temperature,
                     max_tokens=max_tokens,
+                    effort=args.claude_effort,
                 ),
                 empty_meta,
             )
@@ -1117,6 +1209,8 @@ def run_benchmark():
             "id": rid,
             "publication_date": pub_date,
             "model": model_name,
+            "condition": args.condition,
+            "run_index": args.run_index,
             "timestamp": datetime.now().isoformat(),
         }
 
@@ -1423,7 +1517,9 @@ def run_benchmark():
 
             print("\n[FRQ Question]")
 
-            frq_max_tokens = 250 if args.provider == "ANTHROPIC" else 2048
+            frq_max_tokens = args.frq_max_tokens or (
+                250 if args.provider == "ANTHROPIC" else 2048
+            )
 
             frq_prompt = data["frq_prompt"]
 
@@ -1647,6 +1743,10 @@ def run_benchmark():
     summary = {
         "model": model_name,
         "provider": args.provider,
+        "condition": args.condition,
+        "run_index": args.run_index,
+        "claude_effort": args.claude_effort,
+        "frq_max_tokens": args.frq_max_tokens,
         "input_file": args.input,
         "knowledge_cutoff": args.knowledge_cutoff,
         "temperature": args.temperature,
