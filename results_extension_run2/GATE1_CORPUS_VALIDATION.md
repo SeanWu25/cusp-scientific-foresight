@@ -3,9 +3,9 @@
 File `benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026.jsonl`
 md5 `a86dd048a55900e2e0f049e9de95cc66`, 815 events, 2,277 task instances.
 
-**Recommendation: NOT poolable with the original corpus. Report as a separate
-table.** Three blockers, detailed below. MCQ is the one task where a
-cross-corpus comparison is defensible.
+**Status after remediation: two of three blockers CLEARED.** See the
+"Resolution" section at the end. Remaining constraint: the date task is not
+comparable across corpora and must be reported against a constant baseline.
 
 This corpus is **not prospective**. Every outcome resolved before the models
 were run. It is uncontaminated by training data, but it is not the Time Capsule
@@ -96,3 +96,68 @@ comparable across corpora and must be reported against the constant baseline.
 Report the extension as its own 100%-post-cutoff table. Difference against the
 original only for **MCQ**. Report binary side by side, or restrict to the 97
 month-level items. Report date only alongside the 0.893 constant baseline.
+
+
+---
+
+# Resolution (post-validation)
+
+## Blocker 1 — CLEARED by normalisation
+
+Day-level deadlines were rewritten to month level with a regex over every task
+field (`April 6, 2026` -> `April 2026`). The original corpus uses day-level
+dates in **no** task field, so normalising MCQ and FRQ as well as binary is
+correct rather than over-reach.
+
+| corpus | binary | perturbed | MCQ | FRQ |
+|---|---|---|---|---|
+| extension, raw | 99/196 | 350/649 | 337/606 | 338/630 |
+| extension, normalised | 0 | 0 | 0 | 0 |
+| original | 0 | 0 | 0 | 0 |
+
+433 of 815 events touched. Output:
+`benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026_monthnorm.jsonl`
+md5 `52a9ef10b180015d3b9743946a292330`. The raw file is kept unmodified.
+Binary questions now open "By &lt;Month&gt; &lt;Year&gt;," in 100% of extension items
+against 97.9% of the original.
+
+## Blocker 2 — CLEARED by the stated build flow
+
+The team's pipeline, compared against the original as recorded in the repo:
+
+| Stage | Extension | Original (from repo scripts) | Same? |
+|---|---|---|---|
+| Screening | GPT-4o-mini | `verifier.py` hard-codes gpt-4o-mini | yes |
+| **Question + distractor generation** | **GPT-4o** | `create_bench.py` default gpt-4o | **yes** |
+| Categorisation | GPT-4o-mini | `categorize.py` hard-codes gpt-4o-mini | yes |
+| Independent validation | Grok-4 | `check_binary.py` documents grok-3 | **no** |
+
+The generator is the same, which closes the reviewer's distractor-comparability
+concern: MCQ difficulty and stylistic artifacts come from the same model under
+the same prompts. Supporting evidence from the text itself — identical MCQ and
+FRQ templates, identical option count, identical within-item option length
+spread (p=0.92), and a near-identical longest-option-is-key rate (45.4% vs
+47.0%).
+
+The validator differs, grok-3 to grok-4. This is a **filter**, not a generator:
+it changes which items survive, not how they are written. Worth one sentence in
+the methods; not a blocker. If the surviving-item rate differed sharply between
+the two runs that would be worth checking, but it cannot bias question style.
+
+## Blocker 3 — STANDS
+
+Unchanged. A constant guess of 2026-06 scores 0.893 on the extension against
+0.568 for the best constant on the original. Date scores must be reported
+against that baseline and never differenced across corpora.
+
+## Correction to the first-observable-date finding
+
+The earlier note that `first_date_found` "adds nothing" was too harsh. The
+pipeline (`find_first_date.py`) queries Crossref, Semantic Scholar, OpenAlex,
+Europe PMC, arXiv and bioRxiv, and the gap of 0 months for all 708 events means
+**no earlier public version was found**, which is a positive verification
+rather than a missing field. Independent check: all 131 arXiv-linked events
+have arXiv IDs of 2026-04 or later, so no preprint predates the window among
+them. Residual risk is a preprint indexed by none of those six APIs. Note also
+that inclusion was by journal publication date and earlier preprints were not
+excluded by rule, so this verification is what rules them out empirically.
