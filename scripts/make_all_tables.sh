@@ -32,7 +32,10 @@ F5=results_fable5_run1/reports
 OUT=results_sonnet5_run1/tables
 EXTRA=()
 [ -f "$S5/base_medium_run1.json" ] && EXTRA+=(--extra "Claude Sonnet 5=2026-01=$S5/base_medium_run1.json")
-[ -f "$F5/base_medium_run1.json" ] && EXTRA+=(--extra "Claude Fable 5=2026-01=$F5/base_medium_run1.json")
+# Claude Fable 5 is deliberately NOT in the panel: the run was aborted at 824
+# events after it declined 82% of matched biomedical items, so its partial row
+# would cover a different slice of CUSP than every other row.
+# [ -f "$F5/base_medium_run1.json" ] && EXTRA+=(--extra "Claude Fable 5=2026-01=$F5/base_medium_run1.json")
 
 echo "== panel tables =="
 REPEATS=()

@@ -310,7 +310,7 @@
           "mean_ws": 0.875
         },
         "FRQ (0-10)": {
-          "n": 3,
+          "n": 0,
           "suppressed": true,
           "reason": "n < 20"
         },

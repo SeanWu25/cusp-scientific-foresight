@@ -144,6 +144,12 @@ def main():
                          "model/config, for the run-to-run variance table")
     ap.add_argument("--rule", choices=["main", "gap"], default="main")
     ap.add_argument("--min-n", type=int, default=20)
+    ap.add_argument("--frq", choices=["report", "diagnostics-only"],
+                    default="diagnostics-only",
+                    help="diagnostics-only (default): omit FRQ quality scores, "
+                         "pass rate and sub-dimensions entirely, because the "
+                         "rubric is under revision. Reports generation counts "
+                         "and leakage instead.")
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
 
@@ -171,9 +177,16 @@ def main():
            "frq_subdims": {}, "date_stats": {}, "variance": {}}
 
     # ---------------- Table 1 (all instances) + pre->post delta ----------------
+    show_frq = a.frq == "report"
     print("=== TABLE 1 — all instances, with 95% CI and N ===")
-    print(f"{'model':14s}{'cutoff':>9s}{'n_pre':>7s}{'n_post':>7s}"
-          f"{'merged binary':>22s}{'MCQ':>22s}{'FRQ mean':>22s}{'pass%':>22s}{'date score':>22s}")
+    if not show_frq:
+        print("    FRQ quality scores omitted: rubric under revision. See the FRQ")
+        print("    generation diagnostics block below.")
+    hdr = (f"{'model':14s}{'cutoff':>9s}{'n_pre':>7s}{'n_post':>7s}"
+           f"{'merged binary':>22s}{'MCQ':>22s}")
+    if show_frq:
+        hdr += f"{'FRQ mean':>22s}{'pass%':>22s}"
+    print(hdr + f"{'date score':>22s}")
     for n, c, _ in models:
         acc = data[n]["acc"]
         npre = len(acc["merged_binary"].get("pre", []))
@@ -181,16 +194,20 @@ def main():
         row = {m: cell(acc, m, "all", a.min_n)
                for m in ("merged_binary", "mcq", "frq", "frq_pass", "date_score")}
         out["table1"][n] = {"cutoff": c, "n_pre": npre, "n_post": npost, **row}
-        print(f"{n:14s}{c:>9s}{npre:7d}{npost:7d}"
-              f"{fmt(row['merged_binary']):>22s}{fmt(row['mcq']):>22s}"
-              f"{fmt(row['frq'],2):>22s}{fmt(row['frq_pass']):>22s}"
-              f"{fmt(row['date_score']):>22s}")
+        line = (f"{n:14s}{c:>9s}{npre:7d}{npost:7d}"
+                f"{fmt(row['merged_binary']):>22s}{fmt(row['mcq']):>22s}")
+        if show_frq:
+            line += f"{fmt(row['frq'],2):>22s}{fmt(row['frq_pass']):>22s}"
+        print(line + f"{fmt(row['date_score']):>22s}")
 
     # ------------- Retrospective ceiling: pre vs post, and the ratio -------------
     print("\n=== RETROSPECTIVE CEILING — pre-cutoff is the in-weights ceiling ===")
     print("   ratio = post / pre. Below 1.0 means performance falls once the answer")
     print("   is no longer plausibly in the training data.")
-    for metric, dp in (("merged_binary", 3), ("mcq", 3), ("frq", 2), ("date_score", 3)):
+    ceiling_metrics = [("merged_binary", 3), ("mcq", 3), ("date_score", 3)]
+    if show_frq:
+        ceiling_metrics.insert(2, ("frq", 2))
+    for metric, dp in ceiling_metrics:
         print(f"\n-- {metric}")
         print(f"{'model':14s}{'cutoff':>9s}{'pre (ceiling)':>24s}{'post':>24s}"
               f"{'ratio':>9s}{'n_pre':>7s}{'n_post':>8s}")
@@ -207,7 +224,30 @@ def main():
                   f"{pre.get('n',0):7d}{post.get('n',0):8d}")
 
     # ---------------- FRQ sub-dimensions (Table S5 schema + feasibility) --------
-    print("\n=== FRQ SUB-DIMENSIONS (0-10 each; overall = mean of the four) ===")
+    if not show_frq:
+        print("\n=== FRQ GENERATION DIAGNOSTICS (no quality scores) ===")
+        print(f"{'model':14s}{'responses':>11s}{'mean chars':>12s}{'truncated':>11s}"
+              f"{'leak fail%':>12s}{'leak unclear%':>15s}")
+        for n, c, _ in models:
+            rep = data[n]["report"]
+            res = rep.get("results", [])
+            fr = [r["tasks"]["frq"] for r in res
+                  if (r.get("tasks") or {}).get("frq")
+                  and not r["tasks"]["frq"].get("skipped")]
+            gen = [f for f in fr if f.get("generated") or f.get("score") is not None]
+            ch = [f.get("chars") for f in gen if f.get("chars")]
+            tr = sum(1 for f in gen if f.get("truncated"))
+            lk = [r["reasoning"]["leakage"] for r in res
+                  if (r.get("reasoning") or {}).get("leakage")]
+            lk = [x for x in lk if x.get("reason") != "not judged"]
+            nf = sum(1 for x in lk if x.get("verdict") == "fail")
+            nu = sum(1 for x in lk if x.get("verdict") == "unclear")
+            print(f"{n:14s}{len(gen):11d}"
+                  f"{(statistics.fmean(ch) if ch else 0):12.0f}{tr:11d}"
+                  f"{(100*nf/len(lk) if lk else float('nan')):12.2f}"
+                  f"{(100*nu/len(lk) if lk else float('nan')):15.1f}")
+    else:
+        print("\n=== FRQ SUB-DIMENSIONS (0-10 each; overall = mean of the four) ===")
     print(f"{'model':14s}{'cutoff':>9s}{'align':>8s}{'spec':>8s}{'novel':>8s}"
           f"{'feasib':>8s}{'spec-align':>12s}{'overall':>9s}{'n':>7s}")
     for n, c, _ in models:
