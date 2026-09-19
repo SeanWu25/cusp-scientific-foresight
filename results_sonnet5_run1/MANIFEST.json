@@ -80,8 +80,8 @@
   },
   "partition_rule": {
     "field": "publication_date (YYYY-MM) from the benchmark JSONL",
-    "main_tables": "pre if pub_month < cutoff_month else post (cutoff month counts as POST) — make_latex_tables.py, compare_models.py",
-    "gap_and_calibration_tables": "post if pub_month > cutoff_month (cutoff month counts as PRE) — filter_ids_by_cutoff in make_web_search_cutoff_table.py",
+    "main_tables": "pre if pub_month < cutoff_month else post (cutoff month counts as POST) \u2014 make_latex_tables.py, compare_models.py",
+    "gap_and_calibration_tables": "post if pub_month > cutoff_month (cutoff month counts as PRE) \u2014 filter_ids_by_cutoff in make_web_search_cutoff_table.py",
     "note": "These two conventions differ by one month and BOTH are used in the published tables. Each table is reproduced under the convention its own generator used, so every Sonnet 5 row is comparable with the six published rows in that same table."
   },
   "model_under_test": {
@@ -120,7 +120,7 @@
     {
       "parameter": "temperature",
       "six_published_models": 0.0,
-      "sonnet5": "cannot be sent — HTTP 400 'temperature is deprecated for this model'. The model runs at its default sampling setting, so it is stochastic where the other six were greedy. This is the reason run 1 is executed three times."
+      "sonnet5": "cannot be sent \u2014 HTTP 400 'temperature is deprecated for this model'. The model runs at its default sampling setting, so it is stochastic where the other six were greedy. This is the reason run 1 is executed three times."
     },
     {
       "parameter": "reasoning/thinking effort",
@@ -140,10 +140,15 @@
     "tool_choice_leakage": "required",
     "tool_choice_rubric": "auto (default)",
     "two_stage_protocol": [
-      "stage 1: judge_leakage  — contamination audit, web search forced",
-      "stage 2: judge_frq_combined — 4-dimension rubric, 0-10 each, frq_score = unweighted mean of the four"
+      "stage 1: judge_leakage  \u2014 contamination audit, web search forced",
+      "stage 2: judge_frq_combined \u2014 4-dimension rubric, 0-10 each, frq_score = unweighted mean of the four"
     ],
     "api_reported_model": "gpt-5.4-mini",
     "reachable": true
+  },
+  "capture": {
+    "reasoning_trace_source": "The task prompts themselves require a reasoning field in the JSON response ('reasoning': '<1-2 sentence justification>'), and a confidence field. Both are parsed and stored per item. Coverage on the Sonnet 5 full corpus: reasoning 100% of answered items (mean 237-300 chars per task), confidence 99.2-100%. FRQ is free text, stored verbatim (mean 1,046 chars). This is the reasoning record for the benchmark; no separate API thinking trace is used.",
+    "api_thinking_traces": "Not used. Anthropic adaptive thinking returns EMPTY summarized blocks on these prompts (0 of 32 calls across all four task types produced text at effort=medium), and gpt-5.6-sol exposes no reasoning text via chat completions, only a reasoning-token count, which IS stored.",
+    "token_logprobs": "Unavailable on BOTH models. gpt-5.6-sol returns HTTP 400 'logprobs is not supported with this model'; Anthropic exposes logprobs on no model. No logprob-based analysis is possible for either, so none is presented."
   }
 }

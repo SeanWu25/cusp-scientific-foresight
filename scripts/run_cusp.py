@@ -149,10 +149,15 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--max-rows", type=int, default=None)
     p.add_argument("--ids-file", default=None,
                    help="Optional file of event ids (one per line) to restrict to")
-    p.add_argument("--capture-thinking", action="store_true", default=True,
-                   help="Request summarized thinking blocks where the provider "
-                        "exposes them (Anthropic). Display-only: it does not "
-                        "change what the model produces.")
+    p.add_argument("--capture-thinking", action="store_true", default=False,
+                   help="Request summarized thinking blocks from Anthropic. OFF "
+                        "by default and deliberately so: the CUSP prompts already "
+                        "require the model to emit its reasoning in the JSON "
+                        "response, and that field is captured at 100%% coverage "
+                        "for every answered item. Adaptive thinking additionally "
+                        "returns EMPTY summaries on these prompts (0 of 32 calls "
+                        "produced any text), so enabling it changes the request "
+                        "shape versus the published runs while capturing nothing.")
     p.add_argument("--no-capture-thinking", dest="capture_thinking",
                    action="store_false")
     p.add_argument("--citations",

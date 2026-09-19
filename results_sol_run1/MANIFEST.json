@@ -143,5 +143,10 @@
     ],
     "reachable": false,
     "probe_error": "RateLimitError: Error code: 429 - {'error': {'message': 'Your requests to gpt-5.4-mini for gpt-5.4-mini in eastus have exceeded rate limit.', 'type': 'too_many_requests', 'param': None, 'code': 'rate_limit_exceeded'}}"
+  },
+  "capture": {
+    "reasoning_trace_source": "The task prompts themselves require a reasoning field in the JSON response ('reasoning': '<1-2 sentence justification>'), and a confidence field. Both are parsed and stored per item. Coverage on the Sonnet 5 full corpus: reasoning 100% of answered items (mean 237-300 chars per task), confidence 99.2-100%. FRQ is free text, stored verbatim (mean 1,046 chars). This is the reasoning record for the benchmark; no separate API thinking trace is used.",
+    "api_thinking_traces": "Not used. Anthropic adaptive thinking returns EMPTY summarized blocks on these prompts (0 of 32 calls across all four task types produced text at effort=medium), and gpt-5.6-sol exposes no reasoning text via chat completions, only a reasoning-token count, which IS stored.",
+    "token_logprobs": "Unavailable on BOTH models. gpt-5.6-sol returns HTTP 400 'logprobs is not supported with this model'; Anthropic exposes logprobs on no model. No logprob-based analysis is possible for either, so none is presented."
   }
 }
