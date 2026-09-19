@@ -61,6 +61,10 @@ def main():
             continue
         rr = RowResult(id=rid, available_tasks=[])
         found = False
+        # A web-search condition row whose retrieval failed ran with NO context,
+        # i.e. it is a base-condition row wearing a web-search label. Flag it so
+        # the gap decomposition can drop it instead of scoring a zero delta.
+        retrieval_failed = bool(p.get("web_search_error"))
         for t in TASKS:
             if f"{t}_raw" not in p:
                 continue
@@ -104,6 +108,7 @@ def main():
                 g["refused"] = True
             rr.tasks[t] = g
         rr.prediction_found = found
+        rr.retrieval_failed = retrieval_failed
 
         lk = (judged.get(rid) or {}).get("leakage")
         rr.reasoning["leakage"] = (
@@ -138,7 +143,11 @@ def main():
                                  + 0.4 * 0.5, 4)
         results.append(rr)
 
+    failed_ids = {r.id for r in results if getattr(r, "retrieval_failed", False)}
     report = aggregate_results(results, list(bench.values()))
+    for d in report.get("results", []):
+        if d.get("id") in failed_ids:
+            d["retrieval_failed"] = True
     report["run_metadata"] = {
         "built_utc": datetime.now(timezone.utc).isoformat(),
         "predictions": a.predictions, "judged": a.judged,
@@ -155,6 +164,8 @@ def main():
         "per_area": {k: dict(v) for k, v in sorted(areas.items())},
     }
     report["parse_fallbacks_excluding_refusals"] = dict(parse_fallback)
+    report["retrieval_failed_rows"] = sorted(failed_ids)
+    report["n_retrieval_failed"] = len(failed_ids)
     report["errors"] = []
 
     os.makedirs(os.path.dirname(os.path.abspath(a.out)) or ".", exist_ok=True)

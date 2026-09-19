@@ -45,9 +45,20 @@ ROWS = [("Binary", "binary", "score"),
         ("Date (0-1)", "date", "score")]
 
 
-def load(path: str) -> dict:
+def load(path: str, drop_retrieval_failures: bool = True) -> dict:
+    """Load a report keyed by event id.
+
+    Rows whose retrieval failed are dropped from web-search conditions: they ran
+    with no context, so including them would dilute the gap toward zero by
+    construction rather than measure anything.
+    """
     rep = json.load(open(path, encoding="utf-8"))
-    return {r["id"]: r for r in rep.get("results", [])}
+    out = {}
+    for r in rep.get("results", []):
+        if drop_retrieval_failures and r.get("retrieval_failed"):
+            continue
+        out[r["id"]] = r
+    return out
 
 
 def field(rec: dict, task: str, name: str):
@@ -98,7 +109,8 @@ def main():
         if not all(os.path.exists(cfg[k]) for k in ("base", "ws", "wscut")):
             print(f"  SKIP {name} (missing condition file)", file=sys.stderr)
             continue
-        B, W, C = load(cfg["base"]), load(cfg["ws"]), load(cfg["wscut"])
+        B = load(cfg["base"], drop_retrieval_failures=False)
+        W, C = load(cfg["ws"]), load(cfg["wscut"])
         ids = sorted(set(B) & set(W) & set(C))
         post = [i for i in ids if pub.get(i, "") > cfg["cutoff"]]
         entry = {"cutoff": cfg["cutoff"], "n_shared_ids": len(ids),
