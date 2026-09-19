@@ -86,7 +86,8 @@ def build_parser() -> argparse.ArgumentParser:
                    choices=["base", "ws_cutoff", "ws"])
     p.add_argument("--run-index", type=int, default=1)
     p.add_argument("--effort", default=None,
-                   choices=["low", "medium", "high", "xhigh", "max"])
+                   choices=["none", "low", "medium", "high", "xhigh", "max"],
+                   help="Anthropic output_config.effort, or OpenAI reasoning_effort.")
     p.add_argument("--temperature", type=float, default=0.0,
                    help="Sent only to models that still accept it.")
     p.add_argument("--max-tokens", type=int, default=2048)
@@ -110,8 +111,13 @@ def build_parser() -> argparse.ArgumentParser:
 # ---------------------------------------------------------------------------
 
 def call_model(client, model, provider, system, user, max_tokens, effort,
-               temperature, retries) -> tuple[str, dict]:
-    """Return (raw_text, meta). meta carries retries/refusal/usage/latency."""
+               temperature, retries, json_mode=False) -> tuple[str, dict]:
+    """Return (raw_text, meta). meta carries retries/refusal/usage/latency.
+
+    `json_mode` is passed straight through for OpenAI/Azure providers, matching
+    how test_LLM.py ran the five OpenAI-family models: JSON mode on for binary,
+    perturbed binary, MCQ and date; off for FRQ.
+    """
     meta: dict = {"retries": 0, "refusal": False, "stop_reason": None,
                   "input_tokens": None, "output_tokens": None,
                   "model_snapshot": model, "error": None}
@@ -123,7 +129,8 @@ def call_model(client, model, provider, system, user, max_tokens, effort,
     else:
         raw = get_model_response(client, model, system, user,
                                  temperature=temperature, max_tokens=max_tokens,
-                                 retries=retries, json_mode=False)
+                                 retries=retries, json_mode=json_mode,
+                                 reasoning_effort=effort, meta_out=meta)
     meta["latency_s"] = round(time.time() - t0, 3)
     if raw.startswith("Error:"):
         meta["error"] = raw
@@ -191,9 +198,10 @@ def process_row(row, shuffle, args, client, ws_fn) -> dict:
         return (f"[Web Search Context]\n{row_context}\n\n---\n\n{prompt}"
                 if row_context else prompt)
 
-    def run(system, prompt, max_tokens):
+    def run(system, prompt, max_tokens, json_mode=True):
         return call_model(client, args.model, args.provider, system, wrap(prompt),
-                          max_tokens, args.effort, args.temperature, args.retries)
+                          max_tokens, args.effort, args.temperature, args.retries,
+                          json_mode=json_mode)
 
     if tasks["binary"]:
         raw, meta = run(BINARY_SYSTEM, row["binary_question"], args.max_tokens)
@@ -215,7 +223,8 @@ def process_row(row, shuffle, args, client, ws_fn) -> dict:
         pred["mcq_shuffled_answer_key"] = key
 
     if tasks["frq"]:
-        raw, meta = run(FRQ_SYSTEM, row["frq_prompt"], args.frq_max_tokens)
+        raw, meta = run(FRQ_SYSTEM, row["frq_prompt"], args.frq_max_tokens,
+                        json_mode=False)
         record_task(pred, "frq", raw, meta, None)
         pred["frq_answer"] = raw
         pred["frq_truncated"] = meta.get("stop_reason") == "max_tokens"

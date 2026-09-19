@@ -376,8 +376,15 @@ def get_model_response(
     retries: int = 2,
     json_mode: bool = False,
     reasoning_effort: str | None = None,
+    meta_out: dict | None = None,
 ) -> str:
-    """Send a chat completion request with retry logic."""
+    """Send a chat completion request with retry logic.
+
+    When `meta_out` is given it is populated with retries / finish_reason /
+    refusal / usage for run logging. Behaviour is otherwise unchanged: when
+    `reasoning_effort` is set, `temperature` is not sent (newer OpenAI models
+    accept only the default temperature).
+    """
 
     last_err = None
 
@@ -408,15 +415,54 @@ def get_model_response(
 
             response = client.chat.completions.create(**kwargs)
 
-            content = response.choices[0].message.content.strip()
+            choice = response.choices[0]
+
+            content = (choice.message.content or "").strip()
 
             content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL).strip()
+
+            if meta_out is not None:
+
+                usage = getattr(response, "usage", None)
+
+                fin = getattr(choice, "finish_reason", None)
+
+                meta_out.update(
+                    retries=attempt - 1,
+                    stop_reason=fin,
+                    refusal=bool(getattr(choice.message, "refusal", None))
+                    or fin == "content_filter",
+                    refusal_category=("content_filter" if fin == "content_filter" else None),
+                    refusal_explanation=getattr(choice.message, "refusal", None),
+                    model_snapshot=getattr(response, "model", model),
+                    input_tokens=getattr(usage, "prompt_tokens", None),
+                    output_tokens=getattr(usage, "completion_tokens", None),
+                )
 
             return content
 
         except Exception as e:
 
             last_err = e
+
+            # OpenAI delivers a safety decline as a 400, not a finish_reason.
+            # It is deterministic, so retrying only burns quota: record it as a
+            # refusal (the same category the Anthropic models report) and stop.
+            if _is_safety_decline(e):
+
+                if meta_out is not None:
+
+                    meta_out.update(
+                        retries=attempt - 1,
+                        stop_reason="refusal",
+                        refusal=True,
+                        refusal_category=_safety_category(e),
+                        refusal_explanation=str(e)[:400],
+                        input_tokens=None,
+                        output_tokens=0,
+                    )
+
+                return ""
 
             if attempt <= retries:
 
@@ -430,7 +476,44 @@ def get_model_response(
 
                 time.sleep(wait)
 
+    if meta_out is not None:
+
+        meta_out.update(retries=retries + 1, error=str(last_err), refusal=False)
+
     return f"Error: {last_err}"
+
+
+_SAFETY_PATTERNS = (
+    ("bio", ("biological risk", "possible biological")),
+    ("cyber", ("cybersecurity risk", "possible cyber")),
+    ("content_filter", ("content_filter", "content management policy",
+                        "responsible ai service")),
+)
+
+
+def _is_safety_decline(exc: Exception) -> bool:
+    """True when the provider declined on safety grounds rather than erroring."""
+
+    t = str(exc).lower()
+
+    if "400" not in t and "invalid_request" not in t and "content_filter" not in t:
+
+        return False
+
+    return any(p in t for _, pats in _SAFETY_PATTERNS for p in pats)
+
+
+def _safety_category(exc: Exception) -> str:
+
+    t = str(exc).lower()
+
+    for cat, pats in _SAFETY_PATTERNS:
+
+        if any(p in t for p in pats):
+
+            return cat
+
+    return "unknown"
 
 
 def get_gpt54_web_search_response(

@@ -149,3 +149,5 @@ results_sonnet5_run1/**/*.log
 results_sonnet5_run1/pilot/frq_cap_probe.json
 results_fable5_run1/**/*.jsonl
 results_fable5_run1/**/*.log
+results_sol_run1/**/*.jsonl
+results_sol_run1/**/*.log

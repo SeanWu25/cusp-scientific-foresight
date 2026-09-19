@@ -147,6 +147,39 @@ def probe_judge() -> dict:
     return out
 
 
+def probe_openai(model: str) -> dict:
+    """Ask the OpenAI API which snapshot answers to this id, and what it rejects."""
+    out: dict = {"requested_model_id": model, "provider": "OPENAI"}
+    try:
+        from openai import OpenAI
+        c = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        r = c.chat.completions.create(
+            model=model, max_completion_tokens=2000,
+            messages=[{"role": "user", "content": "Reply with exactly: OK"}])
+        out["api_reported_model"] = r.model
+        out["is_pinned_snapshot"] = r.model == model
+        try:
+            c.chat.completions.create(
+                model=model, max_completion_tokens=2000, temperature=0.0,
+                messages=[{"role": "user", "content": "OK"}])
+            out.setdefault("accepted_sampling_params", []).append("temperature")
+        except Exception as e:
+            out.setdefault("rejected_sampling_params", {})["temperature"] = str(e)[:300]
+        levels = []
+        for eff in ("none", "low", "medium", "high", "xhigh", "max"):
+            try:
+                c.chat.completions.create(
+                    model=model, max_completion_tokens=2000, reasoning_effort=eff,
+                    messages=[{"role": "user", "content": "OK"}])
+                levels.append(eff)
+            except Exception:
+                pass
+        out["accepted_reasoning_effort"] = levels
+    except Exception as e:
+        out["probe_error"] = f"{type(e).__name__}: {e}"
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
@@ -284,7 +317,10 @@ def main():
             }
 
     if not a.no_probe:
-        manifest["model_under_test"]["api_probe"] = probe_anthropic(a.model)
+        is_anthropic = a.model.startswith("claude")
+        manifest["model_under_test"]["provider"] = "ANTHROPIC" if is_anthropic else "OPENAI"
+        manifest["model_under_test"]["api_probe"] = (
+            probe_anthropic(a.model) if is_anthropic else probe_openai(a.model))
         manifest["judge"] = probe_judge()
     else:
         manifest["judge"] = probe_judge.__doc__
