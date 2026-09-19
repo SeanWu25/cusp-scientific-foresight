@@ -310517,9 +310517,9 @@
   }
  ],
  "run_metadata": {
-  "built_utc": "2026-09-19T01:47:44.375624+00:00",
+  "built_utc": "2026-09-19T03:09:12.034796+00:00",
   "predictions": "results_sonnet5_run1/raw/base_medium_run3.jsonl",
-  "judged": null,
+  "judged": "results_sonnet5_run1/raw/judged_base_medium_run3.jsonl",
   "model": "claude-sonnet-5",
   "condition": "base",
   "run_index": 3,
@@ -310579,5 +310579,7 @@
   "binary_perturbed": 27,
   "mcq": 3
  },
+ "retrieval_failed_rows": [],
+ "n_retrieval_failed": 0,
  "errors": []
 }

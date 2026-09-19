@@ -310567,9 +310567,9 @@
   }
  ],
  "run_metadata": {
-  "built_utc": "2026-09-19T01:47:45.112053+00:00",
+  "built_utc": "2026-09-19T03:09:12.774542+00:00",
   "predictions": "results_sonnet5_run1/raw/base_low_run1.jsonl",
-  "judged": null,
+  "judged": "results_sonnet5_run1/raw/judged_base_low_run1.jsonl",
   "model": "claude-sonnet-5",
   "condition": "base",
   "run_index": 1,
@@ -310629,5 +310629,7 @@
   "binary": 25,
   "mcq": 1
  },
+ "retrieval_failed_rows": [],
+ "n_retrieval_failed": 0,
  "errors": []
 }

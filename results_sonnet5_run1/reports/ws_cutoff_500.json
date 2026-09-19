@@ -3,13 +3,13 @@
   "total_rows": 500,
   "predictions_found": 487,
   "predictions_missing": 13,
-  "joint_pass_count": 462,
-  "joint_pass_rate": 0.924,
+  "joint_pass_count": 445,
+  "joint_pass_rate": 0.89,
   "outcome_pass_count": 462,
   "outcome_pass_rate": 0.924,
-  "reasoning_pass_count": 500,
-  "reasoning_pass_rate": 1.0,
-  "mean_overall_score": 0.651,
+  "reasoning_pass_count": 483,
+  "reasoning_pass_rate": 0.966,
+  "mean_overall_score": 0.6446,
   "outcome_weight": 0.6,
   "reasoning_weight": 0.4
  },
@@ -44,15 +44,15 @@
   },
   "frq": {
    "count": 414,
-   "scored": 2,
-   "mean_score": 5.0,
-   "min_score": 4.75,
-   "max_score": 5.25,
-   "pass_rate": 0.5,
-   "mean_alignment": 4.0,
-   "mean_specificity": 5.0,
-   "mean_novelty": 4.5,
-   "mean_feasibility": 6.5
+   "scored": 97,
+   "mean_score": 6.1959,
+   "min_score": 3.75,
+   "max_score": 8.25,
+   "pass_rate": 0.8763,
+   "mean_alignment": 6.4742,
+   "mean_specificity": 6.3918,
+   "mean_novelty": 4.701,
+   "mean_feasibility": 7.2165
   },
   "date": {
    "count": 287,
@@ -67,12 +67,12 @@
  "reasoning_metrics": {
   "leakage": {
    "count": 500,
-   "pass": 2,
-   "fail": 0,
-   "unclear": 498,
-   "pass_rate": 0.004,
-   "fail_rate": 0.0,
-   "mean_score": 0.5001
+   "pass": 77,
+   "fail": 17,
+   "unclear": 406,
+   "pass_rate": 0.154,
+   "fail_rate": 0.034,
+   "mean_score": 0.5194
   },
   "mechanistic": {
    "count": 500,
@@ -229,7 +229,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.72,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -246,22 +246,30 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the core architecture of Step-DeepResearch\u2014atomic-capability data synthesis, staged agentic mid-training/SFT/RL, checklist-style judging, and ADR-Bench\u2014but adds unsupported implementation specifics and a renamed framing that are not in the source. It is technically concrete, but still more like a plausible reconstruction than a precise recipe; the novelty is modest because it largely restates the paper\u2019s main method rather than proposing a clearly new approach. Feasibility is good because the described components are consistent with real LLM-agent training pipelines and benchmark construction.",
+     "urls": [
+      "https://arxiv.org/abs/2512.20491",
+      "https://github.com/stepfun-ai/StepDeepResearch"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.18,
+     "reason": "The response names 'ADR-Bench' and 'CN-ADR', but the only clearly identifiable released entity, 'ADR-Bench', was publicly referenced before 2026-01, and 'CN-ADR' appears as an internal label rather than a verifiably released post-cutoff entity.",
+     "details": {
+      "leakage_indicators": [
+       "CN-ADR",
+       "ADR-Bench"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -289,7 +297,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6493,
+   "overall_score": 0.6232,
    "tasks": {
     "binary": {
      "correct": true,
@@ -306,14 +314,17 @@
      "confidence": 0.7
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the high-level LaMer theme of meta-RL for exploration and test-time adaptation, but it misattributes or invents key implementation details such as uncertainty ensembles and specific meta-RL variants. It is technically plausible and implementable, yet its novelty is modest because it largely recombines familiar meta-RL ingredients rather than reflecting the paper\u2019s actual reflection-based cross-episode framework.",
+     "urls": [
+      "https://arxiv.org/abs/2512.16848",
+      "https://github.com/mlbio-epfl/LaMer"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -326,10 +337,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No explicit post-cutoff entity is named in the LLM_RESPONSE. The text contains method descriptions and non-unique labels like \"MAX-ICL\", \"LaMer\", \"RL\u00b2\", and \"PEARL-style\", but the only clearly identifiable external names (RL\u00b2, PEARL, LaMer) are either pre-2025-12 or not clearly evidenced as post-cutoff leakage from the response alone.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -358,7 +371,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6111,
+   "overall_score": 0.5979,
    "tasks": {
     "binary": {
      "correct": true,
@@ -382,14 +395,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The answer is directionally correct because it describes step-wise adaptive reasoning depth driven by confidence, which matches the paper\u2019s core idea. However, it omits the paper\u2019s concrete ACT-R framing and the exact CoSFT/CoPO two-stage recipe, while adding plausible but unverified implementation details; that makes it moderately specific and feasible, but not tightly aligned or especially novel.",
+     "urls": [
+      "https://arxiv.org/abs/2602.12662",
+      "https://openreview.net/forum?id=a6KDxLeU7y"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -402,10 +418,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.05,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM_RESPONSE; the named items ALFWorld, ScienceWorld, and GRPO were all first publicly released before 2026-02.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -435,7 +453,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5452,
+   "overall_score": 0.5541,
    "tasks": {
     "binary": {
      "correct": false,
@@ -459,14 +477,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s core idea of dynamically generating task-conditioned multi-agent topologies with execution feedback, but it mis-specifies the implementation by introducing an unsubstantiated GNN-based policy and PPO/graph-edit formulation. It is moderately specific and feasible as a research design, but its novelty is mostly a rephrasing of the paper\u2019s adaptive-topology idea rather than an independent breakthrough.",
+     "urls": [
+      "https://arxiv.org/abs/2602.17100",
+      "https://arxiv.org/html/2602.17100"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -479,10 +500,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.18,
+     "reason": "No exact post-cutoff entity is clearly named in the LLM response; \"Adaptive Topology Search (ATS)\" appears to be a generic proposed label rather than an independently verifiable released system.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -558,10 +581,10 @@
   },
   {
    "id": "b71bcef1-ef0b-4f4a-a2c9-372cab741457",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.6875,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -571,22 +594,31 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the core idea of AlphaEvolve reasonably well: an LLM-guided evolutionary loop with automated evaluation, plus optional proof-assistant integration and generalization from finite cases. It is moderately specific, but several details are extrapolated beyond the reference (notably the retraining scheme and Lean/Isabelle concretization), which reduces exactness. The proposal is plausible and feasible in principle, though some components are speculative relative to the cited paper.",
+     "urls": [
+      "https://arxiv.org/abs/2506.13131",
+      "https://arxiv.org/abs/2511.02864v1"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.96,
+     "reason": "The LLM response explicitly names post-cutoff entities such as \"AlphaEvolve,\" \"AlphaProof,\" and \"Deep Think.\"",
+     "details": {
+      "leakage_indicators": [
+       "AlphaEvolve",
+       "AlphaProof",
+       "Deep Think"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -613,7 +645,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.71,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -623,22 +655,27 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 9.0,
+     "rationale": "The response matches the core method well: a participatory, native-speaker-authored benchmark for culturally grounded commonsense reasoning, with a non-parallel culturally specific split and a translated parallel split. It is technically concrete in its pipeline description, though some details (e.g., quality-control workflow and zero/few-shot benchmarking protocol) go beyond what is stated in the reference, and the idea itself is a solid benchmark-construction approach rather than a novel methodological breakthrough.",
+     "urls": [
+      "https://arxiv.org/abs/2510.24081",
+      "https://arxiv.org/html/2510.24081v2"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.05,
+     "reason": "No specific post-cutoff entity is named verbatim in the LLM_RESPONSE; it only describes a benchmark-construction methodology.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -665,7 +702,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.74,
    "tasks": {
     "binary": {
      "correct": true,
@@ -682,14 +719,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the core DreamGym mechanism: a reasoning-based experience model, an experience replay buffer, and curriculum-style task generation. However, it adds several details not evidenced in the paper (e.g., uncertainty-driven curriculum, explicit sim-to-real fine-tuning framing, and a fully synthetic simulated space), which lowers alignment and specificity. The idea is technically plausible and implementable, but the novelty is modest because it largely restates the paper\u2019s standard components rather than adding a clearly new insight.",
+     "urls": [
+      "https://arxiv.org/abs/2511.03773",
+      "https://github.com/Pi3AI/DreamGym"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -702,10 +742,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.05,
+     "reason": "No explicit post-cutoff entity is named in the LLM_RESPONSE; it only describes a method in generic terms.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -734,7 +776,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.525,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -751,22 +793,30 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response correctly captures the paper\u2019s main architectural and training idea: a modular RL framework plus a staged horizon-scaling strategy for stable long-horizon training. Specificity is moderate because it names some real components, but also introduces unsupported implementation details (e.g., POMDP framing and extra training paradigms) that are not central to the paper. Novelty is limited because it largely restates the paper\u2019s own method rather than proposing a distinctly new idea, while feasibility is high since the described curriculum-style RL setup is consistent with the published framework and implementation.",
+     "urls": [
+      "https://arxiv.org/abs/2509.08755",
+      "https://github.com/WooooDyy/AgentGym-RL"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "No leakage: the only specific names in the LLM response, 'AgentGym-RL' and 'ScalingInter-RL', were publicly released in September 2025, not after the 2025-09 cutoff.",
+     "details": {
+      "leakage_indicators": [
+       "AgentGym-RL",
+       "ScalingInter-RL"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -794,7 +844,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.755,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -811,22 +861,27 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.75,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 9.0,
+     "rationale": "The response matches the paper\u2019s core method well: it describes query decomposition, parallel inference chains, graph-based retrieval, and cross-chain verification, which are the defining components of MIRAGE. It is technically concrete but still a bit high-level and incomplete; novelty is moderate because it mostly restates the paper\u2019s main idea rather than adding new insight, while feasibility is strong because the proposed workflow is consistent with the published system and realistic to implement.",
+     "urls": [
+      "https://ojs.aaai.org/index.php/AAAI/article/view/40673",
+      "https://arxiv.org/html/2508.18260v1"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.05,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE; the text only gives a generic method description.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -891,10 +946,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE text.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -920,10 +977,10 @@
   },
   {
    "id": "ab3211ba-8c67-4605-a4d6-e1ea62047efa",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.6005,
+   "reasoning_pass": false,
+   "overall_score": 0.5894,
    "tasks": {
     "binary": {
      "correct": false,
@@ -947,14 +1004,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad wide-scaling / best-of-N intuition of BJudge, but it misstates the central technical idea by framing the method as a generic verifier on screenshots/checkpoints rather than behavior-narrative comparison. It is moderately specific and feasible, but the added self-correction and pruning machinery are not clearly supported by the paper, and the proposal is mostly a standard verifier-based selection pipeline rather than the paper\u2019s more distinctive trajectory-understanding approach.",
+     "urls": [
+      "https://arxiv.org/abs/2510.02250",
+      "https://openreview.net/forum?id=eve4jBYa8D"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -967,10 +1027,15 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.96,
+     "reason": "The LLM response explicitly names a post-cutoff entity: \"bBoN\" / \"Behavior Best-of-N\". That exact name corresponds to a paper released in October 2025, after the 2025-10 cutoff.",
+     "details": {
+      "leakage_indicators": [
+       "Behavior Best-of-N (bBoN)",
+       "bBoN"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1000,7 +1065,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.764,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1024,14 +1089,17 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response accurately captures the paper\u2019s main routing-and-clustering method and its tunable performance-efficiency tradeoff, though it adds some implementation details (like explicit nearest-cluster matching and calibration phrasing) that are plausible but not fully evidenced in the abstract. It is technically concrete and feasible, but the idea is an incremental refinement of known test-time routing/ensemble selection rather than a highly novel proposal.",
+     "urls": [
+      "https://arxiv.org/abs/2508.12631",
+      "https://dl.acm.org/doi/epdf/10.1145/3772429.3772445"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -1044,10 +1112,14 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "The response names \"Avengers-Pro,\" but it was publicly released in 2025-08, so it is not post-cutoff leakage.",
+     "details": {
+      "leakage_indicators": [
+       "Avengers-Pro"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1077,7 +1149,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.752,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1101,14 +1173,18 @@
      "confidence": 0.65
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The answer captures the paper\u2019s central idea of efficiency-effectiveness trade-offs in agent systems and correctly references GAIA and cost-of-pass, but it adds unverified details like a learned task-difficulty router and escalation policy that are not evident from the paper abstract. It is moderately technical and plausible, but the implementation plan is more of a generic design sketch than a faithful description of the actual method.",
+     "urls": [
+      "https://arxiv.org/abs/2508.02694",
+      "https://arxiv.org/abs/2504.13359",
+      "https://arxiv.org/abs/2311.12983"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -1121,10 +1197,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.06,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE. The only proper noun-like name present is \"GAIA\", which was publicly released in November 2023, before 2025-08.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1154,7 +1232,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.725,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -1171,22 +1249,27 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the central method from the paper: hardening a reward model via data augmentation with truncated or superficial adversarial negatives. Its specificity is decent, but it introduces several ungrounded training details and evaluation claims that are not in the paper, so it is not a precise match. The idea is practical and feasible, but the novelty is modest because it largely restates the paper\u2019s core mitigation strategy rather than adding a clearly new technical insight.",
+     "urls": [
+      "https://arxiv.org/abs/2507.08794",
+      "https://openreview.net/forum?id=cXMZbIBR1T"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No explicit post-cutoff entity appears in the LLM response. The only named model is \"GPT-4o,\" which was first publicly released in May 2024, before the 2025-07 cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1214,7 +1297,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.761,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1238,14 +1321,17 @@
      "confidence": 0.98
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response accurately captures the paper\u2019s main technique: discrete-state diffusion for parallel, non-autoregressive code generation, and it aligns with the reported 2,146 tokens/s result on H20 GPUs. Specificity is moderate because it describes a plausible training/inference pipeline, but several details appear invented or at least unsupported by the reference; novelty is limited because it mostly restates the known diffusion-for-speed framing rather than adding a clearly original insight. Feasibility is high since the proposed approach is consistent with the cited paper\u2019s actual direction and with standard transformer-based diffusion code modeling.",
+     "urls": [
+      "https://seed.bytedance.com/en/seed_diffusion",
+      "https://arxiv.org/abs/2508.02193"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -1258,10 +1344,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicitly named post-cutoff entity is introduced as the LLM's own answer; \"Mercury\" and \"Gemini Diffusion\" appear only as comparison baselines, and the named benchmarks are pre-cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1291,7 +1379,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.7857,
+   "overall_score": 0.7556,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1315,14 +1403,17 @@
      "confidence": 0.98
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s central ARAG design quite well, including the four-agent structure and recommendation ranking flow, but it introduces extra implementation details that are not stated in the reference. It is technically concrete and feasible, though the novelty is moderate because it mainly restates the paper\u2019s known multi-agent retrieval/ranking framework rather than adding a distinct new method.",
+     "urls": [
+      "https://arxiv.org/abs/2506.21931",
+      "https://arxiv.org/pdf/2506.21931v1"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -1335,10 +1426,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No specific post-cutoff entity is explicitly named verbatim in the LLM_RESPONSE; it only describes a multi-agent RAG recommendation pipeline using generic agent roles.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1368,7 +1461,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.758,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1392,14 +1485,17 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.5,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main idea well: formalizing agents as search policies plus operators, with Greedy/MCTS/Evolutionary policies and a focus on operator\u2013policy interplay. It is less specific than the actual paper because it does not clearly reflect the AIRA/AIRA-dojo implementation details or the exact evaluation framing, and the proposal is mostly a faithful restatement rather than a particularly novel idea.",
+     "urls": [
+      "https://arxiv.org/abs/2507.02554",
+      "https://github.com/facebookresearch/aira-dojo"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -1412,10 +1508,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No post-cutoff entity is explicitly named. The only specific system name in the LLM response is \"AIRA-dojo,\" which was publicly released in July 2025, matching the benchmark publication month rather than after it.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1445,7 +1543,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.7857,
+   "overall_score": 0.7406,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1469,14 +1567,17 @@
      "confidence": 0.98
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 3.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s core idea of adding low-level spatial structure to the image plus a sequential scanning prompt, but it overstates the method by inventing grids/Voronoi partitions, region IDs, fine-tuning, and a supervised binding-consistency loss that are not part of VISER. The actual paper uses simple horizontal lines with optional row numbers and a row-wise scanning prompt, with single-query inference and no model retraining, so the proposed answer is moderately aligned and feasible but only moderately specific and not very novel. ([arxiv.org](https://arxiv.org/html/2506.22146))",
+     "urls": [
+      "https://arxiv.org/html/2506.22146",
+      "https://neurips.cc/media/neurips-2025/Slides/117879.pdf"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -1489,10 +1590,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.06,
+     "reason": "No specific post-cutoff entity is named verbatim in the LLM response; it only describes a generic scaffolding/prompting approach.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1519,10 +1622,10 @@
   },
   {
    "id": "be03a4c2-866d-4b54-9158-cb76b9ce22d4",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.715,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -1539,22 +1642,29 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the main idea of RewardBench 2\u2014fresh human prompts, multi-skill reward-model evaluation, and downstream correlation\u2014but it misstates or over-specifies the construction details by inventing an N-way best-of-N setup and expert-annotator workflow not supported by the paper. It is moderately specific and technically plausible, but the novelty is limited because it mostly restates known benchmark/evaluation ideas rather than offering a distinctly original method.",
+     "urls": [
+      "https://arxiv.org/abs/2506.01937",
+      "https://huggingface.co/datasets/allenai/reward-bench-2/blob/main/README.md"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.99,
+     "reason": "\"RewardBench 2\"",
+     "details": {
+      "leakage_indicators": [
+       "RewardBench 2"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1579,10 +1689,10 @@
   },
   {
    "id": "10e5903e-b315-49b1-9ea1-1b72f6fae32e",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.767,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1606,14 +1716,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response accurately captures the paper\u2019s central method: a dual-corpus RAG+ framework that retrieves both knowledge and aligned application examples for application-aware reasoning. It is technically concrete and feasible, but it goes a bit beyond the provided reference by adding unsupported implementation specifics (e.g., CoT scaffolding and fine-tuning), and its novelty is moderate because it is a principled extension rather than a highly original new paradigm.",
+     "urls": [
+      "https://arxiv.org/abs/2506.11555",
+      "https://aclanthology.org/2025.emnlp-main.1630/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -1626,10 +1739,14 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.98,
+     "reason": "The LLM response explicitly names \"RAG+\", which was first publicly released after 2025-06.",
+     "details": {
+      "leakage_indicators": [
+       "RAG+"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1659,7 +1776,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.725,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -1669,22 +1786,27 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.5,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response closely matches the paper\u2019s core idea: modality-aware routing over modality-specific corpora plus multi-granularity retrieval, which is the central technical contribution of UniversalRAG. It is fairly concrete about separate indices and routing, but it adds implementation choices not stated in the abstract (e.g., learned/heuristic router, supervised labels, vision-language generator), so the specificity is solid but not exact. The novelty is moderate because it accurately reflects a meaningful but paper-aligned system rather than introducing a distinctly original new method, and the overall approach is feasible in practice given standard retrieval and routing components. ([arxiv.org](https://arxiv.org/pdf/2504.20734))",
+     "urls": [
+      "https://arxiv.org/pdf/2504.20734",
+      "https://openreview.net/forum?id=mXtV92SPxW"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.94,
+     "reason": "No post-cutoff entity is explicitly named. The only verbatim system name in the LLM response is \"UniversalRAG,\" which was publicly released/submitted on 2025-04-29, before the 2025-05 cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1711,7 +1833,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.7857,
+   "overall_score": 0.7556,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1735,14 +1857,17 @@
      "confidence": 0.98
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response correctly captures the paper\u2019s central Discuss-RAG architecture: a summarizer agent coordinating multi-turn brainstorming among medical expert agents, plus a post-retrieval decision-making agent. It is fairly concrete technically, but it adds unsupported details (structured reasoning chain, fallback generation) that are not in the reference abstract, so alignment is strong but not perfect. Novelty is moderate because the idea is agentic RAG orchestration rather than a highly original algorithmic breakthrough, and feasibility is high because the described components are realistic plug-in modules for existing RAG systems.",
+     "urls": [
+      "https://openreview.net/forum?id=1k0OVYSzAZ",
+      "https://arxiv.org/abs/2504.21252"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -1755,10 +1880,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "The only explicit named entity is \"Discuss-RAG,\" which was publicly released before 2025-05, so it is not a post-cutoff leakage indicator.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1788,7 +1915,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.7857,
+   "overall_score": 0.7526,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1812,14 +1939,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s central DGM mechanism: self-modifying coding agents, empirical validation on coding benchmarks, and an archive-based open-ended search process. It is somewhat concrete in implementation terms, but it omits several paper-specific details and outcome metrics; the proposal is feasible because it follows the described sandboxed benchmark-evaluation loop and archive-based selection used in the paper.",
+     "urls": [
+      "https://arxiv.org/abs/2505.22954",
+      "https://openreview.net/forum?id=pUpzQZTvGY"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -1832,10 +1962,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No explicit name in the LLM_RESPONSE was first released after 2025-06. 'Darwin G\u00f6del Machine' appears verbatim, but it was publicly available by 2025-05, so it is not post-cutoff leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1865,7 +1997,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.54,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -1882,22 +2014,27 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 9.0,
+     "rationale": "The response correctly identifies the core technique: distilling outputs from reasoning models into a non-reasoning student via supervised fine-tuning, which matches the paper\u2019s stated approach. It is fairly concrete at the implementation level, but some details (e.g., CoT extraction/truncation and filtering) go beyond what is confirmed in the abstract. The idea is not especially novel because it is a straightforward distillation/SFT pipeline, but it is highly feasible and consistent with standard LLM training practice.",
+     "urls": [
+      "https://arxiv.org/abs/2504.09639",
+      "https://arxiv.org/pdf/2504.09639"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No explicitly post-cutoff entity appears in the LLM_RESPONSE; the named systems DeepSeek-R1 and o1 were both released before 2025-04.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1922,10 +2059,10 @@
   },
   {
    "id": "7862f39f-6ca3-492d-bd44-2469045b4624",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.5,
+   "reasoning_pass": false,
+   "overall_score": 0.505,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -1942,22 +2079,29 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.25,
+     "alignment": 4.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad goal of improving process reward modeling and mentions stepwise verification, but it diverges from the paper\u2019s actual HRM/HNC design by introducing a verbalized CoT verifier, distillation, and unrelated benchmarks. It is moderately concrete in implementation terms, but the technical recipe is largely speculative relative to the paper. The idea is plausible and feasible as a reward-model variant, yet it is not the method described in the reference and its novelty is mostly in the invented framing rather than the cited paper.",
+     "urls": [
+      "https://arxiv.org/abs/2503.13551",
+      "https://aclanthology.org/2026.findings-acl.27/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.97,
+     "reason": "\"ThinkPRM\"",
+     "details": {
+      "leakage_indicators": [
+       "\"ThinkPRM\""
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1985,7 +2129,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.65,
+   "overall_score": 0.632,
    "tasks": {
     "binary": {
      "correct": true,
@@ -2009,14 +2153,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 5.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the general GUI-agent direction and mentions reasoning plus grounding, but it diverges from the paper\u2019s core design: UI-TARS is an end-to-end native model with unified action modeling, enhanced perception, and reflective online trace training, not a decoupled planner/grounder stack. It is fairly specific and feasible as an engineering proposal, but the novelty is moderate and mostly reflects standard modular-agent design rather than the paper\u2019s stated approach.",
+     "urls": [
+      "https://arxiv.org/abs/2501.12326",
+      "https://arxiv.org/html/2501.12326v1"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -2029,10 +2176,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.09,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM_RESPONSE; the named items \"Qwen2-VL\", \"OSWorld\", and \"AndroidWorld\" were all publicly released before 2025-04.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2062,7 +2211,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.737,
    "tasks": {
     "binary": {
      "correct": true,
@@ -2086,14 +2235,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.75,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the general topic of prompt-caching timing leakage, but it describes a mitigation strategy rather than the paper\u2019s actual statistical auditing method for detecting cache sharing and architectural leakage. It is moderately specific in implementation terms (namespaced caches, response padding, hypothesis testing), but the novelty is limited because these are standard defenses, and the proposal is feasible in principle though it is not what the paper presents.",
+     "urls": [
+      "https://arxiv.org/abs/2502.07776",
+      "https://proceedings.mlr.press/v267/gu25b.html"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -2106,10 +2258,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "No explicit post-cutoff entity is named in the LLM response. \"Kolmogorov\u2013Smirnov test\" is a pre-2025 statistical test first proposed in the 1930s, so it is not leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2139,7 +2293,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.71,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -2156,22 +2310,29 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.5,
+     "alignment": 4.0,
+     "specificity": 6.0,
+     "novelty": 7.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad theme of SOLOMON\u2014neuro-inspired reasoning for semiconductor layout design using prompt-based adaptation\u2014but it over-specifies a multi-agent symbolic architecture that is not supported by the paper abstract or available summaries. It is moderately concrete in implementation terms, but the added design choices make it less aligned and only somewhat feasible as a reconstruction of the actual method.",
+     "urls": [
+      "https://arxiv.org/abs/2502.04384",
+      "https://openreview.net/forum?id=F8rniHIK3H"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.31,
+     "reason": "The response names 'SOLOMON', but this appears to be the paper\u2019s own explicitly described architecture rather than an unrelated post-cutoff entity leak. The rest is methodological description, not a separate hidden system/dataset name.",
+     "details": {
+      "leakage_indicators": [
+       "SOLOMON"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2199,7 +2360,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7175,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -2209,22 +2370,27 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 9.0,
+     "rationale": "The response closely matches the paper\u2019s actual approach: semantically segmenting videos, using multiple cross-modality teacher models to produce candidate captions, and selecting the best caption with a fine-tuned retrieval model. It is technically concrete and feasible, though it adds some unconfirmed implementation details (e.g., shot-boundary algorithms, ASR fusion) and the idea itself is an incremental but sensible dataset-construction pipeline rather than a highly novel method.",
+     "urls": [
+      "https://arxiv.org/abs/2402.19479",
+      "https://snap-research.github.io/Panda-70M/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "No specific post-cutoff entity is named verbatim in the LLM_RESPONSE text.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2251,7 +2417,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5745,
+   "overall_score": 0.5686,
    "tasks": {
     "binary": {
      "correct": false,
@@ -2275,14 +2441,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the paper\u2019s core idea of query-dependent multi-agent orchestration and cost-aware dynamic allocation, but it frames the method as a generic router over fixed workflows rather than the paper\u2019s agentic supernet with sampled sub-architectures. It is reasonably concrete about routing, difficulty estimation, and optimization, but the details are largely an inferred design rather than the paper\u2019s actual technical recipe; the novelty is modest because it restates a known adaptive-routing pattern. The approach is feasible in practice, though some components (e.g., reinforcement-learning router and hand-defined candidate workflows) are not what the paper emphasizes.",
+     "urls": [
+      "https://arxiv.org/abs/2502.04180",
+      "https://arxiv.org/pdf/2502.04180v2"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -2295,10 +2464,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM_RESPONSE; the named benchmarks (\"MATH\", \"GAIA\", \"SWE-Bench\") were released before 2025-02.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2328,7 +2499,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.6275,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -2338,22 +2509,27 @@
      "confidence": 0.45
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.25,
+     "alignment": 5.0,
+     "specificity": 4.0,
+     "novelty": 3.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad idea of combining masked modeling, contrastive alignment, and generative objectives, but it substantially misstates the paper by adding hierarchical memory-bank and multi-grained alignment mechanisms that are not part of InternVideo2. It is somewhat technically concrete, yet the details are mostly invented rather than traceable to the actual architecture; the novelty is low because it presents an overcomplicated variant of a known multi-objective pretraining setup, and feasibility is only moderate because the proposed design is plausible in isolation but not supported by the reference paper.",
+     "urls": [
+      "https://arxiv.org/abs/2403.15377",
+      "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/11491.pdf"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.92,
+     "reason": "No verbatim post-2024-03 specific entity is explicitly named in the LLM_RESPONSE; the text uses descriptive method language rather than a uniquely identifiable newly released system/paper name.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2380,7 +2556,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.4602,
+   "overall_score": 0.4664,
    "tasks": {
     "binary": {
      "correct": false,
@@ -2397,14 +2573,17 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.75,
+     "alignment": 3.0,
+     "specificity": 6.0,
+     "novelty": 3.0,
+     "feasibility": 7.0,
+     "rationale": "The answer captures the broad theme of efficient recurrent sequence modeling, but it incorrectly substitutes RWKV-style machinery for the paper\u2019s Hawk/Griffin gated linear recurrence plus local attention design. It is moderately specific technically, but the implementation details are mostly generic and not faithful to the actual architecture; novelty is low because it recasts a known RWKV-like recipe rather than the paper\u2019s contribution. Feasibility is fairly good since the described components are implementable, though the mismatch with the target paper makes the proposal less relevant.",
+     "urls": [
+      "https://arxiv.org/html/2402.19427",
+      "https://arxiv.org/abs/2404.07839"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -2417,10 +2596,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "The only specific name in the LLM_RESPONSE is \"RWKV,\" and it was publicly released before 2024-03, so no post-cutoff entity is explicitly named.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2449,7 +2630,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.745,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -2466,22 +2647,29 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 9.0,
+     "specificity": 8.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response closely matches the paper\u2019s actual three-step method: enabling bidirectional attention, masked next token prediction, and unsupervised contrastive learning, with evaluation on MTEB. It is technically concrete and feasible, but it slightly overcommits by presenting LoRA adapters and some pooling/training details as if they were core to the paper, which lowers alignment a bit and the novelty remains moderate because it mainly restates the published approach.",
+     "urls": [
+      "https://arxiv.org/abs/2404.05961",
+      "https://arxiv.org/html/2404.05961v1"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
      "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "score": 0.42,
+     "reason": "The response explicitly names \"LLM2Vec,\" which was publicly released in April 2024, so it may overlap with the benchmark\u2019s cutoff. However, the cutoff month and release timing are borderline, so I cannot confidently mark it as definite leakage.",
+     "details": {
+      "leakage_indicators": [
+       "LLM2Vec"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2509,7 +2697,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6228,
+   "overall_score": 0.6012,
    "tasks": {
     "binary": {
      "correct": false,
@@ -2533,14 +2721,17 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.25,
+     "alignment": 4.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the general idea of dynamic high-resolution image handling, but it misstates the actual method by replacing InternVL 1.5\u2019s continuous-learning vision encoder and bilingual data pipeline with a frozen ViT and newline-token fusion. It is moderately specific and feasible as a generic multimodal design, but its novelty is limited because it largely restates a common high-resolution tiling/resampler approach rather than the paper\u2019s actual contribution.",
+     "urls": [
+      "https://arxiv.org/abs/2404.16821",
+      "https://arxiv.org/pdf/2404.16821"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -2553,10 +2744,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No specific post-cutoff entity is named verbatim in the LLM_RESPONSE; it only describes a method. The exact leakage candidate \"InternLM-XComposer2-4KHD\" is not present in the response text.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2583,10 +2776,10 @@
   },
   {
    "id": "250b72fd-edf4-410e-bd89-ad9e5f360087",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.65,
+   "reasoning_pass": false,
+   "overall_score": 0.641,
    "tasks": {
     "binary": {
      "correct": false,
@@ -2610,14 +2803,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 7.0,
+     "rationale": "The response accurately captures the paper\u2019s main paradigm shift to coarse-to-fine next-scale prediction, but it invents or overstates several implementation details not established in the source abstract. It is technically concrete and plausible, with reasonable but not fully verified claims about architecture/training and performance; the novelty is moderate because it largely restates the paper\u2019s own idea rather than proposing a clearly distinct new method.",
+     "urls": [
+      "https://arxiv.org/abs/2404.02905",
+      "https://arxiv.org/pdf/2404.02905"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -2630,10 +2826,15 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.99,
+     "reason": "Verbatim post-cutoff name in LLM_RESPONSE: \"VAR\" / \"Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction\".",
+     "details": {
+      "leakage_indicators": [
+       "VAR",
+       "Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2663,7 +2864,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5823,
+   "overall_score": 0.5659,
    "tasks": {
     "binary": {
      "correct": false,
@@ -2687,14 +2888,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.0,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 2.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad open-source reproducibility goal and the core layer-wise scaling idea, but it adds incorrect or unsupported implementation details (e.g., multi-trillion-token corpus, GPT-NeoX-style architecture, and public GPU cluster training) rather than the paper\u2019s actual CoreNet-based release and 1.8T-token dataset. It is moderately specific in a technical sense, but mostly as a generic recipe for open LLM training; the novelty is low because it restates standard open-training practices rather than the paper\u2019s particular design choices. The plan is feasible in general, but several particulars are mismatched with the real system.",
+     "urls": [
+      "https://arxiv.org/abs/2404.14619",
+      "https://huggingface.co/apple/OpenELM/blob/main/README.md"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -2707,10 +2911,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.03,
+     "reason": "No post-cutoff entity is explicitly named in the LLM_RESPONSE; the named entities Dolma and GPT-NeoX were publicly released before 2024-04.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2737,10 +2943,10 @@
   },
   {
    "id": "e8b32c26-bf79-4af5-b1df-66cfcaba7670",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.7588,
    "tasks": {
     "binary": {
      "correct": true,
@@ -2757,14 +2963,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 9.0,
+     "rationale": "The response matches the paper\u2019s main mechanism closely: pixel-level cycle consistency, pretrained discriminative condition extractors, and efficient reward fine-tuning via noise perturbation plus single-step denoising. It is technically concrete but not fully implementation-precise, and its novelty is moderate because it mostly restates the paper\u2019s established method rather than proposing a distinctly new one.",
+     "urls": [
+      "https://arxiv.org/abs/2404.07987",
+      "https://liming-ai.github.io/ControlNet_Plus_Plus/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -2777,10 +2986,14 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.98,
+     "reason": "\"ControlNet++\"",
+     "details": {
+      "leakage_indicators": [
+       "ControlNet++"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2809,7 +3022,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.755,
    "tasks": {
     "binary": {
      "correct": true,
@@ -2833,14 +3046,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.25,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response correctly identifies the paper\u2019s central idea: per-layer top-k token routing under a fixed compute budget with static graph structure, which is a strong match to the reference. Specificity is moderate because it explains the routing at a conceptual/implementation level, but it also introduces unsupported details not present in the paper; novelty is low-to-moderate since it mostly restates the published method rather than proposing a distinctly new one. Feasibility is good overall because the described mechanism is consistent with the paper\u2019s efficient, hardware-friendly design, though the extra inference-time predictor claim is not grounded in the reference.",
+     "urls": [
+      "https://arxiv.org/abs/2404.02258",
+      "https://arxiv.org/html/2404.02258"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -2853,10 +3069,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "The only explicit named entity I found, \"Mixture-of-Depths,\" was publicly released on 2024-04-02, which is not after the 2024-04 cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2886,7 +3104,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5224,
+   "overall_score": 0.509,
    "tasks": {
     "binary": {
      "correct": true,
@@ -2910,14 +3128,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response names a plausible sparse-view 3D pipeline, but it does not match CAT3D\u2019s real method, which centers on multi-view diffusion for novel-view synthesis followed by 3D reconstruction. It is moderately specific and technically coherent, but much of the described stack (DUSt3R-style initialization, Gaussian Splatting predictor, diffusion-conditioned refinement) appears to be a different or hybrid system rather than the paper\u2019s actual approach. The idea is feasible in principle, but the exact combination is speculative and not supported by the reference paper.",
+     "urls": [
+      "https://arxiv.org/abs/2405.10314",
+      "https://arxiv.org/html/2405.10314v1"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -2930,10 +3151,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "The only specific named entity in the LLM response is \"DUSt3R,\" and it was first publicly released before 2024-05; the rest are generic method descriptions, not post-cutoff named systems.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3029,7 +3252,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.758,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3053,14 +3276,17 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main mechanism: reducing AdamW memory by replacing per-parameter second-moment learning rates with blockwise shared rates guided by Hessian structure. It is fairly specific and implementable, but it adds somewhat concrete block examples that are not exactly how the paper frames the method, and the novelty is modest because it largely restates the published optimizer design rather than offering an original extension.",
+     "urls": [
+      "https://arxiv.org/abs/2406.16793",
+      "https://openreview.net/pdf?id=TOnkMNfx9d"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -3073,10 +3299,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No post-2024-06 specific entity is named; the only explicit name, \"Adam-mini,\" was publicly released in June 2024.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3103,10 +3331,10 @@
   },
   {
    "id": "94993920-2f6d-4ece-8236-05335798d79f",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.7588,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3123,14 +3351,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 9.0,
+     "rationale": "The response matches the paper\u2019s main hybrid Mamba-Transformer design, including redesigned Mamba blocks, a hierarchical vision backbone, and final-stage self-attention for long-range dependencies. It is fairly concrete, but some architectural details appear extrapolated beyond the provided reference; the idea itself is solid and feasible, though not especially novel beyond the paper\u2019s own contribution.",
+     "urls": [
+      "https://arxiv.org/abs/2407.08083",
+      "https://github.com/NVlabs/MambaVision"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -3143,10 +3374,14 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.98,
+     "reason": "\"MambaVision\"",
+     "details": {
+      "leakage_indicators": [
+       "MambaVision"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3175,7 +3410,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6111,
+   "overall_score": 0.5949,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3199,14 +3434,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.5,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad three-stage domain-adaptation pipeline of the paper, but it misstates important specifics such as the scale of continued pretraining, the base architecture framing, and the role of the benchmark. It is moderately concrete, but several implementation details appear invented or generalized beyond the paper; the idea is also fairly standard rather than especially novel. The proposed approach is feasible in principle, though some details are speculative and not grounded in the reported method.",
+     "urls": [
+      "https://arxiv.org/abs/2407.19584",
+      "https://openreview.net/forum?id=NLUYZ4ZqNq"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -3219,10 +3457,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM response. The mentioned names (\"Mistral-7B\", \"Mixtral\", \"LegalBench-Instruct\") correspond to pre-2024-07 systems/benchmarks or are generic benchmark phrasing, so this does not meet the leakage criteria.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3252,7 +3492,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7625,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3269,14 +3509,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.5,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 9.0,
+     "rationale": "The response matches the paper\u2019s core idea: AgentInstruct is an agentic synthetic-data generation framework that creates both prompts and responses from raw seeds and is used to train a 25M-pair dataset for Orca-3, with the cited benchmark gains reported in the paper. It is fairly concrete about the multi-stage pipeline, but some details (e.g., exact agent structure, task taxonomy size, and verification loops) are more specific than what is clearly established in the abstract and therefore slightly less certain. ([arxiv.org](https://arxiv.org/abs/2407.03502))",
+     "urls": [
+      "https://arxiv.org/abs/2407.03502",
+      "https://www.microsoft.com/en-us/research/blog/orca-agentinstruct-agentic-flows-can-be-effective-synthetic-data-generators/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -3289,10 +3532,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.84,
+     "reason": "No verbatim name in the LLM_RESPONSE was confirmed to be a post-2024-07 publicly released specific entity.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3321,7 +3566,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.65,
+   "overall_score": 0.653,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3345,14 +3590,17 @@
      "confidence": 0.98
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.75,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 7.0,
+     "feasibility": 8.0,
+     "rationale": "The response accurately captures the paper\u2019s central mechanism: a hidden state implemented as a machine learning model updated by self-supervised learning at test time, with TTT-Linear and TTT-MLP as the two concrete variants. It is fairly technical and implementation-oriented, but a few details are extrapolated beyond the abstract; the proposal itself is feasible and consistent with the paper\u2019s linear-complexity design and systems-optimization framing.",
+     "urls": [
+      "https://arxiv.org/abs/2407.04620",
+      "https://openreview.net/forum?id=eifW0W0xgt"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -3365,10 +3613,15 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No post-cutoff leakage: the only explicit names in the LLM response are \"TTT-Linear\" and \"TTT-MLP,\" which were first publicly released in the July 5, 2024 arXiv paper \"Learning to (Learn at Test Time): RNNs with Expressive Hidden States.\"",
+     "details": {
+      "leakage_indicators": [
+       "TTT-Linear",
+       "TTT-MLP"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3398,7 +3651,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6111,
+   "overall_score": 0.6039,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3422,14 +3675,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s core theme of an efficient end-side MLLM with high-resolution vision, multilingual support, and alignment for lower hallucination, but it introduces several implementation details not supported by the reference. It is technically concrete but still somewhat speculative in parts, and the ideas are feasible in practice; however, the novelty is modest because it mostly recombines standard MLLM efficiency and alignment techniques.",
+     "urls": [
+      "https://arxiv.org/abs/2408.01800",
+      "https://huggingface.co/openbmb/MiniCPM-V"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -3442,10 +3698,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.18,
+     "reason": "The response only names entities that were already publicly available by 2024-08 (e.g., Llama 3 / MiniCPM), so there is no verified post-cutoff leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3475,7 +3733,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.49,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -3492,22 +3750,27 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.5,
+     "alignment": 4.0,
+     "specificity": 5.0,
+     "novelty": 3.0,
+     "feasibility": 6.0,
+     "rationale": "The response gets the broad multimodal-unified direction right, but it misses the paper\u2019s central discrete diffusion component and instead describes a mostly autoregressive VQ-token transformer, which is a substantive mismatch. It is moderately specific because it mentions tokenization and training structure, but the proposed design is largely standard and only partially consistent with Show-o\u2019s actual architecture and objectives. The idea is feasible in general, but the concrete implementation plan is not well matched to the paper.",
+     "urls": [
+      "https://arxiv.org/abs/2408.12528",
+      "https://github.com/showlab/Show-o"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.92,
+     "reason": "The response includes only a generic method description and the pre-cutoff term \"VQGAN\"; it does not explicitly name a specific post-cutoff entity.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3576,7 +3839,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.755,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3593,14 +3856,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.0,
+     "alignment": 7.0,
+     "specificity": 8.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The answer captures the core GameNGen idea accurately: RL-generated gameplay data followed by a conditioned diffusion model for next-frame prediction, plus conditioning augmentations for stable autoregressive rollouts. However, it also injects several likely incorrect or unsupported details (Stable Diffusion internals, cross-attention, few-step distillation, auxiliary reconstruction loss), so it is not a precise match to the paper. Its novelty is moderate because it mostly restates the paper\u2019s method rather than proposing a distinctly new approach, and the overall plan is feasible given that the published system demonstrates real-time DOOM simulation on a single TPU.",
+     "urls": [
+      "https://arxiv.org/abs/2408.14837",
+      "https://proceedings.iclr.cc/paper_files/paper/2025/hash/b71ecea210f7159f31e46631fe5c838f-Abstract-Conference.html"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -3613,10 +3879,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "No post-2024-08 entity is explicitly named in the LLM response; the only specific model name present, \"Stable Diffusion,\" was first publicly released in 2022.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3645,7 +3913,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.56,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -3662,22 +3930,27 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 8.0,
+     "alignment": 9.0,
+     "specificity": 8.0,
+     "novelty": 6.0,
+     "feasibility": 9.0,
+     "rationale": "The response closely matches the paper\u2019s Meta Agent Search framing: a meta-agent programs agents in code, uses an archive of prior discoveries, and searches over prompts, tool use, and control flow. It is technically specific and feasible, but some details (e.g., mutating/recombining archive entries, exact evaluation loop) are extrapolations rather than clearly grounded in the provided reference, so novelty is moderate rather than high.",
+     "urls": [
+      "https://arxiv.org/abs/2408.08435",
+      "https://openreview.net/forum?id=t9U3LW7JVX"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "No post-cutoff entity is explicitly named; \"Meta Agent Search\" was publicly released in 2024-08, not after the cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3771,7 +4044,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7512,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3788,14 +4061,14 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response correctly identifies the core benchmark idea: a large, structured medical LVLM benchmark with a lexical-tree taxonomy, VQA-style evaluation, and broad coverage across modalities and tasks ([project page](https://uni-medical.github.io/GMAI-MMBench.github.io/), [paper](https://arxiv.org/abs/2408.03361)). However, it misstates some concrete facts from the paper, notably the dataset count and modality count (the paper reports 284 datasets and 38 modalities, not 'hundreds of thousands' and 'over a hundred'), and it adds unsupported implementation details like TSV format and VLMEvalKit integration. The proposal is feasible and technically grounded, but the novel insight is modest because it mostly restates standard benchmark construction rather than adding a distinctly new method.",
      "urls": [],
-     "web_search_used": false
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -3808,10 +4081,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.99,
+     "reason": "No explicitly named entity in the LLM response was first released after 2024-08. 'GMAI-MMBench' was publicly released in 2024-08, and 'VLMEvalKit' is an existing toolkit, not a post-cutoff release.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3837,10 +4112,10 @@
   },
   {
    "id": "a87ba475-2266-4f8d-b840-b5d3652a068a",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.758,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3864,14 +4139,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.5,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 3.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the main WavTokenizer design accurately: single quantizer, 40/75 tokens per second at 24 kHz, broader VQ space, extended context, improved attention, multi-scale discriminator, and inverse Fourier/iSTFT reconstruction. It is technically concrete but includes some speculative implementation phrasing beyond the paper, and it mostly restates the published method rather than proposing a notably new idea; the approach is nevertheless feasible and consistent with the paper\u2019s reported design.",
+     "urls": [
+      "https://arxiv.org/abs/2408.16532",
+      "https://iclr.cc/virtual/2025/poster/27745"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -3884,10 +4162,14 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.98,
+     "reason": "\"WavTokenizer\"",
+     "details": {
+      "leakage_indicators": [
+       "WavTokenizer"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3914,10 +4196,10 @@
   },
   {
    "id": "0a75513d-4ba6-44bc-8a4a-6b39d79953cc",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.72,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -3934,22 +4216,30 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The answer captures the paper\u2019s main mechanism (parameter reuse in DiT, unified multimodal attention, and Subjects200K) well, so alignment is fairly strong. Specificity is moderate because it invents concrete implementation choices not supported by the paper, which also lowers novelty a bit since these additions are standard adaptations rather than evidence-based insights. Feasibility is plausible overall, but the unverified GPT-4o scoring and learnable bias details make the proposed pipeline less faithful to the actual method.",
+     "urls": [
+      "https://arxiv.org/abs/2411.15098",
+      "https://arxiv.org/html/2411.15098v4"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.93,
+     "reason": "\"OminiControl\" and \"Subjects200K\"",
+     "details": {
+      "leakage_indicators": [
+       "OminiControl",
+       "Subjects200K"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3977,7 +4267,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.752,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4001,14 +4291,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the central idea of Movie Gen reasonably well: a large Transformer trained with Flow Matching at 73K-token context for long video generation. However, it over-specifies the architecture with several details not supported by the paper (e.g., LLaMa3-style backbone, shared audio-visual tokenization, factorized attention, MAST), which lowers alignment. It is technically concrete and feasible in broad strokes, but the proposed implementation mixes real paper elements with invented ones, reducing both novelty and practical fidelity.",
+     "urls": [
+      "https://arxiv.org/abs/2410.13720",
+      "https://ai.meta.com/static-resource/movie-gen-research-paper"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -4021,10 +4314,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.14,
+     "reason": "No explicitly named specific post-cutoff entity is confirmed. The text uses generic/descriptive wording and references pre-cutoff names such as \"LLaMa3-style Transformer\" and \"MAST\" rather than a demonstrably post-2024-10 release.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4051,10 +4346,10 @@
   },
   {
    "id": "401bcbaf-2835-484c-8a1a-7655f470c400",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.764,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4078,14 +4373,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the main methodological thrust of the paper: pyramidal flow matching, interlinked pyramid stages, temporal-pyramid history compression, and a unified DiT trained end-to-end. Specificity is moderate because it adds plausible but unverified implementation choices (e.g., temperature-controlled interpolation, exact token compression scheme), while novelty and feasibility are both solid but not exceptional since they mostly restate the paper\u2019s own efficient video-generation design.",
+     "urls": [
+      "https://arxiv.org/abs/2410.05954",
+      "https://pyramid-flow.github.io/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -4098,10 +4396,14 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.98,
+     "reason": "The exact post-cutoff paper/system name \"Pyramidal Flow Matching for Efficient Video Generative Modeling\" appears verbatim in the LLM response.",
+     "details": {
+      "leakage_indicators": [
+       "Pyramidal Flow Matching for Efficient Video Generative Modeling"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4131,7 +4433,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.781,
+   "overall_score": 0.7295,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4148,14 +4450,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the core OS-Atlas idea of cross-platform GUI grounding data plus model training for better screenshot understanding and OOD generalization, but it adds several unverified training details not evident from the paper. It is technically concrete and feasible, yet the iterative zoom/self-refinement and curriculum specifics read as plausible extrapolations rather than confirmed method choices, so novelty is moderate rather than distinctive.",
+     "urls": [
+      "https://arxiv.org/abs/2410.23218",
+      "https://osatlas.github.io/static/pdfs/2410.23218v1.pdf"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -4168,10 +4473,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "The LLM_RESPONSE names only pre-2024-11 models ('Qwen-VL' and 'LLaVA') and otherwise describes a method, not a specific post-cutoff entity.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4200,7 +4507,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.74,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4217,14 +4524,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 5.0,
+     "specificity": 8.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the general idea of transparent web-scale data curation and filtering using quality signals, but it misrepresents the paper by introducing a bespoke classifier-centric pipeline rather than the dataset-centric release and analysis described in the source. It is quite specific in implementation detail, but much of that specificity is invented; the novelty is modest because it mostly restates standard web-data filtering ideas, and the approach remains feasible in practice.",
+     "urls": [
+      "https://proceedings.neurips.cc/paper_files/paper/2024/hash/d34497330b1fd6530f7afd86d0df9f76-Abstract-Datasets_and_Benchmarks_Track.html",
+      "https://www.together.ai/blog/redpajama-data-v2"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -4237,10 +4547,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No exact post-cutoff entity is named verbatim in the LLM_RESPONSE; it only describes a generic data curation pipeline and uses established terms like Common Crawl and MinHash, which were publicly available before 2024-11.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4269,7 +4581,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6357,
+   "overall_score": 0.5996,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4293,14 +4605,17 @@
      "confidence": 0.62
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 4.0,
+     "rationale": "The response is technically detailed, but it does not match the paper\u2019s actual approach: the paper uses MMPR and Mixed Preference Optimization (MPO), whereas the response invents atomic reasoning decomposition, MCTS-guided search, and verifier-based inference. Because the proposed method is concrete and implementable in principle, specificity is moderate, but feasibility is reduced by the added complexity and by the fact that these components are unsupported by the reference paper.",
+     "urls": [
+      "https://arxiv.org/abs/2411.10442",
+      "https://arxiv.org/html/2411.10442v2"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -4313,10 +4628,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "No explicit post-cutoff entity was named in a way that qualifies as leakage; the only named system/title, \"AtomThink,\" was first publicly released in November 2024.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4343,10 +4660,10 @@
   },
   {
    "id": "06fa6bfd-d5dc-4cc7-868e-670ddbfc9ccf",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.745,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -4363,22 +4680,29 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main mechanism well: dimension-aware LoRAs for decoupling spatial and temporal control, plus trajectory-aware 3D generation and identity-preserving denoising for 4D. It is technically concrete and feasible, but it introduces extra details not established by the abstract, so the score is slightly below a near-perfect match.",
+     "urls": [
+      "https://arxiv.org/abs/2411.04928",
+      "https://arxiv.org/html/2411.04928"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.98,
+     "reason": "\"DimensionX\"",
+     "details": {
+      "leakage_indicators": [
+       "DimensionX"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4406,7 +4730,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.745,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -4423,22 +4747,29 @@
      "confidence": 0.98
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 9.0,
+     "rationale": "The response aligns very well with the paper\u2019s actual method, accurately capturing the hybrid quantization/sparsification strategy, 4-bit activations for attention and FFN inputs, and the 3-bit KV-cache / 55% active-parameter claims. Its specificity is strong but slightly inflated by unsupported implementation details (e.g., STE-based QAT), novelty is low-to-moderate because it largely restates the paper\u2019s method rather than adding new insight, and feasibility is high because the described approach is consistent with the published BitNet a4.8 design.",
+     "urls": [
+      "https://arxiv.org/abs/2411.04965",
+      "https://www.microsoft.com/en-us/research/publication/bitnet-a4-8-4-bit-activations-for-1-bit-llms/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No post-cutoff entity is explicitly named; the only specific name, \"BitNet b1.58\", was first publicly released before 2024-11.",
+     "details": {
+      "leakage_indicators": [
+       "BitNet b1.58"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4463,10 +4794,10 @@
   },
   {
    "id": "e83e6c8e-e992-45d7-a4f6-2cc1a386a190",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.5,
+   "reasoning_pass": false,
+   "overall_score": 0.52,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -4483,22 +4814,29 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the paper\u2019s central latent-reasoning mechanism well, including hidden-state reuse and the BFS-style search intuition, so alignment is good but not exact. It is moderately specific, but several training and tokenization details appear invented or at least unsupported by the paper abstract. The idea is plausible and feasible as a research method, though the added curriculum/marker scheme reduces fidelity to the actual approach.",
+     "urls": [
+      "https://arxiv.org/abs/2412.06769",
+      "https://openreview.net/forum?id=Itxz7S4Ip3"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.98,
+     "reason": "\"Coconut (Chain of Continuous Thought)\"",
+     "details": {
+      "leakage_indicators": [
+       "Coconut (Chain of Continuous Thought)"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4526,7 +4864,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.65,
+   "overall_score": 0.647,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4550,14 +4888,17 @@
      "confidence": 0.8
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 9.0,
+     "rationale": "The response accurately captures the paper\u2019s core empirical benchmarking design, the quantization formats (FP8/INT8/INT4), the use of the full Llama-3.1 family, and the deployment/performance analysis with vLLM. It is technically concrete but still somewhat generic in the implementation details, and it does not introduce especially original ideas beyond standard quantization benchmarking and evaluation.",
+     "urls": [
+      "https://arxiv.org/abs/2411.02355",
+      "https://arxiv.org/html/2411.02355v3"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -4570,10 +4911,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "No post-cutoff entity is explicitly named in the LLM_RESPONSE. The only verbatim named title I found was \u201cGive Me BF16 or Give Me Death\u201d? Accuracy-Performance Trade-Offs in LLM Quantization, which was first publicly released in 2024-11, not after it.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4603,7 +4946,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.49,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -4620,22 +4963,27 @@
      "confidence": 0.65
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.5,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 5.0,
+     "rationale": "The response is technically detailed, but it does not match the paper\u2019s actual method: the paper centers on consensus filtering between Monte Carlo estimation and LLM-as-a-judge, while the response invents an MDP/Q-value and self-consistency training pipeline. The proposal is concrete and plausible as a PRM training recipe, but its novelty is largely generic rather than grounded in the referenced work, and feasibility is moderate because the stated training/evaluation stack is implementable though not what the paper reports.",
+     "urls": [
+      "https://aclanthology.org/2025.findings-acl.547/",
+      "https://papers.lunadong.com/paper/11270"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No post-cutoff entity was explicitly named; the named items 'ProcessBench' and 'PRM800K' were already publicly released before 2025-01.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4660,10 +5008,10 @@
   },
   {
    "id": "616cf223-57f7-48ec-be7d-436bb3073c38",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.749,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4687,14 +5035,14 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper's overall direction: a training-free object insertion pipeline built on pretrained diffusion models and attention-based editing. However, it misstates the mechanism by emphasizing prompt extension and generic attention injection rather than Add-it's weighted extended-attention across scene image, text prompt, and generated image, plus subject-guided latent blending and noise structure transfer. The idea is feasible and consistent with existing diffusion editing practice, but the framing is fairly standard and not especially original.",
      "urls": [],
-     "web_search_used": false
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -4707,10 +5055,14 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.99,
+     "reason": "\"Add-it: Training-Free Object Insertion in Images With Pretrained Diffusion Models\"",
+     "details": {
+      "leakage_indicators": [
+       "Add-it: Training-Free Object Insertion in Images With Pretrained Diffusion Models"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4740,7 +5092,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.73,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -4757,22 +5109,27 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.5,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s main contribution well: a gated delta rule that combines gating-based forgetting with delta-rule updates, plus hybrid layers such as sliding-window attention or Mamba2. Its main weakness is that it invents implementation details not supported by the reference abstract, especially the UT-transform-based parallel algorithm and the exact recurrent update form, which reduces technical precision. The idea itself is not especially novel relative to the paper\u2019s stated contribution, but it is feasible and consistent with known linear-transformer implementations.",
+     "urls": [
+      "https://arxiv.org/abs/2412.06464",
+      "https://arxiv.org/html/2406.06484v5"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "The LLM response names \"Mamba2\" and \"DeltaNet,\" but both are pre-cutoff and therefore not leakage. The response does not verbatim name any specific post-cutoff entity.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4849,7 +5206,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.52,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -4866,22 +5223,27 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the paper\u2019s main end-to-end autonomous research loop and human-in-the-loop refinement, but it introduces several details that are not in Agent Laboratory, including simulated peer review and specific tooling/model choices. It is moderately specific and feasible as a general system design, but the novelty is mostly standard agentic-LLM orchestration rather than a clearly paper-matched technical contribution.",
+     "urls": [
+      "https://arxiv.org/abs/2501.04227",
+      "https://agentlaboratory.github.io/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No explicitly named post-cutoff entity in the LLM response. The named items present were Claude Sonnet 3.5, Aider, and NeurIPS; all were publicly released before 2025-01.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4958,7 +5320,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.635,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -4968,22 +5330,27 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.5,
+     "alignment": 4.0,
+     "specificity": 6.0,
+     "novelty": 2.0,
+     "feasibility": 6.0,
+     "rationale": "The response matches the paper only at a broad level by describing multimodal alignment with a preference dataset and DPO/SFT, but it adds several unsupported specifics such as modality perturbations, GPT-4V ranking, and a custom mixed-modality triplet setup that are not in the paper\u2019s described method. The actual paper centers on OmniAlign-V\u2019s 200K SFT dataset, an OmniAlign-V-DPO variant, and MM-AlignBench, so the response is moderately concrete but mostly invents implementation details rather than reflecting the true recipe ([OmniAlign-V paper](https://arxiv.org/abs/2502.18411), [GitHub repository](https://github.com/PhoenixZ810/OmniAlign-V)).",
+     "urls": [
+      "https://arxiv.org/abs/2502.18411",
+      "https://github.com/PhoenixZ810/OmniAlign-V"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "No verbatim post-cutoff entity name appears in the LLM response. The named systems mentioned (GPT-4V, MT-Bench, LLaVA) were publicly released before 2025-02, so they do not indicate leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5010,7 +5377,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.54,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -5027,22 +5394,27 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main method well: unified reward modeling across image/video understanding and generation, pairwise ranking plus pointwise scoring, and downstream DPO with filtered preference pairs. It is less specific than the paper because it omits concrete dataset/training design choices, but the proposed pipeline is technically plausible and closely aligned with the actual approach.",
+     "urls": [
+      "https://arxiv.org/abs/2503.05236",
+      "https://openreview.net/forum?id=TMpkIv0oIc"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No explicit post-cutoff entity is named in the LLM response. The text only describes a unified vision-language reward model and DPO-style training; it does not name a specific newly released system beyond generic methodology terms.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5070,7 +5442,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.695,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -5080,22 +5452,27 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the paper\u2019s main technique reasonably well: reward-design-focused RL for tool use with GRPO. It is fairly concrete, but some implementation details (specific reward components, multiplicative/additive combination, and no intermediate SFT) go beyond what the reference supports, lowering alignment precision. The idea is technically plausible and feasible, but it is not especially novel relative to the paper\u2019s own contribution because it mostly restates a standard fine-grained reward decomposition scheme.",
+     "urls": [
+      "https://arxiv.org/abs/2504.13958",
+      "https://proceedings.neurips.cc/paper_files/paper/2025/hash/97c5b2707228e7e3fb67e4ecc2e0e607-Abstract-Conference.html"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM response. The only proper name found was \"Group Relative Policy Optimization (GRPO)\", which predates 2025-04.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5122,7 +5499,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.761,
    "tasks": {
     "binary": {
      "correct": true,
@@ -5146,14 +5523,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s core method well: sparse MoE activation, MoonViT native-resolution perception, a 128K context window, and long-CoT SFT plus RL for the Thinking variant. Specificity is good but not perfect because it invents some low-level implementation details not clearly supported by the report; novelty is modest since it mostly restates the published design rather than proposing a new idea; feasibility is high because the described pipeline is consistent with the actual model and training approach.",
+     "urls": [
+      "https://arxiv.org/abs/2504.07491",
+      "https://github.com/MoonshotAI/Kimi-VL"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -5166,10 +5546,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "The named entities \"Kimi-VL\" and \"MoonViT\" were publicly released in April 2025, so they are not post-cutoff leakage indicators for a 2025-04 publication window.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5199,7 +5581,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.52,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -5216,22 +5598,27 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response correctly identifies the model family (a ~7B DiT/diffusion video foundation model trained from scratch with efficiency goals), but it over-specifies unsupported details such as a spatiotemporal VAE tokenizer, mixed-resolution curriculum, flow-matching/v-prediction, and exact parallelism strategy. It is fairly concrete and plausible as an engineering plan, but the novelty is moderate and the feasibility is weakened by speculative implementation claims that are not clearly established in the paper.",
+     "urls": [
+      "https://arxiv.org/abs/2504.08685",
+      "https://seaweed.video/seaweed.pdf"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.06,
+     "reason": "No post-cutoff entity leakage: the only explicit model name in the response, \"Seaweed-7B,\" was first publicly released in April 2025, matching the publication window rather than exceeding it.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5259,7 +5646,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.745,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -5276,22 +5663,30 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main mechanism well: entropy collapse is analyzed through covariance-driven entropy dynamics, and Clip-Cov/KL-Cov are the named remedies. It is fairly concrete, but some implementation phrasing (e.g., top-k selection and rank-based penalties) is more specific than the paper-backed description, while the novelty is moderate because the answer mostly restates the paper\u2019s own method rather than adding a new idea. The approach is feasible since it is a lightweight token-level modification of RL loss terms and is consistent with the documented method.",
+     "urls": [
+      "https://arxiv.org/abs/2505.22617",
+      "https://verl.readthedocs.io/en/v0.4.1/algo/entropy.html"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.14,
+     "reason": "The response contains method names like \"Clip-Cov\" and \"KL-Cov\", but the available sources show these are part of a paper submitted on 28 May 2025 rather than a later-released entity. This is not post-cutoff leakage under the benchmark rule.",
+     "details": {
+      "leakage_indicators": [
+       "\"Clip-Cov\"",
+       "\"KL-Cov\""
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5319,7 +5714,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.73,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -5336,22 +5731,27 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.5,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The answer accurately identifies the paper\u2019s central method\u2014progressive context scaling with warm-up SFT, curriculum-guided phased RL, and difficulty-aware retrospective sampling\u2014but it also introduces extra algorithmic specifics not supported by the reference. It is technically concrete and feasible, but the added GRPO/KL/advantage details reduce fidelity and do not reflect clear novelty beyond a standard staged RL curriculum.",
+     "urls": [
+      "https://arxiv.org/abs/2505.17667",
+      "https://github.com/paperwave/QwenLong-L1"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "No specific post-cutoff entity is named verbatim in the LLM_RESPONSE; it only describes a method. The nearby paper title 'QwenLong-L1' is not present verbatim in the response.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5379,7 +5779,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5224,
+   "overall_score": 0.509,
    "tasks": {
     "binary": {
      "correct": false,
@@ -5403,14 +5803,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response describes a plausible graph-based multi-hop reasoning system, but it does not match the paper\u2019s actual grokking-by-data-augmentation method, which centers on synthetic KG augmentation and the phi_r threshold. It is moderately specific at an implementation level, but the proposed pipeline is mostly generic RAG/graph reasoning rather than the paper\u2019s technique, so its novelty is limited relative to the reference and feasibility is only moderate because the components are standard but not the studied approach.",
+     "urls": [
+      "https://proceedings.mlr.press/v267/abramov25a.html",
+      "https://openreview.net/forum?id=lyUJH51URt"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -5423,10 +5826,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.15,
+     "reason": "No exact post-cutoff entity name is explicitly named in the LLM response; it only gives a generic method description.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5456,7 +5861,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.705,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -5473,22 +5878,27 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.25,
+     "alignment": 4.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad idea of distilling tool-using reasoning into a smaller model, but it diverges from the paper\u2019s actual design by introducing multi-teacher consensus filtering, step typing, and token replacement that are not part of Agent Distillation. It is fairly specific at the implementation level, but the method is partially speculative; novelty is moderate because it proposes a plausible extension rather than the paper\u2019s actual contribution, and feasibility is only moderate since the added classifier/consensus machinery is plausible but not validated by the referenced method.",
+     "urls": [
+      "https://arxiv.org/abs/2505.17612",
+      "https://github.com/Nardien/agent-distillation"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM response; it only describes a general method and components in generic terms.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5516,7 +5926,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.52,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -5533,22 +5943,27 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s main idea: a multilingual evergreen/mutable question classifier built around EverGreenQA and a lightweight model like EG-E5. However, it invents details not supported by the paper summary, especially the retrieval-gating deployment and annotation pipeline, which reduces alignment and technical specificity. The proposed approach is feasible and sensible, but novelty is modest because it largely restates the paper\u2019s baseline concept rather than introducing a distinctly new method.",
+     "urls": [
+      "https://arxiv.org/abs/2505.21115",
+      "https://github.com/s-nlp/Evergreen"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.11,
+     "reason": "No verbatim post-cutoff entity appears in the LLM_RESPONSE; the named datasets/models cited there were first released before 2025-06.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5576,7 +5991,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5745,
+   "overall_score": 0.5626,
    "tasks": {
     "binary": {
      "correct": false,
@@ -5600,14 +6015,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.25,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad theme of Voila as a unified, streaming voice-language model, but it misstates key technical elements by inventing codec/token-cloning details and training tricks not supported by the paper. It is moderately specific in implementation language, but the proposed extras reduce faithfulness; novelty is limited because it reads like a standard voice-cloning/TTS pipeline dressed up as Voila, and feasibility is plausible in isolation though not as stated for this paper.",
+     "urls": [
+      "https://arxiv.org/abs/2505.02707",
+      "https://github.com/maitrix-org/Voila"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -5620,10 +6038,14 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.88,
+     "reason": "No clear post-cutoff leakage indicator. The only specific name I found verbatim was \"Magpie TTS Zeroshot,\" which appears to have been publicly available by mid-2025 rather than first released after 2025-05.",
+     "details": {
+      "leakage_indicators": [
+       "\"Magpie TTS Zeroshot\""
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5650,10 +6072,10 @@
   },
   {
    "id": "084ba605-69a4-4acb-a9a0-2847230424f7",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.5,
+   "reasoning_pass": false,
+   "overall_score": 0.475,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -5670,22 +6092,29 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 3.75,
+     "alignment": 1.0,
+     "specificity": 6.0,
+     "novelty": 3.0,
+     "feasibility": 5.0,
+     "rationale": "The response does not match the paper\u2019s core technical approach: it describes a hybrid sparse-dense MoE/pruning/distillation system, while the paper actually proposes InfLLM v2 sparse attention, UltraClean/UltraChat v2 datasets, ModelTunnel v2, chunk-wise rollout, BitCPM, and CPM.cu. It is technically detailed enough to sound implementable, but the details are mostly unrelated to the reference method, making the novelty low relative to the task and the feasibility only moderate as a generic on-device LLM recipe.",
+     "urls": [
+      "https://arxiv.org/abs/2506.07900",
+      "https://arxiv.org/pdf/2506.07900v2"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.84,
+     "reason": "The LLM_RESPONSE explicitly names \"Qwen3-8B\", which was publicly available after 2025-06.",
+     "details": {
+      "leakage_indicators": [
+       "Qwen3-8B"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5713,7 +6142,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7363,
    "tasks": {
     "binary": {
      "correct": true,
@@ -5730,14 +6159,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.75,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 3.0,
+     "feasibility": 7.0,
+     "rationale": "The response accurately captures the paper\u2019s main training pipeline, controllable image-to-world setup, dataset scale, and evaluation benchmark, so alignment is strong. Specificity is moderate because it adds plausible but unsupported architectural details (e.g., cross-attention/action injection, balanced 720p dataset assumptions) that are not clearly stated in the paper. Novelty is low since it mostly restates the published method with generic diffusion-model implementation ideas, but feasibility is good because the described approach is broadly consistent with real-world video/world-model training.",
+     "urls": [
+      "https://arxiv.org/abs/2506.18701",
+      "https://matrix-game-homepage.github.io/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -5750,10 +6182,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No verified post-2025-06 specific entity is explicitly named in a way that indicates leakage; 'Matrix-Game' was publicly released in June 2025, within the cutoff window, and 'GameWorld Score' appears only as a benchmark name in the described response without evidence it was first released after 2025-06.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5782,7 +6216,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7662,
    "tasks": {
     "binary": {
      "correct": true,
@@ -5799,14 +6233,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.75,
+     "alignment": 9.0,
+     "specificity": 8.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response accurately captures the paper\u2019s main technical approach, including the two-stage training recipe, Lightroom integration protocol, and benchmark framing, so alignment is very strong. It is technically concrete enough to be implementable, but it omits some paper-specific details (e.g., MMArt-Bench construction and the exact 200+ tool coordination framing), and the novelty is mostly an accurate restatement of the paper rather than an especially original idea.",
+     "urls": [
+      "https://proceedings.neurips.cc/paper_files/paper/2025/hash/4ac4365b98bc242acd5ab974a05c68a8-Abstract-Conference.html",
+      "https://arxiv.org/abs/2506.17612"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -5819,10 +6256,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.14,
+     "reason": "No verbatim post-cutoff entity is explicitly named in the LLM_RESPONSE; the text describes methods and training plans only.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5868,22 +6307,27 @@
      "confidence": 0.65
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.0,
+     "alignment": 5.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad self-supervised scaling-and-anchoring theme of DINOv3, but it introduces several method details not supported by the paper abstract (e.g., iBOT masked patch modeling, KoLeo regularization, and a generative objective). It is technically concrete, yet the extra invented components reduce fidelity; the proposal is plausible as a vision SSL recipe, but it is not a precise match to the actual DINOv3 technical approach.",
+     "urls": [
+      "https://arxiv.org/abs/2508.10104",
+      "https://arxiv.org/html/2508.10104"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "No explicit post-cutoff entity is named in the LLM response; it only mentions established methods like DINO, iBOT, KoLeo, and ViT, which were released before 2025-08.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5911,7 +6355,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.741,
+   "overall_score": 0.7018,
    "tasks": {
     "binary": {
      "correct": true,
@@ -5935,14 +6379,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response gets the broad idea right: an end-to-end RL framework that adaptively chooses when to search and uses search-cost penalties. However, it adds unsupported details like OCR and a controller head, and it does not reflect the paper\u2019s actual dataset/training emphasis as precisely as it should. The proposal is technically concrete enough to be plausible, but it is mostly a standard RL-for-tool-use formulation rather than a particularly novel insight.",
+     "urls": [
+      "https://arxiv.org/abs/2506.20670",
+      "https://aclanthology.org/2026.acl-long.114/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -5955,10 +6402,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.99,
+     "reason": "No post-2025-06 entity is explicitly named. The cited names in the response ('Dyn-VQA', 'PPO') were released before 2025-06, so this is not leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5988,7 +6437,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7475,
    "tasks": {
     "binary": {
      "correct": true,
@@ -6005,14 +6454,17 @@
      "confidence": 0.92
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the main memory-based, gradient-free continual adaptation idea and a planner/executor style case-retrieval loop, so it is broadly aligned with the paper. It is moderately specific but not paper-accurate at the mechanism level, since it omits the M-MDP formalism and learned case-selection/update rules and instead adds plausible but unverified engineering details. The novelty is modest because it mostly restates established case-based reasoning and memory retrieval ideas, while feasibility is high because the proposed system is a realistic non-parametric agent design.",
+     "urls": [
+      "https://arxiv.org/abs/2508.16153v1",
+      "https://github.com/tridinh-org/AgentFly"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -6026,9 +6478,11 @@
    "reasoning": {
     "leakage": {
      "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "score": 0.58,
+     "reason": "The response contains a generic memory-augmented CBR agent description, but the only potentially specific post-cutoff entity is not explicitly named in a way that clearly indicates leakage. The design could have been independently invented.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6057,7 +6511,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.555,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -6074,22 +6528,28 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.75,
+     "alignment": 9.0,
+     "specificity": 8.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response closely matches the paper\u2019s actual method: multi-agent distillation into chain-of-agents trajectories, agentic supervised fine-tuning, and agentic RL on verifiable tasks. It is fairly implementation-aware, but it omits some concrete paper details (e.g., the specific agent orchestration/distillation pipeline and exact benchmark/results), and its novelty is moderate because it mainly restates the paper\u2019s own contribution rather than adding new insight.",
+     "urls": [
+      "https://arxiv.org/abs/2508.13167",
+      "https://chain-of-agents-afm.github.io/",
+      "https://github.com/OPPO-PersonalAI/Agent_Foundation_Models"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE. The phrases \"Agent Foundation Model\" and \"GAIA\" are either generic/common or pre-cutoff names, and do not constitute leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6117,7 +6577,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5637,
+   "overall_score": 0.5553,
    "tasks": {
     "binary": {
      "correct": false,
@@ -6134,14 +6594,17 @@
      "confidence": 0.68
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.5,
+     "alignment": 5.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response is directionally consistent with GUI-G^2 in that it proposes continuous, scale-adaptive rewards for GUI grounding, but it diverges from the paper\u2019s actual Gaussian point + coverage reward design and adaptive variance mechanism. It is moderately specific and feasible as a training idea, yet the added zoom/self-evolution components are not supported by the reference method and make it less faithful and somewhat more speculative.",
+     "urls": [
+      "https://arxiv.org/abs/2507.15846",
+      "https://ojs.aaai.org/index.php/AAAI/article/view/40606"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -6154,10 +6617,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.11,
+     "reason": "No explicit verbatim post-cutoff entity name is named in the LLM response.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6186,7 +6651,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.767,
    "tasks": {
     "binary": {
      "correct": true,
@@ -6210,14 +6675,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s central method well: PAROAttention reorders tokens to unify diverse visual attention patterns into a hardware-friendly block-wise form that helps sparsification and quantization. Specificity is fairly high because it outlines a plausible implementation flow, but some details (e.g., exact axis-permutation scheme, Q/K/V calibration recipe) go beyond what is established in the paper abstract, so they should be treated as speculative. The novelty is moderate because it mainly restates the paper\u2019s core contribution rather than adding a new technically distinct idea, and feasibility is strong because the proposed approach is consistent with the reported 20%-30% density and INT8/INT4 operating regime with latency gains.",
+     "urls": [
+      "https://arxiv.org/abs/2506.16054",
+      "https://neurips.cc/virtual/2025/poster/117769"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -6231,9 +6699,13 @@
    "reasoning": {
     "leakage": {
      "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "score": 0.55,
+     "reason": "\"PAROAttention\" is named verbatim, but the first public release I found is June 19, 2025, which is within the stated 2025-06 publication month and not unambiguously after the cutoff.",
+     "details": {
+      "leakage_indicators": [
+       "PAROAttention"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6263,7 +6735,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.49,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -6280,22 +6752,27 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 4.5,
+     "alignment": 3.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 4.0,
+     "rationale": "The response correctly recognizes that the work centers on a 4D world-modeling dataset and benchmark, but it invents a detailed generation/reconstruction pipeline that is not part of OmniWorld. It is technically specific, but much of that specificity is misattributed; the proposed mix of diffusion, 4D Gaussians, and SLAM is plausible in the abstract yet not supported by the paper and would be difficult to realize as described.",
+     "urls": [
+      "https://arxiv.org/abs/2509.12201",
+      "https://github.com/yangzhou24/OmniWorld"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "No post-cutoff entity is named in the LLM response. The only exact proper-noun names present are \"L4GM\" and \"MoVieS,\" both first publicly released before 2025-09.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6320,10 +6797,10 @@
   },
   {
    "id": "bd03b381-b716-45c4-bedb-04f2987522a3",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.5,
+   "reasoning_pass": false,
+   "overall_score": 0.565,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -6340,22 +6817,29 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 8.25,
+     "alignment": 10.0,
+     "specificity": 8.0,
+     "novelty": 6.0,
+     "feasibility": 9.0,
+     "rationale": "The response matches the paper\u2019s core method very closely: Tree-GRPO is indeed a tree-search-based grouped RL approach that shares prefixes, derives step-wise supervision from outcome rewards, and estimates intra-tree/inter-tree relative advantages with a GRPO-style objective. It is technically concrete and feasible, but the novelty score is moderate because it largely restates the paper\u2019s own method rather than adding an original extension or deeper implementation recipe. [Tree Search for LLM Agent Reinforcement Learning](https://openreview.net/forum?id=ZpQwAFhU13) [Tree Search for LLM Agent Reinforcement Learning](https://arxiv.org/abs/2509.21240)",
+     "urls": [
+      "https://openreview.net/forum?id=ZpQwAFhU13",
+      "https://arxiv.org/abs/2509.21240"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.95,
+     "reason": "\"Tree-GRPO\"",
+     "details": {
+      "leakage_indicators": [
+       "Tree-GRPO"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6383,7 +6867,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.72,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -6400,22 +6884,30 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The answer captures the broad WebSailor recipe\u2014high-uncertainty task generation, RFT cold start, and DUPO\u2014but it conflates the paper with BrowseComp-Plus and introduces unsupported training details such as GRPO and confidence rewards. It is technically fairly concrete, but the novelty is limited because it largely repackages standard retrieval-RL ideas rather than the paper\u2019s specific contribution.",
+     "urls": [
+      "https://arxiv.org/abs/2507.02592",
+      "https://aclanthology.org/2026.acl-long.1023/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.13,
+     "reason": "No post-cutoff entity is explicitly named in a way that was first released after 2025-09. \"BrowseComp-Plus\" was publicly available by 2025-08-08, and GRPO was already documented in 2025 sources.",
+     "details": {
+      "leakage_indicators": [
+       "\"BrowseComp-Plus\"",
+       "\"Group Relative Policy Optimization (GRPO)\""
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6443,7 +6935,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.65,
+   "overall_score": 0.653,
    "tasks": {
     "binary": {
      "correct": true,
@@ -6467,14 +6959,17 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.75,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 9.0,
+     "rationale": "The response closely matches the paper\u2019s main technical idea: replacing the VAE with a Representation Autoencoder built from a frozen pretrained visual encoder plus a trained decoder, and pairing it with a wide DDT head for DiT. It is technically concrete but leaves out some paper-specific details about why high-dimensional latents are difficult and how the solutions are justified, so specificity is good but not fully implementation-complete. Novelty is moderate because it mostly restates the paper\u2019s core contribution rather than adding an especially original new idea, and feasibility is high because the described pipeline is consistent with the published method and results.",
+     "urls": [
+      "https://arxiv.org/abs/2510.11690",
+      "https://arxiv.org/html/2510.11690v1"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -6487,10 +6982,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.13,
+     "reason": "The LLM response does not explicitly name any specific post-cutoff entity; it only mentions established model names such as DINOv2, SigLIP, and MAE, plus a generic architectural description.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6520,7 +7017,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.52,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -6537,22 +7034,27 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.0,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response correctly identifies the central mechanism of AutoDeco: lightweight heads that predict token-level temperature and top-p alongside next-token logits. However, it introduces unsupported training details involving differentiable relaxations and reward backpropagation, so it is only a partial match to the actual paper. The method description is fairly concrete, but the added training pipeline makes it more speculative than faithful; the idea is plausible and implementable, but not clearly grounded in the source text.",
+     "urls": [
+      "https://arxiv.org/abs/2510.26697",
+      "https://openreview.net/forum?id=cPTgQDMD5p"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.04,
+     "reason": "No explicit post-cutoff entity name appears verbatim in the LLM_RESPONSE; it is a generic method description.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6577,10 +7079,10 @@
   },
   {
    "id": "214ec32e-fbea-49a2-a1eb-6af1874064ae",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
-   "overall_score": 0.8,
+   "reasoning_pass": false,
+   "overall_score": 0.767,
    "tasks": {
     "binary": {
      "correct": true,
@@ -6604,14 +7106,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response accurately captures the paper\u2019s main Spectrum-to-Signal Principle and its two-stage structure: diversity-exploring distillation followed by max-entropy-guided policy optimization. It is technically concrete and feasible, but some details (e.g., GRPO-style optimization, iterative pruning) are not evidenced in the abstract and appear as reasonable extrapolations rather than exact method descriptions.",
+     "urls": [
+      "https://arxiv.org/abs/2511.06221",
+      "https://arxiv.org/html/2511.06221v1"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -6624,10 +7129,14 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.97,
+     "reason": "\"Spectrum-to-Signal Principle (SSP)\"",
+     "details": {
+      "leakage_indicators": [
+       "Spectrum-to-Signal Principle (SSP)"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6657,7 +7166,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6357,
+   "overall_score": 0.6116,
    "tasks": {
     "binary": {
      "correct": true,
@@ -6681,14 +7190,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.25,
+     "alignment": 4.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The answer is directionally related to Ling 2.0 because it discusses sparse MoE and reasoning-oriented training, but it misses the paper\u2019s actual coordinated recipe: MTP, mid-training CoT activation, reinforcement-based fine-tuning, and FP8/heterogeneous pipeline infrastructure. It is moderately specific and technically plausible, but the router/entropy-based adaptive activation mechanism appears invented rather than reflective of the cited method, reducing alignment and keeping novelty in the middle range.",
+     "urls": [
+      "https://arxiv.org/abs/2510.22115",
+      "https://github.com/inclusionAI/Ling-V2"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -6702,9 +7214,13 @@
    "reasoning": {
     "leakage": {
      "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "score": 0.35,
+     "reason": "The text names \"Reasoning-Aligned Sparse Mixture-of-Experts (RA-MoE)\", but I could not verify that this exact name corresponds to a specific post-2025-11 release. It appears to be a generic coined label rather than a clearly identifiable leaked entity.",
+     "details": {
+      "leakage_indicators": [
+       "Reasoning-Aligned Sparse Mixture-of-Experts (RA-MoE)"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6734,7 +7250,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6446,
+   "overall_score": 0.6197,
    "tasks": {
     "binary": {
      "correct": true,
@@ -6751,14 +7267,17 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.75,
+     "alignment": 3.0,
+     "specificity": 8.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response is technically concrete, but it does not match the paper\u2019s actual contribution: the reference is a comprehensive synthesis and experimental guide over code LLMs, not a new retrieval-augmented repository agent. Its implementation plan is plausible and detailed, but the core idea is a common agentic coding setup rather than the paper\u2019s lifecycle-oriented survey and analysis.",
+     "urls": [
+      "https://arxiv.org/abs/2511.18538",
+      "https://arxiv.org/html/2511.18538v1"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -6771,10 +7290,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE. The named datasets/benchmarks 'SWE-bench' and 'RepoEval' were publicly released before 2025-12, so they are not leakage indicators.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6803,7 +7324,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.71,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -6820,22 +7341,27 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.5,
+     "alignment": 3.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 7.0,
+     "rationale": "The response is technically concrete and feasible, but it does not accurately describe the paper\u2019s actual approach: DeepSeek-V3.2 emphasizes sparse attention, scaled RL, and agentic task synthesis rather than verifier-driven self-distillation. It shows moderate originality in the training loop design, yet that originality is largely independent of the ground-truth method.",
+     "urls": [
+      "https://arxiv.org/abs/2512.02556",
+      "https://arxiv.org/pdf/2512.02556"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.94,
+     "reason": "No explicit post-cutoff entity is named in the LLM_RESPONSE. The only identifiable proper noun is \"Lean,\" which was publicly released well before 2025-12.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6863,7 +7389,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.591,
+   "overall_score": 0.5788,
    "tasks": {
     "binary": {
      "correct": true,
@@ -6887,14 +7413,17 @@
      "confidence": 0.45
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 5.5,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the core two-stage multimodal reasoning recipe from OpenMMReasoner, including SFT followed by RL and the emphasis on data quality, but it invents details like verifier-based filtering and GRPO that are not part of the documented method. It is moderately specific and feasible as a training pipeline, but its novelty is limited because it largely restates a standard self-improving data-curation plus RL setup rather than the paper\u2019s exact recipe.",
+     "urls": [
+      "https://arxiv.org/abs/2511.16334",
+      "https://lmms-lab.com/posts/openmmreasoner/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -6907,10 +7436,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.11,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM response. The names present are pre-2025-11 or generic methodology terms.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -6940,7 +7471,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.545,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -6957,22 +7488,27 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 9.0,
+     "rationale": "The response matches the core Wan-Move method: latent trajectory guidance, dense point trajectories, feature propagation from the first frame, and no architecture change to the base I2V model. It is fairly specific but includes some inferred implementation details not stated in the paper; novelty is moderate because it mostly restates the paper\u2019s central idea rather than proposing a new one, while feasibility is high because the method is explicitly designed to be scalable and practical.",
+     "urls": [
+      "https://arxiv.org/abs/2512.08765",
+      "https://github.com/ali-vilab/Wan-Move"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE; it only describes a method and benchmark style.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -7109,7 +7645,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.725,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -7126,22 +7662,27 @@
      "confidence": 0.65
     },
     "frq": {
-     "score": null,
-     "alignment": null,
-     "specificity": null,
-     "novelty": null,
-     "feasibility": null,
-     "rationale": "",
-     "urls": [],
-     "web_search_used": false
+     "score": 6.25,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s core idea of multimodal deep-research with multi-turn, multi-entity, multi-scale search and RL-based training, but it adds several unsupported specifics such as reverse-image-search operators, dual-memory modules, and named benchmark claims not evidenced by the paper. The actual paper emphasizes cold-start supervision plus RL for long-horizon tool use under noisy real-world search, so the answer is fairly concrete and feasible, but its extra mechanisms make it only a moderate alignment rather than a precise match. ([arxiv.org](https://arxiv.org/abs/2601.22060))",
+     "urls": [
+      "https://arxiv.org/abs/2601.22060",
+      "https://icml.cc/virtual/2026/poster/66607"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "No post-cutoff leakage: the only explicit named entities are \"MMSearch-Plus\" and \"DeepMMSearch-R1\", and both were publicly released before 2026-02.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -32865,7 +33406,7 @@
   }
  ],
  "run_metadata": {
-  "built_utc": "2026-09-19T02:32:35.264192+00:00",
+  "built_utc": "2026-09-19T03:09:13.223265+00:00",
   "predictions": "results_sonnet5_run1/raw/ws_cutoff_500.jsonl",
   "judged": "results_sonnet5_run1/raw/judged_ws_cutoff_500.jsonl",
   "model": "claude-sonnet-5",
