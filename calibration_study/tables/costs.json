@@ -1,0 +1,98 @@
+{
+ "gpt4o_B1": {
+  "records": 1125,
+  "calls": 1125,
+  "input_tokens": 199770,
+  "output_tokens": 94827,
+  "usd": 1.447695,
+  "price": {
+   "input_per_m": 2.5,
+   "output_per_m": 10.0,
+   "source": "Azure OpenAI gpt-4o-2024-11-20 list price, assumed"
+  }
+ },
+ "gpt4o_B2": {
+  "records": 595,
+  "calls": 595,
+  "input_tokens": 105651,
+  "output_tokens": 52573,
+  "usd": 0.7898575,
+  "price": {
+   "input_per_m": 2.5,
+   "output_per_m": 10.0,
+   "source": "Azure OpenAI gpt-4o-2024-11-20 list price, assumed"
+  }
+ },
+ "gpt54_B1": {
+  "records": 1125,
+  "calls": 1125,
+  "input_tokens": 198645,
+  "output_tokens": 120318,
+  "usd": 2.3013825,
+  "price": {
+   "input_per_m": 2.5,
+   "output_per_m": 15.0,
+   "source": "ASSUMED \u2014 verify; reasoning tokens bill as output"
+  }
+ },
+ "gpt54_B2": {
+  "records": 277,
+  "calls": 277,
+  "input_tokens": 49032,
+  "output_tokens": 29484,
+  "usd": 0.56484,
+  "price": {
+   "input_per_m": 2.5,
+   "output_per_m": 15.0,
+   "source": "ASSUMED \u2014 verify; reasoning tokens bill as output"
+  }
+ },
+ "llama33_B1": {
+  "records": 1125,
+  "calls": 1125,
+  "input_tokens": 227354,
+  "output_tokens": 91570,
+  "usd": 0.22643603999999998,
+  "price": {
+   "input_per_m": 0.71,
+   "output_per_m": 0.71,
+   "source": "Azure AI Foundry serverless list price, assumed"
+  }
+ },
+ "llama33_B2": {
+  "records": 1125,
+  "calls": 1125,
+  "input_tokens": 230729,
+  "output_tokens": 90204,
+  "usd": 0.22786243,
+  "price": {
+   "input_per_m": 0.71,
+   "output_per_m": 0.71,
+   "source": "Azure AI Foundry serverless list price, assumed"
+  }
+ },
+ "llama33_D": {
+  "records": 3,
+  "calls": 30,
+  "input_tokens": 4950,
+  "output_tokens": 2099,
+  "usd": 0.00500479,
+  "price": {
+   "input_per_m": 0.71,
+   "output_per_m": 0.71,
+   "source": "Azure AI Foundry serverless list price, assumed"
+  }
+ },
+ "llama33_E": {
+  "records": 282,
+  "calls": 282,
+  "input_tokens": 58246,
+  "output_tokens": 22253,
+  "usd": 0.057154289999999996,
+  "price": {
+   "input_per_m": 0.71,
+   "output_per_m": 0.71,
+   "source": "Azure AI Foundry serverless list price, assumed"
+  }
+ }
+}

@@ -302487,7 +302487,7 @@
   }
  ],
  "run_metadata": {
-  "built_utc": "2026-09-19T14:11:34.524299+00:00",
+  "built_utc": "2026-09-19T15:21:38.193092+00:00",
   "scoring_version": "v1",
   "frq_quality_scores": "exclude",
   "frq_rubric_note": "Stage-2 quality rubric deferred: the rubric is under revision, so scores computed with the current one would be discarded. FRQ responses are generated and archived verbatim; stage-1 leakage verdicts are computed now because they depend on live web search and would not reproduce later.",

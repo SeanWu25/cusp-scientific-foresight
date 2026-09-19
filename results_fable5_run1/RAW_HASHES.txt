@@ -1,0 +1,6 @@
+# sha256 of raw run artifacts kept out of git
+
+07eb08500837d7b6c27617ad28e1c0ce2d0bb064983228ff7ba69f656c02fa42  bio_refusal_probe.log
+66d4ffc8fb57959af694154106f261526cb20229c14eaa81e0353ac5220335b8  raw/base_medium_run1.jsonl
+0e7ec53bdfbc342998cb897f1475411b1fb32b68270800142b901ddcef21887b  raw/base_medium_run1.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  raw/driver.log

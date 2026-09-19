@@ -1,0 +1,38 @@
+{
+ "llama33": {
+  "n": 10,
+  "mcq": [
+   {
+    "id": "d8d76fc3-757c-43d2-83e7-8aad2ceead39",
+    "partition": "post",
+    "votes": {
+     "B": 10
+    },
+    "answer": "B",
+    "correct": false
+   }
+  ],
+  "binary": [
+   {
+    "id": "d8d76fc3-757c-43d2-83e7-8aad2ceead39",
+    "task": "binary_perturbed",
+    "partition": "post",
+    "votes": {
+     "Yes": 10
+    },
+    "answer": "yes",
+    "correct": false
+   },
+   {
+    "id": "db02d361-3775-431e-90fa-4c3bbeb8a9a8",
+    "task": "binary_perturbed",
+    "partition": "post",
+    "votes": {
+     "Yes": 10
+    },
+    "answer": "yes",
+    "correct": false
+   }
+  ]
+ }
+}

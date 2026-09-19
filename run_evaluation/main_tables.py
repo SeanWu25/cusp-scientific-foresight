@@ -227,7 +227,7 @@ def main():
     if not show_frq:
         print("\n=== FRQ GENERATION DIAGNOSTICS (no quality scores) ===")
         print(f"{'model':14s}{'responses':>11s}{'mean chars':>12s}{'truncated':>11s}"
-              f"{'leak fail%':>12s}{'leak unclear%':>15s}")
+              f"{'leak fail%':>12s}{'leak unclear%':>15s}{'n_judged':>9s}")
         for n, c, _ in models:
             rep = data[n]["report"]
             res = rep.get("results", [])
@@ -239,18 +239,21 @@ def main():
             tr = sum(1 for f in gen if f.get("truncated"))
             lk = [r["reasoning"]["leakage"] for r in res
                   if (r.get("reasoning") or {}).get("leakage")]
-            lk = [x for x in lk if x.get("reason") != "not judged"]
+            SKIP = ("not judged", "No FRQ response to assess")
+            lk = [x for x in lk if x.get("reason") not in SKIP]
             nf = sum(1 for x in lk if x.get("verdict") == "fail")
             nu = sum(1 for x in lk if x.get("verdict") == "unclear")
-            print(f"{n:14s}{len(gen):11d}"
-                  f"{(statistics.fmean(ch) if ch else 0):12.0f}{tr:11d}"
+            mc = f"{statistics.fmean(ch):.0f}" if ch else "---"
+            tc = str(tr) if ch else "---"
+            print(f"{n:14s}{len(gen):11d}{mc:>12s}{tc:>11s}"
                   f"{(100*nf/len(lk) if lk else float('nan')):12.2f}"
-                  f"{(100*nu/len(lk) if lk else float('nan')):15.1f}")
+                  f"{(100*nu/len(lk) if lk else float('nan')):15.1f}"
+                  f"{len(lk):>9d}")
     else:
         print("\n=== FRQ SUB-DIMENSIONS (0-10 each; overall = mean of the four) ===")
-    print(f"{'model':14s}{'cutoff':>9s}{'align':>8s}{'spec':>8s}{'novel':>8s}"
-          f"{'feasib':>8s}{'spec-align':>12s}{'overall':>9s}{'n':>7s}")
-    for n, c, _ in models:
+        print(f"{'model':14s}{'cutoff':>9s}{'align':>8s}{'spec':>8s}{'novel':>8s}"
+              f"{'feasib':>8s}{'spec-align':>12s}{'overall':>9s}{'n':>7s}")
+    for n, c, _ in (models if show_frq else []):
         acc = data[n]["acc"]
         vals = {}
         for sub in ("alignment", "specificity", "novelty", "feasibility"):

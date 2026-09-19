@@ -17,7 +17,7 @@ build () {  # build <dir> <tag>
   echo "  built $d/reports/$t.json"
 }
 
-for d in results_sonnet5_run1 results_fable5_run1; do
+for d in results_sonnet5_run1 results_fable5_run1 results_sol_run1; do
   [ -d "$d" ] || continue
   echo "== $d =="
   mkdir -p "$d/reports" "$d/tables"
@@ -29,6 +29,7 @@ done
 
 S5=results_sonnet5_run1/reports
 F5=results_fable5_run1/reports
+SOL=results_sol_run1/reports
 OUT=results_sonnet5_run1/tables
 EXTRA=()
 [ -f "$S5/base_medium_run1.json" ] && EXTRA+=(--extra "Claude Sonnet 5=2026-01=$S5/base_medium_run1.json")
@@ -36,6 +37,7 @@ EXTRA=()
 # events after it declined 82% of matched biomedical items, so its partial row
 # would cover a different slice of CUSP than every other row.
 # [ -f "$F5/base_medium_run1.json" ] && EXTRA+=(--extra "Claude Fable 5=2026-01=$F5/base_medium_run1.json")
+[ -f "$SOL/base_medium_run1.json" ] && EXTRA+=(--extra "GPT-5.6 Sol=2026-02=$SOL/base_medium_run1.json")
 
 echo "== panel tables =="
 REPEATS=()
@@ -56,12 +58,12 @@ echo "  $OUT/horizon_stratified.{json,txt}"
 
 GAP=()
 [ -f "$S5/ws_500.json" ] && GAP+=(--extra "Claude Sonnet 5=2026-01=$S5/base_medium_run1.json=$S5/ws_500.json=$S5/ws_cutoff_500.json")
-[ -f "$F5/ws_500.json" ] && GAP+=(--extra "Claude Fable 5=2026-01=$F5/base_medium_run1.json=$F5/ws_500.json=$F5/ws_cutoff_500.json")
+[ -f "$SOL/ws_500.json" ] && GAP+=(--extra "GPT-5.6 Sol=2026-02=$SOL/base_medium_run1.json=$SOL/ws_500.json=$SOL/ws_cutoff_500.json")
 $PY run_evaluation/gap_decomposition.py --benchmark "$BENCH" \
     "${GAP[@]}" --out "$OUT/gap_decomposition.json" > "$OUT/gap_decomposition.txt"
 echo "  $OUT/gap_decomposition.{json,txt}"
 
-for pair in "results_sonnet5_run1:Claude Sonnet 5" "results_fable5_run1:Claude Fable 5"; do
+for pair in "results_sonnet5_run1:Claude Sonnet 5" "results_sol_run1:GPT-5.6 Sol"; do
   d="${pair%%:*}"; lab="${pair##*:}"
   [ -f "$d/reports/ws_500.json" ] || continue
   $PY run_evaluation/web_search_block.py --benchmark "$BENCH" --label "$lab" \

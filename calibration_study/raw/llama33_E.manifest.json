@@ -1,0 +1,27 @@
+{
+ "model": "llama33",
+ "deploy": "Llama-3.3-70B-Instruct",
+ "arm": "E",
+ "temperature": 0.0,
+ "n": 1,
+ "endpoint": "https://bascolm.services.ai.azure.com/openai/v1",
+ "max_completion_tokens": 2048,
+ "json_mode": true,
+ "retries": 2,
+ "system_prompts": {
+  "binary": "You are a scientific forecasting evaluator. Given a yes/no forecasting question about a future scientific or technical development, reason briefly then give the probability that the event occurs by the stated date. Do not give a yes/no answer.\n\nYou MUST respond with valid JSON in exactly this format:\n{\"reasoning\": \"<1-2 sentence justification>\", \"probability\": <float 0.0-1.0, the probability that the answer is Yes>}",
+  "binary_perturbed": "You are a scientific forecasting evaluator. Given a yes/no forecasting question about a future scientific or technical development, reason briefly then give the probability that the event occurs by the stated date. Do not give a yes/no answer.\n\nYou MUST respond with valid JSON in exactly this format:\n{\"reasoning\": \"<1-2 sentence justification>\", \"probability\": <float 0.0-1.0, the probability that the answer is Yes>}",
+  "mcq": "You are a scientific forecasting evaluator assessing knowledge of emerging research breakthroughs. You will be presented with a multiple-choice question about a technical development. Do not pick a single answer; give a probability for each option. The four probabilities must sum to 1.0.\n\nYou MUST respond with valid JSON in exactly this format:\n{\"reasoning\": \"<1-2 sentence justification>\", \"probabilities\": {\"A\": <float>, \"B\": <float>, \"C\": <float>, \"D\": <float>}}"
+ },
+ "system_sha": {
+  "binary": "8c947e21ed65a711",
+  "binary_perturbed": "8c947e21ed65a711",
+  "mcq": "9ad2c8bb010018a7"
+ },
+ "base_prompt_sha": {
+  "binary": "c081ba7a87eb6d3e",
+  "mcq": "5d735232358a2511"
+ },
+ "subset_sha": "061b4bf837c8a36e",
+ "created": "2026-09-19T15:11:09.168278+00:00"
+}

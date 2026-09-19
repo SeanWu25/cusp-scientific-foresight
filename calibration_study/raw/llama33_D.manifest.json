@@ -1,0 +1,27 @@
+{
+ "model": "llama33",
+ "deploy": "Llama-3.3-70B-Instruct",
+ "arm": "D",
+ "temperature": 1.0,
+ "n": 10,
+ "endpoint": "https://bascolm.services.ai.azure.com/openai/v1",
+ "max_completion_tokens": 2048,
+ "json_mode": true,
+ "retries": 2,
+ "system_prompts": {
+  "binary": "You are a scientific forecasting evaluator. Given a yes/no forecasting question about a future scientific or technical development, reason briefly then give your final answer.\n\nYou MUST respond with valid JSON in exactly this format:\n{\"reasoning\": \"<1-2 sentence justification>\", \"answer\": \"Yes or No\"}",
+  "binary_perturbed": "You are a scientific forecasting evaluator. Given a yes/no forecasting question about a future scientific or technical development, reason briefly then give your final answer.\n\nYou MUST respond with valid JSON in exactly this format:\n{\"reasoning\": \"<1-2 sentence justification>\", \"answer\": \"Yes or No\"}",
+  "mcq": "You are a scientific forecasting evaluator assessing knowledge of emerging research breakthroughs. You will be presented with a multiple-choice question about a technical development.\n\nYou MUST respond with valid JSON in exactly this format:\n{\"reasoning\": \"<1-2 sentence justification>\", \"answer\": \"<single letter A, B, C, or D>\"}"
+ },
+ "system_sha": {
+  "binary": "b4bd3b057cfb04d7",
+  "binary_perturbed": "b4bd3b057cfb04d7",
+  "mcq": "a2b5b67194628cc8"
+ },
+ "base_prompt_sha": {
+  "binary": "c081ba7a87eb6d3e",
+  "mcq": "5d735232358a2511"
+ },
+ "subset_sha": "061b4bf837c8a36e",
+ "created": "2026-09-19T15:15:38.821080+00:00"
+}

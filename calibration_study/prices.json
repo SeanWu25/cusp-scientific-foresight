@@ -1,0 +1,7 @@
+{
+  "_note": "USD per 1M tokens. Assumed list prices, NOT verified against the invoice — edit before quoting costs.",
+  "Llama-3.3-70B-Instruct": {"input_per_m": 0.71, "output_per_m": 0.71, "source": "Azure AI Foundry serverless list price, assumed"},
+  "gpt-4o":                 {"input_per_m": 2.50, "output_per_m": 10.00, "source": "Azure OpenAI gpt-4o-2024-11-20 list price, assumed"},
+  "gpt-5.4":                {"input_per_m": 2.50, "output_per_m": 15.00, "source": "ASSUMED — verify; reasoning tokens bill as output"},
+  "DeepSeek-R1":            {"input_per_m": 1.35, "output_per_m": 5.40, "source": "Azure Foundry list price, assumed (deployment deprecated)"}
+}

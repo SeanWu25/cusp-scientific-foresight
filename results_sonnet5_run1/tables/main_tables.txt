@@ -9,6 +9,7 @@ GPT-OSS 20B     2024-06    949   5461      0.518[0.51,0.53]      0.471[0.46,0.49
 LLaMA 3.3       2023-12      0   6359      0.453[0.44,0.47]      0.434[0.42,0.45]      0.500[0.49,0.51]
 GPT-4o          2023-10      0   6408      0.519[0.51,0.53]      0.530[0.51,0.54]      0.178[0.17,0.19]
 Claude Sonnet 5  2026-01   5647    566      0.568[0.56,0.58]      0.909[0.90,0.92]      0.426[0.41,0.44]
+GPT-5.6 Sol     2026-02   6070    338      0.565[0.55,0.58]      0.878[0.87,0.89]      0.370[0.36,0.38]
 
 === RETROSPECTIVE CEILING — pre-cutoff is the in-weights ceiling ===
    ratio = post / pre. Below 1.0 means performance falls once the answer
@@ -23,6 +24,7 @@ GPT-OSS 20B     2024-06        0.476[0.44,0.51]        0.526[0.51,0.54]    1.103
 LLaMA 3.3       2023-12                ---             0.453[0.44,0.47]    ---        0    6359
 GPT-4o          2023-10                ---             0.519[0.51,0.53]    ---        0    6408
 Claude Sonnet 5  2026-01        0.568[0.55,0.58]        0.578[0.54,0.62]    1.018   5647     566
+GPT-5.6 Sol     2026-02        0.568[0.56,0.58]        0.518[0.46,0.57]    0.911   6070     338
 
 -- mcq
 model            cutoff           pre (ceiling)                    post    ratio  n_pre  n_post
@@ -33,6 +35,7 @@ GPT-OSS 20B     2024-06        0.497[0.46,0.54]        0.466[0.45,0.48]    0.939
 LLaMA 3.3       2023-12                ---             0.434[0.42,0.45]    ---        0    4087
 GPT-4o          2023-10                ---             0.530[0.51,0.54]    ---        0    4126
 Claude Sonnet 5  2026-01        0.912[0.90,0.92]        0.884[0.85,0.91]    0.969   3420     361
+GPT-5.6 Sol     2026-02        0.879[0.87,0.89]        0.850[0.80,0.89]    0.967   3891     213
 
 -- date_score
 model            cutoff           pre (ceiling)                    post    ratio  n_pre  n_post
@@ -43,24 +46,18 @@ GPT-OSS 20B     2024-06        0.126[0.11,0.14]        0.336[0.32,0.35]    2.669
 LLaMA 3.3       2023-12                ---             0.500[0.49,0.51]    ---        0    2734
 GPT-4o          2023-10                ---             0.178[0.17,0.19]    ---        0    2754
 Claude Sonnet 5  2026-01        0.434[0.42,0.45]        0.341[0.30,0.38]    0.787   2431     217
+GPT-5.6 Sol     2026-02        0.376[0.36,0.39]        0.251[0.22,0.28]    0.667   2624     131
 
 === FRQ GENERATION DIAGNOSTICS (no quality scores) ===
-model           responses  mean chars  truncated  leak fail%  leak unclear%
-GPT-5.4              4128           0          0        0.29           14.9
-Claude S4.5          3908           0          0        0.42           14.5
-DeepSeek R1          4100           0          0        0.11           15.9
-GPT-OSS 20B          4123           0          0        0.13           14.9
-LLaMA 3.3            4093           0          0        0.04           15.4
-GPT-4o               4128           0          0        0.04           14.8
-Claude Sonnet 5       4031        1046       3893        0.40            9.0
-model            cutoff   align    spec   novel  feasib  spec-align  overall      n
-GPT-5.4         2025-08    3.30    6.21    4.91    5.73        2.91     5.04   4128
-Claude S4.5     2025-01    2.31    4.71    3.95    5.01        2.41     3.99   3908
-DeepSeek R1     2024-07    2.29    5.32    4.07    5.04        3.02     4.18   4100
-GPT-OSS 20B     2024-06    2.06    4.89    3.70    4.78        2.83     3.86   4123
-LLaMA 3.3       2023-12    2.23    3.33    2.38    6.00        1.10     3.49   4093
-GPT-4o          2023-10    2.25    2.91    2.44    5.45        0.66     3.26   4128
-Claude Sonnet 5  2026-01     ---     ---     ---     ---         ---      ---      0
+model           responses  mean chars  truncated  leak fail%  leak unclear% n_judged
+GPT-5.4              4128         ---        ---        0.34            2.0     4135
+Claude S4.5          3908         ---        ---        0.49            2.1     3916
+DeepSeek R1          4100         ---        ---        0.12            2.9     4109
+GPT-OSS 20B          4123         ---        ---        0.15            2.1     4134
+LLaMA 3.3            4093         ---        ---        0.05            2.7     4101
+GPT-4o               4128         ---        ---        0.05            1.9     4133
+Claude Sonnet 5       4031        1046       3893        0.40            9.0     4037
+GPT-5.6 Sol          4079         770          2         nan            nan        0
 
 === DATE PREDICTION (signed error positive = predicted too late) ===
 model            cutoff     n  mean pred  mean err   median   <=3mo   <=6mo  <=12mo  <=24mo   score
@@ -71,6 +68,7 @@ GPT-OSS 20B     2024-06  2723    2027-05     +27.5    +15.0    14.8    25.6    4
 LLaMA 3.3       2023-12  2731    2025-07      +4.9     +4.0    25.2    45.7    74.6    93.7   0.500
 GPT-4o          2023-10  2573    2028-02     +35.9    +26.0     6.8    13.2    25.5    46.8   0.178
 Claude Sonnet 5  2026-01  2648    2024-04      -9.8     -6.0    23.3    36.8    58.3    84.9   0.426
+GPT-5.6 Sol     2026-02  2719    2026-08     +18.3    +14.0    26.9    35.4    45.1    59.6   0.370
 
 === RUN-TO-RUN VARIANCE (mean +/- sd across repeated runs) ===
 

@@ -1,0 +1,27 @@
+{
+ "model": "gpt4o",
+ "deploy": "gpt-4o",
+ "arm": "B1",
+ "temperature": 0.0,
+ "n": 1,
+ "endpoint": "https://bascolm.services.ai.azure.com/openai/v1",
+ "max_completion_tokens": 2048,
+ "json_mode": true,
+ "retries": 2,
+ "system_prompts": {
+  "binary": "You are a scientific forecasting evaluator. Given a yes/no forecasting question about a future scientific or technical development, reason briefly then give your final answer and confidence. Before answering, consider what evidence would refute this realization.\n\nYou MUST respond with valid JSON in exactly this format:\n{\"reasoning\": \"<1-2 sentence justification>\", \"answer\": \"Yes or No\", \"confidence\": <float 0.0-1.0>}",
+  "binary_perturbed": "You are a scientific forecasting evaluator. Given a yes/no forecasting question about a future scientific or technical development, reason briefly then give your final answer and confidence. Before answering, consider what evidence would refute this realization.\n\nYou MUST respond with valid JSON in exactly this format:\n{\"reasoning\": \"<1-2 sentence justification>\", \"answer\": \"Yes or No\", \"confidence\": <float 0.0-1.0>}",
+  "mcq": "You are a scientific forecasting evaluator assessing knowledge of emerging research breakthroughs. You will be presented with a multiple-choice question about a technical development. Before answering, consider what evidence would refute this realization.\n\nYou MUST respond with valid JSON in exactly this format:\n{\"reasoning\": \"<1-2 sentence justification>\", \"answer\": \"<single letter A, B, C, or D>\", \"confidence\": <float 0.0-1.0>}"
+ },
+ "system_sha": {
+  "binary": "91edbe5c46c48bfa",
+  "binary_perturbed": "91edbe5c46c48bfa",
+  "mcq": "314cb03f650c0e3e"
+ },
+ "base_prompt_sha": {
+  "binary": "c081ba7a87eb6d3e",
+  "mcq": "5d735232358a2511"
+ },
+ "subset_sha": "061b4bf837c8a36e",
+ "created": "2026-09-19T15:03:06.366370+00:00"
+}
