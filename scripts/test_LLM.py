@@ -427,8 +427,11 @@ def get_model_response(
 
                 fin = getattr(choice, "finish_reason", None)
 
+                det = getattr(usage, "completion_tokens_details", None)
+
                 meta_out.update(
                     retries=attempt - 1,
+                    reasoning_tokens=getattr(det, "reasoning_tokens", None),
                     stop_reason=fin,
                     refusal=bool(getattr(choice.message, "refusal", None))
                     or fin == "content_filter",
@@ -664,6 +667,7 @@ def get_claude_response(
     retries: int = 2,
     effort: str | None = None,
     meta_out: dict | None = None,
+    capture_thinking: bool = False,
 ) -> str:
     """Send a message to the Anthropic Claude API with retry logic.
 
@@ -690,6 +694,12 @@ def get_claude_response(
 
         kwargs["output_config"] = {"effort": effort}
 
+    if capture_thinking and claude_supports_effort(model):
+
+        # display controls visibility only — thinking happens and is billed the
+        # same either way — so this does not change what the model produces.
+        kwargs["thinking"] = {"type": "adaptive", "display": "summarized"}
+
     for attempt in range(1, retries + 2):
 
         try:
@@ -704,6 +714,11 @@ def get_claude_response(
 
                 meta_out.update(
                     retries=attempt - 1,
+                    thinking="".join(
+                        getattr(b, "thinking", "") or ""
+                        for b in response.content
+                        if getattr(b, "type", "") == "thinking"
+                    ) or None,
                     stop_reason=getattr(response, "stop_reason", None),
                     refusal=getattr(response, "stop_reason", None) == "refusal",
                     refusal_category=getattr(sd, "category", None) if sd else None,

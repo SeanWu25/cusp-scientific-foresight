@@ -20,7 +20,10 @@ import argparse, collections, json, os, sys
 from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from eval import grade_binary, grade_mcq, grade_date, aggregate_results, RowResult  # noqa: E402
+# scoring_v1 re-exports the published graders and refuses to import if eval.py
+# has been modified, so a silent scoring drift cannot reach the tables.
+from scoring_v1 import (grade_binary, grade_mcq, grade_date,  # noqa: E402
+                        aggregate_results, RowResult, VERSION as SCORING_VERSION)
 
 TASKS = ("binary", "binary_perturbed", "mcq", "frq", "date")
 
@@ -32,6 +35,11 @@ def main():
     ap.add_argument("--benchmark",
                     default="archive/data/canonical/merged_validated_cusp_fixed.jsonl")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--frq-scores", choices=["exclude", "include"], default="exclude",
+                    help="exclude (default): omit the stage-2 quality rubric "
+                         "(score, pass rate, sub-dimensions) because the rubric "
+                         "is under revision. Stage-1 leakage verdicts and FRQ "
+                         "generation diagnostics are always reported.")
     ap.add_argument("--score-refusals-as-wrong", action="store_true",
                     help="Diagnostic only: count refusals as incorrect, to quantify "
                          "how much the exclusion decision moves each metric.")
@@ -93,6 +101,14 @@ def main():
                               choices=list((p.get("mcq_shuffled_choices") or {}).values()))
             elif t == "date":
                 g = grade_date(p.get("date_answer", ""), row.get("ground_truth_date", ""))
+            elif t == "frq" and a.frq_scores == "exclude":
+                # generated and archived, deliberately not quality-scored
+                jl = (judged.get(rid) or {})
+                g = {"score": None, "generated": True,
+                     "chars": len(p.get("frq_answer") or ""),
+                     "truncated": bool(p.get("frq_truncated")),
+                     "rubric_deferred": True,
+                     "leakage_judged": bool(jl.get("leakage"))}
             else:  # frq
                 j = (judged.get(rid) or {}).get("frq") or {}
                 g = {"score": j.get("frq_score"), "alignment": j.get("alignment"),
@@ -150,6 +166,16 @@ def main():
             d["retrieval_failed"] = True
     report["run_metadata"] = {
         "built_utc": datetime.now(timezone.utc).isoformat(),
+        "scoring_version": SCORING_VERSION,
+        "frq_quality_scores": a.frq_scores,
+        "frq_rubric_note": (
+            "Stage-2 quality rubric deferred: the rubric is under revision, so "
+            "scores computed with the current one would be discarded. FRQ "
+            "responses are generated and archived verbatim; stage-1 leakage "
+            "verdicts are computed now because they depend on live web search "
+            "and would not reproduce later."
+            if a.frq_scores == "exclude" else
+            "Stage-2 quality rubric INCLUDED (legacy rubric)."),
         "predictions": a.predictions, "judged": a.judged,
         "model": preds[0].get("model") if preds else None,
         "condition": preds[0].get("condition") if preds else None,

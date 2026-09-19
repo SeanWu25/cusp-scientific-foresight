@@ -43,6 +43,7 @@ import argparse
 import json
 import os
 import random
+import re
 import sys
 import threading
 import time
@@ -68,6 +69,53 @@ from test_LLM import (  # noqa: E402  — reused verbatim, never redefined
 
 LABELS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 _write_lock = threading.Lock()
+
+# USD per token, input/output. Used only to stamp a per-item cost on the record;
+# nothing downstream depends on it.
+PRICING = {
+    "claude-sonnet-5": (2.00e-6, 10.00e-6),
+    "claude-fable-5":  (10.00e-6, 50.00e-6),
+    "claude-opus-5":   (5.00e-6, 25.00e-6),
+    "gpt-5.6-sol":     (4.00e-6, 20.00e-6),
+    "gpt-5.4":         (1.25e-6, 10.00e-6),
+    "gpt-5.4-mini":    (0.25e-6, 2.00e-6),
+}
+
+# Citation counts exist only for the pinned 500-event subset; None elsewhere.
+CITATIONS: dict = {}
+
+
+def load_citations(path: str) -> None:
+    global CITATIONS
+    if not path or not os.path.exists(path):
+        return
+    for line in open(path, encoding="utf-8"):
+        if line.strip():
+            r = json.loads(line)
+            if r.get("citation_count") is not None:
+                CITATIONS[r["id"]] = r["citation_count"]
+
+
+_DOI_RE = re.compile(r"(10\.\d{4,9}/[^\s<>]+)", re.I)
+_ARXIV_RE = re.compile(r"arxiv\.org/(?:abs|pdf|html)/([0-9]{4}\.[0-9]{4,5})", re.I)
+
+
+def _identifiers(row: dict) -> dict:
+    """Join keys to event metadata, carried on every record so later analyses
+    (horizon, venue/visibility stratification) need no second join."""
+    link = row.get("paper_link") or ""
+    m_doi = _DOI_RE.search(link)
+    m_arx = _ARXIV_RE.search(link)
+    return {
+        "paper_link": link or None,
+        "doi": m_doi.group(1) if m_doi else None,
+        "arxiv_id": m_arx.group(1) if m_arx else None,
+        "source_venue": row.get("source"),
+        "main_area": row.get("main_area"),
+        "sub_categories": row.get("sub_categories"),
+        "first_observable_date": row.get("publication_date"),
+        "row_index": row.get("row_index"),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -101,6 +149,16 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--max-rows", type=int, default=None)
     p.add_argument("--ids-file", default=None,
                    help="Optional file of event ids (one per line) to restrict to")
+    p.add_argument("--capture-thinking", action="store_true", default=True,
+                   help="Request summarized thinking blocks where the provider "
+                        "exposes them (Anthropic). Display-only: it does not "
+                        "change what the model produces.")
+    p.add_argument("--no-capture-thinking", dest="capture_thinking",
+                   action="store_false")
+    p.add_argument("--citations",
+                   default="/home/seanwu/FutureScience_backup_20260508_013823/"
+                           "benchmark_data/CUSP/sample_500_stratified_with_citations.jsonl",
+                   help="Optional JSONL carrying citation_count per event id.")
     p.add_argument("--resume", action="store_true",
                    help="Skip ids already present in --output")
     return p
@@ -111,7 +169,8 @@ def build_parser() -> argparse.ArgumentParser:
 # ---------------------------------------------------------------------------
 
 def call_model(client, model, provider, system, user, max_tokens, effort,
-               temperature, retries, json_mode=False) -> tuple[str, dict]:
+               temperature, retries, json_mode=False,
+               capture_thinking=False) -> tuple[str, dict]:
     """Return (raw_text, meta). meta carries retries/refusal/usage/latency.
 
     `json_mode` is passed straight through for OpenAI/Azure providers, matching
@@ -120,12 +179,15 @@ def call_model(client, model, provider, system, user, max_tokens, effort,
     """
     meta: dict = {"retries": 0, "refusal": False, "stop_reason": None,
                   "input_tokens": None, "output_tokens": None,
-                  "model_snapshot": model, "error": None}
+                  "model_snapshot": model, "error": None,
+                  "thinking": None, "reasoning_tokens": None,
+                  "logprobs": None}
     t0 = time.time()
     if provider == "ANTHROPIC":
         raw = get_claude_response(client, model, system, user,
                                   temperature=temperature, max_tokens=max_tokens,
-                                  retries=retries, effort=effort, meta_out=meta)
+                                  retries=retries, effort=effort, meta_out=meta,
+                                  capture_thinking=capture_thinking)
     else:
         raw = get_model_response(client, model, system, user,
                                  temperature=temperature, max_tokens=max_tokens,
@@ -137,9 +199,21 @@ def call_model(client, model, provider, system, user, max_tokens, effort,
     return raw, meta
 
 
-def record_task(pred: dict, task: str, raw: str, meta: dict, parsed: dict | None):
+def record_task(pred: dict, task: str, raw: str, meta: dict, parsed: dict | None,
+                prompt_sent: dict | None = None, price: tuple | None = None):
     """Attach legacy + additive fields for one task to the prediction record."""
     pred[f"{task}_raw"] = raw
+    if prompt_sent is not None:
+        pred[f"{task}_prompt_sent"] = prompt_sent
+    if meta.get("thinking"):
+        pred[f"{task}_thinking"] = meta["thinking"]
+    pred[f"{task}_reasoning_tokens"] = meta.get("reasoning_tokens")
+    pred[f"{task}_truncated"] = meta.get("stop_reason") in ("max_tokens", "length")
+    pred[f"{task}_logprobs"] = meta.get("logprobs")
+    if price and meta.get("input_tokens") is not None:
+        pred[f"{task}_cost_usd"] = round(
+            (meta.get("input_tokens") or 0) * price[0]
+            + (meta.get("output_tokens") or 0) * price[1], 8)
     pred[f"{task}_retries"] = meta.get("retries")
     pred[f"{task}_refusal"] = meta.get("refusal")
     pred[f"{task}_stop_reason"] = meta.get("stop_reason")
@@ -169,6 +243,8 @@ def process_row(row, shuffle, args, client, ws_fn) -> dict:
         "id": row.get("id"),
         "publication_date": row.get("publication_date", ""),
         "main_area": row.get("main_area", ""),
+        **_identifiers(row),
+        "citation_count": CITATIONS.get(row.get("id")),
         "model": args.model,
         "condition": args.condition,
         "run_index": args.run_index,
@@ -198,40 +274,59 @@ def process_row(row, shuffle, args, client, ws_fn) -> dict:
         return (f"[Web Search Context]\n{row_context}\n\n---\n\n{prompt}"
                 if row_context else prompt)
 
+    price = PRICING.get(args.model)
+
     def run(system, prompt, max_tokens, json_mode=True):
-        return call_model(client, args.model, args.provider, system, wrap(prompt),
-                          max_tokens, args.effort, args.temperature, args.retries,
-                          json_mode=json_mode)
+        """Returns (raw, meta, prompt_sent). prompt_sent is the exact payload."""
+        user = wrap(prompt)
+        raw, meta = call_model(client, args.model, args.provider, system, user,
+                               max_tokens, args.effort, args.temperature,
+                               args.retries, json_mode=json_mode,
+                               capture_thinking=args.capture_thinking)
+        return raw, meta, {"system": system, "user": user,
+                           "max_tokens": max_tokens, "json_mode": json_mode,
+                           "effort": args.effort}
 
     if tasks["binary"]:
-        raw, meta = run(BINARY_SYSTEM, row["binary_question"], args.max_tokens)
-        record_task(pred, "binary", raw, meta, parse_structured_response(raw, "binary"))
+        raw, meta, ps = run(BINARY_SYSTEM, row["binary_question"], args.max_tokens)
+        record_task(pred, "binary", raw, meta, parse_structured_response(raw, "binary"),
+                    prompt_sent=ps, price=price)
 
     if tasks["binary_perturbed"]:
-        raw, meta = run(BINARY_SYSTEM, row["binary_question_perturbed"], args.max_tokens)
+        raw, meta, ps = run(BINARY_SYSTEM, row["binary_question_perturbed"], args.max_tokens)
         record_task(pred, "binary_perturbed", raw, meta,
-                    parse_structured_response(raw, "binary_perturbed"))
+                    parse_structured_response(raw, "binary_perturbed"),
+                    prompt_sent=ps, price=price)
 
     if tasks["mcq"]:
         sc, key = shuffle
         cs = "\n".join(f"({LABELS[i]}) {sc[i]}" for i in range(len(sc)))
         prompt = (f"{row['mcq_question']}\n\n{cs}\n\n"
                   f"Select exactly one answer: {', '.join(LABELS[:len(sc)])}.")
-        raw, meta = run(MCQ_SYSTEM, prompt, args.max_tokens)
-        record_task(pred, "mcq", raw, meta, parse_structured_response(raw, "mcq"))
+        raw, meta, ps = run(MCQ_SYSTEM, prompt, args.max_tokens)
+        record_task(pred, "mcq", raw, meta, parse_structured_response(raw, "mcq"),
+                    prompt_sent=ps, price=price)
         pred["mcq_shuffled_choices"] = {LABELS[i]: sc[i] for i in range(len(sc))}
         pred["mcq_shuffled_answer_key"] = key
+        # permutation as original-index order, so the shuffle is invertible even
+        # if the choice texts are ever edited
+        _orig = list(row["mcq_choices"])
+        pred["mcq_permutation"] = [_orig.index(x) for x in sc]
+        pred["mcq_original_answer_key"] = row["mcq_answer_key"]
 
     if tasks["frq"]:
-        raw, meta = run(FRQ_SYSTEM, row["frq_prompt"], args.frq_max_tokens,
-                        json_mode=False)
-        record_task(pred, "frq", raw, meta, None)
+        raw, meta, ps = run(FRQ_SYSTEM, row["frq_prompt"], args.frq_max_tokens,
+                            json_mode=False)
+        record_task(pred, "frq", raw, meta, None, prompt_sent=ps, price=price)
         pred["frq_answer"] = raw
-        pred["frq_truncated"] = meta.get("stop_reason") == "max_tokens"
 
     if tasks["date"]:
-        raw, meta = run(DATE_SYSTEM, row["date_prediction_prompt"], args.max_tokens)
-        record_task(pred, "date", raw, meta, parse_structured_response(raw, "date"))
+        raw, meta, ps = run(DATE_SYSTEM, row["date_prediction_prompt"], args.max_tokens)
+        _p = parse_structured_response(raw, "date")
+        record_task(pred, "date", raw, meta, _p, prompt_sent=ps, price=price)
+        _m = re.search(r"(\d{4})-(\d{1,2})", str(_p.get("answer") or ""))
+        pred["date_parsed_ym"] = (f"{int(_m.group(1)):04d}-{int(_m.group(2)):02d}"
+                                  if _m and 1 <= int(_m.group(2)) <= 12 else None)
 
     pred["model_reasoning"] = "\n---\n".join(
         v for v in (pred.get("binary_reasoning"), pred.get("binary_perturbed_reasoning"),
@@ -254,6 +349,7 @@ def main():
 
     client, model_name = setup_client(args.provider, args.model)
     args.model = model_name
+    load_citations(args.citations)
 
     rows = [json.loads(l) for l in open(args.input, encoding="utf-8") if l.strip()]
 

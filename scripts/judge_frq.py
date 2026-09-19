@@ -45,10 +45,15 @@ def _with_web_search(fn, *, used, attempts=MAX_ATTEMPTS):
     raise last if last else RuntimeError("judge failed")
 
 
-def judge_one(row, frq_text, jc):
-    out = {"id": row["id"], "publication_date": row.get("publication_date", "")}
+def judge_one(row, frq_text, jc, stage="both"):
+    out = {"id": row["id"], "publication_date": row.get("publication_date", ""),
+           "stage": stage}
     t0 = time.time()
-    try:
+    if stage == "leakage":
+        out["frq"] = None
+        out["frq_skipped_reason"] = "stage-2 rubric deferred pending rubric revision"
+    else:
+      try:
         r, tries = _with_web_search(
             lambda: judge_frq_combined(row, frq_text, llm_client=jc),
             used=lambda r: bool(r.get("web_search_used")))
@@ -57,20 +62,28 @@ def judge_one(row, frq_text, jc):
                                         "urls", "web_search_used")}
         out["frq"]["n_web_searches"] = len(r.get("web_searches") or [])
         out["frq_attempts"] = tries
-    except Exception as e:
+      except Exception as e:
         out["frq_error"] = f"{type(e).__name__}: {e}"
     out["frq_judge_s"] = round(time.time() - t0, 2)
     t0 = time.time()
-    try:
+    if stage == "rubric":
+        out["leakage"] = None
+    else:
+      try:
         lv, tries = _with_web_search(
             lambda: judge_leakage(row, frq_text, "", llm_client=jc),
             used=lambda v: bool((v.details or {}).get("web_search_used")))
+        det = lv.details or {}
         out["leakage"] = {"verdict": lv.verdict, "score": lv.score,
                           "reason": lv.reason[:500],
-                          "indicators": (lv.details or {}).get("leakage_indicators", []),
-                          "web_search_used": (lv.details or {}).get("web_search_used")}
+                          "indicators": det.get("leakage_indicators", []),
+                          "web_search_used": det.get("web_search_used"),
+                          # stage 1 depends on live search, so archive the
+                          # evidence it actually saw — it will not reproduce later
+                          "web_searches": det.get("web_searches", []),
+                          "judged_utc": datetime.now(timezone.utc).isoformat()}
         out["leakage_attempts"] = tries
-    except Exception as e:
+      except Exception as e:
         out["leakage_error"] = f"{type(e).__name__}: {e}"
     out["leakage_judge_s"] = round(time.time() - t0, 2)
     out["judged_utc"] = datetime.now(timezone.utc).isoformat()
@@ -88,6 +101,12 @@ def main():
                          "rate-limited call degrades to a non-web-search judgement.")
     ap.add_argument("--max-rows", type=int, default=None)
     ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--stage", choices=["leakage", "rubric", "both"], default="both",
+                    help="leakage = stage 1 only (contamination audit; depends on "
+                         "live web search, so it must be run NOW and cannot be "
+                         "reproduced later). rubric = stage 2 only (the "
+                         "4-dimension quality rubric, currently under revision). "
+                         "both = the published protocol.")
     ap.add_argument("--endpoint", choices=["azure", "openai"], default="azure",
                     help="Which serving stack judges. 'azure' is the configuration "
                          "that produced the six published models. 'openai' must be "
@@ -143,7 +162,8 @@ def main():
     out = open(a.output, "a", encoding="utf-8")
     t0 = time.time()
     with ThreadPoolExecutor(max_workers=a.concurrency) as ex:
-        futs = {ex.submit(judge_one, row, txt, jc): row["id"] for row, txt in work}
+        futs = {ex.submit(judge_one, row, txt, jc, a.stage): row["id"]
+                for row, txt in work}
         for i, f in enumerate(as_completed(futs), 1):
             try:
                 rec = f.result()
