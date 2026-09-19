@@ -12,11 +12,35 @@
   }
  },
  "gpt4o_B2": {
-  "records": 595,
-  "calls": 595,
-  "input_tokens": 105651,
-  "output_tokens": 52573,
-  "usd": 0.7898575,
+  "records": 1125,
+  "calls": 1125,
+  "input_tokens": 202020,
+  "output_tokens": 98374,
+  "usd": 1.48879,
+  "price": {
+   "input_per_m": 2.5,
+   "output_per_m": 10.0,
+   "source": "Azure OpenAI gpt-4o-2024-11-20 list price, assumed"
+  }
+ },
+ "gpt4o_D": {
+  "records": 1125,
+  "calls": 5625,
+  "input_tokens": 847875,
+  "output_tokens": 343888,
+  "usd": 5.5585675,
+  "price": {
+   "input_per_m": 2.5,
+   "output_per_m": 10.0,
+   "source": "Azure OpenAI gpt-4o-2024-11-20 list price, assumed"
+  }
+ },
+ "gpt4o_E": {
+  "records": 1125,
+  "calls": 1125,
+  "input_tokens": 206805,
+  "output_tokens": 113555,
+  "usd": 1.6525625,
   "price": {
    "input_per_m": 2.5,
    "output_per_m": 10.0,
@@ -36,11 +60,35 @@
   }
  },
  "gpt54_B2": {
-  "records": 277,
-  "calls": 277,
-  "input_tokens": 49032,
-  "output_tokens": 29484,
-  "usd": 0.56484,
+  "records": 1125,
+  "calls": 1125,
+  "input_tokens": 200895,
+  "output_tokens": 119047,
+  "usd": 2.2879425,
+  "price": {
+   "input_per_m": 2.5,
+   "output_per_m": 15.0,
+   "source": "ASSUMED \u2014 verify; reasoning tokens bill as output"
+  }
+ },
+ "gpt54_D": {
+  "records": 1125,
+  "calls": 5625,
+  "input_tokens": 842250,
+  "output_tokens": 496373,
+  "usd": 9.55122,
+  "price": {
+   "input_per_m": 2.5,
+   "output_per_m": 15.0,
+   "source": "ASSUMED \u2014 verify; reasoning tokens bill as output"
+  }
+ },
+ "gpt54_E": {
+  "records": 1125,
+  "calls": 1125,
+  "input_tokens": 205680,
+  "output_tokens": 120758,
+  "usd": 2.32557,
   "price": {
    "input_per_m": 2.5,
    "output_per_m": 15.0,
@@ -72,11 +120,11 @@
   }
  },
  "llama33_D": {
-  "records": 3,
-  "calls": 30,
-  "input_tokens": 4950,
-  "output_tokens": 2099,
-  "usd": 0.00500479,
+  "records": 1125,
+  "calls": 11250,
+  "input_tokens": 1981929,
+  "output_tokens": 785547,
+  "usd": 1.96490796,
   "price": {
    "input_per_m": 0.71,
    "output_per_m": 0.71,
@@ -84,11 +132,11 @@
   }
  },
  "llama33_E": {
-  "records": 282,
-  "calls": 282,
-  "input_tokens": 58246,
-  "output_tokens": 22253,
-  "usd": 0.057154289999999996,
+  "records": 1125,
+  "calls": 1125,
+  "input_tokens": 234824,
+  "output_tokens": 89857,
+  "usd": 0.23052351,
   "price": {
    "input_per_m": 0.71,
    "output_per_m": 0.71,

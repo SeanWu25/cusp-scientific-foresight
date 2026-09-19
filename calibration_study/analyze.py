@@ -25,10 +25,10 @@ import metrics as M
 
 PARTS = ["all", "pre", "post"]
 METRIC_ORDER = ["n", "n_prob", "accuracy", "bias_index", "mean_p", "brier", "logloss", "logloss_laplace",
-                "ece", "ece_q", "mce", "rel", "res", "unc", "resid", "auroc",
+                "ece", "ece_q", "mce", "rel", "res", "unc", "resid", "bss", "auroc",
                 "mean_conf", "brier_c", "logloss_c", "logloss_c_laplace", "ece_c", "mce_c", "rel_c", "res_c", "unc_c", "auroc_c",
                 "logloss_true", "logloss_true_laplace"]
-HIGHER_BETTER = {"accuracy", "res", "res_c", "auroc", "auroc_c"}
+HIGHER_BETTER = {"accuracy", "res", "res_c", "auroc", "auroc_c", "bss"}
 ARM_COLORS = {"A": "#000000", "B1": "#E69F00", "B2": "#56B4E9", "C": "#009E73", "D": "#CC79A7", "E": "#D55E00"}
 
 
@@ -83,6 +83,8 @@ def cell_metrics(items, task, counts, ev_idx, arm):
             mu0, mu = M.murphy(p, y), M.murphy(p, y, w)
             for k in ("rel", "res", "unc", "resid"):
                 res[k] = (float(mu0[k][0]), mu[k])
+            with np.errstate(divide="ignore", invalid="ignore"):
+                res["bss"] = (float(1 - mu0["brier"][0] / mu0["unc"][0]), 1 - mu["brier"] / mu["unc"])
             if 0 < y.sum() < len(y):
                 res["auroc"] = (float(M.auroc(p, y)[0]), M.auroc(p, y, w))
     # answer-framed (all tasks): confidence in the given answer vs correctness
@@ -137,11 +139,18 @@ def paired_delta(itA, itX, task, metric, counts, ev_idx, armX):
 
 
 # --------------------------------------------------------------------------- ensemble
+_base_raw = {}
+
+
 def _logit(p):
     p = np.clip(p, M.EPS, 1 - M.EPS); return np.log(p / (1 - p))
 
 
 def ensemble_items(data, members, task):
+    global _base_raw
+    for m_ in members:
+        if m_ not in _base_raw:
+            _base_raw[m_] = C.load_base_raw(m_)
     """Build arm-F items from the members' arm-A items (binary: P(Yes); MCQ: conf-on-chosen)."""
     per = {m: {(it["id"], it["task"]): it for it in select(data[(m, "A")], task, "all")} for m in members}
     keys = set.intersection(*(set(d) for d in per.values()))
@@ -161,31 +170,35 @@ def ensemble_items(data, members, task):
         else:
             if any(it.get("answer") is None or it.get("conf") is None for it in its):
                 continue
-            gt = None
+            # Each model drew its own MCQ permutation in the base run, so aggregate by option TEXT, not letter.
+            bench_row = C.load_bench()[key[0]]
+            texts = list(bench_row["mcq_choices"]); gt_text = texts[bench_row["mcq_answer_key"]]
             dists = []
-            for it in its:
-                d = {L: (1 - it["conf"]) / 3 for L in "ABCD"}; d[it["answer"]] = it["conf"]; dists.append(d)
-                if it["correct"]:
-                    gt = it["answer"]
-            if gt is None:  # nobody right: true letter unknown from A alone -> use majority-wrong flag
-                pass
-            D = {L: np.array([d[L] for d in dists]) for L in "ABCD"}
+            ok = True
+            for m_, it in zip(members, its):
+                sc = _base_raw[m_].get(key[0], {}).get("mcq_shuffled_choices")
+                if not sc or it["answer"] not in sc:
+                    ok = False; break
+                d = {t: (1 - it["conf"]) / 3 for t in texts}; d[sc[it["answer"]]] = it["conf"]; dists.append(d)
+            if not ok:
+                continue
+            Dm = {t: np.array([d[t] for d in dists]) for t in texts}
             for rule in rules:
                 if rule == "mean_prob":
-                    agg = {L: float(D[L].mean()) for L in "ABCD"}
+                    agg = {t: float(Dm[t].mean()) for t in texts}
                 elif rule == "mean_logit":
-                    agg = {L: float(np.exp(_logit(D[L]).mean())) for L in "ABCD"}; s = sum(agg.values()); agg = {L: v / s for L, v in agg.items()}
+                    agg = {t: float(np.exp(_logit(Dm[t]).mean())) for t in texts}; s_ = sum(agg.values()); agg = {t: v / s_ for t, v in agg.items()}
                 else:
-                    votes = collections.Counter(it["answer"] for it in its)
-                    agg = {L: votes.get(L, 0) / len(its) for L in "ABCD"}
-                ans = max(agg, key=lambda L: (agg[L], sum(it["conf"] for it in its if it["answer"] == L)))
-                correct = (ans == gt) if gt is not None else False
-                rules[rule].append(dict(base, arm="F", answer=ans, correct=correct, conf=float(agg[ans]), dist=agg))
+                    votes = collections.Counter(max(d, key=d.get) for d in dists)
+                    agg = {t: votes.get(t, 0) / len(dists) for t in texts}
+                ans_t = max(texts, key=lambda t: (agg[t], sum(d[t] for d in dists)))
+                rules[rule].append(dict(base, arm="F", answer="ABCD"[texts.index(ans_t)], correct=(ans_t == gt_text), conf=float(agg[ans_t]),
+                                        dist={"ABCD"[i]: agg[t] for i, t in enumerate(texts)}))
     return rules
 
 
 # --------------------------------------------------------------------------- figures
-def fig_reliability(data, models, arms, task, framed, out):
+def fig_reliability(data, models, arms, task, framed, out, part="all"):
     import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
     rows, cols = len(models), len(arms)
     fig, axes = plt.subplots(rows, cols, figsize=(2.1 * cols, 2.1 * rows), squeeze=False, sharex=True, sharey=True)
@@ -196,7 +209,7 @@ def fig_reliability(data, models, arms, task, framed, out):
             if its is None:
                 ax.text(0.5, 0.5, "not run", ha="center", va="center", fontsize=7, color="#888888")
             else:
-                its = select(its, task, "all")
+                its = select(its, task, part)
                 if framed == "event":
                     its = [it for it in its if it.get("p_yes") is not None]; p, y = _arr(its, "p_yes"), _arr(its, "y")
                 else:
@@ -218,11 +231,11 @@ def fig_reliability(data, models, arms, task, framed, out):
             if c == 0: ax.set_ylabel(C.MODELS[m]["name"] + ("\nobserved P(Yes)" if framed == "event" else "\nobserved accuracy"), fontsize=7)
             if r == rows - 1: ax.set_xlabel("forecast P(Yes)" if framed == "event" else "reported confidence", fontsize=7)
     ttl = {"event": "Binary (original + perturbed): P(event occurs) vs outcome", "answer": f"{task}: confidence in given answer vs correctness"}[framed]
-    fig.suptitle(ttl + "  —  10 equal-width bins, bins with n<5 hidden, labels = bin counts", fontsize=8)
+    fig.suptitle(ttl + f"  —  partition: {part}; 10 equal-width bins, bins with n<5 hidden, labels = bin counts", fontsize=8)
     fig.tight_layout(); fig.savefig(str(out) + ".png", dpi=200); fig.savefig(str(out) + ".pdf"); plt.close(fig)
 
 
-def fig_hist(data, models, arms, task, framed, out):
+def fig_hist(data, models, arms, task, framed, out, part="all"):
     import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
     rows, cols = len(models), len(arms)
     fig, axes = plt.subplots(rows, cols, figsize=(2.1 * cols, 1.8 * rows), squeeze=False, sharex=True)
@@ -233,7 +246,7 @@ def fig_hist(data, models, arms, task, framed, out):
             if its is None:
                 ax.text(0.5, 0.5, "not run", ha="center", va="center", fontsize=7, color="#888888", transform=ax.transAxes)
             else:
-                its = select(its, task, "all"); key = "p_yes" if framed == "event" else "conf"
+                its = select(its, task, part); key = "p_yes" if framed == "event" else "conf"
                 v = _arr([it for it in its if it.get(key) is not None], key)
                 if len(v):
                     ax.hist(v, bins=edges, color=ARM_COLORS[arm], alpha=0.85, edgecolor="white", lw=0.5)
@@ -244,7 +257,7 @@ def fig_hist(data, models, arms, task, framed, out):
             if r == 0: ax.set_title(C.ARM_LABEL[arm], fontsize=7)
             if c == 0: ax.set_ylabel(C.MODELS[m]["name"], fontsize=7)
             if r == rows - 1: ax.set_xlabel("P(Yes)" if framed == "event" else "reported confidence / derived prob.", fontsize=7)
-    fig.suptitle(f"{task}: distribution of {'P(Yes)' if framed == 'event' else 'reported confidence'} per model x arm (0.05-wide bins)", fontsize=8)
+    fig.suptitle(f"{task}: distribution of {'P(Yes)' if framed == 'event' else 'reported confidence'} per model x arm (0.05-wide bins; partition: {part})", fontsize=8)
     fig.tight_layout(); fig.savefig(str(out) + ".png", dpi=200); fig.savefig(str(out) + ".pdf"); plt.close(fig)
 
 
@@ -256,11 +269,11 @@ def f3(v):
 def render_master(master, models, arms):
     L = ["# Master table — model × arm × task × partition",
          "", f"Partition rule: {C.PARTITION_RULE}. 95% CIs from 10k event-level bootstrap resamples.",
-         "Event-framed columns (mean_p, brier, logloss, ece, ece_q, mce, rel/res/unc/resid, auroc) score P(Yes) against the event outcome",
+         "Event-framed columns (mean_p, brier, bss = 1 - brier/unc i.e. skill vs the constant base-rate forecast, logloss, ece, ece_q, mce, rel/res/unc/resid, auroc) score P(Yes) against the event outcome",
          "(original question = 1, perturbed = 0). `_c` columns score the reported confidence against answer correctness (the paper's S14 convention).",
          "ECE/MCE/Murphy use 10 equal-width bins; ece_q uses 10 equal-mass bins; MCE over bins with n≥10; log loss clips to [0.01, 0.99]; arm D `_laplace` = (k+1)/(n+2).",
          "Arm D n per model: " + ", ".join(f"{C.MODELS[m]['name']} n={C.MODELS[m]['n_sc']}" for m in models) + ".", ""]
-    cols = ["n", "n_prob", "accuracy", "bias_index", "mean_p", "brier", "logloss", "logloss_laplace", "ece", "ece_q", "mce", "rel", "res", "unc", "auroc",
+    cols = ["n", "n_prob", "accuracy", "bias_index", "mean_p", "brier", "bss", "logloss", "logloss_laplace", "ece", "ece_q", "mce", "rel", "res", "unc", "auroc",
             "mean_conf", "brier_c", "logloss_c", "ece_c", "mce_c", "rel_c", "res_c", "auroc_c", "logloss_true"]
     for m in models:
         L.append(f"\n## {C.MODELS[m]['name']}  (cutoff {C.MODELS[m]['cutoff']}, S13 bias index {C.MODELS[m]['bias_s13']:+.3f})\n")
@@ -290,7 +303,7 @@ def render_delta(delta, models):
          "Paired on the intersection of items valid in both arms; 10k event-level bootstrap resamples shared across arms;",
          "two-sided percentile-bootstrap p; Holm–Bonferroni across the intervention arms within each model × task × partition × metric family.",
          "Never read a delta without its CI. `*` marks Holm-adjusted p < 0.05.", ""]
-    keymetrics = ["accuracy", "bias_index", "brier", "logloss", "ece", "rel", "res", "auroc", "brier_c", "ece_c", "auroc_c"]
+    keymetrics = ["accuracy", "bias_index", "brier", "bss", "logloss", "ece", "rel", "res", "auroc", "brier_c", "ece_c", "auroc_c"]
     for m in models:
         L.append(f"\n## {C.MODELS[m]['name']}\n")
         L.append("| task | part | metric | " + " | ".join(f"{a}" for a in C.ARMS if a != "A") + " |")
@@ -462,6 +475,9 @@ def main():
     fig_hist(data, figm, C.ARMS, "binary_merged", "answer", C.FIGS / "hist_binary_confidence")
     fig_hist(data, figm, C.ARMS, "binary_merged", "event", C.FIGS / "hist_binary_pyes")
     fig_hist(data, figm, C.ARMS, "mcq", "answer", C.FIGS / "hist_mcq_confidence")
+    for name, task, framed in (("reliability_binary_event", "binary_merged", "event"), ("reliability_mcq", "mcq", "answer")):
+        fig_reliability(data, figm, C.ARMS, task, framed, C.FIGS / f"{name}_post", part="post")
+    fig_hist(data, figm, C.ARMS, "binary_merged", "event", C.FIGS / "hist_binary_pyes_post", part="post")
     print("figures written", file=sys.stderr)
 
     # ---- costs (actual, from raw JSONL usage)
