@@ -112,9 +112,10 @@
     "effort": "medium",
     "thinking": "adaptive (always on for this model; not configurable off in the way older models were effectively greedy)",
     "max_tokens": 2048,
-    "frq_max_tokens": 250,
+    "frq_max_tokens": 384,
     "retries": 2,
-    "retry_backoff": "2**attempt seconds"
+    "retry_backoff": "2**attempt seconds",
+    "frq_max_tokens_correction": "Recorded as 250 when this manifest was first written; that value was never sent. Every run-1 pass (base_low_run1, base_medium_run1/2/3, ws_500, ws_cutoff_500) sent frq_max_tokens=384, verified from the per-item frq_max_tokens field in the stored predictions. Corrected 2026-09-19 to match what was executed; no run was re-executed."
   },
   "unmatchable_parameters": [
     {

@@ -1,0 +1,87 @@
+{
+  "created_utc": "2026-09-20T03:07:49.499909+00:00",
+  "run1_manifest": "results_sonnet5_run1/MANIFEST.json",
+  "run2_manifest": "results_extension_run2/MANIFEST.json",
+  "run1_records": 4760,
+  "run2_records": 815,
+  "merged_sha256": "b43ff50587f9f6c912b262d529be513669f9d9b7edcf1cdcfaba7df1fd50b532",
+  "corpus_window": "2024-01..2026-08",
+  "n_months": 32,
+  "contract": {
+    "violations": [],
+    "waived_or_soft": [],
+    "waived_fields": []
+  },
+  "frozen_from_run1": {
+    "prompt_templates": {
+      "BINARY_SYSTEM": {
+        "sha256": "c081ba7a87eb6d3ef4915939d8bfcc2ca7be5a10aaa96b55f0c763233a3294d7",
+        "chars": 348
+      },
+      "MCQ_SYSTEM": {
+        "sha256": "5d735232358a25114b8049cf8e90a241b2342aba71d04029734eff4198d54c00",
+        "chars": 361
+      },
+      "FRQ_SYSTEM": {
+        "sha256": "aac836d590d05cd7dd1a7a9142c46c5941a5d721ce3e02b0b58e6abd382508a2",
+        "chars": 231
+      },
+      "DATE_SYSTEM": {
+        "sha256": "b29900b445b1f80029cb9e3b590e659ef1abc0a8f8fb02315ff1d394ac0e4db4",
+        "chars": 328
+      }
+    },
+    "judge_rubrics": {
+      "judge_frq_combined": {
+        "sha256": "fc24e69dfec1b214eee6bdfc87357b2f65e447fed79969702a7b25fe56474679",
+        "chars": 2697
+      },
+      "judge_leakage": {
+        "sha256": null,
+        "chars": null,
+        "note": "prompt is an f-string; hashed from source text",
+        "source_sha256": "c3b420732a52712ce201a03452ccca151da3e0d171a1be4b4cf5f695be330954"
+      },
+      "judge_mechanistic": {
+        "sha256": "d1d56e1a22a8e57f6748dee22ad73a3e5ca5e7cea7ebe51bcae2d9d1fba81d0f",
+        "chars": 1011
+      },
+      "judge_constraint": {
+        "sha256": "301ddee2c99b74433caa46896ac1f62215a237455a7b74dabf5e4951c7f3568c",
+        "chars": 1578
+      },
+      "grade_frq_legacy": {
+        "sha256": "8438e9ce1622b0cc7c6d21ae70e137ab1073d1e731c1c5adb453bb51642a8ba5",
+        "chars": 1117
+      }
+    },
+    "code_sha256.scripts/eval.py": "<missing>",
+    "judge.judge_model": "gpt-5.4-mini",
+    "judge.endpoint_host": "BASCOLM.openai.azure.com",
+    "judge.api_surface": "OpenAI Responses API with the web_search tool (eval.LLMClient._call_responses_api)",
+    "model_under_test.model_id": "claude-sonnet-5",
+    "model_under_test.api_probe.api_reported_model": "claude-sonnet-5",
+    "model_under_test.knowledge_cutoff": "2026-01",
+    "decoding.effort": "medium",
+    "decoding.temperature": null,
+    "decoding.top_p": null,
+    "decoding.max_tokens": 2048,
+    "decoding.frq_max_tokens": 384,
+    "partition_rule": {
+      "field": "publication_date (YYYY-MM) from the benchmark JSONL",
+      "main_tables": "pre if pub_month < cutoff_month else post (cutoff month counts as POST) \u2014 make_latex_tables.py, compare_models.py",
+      "gap_and_calibration_tables": "post if pub_month > cutoff_month (cutoff month counts as PRE) \u2014 filter_ids_by_cutoff in make_web_search_cutoff_table.py",
+      "note": "These two conventions differ by one month and BOTH are used in the published tables. Each table is reproduced under the convention its own generator used, so every Sonnet 5 row is comparable with the six published rows in that same table."
+    },
+    "scoring_constants": {
+      "date_score": "exp(-0.1 * |months between predicted and ground truth|)",
+      "frq_scale": "0-10 per dimension; frq_score = mean(alignment, specificity, novelty, feasibility); FRQ pass = score >= 5.0",
+      "merged_binary": "pooled correct counts: (c_orig + c_pert)/(n_orig + n_pert)",
+      "outcome_weight": 0.6,
+      "reasoning_weight": 0.4,
+      "mcq_shuffle_seed": 42
+    },
+    "code_sha256.scripts/run_cusp.py": "<missing>",
+    "code_sha256.scripts/test_LLM.py": "<missing>"
+  }
+}
