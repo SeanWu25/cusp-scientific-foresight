@@ -30,9 +30,10 @@
 #
 # Covers the three Claude runs whose FRQ responses are truncated at their token
 # caps (ext sonnet45 99.6%, ext sonnet5 97.4%, orig sonnet5 96.3%), by explicit
-# decision. Their specificity and alignment are computed on text cut off
-# mid-sentence while the rest of the panel answered to completion. That
-# asymmetry is invisible in the numbers -- footnote it wherever they appear.
+# decision. Their scores are computed on text cut off mid-sentence while the
+# rest of the panel answered to completion. Footnote that asymmetry wherever
+# the numbers appear -- but do not assert its direction: on the original corpus
+# Sonnet 5 scores specificity 5.40 despite 96% truncation, second in the panel.
 set -u
 cd /home/seanwu/FutureScience
 PY=/home/seanwu/miniconda3/bin/python3

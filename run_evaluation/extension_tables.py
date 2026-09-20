@@ -192,8 +192,9 @@ def main():
         print("  Judge noise floor: re-grading the same response gives MAD 0.392,")
         print("  so differences below ~0.4 between models are not meaningful.")
         print("  Claude FRQ responses are truncated at their token caps (S4.5 99.6%,")
-        print("  Sonnet 5 97.4%) while the rest of the panel answered to completion;")
-        print("  their specificity and alignment are depressed for that reason.")
+        print("  Sonnet 5 97.4%) while the rest of the panel answered to completion.")
+        print("  Whether that depresses their scores is not established -- Sonnet 5")
+        print("  scores specificity 5.40 on the original corpus despite 96% truncation.")
     else:
         print("FRQ quality scores are omitted (pass --frq report to include them).")
     print("=" * 100)

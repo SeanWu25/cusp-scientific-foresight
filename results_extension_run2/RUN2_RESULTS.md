@@ -354,8 +354,10 @@ flagging.
 - **FRQ truncation asymmetry**: Claude responses are cut off at their token caps
   (S4.5 99.6%, Sonnet 5 97.4% on the extension; 96.3% on the original) while
   every other model answered to completion. Graded as-is by explicit decision.
-  Their specificity and alignment are depressed for a reason unrelated to
-  quality; footnote this wherever FRQ scores appear.
+  Whether this depresses their scores is NOT established: on the original
+  corpus Sonnet 5 scores specificity 5.40 and alignment 3.06 despite 96%
+  truncation, second in the panel on both. Footnote the asymmetry wherever FRQ
+  scores appear, but do not assert a direction for its effect.
 - **GPT-OSS 20B serving**: the Azure deployment no longer exists and the published
   checkpoint is not on this host, so its extension row was produced under vLLM
   0.19.0 on local GPUs rather than the HF transformers pipeline behind the
