@@ -11,8 +11,10 @@ Emits:
   4. date analysis against the constant-guess baseline
   7. cost accounting per model
 
-FRQ quality scores are never reported (rubric under revision); FRQ appears only
-as generation counts and stage-1 leakage.
+FRQ quality is reported when --frq report is passed and the reports carry
+stage-2 scores; otherwise only generation counts and stage-1 leakage appear.
+The rubric is the published one (judge_frq_combined, sha256 fc24e69d...), four
+dimensions on 0-10, pass at >= 5.0.
 
 This corpus is NOT prospective: every outcome resolved before the models ran.
 It is uncontaminated by training data but it is not the Time Capsule.
@@ -106,6 +108,11 @@ def harvest(path, pub, only_after=None):
         d = t.get("frq")
         if d and not d.get("skipped"):
             acc["frq_generated"].append(1)
+            if d.get("score") is not None:
+                acc["frq_score"].append(float(d["score"]))
+                for dim in ("alignment", "specificity", "novelty", "feasibility"):
+                    if d.get(dim) is not None:
+                        acc[f"frq_{dim}"].append(float(d[dim]))
         lk = (r.get("reasoning") or {}).get("leakage") or {}
         if lk.get("reason") not in (None, "not judged", "No FRQ response to assess"):
             acc["leak_fail"].append(1 if lk.get("verdict") == "fail" else 0)
@@ -154,6 +161,12 @@ def main():
     ap.add_argument("--deepseek-drop-april", action="store_true", default=True,
                     help="Report DeepSeek-V4-Pro on May-Aug only, since its 2026-04 "
                          "cutoff makes April in-window for it alone.")
+    ap.add_argument("--frq", choices=["report", "diagnostics-only"],
+                    default="diagnostics-only",
+                    help="report: include stage-2 quality scores and the four "
+                         "sub-dimensions, when the reports carry them. "
+                         "diagnostics-only (default): generation counts and "
+                         "stage-1 leakage only.")
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
 
@@ -174,7 +187,15 @@ def main():
     print("100% POST-CUTOFF for every model except DeepSeek-V4-Pro (cutoff 2026-04).")
     print("NOT PROSPECTIVE: all outcomes resolved before the models were run. The corpus")
     print("is uncontaminated by training data, but it is not the Time Capsule.")
-    print("FRQ quality scores are omitted throughout (rubric under revision).")
+    if a.frq == "report":
+        print("FRQ quality REPORTED (published rubric, 4 dims, pass >= 5.0).")
+        print("  Judge noise floor: re-grading the same response gives MAD 0.392,")
+        print("  so differences below ~0.4 between models are not meaningful.")
+        print("  Claude FRQ responses are truncated at their token caps (S4.5 99.6%,")
+        print("  Sonnet 5 97.4%) while the rest of the panel answered to completion;")
+        print("  their specificity and alignment are depressed for that reason.")
+    else:
+        print("FRQ quality scores are omitted (pass --frq report to include them).")
     print("=" * 100)
 
     data, out = {}, {"models": {}}
@@ -251,8 +272,31 @@ def main():
         print(f"{name:17s}{c['value']:14.3f}{c['value']-s:+14.3f}"
               f"{(statistics.fmean(sg) if sg else float('nan')):+18.1f}{c['n']:7d}")
 
-    print("\n=== FRQ (generation + stage-1 leakage only; no quality scores) ===")
-    print(f"{'model':17s}{'responses':>11s}{'leak fail%':>12s}{'leak unclear%':>15s}{'n judged':>10s}")
+    hdr = "generation + stage-1 leakage" if a.frq != "report" \
+        else "quality, generation and stage-1 leakage"
+    print(f"\n=== FRQ ({hdr}) ===")
+    if a.frq == "report":
+        print(f"{'model':17s}{'responses':>11s}{'score':>8s}{'pass%':>8s}"
+              f"{'align':>8s}{'spec':>8s}{'novel':>8s}{'feas':>8s}{'n':>7s}")
+        for tag, name, cut in PANEL:
+            if name not in data:
+                continue
+            acc, _ = data[name]
+            sc = acc.get("frq_score", [])
+            if not sc:
+                print(f"{name:17s}{len(acc.get('frq_generated',[])):11d}"
+                      f"{'(not graded)':>55s}")
+                continue
+            dims = [sum(acc.get(d, [0])) / max(len(acc.get(d, [])), 1)
+                    for d in ("frq_alignment", "frq_specificity",
+                              "frq_novelty", "frq_feasibility")]
+            print(f"{name:17s}{len(acc.get('frq_generated',[])):11d}"
+                  f"{sum(sc)/len(sc):8.2f}"
+                  f"{100*sum(1 for x in sc if x >= 5.0)/len(sc):8.1f}"
+                  + "".join(f"{d:8.2f}" for d in dims) + f"{len(sc):7d}")
+        print("  differences below ~0.4 are within the judge noise floor")
+    print(f"\n{'model':17s}{'responses':>11s}{'leak fail%':>12s}"
+          f"{'leak unclear%':>15s}{'n judged':>10s}")
     for tag, name, cut in PANEL:
         if name not in data:
             continue
