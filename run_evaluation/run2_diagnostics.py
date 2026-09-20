@@ -199,6 +199,67 @@ def block_cost():
     return out
 
 
+def block_baselines():
+    """Constant-answer baselines for merged binary, per corpus.
+
+    Ground truth is fixed by task type: the binary question always resolves
+    'yes' (the real finding) and its perturbed twin always resolves 'no' (the
+    corrupted finding). Merged binary is therefore a two-class problem whose
+    class balance is nothing but the ratio of the two task types -- and that
+    ratio is not the same in the two corpora. Raw merged-binary accuracy is
+    consequently NOT comparable across corpora; MCC and balanced accuracy are.
+    """
+    print("\n" + "=" * 100)
+    print("5. CONSTANT-ANSWER BASELINES FOR MERGED BINARY")
+    print("   binary -> ground truth always 'yes'; perturbed -> always 'no'.")
+    print("   So the class balance is just the task-type ratio, which differs")
+    print("   between corpora. Compare models to these baselines, not to each")
+    print("   other across corpora.")
+    print("=" * 100)
+    corpora = [
+        ("original (Jan 24-Mar 26)", "run_evaluation/frq_results/gpt_4o_reeval.json", None),
+        ("extension (Apr-Aug 26)",   os.path.join(R, "gpt4o_base.json"), None),
+    ]
+    base = {}
+    for lab, path, _ in corpora:
+        if not os.path.exists(path):
+            continue
+        rep = json.load(open(path, encoding="utf-8"))
+        nb = np_ = 0
+        for x in rep["results"]:
+            t = x.get("tasks", {})
+            if t.get("binary") and "correct" in t["binary"]:
+                nb += 1
+            if t.get("binary_perturbed") and "correct" in t["binary_perturbed"]:
+                np_ += 1
+        tot = nb + np_
+        base[lab] = {"n_yes": nb, "n_no": np_, "n": tot,
+                     "always_yes": nb / tot, "always_no": np_ / tot}
+        print(f"   {lab:<26} n={tot:<6} always-YES {nb/tot:.3f}   "
+              f"always-NO {np_/tot:.3f}")
+
+    ext = base.get("extension (Apr-Aug 26)")
+    if not ext:
+        return base
+    print(f"\n   Panel vs the always-NO baseline on the extension "
+          f"({ext['always_no']:.3f}):")
+    print(f"   {'model':<17}{'merged binary':>15}{'vs baseline':>14}")
+    beat = 0
+    for name, tag in PANEL:
+        rep = load(tag)
+        if not rep:
+            continue
+        tm = rep["task_metrics"]
+        b, bp = tm["binary"], tm["binary_perturbed"]
+        acc = (b["correct"] + bp["correct"]) / (b["count"] + bp["count"])
+        d = acc - ext["always_no"]
+        beat += d > 0
+        print(f"   {name:<17}{acc:>15.3f}{d:>+14.3f}")
+    print(f"\n   {beat} of {len(PANEL)} models beat a constant 'no' on the extension.")
+    base["models_beating_always_no"] = beat
+    return base
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--refusals-as-wrong-dir",
@@ -209,7 +270,8 @@ def main():
     res = {"refusals": block_refusals(),
            "refusal_sensitivity": block_sensitivity(a.refusals_as_wrong_dir),
            "run_to_run_variance": block_variance(),
-           "cost": block_cost()}
+           "cost": block_cost(),
+           "constant_baselines": block_baselines()}
     if a.out:
         json.dump(res, open(a.out, "w", encoding="utf-8"), indent=2)
         print(f"\nwrote {a.out}")
