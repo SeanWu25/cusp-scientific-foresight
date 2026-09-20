@@ -59,6 +59,24 @@ def main():
                 judged[r["id"]] = r
 
     preds = [json.loads(l) for l in open(a.predictions, encoding="utf-8") if l.strip()]
+
+    # cost / usage accounting, summed from the per-item fields run_cusp records
+    usage = {"cost_usd": 0.0, "input_tokens": 0, "output_tokens": 0,
+             "reasoning_tokens": 0, "calls": 0, "latency_s": 0.0}
+    for _p in preds:
+        for _t in TASKS:
+            if f"{_t}_raw" not in _p:
+                continue
+            usage["calls"] += 1
+            for src, dst in (("cost_usd", "cost_usd"), ("input_tokens", "input_tokens"),
+                             ("output_tokens", "output_tokens"),
+                             ("reasoning_tokens", "reasoning_tokens"),
+                             ("latency_s", "latency_s")):
+                v = _p.get(f"{_t}_{src}")
+                if isinstance(v, (int, float)):
+                    usage[dst] += v
+    usage["cost_usd"] = round(usage["cost_usd"], 4)
+    usage["latency_s"] = round(usage["latency_s"], 1)
     results, refusals, areas = [], collections.Counter(), collections.defaultdict(collections.Counter)
     parse_fallback = collections.Counter()
 
@@ -183,6 +201,7 @@ def main():
         "effort": preds[0].get("effort") if preds else None,
         "frq_max_tokens": preds[0].get("frq_max_tokens") if preds else None,
         "refusals_excluded_from_denominators": not a.score_refusals_as_wrong,
+        **usage,
     }
     report["refusals"] = {
         "per_task": dict(refusals),

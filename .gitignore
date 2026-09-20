@@ -154,3 +154,6 @@ results_sol_run1/**/*.log
 results_extension_run2/**/*.jsonl
 results_extension_run2/**/*.log
 benchmark_data/CUSP_extension/*.jsonl
+results_dsv4pro_run1/**/*.jsonl
+results_dsv4pro_run1/**/*.log
+results_extension_run2/**/*.bak
