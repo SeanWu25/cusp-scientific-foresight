@@ -25,6 +25,30 @@ uncontaminated material.
 MCQ is the only task showing real skill. Section 6 argues it may not be measuring
 foresight.
 
+**The date result is not an artefact of the extension's five-month window.** It
+holds on the original 27-month corpus too. Computing the best constant guess on
+each model's *own* post-cutoff subset — the subsets differ in size and span, so a
+corpus-wide baseline would not be a fair comparison:
+
+| Model | n | model score | best constant | baseline | gap |
+|---|---|---|---|---|---|
+| GPT-4o | 2,950 | 0.199 | 2025-02 | 0.544 | −0.344 |
+| LLaMA 3.3 70B | 2,930 | 0.485 | 2025-02 | 0.544 | −0.059 |
+| GPT-OSS 20B | 2,479 | 0.337 | 2025-04 | 0.589 | −0.251 |
+| DeepSeek-R1 | 2,143 | 0.328 | 2025-04 | 0.633 | −0.305 |
+| Claude S4.5 | 1,624 | 0.275 | 2025-08 | 0.678 | −0.403 |
+| GPT-5.4 | 924 | 0.245 | 2026-12 | 0.776 | −0.531 |
+| Claude Sonnet 5 | 410 | 0.288 | 2026-02 | 0.827 | −0.538 |
+| GPT-5.6 Sol | 327 | 0.233 | 2026-04 | 0.836 | −0.603 |
+
+Every gap is negative, across 327–2,950 items per model. The gap widens with
+cutoff recency, but that is an artefact worth naming rather than a finding: a
+later cutoff leaves a narrower remaining window, which strengthens the constant
+guess. The substantive point is the sign.
+
+So: **two of three closed-form tasks are beaten by trivial constant strategies on
+unseen events, and the third has a retrospective ceiling near 1.0.**
+
 ## 2. Full panel, extension corpus (100% post-cutoff)
 
 | Model | cutoff | merged binary | MCQ | date score |
