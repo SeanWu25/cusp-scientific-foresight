@@ -129,3 +129,7 @@ $PY run_evaluation/gap_decomposition.py --benchmark "$EXT" --min-n 20 \
 echo; echo "wrote:"; ls -la "$T" | awk 'NR>3{printf "  %8s  %s\n",$5,$9}'
 echo; echo "raw prediction hashes (not in git):"
 md5sum "$RAW"/*.jsonl results_dsv4pro_run1/raw/*.jsonl 2>/dev/null | sed 's|  .*/|  |'
+
+echo "### 7. prove binary answers are untouched (study A2 reads these reports)"
+$PY scripts/verify_binary_answers_unchanged.py | sed 's/^/  /' \
+  || echo "  !! binary answer counts changed -- tell the A2 session (CUSP DATASET CHECK) to re-run analyse"
