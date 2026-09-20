@@ -2,9 +2,20 @@
 # Stage-2 FRQ rubric grading (judge_frq_combined, sha256 fc24e69d..., 4 dims).
 # Same judge and dimensions as the six published models -- nothing revised.
 #
-# Throughput is the same ~18 judgements/min ceiling as stage 1: judge_frq_combined
-# is also a single LLM+web-search call against the same Azure deployment. So the
-# same 3-concurrent-files limit applies; more only adds retries and hard failures.
+# Stage 2 is NOT stage 1. judge_frq_combined sends a 2,697-char rubric plus the
+# full FRQ response and returns four scored dimensions, so it burns several
+# times the tokens per call. The deployment is token-bound, not request-bound,
+# and the throughput curve has a sharp knee -- measured, 5-minute windows:
+#
+#     slots   throughput   errors   retry rate
+#       2       7.6/min      0%        30%
+#       4      11.4/min      0%        50%     <- operating point
+#       6      11.6/min      5%         -      (no gain, failures return)
+#       9       5.6/min     16%        57%     (past the knee: strictly worse)
+#
+# Past the knee retries eat the quota that would otherwise serve first attempts,
+# so pushing harder is worse on BOTH throughput and completeness. 2 files x
+# concurrency 2 = 4 slots.
 #
 # Covers every run, INCLUDING the three Claude ones whose FRQ responses are
 # truncated at their token caps (ext sonnet45 99.6%, ext sonnet5 97.4%, orig
@@ -20,12 +31,12 @@ ORIG=archive/data/canonical/merged_validated_cusp_fixed.jsonl
 LOG=results_extension_run2/raw/rubric_logs
 mkdir -p "$LOG" results_extension_run2/judgements_rubric \
          results_sol_run1/judgements_rubric results_dsv4pro_run1/judgements_rubric
-PAR=${PAR:-3}
+PAR=${PAR:-2}
 
 judge() {  # name raw benchmark outdir
   $PY scripts/judge_frq.py --predictions "$2" --benchmark "$3" \
       --output "$4/rubric_$1.jsonl" --stage rubric --endpoint azure \
-      --concurrency 3 --resume > "$LOG/$1.log" 2>&1
+      --concurrency 2 --resume > "$LOG/$1.log" 2>&1
   echo "=== $(date +%H:%M:%S) done $1: $(wc -l < "$4/rubric_$1.jsonl" 2>/dev/null || echo 0)"
 }
 
