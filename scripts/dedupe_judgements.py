@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
 """
-dedupe_judgements.py — collapse duplicate leakage judgements to one per event.
+dedupe_judgements.py — collapse duplicate judgements to one per event.
 
-Two judge drivers briefly wrote to the same output file concurrently. Writes
-were line-atomic, so nothing is corrupt, but some events were judged twice.
-Because the two judgements were independent calls on the same item, the
-duplicates also measure the judge's self-consistency -- reported here rather
-than discarded.
+Handles both judge stages. Concurrent judges twice ended up writing to the same
+output file -- once when an older driver was still alive during stage 1, once
+when a throughput probe overlapped a running job during stage 2. Writes are
+line-atomic so nothing is corrupt, but some events were judged twice.
 
-Keeps the FIRST judgement per event id (deterministic given file order) and
-writes the agreement rate alongside.
+Those duplicates are independent re-judgements of the same item, so they
+measure the judge rather than waste the calls, and both stages are reported:
+
+  stage 1 (leakage): agreement on a three-way verdict
+  stage 2 (rubric):  agreement on frq_score, a continuous 0-10 mean of four
+                     dimensions -- a far harder target, so it is reported as
+                     exact / within +/-0.5 / within +/-1.0 plus correlation,
+                     not as a single agreement percentage
+
+Keeps the FIRST judgement per event id (deterministic given file order).
 """
 
 from __future__ import annotations
@@ -36,8 +43,18 @@ def dedupe(path, out_path=None, report=True):
     dupes = {k: v for k, v in by_id.items() if len(v) > 1}
     agree = disagree = 0
     disagreements = []
+    score_pairs = []
     for k, v in dupes.items():
-        verdicts = {x.get("leakage", {}).get("verdict") for x in v}
+        # stage 2: collect paired frq_score for the reproducibility stats
+        sc = [x["frq"]["frq_score"] for x in v
+              if isinstance(x.get("frq"), dict) and x["frq"].get("frq_score") is not None]
+        if len(sc) > 1:
+            score_pairs.append((float(sc[0]), float(sc[1])))
+        # stage 1: three-way verdict agreement
+        verdicts = {x.get("leakage", {}).get("verdict") for x in v
+                    if isinstance(x.get("leakage"), dict)}
+        if not verdicts:
+            continue
         if len(verdicts) == 1:
             agree += 1
         else:
@@ -56,11 +73,24 @@ def dedupe(path, out_path=None, report=True):
         print(f"  lines {len(rows)}  corrupt {bad}  unique events {len(kept)}")
         if dupes:
             n = agree + disagree
-            print(f"  events judged twice: {n}")
-            print(f"  judge self-consistency: {agree}/{n} = {100*agree/n:.1f}% "
-                  f"identical verdict on an independent re-judgement")
-            for d in disagreements[:5]:
-                print(f"    disagreed: {d['id']} -> {d['verdicts']}")
+            if n:
+                print(f"  events judged twice: {n}")
+                print(f"  leakage self-consistency: {agree}/{n} = {100*agree/n:.1f}% "
+                      f"identical verdict on an independent re-judgement")
+                for d in disagreements[:5]:
+                    print(f"    disagreed: {d['id']} -> {d['verdicts']}")
+            if score_pairs:
+                import statistics as _st
+                m = len(score_pairs)
+                diffs = [abs(a - b) for a, b in score_pairs]
+                ex = sum(1 for d in diffs if d == 0)
+                w5 = sum(1 for d in diffs if d <= 0.5)
+                w1 = sum(1 for d in diffs if d <= 1.0)
+                print(f"  rubric re-grading: {m} items scored twice")
+                print(f"    exact {100*ex/m:.0f}%   within +/-0.5 {100*w5/m:.0f}%   "
+                      f"within +/-1.0 {100*w1/m:.0f}%   MAD {_st.mean(diffs):.3f}")
+                print(f"    -> do not report FRQ differences below ~{_st.mean(diffs):.1f} "
+                      f"as meaningful; that is the judge noise floor")
 
     if out_path:
         with open(out_path, "w", encoding="utf-8") as f:
@@ -72,7 +102,8 @@ def dedupe(path, out_path=None, report=True):
     return {"path": path, "lines": len(rows), "corrupt": bad,
             "unique": len(kept), "judged_twice": agree + disagree,
             "agree": agree, "disagree": disagree,
-            "disagreements": disagreements}
+            "disagreements": disagreements,
+            "rubric_score_pairs": score_pairs}
 
 
 def main():
