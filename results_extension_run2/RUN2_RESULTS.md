@@ -172,7 +172,42 @@ Sonnet 5, 83 shared post-cutoff events:
 On a 100%-post-cutoff corpus this isolates the mechanism cleanly. Small n — present
 as a mechanism demonstration, not a precise effect size.
 
-## 8. Reliability and provenance
+## 8. Stage-1 leakage: what it can and cannot show here
+
+Judging is in progress. Partial result: 1,320 of 5,184 responses judged, 100%
+with web search actually used, **0.7% returning a "fail"** verdict.
+
+That number must not be reported as a contamination rate, because on this corpus
+the judge cannot measure contamination. Its evidence search runs against the live
+web with no date restriction. When a model produces a description close to the
+real finding, the search surfaces the paper — published *after* every model's
+cutoff — and the judge records leakage.
+
+Manual review of the first 8 failures:
+
+| Cause | n | Explanation |
+|---|---|---|
+| Evidence is the target paper itself | 5 | Published post-cutoff; the model cannot have memorised it |
+| Flagged entity was in the model's own prompt | 2 | `CASP5`, `R4P`/`SWE-RM` — the model was handed these |
+| Other | 1 | Generic phrasing (`Token-Level Credit Assignment`) matching an unrelated paper |
+
+A GPT-OSS 20B model with a 2024-06 cutoff cannot have memorised an August 2026
+arXiv paper. Naming something the judge then matches to that paper is a correct
+forecast or, more likely given entries like "Token-Level Credit Assignment", a
+generic phrase colliding with a real title.
+
+**Correct framing:** "manual review of all flagged cases found no evidence of
+contamination" — not "the judge measured a 0.7% leakage rate." At 0.7% of 5,184
+that is roughly 35 cases, few enough to review by hand, which is the plan.
+
+The check still earns its place: it would catch a model whose true cutoff is later
+than stated, the one contamination route that survives a post-cutoff corpus.
+
+Two judge-side fixes for the methods section, both outside the freeze and **not
+made**: the evidence search should be date-restricted to the model's cutoff, and
+entities appearing in the prompt should be filtered before flagging.
+
+## 9. Reliability and provenance
 
 - **Run-to-run variance** (Sonnet 5, three passes, temperature unavailable):
   merged binary sd 0.0096, MCQ sd 0.0048, date sd 0.0041, refusals 76/79/78.
@@ -188,7 +223,7 @@ as a mechanism demonstration, not a precise effect size.
 - **Cost**: $44.68 total on first-party APIs. Azure and local rows report tokens
   only; no dollar figure is invented for negotiated or local serving.
 
-## 9. Reproducing
+## 10. Reproducing
 
 ```bash
 scripts/make_run2_tables.sh      # every table, from stored outputs, no inference
