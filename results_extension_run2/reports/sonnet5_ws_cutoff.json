@@ -1,0 +1,5119 @@
+{
+ "summary": {
+  "total_rows": 86,
+  "predictions_found": 84,
+  "predictions_missing": 2,
+  "joint_pass_count": 78,
+  "joint_pass_rate": 0.907,
+  "outcome_pass_count": 78,
+  "outcome_pass_rate": 0.907,
+  "reasoning_pass_count": 86,
+  "reasoning_pass_rate": 1.0,
+  "mean_overall_score": 0.6281,
+  "outcome_weight": 0.6,
+  "reasoning_weight": 0.4
+ },
+ "task_availability": {
+  "mcq": 63,
+  "frq": 72,
+  "binary_perturbed": 74,
+  "binary": 23,
+  "date": 23
+ },
+ "task_metrics": {
+  "binary": {
+   "count": 23,
+   "correct": 9,
+   "accuracy": 0.3913,
+   "mean_score": 0.3913,
+   "mean_confidence": 0.7139
+  },
+  "binary_perturbed": {
+   "count": 72,
+   "correct": 53,
+   "accuracy": 0.7361,
+   "mean_score": 0.7361,
+   "mean_confidence": 0.6938
+  },
+  "mcq": {
+   "count": 59,
+   "correct": 52,
+   "accuracy": 0.8814,
+   "mean_score": 0.8814,
+   "mean_confidence": 0.5975
+  },
+  "date": {
+   "count": 23,
+   "exact_matches": 1,
+   "exact_match_rate": 0.0435,
+   "mean_month_distance": 22.57,
+   "median_month_distance": 18,
+   "mean_score": 0.2797,
+   "mean_confidence": 0.3957
+  }
+ },
+ "reasoning_metrics": {
+  "leakage": {
+   "count": 86,
+   "pass": 0,
+   "fail": 0,
+   "unclear": 86,
+   "pass_rate": 0.0,
+   "fail_rate": 0.0,
+   "mean_score": 0.5
+  },
+  "mechanistic": {
+   "count": 86,
+   "pass": 0,
+   "fail": 0,
+   "unclear": 86,
+   "pass_rate": 0.0,
+   "fail_rate": 0.0,
+   "mean_score": 0.5
+  },
+  "constraint": {
+   "count": 86,
+   "pass": 0,
+   "fail": 0,
+   "unclear": 86,
+   "pass_rate": 0.0,
+   "fail_rate": 0.0,
+   "mean_score": 0.5
+  }
+ },
+ "results": [
+  {
+   "id": "27607091-5c99-4e29-8cb5-39f97436789e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1181,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "8cc166dc-b6ac-4b20-9458-d93707e68292",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1144,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "d3d52e09-ccf6-45f7-8831-2651d09366ff",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.5
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1171,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "01acb53a-d578-4b32-a9a2-12edc9e3136d",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1055,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "750088fa-cfa0-42cc-8bf7-08b91eb7d12d",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": false,
+     "parsed_answer": "A",
+     "ground_truth": "D",
+     "score": 0.0,
+     "confidence": 0.5
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1198,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "0c29edce-57a1-4688-a11b-d1d8bfdf3d7e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1078,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "55f4e7a0-462b-42fa-8fbb-83bdbe86ee33",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1210,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "0436b11d-fb2a-4829-93a2-8891e1c11480",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.5
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1114,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "1f5f7935-aee8-4b95-b888-21e46366b52a",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1149,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "a0396810-46e4-4870-95d7-2a7861656a6f",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1206,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "eb005c52-3f37-446b-86a0-425a7381a9b6",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1284,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "05d718cb-9c9c-4dc2-bead-4ab297404bcb",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.4245,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.6
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.92
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1095,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 7,
+     "parsed_date": "2025-12",
+     "ground_truth": "2026-07",
+     "score": 0.4966,
+     "confidence": 0.6
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "fd879170-3943-4125-a66a-73659d7a50f9",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.9
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "dddfc0c6-f2a0-49cf-b24f-ffe29d3c1417",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.4899,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.9
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1265,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 8,
+     "parsed_date": "2025-12",
+     "ground_truth": "2026-08",
+     "score": 0.4493,
+     "confidence": 0.5
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "9d915e02-19e4-4711-a92b-cf9a52f89c03",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1166,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "92cd7699-1235-4a5b-95f4-317c96738e23",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1065,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "395edce1-2684-4df2-a61b-5ebeb9279455",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.5
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1078,
+     "truncated": false,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "bf563cce-0baa-4963-adb9-c2bd521579e8",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.2,
+   "tasks": {
+    "mcq": {
+     "correct": false,
+     "parsed_answer": "C",
+     "ground_truth": "D",
+     "score": 0.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1121,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "75be408c-2048-4133-820f-f0f2cdf01698",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6228,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.9
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1208,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 2,
+     "parsed_date": "2026-06",
+     "ground_truth": "2026-08",
+     "score": 0.8187,
+     "confidence": 0.2
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "73ec53e1-548c-45b7-8e12-2cade996a70a",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.72
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1059,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "ae372c69-aa9b-4e54-8e15-2ff6e464ff4e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1031,
+     "truncated": false,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "b478c0f3-2251-4eb5-969f-d3533a451f75",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.55
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "a70e40ff-a270-4ba6-a861-9871e8669d46",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.2,
+   "tasks": {
+    "binary_perturbed": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "mcq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "frq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": false,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null,
+   "retrieval_failed": true
+  },
+  {
+   "id": "98ec894a-0272-44f6-b3b0-7c66fb6a8541",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 967,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "0f750485-1705-4ba3-ae85-a7bc286a43a1",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.411,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1025,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 29,
+     "parsed_date": "2024-03",
+     "ground_truth": "2026-08",
+     "score": 0.055,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "0dc2dd64-5b00-446b-be4f-d5379dfdc77e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1078,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "15fe65b2-afc7-4cc1-b6a8-f76f5e1f5175",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.85
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "2d9f6202-0145-4332-9ba1-ce5f269ba4dc",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": false,
+     "parsed_answer": "A",
+     "ground_truth": "C",
+     "score": 0.0,
+     "confidence": 0.4
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1053,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "4f791da2-4e30-45f3-8930-24849c530f22",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.7
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1062,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "8716b107-74c7-4bd1-9d06-7c95bd1c406a",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.2,
+   "tasks": {
+    "binary_perturbed": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "mcq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": false,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null,
+   "retrieval_failed": true
+  },
+  {
+   "id": "134899f3-5526-47b5-95c3-ddb2e3ff1105",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5061,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1192,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 32,
+     "parsed_date": "2023-11",
+     "ground_truth": "2026-07",
+     "score": 0.0408,
+     "confidence": 0.9
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "be28a049-b406-4f61-b64b-793917df5f2c",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.3724,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.72
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1138,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 19,
+     "parsed_date": "2024-12",
+     "ground_truth": "2026-07",
+     "score": 0.1496,
+     "confidence": 0.5
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "3f8adfc3-719d-4010-aa23-e4b9a283ee49",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.8
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "73c84435-a746-4995-b6f3-4260f8746fb5",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.2,
+   "tasks": {
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1005,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "582f8056-3b26-4118-85aa-d7379bc9c993",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1243,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "5f7c9690-609f-4ba8-bf40-4067c9d56312",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 895,
+     "truncated": false,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "e112f5a6-570e-4059-9fda-0a4b3e41f7a7",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 959,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "66cee0e2-ca56-4871-8e46-1ae91089ded4",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "frq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null,
+   "retrieval_failed": true
+  },
+  {
+   "id": "07a45929-6650-44ce-b0c3-d8e91160f90b",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1116,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "9b8345bd-fb0f-4f82-8073-f594e98015b2",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.3909,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.68
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.65
+    },
+    "mcq": {
+     "correct": false,
+     "parsed_answer": "B",
+     "ground_truth": "A",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1081,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 13,
+     "parsed_date": "2025-05",
+     "ground_truth": "2026-06",
+     "score": 0.2725,
+     "confidence": 0.5
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "008895ab-ed44-465e-8e23-990bc9dadd13",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.7
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1126,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "f015e535-e699-4249-9a8b-e77b59e9bd8a",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.65,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.7
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1041,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": true,
+     "month_distance": 0,
+     "parsed_date": "2026-06",
+     "ground_truth": "2026-06",
+     "score": 1.0,
+     "confidence": 0.2
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "7e811210-d868-4063-9f7b-dea1de7eb852",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1060,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "3690011f-3e91-4dbb-8312-7ab7e2b8a0e8",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.78
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1101,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "683eb554-988c-4b06-b934-349c640833d5",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.72
+    },
+    "mcq": {
+     "correct": false,
+     "parsed_answer": "D",
+     "ground_truth": "C",
+     "score": 0.0,
+     "confidence": 0.45
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "a346b268-09df-4a5c-aef4-cbc1c7ef4978",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.3909,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.9
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "mcq": {
+     "correct": false,
+     "parsed_answer": "A",
+     "ground_truth": "B",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1053,
+     "truncated": false,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 13,
+     "parsed_date": "2027-06",
+     "ground_truth": "2026-05",
+     "score": 0.2725,
+     "confidence": 0.25
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "a8c7cda4-79c1-4ef7-9432-0e2d593024bd",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.7098,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 6,
+     "parsed_date": "2025-11",
+     "ground_truth": "2026-05",
+     "score": 0.5488,
+     "confidence": 0.6
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "04c8b475-c216-4d61-a77e-ec233fcd1068",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1078,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "20bbb34d-ebef-4730-9c4c-98afd714a683",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5045,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1007,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 35,
+     "parsed_date": "2023-06",
+     "ground_truth": "2026-05",
+     "score": 0.0302,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "f3bd5e9b-88d1-4f4d-bcc3-0c1bc91e86de",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.2,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1067,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "95b6635c-8b68-4339-9eb2-8a3fc25828d7",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.5
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "398b7ee3-7b40-496e-be4c-c9cfc00382a0",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 976,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "c52a627c-80c2-432e-84c1-da68d4b35c70",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5025,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.62
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 964,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 41,
+     "parsed_date": "2022-11",
+     "ground_truth": "2026-04",
+     "score": 0.0166,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "f45069ad-eded-4d33-9da6-8c2b2af0cf9e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.72
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 947,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "5e2df6f2-a500-42ba-a9df-92df5cb22c0f",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.97
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed"
+   ],
+   "error": null
+  },
+  {
+   "id": "dbcaf38f-0579-43cf-a192-fd063123a985",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 962,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "b4cdaf7c-49a0-4fd1-b32b-dfe7eb651ec7",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.68
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed"
+   ],
+   "error": null
+  },
+  {
+   "id": "ed5db709-38f7-4278-b0af-06660d7e2c57",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1143,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "61b09cbb-9cb3-4710-a509-be209172a7b0",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.62
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1059,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "2e37b8d9-46fb-435d-975a-bc369f994b9e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1060,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "7f198488-6e32-4193-8437-9fdd7e22f053",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.2,
+   "tasks": {
+    "mcq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1187,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "f6f2d874-9a03-4bd5-b4a1-bd1d002a3bea",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.4545,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.68
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 974,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 13,
+     "parsed_date": "2025-06",
+     "ground_truth": "2026-07",
+     "score": 0.2725,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "41c69549-bd20-4529-b8b4-57529d7edce2",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.4049,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1106,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 37,
+     "parsed_date": "2023-06",
+     "ground_truth": "2026-07",
+     "score": 0.0247,
+     "confidence": 0.6
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "64dfd247-d8c7-4053-9a19-4082d3f11241",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1076,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "0dfb4ad0-3a95-4546-a413-308da21287cc",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1071,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "bc102249-0698-4e93-93d3-3445f9c3338b",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.4714,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.65
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 1,
+     "parsed_date": "2026-06",
+     "ground_truth": "2026-07",
+     "score": 0.9048,
+     "confidence": 0.2
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "c2668fc1-1213-4fa1-97d5-13b92fa160ea",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "42374471-e18f-4bdf-b023-4f9a3ad84677",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1004,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "9b323103-8685-4200-a3d6-43ee00bb6c9a",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5303,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 16,
+     "parsed_date": "2025-01",
+     "ground_truth": "2026-05",
+     "score": 0.2019,
+     "confidence": 0.5
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "dcc6d5fc-deb2-4aac-a648-3d2c581fcd83",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.2,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1236,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "2595ea3a-12ee-4c11-b9d5-2b21fb1197a9",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.65,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1063,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 110,
+     "parsed_date": "2017-03",
+     "ground_truth": "2026-05",
+     "score": 0.0,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "60dabdef-e82d-48ee-86e7-220ff277e43f",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5248,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.72
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1063,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 18,
+     "parsed_date": "2024-11",
+     "ground_truth": "2026-05",
+     "score": 0.1653,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "487d051a-0a44-4798-9cae-41ddcb6c02b6",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5203,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 930,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 20,
+     "parsed_date": "2024-08",
+     "ground_truth": "2026-04",
+     "score": 0.1353,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "b17c3b8f-8c7a-4449-ba24-ec3b864708d5",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1027,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "2ee09049-d430-4ccb-ac1e-bed6f50e0a88",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6067,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1008,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 34,
+     "parsed_date": "2023-06",
+     "ground_truth": "2026-04",
+     "score": 0.0334,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "74e76ef0-6865-4f4b-9582-fb97097a9a88",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5552,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.8
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1169,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 10,
+     "parsed_date": "2025-06",
+     "ground_truth": "2026-04",
+     "score": 0.3679,
+     "confidence": 0.45
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "c5ea1875-23f0-411c-a145-d9126ee367af",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.7
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1118,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "037d5e65-8fc0-43b7-b2bc-f5a00d310e1b",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1156,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "bdd90a6e-905a-45d2-b639-0c8336bfa499",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.55
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "567b0875-af4f-495e-9be4-b7335c7017a7",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.7
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 987,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "5ad26208-b4aa-48aa-b758-3f5180429291",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 946,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "89b6140d-5403-4b19-ab38-5f0e436c9e27",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1150,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "41368706-67e5-4536-b278-979bff6856d5",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6541,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1072,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 36,
+     "parsed_date": "2023-06",
+     "ground_truth": "2026-06",
+     "score": 0.0273,
+     "confidence": 0.4
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "406993b4-af15-489a-ba72-2b52d16b6ec4",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.3724,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.72
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.68
+    },
+    "mcq": {
+     "correct": false,
+     "parsed_answer": "C",
+     "ground_truth": "D",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1049,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 19,
+     "parsed_date": "2024-11",
+     "ground_truth": "2026-06",
+     "score": 0.1496,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "2c1a9031-897e-4287-bcd7-b67ad9bccbd6",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.65
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 986,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "5874205a-6ca8-4d3d-8660-d4ad3a6cede9",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.97
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": null,
+     "generated": true,
+     "chars": 1013,
+     "truncated": true,
+     "rubric_deferred": true,
+     "leakage_judged": false
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  }
+ ],
+ "run_metadata": {
+  "built_utc": "2026-09-20T01:44:36.089634+00:00",
+  "scoring_version": "v1",
+  "frq_quality_scores": "exclude",
+  "frq_rubric_note": "Stage-2 quality rubric deferred: the rubric is under revision, so scores computed with the current one would be discarded. FRQ responses are generated and archived verbatim; stage-1 leakage verdicts are computed now because they depend on live web search and would not reproduce later.",
+  "predictions": "results_extension_run2/raw/sonnet5_ws_cutoff.jsonl",
+  "judged": null,
+  "model": "claude-sonnet-5",
+  "condition": "ws_cutoff",
+  "run_index": 1,
+  "effort": "medium",
+  "frq_max_tokens": 384,
+  "refusals_excluded_from_denominators": true,
+  "cost_usd": 2.517,
+  "input_tokens": 1011171,
+  "output_tokens": 49461,
+  "reasoning_tokens": 0,
+  "calls": 255,
+  "latency_s": 841.0
+ },
+ "refusals": {
+  "per_task": {
+   "binary_perturbed": 2,
+   "mcq": 4,
+   "frq": 2
+  },
+  "total": 8,
+  "per_area": {
+   "Artificial Intelligence": {
+    "calls": 42
+   },
+   "Biology": {
+    "calls": 62,
+    "refused": 4
+   },
+   "Chemistry": {
+    "calls": 7
+   },
+   "Environmental Science": {
+    "calls": 11
+   },
+   "Materials Science": {
+    "calls": 31
+   },
+   "Medicine": {
+    "calls": 39,
+    "refused": 4
+   },
+   "Neuroscience": {
+    "calls": 17
+   },
+   "Other": {
+    "calls": 18
+   },
+   "Physics": {
+    "calls": 28
+   }
+  }
+ },
+ "parse_fallbacks_excluding_refusals": {},
+ "retrieval_failed_rows": [
+  "66cee0e2-ca56-4871-8e46-1ae91089ded4",
+  "8716b107-74c7-4bd1-9d06-7c95bd1c406a",
+  "a70e40ff-a270-4ba6-a861-9871e8669d46"
+ ],
+ "n_retrieval_failed": 3,
+ "errors": []
+}
