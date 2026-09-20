@@ -35,12 +35,15 @@ def main() -> int:
     try:
         import common as C  # A2's loader; owns the filter rule and report paths
     except ImportError as e:
-        print(f"cannot import A2 loader ({e}); skipping check", file=sys.stderr)
+        # to stdout on purpose: this must land in the finalize log body, not be
+        # lost on stderr, because a skip is NOT a pass -- nothing was verified
+        print(f"SKIPPED -- binary answers NOT verified: cannot import A2 loader ({e}); "
+              f"results/A2_binary_validity is untracked and absent on this machine")
         return 0
 
     ref_path = os.path.join(A2, "MANIFEST.json")
     if not os.path.exists(ref_path):
-        print("no A2 MANIFEST.json; skipping check", file=sys.stderr)
+        print("SKIPPED -- binary answers NOT verified: no results/A2_binary_validity/MANIFEST.json")
         return 0
     ref = json.load(open(ref_path, encoding="utf-8"))["panel_answer_counts"]
 

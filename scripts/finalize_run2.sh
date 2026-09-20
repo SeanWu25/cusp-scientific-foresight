@@ -133,3 +133,10 @@ md5sum "$RAW"/*.jsonl results_dsv4pro_run1/raw/*.jsonl 2>/dev/null | sed 's|  .*
 echo "### 7. prove binary answers are untouched (study A2 reads these reports)"
 $PY scripts/verify_binary_answers_unchanged.py | sed 's/^/  /' \
   || echo "  !! binary answer counts changed -- tell the A2 session (CUSP DATASET CHECK) to re-run analyse"
+
+echo "### 8. re-freeze raw-artifact hashes (keeps superseded hashes for provenance)"
+$PY scripts/refreeze_raw_hashes.py results_sol_run1 \
+   --note "ws_500 and ws_cutoff_500 regenerated 2026-09-20 after the scripts/web_search.py fix; originals kept as *.FAILED_no_context.*" | sed 's/^/  /'
+$PY scripts/refreeze_raw_hashes.py results_sonnet5_run1   --note "run-2 finalize" | sed 's/^/  /'
+$PY scripts/refreeze_raw_hashes.py results_extension_run2 --note "run-2 finalize" | sed 's/^/  /'
+$PY scripts/refreeze_raw_hashes.py results_dsv4pro_run1   --note "run-2 finalize" | sed 's/^/  /'
