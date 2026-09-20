@@ -151,3 +151,6 @@ results_fable5_run1/**/*.jsonl
 results_fable5_run1/**/*.log
 results_sol_run1/**/*.jsonl
 results_sol_run1/**/*.log
+results_extension_run2/**/*.jsonl
+results_extension_run2/**/*.log
+benchmark_data/CUSP_extension/*.jsonl
