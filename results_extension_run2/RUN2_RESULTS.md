@@ -364,6 +364,21 @@ flagging.
   published row. Empirical check: its extension-vs-original MCQ delta is
   +0.052 ± 0.043, mid-pack against the panel's −0.068 to +0.066, so the change did
   not make it an outlier.
+- **Sol web-search runs regenerated 2026-09-20.** The original `ws_500` /
+  `ws_cutoff_500` runs for GPT-5.6 Sol had `web_search_error` on every row and
+  no retrieval context: the query-generation call in `scripts/web_search.py`
+  sent `temperature` to a model that rejects it. A concurrent session fixed the
+  call (fix uncommitted at time of writing) and re-ran both files; the originals
+  are kept as `*.FAILED_no_context.*`. Sonnet 5's web-search runs do **not**
+  have the systemic failure (94–97% of rows carry context; the rest are
+  scattered transient errors already dropped as `retrieval_failed`), so §7
+  stands. Sol's `RAW_HASHES.txt` is re-frozen at finalize with the superseded
+  hashes kept for provenance.
+- **Concurrent sessions.** Two other Claude Code sessions worked in this repo on
+  2026-09-20 (Sol web-search regeneration and stage-1 leakage; study A2 on
+  binary-task validity). They share one rate-limited Azure judge deployment
+  with the FRQ grading here. Finalize verifies, using A2's own loader, that
+  rebuilding reports left every binary/perturbed answer count identical.
 - **Cost**: $44.68 total on first-party APIs. Azure and local rows report tokens
   only; no dollar figure is invented for negotiated or local serving.
 
