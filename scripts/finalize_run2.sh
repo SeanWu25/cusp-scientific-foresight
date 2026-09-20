@@ -2,9 +2,12 @@
 # Final run-2 pass. Reads stored predictions and judgements only -- no inference.
 #   1. dedupe judgements (two drivers briefly shared an output file)
 #   2. triage every leakage 'fail'
-#   3. rebuild reports with leakage verdicts joined in
-#   4. build the refusals-as-wrong variants the sensitivity block needs
-#   5. regenerate every table
+#   3. merge split judgement files (leakage in one file, rubric in another)
+#      field-by-field, one row per event  -- scripts/merge_judgements.py
+#   4. rebuild reports with leakage verdicts AND rubric scores joined in,
+#      for the extension runs and the three new original-corpus runs
+#   5. build the refusals-as-wrong variants the sensitivity block needs
+#   6. regenerate every table, with FRQ quality reported
 set -u
 cd /home/seanwu/FutureScience
 PY=/home/seanwu/miniconda3/bin/python3
@@ -26,24 +29,70 @@ echo "### 2. triage leakage failures"
 $PY scripts/triage_leakage.py --out "$T/08_leakage_triage.json" \
   | tee "$T/08_leakage_triage.txt" | head -12
 
-echo "### 3. rebuild reports with leakage verdicts"
+echo "### 3. merge split judgement files, one row per event"
+RUB=results_extension_run2/judgements_rubric
+MRG=results_extension_run2/judgements_merged
+mkdir -p "$MRG" results_sonnet5_run1/judgements_merged results_sol_run1/judgements_merged \
+         results_dsv4pro_run1/judgements_merged
+# extension: leakage file + rubric file (+ todo-based rubric for the WS pair)
+for t in sonnet5_base_run1 sonnet5_ws sonnet5_ws_cutoff llama33_base sonnet45_base \
+         deepseekv4pro_base gpt4o_base gpt54_base sol_base gptoss20b_base; do
+  parts=""
+  [ -f "$JUD/leakage_$t.jsonl" ] && parts="$parts $JUD/leakage_$t.jsonl"
+  [ -f "$RUB/rubric_$t.jsonl" ]  && parts="$parts $RUB/rubric_$t.jsonl"
+  [ -n "$parts" ] && $PY scripts/merge_judgements.py $parts --out "$MRG/$t.jsonl" | sed 's/^/  /'
+done
+# original corpus: pre-deferral Sonnet 5 grading + its gap fill; Sol WS subsets; new base runs
+S5=results_sonnet5_run1; SO=results_sol_run1; DS=results_dsv4pro_run1
+$PY scripts/merge_judgements.py $S5/raw/judged_base_medium_run1.jsonl \
+    $S5/judgements_rubric/rubric_sonnet5_orig_gaps.jsonl --out $S5/judgements_merged/base_medium_run1.jsonl | sed 's/^/  /'
+$PY scripts/merge_judgements.py $S5/raw/judged_ws_500.jsonl \
+    $S5/judgements_rubric/rubric_sonnet5_ws_500.jsonl --out $S5/judgements_merged/ws_500.jsonl | sed 's/^/  /'
+$PY scripts/merge_judgements.py $S5/raw/judged_ws_cutoff_500.jsonl \
+    $S5/judgements_rubric/rubric_sonnet5_ws_cutoff_500.jsonl --out $S5/judgements_merged/ws_cutoff_500.jsonl | sed 's/^/  /'
+$PY scripts/merge_judgements.py $SO/judgements/leakage_base_medium_run1.jsonl \
+    $SO/judgements_rubric/rubric_sol_orig.jsonl --out $SO/judgements_merged/base_medium_run1.jsonl | sed 's/^/  /'
+$PY scripts/merge_judgements.py $SO/judgements/leakage_ws_500.jsonl \
+    $SO/judgements_rubric/rubric_sol_ws_500.jsonl --out $SO/judgements_merged/ws_500.jsonl | sed 's/^/  /'
+$PY scripts/merge_judgements.py $SO/judgements/leakage_ws_cutoff_500.jsonl \
+    $SO/judgements_rubric/rubric_sol_ws_cutoff_500.jsonl --out $SO/judgements_merged/ws_cutoff_500.jsonl | sed 's/^/  /'
+$PY scripts/merge_judgements.py $DS/judgements_rubric/rubric_dsv4pro_orig.jsonl \
+    --out $DS/judgements_merged/base_run1.jsonl | sed 's/^/  /'
+
+echo "### 4. rebuild reports with leakage AND rubric scores joined in"
+ORIG=archive/data/canonical/merged_validated_cusp_fixed.jsonl
 for t in sonnet5_base_run1 sonnet5_base_run2 sonnet5_base_run3 sonnet5_ws sonnet5_ws_cutoff \
          llama33_base sonnet45_base deepseekv4pro_base gpt4o_base gpt54_base sol_base gptoss20b_base; do
   [ -f "$RAW/$t.jsonl" ] || continue
-  J=""; [ -f "$JUD/leakage_$t.jsonl" ] && J="--judged $JUD/leakage_$t.jsonl"
+  J=""; [ -f "$MRG/$t.jsonl" ] && J="--judged $MRG/$t.jsonl --frq-scores include"
   $PY scripts/build_report.py --predictions "$RAW/$t.jsonl" --benchmark "$EXT" \
       $J --out "$REP/$t.json" >/dev/null 2>&1 && echo "  ok $t" || echo "  FAIL $t"
 done
+# the three original-corpus runs that were graded in this pass
+for spec in \
+  "$S5/raw/base_medium_run1.jsonl|$S5/judgements_merged/base_medium_run1.jsonl|$S5/reports/base_medium_run1.json" \
+  "$S5/raw/ws_500.jsonl|$S5/judgements_merged/ws_500.jsonl|$S5/reports/ws_500.json" \
+  "$S5/raw/ws_cutoff_500.jsonl|$S5/judgements_merged/ws_cutoff_500.jsonl|$S5/reports/ws_cutoff_500.json" \
+  "$SO/raw/base_medium_run1.jsonl|$SO/judgements_merged/base_medium_run1.jsonl|$SO/reports/base_medium_run1.json" \
+  "$SO/raw/ws_500.jsonl|$SO/judgements_merged/ws_500.jsonl|$SO/reports/ws_500.json" \
+  "$SO/raw/ws_cutoff_500.jsonl|$SO/judgements_merged/ws_cutoff_500.jsonl|$SO/reports/ws_cutoff_500.json" \
+  "$DS/raw/base_run1.jsonl|$DS/judgements_merged/base_run1.jsonl|$DS/reports/base_run1.json"; do
+  IFS="|" read -r raw jud rep <<< "$spec"
+  [ -f "$raw" ] && [ -f "$jud" ] || continue
+  $PY scripts/build_report.py --predictions "$raw" --benchmark "$ORIG" \
+      --judged "$jud" --frq-scores include --out "$rep" >/dev/null 2>&1 \
+      && echo "  ok $(basename $rep .json) [orig]" || echo "  FAIL $rep"
+done
 
-echo "### 4. refusals-as-wrong variants"
+echo "### 5. refusals-as-wrong variants"
 for t in sonnet45_base sonnet5_base_run1 sol_base gpt54_base; do
   [ -f "$RAW/$t.jsonl" ] || continue
   $PY scripts/build_report.py --predictions "$RAW/$t.jsonl" --benchmark "$EXT" \
       --score-refusals-as-wrong --out "$ALT/$t.json" >/dev/null 2>&1 && echo "  ok $t"
 done
 
-echo "### 5. tables"
-$PY run_evaluation/extension_tables.py           > "$T/01_extension_panel.txt" 2>&1
+echo "### 6. tables (FRQ quality reported)"
+$PY run_evaluation/extension_tables.py --frq report > "$T/01_extension_panel.txt" 2>&1
 $PY run_evaluation/full_corpus_tables.py --out "$T/02_full_corpus.json" \
                                                  > "$T/02_full_corpus.txt" 2>&1
 $PY run_evaluation/run2_diagnostics.py --refusals-as-wrong-dir "$ALT" \
