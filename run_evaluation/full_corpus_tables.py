@@ -241,9 +241,78 @@ def main():
         print(f"{name:<17}{h.get('original', 0):>10}{h.get('extension', 0):>11}"
               f"{r['n_events']:>8}{r['dupes']:>7}")
 
+    out["_horizon_mcc"] = horizon_mcc(pub, PANEL)
+
     if a.out:
         json.dump(out, open(a.out, "w", encoding="utf-8"), indent=2)
         print(f"\nwrote {a.out}")
+
+
+
+
+def horizon_mcc(pub, panel, bins=((0, 2), (3, 5), (6, 11), (12, 23), (24, 999)),
+                min_n=50, boots=800, seed=7):
+    """MCC by forecast horizon over the pooled corpus, post-cutoff only.
+
+    Reported as MCC rather than accuracy on purpose: accuracy also declines
+    across horizon bins, but that is base-rate drift interacting with response
+    bias, not skill decay. CIs are bootstrapped over EVENTS, not task
+    instances, because an event's binary and perturbed items are not
+    independent.
+    """
+    import random
+    lab = lambda b: f"{b[0]}-{b[1]}" if b[1] < 999 else ">=24"
+    print("\n=== MCC BY FORECAST HORIZON (pooled corpus, post-cutoff only) ===")
+    print(f"{'model':<17}" + "".join(f"{lab(b):>24}" for b in bins))
+    out = {}
+    for name, cutoff, op, ep in panel:
+        cm = mo(cutoff)
+        ev = {}
+        for p in (op, ep):
+            if not p or not os.path.exists(p):
+                continue
+            for x in json.load(open(p, encoding="utf-8")).get("results", []):
+                pm = mo(pub.get(x["id"], ""))
+                if pm is None or cm is None or pm - cm < 0:
+                    continue
+                bk = next((b for b in bins if b[0] <= pm - cm <= b[1]), None)
+                if bk is None:
+                    continue
+                t = x.get("tasks", {})
+                cells = []
+                b = t.get("binary")
+                if b and not b.get("skipped") and "correct" in b:
+                    cells.append("tp" if b["correct"] else "fn")
+                bp = t.get("binary_perturbed")
+                if bp and not bp.get("skipped") and "correct" in bp:
+                    cells.append("tn" if bp["correct"] else "fp")
+                if cells:
+                    ev.setdefault(bk, []).append(cells)
+        line, row = "", {}
+        for bk in bins:
+            e = ev.get(bk)
+            n = sum(len(x) for x in e) if e else 0
+            if n < min_n:
+                line += f"{'--':>24}"
+                continue
+
+            def mcc(sample):
+                c = dict(tp=0, fp=0, tn=0, fn=0)
+                for x in sample:
+                    for k in x:
+                        c[k] += 1
+                return _binary_metrics(**c)["mcc"]
+
+            pt = mcc(e)
+            rng = random.Random(seed)
+            bs = sorted(mcc([e[rng.randrange(len(e))] for _ in e]) for _ in range(boots))
+            lo, hi = bs[int(.025 * boots)], bs[int(.975 * boots) - 1]
+            line += f"{pt:+.3f}[{lo:+.2f},{hi:+.2f}] {n}".rjust(24)
+            row[lab(bk)] = {"mcc": pt, "ci": [lo, hi], "n": n, "events": len(e)}
+        print(f"{name:<17}{line}")
+        out[name] = row
+    print(f"\ncell = MCC [95% event-clustered bootstrap CI] n; bins with n<{min_n} suppressed")
+    return out
 
 
 if __name__ == "__main__":
