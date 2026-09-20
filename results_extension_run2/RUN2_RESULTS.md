@@ -106,9 +106,40 @@ response bias in sign for all six models that ran both halves:
 | GPT-4o | 7,253 | −0.55 | 0.472 | −0.067 |
 | DeepSeek-V4-Pro | 845 | −0.74 | 0.465 | −0.088 |
 
-**Recommendation: MCC and balanced accuracy belong in Table 1, not the supplement.**
-Raw accuracy on this benchmark is dominated by class balance interacting with
-response bias; these two metrics are invariant to it.
+**The clearest statement of the binary signal is the discrimination gap:**
+P(yes | real finding) − P(yes | corrupted finding), post-cutoff only, CIs
+bootstrapped over events. It asks directly whether a model can tell a real
+finding from a plausible fake, and it is immune to both the class-balance
+problem (the rates are conditioned separately) and to response bias (a uniform
+shift cancels).
+
+| Model | P(yes \| real) | P(yes \| corrupted) | gap | 95% CI | n events |
+|---|---|---|---|---|---|
+| GPT-5.6 Sol | 0.773 | 0.624 | **+0.149** | [+0.097, +0.200] | 902 |
+| Claude Sonnet 5 | 0.289 | 0.235 | **+0.054** | [+0.007, +0.101] | 1,048 |
+| LLaMA 3.3 70B | 0.935 | 0.913 | +0.022 | [+0.010, +0.032] | 4,930 |
+| GPT-5.4 | 0.621 | 0.611 | +0.010 | [−0.023, +0.043] | 1,919 |
+| DeepSeek-R1 | 0.493 | 0.530 | **−0.036** | [−0.060, −0.013] | 3,481 |
+| Claude S4.5 | 0.224 | 0.281 | **−0.056** | [−0.080, −0.031] | 2,975 |
+| GPT-4o | 0.191 | 0.248 | **−0.057** | [−0.073, −0.040] | 4,965 |
+| GPT-OSS 20B | 0.187 | 0.246 | **−0.059** | [−0.077, −0.040] | 4,353 |
+| DeepSeek-V4-Pro | 0.077 | 0.146 | **−0.070** | [−0.114, −0.026] | 680 |
+
+Eight of nine CIs exclude zero, and **five of those are negative**: GPT-4o,
+GPT-OSS 20B, Claude S4.5, DeepSeek-R1 and DeepSeek-V4-Pro endorse the
+*fabricated* version of a finding more readily than the genuine one, reliably,
+across thousands of items each. Only GPT-5.6 Sol shows a substantial positive
+gap; Sonnet 5's is modest but real; LLaMA's is significant but trivial and it
+answers yes to 93% of everything.
+
+This is a stronger claim than "binary is at chance". Most of the panel is
+reliably *worse* than chance at distinguishing real from fabricated findings
+about science they have not seen — which says the perturbed items are plausible
+enough to invert a model's judgment, and is worth its own sentence in the paper.
+
+**Recommendation: report the discrimination gap as the binary column in Table 1,
+with MCC alongside.** Move raw merged accuracy to the supplement: it mostly
+measures which way a model leans.
 
 ## 4. Binary foresight has a short half-life
 

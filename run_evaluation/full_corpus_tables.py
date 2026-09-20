@@ -242,6 +242,7 @@ def main():
               f"{r['n_events']:>8}{r['dupes']:>7}")
 
     out["_horizon_mcc"] = horizon_mcc(pub, PANEL)
+    out["_discrimination_gap"] = discrimination_gap(pub, PANEL)
 
     if a.out:
         json.dump(out, open(a.out, "w", encoding="utf-8"), indent=2)
@@ -312,6 +313,79 @@ def horizon_mcc(pub, panel, bins=((0, 2), (3, 5), (6, 11), (12, 23), (24, 999)),
         print(f"{name:<17}{line}")
         out[name] = row
     print(f"\ncell = MCC [95% event-clustered bootstrap CI] n; bins with n<{min_n} suppressed")
+    return out
+
+
+def discrimination_gap(pub, panel, post_only=True, boots=2000, seed=11):
+    """P(yes | real finding) - P(yes | corrupted finding), per model.
+
+    This is the whole binary signal stated plainly: can the model tell a real
+    finding from a plausible fake? It tracks MCC almost exactly but is far
+    easier to interpret, and it is immune to both the class-balance problem
+    (the two rates are conditioned separately) and to response bias (a uniform
+    shift in yes-rate cancels).
+
+    Positive = discriminating. Negative = the model endorses the fabricated
+    version MORE readily than the genuine one.
+
+    CIs are bootstrapped over events, since an event contributes to both rates.
+    """
+    import random
+    print("\n=== DISCRIMINATION GAP: P(yes|real) - P(yes|corrupted) ==="
+          + ("  [post-cutoff only]" if post_only else "  [all]"))
+    print(f"{'model':<17}{'P(yes|real)':>13}{'P(yes|corrupt)':>16}"
+          f"{'gap':>9}{'95% CI':>18}{'n events':>10}")
+    out = {}
+    for name, cutoff, op, ep in panel:
+        cm = mo(cutoff)
+        ev = []
+        for p_ in (op, ep):
+            if not p_ or not os.path.exists(p_):
+                continue
+            for x in json.load(open(p_, encoding="utf-8")).get("results", []):
+                pm = mo(pub.get(x["id"], ""))
+                if post_only and (pm is None or cm is None or pm < cm):
+                    continue
+                t = x.get("tasks", {})
+                b, q = t.get("binary"), t.get("binary_perturbed")
+                rb = qb = None
+                if b and not b.get("skipped") and "correct" in b:
+                    rb = 1 if b["correct"] else 0          # correct on real == said yes
+                if q and not q.get("skipped") and "correct" in q:
+                    qb = 0 if q["correct"] else 1          # wrong on corrupted == said yes
+                if rb is not None or qb is not None:
+                    ev.append((rb, qb))
+        if len(ev) < 50:
+            continue
+
+        def gap(sample):
+            yr = nr = yc = nc = 0
+            for rb, qb in sample:
+                if rb is not None:
+                    yr += rb; nr += 1
+                if qb is not None:
+                    yc += qb; nc += 1
+            if not nr or not nc:
+                return None
+            return yr / nr, yc / nc
+
+        pr, pc = gap(ev)
+        rng = random.Random(seed)
+        bs = []
+        for _ in range(boots):
+            g = gap([ev[rng.randrange(len(ev))] for _ in ev])
+            if g:
+                bs.append(g[0] - g[1])
+        bs.sort()
+        lo, hi = bs[int(.025 * len(bs))], bs[int(.975 * len(bs)) - 1]
+        sig = "" if lo <= 0 <= hi else "  *"
+        print(f"{name:<17}{pr:>13.3f}{pc:>16.3f}{pr-pc:>+9.3f}"
+              f"{f'[{lo:+.3f},{hi:+.3f}]':>18}{len(ev):>10}{sig}")
+        out[name] = {"p_yes_real": pr, "p_yes_corrupted": pc, "gap": pr - pc,
+                     "ci": [lo, hi], "n_events": len(ev),
+                     "excludes_zero": not (lo <= 0 <= hi)}
+    print("  * = CI excludes zero. Negative gap means the model endorses the")
+    print("  fabricated finding MORE readily than the genuine one.")
     return out
 
 
