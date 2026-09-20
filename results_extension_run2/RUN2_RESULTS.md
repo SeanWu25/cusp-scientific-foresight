@@ -151,6 +151,37 @@ change, recorded here as a limitation.
 MCC alongside and the pair count stated.** Move raw merged accuracy to the
 supplement: it mostly measures which way a model leans.
 
+## 3b. Cross-corpus MCQ comparison, with the domain mix controlled
+
+The two corpora are **not** drawn from the same domain mix (χ²=212.3, df=8): the
+AI share falls 24.0% → 16.3% and "Other" grows 1.3% → 6.6%. Biology and Medicine
+are stable, so the refusal analysis in §5 is unaffected, but a crude
+extension-vs-original MCQ difference confounds performance with item population.
+
+Stratifying within `main_area` and pooling per-area deltas with weights
+n_o·n_e/(n_o+n_e) cancels the mix:
+
+| Model | crude | domain-stratified | areas |
+|---|---|---|---|
+| GPT-4o | −0.068 ± 0.043 | **−0.074 ± 0.042** | 9 |
+| LLaMA 3.3 70B | +0.008 ± 0.042 | +0.007 ± 0.042 | 9 |
+| GPT-OSS 20B | +0.052 ± 0.043 | +0.040 ± 0.043 | 9 |
+| Claude S4.5 | +0.056 ± 0.043 | +0.066 ± 0.042 | 9 |
+| GPT-5.4 | +0.066 ± 0.036 | **+0.059 ± 0.036** | 9 |
+| Claude Sonnet 5 | +0.027 ± 0.041 | +0.045 ± 0.041 | 7 |
+| GPT-5.6 Sol | +0.019 ± 0.055 | +0.025 ± 0.054 | 7 |
+
+The two columns agree: the largest shift is 0.018 against CI half-widths near
+0.041. The mix difference does not drive these deltas — but that is a measured
+result, not an assumption, and χ²=212.3 was large enough to require checking.
+
+Only GPT-4o and GPT-5.4 have CIs excluding zero, in opposite directions. The rest
+are consistent with no change between corpora.
+
+**Report the stratified column; the crude one belongs in the supplement.** This
+also settles the GPT-OSS 20B serving-stack question (§9): its stratified delta of
++0.040 is still mid-pack, so the vLLM substitution did not make it an outlier.
+
 ## 4. Binary foresight has a short half-life
 
 Pooled, binary looks like chance. Stratified by horizon, with event-clustered

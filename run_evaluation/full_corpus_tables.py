@@ -243,6 +243,7 @@ def main():
 
     out["_horizon_mcc"] = horizon_mcc(pub, PANEL)
     out["_discrimination_gap"] = discrimination_gap(pub, PANEL)
+    out["_stratified_mcq_delta"] = stratified_mcq_delta(PANEL)
 
     if a.out:
         json.dump(out, open(a.out, "w", encoding="utf-8"), indent=2)
@@ -391,6 +392,80 @@ def discrimination_gap(pub, panel, post_only=True, boots=2000, seed=11):
                      "excludes_zero": not (lo <= 0 <= hi)}
     print("  * = CI excludes zero. Negative gap means the model endorses the")
     print("  fabricated finding MORE readily than the genuine one.")
+    return out
+
+
+def stratified_mcq_delta(panel, min_cell=10):
+    """MCQ extension-vs-original delta, crude and domain-stratified.
+
+    The two corpora do NOT share a domain mix (chi2=212.3, df=8: the AI share
+    falls 24.0% -> 16.3% and 'Other' grows 1.3% -> 6.6%), so a crude difference
+    of post-cutoff MCQ accuracy confounds performance with item population.
+    Stratifying within main_area and pooling per-area deltas with weights
+    n_o*n_e/(n_o+n_e) cancels the mix.
+
+    In practice the two agree here -- the largest shift is 0.018 against CI
+    half-widths near 0.041 -- but that is a measured result, not an assumption,
+    and the mix difference is large enough that it had to be checked.
+    """
+    import math
+    meta = {}
+    for path in ("archive/data/canonical/merged_validated_cusp_fixed.jsonl",
+                 "benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026_monthnorm.jsonl"):
+        if not os.path.exists(path):
+            continue
+        for line in open(path, encoding="utf-8"):
+            if line.strip():
+                r = json.loads(line)
+                meta[r["id"]] = (r.get("main_area") or "Unknown",
+                                 mo(r.get("publication_date", "")))
+    print("\n=== MCQ EXTENSION-vs-ORIGINAL DELTA: crude vs domain-stratified ===")
+    print("    post-cutoff only; stratified pools per-area deltas, so mix cancels")
+    print(f"{'model':<17}{'crude':>20}{'domain-stratified':>22}{'areas':>7}")
+    out = {}
+    for name, cutoff, op, ep in panel:
+        cm = mo(cutoff)
+        o, e = {}, {}
+        for path, bucket in ((op, o), (ep, e)):
+            if not path or not os.path.exists(path):
+                continue
+            for x in json.load(open(path, encoding="utf-8")).get("results", []):
+                m = meta.get(x["id"])
+                if not m:
+                    continue
+                area, pm = m
+                if pm is None or cm is None or pm < cm:
+                    continue
+                t = (x.get("tasks") or {}).get("mcq")
+                if not t or t.get("skipped") or "correct" not in t:
+                    continue
+                bucket.setdefault(area, []).append(1.0 if t["correct"] else 0.0)
+        allo = [v for vs in o.values() for v in vs]
+        alle = [v for vs in e.values() for v in vs]
+        if len(allo) < 50 or len(alle) < 50:
+            continue
+        po_, pe_ = sum(allo) / len(allo), sum(alle) / len(alle)
+        crude = pe_ - po_
+        se_c = math.sqrt(pe_ * (1 - pe_) / len(alle) + po_ * (1 - po_) / len(allo))
+        num = den = varn = 0.0
+        k = 0
+        for a in set(o) & set(e):
+            no, ne = len(o[a]), len(e[a])
+            if no < min_cell or ne < min_cell:
+                continue
+            pa, pb = sum(o[a]) / no, sum(e[a]) / ne
+            w = no * ne / (no + ne)
+            num += w * (pb - pa); den += w; k += 1
+            varn += w * w * (pb * (1 - pb) / ne + pa * (1 - pa) / no)
+        if not den:
+            continue
+        strat, se_s = num / den, math.sqrt(varn) / den
+        print(f"{name:<17}{f'{crude:+.3f}+/-{1.96*se_c:.3f}':>20}"
+              f"{f'{strat:+.3f}+/-{1.96*se_s:.3f}':>22}{k:>7}")
+        out[name] = {"crude": crude, "crude_ci_halfwidth": 1.96 * se_c,
+                     "stratified": strat, "stratified_ci_halfwidth": 1.96 * se_s,
+                     "areas": k}
+    print("    report the stratified column; the crude one belongs in the supplement")
     return out
 
 
