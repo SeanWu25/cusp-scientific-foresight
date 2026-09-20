@@ -317,24 +317,34 @@ def horizon_mcc(pub, panel, bins=((0, 2), (3, 5), (6, 11), (12, 23), (24, 999)),
 
 
 def discrimination_gap(pub, panel, post_only=True, boots=2000, seed=11):
-    """P(yes | real finding) - P(yes | corrupted finding), per model.
+    """P(yes | real finding) - P(yes | corrupted finding), PAIRED within event.
 
-    This is the whole binary signal stated plainly: can the model tell a real
-    finding from a plausible fake? It tracks MCC almost exactly but is far
-    easier to interpret, and it is immune to both the class-balance problem
-    (the two rates are conditioned separately) and to response bias (a uniform
-    shift in yes-rate cancels).
+    Can the model tell a real finding from a plausible fake? Immune to the
+    class-balance problem (rates conditioned separately) and to response bias
+    (a uniform shift in yes-rate cancels).
 
-    Positive = discriminating. Negative = the model endorses the fabricated
-    version MORE readily than the genuine one.
+    PAIRING IS MANDATORY. Only 2,289 of 5,575 events carry both a real and a
+    perturbed binary question; the rest have one or the other. Computing the
+    two rates over all available items compares different papers in different
+    domains, and the question forms differ systematically -- real questions are
+    long conjunctive claims bundling many exact numbers, perturbed ones are
+    short single claims. Unpaired, five models appear significantly
+    ANTI-discriminating; paired, none do. That difference is entirely artifact.
 
-    CIs are bootstrapped over events, since an event contributes to both rates.
+    Residual confound, not fixable in analysis: even within pairs the real
+    question runs longer than the perturbed one (median 176 vs 131 chars), so
+    part of a positive gap may be length or specificity rather than truth
+    discrimination. Testing that needs length-matched perturbations, i.e. a
+    dataset change.
+
+    CIs are bootstrapped over event pairs.
     """
     import random
-    print("\n=== DISCRIMINATION GAP: P(yes|real) - P(yes|corrupted) ==="
+    print("\n=== PAIRED DISCRIMINATION GAP: P(yes|real) - P(yes|corrupted) ==="
           + ("  [post-cutoff only]" if post_only else "  [all]"))
+    print("    paired within event; only events carrying BOTH questions count")
     print(f"{'model':<17}{'P(yes|real)':>13}{'P(yes|corrupt)':>16}"
-          f"{'gap':>9}{'95% CI':>18}{'n events':>10}")
+          f"{'gap':>9}{'95% CI':>18}{'pairs':>8}")
     out = {}
     for name, cutoff, op, ep in panel:
         cm = mo(cutoff)
@@ -348,26 +358,21 @@ def discrimination_gap(pub, panel, post_only=True, boots=2000, seed=11):
                     continue
                 t = x.get("tasks", {})
                 b, q = t.get("binary"), t.get("binary_perturbed")
-                rb = qb = None
-                if b and not b.get("skipped") and "correct" in b:
-                    rb = 1 if b["correct"] else 0          # correct on real == said yes
-                if q and not q.get("skipped") and "correct" in q:
-                    qb = 0 if q["correct"] else 1          # wrong on corrupted == said yes
-                if rb is not None or qb is not None:
-                    ev.append((rb, qb))
+                # paired only: the event must carry BOTH questions
+                if not (b and q) or b.get("skipped") or q.get("skipped"):
+                    continue
+                if "correct" not in b or "correct" not in q:
+                    continue
+                ev.append((1 if b["correct"] else 0,      # correct on real == said yes
+                           0 if q["correct"] else 1))     # wrong on corrupted == said yes
         if len(ev) < 50:
             continue
 
         def gap(sample):
-            yr = nr = yc = nc = 0
-            for rb, qb in sample:
-                if rb is not None:
-                    yr += rb; nr += 1
-                if qb is not None:
-                    yc += qb; nc += 1
-            if not nr or not nc:
+            n = len(sample)
+            if not n:
                 return None
-            return yr / nr, yc / nc
+            return sum(a for a, _ in sample) / n, sum(b for _, b in sample) / n
 
         pr, pc = gap(ev)
         rng = random.Random(seed)
@@ -380,9 +385,9 @@ def discrimination_gap(pub, panel, post_only=True, boots=2000, seed=11):
         lo, hi = bs[int(.025 * len(bs))], bs[int(.975 * len(bs)) - 1]
         sig = "" if lo <= 0 <= hi else "  *"
         print(f"{name:<17}{pr:>13.3f}{pc:>16.3f}{pr-pc:>+9.3f}"
-              f"{f'[{lo:+.3f},{hi:+.3f}]':>18}{len(ev):>10}{sig}")
+              f"{f'[{lo:+.3f},{hi:+.3f}]':>18}{len(ev):>8}{sig}")
         out[name] = {"p_yes_real": pr, "p_yes_corrupted": pc, "gap": pr - pc,
-                     "ci": [lo, hi], "n_events": len(ev),
+                     "ci": [lo, hi], "n_pairs": len(ev), "paired": True,
                      "excludes_zero": not (lo <= 0 <= hi)}
     print("  * = CI excludes zero. Negative gap means the model endorses the")
     print("  fabricated finding MORE readily than the genuine one.")
