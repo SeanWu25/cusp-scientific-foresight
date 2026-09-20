@@ -1,0 +1,182 @@
+{
+  "definition": {
+    "delta_know": "mean(WS+cutoff) - mean(base), post-cutoff instances",
+    "delta_fore": "mean(WS unrestricted) - mean(WS+cutoff), post-cutoff instances",
+    "post_cutoff_rule": "publication_date > cutoff (cutoff month counts as pre)"
+  },
+  "min_n": 20,
+  "models": {
+    "GPT-5.4": {
+      "cutoff": "2025-08",
+      "n_shared_ids": 500,
+      "n_post_cutoff_ids": 0,
+      "tasks": {
+        "Binary": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Binary (pert.)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "MCQ": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "FRQ (0-10)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Date (0-1)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        }
+      }
+    },
+    "DeepSeek-R1": {
+      "cutoff": "2024-07",
+      "n_shared_ids": 500,
+      "n_post_cutoff_ids": 0,
+      "tasks": {
+        "Binary": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Binary (pert.)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "MCQ": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "FRQ (0-10)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Date (0-1)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        }
+      }
+    },
+    "Claude Sonnet": {
+      "cutoff": "2025-01",
+      "n_shared_ids": 500,
+      "n_post_cutoff_ids": 0,
+      "tasks": {
+        "Binary": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Binary (pert.)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "MCQ": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "FRQ (0-10)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Date (0-1)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        }
+      }
+    },
+    "Claude Sonnet 5 (ext)": {
+      "cutoff": "2026-01",
+      "n_shared_ids": 83,
+      "n_post_cutoff_ids": 83,
+      "tasks": {
+        "Binary": {
+          "n": 23,
+          "delta_know": 0.0,
+          "delta_fore": 0.43478260869565216,
+          "delta_know_ci": [
+            -0.21343047854034458,
+            0.21343047854034458
+          ],
+          "delta_fore_ci": [
+            0.2276308756050827,
+            0.6419343417862217
+          ],
+          "mean_base": 0.391304347826087,
+          "mean_wscut": 0.391304347826087,
+          "mean_ws": 0.8260869565217391
+        },
+        "Binary (pert.)": {
+          "n": 70,
+          "delta_know": -0.014285714285714285,
+          "delta_fore": -0.12857142857142856,
+          "delta_know_ci": [
+            -0.12346021892744884,
+            0.09488879035602026
+          ],
+          "delta_fore_ci": [
+            -0.23350039004785667,
+            -0.02364246709500044
+          ],
+          "mean_base": 0.7571428571428571,
+          "mean_wscut": 0.7428571428571429,
+          "mean_ws": 0.6142857142857143
+        },
+        "MCQ": {
+          "n": 59,
+          "delta_know": -0.0847457627118644,
+          "delta_fore": 0.0847457627118644,
+          "delta_know_ci": [
+            -0.15642146303561166,
+            -0.013070062388117143
+          ],
+          "delta_fore_ci": [
+            0.013070062388117143,
+            0.15642146303561166
+          ],
+          "mean_base": 0.9661016949152542,
+          "mean_wscut": 0.8813559322033898,
+          "mean_ws": 0.9661016949152542
+        },
+        "FRQ (0-10)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Date (0-1)": {
+          "n": 23,
+          "delta_know": 0.05477826086956521,
+          "delta_fore": 0.25782173913043477,
+          "delta_know_ci": [
+            -0.09759204878313273,
+            0.20714857052226315
+          ],
+          "delta_fore_ci": [
+            0.09821996281816875,
+            0.4174235154427008
+          ],
+          "mean_base": 0.22493043478260868,
+          "mean_wscut": 0.27970869565217393,
+          "mean_ws": 0.5375304347826088
+        }
+      }
+    }
+  }
+}

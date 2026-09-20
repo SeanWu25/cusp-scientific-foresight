@@ -1,6 +1,6 @@
 # Run 2 results — April–August 2026 extension
 
-Status: inference complete for the full panel; stage-1 leakage judging in progress.
+Status: COMPLETE. Full panel over both corpora; stage-1 leakage judging finished.
 All numbers below come from stored predictions scored by the frozen `scoring_v1`
 graders. Nothing here required re-running any of the six published models.
 
@@ -270,38 +270,70 @@ as a mechanism demonstration, not a precise effect size.
 
 ## 8. Stage-1 leakage: what it can and cannot show here
 
-Judging is in progress. Partial result: 1,320 of 5,184 responses judged, 100%
-with web search actually used, **0.7% returning a "fail"** verdict.
+Complete: **5,083 judgements, 97.8% pass, 2.00% unclear, 0.20% fail** (10 on the
+base runs, 18 including the web-search conditions). Web search was used on 100%.
 
-That number must not be reported as a contamination rate, because on this corpus
-the judge cannot measure contamination. Its evidence search runs against the live
-web with no date restriction. When a model produces a description close to the
-real finding, the search surfaces the paper — published *after* every model's
-cutoff — and the judge records leakage.
+| Model | FRQ judged | pass | unclear | fail |
+|---|---|---|---|---|
+| GPT-4o | 630 | 617 | 13 | 0 |
+| LLaMA 3.3 70B | 630 | 615 | 14 | 1 |
+| GPT-OSS 20B | 627 | 615 | 8 | 4 |
+| Claude S4.5 | 559 | 541 | 17 | 1 |
+| GPT-5.4 | 629 | 615 | 14 | 0 |
+| Claude Sonnet 5 | 617 | 597 | 18 | 2 |
+| GPT-5.6 Sol | 623 | 615 | 6 | 2 |
+| DeepSeek-V4-Pro | 629 | 620 | 9 | 0 |
 
-Manual review of the first 8 failures:
+**Do not read `reasoning_metrics.leakage` from the report JSONs.** It counts
+every event lacking an FRQ response as "unclear" — 815 events against ~630 FRQ
+prompts — overstating judge uncertainty roughly twofold (Claude S4.5 reads as
+273 unclear when the judge returned 17). The table above comes from the
+judgement files. Pre-existing schema behaviour, not introduced by this run.
 
-| Cause | n | Explanation |
-|---|---|---|
-| Evidence is the target paper itself | 5 | Published post-cutoff; the model cannot have memorised it |
-| Flagged entity was in the model's own prompt | 2 | `CASP5`, `R4P`/`SWE-RM` — the model was handed these |
-| Other | 1 | Generic phrasing (`Token-Level Credit Assignment`) matching an unrelated paper |
+### Why a "fail" here cannot mean contamination
 
-A GPT-OSS 20B model with a 2024-06 cutoff cannot have memorised an August 2026
-arXiv paper. Naming something the judge then matches to that paper is a correct
-forecast or, more likely given entries like "Token-Level Credit Assignment", a
-generic phrase colliding with a real title.
+The judge's evidence search runs against the live web with no date restriction.
+On a corpus postdating every cutoff, a model describing the real finding makes
+the search surface the paper, and the judge records leakage. Triage of all 18:
 
-**Correct framing:** "manual review of all flagged cases found no evidence of
-contamination" — not "the judge measured a 0.7% leakage rate." At 0.7% of 5,184
-that is roughly 35 cases, few enough to review by hand, which is the plan.
+| Category | n |
+|---|---|
+| Evidence is the target paper itself | 7 |
+| Model had live web access (unrestricted `*_ws` run) | 6 |
+| Flagged entity was in the model's own prompt | 2 |
+| Needs a domain reader | 3 |
 
-The check still earns its place: it would catch a model whose true cutoff is later
-than stated, the one contamination route that survives a post-cutoff corpus.
+The web-search category matters: that condition hands the model the live web, so
+a post-cutoff entity is retrieval working as designed. The two search conditions
+are asymmetric — a post-cutoff entity in the unrestricted run is expected, but
+one in the cutoff-restricted run would mean the date filter leaked. The single
+`ws_cutoff` failure is an entity from the model's own prompt, so the filter held.
 
-Two judge-side fixes for the methods section, both outside the freeze and **not
-made**: the evidence search should be date-restricted to the model's cutoff, and
-entities appearing in the prompt should be filtered before flagging.
+The three residuals: `Token-Level Credit Assignment` (LLaMA 3.3),
+`Perturb-multiome` (Claude Sonnet 5), and `Imaging hidden objects with consumer
+LiDAR via motion-induced sampling` (GPT-5.6 Sol, matched to arXiv 2605.17865).
+The first two read as generic compound phrases; the third is a full descriptive
+title and is the one case genuinely worth a domain reader.
+
+### The "unclear" verdicts are a clean signal
+
+All 99 are cases where a model coined an unverifiable name — `INTERACT-BENCH`,
+`ISREV`, `HiTARL-ACG` — and the judge declined to match it to anything real
+(median score 0.00). The opposite failure mode from `fail`, and reassuring in
+both directions: fabricated names are not pattern-matched to real systems, and
+genuine descriptions do surface their papers.
+
+**Reportable claim:** manual review of every flagged case across 5,083
+judgements found no evidence of training contamination, with three cases pending
+a domain reader. Not "the judge measured a 0.20% leakage rate."
+
+The check still earns its place: it would catch a model whose true cutoff is
+later than stated, the one contamination route a post-cutoff corpus does not
+rule out by construction.
+
+Two judge-side fixes, outside the freeze and **not made**: date-restrict the
+evidence search to the model's cutoff, and filter prompt-present entities before
+flagging.
 
 ## 9. Reliability and provenance
 

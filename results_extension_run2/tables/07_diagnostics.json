@@ -1,0 +1,709 @@
+{
+  "refusals": {
+    "GPT-4o": {
+      "calls": 2277,
+      "refused": 0,
+      "per_task": {},
+      "per_area": {
+        "Artificial Intelligence": {
+          "calls": 410
+        },
+        "Biology": {
+          "calls": 508
+        },
+        "Chemistry": {
+          "calls": 71
+        },
+        "Environmental Science": {
+          "calls": 91
+        },
+        "Materials Science": {
+          "calls": 290
+        },
+        "Medicine": {
+          "calls": 347
+        },
+        "Neuroscience": {
+          "calls": 156
+        },
+        "Other": {
+          "calls": 154
+        },
+        "Physics": {
+          "calls": 250
+        }
+      }
+    },
+    "LLaMA 3.3 70B": {
+      "calls": 2277,
+      "refused": 0,
+      "per_task": {},
+      "per_area": {
+        "Artificial Intelligence": {
+          "calls": 410
+        },
+        "Biology": {
+          "calls": 508
+        },
+        "Chemistry": {
+          "calls": 71
+        },
+        "Environmental Science": {
+          "calls": 91
+        },
+        "Materials Science": {
+          "calls": 290
+        },
+        "Medicine": {
+          "calls": 347
+        },
+        "Neuroscience": {
+          "calls": 156
+        },
+        "Other": {
+          "calls": 154
+        },
+        "Physics": {
+          "calls": 250
+        }
+      }
+    },
+    "GPT-OSS 20B": {
+      "calls": 2277,
+      "refused": 0,
+      "per_task": {},
+      "per_area": {
+        "Artificial Intelligence": {
+          "calls": 410
+        },
+        "Biology": {
+          "calls": 508
+        },
+        "Chemistry": {
+          "calls": 71
+        },
+        "Environmental Science": {
+          "calls": 91
+        },
+        "Materials Science": {
+          "calls": 290
+        },
+        "Medicine": {
+          "calls": 347
+        },
+        "Neuroscience": {
+          "calls": 156
+        },
+        "Other": {
+          "calls": 154
+        },
+        "Physics": {
+          "calls": 250
+        }
+      }
+    },
+    "Claude S4.5": {
+      "calls": 2277,
+      "refused": 361,
+      "per_task": {
+        "mcq": 133,
+        "binary_perturbed": 111,
+        "frq": 71,
+        "binary": 22,
+        "date": 24
+      },
+      "per_area": {
+        "Artificial Intelligence": {
+          "calls": 410,
+          "refused": 2
+        },
+        "Biology": {
+          "calls": 508,
+          "refused": 182
+        },
+        "Chemistry": {
+          "calls": 71,
+          "refused": 3
+        },
+        "Environmental Science": {
+          "calls": 91,
+          "refused": 22
+        },
+        "Materials Science": {
+          "calls": 290,
+          "refused": 17
+        },
+        "Medicine": {
+          "calls": 347,
+          "refused": 97
+        },
+        "Neuroscience": {
+          "calls": 156,
+          "refused": 21
+        },
+        "Other": {
+          "calls": 154,
+          "refused": 10
+        },
+        "Physics": {
+          "calls": 250,
+          "refused": 7
+        }
+      }
+    },
+    "GPT-5.4": {
+      "calls": 2277,
+      "refused": 1,
+      "per_task": {
+        "frq": 1
+      },
+      "per_area": {
+        "Artificial Intelligence": {
+          "calls": 410
+        },
+        "Biology": {
+          "calls": 508
+        },
+        "Chemistry": {
+          "calls": 71
+        },
+        "Environmental Science": {
+          "calls": 91
+        },
+        "Materials Science": {
+          "calls": 290
+        },
+        "Medicine": {
+          "calls": 347,
+          "refused": 1
+        },
+        "Neuroscience": {
+          "calls": 156
+        },
+        "Other": {
+          "calls": 154
+        },
+        "Physics": {
+          "calls": 250
+        }
+      }
+    },
+    "Claude Sonnet 5": {
+      "calls": 2277,
+      "refused": 76,
+      "per_task": {
+        "binary_perturbed": 21,
+        "mcq": 37,
+        "frq": 12,
+        "binary": 3,
+        "date": 3
+      },
+      "per_area": {
+        "Artificial Intelligence": {
+          "calls": 410
+        },
+        "Biology": {
+          "calls": 508,
+          "refused": 40
+        },
+        "Chemistry": {
+          "calls": 71,
+          "refused": 1
+        },
+        "Environmental Science": {
+          "calls": 91,
+          "refused": 4
+        },
+        "Materials Science": {
+          "calls": 290
+        },
+        "Medicine": {
+          "calls": 347,
+          "refused": 30
+        },
+        "Neuroscience": {
+          "calls": 156,
+          "refused": 1
+        },
+        "Other": {
+          "calls": 154
+        },
+        "Physics": {
+          "calls": 250
+        }
+      }
+    },
+    "GPT-5.6 Sol": {
+      "calls": 2277,
+      "refused": 11,
+      "per_task": {
+        "mcq": 4,
+        "frq": 7
+      },
+      "per_area": {
+        "Artificial Intelligence": {
+          "calls": 410
+        },
+        "Biology": {
+          "calls": 508,
+          "refused": 5
+        },
+        "Chemistry": {
+          "calls": 71
+        },
+        "Environmental Science": {
+          "calls": 91
+        },
+        "Materials Science": {
+          "calls": 290
+        },
+        "Medicine": {
+          "calls": 347,
+          "refused": 6
+        },
+        "Neuroscience": {
+          "calls": 156
+        },
+        "Other": {
+          "calls": 154
+        },
+        "Physics": {
+          "calls": 250
+        }
+      }
+    },
+    "DeepSeek-V4-Pro": {
+      "calls": 2277,
+      "refused": 0,
+      "per_task": {},
+      "per_area": {
+        "Artificial Intelligence": {
+          "calls": 410
+        },
+        "Biology": {
+          "calls": 508
+        },
+        "Chemistry": {
+          "calls": 71
+        },
+        "Environmental Science": {
+          "calls": 91
+        },
+        "Materials Science": {
+          "calls": 290
+        },
+        "Medicine": {
+          "calls": 347
+        },
+        "Neuroscience": {
+          "calls": 156
+        },
+        "Other": {
+          "calls": 154
+        },
+        "Physics": {
+          "calls": 250
+        }
+      }
+    }
+  },
+  "refusal_sensitivity": {
+    "Claude S4.5": {
+      "binary": {
+        "excluded": 0.3161,
+        "as_wrong": 0.2806,
+        "n_excluded": 174,
+        "n_all": 196
+      },
+      "binary_perturbed": {
+        "excluded": 0.6357,
+        "as_wrong": 0.5347,
+        "n_excluded": 538,
+        "n_all": 649
+      },
+      "mcq": {
+        "excluded": 0.7548,
+        "as_wrong": 0.5924,
+        "n_excluded": 473,
+        "n_all": 606
+      },
+      "date": {
+        "excluded": 0.317,
+        "as_wrong": 0.2782,
+        "n_excluded": 172,
+        "n_all": 196
+      }
+    },
+    "GPT-5.4": {
+      "binary": {
+        "excluded": 0.6735,
+        "as_wrong": 0.6735,
+        "n_excluded": 196,
+        "n_all": 196
+      },
+      "binary_perturbed": {
+        "excluded": 0.3451,
+        "as_wrong": 0.3451,
+        "n_excluded": 649,
+        "n_all": 649
+      },
+      "mcq": {
+        "excluded": 0.8581,
+        "as_wrong": 0.8581,
+        "n_excluded": 606,
+        "n_all": 606
+      },
+      "date": {
+        "excluded": 0.1544,
+        "as_wrong": 0.1544,
+        "n_excluded": 196,
+        "n_all": 196
+      }
+    },
+    "Claude Sonnet 5": {
+      "binary": {
+        "excluded": 0.2953,
+        "as_wrong": 0.2908,
+        "n_excluded": 193,
+        "n_all": 196
+      },
+      "binary_perturbed": {
+        "excluded": 0.7659,
+        "as_wrong": 0.7411,
+        "n_excluded": 628,
+        "n_all": 649
+      },
+      "mcq": {
+        "excluded": 0.9104,
+        "as_wrong": 0.8548,
+        "n_excluded": 569,
+        "n_all": 606
+      },
+      "date": {
+        "excluded": 0.2282,
+        "as_wrong": 0.2247,
+        "n_excluded": 193,
+        "n_all": 196
+      }
+    },
+    "GPT-5.6 Sol": {
+      "binary": {
+        "excluded": 0.7194,
+        "as_wrong": 0.7194,
+        "n_excluded": 196,
+        "n_all": 196
+      },
+      "binary_perturbed": {
+        "excluded": 0.3975,
+        "as_wrong": 0.3975,
+        "n_excluded": 649,
+        "n_all": 649
+      },
+      "mcq": {
+        "excluded": 0.8688,
+        "as_wrong": 0.863,
+        "n_excluded": 602,
+        "n_all": 606
+      },
+      "date": {
+        "excluded": 0.2213,
+        "as_wrong": 0.2213,
+        "n_excluded": 196,
+        "n_all": 196
+      }
+    }
+  },
+  "run_to_run_variance": {
+    "merged_binary": {
+      "runs": [
+        0.6552984165651644,
+        0.6390243902439025,
+        0.6560975609756098
+      ],
+      "mean": 0.6501401225948922,
+      "sd": 0.009634795650210587
+    },
+    "binary": {
+      "runs": [
+        0.2953,
+        0.2902,
+        0.2694
+      ],
+      "mean": 0.28496666666666665,
+      "sd": 0.013720179785022275
+    },
+    "binary_perturbed": {
+      "runs": [
+        0.7659,
+        0.7464,
+        0.7751
+      ],
+      "mean": 0.7624666666666666,
+      "sd": 0.014654805810154372
+    },
+    "mcq": {
+      "runs": [
+        0.9104,
+        0.903,
+        0.9014
+      ],
+      "mean": 0.9049333333333334,
+      "sd": 0.004801388688008219
+    },
+    "date_score": {
+      "runs": [
+        0.2282,
+        0.2303,
+        0.2362
+      ],
+      "mean": 0.23156666666666667,
+      "sd": 0.004147690120215509
+    },
+    "refusals": {
+      "runs": [
+        76,
+        79,
+        78
+      ],
+      "mean": 77.66666666666667,
+      "sd": 1.5275252316519468
+    }
+  },
+  "cost": {
+    "GPT-4o": {
+      "serving": "azure",
+      "calls": 2277,
+      "input_tokens": 353854,
+      "output_tokens": 174486,
+      "reasoning_tokens": 0,
+      "api_time_s": 2304.8,
+      "cost_usd": null
+    },
+    "LLaMA 3.3 70B": {
+      "serving": "azure",
+      "calls": 2277,
+      "input_tokens": 411191,
+      "output_tokens": 190708,
+      "reasoning_tokens": 0,
+      "api_time_s": 3900.7,
+      "cost_usd": null
+    },
+    "GPT-OSS 20B": {
+      "serving": "local",
+      "calls": 2277,
+      "input_tokens": 490474,
+      "output_tokens": 1131760,
+      "reasoning_tokens": 0,
+      "api_time_s": 8664.7,
+      "cost_usd": null
+    },
+    "Claude S4.5": {
+      "serving": "api",
+      "calls": 2277,
+      "input_tokens": 395412,
+      "output_tokens": 310594,
+      "reasoning_tokens": 0,
+      "api_time_s": 10208.1,
+      "cost_usd": 5.845146000000001
+    },
+    "GPT-5.4": {
+      "serving": "api",
+      "calls": 2277,
+      "input_tokens": 351455,
+      "output_tokens": 1429331,
+      "reasoning_tokens": 1142642,
+      "api_time_s": 15550.5,
+      "cost_usd": 14.732628750000002
+    },
+    "Claude Sonnet 5": {
+      "serving": "api",
+      "calls": 2277,
+      "input_tokens": 567329,
+      "output_tokens": 424979,
+      "reasoning_tokens": 0,
+      "api_time_s": 7191.2,
+      "cost_usd": 5.384448
+    },
+    "GPT-5.6 Sol": {
+      "serving": "api",
+      "calls": 2277,
+      "input_tokens": 349850,
+      "output_tokens": 865700,
+      "reasoning_tokens": 639437,
+      "api_time_s": 18485.3,
+      "cost_usd": 18.7134
+    },
+    "DeepSeek-V4-Pro": {
+      "serving": "azure",
+      "calls": 2277,
+      "input_tokens": 339381,
+      "output_tokens": 200271,
+      "reasoning_tokens": 0,
+      "api_time_s": 7489.2,
+      "cost_usd": null
+    }
+  },
+  "constant_baselines": {
+    "original (Jan 24-Mar 26)": {
+      "n_yes": 2754,
+      "n_no": 3654,
+      "n": 6408,
+      "always_yes": 0.4297752808988764,
+      "always_no": 0.5702247191011236
+    },
+    "extension (Apr-Aug 26)": {
+      "n_yes": 196,
+      "n_no": 649,
+      "n": 845,
+      "always_yes": 0.2319526627218935,
+      "always_no": 0.7680473372781065
+    },
+    "models_beating_always_no": 0
+  },
+  "mcq_permutation": {
+    "GPT-4o": {
+      "n": 606,
+      "correct_at": {
+        "C": 149,
+        "D": 160,
+        "A": 161,
+        "B": 136
+      },
+      "chi2": 2.6996699669966997,
+      "uniform": true,
+      "distinct_permutations": 24,
+      "model_picks": {
+        "A": 0.32673267326732675,
+        "B": 0.2145214521452145,
+        "C": 0.2524752475247525,
+        "D": 0.20627062706270627
+      }
+    },
+    "LLaMA 3.3 70B": {
+      "n": 606,
+      "correct_at": {
+        "C": 149,
+        "D": 160,
+        "A": 161,
+        "B": 136
+      },
+      "chi2": 2.6996699669966997,
+      "uniform": true,
+      "distinct_permutations": 24,
+      "model_picks": {
+        "A": 0.3069306930693069,
+        "B": 0.21782178217821782,
+        "C": 0.2590759075907591,
+        "D": 0.21617161716171618
+      }
+    },
+    "GPT-OSS 20B": {
+      "n": 606,
+      "correct_at": {
+        "C": 149,
+        "D": 160,
+        "A": 161,
+        "B": 136
+      },
+      "chi2": 2.6996699669966997,
+      "uniform": true,
+      "distinct_permutations": 24,
+      "model_picks": {
+        "A": 0.2694214876033058,
+        "B": 0.21652892561983472,
+        "C": 0.2743801652892562,
+        "D": 0.2396694214876033
+      }
+    },
+    "Claude S4.5": {
+      "n": 606,
+      "correct_at": {
+        "C": 149,
+        "D": 160,
+        "A": 161,
+        "B": 136
+      },
+      "chi2": 2.6996699669966997,
+      "uniform": true,
+      "distinct_permutations": 24,
+      "model_picks": {
+        "A": 0.24312896405919662,
+        "B": 0.24312896405919662,
+        "C": 0.2536997885835095,
+        "D": 0.26004228329809725
+      }
+    },
+    "GPT-5.4": {
+      "n": 606,
+      "correct_at": {
+        "C": 149,
+        "D": 160,
+        "A": 161,
+        "B": 136
+      },
+      "chi2": 2.6996699669966997,
+      "uniform": true,
+      "distinct_permutations": 24,
+      "model_picks": {
+        "A": 0.2816666666666667,
+        "B": 0.23,
+        "C": 0.225,
+        "D": 0.2633333333333333
+      }
+    },
+    "Claude Sonnet 5": {
+      "n": 606,
+      "correct_at": {
+        "C": 149,
+        "D": 160,
+        "A": 161,
+        "B": 136
+      },
+      "chi2": 2.6996699669966997,
+      "uniform": true,
+      "distinct_permutations": 24,
+      "model_picks": {
+        "A": 0.2548330404217926,
+        "B": 0.20913884007029876,
+        "C": 0.2688927943760984,
+        "D": 0.2671353251318102
+      }
+    },
+    "GPT-5.6 Sol": {
+      "n": 606,
+      "correct_at": {
+        "C": 149,
+        "D": 160,
+        "A": 161,
+        "B": 136
+      },
+      "chi2": 2.6996699669966997,
+      "uniform": true,
+      "distinct_permutations": 24,
+      "model_picks": {
+        "A": 0.26744186046511625,
+        "B": 0.23421926910299004,
+        "C": 0.2425249169435216,
+        "D": 0.2558139534883721
+      }
+    },
+    "DeepSeek-V4-Pro": {
+      "n": 606,
+      "correct_at": {
+        "C": 149,
+        "D": 160,
+        "A": 161,
+        "B": 136
+      },
+      "chi2": 2.6996699669966997,
+      "uniform": true,
+      "distinct_permutations": 24,
+      "model_picks": {
+        "A": 0.24092409240924093,
+        "B": 0.24257425742574257,
+        "C": 0.29042904290429045,
+        "D": 0.22607260726072606
+      }
+    }
+  }
+}

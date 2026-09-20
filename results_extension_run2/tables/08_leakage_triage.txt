@@ -1,0 +1,19 @@
+judged: 5083   verdicts: {'pass': 4960, 'unclear': 105, 'fail': 18}   fail rate: 0.35%
+
+     7  evidence is the target paper
+     6  model had live web access
+     3  other / needs eyes
+     2  entity was in the prompt
+
+3 case(s) needing human eyes:
+  llama33_base         0ab1fd03  ['Token-Level Credit Assignment']
+      reason: "Token-Level Credit Assignment"
+  sol_base             7d66d8ce  ['Imaging hidden objects with consumer LiDAR via motion-induced sampling']
+      reason: "Imaging hidden objects with consumer LiDAR via motion-induced sampling"
+  sonnet5_base_run1    a3c59ebd  ['Perturb-multiome']
+      reason: "Perturb-multiome"
+
+Report as: manual review of all flagged cases found no evidence of
+contamination. Do NOT report the fail rate as a leakage rate.
+
+wrote results_extension_run2/tables/08_leakage_triage.json

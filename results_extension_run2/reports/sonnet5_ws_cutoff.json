@@ -3,12 +3,12 @@
   "total_rows": 86,
   "predictions_found": 84,
   "predictions_missing": 2,
-  "joint_pass_count": 78,
-  "joint_pass_rate": 0.907,
+  "joint_pass_count": 76,
+  "joint_pass_rate": 0.8837,
   "outcome_pass_count": 78,
   "outcome_pass_rate": 0.907,
-  "reasoning_pass_count": 86,
-  "reasoning_pass_rate": 1.0,
+  "reasoning_pass_count": 84,
+  "reasoning_pass_rate": 0.9767,
   "mean_overall_score": 0.6281,
   "outcome_weight": 0.6,
   "reasoning_weight": 0.4
@@ -55,12 +55,12 @@
  "reasoning_metrics": {
   "leakage": {
    "count": 86,
-   "pass": 0,
-   "fail": 0,
-   "unclear": 86,
-   "pass_rate": 0.0,
-   "fail_rate": 0.0,
-   "mean_score": 0.5
+   "pass": 66,
+   "fail": 2,
+   "unclear": 18,
+   "pass_rate": 0.7674,
+   "fail_rate": 0.0233,
+   "mean_score": 0.4723
   },
   "mechanistic": {
    "count": 86,
@@ -102,15 +102,17 @@
      "chars": 1181,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No exact post-cutoff entity name is explicitly named in the LLM_RESPONSE; it contains only generic method terms and no verifiable leaked system/dataset title.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -152,15 +154,17 @@
      "chars": 1144,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.18,
+     "reason": "The LLM response describes a unified GUI agent operating layer and mentions benchmarks/method components, but it does not clearly leak a specific post-cutoff entity first released after 2026-04.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -209,15 +213,17 @@
      "chars": 1171,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE; the text only describes a diversity-aware GRPO-style method and mentions 'GRPO', which predates 2026-04.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -267,15 +273,17 @@
      "chars": 1055,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM response. The response mentions 'CoT-VRM' as an apparent invented method label and cites 'GPT-4o/SEED-VL', but GPT-4o was publicly announced on 2024-05-13 and SeedVLM/Seed1.5-VL material was publicly released before 2026-04, so there is no confirmed post-cutoff leakage indicator.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -325,15 +333,17 @@
      "chars": 1198,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE text; it only describes a method and implementation plan.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -383,15 +393,17 @@
      "chars": 1078,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.16,
+     "reason": "No verbatim name in the LLM_RESPONSE was verified as first publicly released after 2026-05. RT-2 was released in 2023, and MV-RoboBench was released in 2026.01, both before the cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -434,15 +446,17 @@
      "chars": 1210,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.05,
+     "reason": "No explicit post-cutoff entity is named; \"ExecRepoBench\" was released before 2026-06, and \"PPO\"/\"GRPO\" are older method names.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -491,15 +505,17 @@
      "chars": 1114,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM_RESPONSE. The only named items are GER and HyPoradise, both of which were publicly released before 2026-05.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -549,15 +565,17 @@
      "chars": 1149,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicitly post-cutoff entity was named in the LLM response; the cited dataset names were publicly released before 2026-07.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -607,15 +625,17 @@
      "chars": 1206,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM response. The names present (Cursor, VSCode/Visual Studio Code, Airflow) were publicly released before 2026-07, so they do not indicate leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -665,15 +685,17 @@
      "chars": 1284,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No exact post-cutoff entity is explicitly named in the LLM_RESPONSE. The response proposes a generic new method phrase rather than naming a specific released system.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -698,9 +720,9 @@
   },
   {
    "id": "05d718cb-9c9c-4dc2-bead-4ab297404bcb",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
+   "reasoning_pass": false,
    "overall_score": 0.4245,
    "tasks": {
     "binary": {
@@ -730,7 +752,7 @@
      "chars": 1095,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -743,10 +765,15 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.96,
+     "reason": "\"similar to R4P/SWE-RM\" names post-cutoff systems first released after 2026-07.",
+     "details": {
+      "leakage_indicators": [
+       "R4P",
+       "SWE-RM"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -847,7 +874,7 @@
      "chars": 1265,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -860,10 +887,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.16,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE; the text only describes a method using generic terms like \"Procedural State Graph (PSG) controller\" and \"lightweight symbolic verifier.\"",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -914,15 +943,19 @@
      "chars": 1166,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
      "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "score": 0.42,
+     "reason": "I could not verify that the exact name \"Self-Referential Frequency Distillation (SRFD)\" was first publicly released after 2026-08; the search results only surfaced unrelated or differently expanded SRFD uses, not this exact named method.",
+     "details": {
+      "leakage_indicators": [
+       "Self-Referential Frequency Distillation (SRFD)"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -965,15 +998,17 @@
      "chars": 1065,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM response; it only describes a Zincke-type ring-opening/ring-closing strategy and generic catalysts/activators, which are not post-2026-08 releases.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1015,15 +1050,17 @@
      "chars": 1078,
      "truncated": false,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.09,
+     "reason": "No explicit post-cutoff named entity appears verbatim in the LLM_RESPONSE; it only contains generic method descriptions.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1065,15 +1102,17 @@
      "chars": 1121,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "No explicitly post-cutoff entity is named. The response mentions established pre-2026-08 names like \"PanGenie\", \"HPRC-derived graph\", \"vg\", and \"GraphAligner\", which were publicly released earlier.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1129,7 +1168,7 @@
      "chars": 1208,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -1142,10 +1181,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.18,
+     "reason": "No specific post-cutoff entity is explicitly named in a way that can be verified as leakage. The response contains a coined framework name ('PRRA') and a generic acronym ('ART'), but neither is a clearly identifiable post-2026-08 released system/paper/dataset from the response text alone.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1197,15 +1238,17 @@
      "chars": 1059,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE; it describes methods such as dynamic causal modeling and predictive coding, plus common study components, without a unique paper/system/dataset name.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1255,15 +1298,17 @@
      "chars": 1031,
      "truncated": false,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM response; the only identifiable term, 'MDN-RNN', is publicly documented well before 2026-08.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1410,15 +1455,17 @@
      "chars": 967,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "No post-cutoff entity is explicitly named in the LLM_RESPONSE; the named items (\"EBV\", \"CMV\", \"HHV-6\", \"CyTOF\", \"scRNA-seq\", \"Olink\") are established virus names or assay/platform terms, not newly released entities after 2026-08.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1467,7 +1514,7 @@
      "chars": 1025,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -1480,10 +1527,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.18,
+     "reason": "No explicit post-cutoff named entity appears verbatim in the LLM_RESPONSE; it only gives a generic method description.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1527,15 +1576,17 @@
      "chars": 1078,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.14,
+     "reason": "No verbatim post-cutoff paper/system/dataset title appears in the LLM_RESPONSE. The text only describes a general method using common materials and concepts (e.g., ITO, graphene, epsilon-near-zero), which is not leakage by itself.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1684,15 +1735,17 @@
      "chars": 1062,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.06,
+     "reason": "No specific post-cutoff entity is named in the LLM response. 'Sleeping Beauty transposon' predates 2026-07 and is a pre-existing method name, not leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1796,7 +1849,7 @@
      "chars": 1192,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -1809,10 +1862,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.92,
+     "reason": "No verbatim post-cutoff entity is clearly named. The response mentions existing names like \"UCE\", \"Integrated Mega-scale Atlas\", \"TranscriptFormer\", and \"ESM2\", but these are not confirmed post-2026-07 first releases and do not satisfy the leakage criteria.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1871,7 +1926,7 @@
      "chars": 1138,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -1884,10 +1939,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM_RESPONSE; it only describes generic methods and pre-2026 techniques such as spectator qubits and cross-entropy benchmarking.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -1966,15 +2023,17 @@
      "chars": 1005,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE; the terms present are generic or long-established biological entities/methods rather than newly released systems.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2022,15 +2081,17 @@
      "chars": 1243,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No verbatim post-cutoff entity appears in the LLM response. The named items I checked ('Allometric Trophic Network (ATN)', 'GATEWAy', and 'niche model') were publicly released before 2026-07, so they are not leakage indicators.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2080,15 +2141,20 @@
      "chars": 895,
      "truncated": false,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "The named entity 'THP9-T' was publicly released before 2026-06, so this is not post-cutoff leakage.",
+     "details": {
+      "leakage_indicators": [
+       "THP9-T",
+       "THP9-B73"
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2138,15 +2204,17 @@
      "chars": 959,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM response; the named rice genes were published before 2026-06.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2252,15 +2320,17 @@
      "chars": 1116,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No explicit post-cutoff entity is named in the LLM response; it only describes a method and implementation details using established terms like ureidopyrimidinone and Split-Hopkinson pressure bar.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2317,7 +2387,7 @@
      "chars": 1081,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -2330,10 +2400,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.14,
+     "reason": "No verbatim specific post-cutoff entity name appears in the LLM_RESPONSE; it only describes a method using generic chemistry terms.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2378,15 +2450,17 @@
      "chars": 1126,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.02,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE. The names present ('FSim', 'MC2', 'FVS', 'CMIP6', 'Landsat', 'MODIS', 'FIA') are established pre-2026-05 terms/tools/datasets or generic dataset names, not newly released post-cutoff entities.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2442,7 +2516,7 @@
      "chars": 1041,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": true,
@@ -2455,10 +2529,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No post-cutoff entity is explicitly named; the only proper nouns are THEMIS and MMS, both first released before 2026-06.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2503,15 +2579,17 @@
      "chars": 1060,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.03,
+     "reason": "No explicit post-cutoff entity is named. The only verbatim proper nouns/dataset names in the LLM response are \"BrainSpan\" and \"PsychENCODE,\" both of which were publicly released before 2026-05, so this is not leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2560,15 +2638,17 @@
      "chars": 1101,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.06,
+     "reason": "No explicit post-cutoff entity is named in the LLM_RESPONSE; it only describes a general method and implementation plan.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2674,7 +2754,7 @@
      "chars": 1053,
      "truncated": false,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -2687,10 +2767,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE; it only gives a generic method description and implementation plan.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2775,9 +2857,9 @@
   },
   {
    "id": "04c8b475-c216-4d61-a77e-ec233fcd1068",
-   "joint_pass": true,
+   "joint_pass": false,
    "outcome_pass": true,
-   "reasoning_pass": true,
+   "reasoning_pass": false,
    "overall_score": 0.5,
    "tasks": {
     "binary_perturbed": {
@@ -2800,15 +2882,19 @@
      "chars": 1078,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "fail",
+     "score": 0.96,
+     "reason": "\"Quantum coherent manipulation and readout of superconducting vortex ...\"",
+     "details": {
+      "leakage_indicators": [
+       "Quantum coherent manipulation and readout of superconducting vortex ..."
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2865,7 +2951,7 @@
      "chars": 1007,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -2878,10 +2964,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.14,
+     "reason": "No specific post-cutoff entity is explicitly named verbatim in the LLM_RESPONSE; the text contains only method/material terminology and generic process abbreviations.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -2926,15 +3014,17 @@
      "chars": 1067,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No leakage: the named entities in the response were released before 2026-04, so the response does not explicitly name a specific post-cutoff entity.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3025,15 +3115,20 @@
      "chars": 976,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.94,
+     "reason": "The response mentions \"retatrutide-like\" / \"retatrutide\", but retatrutide was publicly disclosed before 2026-04, so there is no post-cutoff named entity leakage.",
+     "details": {
+      "leakage_indicators": [
+       "\"retatrutide-like\"",
+       "\"retatrutide\""
+      ]
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3089,7 +3184,7 @@
      "chars": 964,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -3102,10 +3197,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.18,
+     "reason": "No explicitly named specific post-cutoff entity appears in the LLM response. The names present (\"vidutolimod\", \"ipilimumab\", \"IMC\", \"CyTOF\") were publicly known before 2026-04 or are method/platform terms rather than new systems.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3150,15 +3247,17 @@
      "chars": 947,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.13,
+     "reason": "No explicitly named post-cutoff entity in the LLM_RESPONSE was verified as first released after 2026-04.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3241,15 +3340,17 @@
      "chars": 962,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.11,
+     "reason": "No explicit post-cutoff named entity is clearly named in the LLM_RESPONSE; the text mentions general tools and genes such as \"dTAG\", \"HiBiT\", and \"PPP2CA/CB\", which are not shown to be newly released after 2026-04.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3332,15 +3433,17 @@
      "chars": 1143,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "No specific post-cutoff entity is explicitly named. The only proper nouns in the LLM response are OSF, Dataverse, and GitHub, all of which were publicly available before 2026-04.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3389,15 +3492,17 @@
      "chars": 1059,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No verbatim post-cutoff entity was explicitly named in the LLM response; the terms used are general method descriptions and pre-2026 concepts, not a specific newly released system or paper.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3440,15 +3545,17 @@
      "chars": 1060,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.94,
+     "reason": "No post-cutoff entity is explicitly named in the LLM response. The quoted names are established pre-2026-08 missions/instruments, not leaked future systems.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3489,15 +3596,17 @@
      "chars": 1187,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.06,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM response; it describes a methodology rather than a uniquely identifiable system, dataset, or paper.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3546,7 +3655,7 @@
      "chars": 974,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -3559,10 +3668,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "The response names only pre-cutoff methods/models (e.g., \"Zbtb46-Cre\", \"Kaede\", \"Confetti\", \"MERFISH\", \"CODEX\") and does not explicitly name a specific post-2026-07 entity.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3613,7 +3724,7 @@
      "chars": 1106,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -3626,10 +3737,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "No post-2026-07 named entity is explicitly named in the LLM response; the mentioned method names predate 2026-07.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3673,15 +3786,17 @@
      "chars": 1076,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE; it only describes a methodology and uses generic material/system terms.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3723,15 +3838,17 @@
      "chars": 1071,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No explicitly named entity in the LLM response was first released after 2026-06. The only notable name, \"ARGformer\", was publicly available before the cutoff, and the other named tools are older.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3879,15 +3996,17 @@
      "chars": 1004,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.18,
+     "reason": "No explicit post-cutoff entity name is named verbatim in the LLM_RESPONSE; it describes a synthesis concept using common materials and methods rather than naming a newly released paper/system/dataset.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -3996,15 +4115,17 @@
      "chars": 1236,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE; it describes methods and mentions generic existing datasets/resources only.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4060,7 +4181,7 @@
      "chars": 1063,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -4073,10 +4194,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE; it contains only generic method descriptions and technical implementation details.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4135,7 +4258,7 @@
      "chars": 1063,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -4148,10 +4271,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "No post-2026-05 specific entity was identified that was first publicly released after the cutoff. The named material systems in the response (e.g., Pt/CoFeB, GdFeCo) are long-established and predate 2026-05.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4210,7 +4335,7 @@
      "chars": 930,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -4223,10 +4348,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM response; it only uses generic method/material descriptions such as \"phenethylammonium iodide\" and \"FAPbI3\".",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4278,15 +4405,17 @@
      "chars": 1027,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "No post-cutoff entity is explicitly named. The only specific synthetic system name in the LLM_RESPONSE, \"synZiFTR\", was first publicly released in 2022, before 2026-08; the other named terms are established pre-cutoff biological entities/terms.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4336,7 +4465,7 @@
      "chars": 1008,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -4349,10 +4478,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.07,
+     "reason": "No explicitly post-2026-04 entity is named verbatim in the LLM response. The only specific terms present (\"SunTag\", \"MS2\", \"PP7\") are long-established methods first released before 2026-04, so they do not indicate leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4410,7 +4541,7 @@
      "chars": 1169,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -4423,10 +4554,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity is named in the LLM_RESPONSE; it only mentions established methods and a study name that is not shown to be a post-2026-04 release.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4471,15 +4604,17 @@
      "chars": 1118,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "The response names only pre-cutoff or non-verifiable items; none of the explicit names in the text were confirmed to have first released after 2026-07.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4528,15 +4663,17 @@
      "chars": 1156,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.88,
+     "reason": "No specific post-cutoff entity is clearly named in a way that meets the leakage criteria; CancerRiskNet and TCGA are pre-cutoff, and DNPR is ambiguous in this context.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4635,15 +4772,17 @@
      "chars": 987,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.03,
+     "reason": "No post-cutoff entity: the named items in the LLM response ('MAP1B' and 'CHOOSE') were publicly released before 2026-06.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4693,15 +4832,17 @@
      "chars": 946,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.94,
+     "reason": "No verbatim post-2026-06 entity is present in the LLM response. The named items are established older biological terms or vectors; AAV-PHP.S was publicly described in 2017, not after the cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4751,15 +4892,17 @@
      "chars": 1150,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.03,
+     "reason": "No explicit post-cutoff entity is named in the LLM_RESPONSE; the listed platforms/datasets (Xenium, GeoMx, Visium HD, TCGA) were publicly released before 2026-06.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4816,7 +4959,7 @@
      "chars": 1072,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -4829,10 +4972,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "The response names only pre-existing resources ('RefSeq viral' and 'IMG/VR') and gives a generic method description without explicitly naming any post-cutoff entity.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4891,7 +5036,7 @@
      "chars": 1049,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     },
     "date": {
      "exact_match": false,
@@ -4904,10 +5049,12 @@
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "No verbatim post-2026-06 entity is explicitly named in the LLM_RESPONSE; the only identifiable name-like reference, \"Rossi et al.,\" corresponds to earlier 2020/2021 gastruloid cardiogenesis work, not a post-cutoff release.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -4959,15 +5106,17 @@
      "chars": 986,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM_RESPONSE; the named items are pre-existing compounds (\"Fer-1\", \"Liproxstatin-1\", \"DFO\").",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5017,15 +5166,17 @@
      "chars": 1013,
      "truncated": true,
      "rubric_deferred": true,
-     "leakage_judged": false
+     "leakage_judged": true
     }
    },
    "reasoning": {
     "leakage": {
-     "verdict": "unclear",
-     "score": 0.5,
-     "reason": "not judged",
-     "details": {}
+     "verdict": "pass",
+     "score": 0.17,
+     "reason": "No explicit post-cutoff named entity is clearly present; the text uses generic method descriptions and the shorthand \"OSK(M)\" rather than a unique system or paper title.",
+     "details": {
+      "leakage_indicators": []
+     }
     },
     "mechanistic": {
      "verdict": "unclear",
@@ -5050,12 +5201,12 @@
   }
  ],
  "run_metadata": {
-  "built_utc": "2026-09-20T01:44:36.089634+00:00",
+  "built_utc": "2026-09-20T06:45:42.878006+00:00",
   "scoring_version": "v1",
   "frq_quality_scores": "exclude",
   "frq_rubric_note": "Stage-2 quality rubric deferred: the rubric is under revision, so scores computed with the current one would be discarded. FRQ responses are generated and archived verbatim; stage-1 leakage verdicts are computed now because they depend on live web search and would not reproduce later.",
   "predictions": "results_extension_run2/raw/sonnet5_ws_cutoff.jsonl",
-  "judged": null,
+  "judged": "results_extension_run2/judgements/leakage_sonnet5_ws_cutoff.jsonl",
   "model": "claude-sonnet-5",
   "condition": "ws_cutoff",
   "run_index": 1,
