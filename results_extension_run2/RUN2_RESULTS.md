@@ -1,6 +1,8 @@
 # Run 2 results — April–August 2026 extension
 
-Status: COMPLETE. Full panel over both corpora; stage-1 leakage judging finished.
+Status: closed-form tasks and stage-1 leakage COMPLETE over both corpora. Stage-2 FRQ
+rubric grading IN PROGRESS for every model (same judge and dimensions as the six
+published models; nothing revised). FRQ quality tables land when it finishes.
 All numbers below come from stored predictions scored by the frozen `scoring_v1`
 graders. Nothing here required re-running any of the six published models.
 
@@ -342,6 +344,18 @@ flagging.
   Every cross-model difference reported here is an order of magnitude larger.
 - **Judge self-consistency**: 255/266 = 95.9% identical verdicts on independent
   re-judgements. All 11 disagreements were pass↔unclear; none flipped pass↔fail.
+- **FRQ rubric reproducibility** (44 items graded twice, independently):
+  exact agreement 25%, within ±0.5 77%, **within ±1.0 98%**, mean absolute
+  difference 0.392, r = 0.701, no systematic drift (means 3.39 vs 3.35). Per
+  dimension MAD: alignment 0.45, specificity 0.68, novelty 0.68, feasibility
+  0.84. **Do not treat FRQ differences below ~0.4 between models as
+  meaningful** — that is the judge noise floor, and it applies to the published
+  FRQ numbers too, being a property of the rubric and judge.
+- **FRQ truncation asymmetry**: Claude responses are cut off at their token caps
+  (S4.5 99.6%, Sonnet 5 97.4% on the extension; 96.3% on the original) while
+  every other model answered to completion. Graded as-is by explicit decision.
+  Their specificity and alignment are depressed for a reason unrelated to
+  quality; footnote this wherever FRQ scores appear.
 - **GPT-OSS 20B serving**: the Azure deployment no longer exists and the published
   checkpoint is not on this host, so its extension row was produced under vLLM
   0.19.0 on local GPUs rather than the HF transformers pipeline behind the

@@ -29,6 +29,9 @@ echo "### 2. triage leakage failures"
 $PY scripts/triage_leakage.py --out "$T/08_leakage_triage.json" \
   | tee "$T/08_leakage_triage.txt" | head -12
 
+echo "### 2b. residual-gap sweep (re-grade null-score leftovers; safe to re-run)"
+bash scripts/run_frq_sweep.sh | tail -3 | sed 's/^/  /'
+
 echo "### 3. merge split judgement files, one row per event"
 RUB=results_extension_run2/judgements_rubric
 MRG=results_extension_run2/judgements_merged
@@ -40,24 +43,21 @@ for t in sonnet5_base_run1 sonnet5_ws sonnet5_ws_cutoff llama33_base sonnet45_ba
   parts=""
   [ -f "$JUD/leakage_$t.jsonl" ] && parts="$parts $JUD/leakage_$t.jsonl"
   [ -f "$RUB/rubric_$t.jsonl" ]  && parts="$parts $RUB/rubric_$t.jsonl"
+  [ -f "$RUB/rubric_${t}_sweep.jsonl" ] && parts="$parts $RUB/rubric_${t}_sweep.jsonl"
   [ -n "$parts" ] && $PY scripts/merge_judgements.py $parts --out "$MRG/$t.jsonl" | sed 's/^/  /'
 done
+# merge helper: pass any number of files; missing ones are skipped
+mj() { out="$1"; shift; parts=""; for f in "$@"; do [ -f "$f" ] && parts="$parts $f"; done
+       [ -n "$parts" ] && $PY scripts/merge_judgements.py $parts --out "$out" | sed 's/^/  /'; }
 # original corpus: pre-deferral Sonnet 5 grading + its gap fill; Sol WS subsets; new base runs
 S5=results_sonnet5_run1; SO=results_sol_run1; DS=results_dsv4pro_run1
-$PY scripts/merge_judgements.py $S5/raw/judged_base_medium_run1.jsonl \
-    $S5/judgements_rubric/rubric_sonnet5_orig_gaps.jsonl --out $S5/judgements_merged/base_medium_run1.jsonl | sed 's/^/  /'
-$PY scripts/merge_judgements.py $S5/raw/judged_ws_500.jsonl \
-    $S5/judgements_rubric/rubric_sonnet5_ws_500.jsonl --out $S5/judgements_merged/ws_500.jsonl | sed 's/^/  /'
-$PY scripts/merge_judgements.py $S5/raw/judged_ws_cutoff_500.jsonl \
-    $S5/judgements_rubric/rubric_sonnet5_ws_cutoff_500.jsonl --out $S5/judgements_merged/ws_cutoff_500.jsonl | sed 's/^/  /'
-$PY scripts/merge_judgements.py $SO/judgements/leakage_base_medium_run1.jsonl \
-    $SO/judgements_rubric/rubric_sol_orig.jsonl --out $SO/judgements_merged/base_medium_run1.jsonl | sed 's/^/  /'
-$PY scripts/merge_judgements.py $SO/judgements/leakage_ws_500.jsonl \
-    $SO/judgements_rubric/rubric_sol_ws_500.jsonl --out $SO/judgements_merged/ws_500.jsonl | sed 's/^/  /'
-$PY scripts/merge_judgements.py $SO/judgements/leakage_ws_cutoff_500.jsonl \
-    $SO/judgements_rubric/rubric_sol_ws_cutoff_500.jsonl --out $SO/judgements_merged/ws_cutoff_500.jsonl | sed 's/^/  /'
-$PY scripts/merge_judgements.py $DS/judgements_rubric/rubric_dsv4pro_orig.jsonl \
-    --out $DS/judgements_merged/base_run1.jsonl | sed 's/^/  /'
+mj $S5/judgements_merged/base_medium_run1.jsonl $S5/raw/judged_base_medium_run1.jsonl $S5/judgements_rubric/rubric_sonnet5_orig_gaps.jsonl $S5/judgements_rubric/rubric_sonnet5_orig_gaps_sweep.jsonl
+mj $S5/judgements_merged/ws_500.jsonl $S5/raw/judged_ws_500.jsonl $S5/judgements_rubric/rubric_sonnet5_ws_500.jsonl $S5/judgements_rubric/rubric_sonnet5_ws_500_sweep.jsonl
+mj $S5/judgements_merged/ws_cutoff_500.jsonl $S5/raw/judged_ws_cutoff_500.jsonl $S5/judgements_rubric/rubric_sonnet5_ws_cutoff_500.jsonl $S5/judgements_rubric/rubric_sonnet5_ws_cutoff_500_sweep.jsonl
+mj $SO/judgements_merged/base_medium_run1.jsonl $SO/judgements/leakage_base_medium_run1.jsonl $SO/judgements_rubric/rubric_sol_orig.jsonl $SO/judgements_rubric/rubric_sol_orig_sweep.jsonl
+mj $SO/judgements_merged/ws_500.jsonl $SO/judgements/leakage_ws_500.jsonl $SO/judgements_rubric/rubric_sol_ws_500.jsonl $SO/judgements_rubric/rubric_sol_ws_500_sweep.jsonl
+mj $SO/judgements_merged/ws_cutoff_500.jsonl $SO/judgements/leakage_ws_cutoff_500.jsonl $SO/judgements_rubric/rubric_sol_ws_cutoff_500.jsonl $SO/judgements_rubric/rubric_sol_ws_cutoff_500_sweep.jsonl
+mj $DS/judgements_merged/base_run1.jsonl $DS/judgements_rubric/rubric_dsv4pro_orig.jsonl $DS/judgements_rubric/rubric_dsv4pro_orig_sweep.jsonl
 
 echo "### 4. rebuild reports with leakage AND rubric scores joined in"
 ORIG=archive/data/canonical/merged_validated_cusp_fixed.jsonl
