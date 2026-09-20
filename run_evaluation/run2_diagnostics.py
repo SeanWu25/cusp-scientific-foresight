@@ -20,6 +20,7 @@ Reads stored reports only. No inference.
 from __future__ import annotations
 
 import argparse, json, os, statistics, sys
+from collections import Counter
 
 R = "results_extension_run2/reports"
 SCRATCH_HINT = "build with scripts/build_report.py --score-refusals-as-wrong"
@@ -260,6 +261,68 @@ def block_baselines():
     return base
 
 
+def block_mcq_permutation():
+    """Position of the correct MCQ answer after shuffling, per model.
+
+    The permutation is drawn from a seeded stream in file order, so every model
+    must see the SAME shuffle of the same item -- otherwise cross-model MCQ
+    comparison is invalid. Both facts are checked here rather than assumed:
+    that the correct answer lands uniformly across slots, and that the
+    distribution is identical across models.
+
+    Note the field to read is mcq_shuffled_answer_key (a letter).
+    mcq_original_answer_key is an integer index, and index 0 is falsy -- a
+    truthiness test on it silently drops every row.
+    """
+    print("\n" + "=" * 100)
+    print("6. MCQ PERMUTATION: where does the correct answer land?")
+    print("   uniform = 25% per slot; chi-square df=3, critical 7.81 at p=.05")
+    print("=" * 100)
+    print(f"{'model':<17}{'n':>6}   " + "".join(f"{c:>8}" for c in 'ABCD')
+          + f"{'chi2':>8}{'verdict':>10}{'perms':>8}")
+    out = {}
+    sigs = set()
+    for name, tag in PANEL:
+        path = f"results_extension_run2/raw/{tag}.jsonl"
+        if not os.path.exists(path):
+            continue
+        key, picks, perms, n = Counter(), Counter(), set(), 0
+        for line in open(path, encoding="utf-8"):
+            r = json.loads(line)
+            k = r.get("mcq_shuffled_answer_key")
+            if not k:
+                continue
+            n += 1
+            key[k] += 1
+            p_ = r.get("mcq_permutation")
+            if p_:
+                perms.add(tuple(p_))
+            a = r.get("mcq_answer")
+            if a and str(a).upper()[:1] in "ABCD":
+                picks[str(a).upper()[:1]] += 1
+        if not n:
+            continue
+        exp = n / 4
+        chi = sum((key[c] - exp) ** 2 / exp for c in "ABCD")
+        sigs.add(tuple(key[c] for c in "ABCD"))
+        print(f"{name:<17}{n:>6}   " + "".join(f"{100*key[c]/n:>7.1f}%" for c in "ABCD")
+              + f"{chi:>8.2f}{'uniform' if chi < 7.81 else 'SKEWED':>10}"
+              f"{f'{len(perms)}/24':>8}")
+        tp = sum(picks.values())
+        out[name] = {"n": n, "correct_at": dict(key), "chi2": chi,
+                     "uniform": chi < 7.81, "distinct_permutations": len(perms),
+                     "model_picks": {c: picks[c] / tp for c in "ABCD"} if tp else {}}
+    print(f"\n   identical correct-answer distribution across models: "
+          f"{'YES' if len(sigs) == 1 else 'NO -- cross-model MCQ comparison is INVALID'}")
+    print(f"\n   model answer distribution (first-option bias shows up here):")
+    print(f"   {'model':<17}" + "".join(f"{c:>8}" for c in 'ABCD'))
+    for name, v in out.items():
+        mp = v.get("model_picks") or {}
+        if mp:
+            print(f"   {name:<17}" + "".join(f"{100*mp[c]:>7.1f}%" for c in "ABCD"))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--refusals-as-wrong-dir",
@@ -271,7 +334,8 @@ def main():
            "refusal_sensitivity": block_sensitivity(a.refusals_as_wrong_dir),
            "run_to_run_variance": block_variance(),
            "cost": block_cost(),
-           "constant_baselines": block_baselines()}
+           "constant_baselines": block_baselines(),
+           "mcq_permutation": block_mcq_permutation()}
     if a.out:
         json.dump(res, open(a.out, "w", encoding="utf-8"), indent=2)
         print(f"\nwrote {a.out}")
