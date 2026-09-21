@@ -243,7 +243,8 @@ def main():
 
     out["_horizon_mcc"] = horizon_mcc(pub, PANEL)
     out["_discrimination_gap"] = discrimination_gap(pub, PANEL)
-    out["_stratified_mcq_delta"] = stratified_mcq_delta(PANEL)
+    out["_stratified_mcq_delta"] = stratified_delta(PANEL, "mcq")
+    out["_stratified_frq_delta"] = stratified_delta(PANEL, "frq")
 
     if a.out:
         json.dump(out, open(a.out, "w", encoding="utf-8"), indent=2)
@@ -395,7 +396,7 @@ def discrimination_gap(pub, panel, post_only=True, boots=2000, seed=11):
     return out
 
 
-def stratified_mcq_delta(panel, min_cell=10):
+def stratified_delta(panel, task="mcq", min_cell=10):
     """MCQ extension-vs-original delta, crude and domain-stratified.
 
     The two corpora do NOT share a domain mix (chi2=212.3, df=8: the AI share
@@ -419,8 +420,13 @@ def stratified_mcq_delta(panel, min_cell=10):
                 r = json.loads(line)
                 meta[r["id"]] = (r.get("main_area") or "Unknown",
                                  mo(r.get("publication_date", "")))
-    print("\n=== MCQ EXTENSION-vs-ORIGINAL DELTA: crude vs domain-stratified ===")
+    label = {"mcq": "MCQ accuracy", "frq": "FRQ mean score (0-10)"}[task]
+    print(f"\n=== {label.upper()} EXTENSION-vs-ORIGINAL DELTA: crude vs domain-stratified ===")
     print("    post-cutoff only; stratified pools per-area deltas, so mix cancels")
+    if task == "frq":
+        print("    FRQ: same rubric and judge on both corpora; judge noise cancels in the")
+        print("    difference, so sampling CIs are the right bar. Not shown where the")
+        print("    original corpus is not yet rubric-graded.")
     print(f"{'model':<17}{'crude':>20}{'domain-stratified':>22}{'areas':>7}")
     out = {}
     for name, cutoff, op, ep in panel:
@@ -436,17 +442,26 @@ def stratified_mcq_delta(panel, min_cell=10):
                 area, pm = m
                 if pm is None or cm is None or pm < cm:
                     continue
-                t = (x.get("tasks") or {}).get("mcq")
-                if not t or t.get("skipped") or "correct" not in t:
+                t = (x.get("tasks") or {}).get(task)
+                if not t or t.get("skipped"):
                     continue
-                bucket.setdefault(area, []).append(1.0 if t["correct"] else 0.0)
+                if task == "mcq":
+                    if "correct" not in t:
+                        continue
+                    bucket.setdefault(area, []).append(1.0 if t["correct"] else 0.0)
+                else:
+                    if t.get("score") is None:
+                        continue
+                    bucket.setdefault(area, []).append(float(t["score"]))
         allo = [v for vs in o.values() for v in vs]
         alle = [v for vs in e.values() for v in vs]
         if len(allo) < 50 or len(alle) < 50:
             continue
         po_, pe_ = sum(allo) / len(allo), sum(alle) / len(alle)
         crude = pe_ - po_
-        se_c = math.sqrt(pe_ * (1 - pe_) / len(alle) + po_ * (1 - po_) / len(allo))
+        def _var(v, m):
+            return m * (1 - m) if task == "mcq" else (sum((x - m) ** 2 for x in v) / max(len(v) - 1, 1))
+        se_c = math.sqrt(_var(alle, pe_) / len(alle) + _var(allo, po_) / len(allo))
         num = den = varn = 0.0
         k = 0
         for a in set(o) & set(e):
@@ -456,7 +471,7 @@ def stratified_mcq_delta(panel, min_cell=10):
             pa, pb = sum(o[a]) / no, sum(e[a]) / ne
             w = no * ne / (no + ne)
             num += w * (pb - pa); den += w; k += 1
-            varn += w * w * (pb * (1 - pb) / ne + pa * (1 - pa) / no)
+            varn += w * w * (_var(e[a], pb) / ne + _var(o[a], pa) / no)
         if not den:
             continue
         strat, se_s = num / den, math.sqrt(varn) / den
