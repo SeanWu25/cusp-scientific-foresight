@@ -160,3 +160,12 @@ results_extension_run2/**/*.bak
 results_merged_sonnet5/**/*.jsonl
 results_llama33_run1/**/*.jsonl
 results_llama33_run1/**/*.log
+# A4 retrieval study: large raw JSONL (hashes in results/A4_retrieval/RAW_HASHES.txt)
+results/A4_retrieval/**/model_outputs.jsonl
+results/A4_retrieval/**/verdicts.jsonl
+results/A4_retrieval/**/inclusion_verdicts.jsonl
+results/A4_retrieval/A4_3_fixed_queries/evidence/
+results/A4_retrieval/A4_3_fixed_queries/reports/pred_*.jsonl
+results/A4_retrieval/**/*.log
+results/A4_retrieval/**/logs/
+results/A4_retrieval/A4_3_fixed_queries/reports/*.json

@@ -1,0 +1,23 @@
+{
+ "note": "Verbatim You.com result illustrating the leakage channel: page dated before the cutoff, snippets carrying the post-cutoff paper's abstract.",
+ "run": "llama33:ws_cutoff (cutoff 2023-12; freshness 1900-01-01to2023-12-01)",
+ "event_id": "c5eb9beb-6409-4be7-8071-233f3e0a83aa",
+ "event_first_observable": "2026-02",
+ "event_paper": "https://arxiv.org/abs/2602.12662",
+ "event_results_and_metrics": "Achieves an 82.3% success rate on ALFWorld and ScienceWorld benchmarks, outperforming GPT-4o by 40.3%, OpenAI-o3 by 18.3%, and GRPO by 14.0%, while using 62% fewer tokens.",
+ "stored_query": "ALFWorld ScienceWorld benchmarks efficient cognitive resource allocation multi-turn decision-making tasks token efficiency GPT-4o",
+ "url_in_stored_list": true,
+ "live_result": {
+  "url": "https://www.researchgate.net/publication/372924838_ScienceWorld_Is_your_Agent_Smarter_than_a_5th_Grader",
+  "page_age": "2022-01-01 00:00:00",
+  "title": "ScienceWorld: Is your Agent Smarter than a 5th Grader? | Request PDF",
+  "description": "Request PDF | On Jan 1, 2022, Ruoyao Wang and others published ScienceWorld: Is your Agent Smarter than a 5th Grader? | Find, read and cite all the research you need on ResearchGate",
+  "snippets": [
+   "The key insight is that appropriate cognitive depth should maximize the confidence of the resulting action. Experiments on ALFWorld and ScienceWorld demonstrate that CogRouter achieves state-of-the-art performance with superior efficiency. With Qwen2.5-7B, it reaches an 82.3% success rate, outperforming GPT-4o (+40.3%), OpenAI-o3 (+18.3%), and GRPO (+14.0%), while using 62% fewer tokens.",
+   "This allows DERL to approximate the \"meta-gradient\" of task success, progressively learning to generate denser and more actionable feedback. We validate DERL across three distinct domains: robotic agent (ALFWorld), scientific simulation (ScienceWorld), and mathematical reasoning (GSM8k, MATH).",
+   "Experimental results show that DERL achieves state-of-the-art performance on ALFWorld and ScienceWorld, significantly outperforming methods relying on heuristic rewards, especially in out-of-distribution scenarios.",
+   "We further present a theoretical analysis showing that focusing on high-utility segments supports task identifiability and informs more effective ICL prompt design. Experiments on ALFWorld, BabyAI, and ScienceWorld, using both open-source and proprietary LLMs, show that SkillGen achieves consistent gains, improving progress rate by 5.9%\u201316.5% on average across models."
+  ]
+ },
+ "retrieved_utc": "2026-09-21T18:55:31.373775"
+}
