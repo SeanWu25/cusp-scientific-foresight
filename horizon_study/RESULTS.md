@@ -45,7 +45,12 @@ unchanged by retrieval and therefore a reasoning-side limit.
 0.41–0.57 against a 0.50 baseline with AUROC 0.46–0.55 in every bin; the visible
 binary slopes are response-bias drift (LLaMA's bias index climbs from +0.74 to
 +0.89 across bins, GPT-4o's from −0.87 to −0.36) acting on a 43%-Yes item mix,
-not discrimination. The date task is dominated by anchoring. FRQ was skipped as
+not discrimination. The bias-immune MCC, computed in 2-month bins for all nine
+models, shows no horizon structure either: no model's short-horizon (1–6 month)
+MCC differs from its long-horizon MCC (all paired differences have CIs spanning
+zero), and the only models with positive short-horizon MCC (GPT-5.6 Sol, Claude
+Sonnet 5) are the two newest, which have no long horizons to compare against
+(see "Binary discrimination by horizon" below). The date task is dominated by anchoring. FRQ was skipped as
 instructed.
 
 ## What the design can and cannot identify
@@ -200,6 +205,46 @@ and provide no evidence of a horizon beyond which prediction collapses. The
 date-task breakpoints (17 months for absolute error and score, tightly
 estimated) are where the constant-late-prediction geometry crosses the event
 dates and carry no forecasting content (see the null below).
+
+## Binary discrimination by horizon: MCC (`tables/mcc_by_horizon.md`, `figures/mcc_horizon_*.png`)
+
+Raw binary accuracy moves with response bias and class mix, so we also report
+the Matthews correlation between the model's answers and the original/perturbed
+ground truth, which a uniform bias shift cannot move, in 2-month bins from
+month 1 for every model, with event-bootstrap CIs. Merged corpus, short (1–6
+months) versus long (> 6 months) horizon:
+
+| model | MCC 1–6 mo [CI] | MCC > 6 mo [CI] | short − long [CI] |
+|---|---|---|---|
+| GPT-4o | −0.049 [−0.117, +0.018] | −0.061 [−0.082, −0.041] | +0.013 [−0.059, +0.082] |
+| LLaMA 3.3 | +0.011 [−0.041, +0.063] | +0.055 [+0.033, +0.076] | −0.045 [−0.099, +0.012] |
+| GPT-OSS 20B | −0.062 [−0.108, −0.016] | −0.068 [−0.095, −0.042] | +0.007 [−0.047, +0.060] |
+| DeepSeek R1 | −0.028 [−0.073, +0.017] | −0.036 [−0.066, −0.006] | +0.008 [−0.045, +0.062] |
+| Claude S4.5 | −0.066 [−0.111, −0.019] | −0.066 [−0.102, −0.030] | +0.000 [−0.058, +0.058] |
+| GPT-5.4 | +0.011 [−0.033, +0.055] | +0.021 [−0.042, +0.083] | −0.010 [−0.087, +0.068] |
+| Claude Sonnet 5 | +0.067 [+0.006, +0.128] | +0.045 [−0.123, +0.216] (n = 124) | +0.022 [−0.158, +0.204] |
+| GPT-5.6 Sol | +0.207 (n = 862; no long-horizon items) | — | — |
+| DeepSeek-V4-Pro | −0.079 (n = 661; no long-horizon items) | — | — |
+
+Three things follow. (i) No model's discrimination changes with horizon: every
+short-minus-long difference has a CI spanning zero, and within the 2-month bins
+the sign of each model's MCC is stable across its whole range (LLaMA positive
+throughout and significantly so at 17–20 and 23–24 months; GPT-4o, GPT-OSS,
+Claude S4.5 negative throughout). (ii) The positive short-horizon MCC of GPT-5.6
+Sol (+0.21 at 1–2 months, +0.12 at 5–6) and, marginally, Claude Sonnet 5 is a
+property of those two models, not of short horizons: GPT-5.4, DeepSeek R1,
+Claude S4.5, GPT-OSS and GPT-4o are all at or below zero on their own 1–6 month
+events. Because Sol and Sonnet 5 are also the two newest models and have no
+events beyond 7 months, "their MCC is positive at short horizons and absent at
+long ones" and "the newest models discriminate and the older ones do not" are
+the same observation; the panel cannot separate them, and the run-2 document's
+reading of a binary foresight half-life of about six months should not be
+made. A cross-check with that document's binning (cutoff month included, bins
+0–2/3–5/6–11) reproduces its Sol and Sonnet 5 cells to three decimals, so the
+disagreement is one of interpretation, not computation. (iii) The persistent
+negative MCC of four models is the question-form artefact already noted in the
+run-2 results (original questions are long conjunctive claims, perturbed twins
+short single claims), which the paired discrimination gap handles.
 
 ## Date task and the anchoring null (`tables/anchoring_null.md`, `figures/date_null_*.png`)
 

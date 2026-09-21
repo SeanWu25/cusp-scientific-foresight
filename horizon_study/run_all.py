@@ -417,7 +417,59 @@ def stage_sensitivity(ev):
     dump("sensitivity", out); (T / "sensitivity.md").write_text("\n".join(L) + "\n")
 
 
-STAGES = dict(counts=stage_counts, dates=stage_dates, binned=stage_binned, trends=stage_trends, pooled=stage_pooled, continuous=stage_continuous, ws=stage_ws, null=stage_null, sensitivity=stage_sensitivity)
+def stage_mcc(ev):
+    """Bias-immune binary discrimination (MCC, balanced accuracy) by horizon, 2-month bins, all models, all datasets;
+    plus a short (h<=6) vs long (h>6) contrast, and a cross-check with the 0-2 / 3-5 / 6-11 bins that include the cutoff month."""
+    out = {}
+    L = ["# Binary discrimination by horizon: MCC and balanced accuracy (2-month bins, all models)", "",
+         "MCC from the 2x2 confusion matrix (original question -> ground truth Yes; perturbed twin -> ground truth No), so it is immune to the",
+         "class-balance / response-bias drift that moves raw accuracy. Bins are 2 months wide from h = 1. Cells with < 20 items or < 5 items of",
+         "either question type are suppressed. 95% event-bootstrap CIs (10k); p = two-sided bootstrap p for MCC = 0; `*` marks cells whose CI excludes 0.", ""]
+    for ds in DATASETS:
+        df = D.load_items(ds, ev)
+        for cond in sorted(df.condition.unique()):
+            d = df[df.condition == cond]; rows = S.mcc_by_horizon(d, D.BINS_2M); sl = S.mcc_short_vs_long(d)
+            out[f"{ds}:{cond}"] = dict(bins=rows, short_vs_long=sl)
+            tab = pd.DataFrame(rows); bins = [b for b in dict.fromkeys(tab.bin) if not tab[tab.bin == b].suppressed.all()]
+            L += [f"\n## {DS_LABEL[ds]} — `{cond}`\n", "| model | " + " | ".join(bins) + " |", "|---|" + "---|" * len(bins)]
+            for m in D.MODEL_ORDER:
+                r = tab[tab.model == m]
+                if r.empty or r.suppressed.all(): continue
+                cells = []
+                for b in bins:
+                    c = r[r.bin == b]
+                    if c.empty or c.iloc[0].suppressed: cells.append(f"n={int(c.iloc[0].n_items) if not c.empty else 0}")
+                    else:
+                        c = c.iloc[0]; star = "*" if (c.mcc_ci_lo > 0 or c.mcc_ci_hi < 0) else ""
+                        cells.append(f"**{c.mcc:+.3f}**{star} [{c.mcc_ci_lo:+.3f}, {c.mcc_ci_hi:+.3f}] n={int(c.n_items)}" if star else f"{c.mcc:+.3f} [{c.mcc_ci_lo:+.3f}, {c.mcc_ci_hi:+.3f}] n={int(c.n_items)}")
+                L.append(f"| {D.MODELS[m]['name']} | " + " | ".join(cells) + " |")
+            L += ["\nShort (h 1–6) vs long (h > 6) horizon, MCC with paired event-bootstrap difference:\n", "| model | n short / long | MCC short [CI] (p) | MCC long [CI] (p) | short − long [CI] (p) |", "|---|---|---|---|---|"]
+            for r in sl:
+                if r.get("skipped"): L.append(f"| {D.MODELS[r['model']]['name']} | {r['n_short']} / {r['n_long']} | too thin | | |"); continue
+                L.append(f"| {D.MODELS[r['model']]['name']} | {r['n_short']} / {r['n_long']} | {r['mcc_short']:+.3f} [{r['short_ci'][0]:+.3f}, {r['short_ci'][1]:+.3f}] ({r['short_p']:.3g}) | {r['mcc_long']:+.3f} [{r['long_ci'][0]:+.3f}, {r['long_ci'][1]:+.3f}] ({r['long_p']:.3g}) | {r['diff']:+.3f} [{r['diff_ci'][0]:+.3f}, {r['diff_ci'][1]:+.3f}] ({r['diff_p']:.3g}) |")
+        print(f"  mcc {ds}", file=sys.stderr)
+    # cross-check: the 0-2 / 3-5 / 6-11 / 12-23 / 24+ scheme INCLUDING the cutoff month (h >= 0), merged corpus, base
+    df0 = D.load_items("merged", ev, include_h0=True); df0 = df0[df0.condition == "base"]
+    bins0 = [(0, 2), (3, 5), (6, 11), (12, 23), (24, 999)]; rows0 = S.mcc_by_horizon(df0, bins0); out["merged:base:h0_bins"] = rows0
+    tab = pd.DataFrame(rows0); bins = [D.bin_label(lo, hi) for lo, hi in bins0]
+    L += ["\n## Cross-check — merged corpus, cutoff month INCLUDED (h ≥ 0), bins 0–2 / 3–5 / 6–11 / 12–23 / 24+\n",
+          "This reproduces the binning used in the run-2 results document so the two analyses can be compared directly; the primary analysis above excludes h = 0.", "",
+          "| model | " + " | ".join(bins) + " |", "|---|" + "---|" * len(bins)]
+    for m in D.MODEL_ORDER:
+        r = tab[tab.model == m]
+        if r.empty or r.suppressed.all(): continue
+        cells = []
+        for b in bins:
+            c = r[r.bin == b]
+            if c.empty or c.iloc[0].suppressed: cells.append(f"n={int(c.iloc[0].n_items) if not c.empty else 0}")
+            else:
+                c = c.iloc[0]; star = "*" if (c.mcc_ci_lo > 0 or c.mcc_ci_hi < 0) else ""
+                cells.append(f"{c.mcc:+.3f}{star} [{c.mcc_ci_lo:+.3f}, {c.mcc_ci_hi:+.3f}] n={int(c.n_items)}")
+        L.append(f"| {D.MODELS[m]['name']} | " + " | ".join(cells) + " |")
+    dump("mcc_by_horizon", out); (T / "mcc_by_horizon.md").write_text("\n".join(L) + "\n")
+
+
+STAGES = dict(counts=stage_counts, dates=stage_dates, binned=stage_binned, trends=stage_trends, pooled=stage_pooled, continuous=stage_continuous, ws=stage_ws, null=stage_null, sensitivity=stage_sensitivity, mcc=stage_mcc)
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("--stage", default="all"); a = ap.parse_args()

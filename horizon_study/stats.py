@@ -337,3 +337,64 @@ def null_binned(df: pd.DataFrame, model: str, k: int, bins, metric: str) -> list
     val = {"signed_err": err, "abs_err": err.abs(), "date_score": np.exp(-0.1 * err.abs())}[metric]
     d["bin"] = d.h.map(lambda h: assign_bin(int(h), bins)); d["val"] = val
     return [dict(bin=b, n=len(g), mean=float(g.val.mean())) for b, g in d.groupby("bin")]
+
+
+# ----------------------------------------------------------------------------- MCC / balanced accuracy by horizon
+def _confusion_arrays(items: pd.DataFrame):
+    """Binary + perturbed items -> (gt_yes, pred_yes) 0/1 arrays. Original question: ground truth Yes;
+    perturbed: ground truth No. pred_yes = correct on an original item, or wrong on a perturbed item."""
+    gt = (items.task == "binary").to_numpy(float); c = items.y.to_numpy(float)
+    pred = np.where(gt == 1, c, 1 - c)
+    return gt, pred
+
+
+def mcc_w(gt, pred, w):
+    """Weighted MCC and balanced accuracy, vectorised over weight rows (B, n)."""
+    tp = (w * (gt * pred)).sum(1); tn = (w * ((1 - gt) * (1 - pred))).sum(1)
+    fp = (w * ((1 - gt) * pred)).sum(1); fn = (w * (gt * (1 - pred))).sum(1)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        den = np.sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
+        mcc = np.where(den > 0, (tp * tn - fp * fn) / den, np.nan)
+        bal = 0.5 * (tp / (tp + fn) + tn / (tn + fp))
+    return mcc, bal
+
+
+def mcc_by_horizon(df: pd.DataFrame, bins, B=B_DEFAULT, min_n=20, seed=0, min_each=5) -> list[dict]:
+    """Per model x bin: n items, n original / perturbed, MCC and balanced accuracy with event-bootstrap CIs."""
+    rows = []
+    d = df[df.task_group == "binary_merged"]
+    for model, g in d.groupby("model"):
+        g = g.assign(bin=g.h.map(lambda h: assign_bin(int(h), bins)))
+        for lo, hi in bins:
+            lab = bin_label(lo, hi); s = g[g.bin == lab]
+            nb, npt = int((s.task == "binary").sum()), int((s.task == "binary_perturbed").sum())
+            row = dict(model=model, bin=lab, bin_lo=lo, bin_hi=hi, n_items=len(s), n_events=int(s.id.nunique()), n_binary=nb, n_perturbed=npt,
+                       h_mean=(float(s.h.mean()) if len(s) else float("nan")))
+            if len(s) < min_n or nb < min_each or npt < min_each:
+                row.update(suppressed=True); rows.append(row); continue
+            gt, pred = _confusion_arrays(s); w = event_weights(s.id.to_numpy(), B, seed)
+            m0, b0 = mcc_w(gt, pred, np.ones((1, len(s)))); mb, bb = mcc_w(gt, pred, w)
+            row.update(suppressed=False, mcc=float(m0[0]), mcc_ci_lo=ci(mb)[0], mcc_ci_hi=ci(mb)[1], mcc_p=boot_p(mb),
+                       bal_acc=float(b0[0]), bal_ci_lo=ci(bb)[0], bal_ci_hi=ci(bb)[1])
+            rows.append(row)
+    return rows
+
+
+def mcc_short_vs_long(df: pd.DataFrame, split=6, B=B_DEFAULT, seed=0, min_n=40) -> list[dict]:
+    """Per model: MCC on horizons 1..split vs > split, and the paired difference (shared event resamples)."""
+    rows = []
+    d = df[df.task_group == "binary_merged"]
+    for model, g in d.groupby("model"):
+        a, b = g[g.h <= split], g[g.h > split]
+        row = dict(model=model, split=split, n_short=len(a), n_long=len(b), h_short=[int(a.h.min()), int(a.h.max())] if len(a) else None, h_long=[int(b.h.min()), int(b.h.max())] if len(b) else None)
+        if len(a) < min_n or len(b) < min_n:
+            row["skipped"] = True; rows.append(row); continue
+        gt_a, pr_a = _confusion_arrays(a); gt_b, pr_b = _confusion_arrays(b)
+        # shared resample over the union of events so the difference is paired
+        ev = np.concatenate([a.id.to_numpy(), b.id.to_numpy()]); W = event_weights(ev, B, seed); Wa, Wb = W[:, :len(a)], W[:, len(a):]
+        ma, _ = mcc_w(gt_a, pr_a, Wa); mb, _ = mcc_w(gt_b, pr_b, Wb); m0a, _ = mcc_w(gt_a, pr_a, np.ones((1, len(a)))); m0b, _ = mcc_w(gt_b, pr_b, np.ones((1, len(b))))
+        dd = ma - mb
+        row.update(skipped=False, mcc_short=float(m0a[0]), short_ci=list(ci(ma)), short_p=boot_p(ma), mcc_long=float(m0b[0]), long_ci=list(ci(mb)), long_p=boot_p(mb),
+                   diff=float(m0a[0] - m0b[0]), diff_ci=list(ci(dd)), diff_p=boot_p(dd))
+        rows.append(row)
+    return rows

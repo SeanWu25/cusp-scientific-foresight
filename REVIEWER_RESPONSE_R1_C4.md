@@ -54,7 +54,12 @@ from stored model outputs (no new inference for the six published models):
 3. **Binary is a floor effect, not horizon-independence.** Accuracy 0.41–0.57
    and AUROC 0.46–0.55 in every bin; the visible binary slopes are response-bias
    drift acting on a 43%-Yes item mix and have opposite signs for the Yes- and
-   No-biased models. The text says this rather than claiming flatness.
+   No-biased models. The bias-immune MCC, in 2-month bins for all nine models,
+   shows no horizon structure: no model's 1–6 month MCC differs from its > 6
+   month MCC (all paired CIs span zero), and the only models with positive
+   short-horizon MCC (Sol +0.21, Sonnet 5 +0.07) are the two newest, which have
+   no long-horizon events to compare against. A "binary foresight half-life"
+   cannot be claimed from this panel.
 4. **The date task's apparent improvement with horizon is an artefact.** Models
    predict 10–44 months past their cutoff; a constant predictor at each model's
    own median offset reproduces 107–147% of every model's absolute-error slope,

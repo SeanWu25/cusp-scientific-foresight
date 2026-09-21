@@ -16,8 +16,8 @@ reports by two commands; nothing here runs a model, a judge, or the scoring code
     glmm.py      crossed random-intercept GLMM/LMM (event, model) by sparse PIRLS +
                  Laplace — the lme4 nAGQ=1 estimator; validated on simulated data
     run_all.py   stages: counts, dates, binned, trends, pooled, continuous, ws, null,
-                 sensitivity
-    figures.py   horizon_{orig,ext,merged}, horizon_ws, date_null_*, continuous_*
+                 sensitivity, mcc (bias-immune binary discrimination by 2-month horizon bin)
+    figures.py   horizon_{orig,ext,merged}, horizon_ws, date_null_*, continuous_*, mcc_horizon_*
     RESULTS.md   answer to the reviewer
 
 ## Definitions

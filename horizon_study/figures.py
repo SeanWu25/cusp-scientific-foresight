@@ -123,8 +123,28 @@ def fig_continuous(ds):
     fig.tight_layout(rect=(0, 0, 1, 0.94)); fig.savefig(F / f"continuous_{ds}.png", dpi=200); fig.savefig(F / f"continuous_{ds}.pdf"); plt.close(fig)
 
 
+def fig_mcc(ds):
+    p = T / "mcc_by_horizon.json"
+    if not p.exists(): return
+    res = json.load(open(p)); key = f"{ds}:base"
+    if key not in res: return
+    tab = pd.DataFrame(res[key]["bins"]); tab = tab[~tab.suppressed]
+    fig, ax = plt.subplots(figsize=(9, 4.6))
+    for m in D.MODEL_ORDER:
+        r = tab[tab.model == m].sort_values("bin_lo")
+        if r.empty: continue
+        ax.fill_between(r.h_mean, r.mcc_ci_lo, r.mcc_ci_hi, color=COLORS[m], alpha=0.10, lw=0)
+        ax.plot(r.h_mean, r.mcc, marker=MARK[m], color=COLORS[m], lw=1.6, ms=5, label=D.MODELS[m]["name"], mec="white", mew=0.6)
+        for x, y, n in zip(r.h_mean, r.mcc, r.n_items): ax.annotate(str(int(n)), (x, y), textcoords="offset points", xytext=(0, 5), ha="center", fontsize=5, color=COLORS[m])
+    ax.axhline(0, color="#888888", lw=0.8, ls="--"); ax.set_ylim(-0.3, 0.4); ax.grid(color="#EEEEEE", lw=0.5); ax.tick_params(labelsize=7)
+    ax.set_xlabel("horizon (months after cutoff, first-observable date), 2-month bins at their mean horizon", fontsize=7); ax.set_ylabel("MCC (original vs perturbed binary)", fontsize=8)
+    ax.legend(fontsize=6.5, ncol=3, frameon=False, loc="upper right")
+    ax.set_title(f"{DS_TITLE[ds]} — binary discrimination (MCC) by horizon, all models; bands = 95% event-bootstrap CI, labels = n items", fontsize=8)
+    fig.tight_layout(); fig.savefig(F / f"mcc_horizon_{ds}.png", dpi=200); fig.savefig(F / f"mcc_horizon_{ds}.pdf"); plt.close(fig)
+
+
 if __name__ == "__main__":
     ev = D.load_events()
     for ds in ("orig", "ext", "merged"):
-        fig_horizon(ds); fig_date_null(ds, ev); fig_continuous(ds); print("figs", ds, file=sys.stderr)
+        fig_horizon(ds); fig_date_null(ds, ev); fig_continuous(ds); fig_mcc(ds); print("figs", ds, file=sys.stderr)
     fig_ws(); print("done", file=sys.stderr)
