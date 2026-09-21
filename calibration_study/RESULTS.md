@@ -13,12 +13,22 @@ paired intersection of items. Post-cutoff partition unless stated.*
 | cutoff | 2023-12 | 2025-08 | 2023-10 |
 | post-cutoff events in the 500 subset | 500 (no pre partition) | 144 (356 pre) | 500 (no pre partition) |
 | post-cutoff binary items (orig + perturbed) | 690 | 188 | 690 |
-| arm C (stored WS+cutoff) | **not available** | yes | yes |
+| arm C (WS+Cutoff) | generated 2026-09-20 (`results_llama33_run1/`) | stored | stored |
 | arm D samples n | 10 | 5 | 5 |
 
-DeepSeek R1 was the intended balanced model; its Azure Foundry deployment is
-deprecated (HTTP 410), so it appears only as a reference row (arms A and C) and
-GPT-5.4 takes the middle position. All new arms ran on the Foundry endpoint
+DeepSeek R1 was the intended balanced model (S13 bias index −0.025). Its Azure
+Foundry deployment was retired before this study ran (HTTP 410 `model_deprecated`
+on 2026-09-19; the R1-0528 and MAI-DS-R1 checkpoints are catalogued but not
+deployed, and no other endpoint serves the original weights). New inference for
+R1 is therefore impossible, and any substitute checkpoint would not be paired
+with R1's stored base outputs. GPT-5.4 (bias +0.238, the next-closest to neutral
+with a live deployment and a stored WS+Cutoff run) takes the middle position.
+R1 is kept as a reference row for the two arms that need no inference (A and C),
+and its own retrieval arm gives the same picture as the panel: post-cutoff,
+retrieval leaves its Brier unchanged (+0.013 [−0.004, +0.031]), reliability and
+resolution unchanged, AUROC +0.038 [−0.018, +0.095], while on its pre-cutoff
+items the same arm lifts AUROC by +0.164 [+0.050, +0.281] and accuracy by
++0.156 — the recall signature, not forecasting. All new arms ran on the Foundry endpoint
 (`Llama-3.3-70B-Instruct`, `gpt-5.4` → `gpt-5.4-2026-03-05`, `gpt-4o` →
 `gpt-4o-2024-11-20`), JSON mode, max 2048 tokens, retries 2, no reasoning_effort;
 B1/B2/E at temperature 0 (matching the stored base runs), D at temperature 1.0.
@@ -46,9 +56,12 @@ parse failures. Actual spend ≈ $29 at assumed list prices (`tables/costs.md`).
    sampling is near-degenerate: 77% of LLaMA items are 10/10 unanimous at T = 1.0,
    70% of GPT-4o and 73% of GPT-5.4 items are 5/5. The vote fraction is a
    confident restatement of the model's bias, not a probability.
-5. **Retrieval is the only arm that improves discrimination** (AUROC +0.093
-   [+0.052, +0.132] for GPT-4o; +0.100 [+0.016, +0.190] for GPT-5.4, Holm p = 0.11),
-   and it does so while making calibration worse or unchanged. On GPT-5.4's
+5. **Retrieval is the only arm that improves discrimination** (binary AUROC
+   +0.093 [+0.052, +0.132] for GPT-4o, +0.100 [+0.016, +0.190] for GPT-5.4,
+   +0.038 [−0.002, +0.079] for LLaMA; MCQ AUROC +0.114 [+0.056, +0.171] for
+   LLaMA), and it does so while leaving calibration worse or unchanged. LLaMA is
+   the one cell in the study where resolution moves with a CI excluding zero
+   (+0.012 [+0.003, +0.021]), still inside the 0.00–0.02 band. On GPT-5.4's
    pre-cutoff partition the same arm reaches AUROC 0.81 and resolution 0.050, which
    is recall through the search context, and is why the pre/post split matters.
 
@@ -60,6 +73,7 @@ parse failures. Actual spend ≈ $29 at assumed list prices (`tables/costs.md`).
 | | B1 | 0.333 | −0.36 | 0.095 | 0.007 | 0.569 | +0.790 | 0.451 |
 | | B2 | 0.341 | −0.39 | 0.101 | 0.005 | 0.553 | +0.794 | 0.442 |
 | | D (n=10) | 0.528 | −1.16 | 0.287 | 0.003 | 0.530 | +0.889 | 0.435 |
+| | C | 0.342 | −0.40 | 0.115 | 0.018 | **0.611** | +0.687 | 0.472 |
 | | E | **0.306** | −0.25 | **0.069** | 0.006 | 0.562 | +0.565 | **0.491** |
 | GPT-5.4 | A | 0.272 | −0.16 | 0.048 | 0.011 | 0.565 | +0.200 | 0.537 |
 | | B1 | 0.280 | −0.19 | 0.055 | 0.009 | 0.558 | +0.071 | 0.505 |
@@ -89,7 +103,14 @@ only because it drags the bias index from +0.83 to +0.57: mean P(Yes) falls from
 (AUROC −0.012 [−0.044, +0.021]). Neither prompt changes Brier (−0.002, +0.006) and
 both shift bias by only −0.04. Self-consistency is catastrophic (Brier +0.195
 [+0.181, +0.209]; Laplace log loss 1.34 vs base 0.90) and lowers AUROC
-(−0.045 [−0.075, −0.013]). Arm C is unavailable for this model.
+(−0.045 [−0.075, −0.013]). Retrieval (arm C, generated for this study on the
+same subset with documents restricted to Dec 2023) behaves as in the other two
+models: Brier unchanged (+0.005 [−0.009, +0.020]), reliability slightly worse
+(+0.017), bias pulled toward No (−0.142 [−0.203, −0.081]), and discrimination up
+(binary AUROC +0.038 [−0.002, +0.079]; MCQ accuracy +0.042, MCQ AUROC +0.114
+[+0.056, +0.171], Holm p = 0.002). Its resolution gain of +0.012 [+0.003, +0.021]
+is the largest in the study and still leaves resolution at 0.018 against an
+uncertainty of 0.245.
 
 **GPT-5.4 (mild Yes bias; the only model with a pre/post split).** Post-cutoff
 N is small (188 items), so CIs are wide. Best calibration: arm E (Brier −0.010
@@ -183,7 +204,10 @@ events occur.*
 * LLaMA 3.3 and GPT-4o have cutoffs before the corpus starts, so they have no
   pre-cutoff partition; only GPT-5.4 supports the pre/post contrast, with 144 post
   events. DeepSeek R1 (the designed balanced model) could not be re-run.
-* Arm C is unavailable for LLaMA 3.3 (no stored WS+cutoff run) and was not generated.
+* LLaMA 3.3 had no stored WS+Cutoff run; one was generated on 2026-09-20 on the
+  same pinned subset (`results_llama33_run1/`, Foundry deployment, T = 0,
+  You.com retrieval restricted to ≤ 2023-12, one transient search error out of
+  500 rows). It is the only arm-C run not produced by the original pipeline.
 * The stored LLaMA base run has no surviving inference log; the model field is
   `Llama-3.3-70B`, the new arms used the Foundry `Llama-3.3-70B-Instruct` deployment.
   Same weights, possibly a different serving stack. GPT-5.4's stored base run

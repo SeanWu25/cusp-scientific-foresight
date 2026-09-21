@@ -158,3 +158,5 @@ results_dsv4pro_run1/**/*.jsonl
 results_dsv4pro_run1/**/*.log
 results_extension_run2/**/*.bak
 results_merged_sonnet5/**/*.jsonl
+results_llama33_run1/**/*.jsonl
+results_llama33_run1/**/*.log

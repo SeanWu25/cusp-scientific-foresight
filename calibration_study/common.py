@@ -37,7 +37,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 # Cutoffs are the ones used by the published tables (compare_models.MODEL_REGISTRY).
 MODELS = {
     "llama33":     dict(name="LLaMA 3.3 70B",     cutoff="2023-12", base="llama_3_3_full.json",
-                        wscut=None,                                  base_raw="llama-3.3-70b-full.jsonl.jsonl",
+                        wscut=ROOT / "results_llama33_run1/reports/ws_cutoff_500.json",  # generated 2026-09-20 on the pinned subset (Foundry Llama-3.3-70B-Instruct, T=0)
+                        base_raw="llama-3.3-70b-full.jsonl.jsonl",
                         deploy="Llama-3.3-70B-Instruct", n_sc=10, bias_s13=+0.839),
     "deepseek_r1": dict(name="DeepSeek R1",       cutoff="2024-07", base="deepseek_r1.json",
                         wscut="deepseek_r1_500_web_cutoff.json",     base_raw="predictions_DeepSeek-R1.jsonl",
@@ -234,7 +235,7 @@ def load_arm(model: str, arm: str) -> list[dict] | None:
     if arm == "A":
         return items_from_report(model, FR / m["base"], "A")
     if arm == "C":
-        return items_from_report(model, FR / m["wscut"], "C") if m["wscut"] else None
+        return items_from_report(model, Path(m["wscut"]) if Path(m["wscut"]).is_absolute() else FR / m["wscut"], "C") if (m["wscut"] and Path(m["wscut"] if Path(m["wscut"]).is_absolute() else FR / m["wscut"]).exists()) else None
     return items_from_raw(model, arm)
 
 

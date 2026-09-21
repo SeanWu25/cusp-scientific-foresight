@@ -334,12 +334,15 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--models", default=",".join(C.PANEL))
     ap.add_argument("--extra-models", default="deepseek_r1,gptoss20b", help="reference rows in the master table only")
+    ap.add_argument("--figures-only", action="store_true", help="re-render figures from stored outputs without the bootstrap")
     a = ap.parse_args()
     models = a.models.split(",")
     extra = [m for m in a.extra_models.split(",") if m]
     subset = C.load_subset(); ev_idx = {i: k for k, i in enumerate(subset)}
     counts = M.boot_counts(len(subset), a.B, a.seed)
     data = C.load_all(models=list(dict.fromkeys(models + extra + list(C.MODELS))))
+    if a.figures_only:
+        render_figures(data, models); print("figures written", file=sys.stderr); return
 
     # ---- master table
     master = {}
@@ -467,8 +470,13 @@ def main():
                                 hist={"<0.9": int((s < 0.9).sum()), "0.9-0.99": int(((s >= 0.9) & (s < 0.99)).sum()), "0.99-1.01": int(((s >= 0.99) & (s <= 1.01)).sum()), "1.01-1.1": int(((s > 1.01) & (s <= 1.1)).sum()), ">1.1": int((s > 1.1).sum())})
     json.dump(audit, open(C.TABLES / "prob_sum_check.json", "w"), indent=1)
 
-    # ---- figures
-    figm = models + extra
+    # ---- figures (panel models only; reference rows stay in the master table)
+    render_figures(data, models)
+    print("figures written", file=sys.stderr)
+    _costs_stage()
+
+
+def render_figures(data, figm):
     fig_reliability(data, figm, C.ARMS, "binary_merged", "event", C.FIGS / "reliability_binary_event")
     fig_reliability(data, figm, C.ARMS, "binary_merged", "answer", C.FIGS / "reliability_binary_answer")
     fig_reliability(data, figm, C.ARMS, "mcq", "answer", C.FIGS / "reliability_mcq")
@@ -478,8 +486,9 @@ def main():
     for name, task, framed in (("reliability_binary_event", "binary_merged", "event"), ("reliability_mcq", "mcq", "answer")):
         fig_reliability(data, figm, C.ARMS, task, framed, C.FIGS / f"{name}_post", part="post")
     fig_hist(data, figm, C.ARMS, "binary_merged", "event", C.FIGS / "hist_binary_pyes_post", part="post")
-    print("figures written", file=sys.stderr)
 
+
+def _costs_stage():
     # ---- costs (actual, from raw JSONL usage)
     costs = {}
     prices = json.load(open(C.STUDY / "prices.json")) if (C.STUDY / "prices.json").exists() else {}
