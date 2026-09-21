@@ -1,8 +1,8 @@
 # Run 2 results — April–August 2026 extension
 
-Status: closed-form tasks and stage-1 leakage COMPLETE over both corpora. Stage-2 FRQ
-rubric grading IN PROGRESS for every model (same judge and dimensions as the six
-published models; nothing revised). FRQ quality tables land when it finishes.
+Status: COMPLETE. Every model, both corpora, every task — closed-form, stage-1
+leakage, and stage-2 FRQ quality under the unchanged published rubric. Finalized
+2026-09-21 03:52; regenerate with `scripts/finalize_run2.sh` (no inference).
 All numbers below come from stored predictions scored by the frozen `scoring_v1`
 graders. Nothing here required re-running any of the six published models.
 
@@ -253,6 +253,71 @@ below their constant-answer baselines on unseen events.
 holds, the task is reading comprehension; if it falls to chance, the framing
 survives. This needs a new prompt variant, which is outside the freeze — not
 started.
+
+## 6b. FRQ quality — every model, both corpora, published rubric
+
+Same judge and four dimensions as the six published models (`judge_frq_combined`,
+sha256 `fc24e69d…`, 0–10, pass ≥ 5.0). Coverage 99.7–100% everywhere; the 12
+gradeable-but-unscored items across ~19,000 are ones the judge declined to score
+on two independent attempts (its rationales are refusals or code-fenced JSON the
+frozen parser cannot read) — unassessable by this judge, not unattempted.
+
+**Original corpus** (Jan 2024 – Mar 2026):
+
+| Model | n | mean | pass % | align | spec | novel | feas |
+|---|---|---|---|---|---|---|---|
+| GPT-5.4 | 4,128 | **5.04** | **60.3** | 3.30 | 6.21 | 4.91 | 5.73 |
+| GPT-5.6 Sol | 4,072 | **4.97** | **54.8** | 3.63 | 6.00 | 4.38 | 5.89 |
+| Claude Sonnet 5 | 4,026 | 4.54 | 37.2 | 3.06 | 5.40 | 4.12 | 5.58 |
+| DeepSeek-R1 | 4,100 | 4.18 | 20.0 | 2.29 | 5.32 | 4.07 | 5.04 |
+| Claude S4.5 | 3,908 | 3.99 | 14.0 | 2.31 | 4.71 | 3.95 | 5.01 |
+| DeepSeek-V4-Pro | 4,132 | 3.97 | 17.2 | 2.11 | 5.32 | 3.72 | 4.73 |
+| GPT-OSS 20B | 4,123 | 3.86 | 11.9 | 2.06 | 4.89 | 3.70 | 4.78 |
+| LLaMA 3.3 70B | 4,093 | 3.49 | 2.5 | 2.23 | 3.33 | 2.38 | 6.00 |
+| GPT-4o | 4,128 | 3.26 | 3.9 | 2.25 | 2.91 | 2.44 | 5.45 |
+
+**Extension** (Apr – Aug 2026, 100% post-cutoff; DeepSeek-V4-Pro May–Aug only,
+so its n is 497 not ~630 — the April cutoff-month exclusion, not missing
+responses):
+
+| Model | n | mean | pass % | align | spec | novel | feas |
+|---|---|---|---|---|---|---|---|
+| GPT-5.6 Sol | 623 | **4.84** | **49.3** | 3.37 | 5.91 | 4.41 | 5.68 |
+| GPT-5.4 | 628 | **4.83** | **50.0** | 3.32 | 5.73 | 4.63 | 5.64 |
+| Claude Sonnet 5 | 618 | 4.44 | 30.1 | 2.84 | 5.22 | 4.22 | 5.48 |
+| DeepSeek-V4-Pro | 497 | 4.00 | 15.5 | 2.07 | 5.27 | 3.80 | 4.85 |
+| Claude S4.5 | 558 | 3.99 | 11.1 | 2.26 | 4.65 | 4.09 | 4.94 |
+| GPT-OSS 20B | 628 | 3.85 | 10.7 | 2.00 | 5.15 | 3.84 | 4.41 |
+| LLaMA 3.3 70B | 630 | 3.42 | 1.9 | 2.16 | 3.29 | 2.33 | 5.91 |
+| GPT-4o | 630 | 3.40 | 2.7 | 2.22 | 2.96 | 2.43 | 5.99 |
+
+Sol and GPT-5.4 are tied on the extension (0.01 apart) and 0.07 apart on the
+original — both inside the noise floor. Sonnet 5 is a clear third on both. The
+sub-dimension shape is universal: models propose *feasible* approaches (4.4–6.0)
+that do not *align* with what the paper did (2.0–3.6). Alignment is the
+discriminating dimension, and Sol leads it on the original corpus (3.63).
+
+**Extension vs original, domain-stratified, post-cutoff only** (judge noise
+cancels in the difference; sampling CIs are the right bar):
+
+| Model | Δ mean | 95% CI |
+|---|---|---|
+| GPT-5.4 | **−0.18** | [−0.26, −0.10] |
+| GPT-5.6 Sol | −0.07 | [−0.21, +0.07] (6 areas) |
+| LLaMA 3.3 70B | −0.06 | [−0.12, −0.00] |
+| Claude Sonnet 5 | −0.04 | [−0.15, +0.07] |
+| Claude S4.5 | −0.01 | [−0.08, +0.06] |
+| GPT-OSS 20B | +0.00 | [−0.07, +0.07] |
+| GPT-4o | **+0.16** | [+0.09, +0.22] |
+
+Mostly flat. GPT-5.4's −0.18 (pass rate 60% → 50%) is the one substantive drop
+on unseen material. Crude and stratified agree throughout (largest shift 0.03),
+so the domain-mix difference between corpora (χ²=212) does not drive this.
+
+Caveats that travel with these numbers: single-item judge noise is 0.39, so
+model-to-model gaps below ~0.4 are not meaningful (§9); the two Claude rows are
+graded on truncated text, direction of effect not established (§9); Sol's
+original-corpus web-search files were regenerated on 2026-09-20 (§9).
 
 ## 7. Web search isolates the leakage mechanism
 

@@ -29,14 +29,14 @@ DeepSeek-V4-Pro  2026-04             n=0           n=0           n=0           n
 
 === frq by forecast horizon (months after cutoff) ===
 model            cutoff          <= -25      -24..-13       -12..-7        -6..-1          0..2          3..5         6..11        12..23         >= 24
-GPT-4o          2023-10             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0
-LLaMA 3.3 70B   2023-12             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0
-GPT-OSS 20B     2024-06             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0
-Claude S4.5     2025-01             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0
-GPT-5.4         2025-08             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0
-Claude Sonnet 5  2026-01             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0
-GPT-5.6 Sol     2026-02             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0
-DeepSeek-V4-Pro  2026-04             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0
+GPT-4o          2023-10             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    3.400(630)
+LLaMA 3.3 70B   2023-12             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    3.422(630)
+GPT-OSS 20B     2024-06             n=0           n=0           n=0           n=0           n=0           n=0           n=0    3.893(264)    3.816(364)
+Claude S4.5     2025-01             n=0           n=0           n=0           n=0           n=0           n=0           n=0    3.985(558)           n=0
+GPT-5.4         2025-08             n=0           n=0           n=0           n=0           n=0           n=0    4.823(524)    4.861(104)           n=0
+Claude Sonnet 5  2026-01             n=0           n=0           n=0           n=0           n=0    4.440(387)    4.434(231)           n=0           n=0
+GPT-5.6 Sol     2026-02             n=0           n=0           n=0           n=0    4.891(129)    4.798(390)    4.947(104)           n=0           n=0
+DeepSeek-V4-Pro  2026-04             n=0           n=0           n=0           n=0    3.994(395)    3.985(234)           n=0           n=0           n=0
 
 === date_score by forecast horizon (months after cutoff) ===
 model            cutoff          <= -25      -24..-13       -12..-7        -6..-1          0..2          3..5         6..11        12..23         >= 24

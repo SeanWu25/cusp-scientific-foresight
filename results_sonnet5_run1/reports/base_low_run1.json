@@ -302495,7 +302495,7 @@
   }
  ],
  "run_metadata": {
-  "built_utc": "2026-09-19T15:21:39.862532+00:00",
+  "built_utc": "2026-09-20T21:13:48.518447+00:00",
   "scoring_version": "v1",
   "frq_quality_scores": "exclude",
   "frq_rubric_note": "Stage-2 quality rubric deferred: the rubric is under revision, so scores computed with the current one would be discarded. FRQ responses are generated and archived verbatim; stage-1 leakage verdicts are computed now because they depend on live web search and would not reproduce later.",
@@ -302506,7 +302506,13 @@
   "run_index": 1,
   "effort": "low",
   "frq_max_tokens": 384,
-  "refusals_excluded_from_denominators": true
+  "refusals_excluded_from_denominators": true,
+  "cost_usd": 0.0,
+  "input_tokens": 4313013,
+  "output_tokens": 2775755,
+  "reasoning_tokens": 0,
+  "calls": 17429,
+  "latency_s": 50084.4
  },
  "refusals": {
   "per_task": {

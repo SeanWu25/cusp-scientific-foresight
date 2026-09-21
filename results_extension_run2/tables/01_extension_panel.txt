@@ -3,7 +3,13 @@ EXTENSION CORPUS: April-August 2026, 815 events
 100% POST-CUTOFF for every model except DeepSeek-V4-Pro (cutoff 2026-04).
 NOT PROSPECTIVE: all outcomes resolved before the models were run. The corpus
 is uncontaminated by training data, but it is not the Time Capsule.
-FRQ quality scores are omitted throughout (rubric under revision).
+FRQ quality REPORTED (published rubric, 4 dims, pass >= 5.0).
+  Judge noise floor: re-grading the same response gives MAD 0.392,
+  so differences below ~0.4 between models are not meaningful.
+  Claude FRQ responses are truncated at their token caps (S4.5 99.6%,
+  Sonnet 5 97.4%) while the rest of the panel answered to completion.
+  Whether that depresses their scores is not established -- Sonnet 5
+  scores specificity 5.40 on the original corpus despite 96% truncation.
 ====================================================================================================
 
 === 1. FULL PANEL ON THE EXTENSION (all post-cutoff) ===
@@ -58,7 +64,18 @@ Claude Sonnet 5           0.228        -0.665             -24.3    193
 GPT-5.6 Sol               0.221        -0.672              +8.4    196
 DeepSeek-V4-Pro           0.343        -0.551             +23.7    155
 
-=== FRQ (generation + stage-1 leakage only; no quality scores) ===
+=== FRQ (quality, generation and stage-1 leakage) ===
+model              responses   score   pass%   align    spec   novel    feas      n
+GPT-4o                   630    3.40     2.7    2.22    2.96    2.43    5.99    630
+LLaMA 3.3 70B            630    3.42     1.9    2.16    3.29    2.33    5.91    630
+GPT-OSS 20B              630    3.85    10.7    2.00    5.15    3.84    4.41    628
+Claude S4.5              559    3.99    11.1    2.26    4.65    4.09    4.94    558
+GPT-5.4                  629    4.83    50.0    3.32    5.73    4.63    5.64    628
+Claude Sonnet 5          618    4.44    30.1    2.84    5.22    4.22    5.48    618
+GPT-5.6 Sol              623    4.84    49.3    3.37    5.91    4.41    5.68    623
+DeepSeek-V4-Pro          498    4.00    15.5    2.07    5.27    3.80    4.85    497
+  differences below ~0.4 are within the judge noise floor
+
 model              responses  leak fail%  leak unclear%  n judged
 GPT-4o                   630        0.00            2.1       630
 LLaMA 3.3 70B            630        0.16            2.2       630

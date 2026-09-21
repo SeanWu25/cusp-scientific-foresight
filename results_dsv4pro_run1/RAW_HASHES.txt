@@ -1,0 +1,5 @@
+# sha256 of raw run artifacts kept out of git
+# refrozen 2026-09-21: run-2 finalize
+# current
+96b3dc61588086be5a8e098be78f4a3f1bf3977083a1a7ebb31a95342a8d3dc5  raw/base_run1.jsonl
+3bf90ef542256bf7cbdbe931b06a99b3330544b157bf544bee4a4a1b3d2ef61c  raw/base_run1.log

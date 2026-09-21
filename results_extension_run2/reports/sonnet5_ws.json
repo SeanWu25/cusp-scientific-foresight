@@ -3,13 +3,13 @@
   "total_rows": 86,
   "predictions_found": 84,
   "predictions_missing": 2,
-  "joint_pass_count": 72,
-  "joint_pass_rate": 0.8372,
-  "outcome_pass_count": 78,
-  "outcome_pass_rate": 0.907,
+  "joint_pass_count": 77,
+  "joint_pass_rate": 0.8953,
+  "outcome_pass_count": 83,
+  "outcome_pass_rate": 0.9651,
   "reasoning_pass_count": 80,
   "reasoning_pass_rate": 0.9302,
-  "mean_overall_score": 0.6451,
+  "mean_overall_score": 0.6183,
   "outcome_weight": 0.6,
   "reasoning_weight": 0.4
  },
@@ -41,6 +41,18 @@
    "accuracy": 0.9661,
    "mean_score": 0.9661,
    "mean_confidence": 0.7866
+  },
+  "frq": {
+   "count": 70,
+   "scored": 70,
+   "mean_score": 5.7393,
+   "min_score": 2.5,
+   "max_score": 7.75,
+   "pass_rate": 0.8,
+   "mean_alignment": 5.6429,
+   "mean_specificity": 6.1429,
+   "mean_novelty": 4.5714,
+   "mean_feasibility": 6.6
   },
   "date": {
    "count": 23,
@@ -87,7 +99,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.6875,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -97,12 +109,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1149,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.25,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s main thesis fairly well: data-driven, map-free transit route generation from origin-destination information via LLM training. It is moderately specific but includes several unsupported implementation guesses (e.g., RL, JSON constraints), so specificity is limited and novelty is mostly standard rather than distinctive.",
+     "urls": [
+      "https://arxiv.org/abs/2605.22355",
+      "https://github.com/HotTricker/TransitLM"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -139,7 +156,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.75,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -156,12 +173,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1029,
-     "truncated": false,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 7.5,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 9.0,
+     "rationale": "The response is strongly aligned with the paper\u2019s actual approach: RationalRewards, PARROT, multi-dimensional critiques, train-time RL rewards, and test-time Generate-Critique-Refine are all central to the method. It is technically concrete and feasible, though a bit less exact on implementation details than the paper itself, and its novelty is moderate because it mainly restates a well-grounded method rather than proposing a new one.",
+     "urls": [
+      "https://arxiv.org/abs/2604.11626",
+      "https://github.com/TIGER-AI-Lab/RationalRewards"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -199,7 +221,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.6725,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -209,12 +231,17 @@
      "confidence": 0.45
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1148,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response matches the paper\u2019s broad infrastructure framing and correctly gestures toward standardized evaluation and deployment, but several implementation details are invented or unsupported by the source abstract. It is technically concrete, but the added snapshot-hashing/network-mocking/AutoJudge ideas reduce fidelity to the actual method; novelty is moderate because it mostly repackages standard infrastructure ideas rather than the paper\u2019s specific GiGPO+PRM and full-stack GUI-agent pipeline.",
+     "urls": [
+      "https://arxiv.org/abs/2604.11784",
+      "https://github.com/ZJU-REAL/ClawGUI"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -251,7 +278,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.685,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -268,12 +295,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1129,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The proposed MV-SGM pipeline is technically plausible, but it does not match the paper\u2019s real method, which instead uses Molmo2-ER, OpenFAST, per-layer KV conditioning to a flow-matching action expert, and adaptive depth reasoning. It is moderately specific in implementation terms, but the core idea is a different architecture than the reference, so alignment is low; novelty is modest because multi-view geometric fusion is a known robotics design, and feasibility is reasonable though unverified for the paper\u2019s setup.",
+     "urls": [
+      "https://arxiv.org/abs/2605.02881",
+      "https://allenai.org/blog/molmoact2"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -311,7 +343,7 @@
    "joint_pass": false,
    "outcome_pass": false,
    "reasoning_pass": true,
-   "overall_score": 0.2,
+   "overall_score": 0.285,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -328,12 +360,17 @@
      "confidence": 0.45
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1157,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.25,
+     "alignment": 3.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad idea that self-distillation should treat deliberation tokens differently from structural tokens, but it misstates the actual mechanism: the paper uses sign-reversed divergence ascent plus an entropy gate, not a probe-driven epistemic reweighting or entropy-preserving KL regularizer. The writeup is moderately concrete, but its implementation plan is mostly speculative relative to the paper; the idea is plausible in principle, though it is not the described method and would require additional design choices to validate.",
+     "urls": [
+      "https://arxiv.org/abs/2605.11609",
+      "https://anti-sd.github.io/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -374,7 +411,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.705,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -391,12 +428,17 @@
      "confidence": 0.5
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1148,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.25,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 3.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the paper\u2019s broad objective\u2014reducing repeated failure modes via memory of past rollouts\u2014but it diverges from the actual MEDS mechanism by introducing GRPO-specific novelty shaping and dynamic entropy/KL controls not described in the paper. It is moderately specific, but the implementation details are speculative rather than faithful to the paper; the novelty is low-to-moderate because it mostly rephrases a known memory-based reward-shaping idea. Feasibility is plausible in general, but some proposed knobs (multiplicative novelty inside group-relative advantage, entropy-floor heuristics) are not grounded in the reference method.",
+     "urls": [
+      "https://arxiv.org/abs/2604.11297",
+      "https://arxiv.org/pdf/2604.11297"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -437,7 +479,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.695,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -447,12 +489,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1201,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response correctly identifies the hypernetwork-generated repository-specific LoRA idea and the static vs. evolving split, which is the paper\u2019s main contribution, but it adds unverified implementation details and does not fully capture the GRU-backed Evo design. It is technically concrete and feasible, but the novelty is mostly the paper\u2019s known approach rather than an especially original extension.",
+     "urls": [
+      "https://arxiv.org/abs/2606.06492",
+      "https://arxiv.org/pdf/2606.06492"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -491,7 +538,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.735,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -508,12 +555,16 @@
      "confidence": 0.8
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1177,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main architecture well: a recursively self-improving deep research agent with alternating research and self-improvement loops, plus autonomous context updating. It is somewhat less precise because it invents or over-specifies training details (e.g., GRPO/PPO and dense verification rewards) that are not evident from the reference abstract, but the overall approach is feasible and technically plausible.",
+     "urls": [
+      "https://arxiv.org/abs/2607.21461"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -551,7 +602,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.735,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -568,12 +619,17 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1142,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the paper\u2019s main direction\u2014compound acoustic simulation plus progressive acoustic-to-semantic optimization with WER-gated RL\u2014but it misses the concrete named components and the precise staged curriculum used in the paper. It is technically plausible and implementable, but the description is more high-level than implementation-ready and adds some generic details not explicitly supported by the paper.",
+     "urls": [
+      "https://arxiv.org/abs/2605.19833",
+      "https://xzf-thu.github.io/Mega-ASR/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -611,7 +667,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -628,12 +684,17 @@
      "confidence": 0.45
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1195,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.0,
+     "alignment": 3.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response proposes a plausible artifact-oriented middleware architecture, but it does not describe the paper\u2019s actual DataFlow-Harness design: typed incremental DAG mutations, DataFlow-Skills, MCP live state exposure, and synchronized visual editing. It is technically specific and implementable in general, but the idea is generic compared with the paper\u2019s grounded platform-native workflow construction, so novelty is moderate and feasibility is good but not tightly validated against the reference system.",
+     "urls": [
+      "https://arxiv.org/html/2607.16617v2",
+      "https://github.com/OpenDCAI/DataFlow-WebUI"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -671,7 +732,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.591,
+   "overall_score": 0.5908,
    "tasks": {
     "binary": {
      "correct": true,
@@ -695,12 +756,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1194,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the central idea of an execution-free, agentic patch verifier that reasons from repository context, so it is fairly well aligned with the paper. However, it adds unsupported training/distillation details and omits the paper\u2019s emphasis on evidence gathering via repository exploration and question-driven verification, reducing precision. The idea is moderately novel but not especially original beyond the paper\u2019s core contribution, and it is feasible because it relies on static repository inspection rather than environment-heavy execution.",
+     "urls": [
+      "https://arxiv.org/abs/2606.28436",
+      "https://openreview.net/pdf?id=B0bXY1hJfj"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -748,7 +814,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.545,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -765,12 +831,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1285,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 7.0,
+     "feasibility": 8.0,
+     "rationale": "The response is well aligned with the paper\u2019s main contribution: DOPD, privilege illusion, and token-wise dual routing based on advantage/probability signals. It is moderately specific but stops short of the paper\u2019s full technical recipe, so it lacks implementation-level detail; the idea is novel enough for this area and appears feasible because it matches a concrete distillation framework described in the paper.",
+     "urls": [
+      "https://arxiv.org/abs/2606.30626",
+      "https://arxiv.org/html/2606.30626"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -810,7 +881,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.581,
+   "overall_score": 0.572,
    "tasks": {
     "binary": {
      "correct": false,
@@ -827,12 +898,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1230,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad StateM theme of externalizing execution state and enforcing transitions, but it departs from the paper by introducing its own SEM architecture and extra state-reconciliation machinery. It is moderately specific and feasible as a systems design, but the novelty is mostly incremental rather than a distinctive insight from the paper.",
+     "urls": [
+      "https://arxiv.org/abs/2608.15089",
+      "https://github.com/henryqin1997/statem"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -879,7 +955,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.485,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -896,12 +972,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1259,
-     "truncated": false,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad idea of using self-supervision and asymmetry, but the paper\u2019s real method is much simpler: an EMA teacher sees the original image while the student sees a strongly augmented view, with the learning signal coming from their distributional disagreement. The proposed crop/mining/contrastive QA pipeline is technically concrete but mostly unrelated to the paper, making it only modestly feasible as a different method rather than a faithful description of S^2VOPD.",
+     "urls": [
+      "https://arxiv.org/abs/2608.14144",
+      "https://williamium3000.github.io/s2vopd/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -939,7 +1020,7 @@
    "joint_pass": false,
    "outcome_pass": true,
    "reasoning_pass": false,
-   "overall_score": 0.8,
+   "overall_score": 0.65,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -949,12 +1030,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1143,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.0,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The answer captures the central idea of pyridine nitrogen transposition via sequential nitrogen insertion and deletion, but its mechanistic description is partly speculative and not a precise match to the paper. It is moderately specific, yet it invents implementation details (e.g., N-oxidation/ring opening, diazo/triazene intermediates) that are not supported by the reference. The idea itself is not especially novel relative to the paper\u2019s reported skeletal-editing concept, and the proposed route is only plausibly feasible rather than clearly grounded in the documented method.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-11006-4",
+      "https://pubmed.ncbi.nlm.nih.gov/42717079/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -1042,7 +1128,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6228,
+   "overall_score": 0.6072,
    "tasks": {
     "binary": {
      "correct": false,
@@ -1066,12 +1152,17 @@
      "confidence": 0.45
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1187,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.75,
+     "alignment": 5.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad theme of evolving a stateful environment to expose cumulative agent risks, which matches OpenART/EMHA at a high level, but it replaces the paper\u2019s actual black-box authorized-state-transition attack with a more generic simulation-and-perturbation harness. It is technically concrete, but much of that concreteness is speculative relative to the paper; the idea is plausible and feasible, though less faithful to the source than a precise EMHA description.",
+     "urls": [
+      "https://arxiv.org/abs/2608.00677",
+      "https://arxiv.org/pdf/2608.00677"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -1119,7 +1210,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.65,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -1129,12 +1220,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1168,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.0,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 7.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad theme of cell-type-specific eQTL analysis, but it misidentifies the core method: the paper used a variance component model, not a joint fine-mapping / low-rank latent-factor framework with chromatin accessibility integration. It is moderately specific because it names statistical machinery and implementation ideas, but those details are largely invented relative to the paper; the approach is novel on its own, yet only partially feasible because the proposed multi-omic fine-mapping pipeline is more complex than the study design described in the reference.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10577-6",
+      "https://pubmed.ncbi.nlm.nih.gov/42649298/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -1171,10 +1267,10 @@
   },
   {
    "id": "bf563cce-0baa-4963-adb9-c2bd521579e8",
-   "joint_pass": false,
-   "outcome_pass": false,
+   "joint_pass": true,
+   "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.2,
+   "overall_score": 0.4025,
    "tasks": {
     "mcq": {
      "correct": false,
@@ -1184,12 +1280,14 @@
      "confidence": 0.5
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1105,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 7.0,
+     "feasibility": 7.0,
+     "rationale": "The response correctly identifies the broad pangenome/graph strategy and mentions relevant classes of tools, but it does not match the paper\u2019s specific Emblask+Weaver trio-based assembly and population-scale mapping workflow. It is technically concrete and plausible, with some implementation-level detail, but it stays at a generalized method-proposal level rather than reproducing the actual paper method.",
+     "urls": [],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -1226,7 +1324,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.465,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -1243,12 +1341,17 @@
      "confidence": 0.8
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1083,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 3.25,
+     "alignment": 1.0,
+     "specificity": 4.0,
+     "novelty": 5.0,
+     "feasibility": 3.0,
+     "rationale": "The paper actually centers on a within-subject fMRI/EEG study with machine learning to extract low-dimensional brain trajectories and show context-aligned organization under psilocybin, not PET-based 5-HT2A occupancy, dynamic causal modeling, or a placebo-controlled crossover with micro-phenomenology probes ([Nature article](https://www.nature.com/articles/s41586-026-10910-z)). The response is somewhat technically concrete, but it substantially misstates the methodology and adds several unsupported elements; the ideas are plausible in principle, but the proposed PET-plus-DCM program is not what the paper did and is only loosely feasible as a follow-on study.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10910-z",
+      "https://www.biorxiv.org/content/biorxiv/early/2026/05/05/2025.03.09.642197.full.pdf"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -1335,7 +1438,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.715,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -1352,12 +1455,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1157,
-     "truncated": false,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.75,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 4.0,
+     "rationale": "The response captures the paper\u2019s central compositional-control framing and the broad hippocampus/ACC/OFC division of labor, but it overextends beyond the actual method by inventing additional modeling and perturbation components. It is moderately specific in describing a technical pipeline, yet much of that pipeline is not in the paper; the novelty is decent but mostly consists of standard combinations of known techniques. Feasibility is limited because the proposed closed-loop optogenetic/TMS and multimodal alignment plan is not realistic for the human intracranial setting described in the study.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10896-8",
+      "https://www.biorxiv.org/content/10.1101/2025.03.17.643774v2"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -1450,7 +1558,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7512,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1467,12 +1575,17 @@
      "confidence": 0.98
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1007,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.75,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 3.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s core method very closely: AlCl3-mediated, mild-temperature upcycling of PVC with \u03b1-olefins to form vinyl-derived PAOs, which is exactly the reported approach ([Nature paper](https://www.nature.com/articles/s41586-026-10867-z)). It is technically concrete and feasible, but the writeup is a bit incomplete and slightly overconfident in mechanistic language (for example, it presents a generic Friedel-Crafts/olefin-insertion description rather than the paper\u2019s fuller PVC-template chemistry and downstream property tuning), so novelty is low because it mostly restates the paper rather than adding new insight.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10867-z",
+      "https://www.nature.com/articles/s41586-026-10867-z.pdf"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -1519,7 +1632,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.71,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -1529,12 +1642,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1015,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 8.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s core approach well: a prospective, longitudinal multi-omic cohort of 1,154 hospitalized COVID-19 patients analyzing Herpesviridae/Anelloviridae reactivation and linking it to immune and clinical outcomes ([Nature paper](https://www.nature.com/articles/s41586-026-10740-z)). It is fairly concrete, but it adds methods not stated in the reference (e.g., proteomics, single-cell RNA-seq, explicit GAMMs, and a 3\u201312 month follow-up design), so it is slightly over-specified relative to the actual study; the novelty is moderate because it mostly restates the study design rather than proposing a distinctly new idea.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10740-z",
+      "https://researchdiscovery.drexel.edu/esploro/outputs/journalArticle/Virus-reactivation-in-acute-and-long/991022201459504721"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -1571,7 +1689,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.6875,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -1581,12 +1699,14 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1053,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.25,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the core experimental concept and key physics of the paper\u2014an all-optical PTC in an InSb-based plasmonic metamaterial driven by strong THz modulation, with Floquet mixing near an exceptional point\u2014but it is less precise about the actual device and mechanism than the paper itself. It is technically concrete and feasible, but some details are generic or slightly off (for example, the proposed gold resonator array framing), and the \u201cimplementation plan\u201d is more a plausible reconstruction than a faithful description of the published method. Novelty is moderate because it mostly restates the paper\u2019s established mechanism rather than proposing a distinct new idea.",
+     "urls": [],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -1672,7 +1792,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.6275,
    "tasks": {
     "mcq": {
      "correct": true,
@@ -1682,12 +1802,17 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1027,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.25,
+     "alignment": 1.0,
+     "specificity": 6.0,
+     "novelty": 3.0,
+     "feasibility": 7.0,
+     "rationale": "The response is technically concrete, but it targets a different method than the actual paper: a Sleeping Beauty transposon screen in CIN mice instead of CRISPR-KOALA bidirectional screening of chromosome-arm genes in BLBC. Because the proposed approach is internally coherent and feasible, feasibility is moderate-high, but novelty is limited since it mostly restates a standard forward genetic screening concept rather than the paper\u2019s actual bidirectional in vivo CRISPR strategy.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10752-9",
+      "https://procure-oncology.com/aneuploidy-selects-for-the-acquisition-of-driver-genes-in-breast-cancer/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -1724,7 +1849,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -1741,12 +1866,17 @@
      "confidence": 0.45
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1114,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.0,
+     "alignment": 4.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad theme of additive-mediated suppression of halide segregation and defect passivation, but it does not identify the paper\u2019s defining photo-transformable TDB mechanism and instead substitutes a generic Lewis-base/zwitterionic design. It is moderately specific in proposing candidate functional groups and a concentration range, but the implementation details are largely speculative; the idea is feasible in principle, though less faithful to the actual method than a precise description would be.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10869-x",
+      "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-026-10869-x/MediaObjects/41586_2026_10869_MOESM1_ESM.pdf"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -1832,7 +1962,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5061,
+   "overall_score": 0.5229,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1856,12 +1986,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1222,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.5,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s broad approach: a transformer-based, self-supervised universal embedding over multi-species single-cell data with ESM2-based gene tokenization and zero-shot use. But it over-specifies unsupported training details (contrastive objectives, batch-effect negative sampling) and therefore only partially reflects the actual method; the technical detail is reasonably concrete, though not fully faithful. The novelty is moderate because it largely restates known design choices from the paper rather than proposing a distinctly new method, and the approach is feasible in principle because it resembles the real UCE system, albeit with some unverified additions.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10689-z",
+      "https://virtualcellmodels.cziscience.com/model/uce"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -1909,7 +2044,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5674,
+   "overall_score": 0.5629,
    "tasks": {
     "binary": {
      "correct": true,
@@ -1933,12 +2068,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1130,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The answer captures the paper\u2019s central mechanism\u2014using QEC error events as reinforcement-learning feedback to continuously calibrate a quantum processor\u2014but it embellishes the method with many implementation details not supported by the paper. It is moderately specific and technically plausible, yet the algorithmic choices and deployment details are partly speculative rather than a precise match to the published approach. The novelty is modest because it largely restates the paper\u2019s core contribution instead of adding a genuinely new idea, and the overall plan is feasible in principle for the hardware setting described.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10759-2",
+      "https://preview-www.nature.com/articles/s41586-026-10759-2.pdf"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -2024,18 +2164,20 @@
   },
   {
    "id": "73c84435-a746-4995-b6f3-4260f8746fb5",
-   "joint_pass": false,
-   "outcome_pass": false,
+   "joint_pass": true,
+   "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.2,
+   "overall_score": 0.56,
    "tasks": {
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1041,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the core idea of a heat-triggered P4-ATPase-mediated flip of saturated phosphatidylcholines that stabilizes the plasma membrane, which matches the paper well. It is moderately specific because it names CRISPR lines and leaflet-resolved lipidomics, but it adds speculative engineering/chemical activation steps and an incorrect focus on PLSCR homologs rather than the paper\u2019s OsALA5\u2013OsALIS2 system. The proposal is feasible in a research context, but the novelty is limited because it mainly restates and generalizes the paper\u2019s mechanism rather than offering a clearly distinct new method.",
+     "urls": [],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2071,7 +2213,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.49,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -2088,12 +2230,17 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1241,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.5,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response mentions food webs, energy flux, trophic structure, and predator effects, but it does not match the paper\u2019s empirical analysis of 318 highly resolved real food webs or its specific focus on taxon richness, vertical diversity, and predator trophic complementarity. It is technically concrete enough to be implementable, but it is describing a different, more simulation-heavy research program; the idea is plausible yet mostly standard rather than especially novel.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10710-5",
+      "https://research.fs.usda.gov/treesearch/81038"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2187,7 +2334,7 @@
    "joint_pass": false,
    "outcome_pass": true,
    "reasoning_pass": false,
-   "overall_score": 0.5,
+   "overall_score": 0.515,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -2204,12 +2351,14 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1099,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the main biological mechanism correctly\u2014CHPO as a MYB regulator linking chilling recovery and NUE\u2014but it shifts from the paper\u2019s discovery/validation workflow into a CRISPR-based breeding proposal that is not the described method. It is moderately specific about allele analysis and editing, but the technical recipe is incomplete and partly speculative. The novelty is modest because it mostly reframes a known gene-discovery result into a standard genome-editing breeding strategy, which is plausible but not especially original.",
+     "urls": [],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2249,7 +2398,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.68,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -2266,12 +2415,17 @@
      "confidence": 0.8
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1057,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.0,
+     "alignment": 2.0,
+     "specificity": 5.0,
+     "novelty": 3.0,
+     "feasibility": 6.0,
+     "rationale": "The response names a plausible maize protein-improvement strategy, but it misidentifies the core target and mechanism: the actual paper focuses on THP3/GOT1, not primarily on THP9/ASN4 editing. It is moderately specific in describing CRISPR, introgression, validation assays, and backcrossing, but the novelty is low because it largely repackages standard breeding/editing tactics and the feasibility is only moderate since the proposed workflow is technically possible even though it does not match the paper.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10575-8",
+      "https://pubmed.ncbi.nlm.nih.gov/42236942/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2312,7 +2466,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6005,
+   "overall_score": 0.6134,
    "tasks": {
     "binary": {
      "correct": true,
@@ -2336,12 +2490,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1045,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 7.75,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 8.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the paper\u2019s core stereoretentive decarbonylative nickel strategy and correctly links it to chiral amino acid/\u03b1-hydroxy-acid derivatives and cross-electrophile coupling, but it misstates some mechanistic details and overgeneralizes the coupling partner. It is technically concrete and feasible, though some implementation wording is speculative relative to the actual paper.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10800-4",
+      "https://pubmed.ncbi.nlm.nih.gov/42332109/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -2389,7 +2548,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.52,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -2406,12 +2565,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1082,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the main mechanism from the paper\u2014mechanophore cross-links that scission under extreme loading to enable localized plasticity and better ballistic dissipation\u2014but it includes unsupported examples and omits the paper\u2019s exact experimental framing and quantified result. It is technically concrete at a conceptual level, yet not fully implementation-ready; the proposed details are plausible and feasible, but the mechanophore examples and tuning workflow appear more like generic extrapolation than the paper\u2019s actual method.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10557-w",
+      "https://preview-www.nature.com/articles/s41586-026-10557-w.pdf"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2449,7 +2613,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.665,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -2459,12 +2623,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1167,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.5,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad methodological frame of the paper\u2014integrating forest inventory, remote sensing, disturbance modeling, machine learning, and climate scenarios to estimate long-term reversal risk\u2014but it introduces several unsupported implementation details and a policy/accounting extension not stated in the abstract. It is technically concrete at a conceptual level, but the added elements (e.g., flux tower validation, process-based carbon cycle coupling, permanence discounts) are more speculative than faithful to the paper, reducing novelty in the context of the reference and leaving feasibility mostly plausible but somewhat overengineered.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10571-y",
+      "https://carbon-pulse.com/513691/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2501,7 +2670,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.6125,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -2511,12 +2680,17 @@
      "confidence": 0.65
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 959,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 3.75,
+     "alignment": 1.0,
+     "specificity": 4.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response names a technically plausible ASD genetics/multi-omics strategy, but it does not match the paper\u2019s actual approach, which centered on WGS, Ptchd1-as mouse knockout models, behavior, and striatal multi-omics/synaptic assays. It is moderately specific in describing a concrete pipeline, but the proposed organoid/spatial-omics/CRISPR validation workflow is speculative relative to the paper and only loosely connected to the reference findings.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/42129557/",
+      "https://www.nature.com/articles/s41586-026-10515-6"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2555,7 +2729,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.65,
+   "overall_score": 0.644,
    "tasks": {
     "binary": {
      "correct": true,
@@ -2579,12 +2753,17 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1139,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 7.0,
+     "alignment": 7.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the main paper thrust: Juno in situ observations of relativistic electrons at Jupiter\u2019s bow shock and an empirical size-to-energy scaling law. It is technically concrete, but it introduces extra datasets and simulation validation not supported by the reference abstract, which lowers alignment slightly; the idea is plausible and implementable, though not especially novel beyond the paper\u2019s own scaling-law contribution.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10473-z",
+      "https://iro.uiowa.edu/esploro/outputs/journalArticle/Relativistic-electron-acceleration-at-the-bow/9985224416002771"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -2632,7 +2811,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.755,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -2649,12 +2828,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1076,
-     "truncated": false,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 7.75,
+     "alignment": 9.0,
+     "specificity": 8.0,
+     "novelty": 7.0,
+     "feasibility": 7.0,
+     "rationale": "The response closely matches the paper\u2019s core idea: using a cusp catastrophe / third-order singularity to obtain cubic-root scaling of Coriolis-induced phase/frequency modulation and boost effective sensitivity ([Nature abstract](https://www.nature.com/)). It is technically concrete about MEMS resonator tuning, feedback locking, and readout, but it adds implementation details (e.g., doubly-clamped or disk-type resonator, Allan deviation, thermal cycling) that are not clearly stated in the reference; the novelty is moderate because it largely restates the paper\u2019s central mechanism rather than proposing a distinct new approach.",
+     "urls": [
+      "https://www.nature.com/",
+      "https://www.nature.com/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2799,7 +2983,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.7505,
+   "overall_score": 0.7214,
    "tasks": {
     "binary": {
      "correct": true,
@@ -2823,12 +3007,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1231,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s core idea well: deterministic atomic engineering in CrSBr using a focused electron beam in STEM to move individual Cr atoms into interstitial sites and build defect arrays ([Nature paper](https://www.nature.com/articles/s41586-026-10431-9); [MIT News](https://news.mit.edu/2026/researchers-reprogram-materials-quickly-rearranging-their-atoms-0513)). However, it adds unsupported implementation details such as a CNN-based closed-loop pipeline, tilt-series/annular geometries, and beam-blanking logic that are not stated in the paper abstract or accessible summaries, so the technical recipe is more speculative than exact. The approach is feasible in broad terms and consistent with the reported experiment, but the proposed extra automation and 3D access strategy are not evidenced by the source material.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10431-9",
+      "https://news.mit.edu/2026/researchers-reprogram-materials-quickly-rearranging-their-atoms-0513"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -2873,10 +3062,10 @@
   },
   {
    "id": "f3bd5e9b-88d1-4f4d-bcc3-0c1bc91e86de",
-   "joint_pass": false,
-   "outcome_pass": false,
+   "joint_pass": true,
+   "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.2,
+   "overall_score": 0.3575,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -2886,12 +3075,16 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1098,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.25,
+     "alignment": 5.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The answer captures the broad idea of gate-based digital quantum simulation, but it misses the actual paper\u2019s core experimental details: trapped-ion Quantinuum hardware, the quantum Ising model, emergent hydrodynamics/diffusion, and the triangular-lattice periodic-boundary setup. It is somewhat technical, but much of that specificity is generic rather than paper-faithful; the proposed approach is feasible in general, though several named claims and hardware choices are not supported by the reference.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10445-3"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2930,7 +3123,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.53,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -2947,12 +3140,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1092,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.5,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response accurately identifies the core experimental platform\u2014granular-aluminum resonators used in a circuit-QED architecture for coherent control and QND readout of vortex states\u2014which is strongly aligned with the paper. It is fairly concrete in describing spectroscopy, pulsed control, and dispersive readout, but it introduces extra fabrication and deterministic pinning details not supported by the abstract; the idea is technically plausible but mostly an implementation plan rather than a novel scientific proposal.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10441-7",
+      "https://www.nature.com/articles/s41467-018-06386-9"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -2990,7 +3188,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6111,
+   "overall_score": 0.6039,
    "tasks": {
     "binary": {
      "correct": false,
@@ -3014,12 +3212,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1030,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response correctly identifies the key PST\u2013PMW solid-solution design and the goal of reducing the Curie temperature while avoiding the 42-day anneal, so it matches the paper\u2019s core method reasonably well. However, it omits or only hints at several concrete implementation and evaluation details from the paper (no-anneal B-site order preservation, 230 K Curie temperature, 17.1 V/\u03bcm fields applied >10^7 times, and regenerator-efficiency analysis), lowering specificity. The idea is practical and directly consistent with the reported work, but it is not especially novel beyond accurately summarizing the paper\u2019s compositional-engineering approach.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10492-w",
+      "https://www.repository.cam.ac.uk/items/7583be14-6df3-45c7-85ef-d2a579884fb4"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -3116,7 +3319,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7025,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -3126,12 +3329,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 915,
-     "truncated": false,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the core quintuple-agonist concept described in the paper: GLP-1R/GIPR co-agonism combined with targeted pan-PPAR activation via a lanifibranor-based conjugate. It is fairly specific at the mechanism level, but it overreaches by adding an unsupported translational/clinical development plan and date-specific milestones not present in the study; the idea itself is plausible, but the proposed end-to-end program is only partially grounded in the paper.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/42056522/",
+      "https://www.nature.com/articles/s41586-026-10427-5"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -3211,7 +3419,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5008,
+   "overall_score": 0.4916,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3235,12 +3443,17 @@
      "confidence": 0.8
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 998,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 5.0,
+     "novelty": 6.0,
+     "feasibility": 4.0,
+     "rationale": "The response is technically elaborate, but it does not describe the actual randomized phase 1b NIVIPIT method of intratumoral ipilimumab with intravenous nivolumab in metastatic melanoma. Its localized-delivery concept is plausible in general, yet the added hydrogel/TLR9/IL-12/spatial-imaging framework is not supported by the paper and makes the proposal only moderately feasible as an implementation for this specific study.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10341-w",
+      "https://jitc.bmj.com/content/9/Suppl_2/A300.full.pdf"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -3288,7 +3501,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.65,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -3298,12 +3511,14 @@
      "confidence": 0.7
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 977,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.0,
+     "alignment": 3.0,
+     "specificity": 5.0,
+     "novelty": 6.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad goal of selectively targeting uncomplexed PP2Ac, but it misses the paper\u2019s real approach: cryo-EM structural elucidation of the FBXO42\u2013CCDC6\u2013PP2Ac degradasome and its recognition/ubiquitination mechanism. It is moderately specific in laying out a chemical-biology workflow, but that workflow is not what the paper did; the idea is somewhat novel as a proposed therapeutic strategy, though only plausibly feasible and not strongly grounded in the reference.",
+     "urls": [],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -3340,7 +3555,7 @@
    "joint_pass": false,
    "outcome_pass": true,
    "reasoning_pass": false,
-   "overall_score": 0.8,
+   "overall_score": 0.695,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -3350,12 +3565,17 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1044,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.5,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 3.0,
+     "feasibility": 8.0,
+     "rationale": "The response aligns well with the paper\u2019s core strategy: integrated single-cell, spatial, and functional analyses of KrasG12D lung epithelium, centered on amphiregulin\u2013EGFR signaling and stromal/immune reprogramming. It is fairly specific and technically grounded, but it introduces several plausible yet unverified implementation details not stated in the reference; novelty is modest because it mostly restates the paper\u2019s main mechanism rather than proposing an original extension, and feasibility is high because the described perturbation-and-profiling workflow is realistic.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10399-6",
+      "https://www.repository.cam.ac.uk/items/c1212251-8a25-41e5-a75a-28ddb0be8857"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -3394,7 +3614,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.6425,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -3404,12 +3624,17 @@
      "confidence": 0.7
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1156,
-     "truncated": false,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.75,
+     "alignment": 4.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response matches the general reproducibility-audit setting and some dataset-level design elements, but it diverges from the paper\u2019s actual human-led reconstruction and claim-weighted reproducibility assessment by introducing an LLM-agent automation framework. It is moderately specific technically, but the proposed LLM pipeline is more of a new system idea than a faithful description of the paper, making novelty moderate and feasibility only fair given the heavy reliance on autonomous code generation and debugging.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10203-5",
+      "https://wrap.warwick.ac.uk/id/eprint/200421/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -3487,7 +3712,7 @@
    "joint_pass": false,
    "outcome_pass": true,
    "reasoning_pass": false,
-   "overall_score": 0.8,
+   "overall_score": 0.745,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -3504,12 +3729,17 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1109,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response correctly captures the central mechanism: a geometric SWAP gate using doublon states of fermionic atoms in a dynamical optical lattice, with symmetry-based protection. Specificity is fairly high because it mentions the lattice merge, doublon formation, and robustness sources, but it also injects unsupported details like dynamical decoupling, which slightly lowers accuracy. Novelty is moderate because it mostly restates the paper\u2019s core concept rather than offering a genuinely new method, and feasibility is high because the described gate is experimentally demonstrated in the referenced work.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10285-1",
+      "https://arxiv.org/abs/2507.22112v1"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -3549,7 +3779,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.65,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -3559,12 +3789,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1104,
-     "truncated": false,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.0,
+     "alignment": 4.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response correctly identifies a methane inversion/attribution framework and regional source partitioning, but it substantially overstates the actual data sources and modeling stack by adding tower, eddy-covariance, and process-model components not indicated in the paper. It is fairly concrete technically, but the proposal is mostly a generic modern methane-budget workflow rather than a precise reconstruction of the published method, with only moderate feasibility given the extra assumptions and data integration burden.",
+     "urls": [
+      "https://www.science.org/doi/pdf/10.1126/science.aea5828",
+      "https://www.science.org/doi/suppl/10.1126/science.aea5828/suppl_file/science.aea5828_sm.pdf"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -3651,7 +3886,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.4545,
+   "overall_score": 0.4846,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3668,12 +3903,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1057,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the paper's core method\u2014GAGE-seq plus integration with spatial transcriptomics/chromatin accessibility and a transformer-based model\u2014but it adds speculative implementation details not present in the reference, such as multiple brain regions and a specific combinatorial-indexing workflow. It is technically concrete and feasible, but the novelty is moderate because it mainly restates the paper's own multimodal design rather than proposing a substantially new approach.",
+     "urls": [
+      "https://www.science.org/doi/reader/10.1126/science.adz1652",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC13499675/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -3717,10 +3957,10 @@
   },
   {
    "id": "7f198488-6e32-4193-8437-9fdd7e22f053",
-   "joint_pass": false,
-   "outcome_pass": false,
+   "joint_pass": true,
+   "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.2,
+   "overall_score": 0.53,
    "tasks": {
     "mcq": {
      "skipped": true,
@@ -3729,12 +3969,17 @@
      "refusal_category": "bio"
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1187,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.5,
+     "alignment": 5.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad idea of an egg translocation/common-garden test of genetic versus natal-environment effects, which matches the paper\u2019s core logic, but it adds methods (stable isotopes, whole-genome resequencing, GPS/light-level geolocators as a generic recipe) that are not central to the actual study. It is technically concrete and feasible, but the proposed implementation is more of a generalized template than a precise description of the published approach, so novelty is modest.",
+     "urls": [
+      "https://www.science.org/doi/reader/10.1126/science.ads0532",
+      "https://research.rug.nl/en/publications/innate-factors-and-ontogeny-determine-nonbreeding-areas-of-migran/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -3771,7 +4016,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.4331,
+   "overall_score": 0.4385,
    "tasks": {
     "binary": {
      "correct": true,
@@ -3788,12 +4033,14 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 996,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 4.0,
+     "rationale": "The response captures the broad theme that dendritic cells and TLS biology are linked, but it does not match the paper\u2019s actual methodology, which centered on spatial transcriptomics, multiplex imaging, and a mouse NSCLC model rather than intravital lineage tracing or engineered reporter systems. It is technically detailed, but that detail is largely speculative and not supported by the reference; the proposal is plausible in principle, yet the specific back-and-forth migration and reporter strategy is not what the paper reports.",
+     "urls": [],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -3840,7 +4087,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.6875,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -3850,12 +4097,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1174,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s central idea: operando study of a VO2/sapphire system where an electrically induced filament modifies substrate strain and feeds back on filament growth. However, it adds implementation specifics (e.g., a time-resolved SXDM platform and a broader thermal/electrical multimodal recipe) that are not supported by the source abstract, so specificity is moderate rather than high. The proposal is feasible as a research plan, but the novelty is limited because it mostly reframes the known experimental approach rather than introducing a clearly new technical insight.",
+     "urls": [
+      "https://www.science.org/doi/pdf/10.1126/science.adt9347",
+      "https://pubs.acs.org/doi/pdf/10.1021/acsnano.4c14696?ref=article_openPDF"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -3889,10 +4141,10 @@
   },
   {
    "id": "0dfb4ad0-3a95-4546-a413-308da21287cc",
-   "joint_pass": false,
-   "outcome_pass": false,
+   "joint_pass": true,
+   "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.2,
+   "overall_score": 0.4025,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -3902,12 +4154,17 @@
      "confidence": 0.93
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1027,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the core study design: high-coverage Near Oceanian genomes, archaic introgression reconstruction, selection analysis, and MPRA validation. It is fairly technical, but some details appear inferred or embellished beyond the paper\u2019s described approach, lowering alignment slightly; novelty is moderate because it mostly restates the paper\u2019s standard comparative-genomics/functional-assay workflow.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/42275502/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC13362234/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -3993,7 +4250,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.695,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -4010,12 +4267,17 @@
      "confidence": 0.5
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1037,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.75,
+     "alignment": 4.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response correctly recognizes confinement as the enabling principle, but it substitutes a different method (template-confined oxide deposition/chalcogenization on chirality-sorted CNT/BN scaffolds) rather than the paper\u2019s actual BN-nanotube-confined synthesis of MoS2. It is moderately specific in implementation details, but those details are largely invented relative to the paper; novelty is modest because it extrapolates a standard templated-growth idea rather than the reported method; feasibility is plausible in general, but the proposed workflow is not supported by the reference and would face significant practical constraints.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/42241530/",
+      "https://www.u-tokyo.ac.jp/focus/en/press/z0508_00456.html"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -4119,7 +4381,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7025,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -4129,12 +4391,18 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1138,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 8.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main empirical strategy: quasi-experimental comparison of conflict before/after the USAID shutdown using historical subnational exposure, plus institutional moderation. However, it overcommits to a specific estimation stack (e.g., Callaway-Sant\u2019Anna, synthetic control) that is not supported by the reference, so alignment is good but not exact. The implementation details are concrete and feasible, but the idea itself is largely a standard applied causal design rather than a highly novel methodological contribution.",
+     "urls": [
+      "https://harris.uchicago.edu/news-events/news/sudden-usaid-cuts-fueled-rising-conflict-across-africa-new-study-finds",
+      "https://www.unil.ch/news/en/1778486135228",
+      "https://www.defenseone.com/threats/2026/05/usaid-shutdown-violence-africa/413571/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -4171,7 +4439,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.758,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4195,12 +4463,18 @@
      "confidence": 0.98
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1088,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 8.0,
+     "novelty": 3.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the core experimental strategy of the paper well: Fendouzhe-based deep imaging and targeted sampling of hard substrates, followed by morphological and molecular classification. It is fairly specific and implementation-oriented, but it overreaches by introducing some methods not emphasized in the paper (for example, unmanned platforms, photogrammetric 3D mosaics, and metagenomics).",
+     "urls": [
+      "https://www.science.org/doi/reader/10.1126/science.aea7086",
+      "https://www.science.org/doi/epdf/10.1126/science.aea7086",
+      "https://english.cas.cn/newsroom/research-news/202605/t20260521_1159697.shtml"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": true,
@@ -4248,7 +4522,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6999,
+   "overall_score": 0.6689,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4272,12 +4546,17 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1003,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response gets the main material system and switching modality right, but it invents several implementation details not supported by the reference and misses the photocurrent-switching emphasis. It is technically concrete and plausible, but the added architecture choices reduce fidelity to the actual paper and make the proposal more speculative than novel.",
+     "urls": [
+      "https://www.nature.com/articles/s41467-026-74311-6",
+      "https://www.nature.com/articles/s41467-022-33345-2"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -4325,7 +4604,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5745,
+   "overall_score": 0.5656,
    "tasks": {
     "binary": {
      "correct": false,
@@ -4349,12 +4628,18 @@
      "confidence": 0.75
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1195,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.5,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad methodological family\u2014SAOM-based network simulation for smoking interventions\u2014but diverges from the paper by introducing agent-based diffusion and alternate targeting criteria not in the reference. It is moderately specific, but several implementation details are speculative or incorrect; the novelty is limited because it mostly repackages standard network-intervention ideas rather than the paper\u2019s exponential-decay insight, and the approach remains feasible but only as a generalized adaptation, not a precise match.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/22515861/?dopt=Abstract",
+      "https://pubmed.ncbi.nlm.nih.gov/36924165/",
+      "https://pubmed.ncbi.nlm.nih.gov/42751139/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -4402,7 +4687,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6666,
+   "overall_score": 0.6033,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4426,12 +4711,17 @@
      "confidence": 0.55
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 988,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 2.5,
+     "alignment": 1.0,
+     "specificity": 3.0,
+     "novelty": 2.0,
+     "feasibility": 4.0,
+     "rationale": "The response does not describe the paper's actual FACl + BA2PbI4 coadditive/compressive-strain strategy and instead proposes a different stabilization route involving dual-cation/dual-halide alloying and facet-templated growth. It is somewhat technical, but the implementation details are mismatched to the reference; the idea is plausible in general yet not the method used in the paper and includes unsupported specifics (e.g., Sb/S and 150 C processing).",
+     "urls": [
+      "https://escholarship.org/uc/item/7cg4b399",
+      "https://www.science.org/doi/reader/10.1126/science.aeb7992"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -4479,7 +4769,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.485,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -4496,12 +4786,17 @@
      "confidence": 0.45
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1036,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 4.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response gestures toward engineering transcription factors for T cells, but the actual paper uses evolutionarily guided recombination of domains within TF families (DESynR), not CRISPR/dCas9 or zinc-finger circuit engineering. It is moderately specific in implementation detail, but much of that specificity describes a different approach; the idea is feasible in principle, though not well matched to the cited work.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900923-2",
+      "https://www.biorxiv.org/content/10.1101/2024.11.06.622344v1"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -4539,7 +4834,7 @@
    "joint_pass": false,
    "outcome_pass": true,
    "reasoning_pass": false,
-   "overall_score": 0.8,
+   "overall_score": 0.6725,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -4549,12 +4844,17 @@
      "confidence": 0.6
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1159,
-     "truncated": false,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper at a high level by using an MSA-based, lightweight protein model with sequence reweighting for evolutionary relevance, but it misstates the training setup by inventing paired-MSA contrastive learning and extra fine-tuning stages not supported by the paper. It is moderately specific and technically plausible, but the added components are more speculative than novel relative to the paper\u2019s actual bidirectional sequence/pair refinement method.",
+     "urls": [
+      "https://www.sciencedirect.com/science/article/pii/S009286742600749X",
+      "https://www.biorxiv.org/content/biorxiv/early/2025/08/03/2025.08.02.668173.full.pdf"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -4593,7 +4893,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.6365,
+   "overall_score": 0.6099,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4610,12 +4910,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 995,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.5,
+     "alignment": 4.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the core biological idea that microtubule dynamics influence directional cardiomyocyte growth, but it misstates the paper\u2019s actual approach by proposing live SunTag/NCT imaging rather than the reported microtubule-stability perturbation plus mRNA export/translation and intercalated-disc analyses. It is technically concrete and plausible, but the proposed implementation is more of an invented experimental extension than a faithful description of the paper, so novelty is moderate and feasibility is somewhat reduced by the added complexity.",
+     "urls": [
+      "https://www.science.org/doi/pdf/10.1126/science.adz1970",
+      "https://www.nature.com/articles/s41569-026-01311-w"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -4662,7 +4967,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.7,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -4679,12 +4984,17 @@
      "confidence": 0.5
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1162,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.0,
+     "alignment": 5.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad idea of a multimodal transformer for cancer prediction, but it misstates key inputs and implementation details relative to Oncoformer, which uses longitudinal EHR plus chest X-ray data rather than pathology, CT, or omics. It is moderately specific in describing a plausible transformer pipeline, but much of that detail is invented rather than grounded in the paper; the novelty is limited because it largely restates standard multimodal fusion and survival modeling ideas. The proposal is feasible in general, though its scope is broader than the paper and would require additional datasets and integration work not supported by the reference.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900807-X",
+      "https://github.com/kaiwang13/Oncoformer"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -4771,7 +5081,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.505,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -4788,12 +5098,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1161,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.25,
+     "alignment": 5.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the general idea of mapping H&E to spatial tumor habitats and using large-scale clinical cohorts, but it misses the paper\u2019s specific CANVAS pipeline: CODEX-derived cellular neighborhoods, spatial-LDA/K-means neighborhood discovery, and foundation-model-based transfer to H&E. It is moderately specific and feasible as a generic framework, but the added GNN/nuclei-segmentation and MIL details are not what the paper did and make the proposal feel like a standard, less original variant of the real method.",
+     "urls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC13345706/",
+      "https://github.com/lilab-stanford/CANVAS/blob/main/README.md"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -4831,7 +5146,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.54,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -4848,12 +5163,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1010,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response accurately captures the paper\u2019s main mechanistic claim: low neuronal dNTP pools make NER incomplete under cisplatin, and deoxynucleoside or dNTP-synthesis rescue mitigates neuronal death and neuropathic pain. It is technically concrete, but it adds some implementation details that are not clearly in the verified paper summary, so the score is strong but not perfect; the novelty is moderate because it mostly restates the paper\u2019s central mechanism rather than proposing a substantially new insight.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900584-2",
+      "https://www.sciencedirect.com/science/article/pii/S0092867426005842"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -4891,7 +5211,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.8,
+   "overall_score": 0.735,
    "tasks": {
     "binary_perturbed": {
      "correct": true,
@@ -4908,12 +5228,17 @@
      "confidence": 0.95
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1077,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main methodological arc well: nuclear/cytosolic proteomics, MAP1B shuttling, chromatin-remodeler interaction, and organoid-based disease validation. It is fairly concrete, but some implementation details (time-course across genotypes, proximity labeling) appear speculative rather than directly grounded in the study, which lowers fidelity and novelty slightly while remaining feasible.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900578-7",
+      "https://push-zb.helmholtz-munich.de/deliver.php?id=45671"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -4956,7 +5281,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5745,
+   "overall_score": 0.5596,
    "tasks": {
     "binary": {
      "correct": true,
@@ -4980,12 +5305,17 @@
      "confidence": 0.9
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1083,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.0,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The answer captures the main conceptual arc of the paper\u2014cTBLC-derived embryoids progressing from totipotent-like cells through blastoids, gastrulation, and early organogenesis, with scRNA-seq revealing intermediate states\u2014but it misstates the implementation by inventing a more engineered staged-culture protocol than the paper reports. It is moderately specific, but the extra signaling-cocktail and matrix details are speculative rather than grounded in the reference, which also makes the proposal less faithful and only moderately feasible as stated.",
+     "urls": [
+      "https://www.cell.com/cell/abstract/S0092-8674%2826%2900582-9",
+      "https://www.sciencedirect.com/science/article/pii/S0092867426005829"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -5033,7 +5363,7 @@
    "joint_pass": false,
    "outcome_pass": true,
    "reasoning_pass": false,
-   "overall_score": 0.5,
+   "overall_score": 0.545,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -5050,12 +5380,17 @@
      "confidence": 0.85
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1085,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 7.25,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 9.0,
+     "rationale": "The response closely matches the paper\u2019s core method: FXT-001 is described as a ferroptosis inhibitor with dual radical and iron-trapping activity used during ex vivo machine perfusion of liver and lung grafts, and it correctly includes FXT-002/003 optimization and split-organ testing. It is technically concrete and feasible, but it mostly restates the study\u2019s translational design rather than adding novel insight beyond the paper itself.",
+     "urls": [
+      "https://www.sciencedirect.com/science/article/pii/S0092867426004599",
+      "https://pubmed.ncbi.nlm.nih.gov/42105762/"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -5098,7 +5433,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.741,
+   "overall_score": 0.7078,
    "tasks": {
     "binary": {
      "correct": true,
@@ -5122,12 +5457,17 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1058,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s central platform and screening logic, but it overextends the assay scope beyond what the study actually reports and slightly alters key quantitative details. It is technically concrete enough to be implementable, but the added pathways are speculative rather than grounded in the paper, so novelty is moderate and feasibility is good but not perfectly aligned with the reference.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674(26)00583-0",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC13429030/"
+     ],
+     "web_search_used": true
     },
     "date": {
      "exact_match": false,
@@ -5175,7 +5515,7 @@
    "joint_pass": true,
    "outcome_pass": true,
    "reasoning_pass": true,
-   "overall_score": 0.5,
+   "overall_score": 0.515,
    "tasks": {
     "binary_perturbed": {
      "correct": false,
@@ -5192,12 +5532,17 @@
      "confidence": 0.97
     },
     "frq": {
-     "score": null,
-     "generated": true,
-     "chars": 1090,
-     "truncated": true,
-     "rubric_deferred": true,
-     "leakage_judged": true
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad concept of a remotely controlled EMF-inducible gene switch and correctly ties it to in vivo gene control, but it misstates or invents important details that are not in the paper, such as the specific element/TF architecture and dosing schedule. It is technically concrete, but the novelty is modest because it mostly restates a known gene-switch deployment pattern rather than the paper\u2019s actual mechanistic discovery (Cyb5b-mediated oscillatory calcium signaling) and the feasibility is only moderate because the proposed construct/configuration is not clearly supported by the source paper.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/41985457/",
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900330-2"
+     ],
+     "web_search_used": true
     }
    },
    "reasoning": {
@@ -5232,12 +5577,12 @@
   }
  ],
  "run_metadata": {
-  "built_utc": "2026-09-20T06:45:42.710326+00:00",
+  "built_utc": "2026-09-21T10:52:08.780482+00:00",
   "scoring_version": "v1",
-  "frq_quality_scores": "exclude",
-  "frq_rubric_note": "Stage-2 quality rubric deferred: the rubric is under revision, so scores computed with the current one would be discarded. FRQ responses are generated and archived verbatim; stage-1 leakage verdicts are computed now because they depend on live web search and would not reproduce later.",
+  "frq_quality_scores": "include",
+  "frq_rubric_note": "Stage-2 quality rubric INCLUDED (legacy rubric).",
   "predictions": "results_extension_run2/raw/sonnet5_ws.jsonl",
-  "judged": "results_extension_run2/judgements/leakage_sonnet5_ws.jsonl",
+  "judged": "results_extension_run2/judgements_merged/sonnet5_ws.jsonl",
   "model": "claude-sonnet-5",
   "condition": "ws",
   "run_index": 1,

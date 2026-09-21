@@ -969,15 +969,15 @@
     "GPT-4o": {
       "crude": -0.06752238481240275,
       "crude_ci_halfwidth": 0.042516356785758415,
-      "stratified": -0.07445057213853984,
+      "stratified": -0.07445057213853985,
       "stratified_ci_halfwidth": 0.04217542442552221,
       "areas": 9
     },
     "LLaMA 3.3 70B": {
       "crude": 0.00842969053450493,
       "crude_ci_halfwidth": 0.04236205702658104,
-      "stratified": 0.00676886528437583,
-      "stratified_ci_halfwidth": 0.04196874721039414,
+      "stratified": 0.006768865284375835,
+      "stratified_ci_halfwidth": 0.041968747210394154,
       "areas": 9
     },
     "GPT-OSS 20B": {
@@ -997,23 +997,74 @@
     "GPT-5.4": {
       "crude": 0.0664540094176781,
       "crude_ci_halfwidth": 0.0360864866040436,
-      "stratified": 0.05873862025940871,
+      "stratified": 0.058738620259408715,
       "stratified_ci_halfwidth": 0.036175542368002814,
       "areas": 9
     },
     "Claude Sonnet 5": {
       "crude": 0.02671255884600965,
       "crude_ci_halfwidth": 0.040557815556444395,
-      "stratified": 0.04502408837555419,
-      "stratified_ci_halfwidth": 0.04123337486420774,
+      "stratified": 0.045024088375554196,
+      "stratified_ci_halfwidth": 0.04123337486420776,
       "areas": 7
     },
     "GPT-5.6 Sol": {
       "crude": 0.01900550590363881,
       "crude_ci_halfwidth": 0.05504582473433416,
-      "stratified": 0.025017353373743206,
-      "stratified_ci_halfwidth": 0.053749043852703286,
+      "stratified": 0.02501735337374321,
+      "stratified_ci_halfwidth": 0.0537490438527033,
       "areas": 7
+    }
+  },
+  "_stratified_frq_delta": {
+    "GPT-4o": {
+      "crude": 0.13743020948689555,
+      "crude_ci_halfwidth": 0.06598915535769281,
+      "stratified": 0.15606778990095377,
+      "stratified_ci_halfwidth": 0.06486137661759937,
+      "areas": 9
+    },
+    "LLaMA 3.3 70B": {
+      "crude": -0.06476776067540824,
+      "crude_ci_halfwidth": 0.06037923214124603,
+      "stratified": -0.061253886077771914,
+      "stratified_ci_halfwidth": 0.05919195251378755,
+      "areas": 9
+    },
+    "GPT-OSS 20B": {
+      "crude": -0.009930275028764424,
+      "crude_ci_halfwidth": 0.07024542037655489,
+      "stratified": 0.001948773728920058,
+      "stratified_ci_halfwidth": 0.06995205216877394,
+      "areas": 9
+    },
+    "Claude S4.5": {
+      "crude": -0.036265167419034405,
+      "crude_ci_halfwidth": 0.07120571160725664,
+      "stratified": -0.006696725353318921,
+      "stratified_ci_halfwidth": 0.07071872775559458,
+      "areas": 9
+    },
+    "GPT-5.4": {
+      "crude": -0.20578849200936045,
+      "crude_ci_halfwidth": 0.07979088421149061,
+      "stratified": -0.17729722498708284,
+      "stratified_ci_halfwidth": 0.08038664405128751,
+      "areas": 9
+    },
+    "Claude Sonnet 5": {
+      "crude": -0.08665670898680577,
+      "crude_ci_halfwidth": 0.11066402507163355,
+      "stratified": -0.037005077011063064,
+      "stratified_ci_halfwidth": 0.10993462240507514,
+      "areas": 8
+    },
+    "GPT-5.6 Sol": {
+      "crude": -0.15183611029472743,
+      "crude_ci_halfwidth": 0.13156726400215854,
+      "stratified": -0.06563481794614988,
+      "stratified_ci_halfwidth": 0.14008946835252975,
+      "areas": 6
     }
   }
 }

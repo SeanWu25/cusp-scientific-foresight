@@ -94,7 +94,7 @@ DeepSeek-V4-Pro          0.079           0.115   -0.036   [-0.097,+0.030]     16
   * = CI excludes zero. Negative gap means the model endorses the
   fabricated finding MORE readily than the genuine one.
 
-=== MCQ EXTENSION-vs-ORIGINAL DELTA: crude vs domain-stratified ===
+=== MCQ ACCURACY EXTENSION-vs-ORIGINAL DELTA: crude vs domain-stratified ===
     post-cutoff only; stratified pools per-area deltas, so mix cancels
 model                           crude     domain-stratified  areas
 GPT-4o                 -0.068+/-0.043        -0.074+/-0.042      9
@@ -104,6 +104,21 @@ Claude S4.5            +0.056+/-0.043        +0.066+/-0.042      9
 GPT-5.4                +0.066+/-0.036        +0.059+/-0.036      9
 Claude Sonnet 5        +0.027+/-0.041        +0.045+/-0.041      7
 GPT-5.6 Sol            +0.019+/-0.055        +0.025+/-0.054      7
+    report the stratified column; the crude one belongs in the supplement
+
+=== FRQ MEAN SCORE (0-10) EXTENSION-vs-ORIGINAL DELTA: crude vs domain-stratified ===
+    post-cutoff only; stratified pools per-area deltas, so mix cancels
+    FRQ: same rubric and judge on both corpora; judge noise cancels in the
+    difference, so sampling CIs are the right bar. Not shown where the
+    original corpus is not yet rubric-graded.
+model                           crude     domain-stratified  areas
+GPT-4o                 +0.137+/-0.066        +0.156+/-0.065      9
+LLaMA 3.3 70B          -0.065+/-0.060        -0.061+/-0.059      9
+GPT-OSS 20B            -0.010+/-0.070        +0.002+/-0.070      9
+Claude S4.5            -0.036+/-0.071        -0.007+/-0.071      9
+GPT-5.4                -0.206+/-0.080        -0.177+/-0.080      9
+Claude Sonnet 5        -0.087+/-0.111        -0.037+/-0.110      8
+GPT-5.6 Sol            -0.152+/-0.132        -0.066+/-0.140      6
     report the stratified column; the crude one belongs in the supplement
 
 wrote results_extension_run2/tables/02_full_corpus.json
