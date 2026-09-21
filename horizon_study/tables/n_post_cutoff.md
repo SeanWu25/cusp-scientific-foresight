@@ -85,6 +85,6 @@ N = events with a scored item; binary counts events with either the original or 
 | GPT-5.4 | 2025-08 | developers.openai.com models/gpt-5.4: 'Aug 31, 2025 knowledge cutoff' (verified) | — |
 | Claude Sonnet 5 | 2026-01 | platform.claude.com models/overview: reliable and training cutoff Jan 2026 (verified) | — |
 | GPT-5.6 Sol | 2026-02 | developers.openai.com models/gpt-5.6-sol: 'Feb 16, 2026 knowledge cutoff' (verified; mid-month, so h=0 is excluded) | — |
-| DeepSeek-V4-Pro | 2026-04 | NOT VERIFIABLE: no cutoff on the HF card; 2026-04 is inferred from the 2026-04-24 release. Original corpus is entirely pre-cutoff for it. | — |
+| DeepSeek-V4-Pro | 2026-04 | April 2026, confirmed by the authors (2026-09-20); the vendor publishes no cutoff and the model was released 2026-04-24. Original corpus is entirely pre-cutoff for it. | — |
 
 Notes: GPT-5.6 Sol's WS+Cutoff run was re-generated on 2026-09-20 after a fix to scripts/web_search.py (the original run had `web_search_error` on all 500 rows and no retrieval context). DeepSeek R1 has no extension run (deployment retired). DeepSeek-V4-Pro has no post-cutoff items on the original corpus.

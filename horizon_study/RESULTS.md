@@ -83,8 +83,10 @@ the same sign and similar magnitude; that is what we can honestly say.
   2026-09-20: GPT-4o Oct 2023, LLaMA 3.3 Dec 2023, GPT-OSS-20B Jun 2024, GPT-5.4
   Aug 31 2025, Claude Sonnet 5 Jan 2026, GPT-5.6 Sol Feb 16 2026. Claude Sonnet
   4.5 has two published dates (reliable Jan 2025, used; training data Jul 2025,
-  sensitivity). DeepSeek R1 (2024-07) and DeepSeek-V4-Pro (2026-04) are not
-  published by the vendor and stay flagged as unverified.
+  sensitivity). DeepSeek-V4-Pro's April 2026 cutoff is confirmed by the authors (the vendor
+  publishes none; release 2026-04-24). DeepSeek R1 (2024-07) is the one cutoff
+  that could not be verified against any source; a sensitivity run uses its
+  self-reported Dec 2023.
 * **Post-cutoff N** (events): original corpus — GPT-4o 4,285 binary / 4,126 MCQ,
   LLaMA 4,250 / 4,087, GPT-OSS 3,500 / 3,380, DeepSeek R1 3,310 / 2,818, Claude
   S4.5 2,206 / 2,129, GPT-5.4 1,048 / 1,014, Sonnet 5 209 / 190, Sol 12 / 7
@@ -232,7 +234,8 @@ reason and must not be read as improving foresight.
 
 * Sonnet 5 and Sol have almost no post-cutoff range on the original corpus
   (2 and 1 months); their horizon evidence comes from the extension only.
-* Two cutoffs (DeepSeek R1, DeepSeek-V4-Pro) are vendor-unpublished.
+* DeepSeek R1's cutoff is vendor-unpublished and unverifiable (sensitivity run
+  included); DeepSeek-V4-Pro's is confirmed by the authors.
 * The first-observable dates for Nature/Science/Cell events are Crossref
   creation dates for 87% of them; genuine preprint dates exist for 271. The
   DOI-date sensitivity bounds the effect of this.

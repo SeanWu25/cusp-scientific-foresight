@@ -68,7 +68,7 @@ MODELS = {
                        ws=ROOT / "results_sol_run1/reports/ws_cutoff_500.json",  # re-run 2026-09-20 after the temperature fix in scripts/web_search.py; the original run had no retrieval context
                        ),
     "dsv4pro":    dict(name="DeepSeek-V4-Pro", cutoff="2026-04", cutoff_alt=None,
-                       cutoff_source="NOT VERIFIABLE: no cutoff on the HF card; 2026-04 is inferred from the 2026-04-24 release. Original corpus is entirely pre-cutoff for it.",
+                       cutoff_source="April 2026, confirmed by the authors (2026-09-20); the vendor publishes no cutoff and the model was released 2026-04-24. Original corpus is entirely pre-cutoff for it.",
                        orig=ROOT / "results_dsv4pro_run1/reports/base_run1.json", ext="deepseekv4pro_base.json", ws=None),
 }
 EXT_REPORTS = ROOT / "results_extension_run2/reports"
