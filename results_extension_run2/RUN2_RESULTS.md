@@ -1,10 +1,14 @@
-# Run 2 results — April–August 2026 extension
+# Run 2 results — extension corpus and full-dataset panel
 
 Status: COMPLETE. Every model, both corpora, every task — closed-form, stage-1
 leakage, and stage-2 FRQ quality under the unchanged published rubric. Finalized
 2026-09-21 03:52; regenerate with `scripts/finalize_run2.sh` (no inference).
 All numbers below come from stored predictions scored by the frozen `scoring_v1`
-graders. Nothing here required re-running any of the six published models.
+graders. Nothing here required re-running any of the six published models. Panel:
+nine models — the six in the paper plus Claude Sonnet 5, GPT-5.6 Sol and
+DeepSeek-V4-Pro — on the entire dataset (5,575 events; DeepSeek-R1 original only).
+§10 gives the pre/post-cutoff split for every task; §11 the relationships among
+the four tasks (A1.2).
 
 **This corpus is not prospective.** Every outcome had resolved before the models
 ran. What it is: 815 events published April–August 2026, which postdate every
@@ -15,17 +19,18 @@ addresses contamination, not the absence of a Time Capsule, and every table says
 
 ## 1. Headline
 
-Three tasks, three different stories, and only one of them survives contact with
-uncontaminated material.
+Four tasks, and only two of them show skill on uncontaminated material — and those
+two barely distinguish seen from unseen material (§6, §10).
 
 | Task | Result on the extension | Trivial baseline | Verdict |
 |---|---|---|---|
 | Merged binary | best 0.673 (DeepSeek-V4-Pro) | always-"no" = **0.768** | 0 of 8 models beat the baseline |
 | Date | best 0.506 (GPT-4o) | constant "2026-06" = **0.893** | no model close |
 | MCQ | best 0.910 (Claude Sonnet 5) | chance = 0.250 | clearly above chance |
+| FRQ (0–10) | best 4.84 (Sol) ≈ 4.83 (GPT-5.4) | no trivial baseline | real spread across models; retrospective ceiling ~1.0 |
 
-MCQ is the only task showing real skill. Section 6 argues it may not be measuring
-foresight.
+MCQ and FRQ are the tasks showing skill. Section 6 argues MCQ may not be measuring
+foresight; §10 shows FRQ has the same near-1.0 retrospective ceiling.
 
 **The date result is not an artefact of the extension's five-month window.** It
 holds on the original 27-month corpus too. Computing the best constant guess on
@@ -42,14 +47,15 @@ corpus-wide baseline would not be a fair comparison:
 | GPT-5.4 | 924 | 0.245 | 2026-12 | 0.776 | −0.531 |
 | Claude Sonnet 5 | 410 | 0.288 | 2026-02 | 0.827 | −0.538 |
 | GPT-5.6 Sol | 327 | 0.233 | 2026-04 | 0.836 | −0.603 |
+| DeepSeek-V4-Pro | 196 | 0.346 | 2026-06 | 0.893 | −0.547 |
 
-Every gap is negative, across 327–2,950 items per model. The gap widens with
+Every gap is negative, across 196–2,950 items per model. The gap widens with
 cutoff recency, but that is an artefact worth naming rather than a finding: a
 later cutoff leaves a narrower remaining window, which strengthens the constant
 guess. The substantive point is the sign.
 
-So: **two of three closed-form tasks are beaten by trivial constant strategies on
-unseen events, and the third has a retrospective ceiling near 1.0.**
+So: **two of the four tasks are beaten by trivial constant strategies on unseen
+events, and the other two have retrospective ceilings near 1.0** (§10).
 
 ## 2. Full panel, extension corpus (100% post-cutoff)
 
@@ -178,7 +184,9 @@ The two columns agree: the largest shift is 0.018 against CI half-widths near
 result, not an assumption, and χ²=212.3 was large enough to require checking.
 
 Only GPT-4o and GPT-5.4 have CIs excluding zero, in opposite directions. The rest
-are consistent with no change between corpora.
+are consistent with no change between corpora. DeepSeek-V4-Pro has no
+post-cutoff rows on the original corpus (its cutoff postdates it), so no
+post-cutoff cross-corpus delta exists for it; its pre/post split is in §10.
 
 **Report the stratified column; the crude one belongs in the supplement.** This
 also settles the GPT-OSS 20B serving-stack question (§9): its stratified delta of
@@ -238,8 +246,13 @@ The retrospective ceiling on MCQ is ~1.0 for every model:
 | GPT-5.4 | 0.830 | 0.814 | 0.980 |
 | Claude Sonnet 5 | 0.912 | 0.900 | 0.987 |
 | GPT-5.6 Sol | 0.879 | 0.864 | 0.982 |
+| DeepSeek-V4-Pro | 0.668 | 0.665 | **0.996** |
 
-MCQ is the only task clearly above chance, and also the task that least
+DeepSeek-V4-Pro is the sharpest case: 4,128 pre-cutoff MCQ items (the largest
+retrospective sample in the panel) against 606 post-cutoff, and the ratio is
+0.996. Full per-task pre/post split with CIs in §10.
+
+MCQ is the task most clearly above chance, and also the task that least
 distinguishes seen from unseen material. Sonnet 5 loses 1.3% crossing its own
 cutoff. If MCQ measured foresight, crossing the cutoff should cost far more.
 
@@ -433,7 +446,7 @@ flagging.
   `ws_cutoff_500` runs for GPT-5.6 Sol had `web_search_error` on every row and
   no retrieval context: the query-generation call in `scripts/web_search.py`
   sent `temperature` to a model that rejects it. A concurrent session fixed the
-  call (fix uncommitted at time of writing) and re-ran both files; the originals
+  call (committed in `5c68bb4`) and re-ran both files; the originals
   are kept as `*.FAILED_no_context.*`. Sonnet 5's web-search runs do **not**
   have the systemic failure (94–97% of rows carry context; the rest are
   scattered transient errors already dropped as `retrieval_failed`), so §7
@@ -447,10 +460,137 @@ flagging.
 - **Cost**: $44.68 total on first-party APIs. Azure and local rows report tokens
   only; no dollar figure is invented for negotiated or local serving.
 
-## 10. Reproducing
+## 10. Pre- vs post-cutoff performance on the entire dataset
+
+Every model, every task, original + extension pooled (5,575 events; DeepSeek-R1
+original only). Partition rule `main`: an event published in the cutoff month
+counts as post. GPT-4o and LLaMA 3.3 have no pre-cutoff rows (cutoffs precede the
+corpus); DeepSeek-V4-Pro is the inverse profile — all 4,760 original events are
+pre-cutoff, the 815 extension events post (April included; §2 shows it May–Aug
+only, and the April choice moves MCC by 0.003). Binary is balanced accuracy (raw
+merged accuracy is confounded by class balance × response bias and its pre/post
+ratio would mislead). FRQ is the published-rubric mean. Refusals excluded.
+Ratio = post/pre, the retrospective ceiling; near 1 means the task does not
+distinguish seen from unseen material. Generated by
+`run_evaluation/prepost_table.py` → `tables/09_prepost_full_corpus.{md,json}`.
+
+### Binary (balanced accuracy, bias-corrected)
+
+| model | cutoff | pre-cutoff | post-cutoff | Δ (post−pre) | ratio |
+|---|---|---|---|---|---|
+| GPT-4o | 2023-10 | — | 0.472 [0.458, 0.485] n=7,253 | — | — |
+| LLaMA 3.3 70B | 2023-12 | — | 0.511 [0.502, 0.519] n=7,204 | — | — |
+| GPT-OSS 20B | 2024-06 | 0.475 [0.442, 0.508] n=949 | 0.470 [0.456, 0.485] n=6,306 | -0.004 | 0.991 |
+| DeepSeek-R1 | 2024-07 | 0.487 [0.449, 0.526] n=1,198 | 0.482 [0.462, 0.501] n=5,149 | -0.006 | 0.989 |
+| Claude S4.5 | 2025-01 | 0.484 [0.458, 0.510] n=2,516 | 0.472 [0.453, 0.491] n=4,270 | -0.012 | 0.975 |
+| GPT-5.4 | 2025-08 | 0.517 [0.497, 0.537] n=4,577 | 0.505 [0.478, 0.532] n=2,679 | -0.012 | 0.976 |
+| Claude Sonnet 5 | 2026-01 | 0.560 [0.542, 0.579] n=5,647 | 0.527 [0.492, 0.563] n=1,387 | -0.033 | 0.940 |
+| GPT-5.6 Sol | 2026-02 | 0.605 [0.591, 0.619] n=6,070 | 0.574 [0.534, 0.612] n=1,183 | -0.031 | 0.949 |
+| DeepSeek-V4-Pro | 2026-04 | 0.489 [0.478, 0.500] n=6,411 | 0.465 [0.436, 0.501] n=845 | -0.024 | 0.951 |
+
+### MCQ accuracy
+
+| model | cutoff | pre-cutoff | post-cutoff | Δ (post−pre) | ratio |
+|---|---|---|---|---|---|
+| GPT-4o | 2023-10 | — | 0.521 [0.507, 0.535] n=4,732 | — | — |
+| LLaMA 3.3 70B | 2023-12 | — | 0.435 [0.421, 0.449] n=4,693 | — | — |
+| GPT-OSS 20B | 2024-06 | 0.497 [0.456, 0.537] n=580 | 0.474 [0.459, 0.489] n=4,153 | -0.023 | 0.954 |
+| DeepSeek-R1 | 2024-07 | 0.619 [0.581, 0.656] n=636 | 0.589 [0.571, 0.606] n=2,962 | -0.031 | 0.950 |
+| Claude S4.5 | 2025-01 | 0.762 [0.740, 0.783] n=1,546 | 0.708 [0.691, 0.725] n=2,784 | -0.054 | 0.930 |
+| GPT-5.4 | 2025-08 | 0.830 [0.816, 0.843] n=2,933 | 0.814 [0.795, 0.831] n=1,801 | -0.016 | 0.980 |
+| Claude Sonnet 5 | 2026-01 | 0.912 [0.902, 0.921] n=3,420 | 0.900 [0.879, 0.918] n=930 | -0.012 | 0.987 |
+| GPT-5.6 Sol | 2026-02 | 0.879 [0.869, 0.889] n=3,891 | 0.864 [0.839, 0.886] n=815 | -0.015 | 0.982 |
+| DeepSeek-V4-Pro | 2026-04 | 0.668 [0.653, 0.682] n=4,128 | 0.665 [0.627, 0.701] n=606 | -0.003 | 0.996 |
+
+### FRQ mean score (0–10, published rubric)
+
+| model | cutoff | pre-cutoff | post-cutoff | Δ (post−pre) | ratio |
+|---|---|---|---|---|---|
+| GPT-4o | 2023-10 | — | 3.28 [3.25, 3.31] n=4,758 | — | — |
+| LLaMA 3.3 70B | 2023-12 | — | 3.48 [3.46, 3.50] n=4,723 | — | — |
+| GPT-OSS 20B | 2024-06 | 3.88 [3.80, 3.96] n=569 | 3.86 [3.83, 3.88] n=4,182 | -0.03 | 0.993 |
+| DeepSeek-R1 | 2024-07 | 4.17 [4.11, 4.23] n=724 | 4.18 [4.15, 4.21] n=3,376 | +0.01 | 1.003 |
+| Claude S4.5 | 2025-01 | 3.95 [3.91, 4.00] n=1,557 | 4.01 [3.98, 4.05] n=2,909 | +0.06 | 1.015 |
+| GPT-5.4 | 2025-08 | 5.04 [5.01, 5.07] n=2,914 | 4.96 [4.93, 5.00] n=1,842 | -0.07 | 0.985 |
+| Claude Sonnet 5 | 2026-01 | 4.54 [4.51, 4.57] n=3,636 | 4.47 [4.42, 4.52] n=1,008 | -0.07 | 0.984 |
+| GPT-5.6 Sol | 2026-02 | 4.97 [4.94, 5.00] n=3,859 | 4.88 [4.82, 4.94] n=836 | -0.09 | 0.981 |
+| DeepSeek-V4-Pro | 2026-04 | 3.97 [3.94, 4.00] n=4,132 | 3.99 [3.92, 4.06] n=629 | +0.02 | 1.005 |
+
+### Date score
+
+| model | cutoff | pre-cutoff | post-cutoff | Δ (post−pre) | ratio |
+|---|---|---|---|---|---|
+| GPT-4o | 2023-10 | — | 0.199 [0.190, 0.209] n=2,950 | — | — |
+| LLaMA 3.3 70B | 2023-12 | — | 0.485 [0.476, 0.495] n=2,930 | — | — |
+| GPT-OSS 20B | 2024-06 | 0.126 [0.115, 0.137] n=472 | 0.337 [0.325, 0.350] n=2,479 | +0.211 | 2.675 |
+| DeepSeek-R1 | 2024-07 | 0.145 [0.133, 0.157] n=599 | 0.328 [0.316, 0.340] n=2,143 | +0.183 | 2.264 |
+| Claude S4.5 | 2025-01 | 0.201 [0.185, 0.218] n=1,166 | 0.275 [0.261, 0.288] n=1,624 | +0.073 | 1.364 |
+| GPT-5.4 | 2025-08 | 0.231 [0.218, 0.244] n=2,027 | 0.245 [0.227, 0.264] n=924 | +0.014 | 1.062 |
+| Claude Sonnet 5 | 2026-01 | 0.434 [0.421, 0.446] n=2,431 | 0.288 [0.261, 0.315] n=410 | -0.146 | 0.664 |
+| GPT-5.6 Sol | 2026-02 | 0.376 [0.361, 0.391] n=2,624 | 0.233 [0.214, 0.252] n=327 | -0.143 | 0.620 |
+| DeepSeek-V4-Pro | 2026-04 | 0.191 [0.182, 0.200] n=2,755 | 0.346 [0.293, 0.399] n=196 | +0.155 | 1.813 |
+
+CIs: Wilson for proportions (balanced-accuracy CI is the mean of the two Wilson halves, conservative), normal approximation for means. Pre-cutoff rows are retrospective: the model may have seen the paper in training.
+
+
+
+**What the split shows.** Three of the four tasks are nearly flat across the
+cutoff:
+
+- **Binary (balanced accuracy)**: ratios 0.94–0.99. The two newest models lose
+  the most (Sonnet 5 −0.033, Sol −0.031), which is the horizon effect of §4 seen
+  from the other side — their post-cutoff windows are the short-horizon ones
+  where a little skill exists, and even that is small.
+- **MCQ**: ratios 0.93–1.00, as §6 already argued; DeepSeek-V4-Pro's 0.996 on
+  4,128 pre-cutoff items is the cleanest single number.
+- **FRQ**: ratios 0.98–1.02 — the *flattest* of the four. Every post-pre
+  difference is within ±0.09 on a 0–10 scale, and three models score slightly
+  *higher* on unseen material. FRQ therefore joins MCQ in §6's open problem:
+  a task with real spread across models but no pre/post difference is not
+  obviously measuring foresight, and the manuscript should say so rather than
+  let the rubric's face validity carry the claim.
+- **Date** is the exception, and in both directions: 0.62–0.66 for the two
+  newest models, 1.36–2.68 for older ones. That is not knowledge — it is
+  window geometry. A model's pre-cutoff date items sit at one distance from
+  its typical guess and its post-cutoff items at another, and the
+  `exp(−0.1·|Δmonths|)` score rewards whichever happens to be nearer. §1
+  shows no model beats a constant guess on either side; the pre/post ratio on
+  this task should not be read as a ceiling at all.
+
+The honest summary for the paper: **the retrospective ceiling is near 1.0 on
+every task where models show skill.** Whatever the benchmark measures on MCQ and
+FRQ, it measures the same amount before and after the cutoff.
+
+## 11. Relationships among the four tasks (A1.2, Reviewer 2 C1)
+
+Full analysis, files and proposed manuscript text in
+`results/A1_2_task_correlation/` (`response_A1_2.md`). Nine models, entire
+dataset, binary as balanced accuracy, FRQ as the published rubric.
+
+- **Across models (n = 9):** binary, MCQ and FRQ rise together with capability
+  (MCQ–FRQ r = 0.86 [0.44, 0.97]; binary–MCQ 0.71; binary–FRQ 0.68). **Date is
+  uncorrelated** with MCQ (−0.01) and FRQ (0.05) and its CI with binary spans
+  zero: stronger models are not better at predicting *when*, consistent with §1.
+- **Within models, across papers** (22k–37k pairs per task pair): every median
+  Spearman |ρ| ≤ 0.10. Holding the model fixed, success on one task says almost
+  nothing about success on another task about the same paper.
+- **Reading:** the tasks are not redundant (near-independent at the paper
+  level); three share a capability factor at the aggregate level, which is a
+  statement about models, not about the constructs; date is the outlier at both
+  levels; nothing here bears on completeness. The response reframes the four
+  tasks as one operationalization, not a decomposition.
+- Sensitivity: raw merged accuracy would flip binary–date to −0.26 through
+  response bias — the reason for balanced accuracy. Dropping DeepSeek-V4-Pro
+  moves no coefficient by more than 0.03.
+
+## 12. Reproducing
 
 ```bash
-scripts/make_run2_tables.sh      # every table, from stored outputs, no inference
+scripts/finalize_run2.sh                    # sweep, merge, reports, every table, A2 check, hash re-freeze
+run_evaluation/prepost_table.py             # §10: pre/post split on the entire dataset
+results/A1_2_task_correlation/compute_task_correlation.py   # §11
 ```
 
-Raw predictions are excluded from git; md5s are recorded in the commit log.
+All from stored outputs; only the sweep step in finalize makes judge calls, and
+only for null-score leftovers. Raw predictions are excluded from git; sha256s are
+in each results dir's `RAW_HASHES.txt` (superseded hashes kept).
