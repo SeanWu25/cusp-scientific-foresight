@@ -159,6 +159,8 @@ def block_variance():
         print(f"\n{model}  ({len(reps)} passes)")
         print(f"{'metric':<20}{hdr}{'mean':>10}{'sd':>9}{'range':>9}")
         for k, v in vals.items():
+            if len(v) < 2:            # e.g. FRQ graded on one pass only
+                continue
             sd = statistics.stdev(v)
             print(f"{k:<20}" + "".join(f"{x:>10.4f}" for x in v)
                   + f"{statistics.mean(v):>10.4f}{sd:>9.4f}{max(v)-min(v):>9.4f}")

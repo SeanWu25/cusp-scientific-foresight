@@ -76,9 +76,11 @@ def main():
         if not r["has_extension"]: tag += notes["no_ext"]
         if name == "DeepSeek-V4-Pro": tag += notes["april"]
         b = r["binary"]
-        md.append(f"| {name}{tag} | {cutoff} | {r['n_events_post']:,} | {b[3]:,} | {fmt(r['raw_merged'])} | {fmt(b)} | {r['mcc']:+.3f} | "
-                  f"{fmt(r['mcq'])} ({r['mcq'][3]:,}) | {fmt(r['frq'], 2)} ({r['frq'][3]:,}) | "
-                  f"{fmt(r['date'])} ({r['date'][3]:,}) |")
+        def cell(v, dec=3):           # value [CI] (n), or a dash when the task is absent/ungraded
+            return f"{fmt(v, dec)} ({v[3]:,})" if v else "—"
+        md.append(f"| {name}{tag} | {cutoff} | {r['n_events_post']:,} | {b[3] if b else 0:,} | {fmt(r['raw_merged'])} | {fmt(b)} | "
+                  f"{(f'{r[chr(109)+chr(99)+chr(99)]:+.3f}' if r['mcc'] is not None else '—')} | "
+                  f"{cell(r['mcq'])} | {cell(r['frq'], 2)} | {cell(r['date'])} |")
     md.append("")
     md.append("\\* cutoff precedes the corpus (Jan 2024), so post-cutoff is the entire dataset — no retrospective rows exist for this model.  ")
     md.append("† original corpus only (4,760 events); no extension run exists (endpoint retired).  ")
