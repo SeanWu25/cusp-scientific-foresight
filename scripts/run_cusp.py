@@ -76,6 +76,7 @@ PRICING = {
     "claude-sonnet-5": (2.00e-6, 10.00e-6),
     "claude-fable-5":  (10.00e-6, 50.00e-6),
     "claude-opus-5":   (5.00e-6, 25.00e-6),
+    "claude-opus-4-8": (5.00e-6, 25.00e-6),   # assumed same tier as Opus 5; verify against the price list
     "gpt-5.6-sol":     (4.00e-6, 20.00e-6),
     "gpt-5.4":         (1.25e-6, 10.00e-6),
     "gpt-5.4-mini":    (0.25e-6, 2.00e-6),
