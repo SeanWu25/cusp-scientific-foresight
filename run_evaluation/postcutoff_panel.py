@@ -6,9 +6,9 @@ Original (Jan 2024-Mar 2026) + extension (Apr-Aug 2026) pooled; for each model
 only events published on/after its cutoff month (rule "main": the cutoff month
 counts as post). All four tasks side by side with n and 95% CIs:
 
-  binary   balanced accuracy (bias-corrected) and MCC over the merged binary
-           items -- raw merged accuracy is confounded by class balance x
-           response bias and is deliberately not shown here
+  binary   raw merged accuracy (for reference: confounded by class balance x
+           response bias, see RUN2_RESULTS.md section 3), balanced accuracy
+           (bias-corrected) and MCC over the merged binary items
   MCQ      accuracy
   FRQ      published-rubric mean score (0-10)
   date     mean exp(-0.1 |months off|)
@@ -50,7 +50,8 @@ def main():
         c = cm4["post"]
         b = bal_acc(c)
         mcc = _binary_metrics(**c)["mcc"] if b else None
-        r = {"binary": b, "mcc": mcc, "mcq": prop(acc["post"]["mcq"]),
+        r = {"binary": b, "mcc": mcc, "raw_merged": prop(acc["post"]["merged"]),
+             "mcq": prop(acc["post"]["mcq"]),
              "frq": mean(acc["post"]["frq"]), "date": mean(acc["post"]["date"]),
              "n_events_post": len(acc["post"]["_events"]),
              "has_extension": bool(ep and os.path.exists(ep)),
@@ -60,21 +61,22 @@ def main():
     notes = {"all_post": "*", "no_ext": "†", "april": "‡"}
     md = ["# Post-cutoff performance on the entire dataset — one row per model\n",
           "Original + extension pooled; per model, only events published on/after its cutoff month "
-          f"(rule `{a.rule}`). Binary is **balanced accuracy** (bias-corrected) with MCC; raw merged "
-          "accuracy is confounded by class balance × response bias and is not shown. FRQ is the "
+          f"(rule `{a.rule}`). Binary: raw merged accuracy is shown for reference but is confounded by "
+          "class balance × response bias (RUN2_RESULTS.md §3); **balanced accuracy** and MCC are the "
+          "bias-corrected metrics. FRQ is the "
           "published-rubric mean (0–10). 95% CIs: Wilson for proportions (balanced accuracy = mean "
           "of the two Wilson halves), normal approximation for means. Refusals excluded.\n",
-          "| Model | cutoff | events | binary n | balanced acc | MCC | MCQ (n) | FRQ 0–10 (n) | date score (n) |",
-          "|---|---|---|---|---|---|---|---|---|"]
+          "| Model | cutoff | events | binary n | raw merged acc | balanced acc | MCC | MCQ (n) | FRQ 0–10 (n) | date score (n) |",
+          "|---|---|---|---|---|---|---|---|---|---|"]
     for name, cutoff, r in rows:
         if r is None:
-            md.append(f"| {name} | {cutoff} | — | — | — | — | (not yet run) | — | — |"); continue
+            md.append(f"| {name} | {cutoff} | — | — | — | — | — | (not yet run) | — | — |"); continue
         tag = ""
         if r["all_post"]: tag += notes["all_post"]
         if not r["has_extension"]: tag += notes["no_ext"]
         if name == "DeepSeek-V4-Pro": tag += notes["april"]
         b = r["binary"]
-        md.append(f"| {name}{tag} | {cutoff} | {r['n_events_post']:,} | {b[3]:,} | {fmt(b)} | {r['mcc']:+.3f} | "
+        md.append(f"| {name}{tag} | {cutoff} | {r['n_events_post']:,} | {b[3]:,} | {fmt(r['raw_merged'])} | {fmt(b)} | {r['mcc']:+.3f} | "
                   f"{fmt(r['mcq'])} ({r['mcq'][3]:,}) | {fmt(r['frq'], 2)} ({r['frq'][3]:,}) | "
                   f"{fmt(r['date'])} ({r['date'][3]:,}) |")
     md.append("")
