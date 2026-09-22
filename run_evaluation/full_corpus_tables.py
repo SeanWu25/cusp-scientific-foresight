@@ -46,6 +46,8 @@ PANEL = [
                                    "results_extension_run2/reports/sol_base.json"),
     ("DeepSeek-V4-Pro", "2026-04", "results_dsv4pro_run1/reports/base_run1.json",
                                    "results_extension_run2/reports/deepseekv4pro_base.json"),
+    ("Claude Opus 4.8", "2026-01", "results_opus48_run1/reports/base_medium_run1.json",
+                                   "results_extension_run2/reports/opus48_base_run1.json"),
 ]
 
 

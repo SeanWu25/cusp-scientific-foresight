@@ -34,8 +34,10 @@ PANEL = [
     ("Claude Sonnet 5", "sonnet5_base_run1"),
     ("GPT-5.6 Sol",     "sol_base"),
     ("DeepSeek-V4-Pro", "deepseekv4pro_base"),
+    ("Claude Opus 4.8", "opus48_base_run1"),
 ]
-REPEATS = ("sonnet5_base_run1", "sonnet5_base_run2", "sonnet5_base_run3")
+REPEATS = {"Claude Sonnet 5": ("sonnet5_base_run1", "sonnet5_base_run2", "sonnet5_base_run3"),
+           "Claude Opus 4.8": ("opus48_base_run1", "opus48_base_run2", "opus48_base_run3")}
 TASKS = ("binary", "binary_perturbed", "mcq", "date")
 
 # Serving mode and list price (USD per input/output token) per model.
@@ -54,6 +56,7 @@ SERVING = {
     "Claude Sonnet 5": ("api",   (2.00e-6, 10.00e-6)),
     "GPT-5.6 Sol":     ("api",   (4.00e-6, 20.00e-6)),
     "DeepSeek-V4-Pro": ("azure", None),
+    "Claude Opus 4.8": ("api",   (5.00e-6, 25.00e-6)),
 }
 
 
@@ -130,34 +133,36 @@ def block_sensitivity(alt_root):
 
 def block_variance():
     print("=" * 100)
-    print("3. RUN-TO-RUN VARIANCE (Claude Sonnet 5, extension, repeated passes)")
-    print("   Sonnet 5 rejects every sampling parameter, so temperature=0 is")
-    print("   unavailable. These passes bound the resulting non-determinism.")
+    print("3. RUN-TO-RUN VARIANCE (repeated passes; models that reject temperature=0)")
+    print("   These models reject every sampling parameter, so temperature=0 is")
+    print("   unavailable. Repeated passes bound the resulting non-determinism.")
     print("=" * 100)
-    reps = [load(t) for t in REPEATS]
-    reps = [r for r in reps if r]
-    if len(reps) < 2:
-        print("   [fewer than two passes available]")
-        return {}
-    vals = {}
-    for rep in reps:
-        tm = rep["task_metrics"]
-        b, bp = tm["binary"], tm["binary_perturbed"]
-        vals.setdefault("merged_binary", []).append(
-            (b["correct"] + bp["correct"]) / (b["count"] + bp["count"]))
-        for k, src in (("binary", b), ("binary_perturbed", bp),
-                       ("mcq", tm["mcq"])):
-            vals.setdefault(k, []).append(src["accuracy"])
-        vals.setdefault("date_score", []).append(tm["date"]["mean_score"])
-        vals.setdefault("refusals", []).append(rep["refusals"]["total"])
-    hdr = "".join(f"{'run'+str(i+1):>10}" for i in range(len(reps)))
-    print(f"{'metric':<20}{hdr}{'mean':>10}{'sd':>9}{'range':>9}")
     out = {}
-    for k, v in vals.items():
-        sd = statistics.stdev(v)
-        print(f"{k:<20}" + "".join(f"{x:>10.4f}" for x in v)
-              + f"{statistics.mean(v):>10.4f}{sd:>9.4f}{max(v)-min(v):>9.4f}")
-        out[k] = {"runs": v, "mean": statistics.mean(v), "sd": sd}
+    for model, tags in REPEATS.items():
+        reps = [r for r in (load(t) for t in tags) if r]
+        if len(reps) < 2:
+            print(f"\n{model}: fewer than two passes available")
+            continue
+        vals = {}
+        for rep in reps:
+            tm = rep["task_metrics"]
+            b, bp = tm["binary"], tm["binary_perturbed"]
+            vals.setdefault("merged_binary", []).append(
+                (b["correct"] + bp["correct"]) / (b["count"] + bp["count"]))
+            for k, src in (("binary", b), ("binary_perturbed", bp), ("mcq", tm["mcq"])):
+                vals.setdefault(k, []).append(src["accuracy"])
+            vals.setdefault("date_score", []).append(tm["date"]["mean_score"])
+            if tm.get("frq", {}).get("mean_score") is not None:
+                vals.setdefault("frq_score", []).append(tm["frq"]["mean_score"])
+            vals.setdefault("refusals", []).append(rep["refusals"]["total"])
+        hdr = "".join(f"{'run'+str(i+1):>10}" for i in range(len(reps)))
+        print(f"\n{model}  ({len(reps)} passes)")
+        print(f"{'metric':<20}{hdr}{'mean':>10}{'sd':>9}{'range':>9}")
+        for k, v in vals.items():
+            sd = statistics.stdev(v)
+            print(f"{k:<20}" + "".join(f"{x:>10.4f}" for x in v)
+                  + f"{statistics.mean(v):>10.4f}{sd:>9.4f}{max(v)-min(v):>9.4f}")
+            out.setdefault(model, {})[k] = {"runs": v, "mean": statistics.mean(v), "sd": sd}
     return out
 
 

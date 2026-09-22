@@ -169,3 +169,6 @@ results/A4_retrieval/A4_3_fixed_queries/reports/pred_*.jsonl
 results/A4_retrieval/**/*.log
 results/A4_retrieval/**/logs/
 results/A4_retrieval/A4_3_fixed_queries/reports/*.json
+results_opus48_run1/**/*.jsonl
+results_opus48_run1/**/*.log
+results_opus48_run1/**/*.bak

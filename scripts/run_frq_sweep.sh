@@ -14,7 +14,7 @@ cd /home/seanwu/FutureScience
 PY=/home/seanwu/miniconda3/bin/python3
 EXT=benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026_monthnorm.jsonl
 ORIG=archive/data/canonical/merged_validated_cusp_fixed.jsonl
-E=results_extension_run2; S5=results_sonnet5_run1; SO=results_sol_run1; DS=results_dsv4pro_run1
+E=results_extension_run2; S5=results_sonnet5_run1; SO=results_sol_run1; DS=results_dsv4pro_run1; OP=results_opus48_run1
 LOG=$E/raw/rubric_logs; mkdir -p "$LOG"
 
 # name | raw predictions | benchmark | outdir | existing judgement files (space-separated)
@@ -36,11 +36,18 @@ JOBS=(
  "sol_ws_500|$SO/raw/ws_500.jsonl|$ORIG|$SO/judgements_rubric|$SO/judgements/leakage_ws_500.jsonl $SO/judgements_rubric/rubric_sol_ws_500.jsonl"
  "sol_ws_cutoff_500|$SO/raw/ws_cutoff_500.jsonl|$ORIG|$SO/judgements_rubric|$SO/judgements/leakage_ws_cutoff_500.jsonl $SO/judgements_rubric/rubric_sol_ws_cutoff_500.jsonl"
  "dsv4pro_orig|$DS/raw/base_run1.jsonl|$ORIG|$DS/judgements_rubric|$DS/judgements_rubric/rubric_dsv4pro_orig.jsonl"
+ "opus48_base_run1|$E/raw/opus48_base_run1.jsonl|$EXT|$E/judgements_rubric|$E/judgements_rubric/rubric_opus48_base_run1.jsonl"
+ "opus48_ws|$E/raw/opus48_ws.jsonl|$EXT|$E/judgements_rubric|$E/judgements_rubric/rubric_opus48_ws.jsonl"
+ "opus48_ws_cutoff|$E/raw/opus48_ws_cutoff.jsonl|$EXT|$E/judgements_rubric|$E/judgements_rubric/rubric_opus48_ws_cutoff.jsonl"
+ "opus48_orig|$OP/raw/base_medium_run1.jsonl|$ORIG|$OP/judgements_rubric|$OP/judgements_rubric/rubric_opus48_orig.jsonl"
+ "opus48_ws_500|$OP/raw/ws_500.jsonl|$ORIG|$OP/judgements_rubric|$OP/judgements_rubric/rubric_opus48_ws_500.jsonl"
+ "opus48_ws_cutoff_500|$OP/raw/ws_cutoff_500.jsonl|$ORIG|$OP/judgements_rubric|$OP/judgements_rubric/rubric_opus48_ws_cutoff_500.jsonl"
 )
 
 total=0
 for spec in "${JOBS[@]}"; do
   IFS="|" read -r nm raw bench out existing <<< "$spec"
+  [ -f "$raw" ] || continue
   todo="$out/sweep_todo_$nm.jsonl"
   ex_args=""; for f in $existing; do [ -f "$f" ] && ex_args="$ex_args --existing $f"; done
   [ -f "$out/rubric_${nm}_sweep.jsonl" ] && ex_args="$ex_args --existing $out/rubric_${nm}_sweep.jsonl"

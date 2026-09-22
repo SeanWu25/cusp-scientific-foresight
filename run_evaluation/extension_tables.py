@@ -35,6 +35,7 @@ PANEL = [
     ("sonnet5_base_run1",   "Claude Sonnet 5", "2026-01"),
     ("sol_base",            "GPT-5.6 Sol",     "2026-02"),
     ("deepseekv4pro_base",  "DeepSeek-V4-Pro", "2026-04"),
+    ("opus48_base_run1",    "Claude Opus 4.8", "2026-01"),
 ]
 # original-corpus reports, for the post-cutoff comparison
 ORIG = {
@@ -45,6 +46,7 @@ ORIG = {
     "GPT-5.4":         "run_evaluation/frq_results/gpt_5_4_eval.json",
     "Claude Sonnet 5": "results_sonnet5_run1/reports/base_medium_run1.json",
     "GPT-5.6 Sol":     "results_sol_run1/reports/base_medium_run1.json",
+    "Claude Opus 4.8": "results_opus48_run1/reports/base_medium_run1.json",
 }
 
 

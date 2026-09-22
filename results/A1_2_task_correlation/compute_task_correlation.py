@@ -44,6 +44,7 @@ PANEL = [
     ("Claude Sonnet 5", "2026-01", "results_sonnet5_run1/reports/base_medium_run1.json","results_extension_run2/reports/sonnet5_base_run1.json"),
     ("GPT-5.6 Sol",     "2026-02", "results_sol_run1/reports/base_medium_run1.json",    "results_extension_run2/reports/sol_base.json"),
     ("DeepSeek-V4-Pro", "2026-04", "results_dsv4pro_run1/reports/base_run1.json",       "results_extension_run2/reports/deepseekv4pro_base.json"),
+    ("Claude Opus 4.8", "2026-01", "results_opus48_run1/reports/base_medium_run1.json", "results_extension_run2/reports/opus48_base_run1.json"),
 ]
 TASKS = ["Binary (feasibility)", "MCQ (mechanism)", "FRQ (solution)", "Date"]
 SHORT = ["binary", "mcq", "frq", "date"]

@@ -39,7 +39,8 @@ mkdir -p "$MRG" results_sonnet5_run1/judgements_merged results_sol_run1/judgemen
          results_dsv4pro_run1/judgements_merged
 # extension: leakage file + rubric file (+ todo-based rubric for the WS pair)
 for t in sonnet5_base_run1 sonnet5_ws sonnet5_ws_cutoff llama33_base sonnet45_base \
-         deepseekv4pro_base gpt4o_base gpt54_base sol_base gptoss20b_base; do
+         deepseekv4pro_base gpt4o_base gpt54_base sol_base gptoss20b_base \
+         opus48_base_run1 opus48_ws opus48_ws_cutoff; do
   parts=""
   [ -f "$JUD/leakage_$t.jsonl" ] && parts="$parts $JUD/leakage_$t.jsonl"
   [ -f "$RUB/rubric_$t.jsonl" ]  && parts="$parts $RUB/rubric_$t.jsonl"
@@ -57,12 +58,17 @@ mj $S5/judgements_merged/ws_cutoff_500.jsonl $S5/raw/judged_ws_cutoff_500.jsonl 
 mj $SO/judgements_merged/base_medium_run1.jsonl $SO/judgements/leakage_base_medium_run1.jsonl $SO/judgements_rubric/rubric_sol_orig.jsonl $SO/judgements_rubric/rubric_sol_orig_sweep.jsonl
 mj $SO/judgements_merged/ws_500.jsonl $SO/judgements/leakage_ws_500.jsonl $SO/judgements_rubric/rubric_sol_ws_500.jsonl $SO/judgements_rubric/rubric_sol_ws_500_sweep.jsonl
 mj $SO/judgements_merged/ws_cutoff_500.jsonl $SO/judgements/leakage_ws_cutoff_500.jsonl $SO/judgements_rubric/rubric_sol_ws_cutoff_500.jsonl $SO/judgements_rubric/rubric_sol_ws_cutoff_500_sweep.jsonl
+OP=results_opus48_run1; mkdir -p $OP/judgements_merged
+mj $OP/judgements_merged/base_medium_run1.jsonl $OP/judgements/leakage_base_medium_run1.jsonl $OP/judgements_rubric/rubric_opus48_orig.jsonl $OP/judgements_rubric/rubric_opus48_orig_sweep.jsonl
+mj $OP/judgements_merged/ws_500.jsonl $OP/judgements/leakage_ws_500.jsonl $OP/judgements_rubric/rubric_opus48_ws_500.jsonl $OP/judgements_rubric/rubric_opus48_ws_500_sweep.jsonl
+mj $OP/judgements_merged/ws_cutoff_500.jsonl $OP/judgements/leakage_ws_cutoff_500.jsonl $OP/judgements_rubric/rubric_opus48_ws_cutoff_500.jsonl $OP/judgements_rubric/rubric_opus48_ws_cutoff_500_sweep.jsonl
 mj $DS/judgements_merged/base_run1.jsonl $DS/judgements_rubric/rubric_dsv4pro_orig.jsonl $DS/judgements_rubric/rubric_dsv4pro_orig_sweep.jsonl
 
 echo "### 4. rebuild reports with leakage AND rubric scores joined in"
 ORIG=archive/data/canonical/merged_validated_cusp_fixed.jsonl
 for t in sonnet5_base_run1 sonnet5_base_run2 sonnet5_base_run3 sonnet5_ws sonnet5_ws_cutoff \
-         llama33_base sonnet45_base deepseekv4pro_base gpt4o_base gpt54_base sol_base gptoss20b_base; do
+         llama33_base sonnet45_base deepseekv4pro_base gpt4o_base gpt54_base sol_base gptoss20b_base \
+         opus48_base_run1 opus48_base_run2 opus48_base_run3 opus48_ws opus48_ws_cutoff; do
   [ -f "$RAW/$t.jsonl" ] || continue
   J=""; [ -f "$MRG/$t.jsonl" ] && J="--judged $MRG/$t.jsonl --frq-scores include"
   $PY scripts/build_report.py --predictions "$RAW/$t.jsonl" --benchmark "$EXT" \
@@ -76,7 +82,10 @@ for spec in \
   "$SO/raw/base_medium_run1.jsonl|$SO/judgements_merged/base_medium_run1.jsonl|$SO/reports/base_medium_run1.json" \
   "$SO/raw/ws_500.jsonl|$SO/judgements_merged/ws_500.jsonl|$SO/reports/ws_500.json" \
   "$SO/raw/ws_cutoff_500.jsonl|$SO/judgements_merged/ws_cutoff_500.jsonl|$SO/reports/ws_cutoff_500.json" \
-  "$DS/raw/base_run1.jsonl|$DS/judgements_merged/base_run1.jsonl|$DS/reports/base_run1.json"; do
+  "$DS/raw/base_run1.jsonl|$DS/judgements_merged/base_run1.jsonl|$DS/reports/base_run1.json" \
+  "$OP/raw/base_medium_run1.jsonl|$OP/judgements_merged/base_medium_run1.jsonl|$OP/reports/base_medium_run1.json" \
+  "$OP/raw/ws_500.jsonl|$OP/judgements_merged/ws_500.jsonl|$OP/reports/ws_500.json" \
+  "$OP/raw/ws_cutoff_500.jsonl|$OP/judgements_merged/ws_cutoff_500.jsonl|$OP/reports/ws_cutoff_500.json"; do
   IFS="|" read -r raw jud rep <<< "$spec"
   [ -f "$raw" ] && [ -f "$jud" ] || continue
   $PY scripts/build_report.py --predictions "$raw" --benchmark "$ORIG" \
@@ -85,7 +94,7 @@ for spec in \
 done
 
 echo "### 5. refusals-as-wrong variants"
-for t in sonnet45_base sonnet5_base_run1 sol_base gpt54_base; do
+for t in sonnet45_base sonnet5_base_run1 sol_base gpt54_base opus48_base_run1; do
   [ -f "$RAW/$t.jsonl" ] || continue
   $PY scripts/build_report.py --predictions "$RAW/$t.jsonl" --benchmark "$EXT" \
       --score-refusals-as-wrong --out "$ALT/$t.json" >/dev/null 2>&1 && echo "  ok $t"
@@ -140,3 +149,4 @@ $PY scripts/refreeze_raw_hashes.py results_sol_run1 \
 $PY scripts/refreeze_raw_hashes.py results_sonnet5_run1   --note "run-2 finalize" | sed 's/^/  /'
 $PY scripts/refreeze_raw_hashes.py results_extension_run2 --note "run-2 finalize" | sed 's/^/  /'
 $PY scripts/refreeze_raw_hashes.py results_dsv4pro_run1   --note "run-2 finalize" | sed 's/^/  /'
+[ -d results_opus48_run1/raw ] && $PY scripts/refreeze_raw_hashes.py results_opus48_run1 --note "run-2 finalize" | sed 's/^/  /'
