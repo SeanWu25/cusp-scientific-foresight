@@ -104,6 +104,8 @@ echo "### 6. tables (FRQ quality reported)"
 $PY run_evaluation/extension_tables.py --frq report > "$T/01_extension_panel.txt" 2>&1
 $PY run_evaluation/full_corpus_tables.py --out "$T/02_full_corpus.json" \
                                                  > "$T/02_full_corpus.txt" 2>&1
+$PY run_evaluation/prepost_table.py      > /dev/null 2>&1 && echo "  09_prepost_full_corpus"
+$PY run_evaluation/postcutoff_panel.py   > /dev/null 2>&1 && echo "  10_postcutoff_panel"
 $PY run_evaluation/run2_diagnostics.py --refusals-as-wrong-dir "$ALT" \
     --out "$T/07_diagnostics.json"               > "$T/07_diagnostics.txt" 2>&1
 R=$REP
