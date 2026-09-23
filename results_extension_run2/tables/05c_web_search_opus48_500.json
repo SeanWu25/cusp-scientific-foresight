@@ -1,5 +1,5 @@
 {
-  "label": "Claude Opus 4.8 (500 subset)",
+  "label": "Claude Opus 4.8 (pinned 500 subset)",
   "post_only": true,
   "n_shared_ids": 28,
   "min_n": 20,

@@ -118,6 +118,7 @@ $PY run_evaluation/binary_extended.py --benchmark "$EXT" --results /dev/null \
   --extra "Claude Sonnet 5=2026-01=$R/sonnet5_base_run1.json" \
   --extra "GPT-5.6 Sol=2026-02=$R/sol_base.json" \
   --extra "DeepSeek-V4-Pro=2026-04=$R/deepseekv4pro_base.json" \
+  --extra "Claude Opus 4.8=2026-01=$R/opus48_base_run1.json" \
   --out "$T/03_binary_bias.json"                 > "$T/03_binary_bias.txt" 2>&1
 $PY run_evaluation/horizon_stratified.py --benchmark "$EXT" --results /dev/null --min-n 20 \
   --extra "GPT-4o=2023-10=$R/gpt4o_base.json" \
@@ -128,6 +129,7 @@ $PY run_evaluation/horizon_stratified.py --benchmark "$EXT" --results /dev/null 
   --extra "Claude Sonnet 5=2026-01=$R/sonnet5_base_run1.json" \
   --extra "GPT-5.6 Sol=2026-02=$R/sol_base.json" \
   --extra "DeepSeek-V4-Pro=2026-04=$R/deepseekv4pro_base.json" \
+  --extra "Claude Opus 4.8=2026-01=$R/opus48_base_run1.json" \
   --out "$T/04_horizon.json"                     > "$T/04_horizon.txt" 2>&1
 $PY run_evaluation/web_search_block.py \
   --base "$R/sonnet5_base_run1.json" --wscut "$R/sonnet5_ws_cutoff.json" --ws "$R/sonnet5_ws.json" \
@@ -135,7 +137,18 @@ $PY run_evaluation/web_search_block.py \
   --out "$T/05_web_search.json"                  > "$T/05_web_search.txt" 2>&1
 $PY run_evaluation/gap_decomposition.py --benchmark "$EXT" --min-n 20 \
   --extra "Claude Sonnet 5 (ext)=2026-01=$R/sonnet5_base_run1.json=$R/sonnet5_ws.json=$R/sonnet5_ws_cutoff.json" \
+  --extra "Claude Opus 4.8 (ext)=2026-01=$R/opus48_base_run1.json=$R/opus48_ws.json=$R/opus48_ws_cutoff.json" \
   --out "$T/06_gap.json"                         > "$T/06_gap.txt" 2>&1
+
+O48=results_opus48_run1/reports
+$PY run_evaluation/web_search_block.py \
+  --base "$R/opus48_base_run1.json" --wscut "$R/opus48_ws_cutoff.json" --ws "$R/opus48_ws.json" \
+  --label "Claude Opus 4.8 (extension WS subset)" --benchmark "$EXT" --cutoff 2026-01 \
+  --out "$T/05b_web_search_opus48_ext.json"        > "$T/05b_web_search_opus48_ext.txt" 2>&1
+$PY run_evaluation/web_search_block.py \
+  --base "$O48/base_medium_run1.json" --wscut "$O48/ws_cutoff_500.json" --ws "$O48/ws_500.json" \
+  --label "Claude Opus 4.8 (pinned 500 subset)" --benchmark "$ORIG" --cutoff 2026-01 --post-only \
+  --out "$T/05c_web_search_opus48_500.json"        > "$T/05c_web_search_opus48_500.txt" 2>&1
 
 echo; echo "wrote:"; ls -la "$T" | awk 'NR>3{printf "  %8s  %s\n",$5,$9}'
 echo; echo "raw prediction hashes (not in git):"

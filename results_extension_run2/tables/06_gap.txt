@@ -1,10 +1,10 @@
-Metric                             GPT-5.4 (2025-08)             DeepSeek-R1 (2024-07)           Claude Sonnet (2025-01)   Claude Sonnet 5 (ext) (2026-01)
-                        d_know      d_fore         n      d_know      d_fore         n      d_know      d_fore         n      d_know      d_fore         n
-Binary                      --          --         0          --          --         0          --          --         0      +0.000      +0.435        23
-Binary (pert.)              --          --         0          --          --         0          --          --         0      -0.014      -0.129        70
-MCQ                         --          --         0          --          --         0          --          --         0      -0.085      +0.085        59
-FRQ (0-10)                  --          --         0          --          --         0          --          --         0      +0.014      +1.161        70
-Date (0-1)                  --          --         0          --          --         0          --          --         0      +0.055      +0.258        23
+Metric                             GPT-5.4 (2025-08)             DeepSeek-R1 (2024-07)           Claude Sonnet (2025-01)   Claude Sonnet 5 (ext) (2026-01)   Claude Opus 4.8 (ext) (2026-01)
+                        d_know      d_fore         n      d_know      d_fore         n      d_know      d_fore         n      d_know      d_fore         n      d_know      d_fore         n
+Binary                      --          --         0          --          --         0          --          --         0      +0.000      +0.435        23      +0.304      +0.304        23
+Binary (pert.)              --          --         0          --          --         0          --          --         0      -0.014      -0.129        70      -0.174      -0.072        69
+MCQ                         --          --         0          --          --         0          --          --         0      -0.085      +0.085        59      +0.018      +0.054        56
+FRQ (0-10)                  --          --         0          --          --         0          --          --         0      +0.014      +1.161        70      +0.149      +1.108        67
+Date (0-1)                  --          --         0          --          --         0          --          --         0      +0.055      +0.258        23      +0.141      +0.336        23
 
 GPT-5.4: shared ids=500  post-cutoff ids=0
 
@@ -13,5 +13,7 @@ DeepSeek-R1: shared ids=500  post-cutoff ids=0
 Claude Sonnet: shared ids=500  post-cutoff ids=0
 
 Claude Sonnet 5 (ext): shared ids=83  post-cutoff ids=83
+
+Claude Opus 4.8 (ext): shared ids=80  post-cutoff ids=80
 
 wrote results_extension_run2/tables/06_gap.json

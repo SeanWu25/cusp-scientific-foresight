@@ -4501,6 +4501,572 @@
           }
         }
       }
+    },
+    "Claude Opus 4.8": {
+      "cutoff": "2026-01",
+      "source": "results_extension_run2/reports/opus48_base_run1.json",
+      "metrics": {
+        "mcq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 358,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 330,
+            "value": 0.9217877094972067,
+            "ci_low": 0.8892833934293572,
+            "ci_high": 0.945335953820931,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 211,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 198,
+            "value": 0.9383886255924171,
+            "ci_low": 0.8974552042241855,
+            "ci_high": 0.9636443221245292,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "frq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 390,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 4.57051282051282,
+            "ci_low": 4.4847364726223695,
+            "ci_high": 4.656289168403271,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 232,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 4.5969827586206895,
+            "ci_low": 4.496201421756907,
+            "ci_high": 4.697764095484472,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary_perturbed": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 391,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 299,
+            "value": 0.7647058823529411,
+            "ci_low": 0.7202106959935631,
+            "ci_high": 0.8040501721621732,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 231,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 183,
+            "value": 0.7922077922077922,
+            "ci_low": 0.7353158144637231,
+            "ci_high": 0.8395397477535333,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "merged_binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 514,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 326,
+            "value": 0.6342412451361867,
+            "ci_low": 0.5917492756100317,
+            "ci_high": 0.6747414814091032,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 300,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 195,
+            "value": 0.65,
+            "ci_low": 0.594438067475952,
+            "ci_high": 0.7017689035247274,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 123,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 27,
+            "value": 0.21951219512195122,
+            "ci_low": 0.1554740213505587,
+            "ci_high": 0.30054040924634323,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 69,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 12,
+            "value": 0.17391304347826086,
+            "ci_low": 0.10238268593034995,
+            "ci_high": 0.27983846242443633,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_score": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 124,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 0.22018951612903226,
+            "ci_low": 0.1794675889675798,
+            "ci_high": 0.2609114432904847,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 69,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 0.16311594202898552,
+            "ci_low": 0.11431485422625384,
+            "ci_high": 0.2119170298317172,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_signed_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 124,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": -18.024193548387096,
+            "ci_low": -23.891563252708906,
+            "ci_high": -12.156823844065286,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 69,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": -26.89855072463768,
+            "ci_low": -34.393988699303634,
+            "ci_high": -19.403112749971726,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_abs_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 124,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 24.088709677419356,
+            "ci_low": 18.94581000347561,
+            "ci_high": 29.2316093513631,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 69,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 28.579710144927535,
+            "ci_low": 21.444409988918345,
+            "ci_high": 35.715010300936726,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        }
+      }
     }
   }
 }

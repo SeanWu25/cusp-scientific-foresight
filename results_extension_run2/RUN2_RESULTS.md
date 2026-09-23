@@ -194,13 +194,16 @@ n_o·n_e/(n_o+n_e) cancels the mix:
 | GPT-5.4 | +0.066 ± 0.036 | **+0.059 ± 0.036** | 9 |
 | Claude Sonnet 5 | +0.027 ± 0.041 | +0.045 ± 0.041 | 7 |
 | GPT-5.6 Sol | +0.019 ± 0.055 | +0.025 ± 0.054 | 7 |
+| Claude Opus 4.8 | −0.001 ± 0.034 | +0.014 ± 0.034 | 7 |
 
 The two columns agree: the largest shift is 0.018 against CI half-widths near
 0.041. The mix difference does not drive these deltas — but that is a measured
 result, not an assumption, and χ²=212.3 was large enough to require checking.
 
 Only GPT-4o and GPT-5.4 have CIs excluding zero, in opposite directions. The rest
-are consistent with no change between corpora. DeepSeek-V4-Pro has no
+are consistent with no change between corpora — Claude Opus 4.8 most exactly so,
+at +0.014 ± 0.034 on the largest MCQ samples of any recent model (0.935
+pre-cutoff vs 0.928 post). DeepSeek-V4-Pro has no
 post-cutoff rows on the original corpus (its cutoff postdates it), so no
 post-cutoff cross-corpus delta exists for it; its pre/post split is in §10.
 
@@ -383,6 +386,8 @@ mechanism on FRQ and date and a different one on binary:
 | Binary (real) | 23 | 0.217 | +0.30 (p=0.039) | +0.61 (p<0.001) |
 | Binary (perturbed) | 69 | 0.768 | **−0.17** (p=0.008) | −0.25 (p=0.003) |
 
+As a Δ decomposition (post-cutoff, n = 70 FRQ / 23 date): FRQ Δ_know +0.149,
+Δ_fore **+1.108**; date Δ_know +0.141, Δ_fore **+0.336**; MCQ +0.018 / +0.054.
 FRQ is the cleanest leakage read in the whole study: cutoff-restricted retrieval
 adds 0.15 (n.s.), unrestricted adds 1.26 points. On binary, cutoff-restricted
 retrieval raises the yes-rate on *both* the real and the corrupted question —
@@ -391,8 +396,9 @@ adding discrimination. Sonnet 5 did not show that shift; Opus 4.8 does.
 
 ## 8. Stage-1 leakage: what it can and cannot show here
 
-Complete: **5,083 judgements, 97.8% pass, 2.00% unclear, 0.20% fail** (10 on the
-base runs, 18 including the web-search conditions). Web search was used on 100%.
+Complete: **5,566 judgements on the base runs, 97.9% pass, 1.90% unclear, 0.18%
+fail** (10 fails; 27 across all 5,845 judgements including the web-search
+conditions). Web search was used on 100%.
 
 | Model | FRQ judged | pass | unclear | fail |
 |---|---|---|---|---|
@@ -404,6 +410,7 @@ base runs, 18 including the web-search conditions). Web search was used on 100%.
 | Claude Sonnet 5 | 617 | 597 | 18 | 2 |
 | GPT-5.6 Sol | 623 | 615 | 6 | 2 |
 | DeepSeek-V4-Pro | 629 | 620 | 9 | 0 |
+| Claude Opus 4.8 | 622 | 615 | 7 | 0 |
 
 **Do not read `reasoning_metrics.leakage` from the report JSONs.** It counts
 every event lacking an FRQ response as "unclear" — 815 events against ~630 FRQ
@@ -415,14 +422,15 @@ judgement files. Pre-existing schema behaviour, not introduced by this run.
 
 The judge's evidence search runs against the live web with no date restriction.
 On a corpus postdating every cutoff, a model describing the real finding makes
-the search surface the paper, and the judge records leakage. Triage of all 18:
+the search surface the paper, and the judge records leakage. Triage of all 27
+(five-model base runs plus every web-search condition):
 
 | Category | n |
 |---|---|
+| Model had live web access (unrestricted `*_ws` run) | 13 |
 | Evidence is the target paper itself | 7 |
-| Model had live web access (unrestricted `*_ws` run) | 6 |
-| Flagged entity was in the model's own prompt | 2 |
-| Needs a domain reader | 3 |
+| Needs a domain reader | 4 |
+| Flagged entity was in the model's own prompt | 3 |
 
 The web-search category matters: that condition hands the model the live web, so
 a post-cutoff entity is retrieval working as designed. The two search conditions
@@ -430,11 +438,21 @@ are asymmetric — a post-cutoff entity in the unrestricted run is expected, but
 one in the cutoff-restricted run would mean the date filter leaked. The single
 `ws_cutoff` failure is an entity from the model's own prompt, so the filter held.
 
-The three residuals: `Token-Level Credit Assignment` (LLaMA 3.3),
-`Perturb-multiome` (Claude Sonnet 5), and `Imaging hidden objects with consumer
-LiDAR via motion-induced sampling` (GPT-5.6 Sol, matched to arXiv 2605.17865).
-The first two read as generic compound phrases; the third is a full descriptive
-title and is the one case genuinely worth a domain reader.
+The four residuals: `Token-Level Credit Assignment` (LLaMA 3.3),
+`Perturb-multiome` (Claude Sonnet 5), `Imaging hidden objects with consumer
+LiDAR via motion-induced sampling` (GPT-5.6 Sol, matched to arXiv 2605.17865),
+and `Verifiability-Gated On-Policy Distillation (VG-OPD)` (Claude Opus 4.8,
+cutoff-restricted run, matched to arXiv 2609.15404). The first two read as
+generic compound phrases; the third is a full descriptive title and is the one
+case genuinely worth a domain reader.
+
+The Opus 4.8 case is worth stating because it is the artifact in its purest
+form. Its restricted retrieval returned ten sources for that item, all
+pre-cutoff (latest arXiv Dec 2025), and "VG-OPD" appears in none of them — the
+model coined the acronym, and the judge's undated live search matched it to a
+paper posted in **September 2026**, three months after the run and eight after
+the model's cutoff. The date filter held; the judge's search is what was
+unrestricted.
 
 ### The "unclear" verdicts are a clean signal
 
