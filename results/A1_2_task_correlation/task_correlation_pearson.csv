@@ -1,17 +1,17 @@
 task_i,task_j,r,ci_low_fisher,ci_high_fisher,ci_low_eventboot,ci_high_eventboot,p,n_models
-Binary (feasibility),Binary (feasibility),1.000,1.000,1.000,1.000,1.000,,9
-Binary (feasibility),MCQ (mechanism),0.715,0.097,0.935,0.664,0.756,0.030,9
-Binary (feasibility),FRQ (solution),0.681,0.031,0.926,0.626,0.729,0.043,9
-Binary (feasibility),Date,0.540,-0.194,0.886,0.478,0.595,0.134,9
-MCQ (mechanism),Binary (feasibility),0.715,0.097,0.935,0.664,0.756,0.030,9
-MCQ (mechanism),MCQ (mechanism),1.000,1.000,1.000,1.000,1.000,,9
-MCQ (mechanism),FRQ (solution),0.855,0.442,0.969,0.838,0.870,0.003,9
-MCQ (mechanism),Date,-0.013,-0.671,0.657,-0.062,0.033,0.973,9
-FRQ (solution),Binary (feasibility),0.681,0.031,0.926,0.626,0.729,0.043,9
-FRQ (solution),MCQ (mechanism),0.855,0.442,0.969,0.838,0.870,0.003,9
-FRQ (solution),FRQ (solution),1.000,1.000,1.000,1.000,1.000,,9
-FRQ (solution),Date,0.050,-0.635,0.691,0.007,0.092,0.897,9
-Date,Binary (feasibility),0.540,-0.194,0.886,0.478,0.595,0.134,9
-Date,MCQ (mechanism),-0.013,-0.671,0.657,-0.062,0.033,0.973,9
-Date,FRQ (solution),0.050,-0.635,0.691,0.007,0.092,0.897,9
-Date,Date,1.000,1.000,1.000,1.000,1.000,,9
+Binary (feasibility),Binary (feasibility),1.000,1.000,1.000,1.000,1.000,,10
+Binary (feasibility),MCQ (mechanism),0.757,0.243,0.939,0.710,0.793,0.011,10
+Binary (feasibility),FRQ (solution),0.718,0.162,0.928,0.670,0.759,0.019,10
+Binary (feasibility),Date,0.611,-0.030,0.896,0.557,0.661,0.060,10
+MCQ (mechanism),Binary (feasibility),0.757,0.243,0.939,0.710,0.793,0.011,10
+MCQ (mechanism),MCQ (mechanism),1.000,1.000,1.000,1.000,1.000,,10
+MCQ (mechanism),FRQ (solution),0.870,0.531,0.969,0.855,0.882,0.001,10
+MCQ (mechanism),Date,0.197,-0.494,0.735,0.158,0.240,0.585,10
+FRQ (solution),Binary (feasibility),0.718,0.162,0.928,0.670,0.759,0.019,10
+FRQ (solution),MCQ (mechanism),0.870,0.531,0.969,0.855,0.882,0.001,10
+FRQ (solution),FRQ (solution),1.000,1.000,1.000,1.000,1.000,,10
+FRQ (solution),Date,0.195,-0.495,0.735,0.159,0.232,0.589,10
+Date,Binary (feasibility),0.611,-0.030,0.896,0.557,0.661,0.060,10
+Date,MCQ (mechanism),0.197,-0.494,0.735,0.158,0.240,0.585,10
+Date,FRQ (solution),0.195,-0.495,0.735,0.159,0.232,0.589,10
+Date,Date,1.000,1.000,1.000,1.000,1.000,,10

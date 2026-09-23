@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-09-21T12:34:43.863047+00:00",
-  "git_sha": "85966a1e24257f714db41029aebe511efb33612e",
+  "generated_utc": "2026-09-23T00:20:59.429669+00:00",
+  "git_sha": "f22f2b96f05d3082b46c5fc8128dd74cdc919930",
   "tag": "",
   "models": [
     {
@@ -82,6 +82,15 @@
         "results_extension_run2/reports/deepseekv4pro_base.json"
       ],
       "n_events": 5575
+    },
+    {
+      "name": "Claude Opus 4.8",
+      "cutoff": "2026-01",
+      "reports": [
+        "results_opus48_run1/reports/base_medium_run1.json",
+        "results_extension_run2/reports/opus48_base_run1.json"
+      ],
+      "n_events": 5575
     }
   ],
   "binary_metric": "balanced accuracy (bias-corrected merged binary); MCC and raw merged accuracy as sensitivity",
@@ -92,13 +101,24 @@
     "seed": 7
   },
   "outputs": [
+    "MANIFEST.json",
+    "MANIFEST_8models.json",
+    "__pycache__",
     "compute_task_correlation.py",
     "item_level_correlation.csv",
+    "item_level_correlation_8models.csv",
     "model_task_performance.csv",
+    "model_task_performance_8models.csv",
+    "response_A1_2.md",
     "task_correlation.md",
+    "task_correlation_8models.md",
     "task_correlation_heatmap.pdf",
     "task_correlation_heatmap.png",
+    "task_correlation_heatmap_8models.pdf",
+    "task_correlation_heatmap_8models.png",
     "task_correlation_pearson.csv",
-    "task_correlation_spearman.csv"
+    "task_correlation_pearson_8models.csv",
+    "task_correlation_spearman.csv",
+    "task_correlation_spearman_8models.csv"
   ]
 }

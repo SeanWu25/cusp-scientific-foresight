@@ -13,7 +13,7 @@ Original + extension pooled; per model, only events published on/after its cutof
 | Claude Sonnet 5 | 2026-01 | 1,270 | 1,387 | 0.624 [0.598, 0.649] | 0.527 [0.492, 0.563] | +0.057 | 0.900 [0.879, 0.918] (930) | 4.47 [4.42, 4.52] (1,008) | 0.288 [0.261, 0.315] (410) |
 | GPT-5.6 Sol | 2026-02 | 1,067 | 1,183 | 0.485 [0.457, 0.514] | 0.574 [0.534, 0.612] | +0.141 | 0.864 [0.839, 0.886] (815) | 4.88 [4.82, 4.94] (836) | 0.233 [0.214, 0.252] (327) |
 | DeepSeek-V4-Pro‡ | 2026-04 | 815 | 845 | 0.673 [0.641, 0.704] | 0.465 [0.436, 0.501] | -0.088 | 0.665 [0.627, 0.701] (606) | 3.99 [3.92, 4.06] (629) | 0.346 [0.293, 0.399] (196) |
-| Claude Opus 4.8 | 2026-01 | — | — | — | — | — | (not yet run) | — | — |
+| Claude Opus 4.8 | 2026-01 | 1,270 | 1,374 | 0.604 [0.578, 0.630] | 0.491 [0.459, 0.525] | -0.020 | 0.928 [0.910, 0.943] (922) | 4.64 [4.59, 4.69] (1,013) | 0.249 [0.226, 0.271] (407) |
 
 \* cutoff precedes the corpus (Jan 2024), so post-cutoff is the entire dataset — no retrospective rows exist for this model.  
 † original corpus only (4,760 events); no extension run exists (endpoint retired).  

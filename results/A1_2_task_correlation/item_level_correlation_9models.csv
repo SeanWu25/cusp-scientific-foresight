@@ -1,0 +1,55 @@
+task_i,task_j,model,spearman_rho,p,n_events
+Binary (feasibility),MCQ (mechanism),GPT-4o,-0.024,1.21e-01,4206
+Binary (feasibility),MCQ (mechanism),LLaMA 3.3 70B,0.051,1.03e-03,4171
+Binary (feasibility),MCQ (mechanism),GPT-OSS 20B,-0.012,4.35e-01,4207
+Binary (feasibility),MCQ (mechanism),DeepSeek-R1,0.033,6.04e-02,3220
+Binary (feasibility),MCQ (mechanism),Claude S4.5,0.002,9.21e-01,3859
+Binary (feasibility),MCQ (mechanism),GPT-5.4,-0.011,4.57e-01,4208
+Binary (feasibility),MCQ (mechanism),Claude Sonnet 5,-0.002,9.01e-01,3870
+Binary (feasibility),MCQ (mechanism),GPT-5.6 Sol,0.003,8.52e-01,4183
+Binary (feasibility),MCQ (mechanism),DeepSeek-V4-Pro,-0.024,1.27e-01,4208
+Binary (feasibility),FRQ (solution),GPT-4o,0.059,1.32e-04,4232
+Binary (feasibility),FRQ (solution),LLaMA 3.3 70B,0.004,7.93e-01,4202
+Binary (feasibility),FRQ (solution),GPT-OSS 20B,0.032,3.64e-02,4226
+Binary (feasibility),FRQ (solution),DeepSeek-R1,-0.002,9.11e-01,3670
+Binary (feasibility),FRQ (solution),Claude S4.5,0.050,1.60e-03,3949
+Binary (feasibility),FRQ (solution),GPT-5.4,0.005,7.46e-01,4230
+Binary (feasibility),FRQ (solution),Claude Sonnet 5,0.007,6.77e-01,4082
+Binary (feasibility),FRQ (solution),GPT-5.6 Sol,0.004,8.09e-01,4176
+Binary (feasibility),FRQ (solution),DeepSeek-V4-Pro,0.063,3.94e-05,4235
+Binary (feasibility),Date,GPT-4o,0.103,2.11e-08,2950
+Binary (feasibility),Date,LLaMA 3.3 70B,0.039,3.69e-02,2930
+Binary (feasibility),Date,GPT-OSS 20B,0.104,1.36e-08,2951
+Binary (feasibility),Date,DeepSeek-R1,0.132,3.96e-12,2742
+Binary (feasibility),Date,Claude S4.5,0.146,1.07e-14,2789
+Binary (feasibility),Date,GPT-5.4,0.096,1.82e-07,2951
+Binary (feasibility),Date,Claude Sonnet 5,-0.004,8.36e-01,2834
+Binary (feasibility),Date,GPT-5.6 Sol,0.036,4.80e-02,2951
+Binary (feasibility),Date,DeepSeek-V4-Pro,0.094,3.52e-07,2951
+MCQ (mechanism),FRQ (solution),GPT-4o,0.069,1.17e-05,4031
+MCQ (mechanism),FRQ (solution),LLaMA 3.3 70B,0.136,7.43e-18,3996
+MCQ (mechanism),FRQ (solution),GPT-OSS 20B,0.076,1.43e-06,4026
+MCQ (mechanism),FRQ (solution),DeepSeek-R1,0.089,6.93e-07,3088
+MCQ (mechanism),FRQ (solution),Claude S4.5,0.046,4.84e-03,3715
+MCQ (mechanism),FRQ (solution),GPT-5.4,0.053,8.48e-04,4031
+MCQ (mechanism),FRQ (solution),Claude Sonnet 5,0.030,7.04e-02,3719
+MCQ (mechanism),FRQ (solution),GPT-5.6 Sol,0.028,8.20e-02,3972
+MCQ (mechanism),FRQ (solution),DeepSeek-V4-Pro,0.030,5.76e-02,4033
+MCQ (mechanism),Date,GPT-4o,0.016,4.29e-01,2585
+MCQ (mechanism),Date,LLaMA 3.3 70B,-0.009,6.62e-01,2565
+MCQ (mechanism),Date,GPT-OSS 20B,-0.011,5.72e-01,2586
+MCQ (mechanism),Date,DeepSeek-R1,0.043,4.72e-02,2113
+MCQ (mechanism),Date,Claude S4.5,0.072,3.86e-04,2419
+MCQ (mechanism),Date,GPT-5.4,0.045,2.30e-02,2586
+MCQ (mechanism),Date,Claude Sonnet 5,0.028,1.64e-01,2386
+MCQ (mechanism),Date,GPT-5.6 Sol,0.097,7.88e-07,2575
+MCQ (mechanism),Date,DeepSeek-V4-Pro,0.055,5.34e-03,2586
+FRQ (solution),Date,GPT-4o,0.148,7.85e-14,2518
+FRQ (solution),Date,LLaMA 3.3 70B,0.016,4.32e-01,2503
+FRQ (solution),Date,GPT-OSS 20B,0.100,4.77e-07,2515
+FRQ (solution),Date,DeepSeek-R1,0.081,8.28e-05,2352
+FRQ (solution),Date,Claude S4.5,0.109,8.88e-08,2386
+FRQ (solution),Date,GPT-5.4,0.079,6.58e-05,2516
+FRQ (solution),Date,Claude Sonnet 5,0.090,8.88e-06,2413
+FRQ (solution),Date,GPT-5.6 Sol,0.107,8.62e-08,2482
+FRQ (solution),Date,DeepSeek-V4-Pro,0.057,4.38e-03,2522

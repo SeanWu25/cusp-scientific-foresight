@@ -529,6 +529,65 @@
       "mcc": -0.08761269426117886
     }
   },
+  "Claude Opus 4.8": {
+    "cutoff": "2026-01",
+    "n_events": 5575,
+    "halves": {
+      "original": 4760,
+      "extension": 815
+    },
+    "duplicate_ids_dropped": 0,
+    "partitions": {
+      "all": {
+        "merged_binary": {
+          "k": 4022,
+          "n": 6993
+        },
+        "mcq": {
+          "k": 4014,
+          "n": 4298
+        },
+        "date_score_mean": 0.45668361120964884,
+        "date_score_n": 2819
+      },
+      "post": {
+        "merged_binary": {
+          "k": 830,
+          "n": 1374
+        },
+        "mcq": {
+          "k": 856,
+          "n": 922
+        },
+        "date_score_mean": 0.24857371007371007,
+        "date_score_n": 407
+      },
+      "pre": {
+        "merged_binary": {
+          "k": 3192,
+          "n": 5619
+        },
+        "mcq": {
+          "k": 3158,
+          "n": 3376
+        },
+        "date_score_mean": 0.4918,
+        "date_score_n": 2412
+      }
+    },
+    "post_cutoff_binary": {
+      "n": 1374,
+      "bias": -0.5473071324599709,
+      "balanced_acc": 0.49105747657971033,
+      "precision": 0.2797427652733119,
+      "recall": 0.21375921375921375,
+      "specificity": 0.7683557394002068,
+      "f1_yes": 0.24233983286908078,
+      "f1_no": 0.7320197044334975,
+      "macro_f1": 0.48717976865128915,
+      "mcc": -0.019514332330074064
+    }
+  },
   "_horizon_mcc": {
     "GPT-4o": {
       "3-5": {
@@ -853,6 +912,35 @@
         "n": 312,
         "events": 256
       }
+    },
+    "Claude Opus 4.8": {
+      "0-2": {
+        "mcc": -0.02317147240678108,
+        "ci": [
+          -0.09976242407674056,
+          0.052907784098020584
+        ],
+        "n": 560,
+        "events": 387
+      },
+      "3-5": {
+        "mcc": -0.015963525596975846,
+        "ci": [
+          -0.09628781970743956,
+          0.06585571329493062
+        ],
+        "n": 514,
+        "events": 408
+      },
+      "6-11": {
+        "mcc": -0.03564363423913181,
+        "ci": [
+          -0.13068714080446078,
+          0.08258083831957073
+        ],
+        "n": 300,
+        "events": 245
+      }
     }
   },
   "_discrimination_gap": {
@@ -963,6 +1051,18 @@
       "n_pairs": 165,
       "paired": true,
       "excludes_zero": false
+    },
+    "Claude Opus 4.8": {
+      "p_yes_real": 0.2125748502994012,
+      "p_yes_corrupted": 0.17065868263473055,
+      "gap": 0.041916167664670656,
+      "ci": [
+        -0.005988023952095828,
+        0.09281437125748504
+      ],
+      "n_pairs": 334,
+      "paired": true,
+      "excludes_zero": false
     }
   },
   "_stratified_mcq_delta": {
@@ -976,21 +1076,21 @@
     "LLaMA 3.3 70B": {
       "crude": 0.00842969053450493,
       "crude_ci_halfwidth": 0.04236205702658104,
-      "stratified": 0.006768865284375835,
-      "stratified_ci_halfwidth": 0.041968747210394154,
+      "stratified": 0.006768865284375831,
+      "stratified_ci_halfwidth": 0.04196874721039414,
       "areas": 9
     },
     "GPT-OSS 20B": {
       "crude": 0.0518422578090908,
       "crude_ci_halfwidth": 0.043037942239159126,
-      "stratified": 0.0395167701255603,
+      "stratified": 0.039516770125560305,
       "stratified_ci_halfwidth": 0.04258917605891738,
       "areas": 9
     },
     "Claude S4.5": {
       "crude": 0.05592519643620042,
       "crude_ci_halfwidth": 0.043048715497465015,
-      "stratified": 0.0656744684894308,
+      "stratified": 0.06567446848943082,
       "stratified_ci_halfwidth": 0.04247156211779204,
       "areas": 9
     },
@@ -1011,8 +1111,15 @@
     "GPT-5.6 Sol": {
       "crude": 0.01900550590363881,
       "crude_ci_halfwidth": 0.05504582473433416,
-      "stratified": 0.02501735337374321,
-      "stratified_ci_halfwidth": 0.0537490438527033,
+      "stratified": 0.025017353373743206,
+      "stratified_ci_halfwidth": 0.05374904385270331,
+      "areas": 7
+    },
+    "Claude Opus 4.8": {
+      "crude": -0.0012347092707747365,
+      "crude_ci_halfwidth": 0.034169859835016185,
+      "stratified": 0.013509172452096865,
+      "stratified_ci_halfwidth": 0.03366773368705492,
       "areas": 7
     }
   },
@@ -1020,7 +1127,7 @@
     "GPT-4o": {
       "crude": 0.13743020948689555,
       "crude_ci_halfwidth": 0.06598915535769281,
-      "stratified": 0.15606778990095377,
+      "stratified": 0.1560677899009538,
       "stratified_ci_halfwidth": 0.06486137661759937,
       "areas": 9
     },
@@ -1034,28 +1141,28 @@
     "GPT-OSS 20B": {
       "crude": -0.009930275028764424,
       "crude_ci_halfwidth": 0.07024542037655489,
-      "stratified": 0.001948773728920058,
+      "stratified": 0.0019487737289200554,
       "stratified_ci_halfwidth": 0.06995205216877394,
       "areas": 9
     },
     "Claude S4.5": {
       "crude": -0.036265167419034405,
       "crude_ci_halfwidth": 0.07120571160725664,
-      "stratified": -0.006696725353318921,
+      "stratified": -0.006696725353318922,
       "stratified_ci_halfwidth": 0.07071872775559458,
       "areas": 9
     },
     "GPT-5.4": {
       "crude": -0.20578849200936045,
       "crude_ci_halfwidth": 0.07979088421149061,
-      "stratified": -0.17729722498708284,
-      "stratified_ci_halfwidth": 0.08038664405128751,
+      "stratified": -0.1772972249870828,
+      "stratified_ci_halfwidth": 0.0803866440512875,
       "areas": 9
     },
     "Claude Sonnet 5": {
       "crude": -0.08665670898680577,
       "crude_ci_halfwidth": 0.11066402507163355,
-      "stratified": -0.037005077011063064,
+      "stratified": -0.03700507701106306,
       "stratified_ci_halfwidth": 0.10993462240507514,
       "areas": 8
     },
@@ -1065,6 +1172,13 @@
       "stratified": -0.06563481794614988,
       "stratified_ci_halfwidth": 0.14008946835252975,
       "areas": 6
+    },
+    "Claude Opus 4.8": {
+      "crude": -0.15490826555702686,
+      "crude_ci_halfwidth": 0.11204086979069641,
+      "stratified": -0.08710177721850054,
+      "stratified_ci_halfwidth": 0.10558201257935691,
+      "areas": 8
     }
   }
 }

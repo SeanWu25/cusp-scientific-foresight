@@ -16,6 +16,7 @@ GPT-5.4          2025-08     0.490[0.48,0.50] n=7256   0.824[0.81,0.83] n=4734  
 Claude Sonnet 5  2026-01     0.579[0.57,0.59] n=7034   0.909[0.90,0.92] n=4350   0.413[0.40,0.42] n=2841
 GPT-5.6 Sol      2026-02     0.555[0.54,0.57] n=7253   0.877[0.87,0.89] n=4706   0.360[0.35,0.37] n=2951
 DeepSeek-V4-Pro  2026-04     0.558[0.55,0.57] n=7256   0.668[0.65,0.68] n=4734   0.201[0.19,0.21] n=2951
+Claude Opus 4.8  2026-01     0.575[0.56,0.59] n=6993   0.934[0.93,0.94] n=4298   0.457[0.44,0.47] n=2819
 
 === POST-CUTOFF ONLY ===
 model            cutoff                merged binary                       MCQ                date score
@@ -28,6 +29,7 @@ GPT-5.4          2025-08     0.469[0.45,0.49] n=2679   0.814[0.80,0.83] n=1801  
 Claude Sonnet 5  2026-01     0.624[0.60,0.65] n=1387    0.900[0.88,0.92] n=930    0.288[0.26,0.31] n=410
 GPT-5.6 Sol      2026-02     0.485[0.46,0.51] n=1183    0.864[0.84,0.89] n=815    0.233[0.21,0.25] n=327
 DeepSeek-V4-Pro  2026-04      0.673[0.64,0.70] n=845    0.665[0.63,0.70] n=606    0.346[0.29,0.40] n=196
+Claude Opus 4.8  2026-01     0.604[0.58,0.63] n=1374    0.928[0.91,0.94] n=922    0.249[0.23,0.27] n=407
 
 === PRE-CUTOFF ONLY (retrospective) ===
 model            cutoff                merged binary                       MCQ                date score
@@ -40,6 +42,7 @@ GPT-5.4          2025-08     0.503[0.49,0.52] n=4577   0.830[0.82,0.84] n=2933  
 Claude Sonnet 5  2026-01     0.568[0.55,0.58] n=5647   0.912[0.90,0.92] n=3420   0.434[0.42,0.45] n=2431
 GPT-5.6 Sol      2026-02     0.568[0.56,0.58] n=6070   0.879[0.87,0.89] n=3891   0.376[0.36,0.39] n=2624
 DeepSeek-V4-Pro  2026-04     0.543[0.53,0.56] n=6411   0.668[0.65,0.68] n=4128   0.191[0.18,0.20] n=2755
+Claude Opus 4.8  2026-01     0.568[0.56,0.58] n=5619   0.935[0.93,0.94] n=3376   0.492[0.48,0.51] n=2412
 
 === BIAS-IMMUNE BINARY METRICS (post-cutoff, full corpus) ===
 model                  n    bias  bal_acc  macroF1     MCC
@@ -52,6 +55,7 @@ GPT-5.4             2679  +0.230    0.505    0.468  +0.010
 Claude Sonnet 5     1387  -0.498    0.527    0.527  +0.057
 GPT-5.6 Sol         1183  +0.331    0.574    0.483  +0.141
 DeepSeek-V4-Pro      845  -0.740    0.465    0.449  -0.088
+Claude Opus 4.8     1374  -0.547    0.491    0.487  -0.020
 
 === COVERAGE ===
 model              original  extension   union  dupes
@@ -64,6 +68,7 @@ GPT-5.4                4760        815    5575      0
 Claude Sonnet 5        4760        815    5575      0
 GPT-5.6 Sol            4760        815    5575      0
 DeepSeek-V4-Pro        4760        815    5575      0
+Claude Opus 4.8        4760        815    5575      0
 
 === MCC BY FORECAST HORIZON (pooled corpus, post-cutoff only) ===
 model                                 0-2                     3-5                    6-11                   12-23                    >=24
@@ -76,6 +81,7 @@ GPT-5.4           +0.013[-0.05,+0.08] 752 +0.019[-0.05,+0.08] 743+0.025[-0.03,+0
 Claude Sonnet 5   +0.052[-0.02,+0.13] 566 +0.088[-0.00,+0.18] 519 +0.012[-0.09,+0.12] 302                      --                      --
 GPT-5.6 Sol       +0.210[+0.14,+0.28] 522 +0.104[+0.02,+0.18] 534 -0.047[-0.20,+0.09] 127                      --                      --
 DeepSeek-V4-Pro   -0.078[-0.14,-0.00] 533 -0.104[-0.19,-0.02] 312                      --                      --                      --
+Claude Opus 4.8   -0.023[-0.10,+0.05] 560 -0.016[-0.10,+0.07] 514 -0.036[-0.13,+0.08] 300                      --                      --
 
 cell = MCC [95% event-clustered bootstrap CI] n; bins with n<50 suppressed
 
@@ -91,6 +97,7 @@ GPT-5.4                  0.629           0.561   +0.068   [+0.028,+0.108]     76
 Claude Sonnet 5          0.295           0.156   +0.139   [+0.086,+0.189]     339  *
 GPT-5.6 Sol              0.762           0.623   +0.139   [+0.078,+0.203]     281  *
 DeepSeek-V4-Pro          0.079           0.115   -0.036   [-0.097,+0.030]     165
+Claude Opus 4.8          0.213           0.171   +0.042   [-0.006,+0.093]     334
   * = CI excludes zero. Negative gap means the model endorses the
   fabricated finding MORE readily than the genuine one.
 
@@ -104,6 +111,7 @@ Claude S4.5            +0.056+/-0.043        +0.066+/-0.042      9
 GPT-5.4                +0.066+/-0.036        +0.059+/-0.036      9
 Claude Sonnet 5        +0.027+/-0.041        +0.045+/-0.041      7
 GPT-5.6 Sol            +0.019+/-0.055        +0.025+/-0.054      7
+Claude Opus 4.8        -0.001+/-0.034        +0.014+/-0.034      7
     report the stratified column; the crude one belongs in the supplement
 
 === FRQ MEAN SCORE (0-10) EXTENSION-vs-ORIGINAL DELTA: crude vs domain-stratified ===
@@ -119,6 +127,7 @@ Claude S4.5            -0.036+/-0.071        -0.007+/-0.071      9
 GPT-5.4                -0.206+/-0.080        -0.177+/-0.080      9
 Claude Sonnet 5        -0.087+/-0.111        -0.037+/-0.110      8
 GPT-5.6 Sol            -0.152+/-0.132        -0.066+/-0.140      6
+Claude Opus 4.8        -0.155+/-0.112        -0.087+/-0.106      8
     report the stratified column; the crude one belongs in the supplement
 
 wrote results_extension_run2/tables/02_full_corpus.json

@@ -22,6 +22,7 @@ GPT-5.4           2025-08    0.421[0.39,0.45] n=845    0.858[0.83,0.88] n=606   
 Claude Sonnet 5   2026-01    0.655[0.62,0.69] n=821    0.910[0.88,0.93] n=569    0.228[0.19,0.27] n=193
 GPT-5.6 Sol       2026-02    0.472[0.44,0.51] n=845    0.869[0.84,0.89] n=602    0.221[0.20,0.24] n=196
 DeepSeek-V4-Pro   2026-04    0.669[0.63,0.70] n=661    0.665[0.62,0.71] n=478    0.343[0.28,0.40] n=155  [May-Aug only]
+Claude Opus 4.8   2026-01    0.640[0.61,0.67] n=814    0.928[0.90,0.95] n=569    0.200[0.17,0.23] n=193
 
 === 2. EXTENSION vs ORIGINAL POST-CUTOFF (same model, same task) ===
   MCQ is differenced (templates and generator verified identical).
@@ -49,6 +50,9 @@ Claude Sonnet 5  date_score        0.341[0.30,0.38] n=217  0.228[0.19,0.27] n=19
 GPT-5.6 Sol      merged_binary     0.518[0.46,0.57] n=338  0.472[0.44,0.51] n=845   not differenced
 GPT-5.6 Sol      mcq               0.850[0.80,0.89] n=213  0.869[0.84,0.89] n=602    +0.019+/-0.055
 GPT-5.6 Sol      date_score        0.251[0.22,0.28] n=131  0.221[0.20,0.24] n=196   not differenced
+Claude Opus 4.8  merged_binary     0.552[0.51,0.59] n=560  0.640[0.61,0.67] n=814   not differenced
+Claude Opus 4.8  mcq               0.929[0.90,0.95] n=353  0.928[0.90,0.95] n=569    -0.001+/-0.034
+Claude Opus 4.8  date_score        0.293[0.26,0.32] n=214  0.200[0.17,0.23] n=193   not differenced
 
 === 4. DATE TASK vs THE CONSTANT-GUESS BASELINE ===
   Extension targets span 5 months. Best constant guess = 2026-06, score 0.893.
@@ -63,6 +67,7 @@ GPT-5.4                   0.154        -0.739              -0.1    196
 Claude Sonnet 5           0.228        -0.665             -24.3    193
 GPT-5.6 Sol               0.221        -0.672              +8.4    196
 DeepSeek-V4-Pro           0.343        -0.551             +23.7    155
+Claude Opus 4.8           0.200        -0.694             -21.2    193
 
 === FRQ (quality, generation and stage-1 leakage) ===
 model              responses   score   pass%   align    spec   novel    feas      n
@@ -74,6 +79,7 @@ GPT-5.4                  629    4.83    50.0    3.32    5.73    4.63    5.64    
 Claude Sonnet 5          618    4.44    30.1    2.84    5.22    4.22    5.48    618
 GPT-5.6 Sol              623    4.84    49.3    3.37    5.91    4.41    5.68    623
 DeepSeek-V4-Pro          498    4.00    15.5    2.07    5.27    3.80    4.85    497
+Claude Opus 4.8          622    4.58    38.6    3.19    5.35    4.40    5.38    622
   differences below ~0.4 are within the judge noise floor
 
 model              responses  leak fail%  leak unclear%  n judged
@@ -85,3 +91,4 @@ GPT-5.4                  629        0.00            2.2       629
 Claude Sonnet 5          618        0.32            2.9       617
 GPT-5.6 Sol              623        0.32            1.0       623
 DeepSeek-V4-Pro          498        0.00            1.8       497
+Claude Opus 4.8          622        0.00            1.1       622

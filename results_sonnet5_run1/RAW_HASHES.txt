@@ -1,5 +1,5 @@
 # sha256 of raw run artifacts kept out of git
-# refrozen 2026-09-21: run-2 finalize
+# refrozen 2026-09-22: run-2 finalize
 # current
 ec679d90974d5678edb2152f2c57ab04882d77996954cb1183bcb618d8ee6072  ab/ab_azure.log
 721123388ae92dd0088b2ff61d9214e29dca6f3748de8aabe72cf382a403e411  ab/ab_openai.log

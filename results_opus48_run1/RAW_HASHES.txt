@@ -1,0 +1,9 @@
+# sha256 of raw run artifacts kept out of git
+# refrozen 2026-09-22: run-2 finalize
+# current
+5c8cd7a5a4b00abb0e4d29335eba10540d1ced211bf1f42b1270a9052449a374  raw/base_medium_run1.jsonl
+9dd1cdf7d1accd7c809a86a0879edf3c39c69c7f867c6b0310b1ea453565f925  raw/base_medium_run1.log
+95b80722b7e34ad902a88a8fc1f9124811c64097083e447ee79fc14833f05b7b  raw/ws_500.jsonl
+7f611f5093fe0652b276821acf91e9599bffe7da1887f8a8acb990c2371899e7  raw/ws_500.log
+1cfa6e439d8fbb2120880dc979215ff37915e2d95fdcd435ef68b1f5cae5dffc  raw/ws_cutoff_500.jsonl
+1746280cc5ba8a21b0f398e9da9c207bd1a863c3b06c99f24cbb969e921eea50  raw/ws_cutoff_500.log

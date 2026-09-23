@@ -3,8 +3,8 @@
 Supporting files in this directory: `task_correlation.md` (all tables, with CIs),
 `task_correlation_{pearson,spearman}.csv`, `item_level_correlation.csv`,
 `model_task_performance.csv` (the model × task inputs), `task_correlation_heatmap.{png,pdf}`,
-`MANIFEST.json` (git SHA, report paths, which FRQ scores). `*_8models.*` are a robustness
-run without DeepSeek-V4-Pro. Reproduce with `compute_task_correlation.py`; no inference.
+`MANIFEST.json` (git SHA, report paths, which FRQ scores). `*_9models.*` and `*_8models.*` are robustness
+runs without Claude Opus 4.8, and without Opus 4.8 and DeepSeek-V4-Pro. Reproduce with `compute_task_correlation.py`; no inference.
 
 ---
 
@@ -27,8 +27,8 @@ language of "decomposition" and present the framework as one realization among s
 possible, with its choices motivated but not privileged.
 
 On independence we can now say something empirical. We examined the relationships among
-the four tasks at two levels on the full corpus (5,575 events, nine models: the six in the
-paper plus Claude Sonnet 5, GPT-5.6 Sol and DeepSeek-V4-Pro): across models, and within
+the four tasks at two levels on the full corpus (5,575 events, ten models: the six in the
+paper plus Claude Sonnet 5, GPT-5.6 Sol, DeepSeek-V4-Pro and Claude Opus 4.8): across models, and within
 each model across papers. The two levels answer different questions and give different
 answers, and both are informative.
 
@@ -54,42 +54,46 @@ legacy scores. Refusals are excluded from denominators, as in the published tabl
 | Claude Sonnet 5 | 2026-01 | 0.562 | 0.909 | 4.53 | 0.413 | 5,575 |
 | GPT-5.6 Sol | 2026-02 | 0.604 | 0.877 | 4.96 | 0.360 | 5,575 |
 | DeepSeek-V4-Pro | 2026-04 | 0.486 | 0.668 | 3.97 | 0.201 | 5,575 |
+| Claude Opus 4.8 | 2026-01 | 0.561 | 0.934 | 4.77 | 0.457 | 5,575 |
 
-### 3a. Across models (n = 9): three tasks share a capability factor; date does not
+### 3a. Across models (n = 10): three tasks share a capability factor; date largely does not
 
 Pearson r with Fisher-z 95% CI over models (Spearman in `task_correlation.md`, same
 pattern):
 
 | | Binary | MCQ | FRQ | Date |
 |---|---|---|---|---|
-| **Binary (feasibility)** | 1 | 0.71 [+0.10, +0.94] | 0.68 [+0.03, +0.93] | 0.54 [−0.19, +0.89] |
-| **MCQ (mechanism)** | | 1 | **0.86 [+0.44, +0.97]** | **−0.01 [−0.67, +0.66]** |
-| **FRQ (solution)** | | | 1 | **0.05 [−0.63, +0.69]** |
+| **Binary (feasibility)** | 1 | 0.76 [+0.24, +0.94] | 0.72 [+0.16, +0.93] | 0.61 [−0.03, +0.90] |
+| **MCQ (mechanism)** | | 1 | **0.87 [+0.53, +0.97]** | **0.20 [−0.49, +0.74]** |
+| **FRQ (solution)** | | | 1 | **0.20 [−0.50, +0.73]** |
 | **Date** | | | | 1 |
 
 Binary, MCQ and FRQ are positively correlated across models — most strongly MCQ–FRQ at
-0.86 — which is the expected signature of a shared general-capability factor: newer,
+0.87 — which is the expected signature of a shared general-capability factor: newer,
 stronger models are better at all three. **Date is different.** Its correlation with MCQ
-(−0.01) and FRQ (0.05) is indistinguishable from zero, and with binary (0.54) the CI
-spans zero. Being a stronger model does not make a model better at predicting *when*.
+(0.20) and FRQ (0.20) is weak and its CIs span zero widely, and with binary (0.61) the CI
+still includes zero. (With nine models, before Claude Opus 4.8 was added, the MCQ–date and
+FRQ–date correlations were −0.01 and 0.05; Opus 4.8 has an unusually good date score for a
+recent model and pulls them to 0.20. The conclusion is unchanged; the nine-model matrix is
+kept in `task_correlation_9models.md`.) Being a stronger model does not reliably make a model better at predicting *when*.
 This is consistent with an independent finding in our revision: no model in the panel
 beats a constant-month guess on the date task, on either corpus.
 
-With nine models the Fisher CIs are wide by construction; an event-level bootstrap
+With ten models the Fisher CIs are wide by construction; an event-level bootstrap
 (resampling papers within each model, 2,000 draws) gives much tighter intervals on the
-same point estimates — e.g. MCQ–FRQ {+0.84, +0.87}, MCQ–date {−0.06, +0.03} — confirming
-the pattern is not measurement noise in the aggregates, whatever one thinks of n = 9.
+same point estimates — e.g. MCQ–FRQ {+0.86, +0.88}, MCQ–date {+0.16, +0.24} — confirming
+the pattern is not measurement noise in the aggregates, whatever one thinks of n = 10.
 
-*Sensitivity.* Substituting MCC for balanced accuracy changes nothing material
-(binary–MCQ 0.67, –FRQ 0.66, –date 0.58). Using raw merged accuracy instead would give
-binary–FRQ 0.33 and binary–date **−0.26** — the sign flip is the response-bias artefact,
-and is the reason we report the bias-corrected metric. Dropping DeepSeek-V4-Pro (the
-eight models originally specified) moves no coefficient by more than 0.03.
+*Sensitivity.* Substituting MCC for balanced accuracy changes nothing material. Using
+raw merged accuracy instead flips the binary–date sign negative — the response-bias
+artefact, and the reason we report the bias-corrected metric. The nine-model
+(without Opus 4.8) and eight-model (also without DeepSeek-V4-Pro) matrices are in the
+`*_9models.*` and `*_8models.*` files; no conclusion changes across the three panels.
 
 ### 3b. Within models, across papers: the four tasks are near-independent
 
 For each model, Spearman ρ between per-event outcomes on each pair of tasks, over every
-paper carrying both (22,000–37,000 pairs pooled across models):
+paper carrying both (25,000–41,000 pairs pooled across models):
 
 | pair | median ρ across models | range | pooled within-model r |
 |---|---|---|---|
@@ -98,7 +102,7 @@ paper carrying both (22,000–37,000 pairs pooled across models):
 | MCQ × FRQ | +0.05 | [+0.03, +0.14] | +0.06 |
 | MCQ × Date | +0.04 | [−0.01, +0.10] | +0.03 |
 | Binary × Date | +0.10 | [−0.00, +0.15] | +0.08 |
-| FRQ × Date | +0.09 | [+0.02, +0.15] | +0.09 |
+| FRQ × Date | +0.10 | [+0.02, +0.17] | +0.10 |
 
 Holding the model fixed, whether it gets one task right about a paper says almost nothing
 about whether it gets another task right about the *same* paper: every median |ρ| ≤ 0.10.
@@ -113,13 +117,13 @@ they are practically negligible — an r of 0.06 explains 0.4% of variance.)
 - **Not independent at the aggregate level, for three of them.** Binary, mechanism and
   solution all rise with general model capability. That is a statement about models, not
   about the tasks being the same construct — the item-level result rules that out.
-- **Date is the outlier at both levels.** It is decoupled from the other three even in
-  the aggregate, and it is the task where the panel fails to beat a trivial baseline. It
+- **Date is the outlier at both levels.** It is at most weakly related to the other three
+  in the aggregate (no CI excludes zero), and it is the task where the panel fails to beat a trivial baseline. It
   behaves as a distinct, and currently unsolved, dimension.
 - **Nothing here bears on completeness**, and we will not claim it does.
 
-*Limitations of this analysis.* n = 9 at the model level; the three later models
-(Sonnet 5, Sol, DeepSeek-V4-Pro) were added in revision and their original-corpus results
+*Limitations of this analysis.* n = 10 at the model level; the four later models
+(Sonnet 5, Sol, DeepSeek-V4-Pro, Opus 4.8) were added in revision and their original-corpus results
 are not retrospectively clean for the same reason as the paper's models. Two Claude
 models' FRQ responses are truncated at their token caps (direction of effect on scores not
 established). The FRQ judge's single-item reproducibility is ±1.0 at 98% (MAD 0.39),
@@ -146,10 +150,10 @@ describing them as a decomposition or taxonomy of scientific forecasting]**
 > The four tasks are empirically distinct at the level of individual papers. Within each
 > model, success on one task is essentially unrelated to success on another task about
 > the same paper (median Spearman |ρ| ≤ 0.10 across all six task pairs, over
-> 22,000–37,000 paper-pairs per task pair; Supplementary Table SX). Across models, binary,
+> 25,000–41,000 paper-pairs per task pair; Supplementary Table SX). Across models, binary,
 > mechanism and solution performance rise together with general capability (pairwise
-> r = 0.68–0.86, n = 9 models), whereas date performance is uncorrelated with the other
-> three (r = −0.01 to 0.54, all CIs including zero): stronger models are not better at
+> r = 0.72–0.87, n = 10 models), whereas date performance is only weakly related to the other
+> three (r = 0.20–0.61, all CIs including zero): stronger models are not better at
 > predicting when a result will appear.
 
 **[PROPOSED — Limitations]**
@@ -163,7 +167,7 @@ describing them as a decomposition or taxonomy of scientific forecasting]**
 **[PROPOSED — Supplementary Table SX caption]**
 
 > Relationships among the four CUSP tasks. (Left, centre) Pearson and Spearman correlation
-> of model-level performance across the nine evaluated models on the full corpus; binary
+> of model-level performance across the ten evaluated models on the full corpus; binary
 > is balanced accuracy. (Right) Median within-model Spearman correlation of per-paper
 > outcomes across the same models. Confidence intervals and the model × task inputs are in
 > the supplementary data.

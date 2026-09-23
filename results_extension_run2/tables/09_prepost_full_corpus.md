@@ -18,6 +18,7 @@ Binary is **balanced accuracy** (mean of recall on the real question and specifi
 | Claude Sonnet 5 | 2026-01 | 0.560 [0.542, 0.579] n=5,647 | 0.527 [0.492, 0.563] n=1,387 | -0.033 | 0.940 |
 | GPT-5.6 Sol | 2026-02 | 0.605 [0.591, 0.619] n=6,070 | 0.574 [0.534, 0.612] n=1,183 | -0.031 | 0.949 |
 | DeepSeek-V4-Pro | 2026-04 | 0.489 [0.478, 0.500] n=6,411 | 0.465 [0.436, 0.501] n=845 | -0.024 | 0.951 |
+| Claude Opus 4.8 | 2026-01 | 0.563 [0.545, 0.582] n=5,619 | 0.491 [0.459, 0.525] n=1,374 | -0.072 | 0.872 |
 
 ## MCQ accuracy
 
@@ -32,6 +33,7 @@ Binary is **balanced accuracy** (mean of recall on the real question and specifi
 | Claude Sonnet 5 | 2026-01 | 0.912 [0.902, 0.921] n=3,420 | 0.900 [0.879, 0.918] n=930 | -0.012 | 0.987 |
 | GPT-5.6 Sol | 2026-02 | 0.879 [0.869, 0.889] n=3,891 | 0.864 [0.839, 0.886] n=815 | -0.015 | 0.982 |
 | DeepSeek-V4-Pro | 2026-04 | 0.668 [0.653, 0.682] n=4,128 | 0.665 [0.627, 0.701] n=606 | -0.003 | 0.996 |
+| Claude Opus 4.8 | 2026-01 | 0.935 [0.927, 0.943] n=3,376 | 0.928 [0.910, 0.943] n=922 | -0.007 | 0.993 |
 
 ## FRQ mean score (0–10, published rubric)
 
@@ -46,6 +48,7 @@ Binary is **balanced accuracy** (mean of recall on the real question and specifi
 | Claude Sonnet 5 | 2026-01 | 4.54 [4.51, 4.57] n=3,636 | 4.47 [4.42, 4.52] n=1,008 | -0.07 | 0.984 |
 | GPT-5.6 Sol | 2026-02 | 4.97 [4.94, 5.00] n=3,859 | 4.88 [4.82, 4.94] n=836 | -0.09 | 0.981 |
 | DeepSeek-V4-Pro | 2026-04 | 3.97 [3.94, 4.00] n=4,132 | 3.99 [3.92, 4.06] n=629 | +0.02 | 1.005 |
+| Claude Opus 4.8 | 2026-01 | 4.80 [4.77, 4.83] n=3,639 | 4.64 [4.59, 4.69] n=1,013 | -0.16 | 0.966 |
 
 ## Date score
 
@@ -60,6 +63,7 @@ Binary is **balanced accuracy** (mean of recall on the real question and specifi
 | Claude Sonnet 5 | 2026-01 | 0.434 [0.421, 0.446] n=2,431 | 0.288 [0.261, 0.315] n=410 | -0.146 | 0.664 |
 | GPT-5.6 Sol | 2026-02 | 0.376 [0.361, 0.391] n=2,624 | 0.233 [0.214, 0.252] n=327 | -0.143 | 0.620 |
 | DeepSeek-V4-Pro | 2026-04 | 0.191 [0.182, 0.200] n=2,755 | 0.346 [0.293, 0.399] n=196 | +0.155 | 1.813 |
+| Claude Opus 4.8 | 2026-01 | 0.492 [0.479, 0.505] n=2,412 | 0.249 [0.226, 0.271] n=407 | -0.243 | 0.505 |
 
 CIs: Wilson for proportions (balanced-accuracy CI is the mean of the two Wilson halves, conservative), normal approximation for means. Pre-cutoff rows are retrospective: the model may have seen the paper in training.
 

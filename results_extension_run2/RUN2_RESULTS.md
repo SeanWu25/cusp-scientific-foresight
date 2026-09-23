@@ -5,8 +5,9 @@ leakage, and stage-2 FRQ quality under the unchanged published rubric. Finalized
 2026-09-21 03:52; regenerate with `scripts/finalize_run2.sh` (no inference).
 All numbers below come from stored predictions scored by the frozen `scoring_v1`
 graders. Nothing here required re-running any of the six published models. Panel:
-nine models — the six in the paper plus Claude Sonnet 5, GPT-5.6 Sol and
-DeepSeek-V4-Pro — on the entire dataset (5,575 events; DeepSeek-R1 original only).
+ten models — the six in the paper plus Claude Sonnet 5, GPT-5.6 Sol,
+DeepSeek-V4-Pro and Claude Opus 4.8 (added 2026-09-22, §9) — on the entire
+dataset (5,575 events; DeepSeek-R1 original only).
 §10 gives the pre/post-cutoff split for every task; §11 the relationships among
 the four tasks (A1.2).
 
@@ -24,9 +25,9 @@ two barely distinguish seen from unseen material (§6, §10).
 
 | Task | Result on the extension | Trivial baseline | Verdict |
 |---|---|---|---|
-| Merged binary | best 0.673 (DeepSeek-V4-Pro) | always-"no" = **0.768** | 0 of 8 models beat the baseline |
+| Merged binary | best 0.673 (DeepSeek-V4-Pro) | always-"no" = **0.768** | 0 of 9 models beat the baseline |
 | Date | best 0.506 (GPT-4o) | constant "2026-06" = **0.893** | no model close |
-| MCQ | best 0.910 (Claude Sonnet 5) | chance = 0.250 | clearly above chance |
+| MCQ | best 0.928 (Claude Opus 4.8), 0.910 (Sonnet 5) | chance = 0.250 | clearly above chance |
 | FRQ (0–10) | best 4.84 (Sol) ≈ 4.83 (GPT-5.4) | no trivial baseline | real spread across models; retrospective ceiling ~1.0 |
 
 MCQ and FRQ are the tasks showing skill. Section 6 argues MCQ may not be measuring
@@ -48,6 +49,7 @@ corpus-wide baseline would not be a fair comparison:
 | Claude Sonnet 5 | 410 | 0.288 | 2026-02 | 0.827 | −0.538 |
 | GPT-5.6 Sol | 327 | 0.233 | 2026-04 | 0.836 | −0.603 |
 | DeepSeek-V4-Pro | 196 | 0.346 | 2026-06 | 0.893 | −0.547 |
+| Claude Opus 4.8 | 407 | 0.249 | 2026-02 | 0.827 | −0.578 |
 
 Every gap is negative, across 196–2,950 items per model. The gap widens with
 cutoff recency, but that is an artefact worth naming rather than a finding: a
@@ -69,6 +71,7 @@ events, and the other two have retrospective ceilings near 1.0** (§10).
 | Claude Sonnet 5 | 2026-01 | 0.655 [0.62, 0.69] | 0.910 [0.88, 0.93] | 0.228 [0.19, 0.27] |
 | GPT-5.6 Sol | 2026-02 | 0.472 [0.44, 0.51] | 0.869 [0.84, 0.89] | 0.221 [0.20, 0.24] |
 | DeepSeek-V4-Pro | 2026-04 | 0.669 [0.63, 0.70] | 0.665 [0.62, 0.71] | 0.343 [0.28, 0.40] |
+| Claude Opus 4.8 | 2026-01 | 0.640 [0.61, 0.67] | **0.928** [0.90, 0.95] | 0.200 [0.17, 0.23] |
 
 n = 845 merged binary, 606 MCQ, 196 date, except where refusals reduce the
 denominator (§5). DeepSeek-V4-Pro is May–Aug only (639 events); its April overlap
@@ -119,7 +122,7 @@ pre/post split of the same quantities is §10.
 | Claude Sonnet 5 | 2026-01 | 1,270 | 1,387 | 0.624 [0.598, 0.649] | 0.527 [0.492, 0.563] | +0.057 | 0.900 [0.879, 0.918] (930) | 4.47 [4.42, 4.52] (1,008) | 0.288 [0.261, 0.315] (410) |
 | GPT-5.6 Sol | 2026-02 | 1,067 | 1,183 | 0.485 [0.457, 0.514] | 0.574 [0.534, 0.612] | +0.141 | 0.864 [0.839, 0.886] (815) | 4.88 [4.82, 4.94] (836) | 0.233 [0.214, 0.252] (327) |
 | DeepSeek-V4-Pro‡ | 2026-04 | 815 | 845 | 0.673 [0.641, 0.704] | 0.465 [0.436, 0.501] | -0.088 | 0.665 [0.627, 0.701] (606) | 3.99 [3.92, 4.06] (629) | 0.346 [0.293, 0.399] (196) |
-| Claude Opus 4.8 | 2026-01 | — | — | — | — | — | (not yet run) | — | — |
+| Claude Opus 4.8 | 2026-01 | 1,270 | 1,374 | 0.604 [0.578, 0.630] | 0.491 [0.459, 0.525] | -0.020 | 0.928 [0.910, 0.943] (922) | 4.64 [4.59, 4.69] (1,013) | 0.249 [0.226, 0.271] (407) |
 
 \* cutoff precedes the corpus (Jan 2024), so post-cutoff is the entire dataset — no retrospective rows exist for this model.  
 † original corpus only (4,760 events); no extension run exists (endpoint retired).  
@@ -151,10 +154,12 @@ was artifact.
 | GPT-OSS 20B | 0.189 | 0.191 | −0.002 | [−0.023, +0.020] | 1,953 |
 | Claude S4.5 | 0.233 | 0.239 | −0.006 | [−0.032, +0.024] | 1,295 |
 | DeepSeek-V4-Pro | 0.079 | 0.115 | −0.036 | [−0.097, +0.030] | 165 |
+| Claude Opus 4.8 | 0.213 | 0.171 | +0.042 | [−0.006, +0.093] | 334 |
 
 Four models discriminate significantly — Claude Sonnet 5 and GPT-5.6 Sol at
-+0.139, GPT-5.4 at +0.068, LLaMA 3.3 at +0.036 — and the remaining five sit at
-zero. No model is significantly anti-discriminating. The ranking is sensible:
++0.139, GPT-5.4 at +0.068, LLaMA 3.3 at +0.036 — and the remaining six sit at
+zero, Claude Opus 4.8 among them (+0.042, CI touching zero) despite the panel's
+best MCQ: the two tasks dissociate within a single model. No model is significantly anti-discriminating. The ranking is sensible:
 the newest models lead, the oldest cluster at zero.
 
 Note the cost of pairing: Sonnet 5's estimate rests on 339 pairs and Sol's on
@@ -212,9 +217,11 @@ bootstrap CIs (2,000 resamples), it is not:
 |---|---|---|---|
 | GPT-5.6 Sol | **+0.195** [+0.065, +0.316] | **+0.104** [+0.028, +0.175] | −0.047 [−0.200, +0.116] |
 | Claude Sonnet 5 | — | +0.088 [−0.002, +0.176] | +0.012 [−0.094, +0.120] |
+| Claude Opus 4.8 | −0.023 [−0.10, +0.05] | −0.016 [−0.10, +0.07] | −0.036 [−0.13, +0.08] |
 
 Sol's MCC excludes zero at 0–2 and 3–5 months and collapses into noise by 6–11.
-Sonnet 5 traces the same decay one bin later. Binary foresight is **real but
+Sonnet 5 traces the same decay one bin later. Claude Opus 4.8 — same cutoff,
+same API, same decoding — is flat at chance in every bin. Binary foresight is **real but
 short-lived — detectable to about five months, gone by six.** This also explains
 the pooled near-zero MCCs: older-cutoff models are only ever observed at 24+ month
 horizons, where nothing remains.
@@ -229,6 +236,7 @@ bins too, but that is base-rate drift interacting with bias, not skill decay.
 | Claude S4.5 | 361 | 15.9% | 35.8% | 28.0% | 5.8% |
 | Claude Sonnet 5 | 76 | 3.3% | 7.9% | 8.6% | 0.4% |
 | GPT-5.6 Sol | 11 | 0.5% | 1.0% | 1.7% | 0.0% |
+| Claude Opus 4.8 | 79 | 3.5% | 8.7% | 8.1% | 0.5% |
 | GPT-5.4 | 1 | 0.0% | 0.0% | 0.3% | 0.0% |
 | GPT-4o, LLaMA 3.3, GPT-OSS 20B, DeepSeek-V4-Pro | 0 | 0.0% | — | — | — |
 
@@ -237,12 +245,13 @@ choice moves results, so it must be stated:
 
 | Model | MCQ excluded | MCQ as-wrong |
 |---|---|---|
+| Claude Opus 4.8 | 0.928 (n=569) | 0.871 (n=606) |
 | Claude Sonnet 5 | 0.910 (n=569) | 0.855 (n=606) |
 | GPT-5.4 | 0.858 (n=606) | 0.858 (n=606) |
 | Claude S4.5 | 0.755 (n=473) | 0.592 (n=606) |
 
 **Sonnet 5's MCQ lead over GPT-5.4 does not survive the worst-case convention** —
-0.855 vs 0.858 is a tie. Any claim that Sonnet 5 leads on MCQ must name the
+0.855 vs 0.858 is a tie. Opus 4.8's does (0.871 vs 0.858), narrowly. Any claim that Sonnet 5 leads on MCQ must name the
 convention and show both columns.
 
 ## 6. Open problem: MCQ may not be measuring foresight
@@ -258,6 +267,7 @@ The retrospective ceiling on MCQ is ~1.0 for every model:
 | Claude Sonnet 5 | 0.912 | 0.900 | 0.987 |
 | GPT-5.6 Sol | 0.879 | 0.864 | 0.982 |
 | DeepSeek-V4-Pro | 0.668 | 0.665 | **0.996** |
+| Claude Opus 4.8 | 0.935 | 0.928 | 0.993 |
 
 DeepSeek-V4-Pro is the sharpest case: 4,128 pre-cutoff MCQ items (the largest
 retrospective sample in the panel) against 606 post-cutoff, and the ratio is
@@ -292,6 +302,7 @@ frozen parser cannot read) — unassessable by this judge, not unattempted.
 |---|---|---|---|---|---|---|---|
 | GPT-5.4 | 4,128 | **5.04** | **60.3** | 3.30 | 6.21 | 4.91 | 5.73 |
 | GPT-5.6 Sol | 4,072 | **4.97** | **54.8** | 3.63 | 6.00 | 4.38 | 5.89 |
+| Claude Opus 4.8 | 4,030 | 4.80 | 47.6 | 3.56 | 5.60 | 4.30 | 5.72 |
 | Claude Sonnet 5 | 4,026 | 4.54 | 37.2 | 3.06 | 5.40 | 4.12 | 5.58 |
 | DeepSeek-R1 | 4,100 | 4.18 | 20.0 | 2.29 | 5.32 | 4.07 | 5.04 |
 | Claude S4.5 | 3,908 | 3.99 | 14.0 | 2.31 | 4.71 | 3.95 | 5.01 |
@@ -308,6 +319,7 @@ responses):
 |---|---|---|---|---|---|---|---|
 | GPT-5.6 Sol | 623 | **4.84** | **49.3** | 3.37 | 5.91 | 4.41 | 5.68 |
 | GPT-5.4 | 628 | **4.83** | **50.0** | 3.32 | 5.73 | 4.63 | 5.64 |
+| Claude Opus 4.8 | 622 | 4.58 | 38.6 | 3.19 | 5.35 | 4.40 | 5.38 |
 | Claude Sonnet 5 | 618 | 4.44 | 30.1 | 2.84 | 5.22 | 4.22 | 5.48 |
 | DeepSeek-V4-Pro | 497 | 4.00 | 15.5 | 2.07 | 5.27 | 3.80 | 4.85 |
 | Claude S4.5 | 558 | 3.99 | 11.1 | 2.26 | 4.65 | 4.09 | 4.94 |
@@ -316,7 +328,8 @@ responses):
 | GPT-4o | 630 | 3.40 | 2.7 | 2.22 | 2.96 | 2.43 | 5.99 |
 
 Sol and GPT-5.4 are tied on the extension (0.01 apart) and 0.07 apart on the
-original — both inside the noise floor. Sonnet 5 is a clear third on both. The
+original — both inside the noise floor. Claude Opus 4.8 is third on both
+(4.80 / 4.58), ahead of Sonnet 5. The
 sub-dimension shape is universal: models propose *feasible* approaches (4.4–6.0)
 that do not *align* with what the paper did (2.0–3.6). Alignment is the
 discriminating dimension, and Sol leads it on the original corpus (3.63).
@@ -358,6 +371,23 @@ Sonnet 5, 83 shared post-cutoff events:
 *nothing*; unrestricted retrieval, which reaches the published papers, adds 0.435.
 On a 100%-post-cutoff corpus this isolates the mechanism cleanly. Small n — present
 as a mechanism demonstration, not a precise effect size.
+
+Claude Opus 4.8 on the same 86-event subset (80 shared ids) shows the same
+mechanism on FRQ and date and a different one on binary:
+
+| Metric | n | base | WS + cutoff | WS unrestricted |
+|---|---|---|---|---|
+| FRQ score (0–10) | 67 | 4.60 | +0.15 (n.s.) | **+1.26** (p<0.001) |
+| Date score | 23 | 0.176 | +0.14 (p=0.014) | **+0.48** (p<0.001) |
+| Date month error | 23 | 21.8 mo | −2.3 (n.s.) | **−15.3 mo** (p<0.001) |
+| Binary (real) | 23 | 0.217 | +0.30 (p=0.039) | +0.61 (p<0.001) |
+| Binary (perturbed) | 69 | 0.768 | **−0.17** (p=0.008) | −0.25 (p=0.003) |
+
+FRQ is the cleanest leakage read in the whole study: cutoff-restricted retrieval
+adds 0.15 (n.s.), unrestricted adds 1.26 points. On binary, cutoff-restricted
+retrieval raises the yes-rate on *both* the real and the corrupted question —
+accuracy up on one, down on the other — so it shifts response bias rather than
+adding discrimination. Sonnet 5 did not show that shift; Opus 4.8 does.
 
 ## 8. Stage-1 leakage: what it can and cannot show here
 
@@ -521,6 +551,7 @@ distinguish seen from unseen material. Generated by
 | Claude Sonnet 5 | 2026-01 | 0.560 [0.542, 0.579] n=5,647 | 0.527 [0.492, 0.563] n=1,387 | -0.033 | 0.940 |
 | GPT-5.6 Sol | 2026-02 | 0.605 [0.591, 0.619] n=6,070 | 0.574 [0.534, 0.612] n=1,183 | -0.031 | 0.949 |
 | DeepSeek-V4-Pro | 2026-04 | 0.489 [0.478, 0.500] n=6,411 | 0.465 [0.436, 0.501] n=845 | -0.024 | 0.951 |
+| Claude Opus 4.8 | 2026-01 | 0.563 [0.545, 0.582] n=5,619 | 0.491 [0.459, 0.525] n=1,374 | -0.072 | 0.872 |
 
 ### MCQ accuracy
 
@@ -535,6 +566,7 @@ distinguish seen from unseen material. Generated by
 | Claude Sonnet 5 | 2026-01 | 0.912 [0.902, 0.921] n=3,420 | 0.900 [0.879, 0.918] n=930 | -0.012 | 0.987 |
 | GPT-5.6 Sol | 2026-02 | 0.879 [0.869, 0.889] n=3,891 | 0.864 [0.839, 0.886] n=815 | -0.015 | 0.982 |
 | DeepSeek-V4-Pro | 2026-04 | 0.668 [0.653, 0.682] n=4,128 | 0.665 [0.627, 0.701] n=606 | -0.003 | 0.996 |
+| Claude Opus 4.8 | 2026-01 | 0.935 [0.927, 0.943] n=3,376 | 0.928 [0.910, 0.943] n=922 | -0.007 | 0.993 |
 
 ### FRQ mean score (0–10, published rubric)
 
@@ -549,6 +581,7 @@ distinguish seen from unseen material. Generated by
 | Claude Sonnet 5 | 2026-01 | 4.54 [4.51, 4.57] n=3,636 | 4.47 [4.42, 4.52] n=1,008 | -0.07 | 0.984 |
 | GPT-5.6 Sol | 2026-02 | 4.97 [4.94, 5.00] n=3,859 | 4.88 [4.82, 4.94] n=836 | -0.09 | 0.981 |
 | DeepSeek-V4-Pro | 2026-04 | 3.97 [3.94, 4.00] n=4,132 | 3.99 [3.92, 4.06] n=629 | +0.02 | 1.005 |
+| Claude Opus 4.8 | 2026-01 | 4.80 [4.77, 4.83] n=3,639 | 4.64 [4.59, 4.69] n=1,013 | -0.16 | 0.966 |
 
 ### Date score
 
@@ -563,21 +596,21 @@ distinguish seen from unseen material. Generated by
 | Claude Sonnet 5 | 2026-01 | 0.434 [0.421, 0.446] n=2,431 | 0.288 [0.261, 0.315] n=410 | -0.146 | 0.664 |
 | GPT-5.6 Sol | 2026-02 | 0.376 [0.361, 0.391] n=2,624 | 0.233 [0.214, 0.252] n=327 | -0.143 | 0.620 |
 | DeepSeek-V4-Pro | 2026-04 | 0.191 [0.182, 0.200] n=2,755 | 0.346 [0.293, 0.399] n=196 | +0.155 | 1.813 |
+| Claude Opus 4.8 | 2026-01 | 0.492 [0.479, 0.505] n=2,412 | 0.249 [0.226, 0.271] n=407 | -0.243 | 0.505 |
 
 CIs: Wilson for proportions (balanced-accuracy CI is the mean of the two Wilson halves, conservative), normal approximation for means. Pre-cutoff rows are retrospective: the model may have seen the paper in training.
-
-
 
 **What the split shows.** Three of the four tasks are nearly flat across the
 cutoff:
 
-- **Binary (balanced accuracy)**: ratios 0.94–0.99. The two newest models lose
-  the most (Sonnet 5 −0.033, Sol −0.031), which is the horizon effect of §4 seen
+- **Binary (balanced accuracy)**: ratios 0.87–0.99. The newest models lose the
+  most — Opus 4.8 −0.072 (0.563 → 0.491, the largest binary drop in the panel),
+  Sonnet 5 −0.033, Sol −0.031, which is the horizon effect of §4 seen
   from the other side — their post-cutoff windows are the short-horizon ones
   where a little skill exists, and even that is small.
-- **MCQ**: ratios 0.93–1.00, as §6 already argued; DeepSeek-V4-Pro's 0.996 on
+- **MCQ**: ratios 0.93–1.00 (Opus 4.8: 0.993), as §6 already argued; DeepSeek-V4-Pro's 0.996 on
   4,128 pre-cutoff items is the cleanest single number.
-- **FRQ**: ratios 0.98–1.02 — the *flattest* of the four. Every post-pre
+- **FRQ**: ratios 0.97–1.02 (Opus 4.8: 0.966) — still the flattest of the four. Every post-pre
   difference is within ±0.09 on a 0–10 scale, and three models score slightly
   *higher* on unseen material. FRQ therefore joins MCQ in §6's open problem:
   a task with real spread across models but no pre/post difference is not
@@ -598,14 +631,16 @@ FRQ, it measures the same amount before and after the cutoff.
 ## 11. Relationships among the four tasks (A1.2, Reviewer 2 C1)
 
 Full analysis, files and proposed manuscript text in
-`results/A1_2_task_correlation/` (`response_A1_2.md`). Nine models, entire
-dataset, binary as balanced accuracy, FRQ as the published rubric.
+`results/A1_2_task_correlation/` (`response_A1_2.md`). Ten models, entire
+dataset, binary as balanced accuracy, FRQ as the published rubric (nine- and
+eight-model variants kept as `*_9models.*` / `*_8models.*`).
 
-- **Across models (n = 9):** binary, MCQ and FRQ rise together with capability
-  (MCQ–FRQ r = 0.86 [0.44, 0.97]; binary–MCQ 0.71; binary–FRQ 0.68). **Date is
-  uncorrelated** with MCQ (−0.01) and FRQ (0.05) and its CI with binary spans
-  zero: stronger models are not better at predicting *when*, consistent with §1.
-- **Within models, across papers** (22k–37k pairs per task pair): every median
+- **Across models (n = 10):** binary, MCQ and FRQ rise together with capability
+  (MCQ–FRQ r = 0.87 [0.53, 0.97]; binary–MCQ 0.76; binary–FRQ 0.72). **Date is
+  weakly and non-significantly related** to MCQ (0.20 [−0.49, +0.74]) and FRQ
+  (0.20 [−0.50, +0.73]), and its CI with binary (0.61) spans zero: stronger
+  models are not reliably better at predicting *when*, consistent with §1.
+- **Within models, across papers** (25k–41k pairs per task pair): every median
   Spearman |ρ| ≤ 0.10. Holding the model fixed, success on one task says almost
   nothing about success on another task about the same paper.
 - **Reading:** the tasks are not redundant (near-independent at the paper
@@ -613,9 +648,11 @@ dataset, binary as balanced accuracy, FRQ as the published rubric.
   statement about models, not about the constructs; date is the outlier at both
   levels; nothing here bears on completeness. The response reframes the four
   tasks as one operationalization, not a decomposition.
-- Sensitivity: raw merged accuracy would flip binary–date to −0.26 through
-  response bias — the reason for balanced accuracy. Dropping DeepSeek-V4-Pro
-  moves no coefficient by more than 0.03.
+- Sensitivity: raw merged accuracy would flip binary–date negative through
+  response bias — the reason for balanced accuracy. Adding Claude Opus 4.8 as
+  the tenth model moved the date correlations from ~0 to ~0.2 (its date score
+  is high for a recent model) without changing any conclusion; the nine-model
+  values are in `task_correlation_9models.md`.
 
 ## 12. Reproducing
 

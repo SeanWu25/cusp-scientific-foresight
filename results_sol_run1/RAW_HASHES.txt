@@ -1,5 +1,5 @@
 # sha256 of raw run artifacts kept out of git
-# refrozen 2026-09-21: ws_500 and ws_cutoff_500 regenerated 2026-09-20 after the scripts/web_search.py fix; originals kept as *.FAILED_no_context.*
+# refrozen 2026-09-22: ws_500 and ws_cutoff_500 regenerated 2026-09-20 after the scripts/web_search.py fix; originals kept as *.FAILED_no_context.*
 # current
 ecf0de2979c7049aa4d8920a66a7c9de3dd27ffc805e0bf7c3627ab1f8c48089  bio_refusal_probe.log
 f8da30651853150e1215d1e1cebb1cb7c4875063387af3ee095cf747624393a0  raw/base_medium_run1.PRE_CAPTURE_PATCH.jsonl

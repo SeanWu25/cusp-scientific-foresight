@@ -1,15 +1,15 @@
 {
-  "judged": 5083,
+  "judged": 5845,
   "verdicts": {
-    "pass": 4960,
-    "unclear": 105,
-    "fail": 18
+    "pass": 5699,
+    "unclear": 119,
+    "fail": 27
   },
   "categories": {
     "evidence is the target paper": 7,
-    "other / needs eyes": 3,
-    "entity was in the prompt": 2,
-    "model had live web access": 6
+    "other / needs eyes": 4,
+    "model had live web access": 13,
+    "entity was in the prompt": 3
   },
   "failures": [
     {
@@ -70,6 +70,119 @@
       "reason": "\"Token-Level Credit Assignment\"",
       "urls": [
         "https://arxiv.org/abs/2608.12049"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "73ec53e1-548c-45b7-8e12-2cade996a70a",
+      "category": "model had live web access",
+      "indicators": [
+        "\"Psychedelics align brain activity with context\""
+      ],
+      "reason": "\"Psychedelics align brain activity with context\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10910-z",
+        "https://drrichardchambers.com/media/Stoliker-2026-Psychedelics-Align-Brain-Activity-With-Context.pdf"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "0f750485-1705-4ba3-ae85-a7bc286a43a1",
+      "category": "model had live web access",
+      "indicators": [
+        "\"Upcycling of polyvinyl chloride into polyalphaolefin lubricants\""
+      ],
+      "reason": "\"Upcycling of polyvinyl chloride into polyalphaolefin lubricants\" appears verbatim and was first published after 2026-08.",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10867-z"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "73c84435-a746-4995-b6f3-4260f8746fb5",
+      "category": "model had live web access",
+      "indicators": [
+        "OsALA5\u2013OsALIS2"
+      ],
+      "reason": "\"OsALA5\u2013OsALIS2\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10726-x"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "5f7c9690-609f-4ba8-bf40-4067c9d56312",
+      "category": "model had live web access",
+      "indicators": [
+        "THP3-T"
+      ],
+      "reason": "\"THP3-T\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10575-8",
+        "https://english.cas.cn/newsroom/research-news/202606/t20260604_1161121.shtml"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "04c8b475-c216-4d61-a77e-ec233fcd1068",
+      "category": "model had live web access",
+      "indicators": [
+        "\"Quantum coherent manipulation and readout of superconducting vortex ...\""
+      ],
+      "reason": "\"Quantum coherent manipulation and readout of superconducting vortex ...\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10441-7"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "f45069ad-eded-4d33-9da6-8c2b2af0cf9e",
+      "category": "model had live web access",
+      "indicators": [
+        "\"Early fibrotic niches establish tumour-permissive microenvironments\""
+      ],
+      "reason": "\"Early fibrotic niches establish tumour-permissive microenvironments\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10399-6"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "2c1a9031-897e-4287-bcd7-b67ad9bccbd6",
+      "category": "model had live web access",
+      "indicators": [
+        "FXT-001"
+      ],
+      "reason": "\"FXT-001\"",
+      "urls": [
+        "https://www.sciencedirect.com/science/article/pii/S0092867426004599"
+      ]
+    },
+    {
+      "run": "opus48_ws_cutoff",
+      "id": "eb005c52-3f37-446b-86a0-425a7381a9b6",
+      "category": "other / needs eyes",
+      "indicators": [
+        "\"Verifiability-Gated On-Policy Distillation (VG-OPD)\"",
+        "\"VG-OPD\""
+      ],
+      "reason": "The LLM response explicitly names a post-cutoff entity: \"Verifiability-Gated On-Policy Distillation (VG-OPD)\" / \"VG-OPD\". That name corresponds to a publicly released method first submitted on 14 Sep 2026, after the 2026-07 cutoff.",
+      "urls": [
+        "https://arxiv.org/abs/2609.15404",
+        "https://github.com/SeanXunX/vg-opd"
+      ]
+    },
+    {
+      "run": "opus48_ws_cutoff",
+      "id": "04c8b475-c216-4d61-a77e-ec233fcd1068",
+      "category": "entity was in the prompt",
+      "indicators": [
+        "granular aluminum",
+        "coherent control and quantum non-demolition readout are achieved by dispersively coupling the vortex TLS"
+      ],
+      "reason": "The LLM_RESPONSE explicitly names \"granular aluminum\" in a way that aligns with a specific post-cutoff paper title and topic, including coherent manipulation and quantum non-demolition readout of vortex states. The named entity is \"granular aluminum\" in the context of the specific 2026 Nature work on superconducting vortex states.",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10441-7"
       ]
     },
     {
