@@ -1,0 +1,227 @@
+{
+  "git_sha": "124a51d4ff3166b0da3feb51fc6407e3774918f9",
+  "generated": "2026-09-23T08:28:09-07:00",
+  "seed": 20260923,
+  "n_bootstrap": 2000,
+  "n_permutations": 10000,
+  "min_n": 20,
+  "partition_rule": "main (cutoff month counts as POST)",
+  "citation_retrieval_date": "2026-05-12",
+  "citation_source": "Semantic Scholar batch API (OpenAlex fallback)",
+  "citation_file": "/home/seanwu/FutureScience_backup_20260508_013823/benchmark_data/CUSP/sample_500_stratified_with_citations.jsonl",
+  "n_events_with_citations": 481,
+  "citation_quartile_edges": {
+    "Q1_max": 8.0,
+    "Q2_max": 22.0,
+    "Q3_max": 59.0
+  },
+  "frq_scores": "published rubric judge_frq_combined, sha256 fc24e69d... (stage-2 complete for all 10 models; NOT the archived legacy scores)",
+  "binary_metric": "balanced accuracy = mean(recall on real, specificity on perturbed)",
+  "panel": [
+    {
+      "model": "GPT-4o",
+      "cutoff": "2023-10",
+      "original": "run_evaluation/frq_results/gpt_4o_reeval.json",
+      "extension": "results_extension_run2/reports/gpt4o_base.json"
+    },
+    {
+      "model": "LLaMA 3.3 70B",
+      "cutoff": "2023-12",
+      "original": "run_evaluation/frq_results/llama_3_3_full.json",
+      "extension": "results_extension_run2/reports/llama33_base.json"
+    },
+    {
+      "model": "GPT-OSS 20B",
+      "cutoff": "2024-06",
+      "original": "run_evaluation/frq_results/gpt_oss_20B_reeval.json",
+      "extension": "results_extension_run2/reports/gptoss20b_base.json"
+    },
+    {
+      "model": "DeepSeek-R1",
+      "cutoff": "2024-07",
+      "original": "run_evaluation/frq_results/deepseek_r1.json",
+      "extension": null
+    },
+    {
+      "model": "Claude S4.5",
+      "cutoff": "2025-01",
+      "original": "run_evaluation/frq_results/claude_sonnet.json",
+      "extension": "results_extension_run2/reports/sonnet45_base.json"
+    },
+    {
+      "model": "GPT-5.4",
+      "cutoff": "2025-08",
+      "original": "run_evaluation/frq_results/gpt_5_4_eval.json",
+      "extension": "results_extension_run2/reports/gpt54_base.json"
+    },
+    {
+      "model": "Claude Sonnet 5",
+      "cutoff": "2026-01",
+      "original": "results_sonnet5_run1/reports/base_medium_run1.json",
+      "extension": "results_extension_run2/reports/sonnet5_base_run1.json"
+    },
+    {
+      "model": "GPT-5.6 Sol",
+      "cutoff": "2026-02",
+      "original": "results_sol_run1/reports/base_medium_run1.json",
+      "extension": "results_extension_run2/reports/sol_base.json"
+    },
+    {
+      "model": "DeepSeek-V4-Pro",
+      "cutoff": "2026-04",
+      "original": "results_dsv4pro_run1/reports/base_run1.json",
+      "extension": "results_extension_run2/reports/deepseekv4pro_base.json"
+    },
+    {
+      "model": "Claude Opus 4.8",
+      "cutoff": "2026-01",
+      "original": "results_opus48_run1/reports/base_medium_run1.json",
+      "extension": "results_extension_run2/reports/opus48_base_run1.json"
+    }
+  ],
+  "partition_sizes": [
+    {
+      "model": "GPT-4o",
+      "cutoff": "2023-10",
+      "n_events": 5575,
+      "pre": 0,
+      "post": 5575
+    },
+    {
+      "model": "LLaMA 3.3 70B",
+      "cutoff": "2023-12",
+      "n_events": 5575,
+      "pre": 0,
+      "post": 5575
+    },
+    {
+      "model": "GPT-OSS 20B",
+      "cutoff": "2024-06",
+      "n_events": 5575,
+      "pre": 657,
+      "post": 4918
+    },
+    {
+      "model": "DeepSeek-R1",
+      "cutoff": "2024-07",
+      "n_events": 4760,
+      "pre": 842,
+      "post": 3918
+    },
+    {
+      "model": "Claude S4.5",
+      "cutoff": "2025-01",
+      "n_events": 5575,
+      "pre": 1907,
+      "post": 3668
+    },
+    {
+      "model": "GPT-5.4",
+      "cutoff": "2025-08",
+      "n_events": 5575,
+      "pre": 3372,
+      "post": 2203
+    },
+    {
+      "model": "Claude Sonnet 5",
+      "cutoff": "2026-01",
+      "n_events": 5575,
+      "pre": 4305,
+      "post": 1270
+    },
+    {
+      "model": "GPT-5.6 Sol",
+      "cutoff": "2026-02",
+      "n_events": 5575,
+      "pre": 4508,
+      "post": 1067
+    },
+    {
+      "model": "DeepSeek-V4-Pro",
+      "cutoff": "2026-04",
+      "n_events": 5575,
+      "pre": 4760,
+      "post": 815
+    },
+    {
+      "model": "Claude Opus 4.8",
+      "cutoff": "2026-01",
+      "n_events": 5575,
+      "pre": 4305,
+      "post": 1270
+    }
+  ],
+  "benchmarks": {
+    "original": "/home/seanwu/FutureScience/archive/data/canonical/merged_validated_cusp_fixed.jsonl",
+    "extension": "/home/seanwu/FutureScience/benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026_monthnorm.jsonl"
+  },
+  "outputs": [
+    "/home/seanwu/FutureScience/results/A5_selection_bias/by_source/source_tables.md",
+    "/home/seanwu/FutureScience/results/A5_selection_bias/by_visibility/visibility_tables.md",
+    "/home/seanwu/FutureScience/results/A5_selection_bias/by_latency/latency_tables.md"
+  ],
+  "study": "A5 \u2014 benchmark selection bias (Reviewer 1, comment 5)",
+  "regenerate": "bash results/A5_selection_bias/run_all.sh",
+  "analyses": {
+    "by_source": "6 venue strata, entire corpus (5,575). source is one-to-one with venue.",
+    "by_source/within_discipline": "venue effect with discipline fixed; 7 disciplines with >=2 venues at n>=100",
+    "by_visibility": "citation quartile, 481 events (original half, pinned-500 subset)",
+    "by_visibility/citation_gap_S19_S23": "regenerated + extended published S19-S23 (3 -> 7 models)",
+    "by_latency": "publication latency 0-3 months, 708 extension events, post-cutoff only",
+    "novelty": "NOT computed by instruction; see novelty_discussion.md"
+  },
+  "statistics": {
+    "binary_metric": "balanced accuracy = mean(recall on real, specificity on perturbed)",
+    "ci": "2,000-draw event-clustered bootstrap, percentile",
+    "test": "10,000-draw permutation of stratum labels across events (5,000 for within-discipline)",
+    "correction": "Holm-Bonferroni within each stratification",
+    "suppression": "cells below n=20 print no point estimate",
+    "pooling": "columns average only over models carrying every stratum"
+  },
+  "results_summary": {
+    "source": "85/112 tests Holm-significant; driven by date (arXiv>journal 10/10 models, median +0.27 overall) and the leaderboard item type",
+    "within_discipline": "4/705 tests Holm-significant -> venue does not predict performance once discipline is fixed",
+    "visibility": "6/93 significant, all on date; 0/71 on binary/MCQ/FRQ",
+    "latency": "0/72 significant",
+    "confound": "only 34 of 1,274 AI events are in journals (2.7%), so arXiv-vs-journal is not separable from AI-vs-other"
+  },
+  "file_sha256_16": {
+    "MANIFEST.json": "3d8e3bf4ab0fca00",
+    "metadata_audit.md": "ca5885ca6de1bf55",
+    "novelty_discussion.md": "72dcd1a31641ac9f",
+    "response_A5.md": "f66e233a174614a2",
+    "run_all.sh": "56704ebafafeda90",
+    "by_latency/latency_cells.csv": "266b05d0e1fd358f",
+    "by_latency/latency_tables.md": "f53976e8be2d8eb1",
+    "by_latency/latency_tests.csv": "120fbadccddd0dea",
+    "tables/A5_latency_overall.csv": "36640120e8379ad5",
+    "tables/A5_latency_post.csv": "36640120e8379ad5",
+    "tables/A5_partition_sizes.csv": "85cf8797ffdf5571",
+    "tables/A5_source_overall.csv": "0b1250484d2cc760",
+    "tables/A5_source_post.csv": "d902b39671925acf",
+    "tables/A5_tables.md": "8ca41c275f3c4b15",
+    "tables/A5_visibility_overall.csv": "cc5838c34d5f675f",
+    "tables/A5_visibility_post.csv": "b639346af943ef0c",
+    "tables/index.json": "def569f58c684744",
+    "scripts/a5_analysis.py": "e6733568e742a260",
+    "scripts/a5_citation_gap.py": "cdf40e4af2786dd7",
+    "scripts/a5_common.py": "0b55d399598a5c88",
+    "scripts/a5_figures.py": "efad68d73b2e5b3b",
+    "scripts/a5_summarize.py": "7cad1a2d72321362",
+    "scripts/a5_tables.py": "d6096a7f21798117",
+    "scripts/a5_verify.py": "b89568d4479903ca",
+    "scripts/a5_within_discipline.py": "c08816c1a2a08244",
+    "scripts/__pycache__/a5_common.cpython-313.pyc": "51d078aebc00e396",
+    "by_visibility/citation_gap_S19_S23.json": "549b411b4129e532",
+    "by_visibility/citation_gap_S19_S23.md": "8ecc0b9837a66485",
+    "by_visibility/visibility_cells.csv": "56ef027aa04a6f4c",
+    "by_visibility/visibility_tables.md": "9b6c2517ea57f6c3",
+    "by_visibility/visibility_tests.csv": "87ec122caafe345e",
+    "by_source/source_cells.csv": "954b207523a3154c",
+    "by_source/source_tables.md": "64333572ba5e33b7",
+    "by_source/source_tests.csv": "864f9bc9e8ab2fdd",
+    "by_source/within_discipline.md": "2b41ce7ac359f67e",
+    "by_source/within_discipline_cells.csv": "024eb9d0bf27c1c3",
+    "by_source/within_discipline_tests.csv": "504a8f79f6d21ba4"
+  }
+}

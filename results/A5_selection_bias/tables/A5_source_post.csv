@@ -1,0 +1,5 @@
+task,n_models_pooled,n_tests,n_holm_significant,Nature,Nature_n_obs,Science,Science_n_obs,Cell,Cell_n_obs,HF Daily Papers (arXiv),HF Daily Papers (arXiv)_n_obs,Top-10 AI Paper of Week (arXiv),Top-10 AI Paper of Week (arXiv)_n_obs,Leaderboards,Leaderboards_n_obs
+Binary (bal. acc),9,10,5,0.5059,15871,0.4959,8184,0.4971,3303,0.4830,6191,0.4931,2514,0.6811,742
+MCQ (acc),6,10,7,0.6199,9087,0.5744,4708,0.6050,2205,0.5383,3542,0.5906,1262,0.3752,321
+Date (score),6,10,9,0.2637,5999,0.2402,3115,0.2938,1082,0.4612,1718,0.5233,810,0.4465,326
+FRQ (0-10),9,10,9,4.1368,10924,4.0961,5151,4.3007,2468,4.3196,4446,4.3944,1658,,

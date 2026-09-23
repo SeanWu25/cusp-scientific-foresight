@@ -1,0 +1,9 @@
+{
+  "A5_source_post": "tables/A5_source_post.csv",
+  "A5_source_overall": "tables/A5_source_overall.csv",
+  "A5_visibility_post": "tables/A5_visibility_post.csv",
+  "A5_visibility_overall": "tables/A5_visibility_overall.csv",
+  "A5_latency_post": "tables/A5_latency_post.csv",
+  "A5_latency_overall": "tables/A5_latency_overall.csv",
+  "A5_partition_sizes": "tables/A5_partition_sizes.csv"
+}

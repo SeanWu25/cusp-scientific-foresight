@@ -1,0 +1,113 @@
+model,partition,task,n_strata,range,min_stratum,max_stratum,p_raw,p_holm
+Claude Opus 4.8,overall,binary,6,0.177526,Science,Leaderboards,0.002200,0.059394
+Claude Opus 4.8,overall,date,6,0.360889,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Opus 4.8,overall,frq,5,0.675748,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Opus 4.8,overall,mcq,6,0.099135,Leaderboards,HF Daily Papers (arXiv),0.001200,0.038396
+Claude Opus 4.8,post,binary,6,0.261466,Top-10 AI Paper of Week (arXiv),Leaderboards,0.080517,0.933507
+Claude Opus 4.8,post,date,5,0.310019,Nature,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+Claude Opus 4.8,post,frq,5,0.708853,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+Claude Opus 4.8,post,mcq,5,0.082498,Cell,HF Daily Papers (arXiv),0.093991,0.933507
+Claude Opus 4.8,pre,binary,6,0.186377,Science,Leaderboards,0.002200,0.059394
+Claude Opus 4.8,pre,date,6,0.379703,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Opus 4.8,pre,frq,5,0.698407,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Opus 4.8,pre,mcq,6,0.098498,Leaderboards,HF Daily Papers (arXiv),0.015098,0.254975
+Claude S4.5,overall,binary,6,0.222602,Science,Leaderboards,0.000100,0.011199
+Claude S4.5,overall,date,6,0.330781,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+Claude S4.5,overall,frq,5,0.379426,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+Claude S4.5,overall,mcq,6,0.306125,Leaderboards,HF Daily Papers (arXiv),0.000100,0.011199
+Claude S4.5,post,binary,6,0.238272,Cell,Leaderboards,0.000100,0.011199
+Claude S4.5,post,date,6,0.330085,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude S4.5,post,frq,5,0.342885,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+Claude S4.5,post,mcq,6,0.304127,Leaderboards,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+Claude S4.5,pre,binary,4,0.113080,Science,HF Daily Papers (arXiv),0.000500,0.019498
+Claude S4.5,pre,date,4,0.268038,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude S4.5,pre,frq,4,0.471706,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude S4.5,pre,mcq,4,0.114911,Cell,HF Daily Papers (arXiv),0.035196,0.487151
+Claude Sonnet 5,overall,binary,6,0.192702,Cell,Leaderboards,0.001000,0.032997
+Claude Sonnet 5,overall,date,6,0.357019,Nature,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Sonnet 5,overall,frq,5,0.487494,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Sonnet 5,overall,mcq,6,0.211269,Leaderboards,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Sonnet 5,post,binary,6,0.264697,Top-10 AI Paper of Week (arXiv),Leaderboards,0.141138,0.933507
+Claude Sonnet 5,post,date,5,0.298438,Nature,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Sonnet 5,post,frq,5,0.402900,Nature,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+Claude Sonnet 5,post,mcq,5,0.143262,Cell,HF Daily Papers (arXiv),0.000800,0.027997
+Claude Sonnet 5,pre,binary,6,0.188636,Cell,Leaderboards,0.005299,0.127187
+Claude Sonnet 5,pre,date,6,0.373148,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Sonnet 5,pre,frq,5,0.531711,Science,HF Daily Papers (arXiv),0.000100,0.011199
+Claude Sonnet 5,pre,mcq,6,0.201807,Leaderboards,HF Daily Papers (arXiv),0.000300,0.012599
+DeepSeek-R1,overall,binary,6,0.131295,HF Daily Papers (arXiv),Leaderboards,0.000800,0.027997
+DeepSeek-R1,overall,date,6,0.251400,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+DeepSeek-R1,overall,frq,5,0.248518,Science,Cell,0.000100,0.011199
+DeepSeek-R1,overall,mcq,6,0.148703,HF Daily Papers (arXiv),Cell,0.000100,0.011199
+DeepSeek-R1,post,binary,6,0.139442,HF Daily Papers (arXiv),Leaderboards,0.000700,0.025197
+DeepSeek-R1,post,date,6,0.217331,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+DeepSeek-R1,post,frq,5,0.246266,Science,Cell,0.000100,0.011199
+DeepSeek-R1,post,mcq,6,0.152394,HF Daily Papers (arXiv),Cell,0.000100,0.011199
+DeepSeek-R1,pre,binary,4,0.094973,Nature,Cell,0.255274,1.000000
+DeepSeek-R1,pre,date,4,0.074308,Nature,HF Daily Papers (arXiv),0.000600,0.022798
+DeepSeek-R1,pre,frq,4,0.278750,Nature,Cell,0.086391,0.933507
+DeepSeek-R1,pre,mcq,4,0.151896,HF Daily Papers (arXiv),Science,0.120588,0.933507
+DeepSeek-V4-Pro,overall,binary,6,0.196372,Cell,Leaderboards,0.000100,0.011199
+DeepSeek-V4-Pro,overall,date,6,0.272182,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+DeepSeek-V4-Pro,overall,frq,5,0.229605,HF Daily Papers (arXiv),Cell,0.000200,0.011199
+DeepSeek-V4-Pro,overall,mcq,6,0.298895,Leaderboards,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+DeepSeek-V4-Pro,post,binary,4,0.018582,HF Daily Papers (arXiv),Nature,0.942206,1.000000
+DeepSeek-V4-Pro,post,date,3,0.260055,Nature,HF Daily Papers (arXiv),0.005299,0.127187
+DeepSeek-V4-Pro,post,frq,4,0.336586,HF Daily Papers (arXiv),Cell,0.077792,0.933507
+DeepSeek-V4-Pro,post,mcq,4,0.218045,Cell,HF Daily Papers (arXiv),0.011499,0.219978
+DeepSeek-V4-Pro,pre,binary,6,0.192387,Cell,Leaderboards,0.000100,0.011199
+DeepSeek-V4-Pro,pre,date,6,0.286501,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+DeepSeek-V4-Pro,pre,frq,5,0.225393,Science,Cell,0.001200,0.038396
+DeepSeek-V4-Pro,pre,mcq,6,0.298895,Leaderboards,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-4o,overall,binary,6,0.181645,Nature,Leaderboards,0.000100,0.011199
+GPT-4o,overall,date,6,0.368156,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-4o,overall,frq,5,0.265235,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-4o,overall,mcq,6,0.276078,Leaderboards,Cell,0.000100,0.011199
+GPT-4o,post,binary,6,0.181645,Nature,Leaderboards,0.000100,0.011199
+GPT-4o,post,date,6,0.368156,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-4o,post,frq,5,0.265235,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-4o,post,mcq,6,0.276078,Leaderboards,Cell,0.000100,0.011199
+GPT-5.4,overall,binary,6,0.142601,Science,Leaderboards,0.034797,0.487151
+GPT-5.4,overall,date,6,0.389779,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-5.4,overall,frq,5,0.181707,Science,Cell,0.000600,0.022798
+GPT-5.4,overall,mcq,6,0.301105,Leaderboards,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-5.4,post,binary,6,0.210918,Cell,Leaderboards,0.014999,0.254975
+GPT-5.4,post,date,6,0.433099,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-5.4,post,frq,5,0.246357,Nature,Top-10 AI Paper of Week (arXiv),0.001500,0.043496
+GPT-5.4,post,mcq,6,0.495623,Leaderboards,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-5.4,pre,binary,6,0.112236,Top-10 AI Paper of Week (arXiv),Leaderboards,0.240376,1.000000
+GPT-5.4,pre,date,6,0.332680,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-5.4,pre,frq,5,0.217806,Science,Cell,0.004000,0.099990
+GPT-5.4,pre,mcq,6,0.083710,Leaderboards,HF Daily Papers (arXiv),0.516248,1.000000
+GPT-5.6 Sol,overall,binary,6,0.240505,HF Daily Papers (arXiv),Leaderboards,0.000100,0.011199
+GPT-5.6 Sol,overall,date,6,0.351693,Science,HF Daily Papers (arXiv),0.000100,0.011199
+GPT-5.6 Sol,overall,frq,5,0.239324,Science,HF Daily Papers (arXiv),0.000100,0.011199
+GPT-5.6 Sol,overall,mcq,6,0.117452,Leaderboards,HF Daily Papers (arXiv),0.000300,0.012599
+GPT-5.6 Sol,post,binary,6,0.326475,Top-10 AI Paper of Week (arXiv),Leaderboards,0.001204,0.038396
+GPT-5.6 Sol,post,date,4,0.189118,Science,HF Daily Papers (arXiv),0.000100,0.011199
+GPT-5.6 Sol,post,frq,5,0.525623,Science,Top-10 AI Paper of Week (arXiv),0.000300,0.012599
+GPT-5.6 Sol,post,mcq,5,0.114184,Cell,HF Daily Papers (arXiv),0.112389,0.933507
+GPT-5.6 Sol,pre,binary,6,0.240054,HF Daily Papers (arXiv),Leaderboards,0.000100,0.011199
+GPT-5.6 Sol,pre,date,6,0.382086,Science,HF Daily Papers (arXiv),0.000100,0.011199
+GPT-5.6 Sol,pre,frq,5,0.244355,Science,HF Daily Papers (arXiv),0.000100,0.011199
+GPT-5.6 Sol,pre,mcq,6,0.078245,Cell,HF Daily Papers (arXiv),0.008799,0.184782
+GPT-OSS 20B,overall,binary,6,0.274639,HF Daily Papers (arXiv),Leaderboards,0.000100,0.011199
+GPT-OSS 20B,overall,date,6,0.266577,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-OSS 20B,overall,frq,5,0.277188,Science,Cell,0.000100,0.011199
+GPT-OSS 20B,overall,mcq,6,0.284222,Leaderboards,Nature,0.000100,0.011199
+GPT-OSS 20B,post,binary,6,0.279876,HF Daily Papers (arXiv),Leaderboards,0.000100,0.011199
+GPT-OSS 20B,post,date,6,0.239835,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+GPT-OSS 20B,post,frq,5,0.249482,Science,Cell,0.000200,0.011199
+GPT-OSS 20B,post,mcq,6,0.283137,Leaderboards,Nature,0.000100,0.011199
+GPT-OSS 20B,pre,binary,4,0.045300,Nature,Cell,0.549945,1.000000
+GPT-OSS 20B,pre,date,4,0.073540,Cell,HF Daily Papers (arXiv),0.001500,0.043496
+GPT-OSS 20B,pre,frq,4,0.500037,Science,Cell,0.015598,0.254975
+GPT-OSS 20B,pre,mcq,4,0.240378,HF Daily Papers (arXiv),Cell,0.005599,0.127187
+LLaMA 3.3 70B,overall,binary,6,0.075592,HF Daily Papers (arXiv),Leaderboards,0.010999,0.219978
+LLaMA 3.3 70B,overall,date,6,0.129917,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+LLaMA 3.3 70B,overall,frq,5,0.291991,HF Daily Papers (arXiv),Cell,0.000100,0.011199
+LLaMA 3.3 70B,overall,mcq,6,0.191592,Leaderboards,Cell,0.000100,0.011199
+LLaMA 3.3 70B,post,binary,6,0.075592,HF Daily Papers (arXiv),Leaderboards,0.010999,0.219978
+LLaMA 3.3 70B,post,date,6,0.129917,Science,Top-10 AI Paper of Week (arXiv),0.000100,0.011199
+LLaMA 3.3 70B,post,frq,5,0.291991,HF Daily Papers (arXiv),Cell,0.000100,0.011199
+LLaMA 3.3 70B,post,mcq,6,0.191592,Leaderboards,Cell,0.000100,0.011199
