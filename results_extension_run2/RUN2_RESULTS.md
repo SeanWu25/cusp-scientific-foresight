@@ -468,7 +468,30 @@ flagging.
   binary-task validity). They share one rate-limited Azure judge deployment
   with the FRQ grading here. Finalize verifies, using A2's own loader, that
   rebuilding reports left every binary/perturbed answer count identical.
-- **Cost**: $44.68 total on first-party APIs. Azure and local rows report tokens
+- **Claude Opus 4.8 added 2026-09-22** (`claude-opus-4-8`, dateless pinned
+  snapshot; `response.model` echoes it). Cutoff **Jan 2026** (reliable and
+  training), sourced from the official model page — the freeze script's Sonnet 5
+  default happened to match but its provenance was wrong and was corrected by
+  hand. Decoding mirrors Sonnet 5: the API rejects `temperature` (400), so
+  effort=medium, no sampling params, FRQ cap 384, three extension passes
+  (MCQ sd 0.0026, merged binary sd 0.0043). Gate: 150-event pilot on Sonnet 5's
+  pilot events — refusals 5.0% (Bio 14.7%, Med 10.0%) vs Sonnet 5's 4.5% /
+  11.6% / 11.7%; Fable 5 had been stopped at 81.7% on biomedical items. Full
+  treatment: extension base ×3, extension WS pair (86), original WS pair (500),
+  original base (4,760). Zero API errors across 26,000+ calls. **Inference cost
+  $231, against a $133 projection**: the two 500-event web-search runs cost $87,
+  not $16, because retrieved context roughly triples input tokens and the
+  projection extrapolated base-condition cost per event; base runs were on
+  estimate. Judging: pass 1 started on the extension files and, reaching the
+  original-corpus files as they were still being written, judged partial
+  snapshots of them (harmless: `--resume` is by event id and the runner writes
+  whole lines); pass 2 resumed the remainder. One cutoff-restricted web-search
+  item was flagged for a coined acronym ("VG-OPD") the judge matched to arXiv
+  2609.15404 — a paper posted in September 2026, after the run; all ten
+  retrieved sources for that item were pre-cutoff and the acronym appears in
+  none of them. The date filter held; it is the §8 artifact.
+- **Cost**: $44.68 on first-party APIs for the eight-model extension panel, plus
+  $231 for Claude Opus 4.8's full treatment. Azure and local rows report tokens
   only; no dollar figure is invented for negotiated or local serving.
 
 ## 10. Pre- vs post-cutoff performance on the entire dataset
