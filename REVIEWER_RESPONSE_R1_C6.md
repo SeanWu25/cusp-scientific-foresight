@@ -4,113 +4,393 @@
 > self-consistency, ensembles, and explicit probabilistic forecasting
 > interventions."
 
-**Status: analysis complete; ready for PI review.** Regenerates from stored
-outputs with `python calibration_study/analyze.py` (~40 min). Full write-up:
-`calibration_study/RESULTS.md`; tables in `calibration_study/tables/*.md`;
-figures in `calibration_study/figures/`; raw per-item outputs in
-`calibration_study/raw/` with prompt hashes in the manifests.
+**Status: analysis complete; ready for PI review.** Every number below is copied
+by script from `calibration_study/tables/*.json`; regenerate the whole study with
+`python calibration_study/analyze.py` (~40 min) and this file with
+`python calibration_study/make_c6_response.py`. Supporting material:
+`calibration_study/RESULTS.md` (per-model narrative),
+`calibration_study/tables/` (master table, delta table, ensembles, vote
+distributions, probability-sum audit, costs), `calibration_study/figures/`
+(reliability diagrams and confidence histograms faceted model × arm),
+`calibration_study/raw/` (per-item outputs with the full prompt text and sha256
+of every arm in the manifests).
 
 ## 1. What we did
 
-* **Question.** Is near-chance binary forecasting a limit on forecasting ability
-  or an artefact of single-shot yes/no elicitation? The decisive quantity is the
-  Murphy decomposition of the Brier score: an intervention that improves
-  reliability but not resolution has made the model better calibrated but no
-  better at forecasting.
-* **Models** chosen to span response bias (Table S13): LLaMA 3.3 70B (+0.84,
-  strong Yes), GPT-5.4 (+0.24, mild Yes), GPT-4o (−0.58, strong No). DeepSeek R1
-  (the intended balanced model) could not be re-run: its deployment was retired
-  before the study (see §5).
-* **Items.** The pinned 500-event retrieval subset (296 binary, 394 perturbed,
-  435 MCQ); every arm paired on identical items; post-cutoff throughout (GPT-5.4
-  also has a pre/post split).
-* **Arms.** A base (stored); B1 asymmetric and B2 symmetric debiasing prompts
-  (confidence elicitation byte-identical to base, asserted); C retrieval
-  restricted to pre-cutoff documents (stored for GPT-4o and GPT-5.4; generated
-  for LLaMA); D self-consistency, n = 10/5/5 samples at T = 1.0 with the
-  confidence request removed, probability = vote share (Laplace-smoothed log
-  loss also reported); E direct probability elicitation (P(Yes); per-option
-  probabilities for MCQ, sum-to-one audited); F ensembles derived from A (mean
-  probability, mean logit, majority vote; three-model and all-model).
-* **Metrics.** Accuracy and bias index; Brier, log loss, ECE/MCE (10 equal-width
-  bins; equal-mass ECE as robustness), Murphy reliability/resolution/
-  uncertainty, AUROC, Brier skill vs the base-rate forecast; reliability diagrams
-  and confidence histograms per model × arm; 10k paired event bootstraps with
-  Holm correction across arms.
+The question behind the comment is whether near-chance binary forecasting is a
+limit on forecasting ability or an artefact of asking for a single yes/no answer
+at a single temperature. The decisive quantity is the Murphy decomposition of the
+Brier score: an intervention that improves **reliability** but not **resolution**
+has made the probabilities better behaved without making them more informative
+about which events actually happen. We therefore report reliability and
+resolution separately for every arm, alongside discrimination (AUROC) and the
+Brier skill score against a constant base-rate forecast.
+
+Six arms on the pinned 500-event subset, paired on identical items, three models
+chosen to span response bias:
+
+* **A base** — the stored base-condition outputs, unchanged.
+* **B1 prompting (asymmetric)** — the base prompt plus "Before answering,
+  consider what evidence would refute this realization." The confidence
+  elicitation is byte-identical to base, asserted at start-up.
+* **B2 prompting (symmetric)** — as B1 but "consider the evidence for and the
+  evidence against this realization." Added because B1 solicits only
+  disconfirming evidence and pushes every model toward No, which would confound a
+  bias shift with a calibration gain.
+* **C retrieval** — web search restricted to pre-cutoff documents, reusing the
+  stored knowledge-access runs (confidence verified as captured); the missing
+  LLaMA 3.3 run was generated for this study.
+* **D self-consistency** — base prompt with the confidence request removed,
+  sampled n times at an explicit temperature of 1.0, probability = votes for the
+  majority answer / n, with Laplace smoothing ((k+1)/(n+2)) as well as
+  raw-with-clipping log loss.
+* **E probabilistic elicitation** — no yes/no answer requested: P(event occurs by
+  the stated date) for binary, and a probability per option summing to 1 for MCQ,
+  with the raw and renormalised values both recorded and the sum audited. Hard
+  answers derived by thresholding at 0.5 and by argmax so accuracy stays
+  comparable.
+* **F ensembles** — derived from arm A, no new inference: mean probability, mean
+  of logits, and unweighted majority vote, over the item-level intersection where
+  every member answered.
 
 ## 2. What we found
 
-1. **No intervention gives any model forecasting skill.** Brier skill against
-   the constant base-rate forecast is negative in every model × arm cell;
-   resolution never leaves the 0.00–0.02 band (uncertainty 0.245); AUROC never
-   moves with a CI excluding zero except under retrieval (below).
-2. **Direct probability elicitation (E) is the only intervention that improves
-   calibration for all three models** — Brier −0.028 [−0.039, −0.016] (LLaMA),
-   −0.010 [−0.032, +0.011] (GPT-5.4), −0.019 [−0.028, −0.008] (GPT-4o) — and the
-   gain is entirely reliability; resolution changes are 0.000, +0.001, −0.002.
-3. **Prompting changes nothing** (|ΔBrier| ≤ 0.008, all CIs span zero); the
-   asymmetric prompt lowers MCQ accuracy for the two weaker models.
-   **Self-consistency is the worst calibration arm everywhere** (Brier +0.11 to
-   +0.20) because sampling is near-degenerate: 70–77% of items are unanimous
-   at T = 1.0.
-4. **Retrieval is the one arm that improves discrimination** (binary AUROC
-   +0.04 to +0.10; LLaMA MCQ AUROC +0.11) while leaving calibration worse or
-   unchanged; on GPT-5.4's pre-cutoff items the same arm reaches AUROC 0.81,
-   the recall signature.
-5. **Ensembling models with opposite biases gives the best Brier in the study**
-   (all-model mean probability 0.267, bias +0.05) with AUROC 0.503, exactly
-   chance.
-6. **Effect direction does not depend on the model's baseline bias for
-   calibration**, only for accuracy: each intervention shifts bias in a fixed
-   direction for all models (prompts → No, retrieval → Yes, probabilities → the
-   middle), so it helps the model whose bias it opposes and not the other,
-   while the reliability gain from E appears in all three.
+1. **No intervention gives any model forecasting skill.** The Brier skill score
+   against the constant base-rate forecast is negative in every model × arm cell;
+   the best cell in the study is GPT-5.4 arm E at −0.11 [−0.23, −0.01].
+   On post-cutoff events resolution never leaves the 0.001–0.022 band against an
+   uncertainty of 0.245, and no arm moves it by more than 0.012 with an interval
+   excluding zero. (The one value outside that band, 0.050, is pre-cutoff
+   retrieval for GPT-5.4, i.e. recall; see finding 5.)
+2. **Probabilistic elicitation (E) is the only intervention that improves
+   calibration for all three models, and the gain is entirely reliability.**
+   ΔBrier −0.028 [−0.039, −0.016] (LLaMA), −0.010 [−0.032, +0.011] (GPT-5.4),
+   −0.019 [−0.028, −0.008] (GPT-4o); the reliability deltas are the same numbers
+   to three decimals; the resolution deltas are 0.000, +0.001 and −0.002; every
+   AUROC interval spans zero. On MCQ it collapses over-confidence (ECE 0.336 →
+   0.016 for LLaMA, 0.330 → 0.056 for GPT-4o) but the argmax of the elicited
+   distribution is a worse answer than the single pick (accuracy −0.060 and
+   −0.117), and GPT-5.4, already calibrated on MCQ, becomes under-confident
+   (mean probability 0.602 against accuracy 0.824).
+3. **Prompting changes nothing.** |ΔBrier| ≤ 0.008 in every model, every interval
+   spanning zero. B1 lowers MCQ accuracy for the two weaker models (−0.048 LLaMA,
+   −0.032 GPT-4o); B2 is neutral. Neither moves reliability or resolution.
+4. **Self-consistency is the worst calibration arm everywhere** (ΔBrier +0.109 to
+   +0.195, all Holm p ≤ 0.001), because sampling at temperature 1.0 is
+   near-degenerate: 62–84% of binary items and 68–91% of MCQ items are unanimous,
+   so the vote fraction is a confident restatement of the model's bias rather
+   than a probability. Only 6–11 distinct P(Yes) values occur.
+5. **Retrieval is the one arm that improves discrimination**, and it does so while
+   leaving calibration unchanged or worse: binary AUROC +0.093 [+0.052, +0.132]
+   (GPT-4o), +0.100 [+0.016, +0.190] (GPT-5.4), +0.038 [−0.002, +0.079] (LLaMA);
+   LLaMA MCQ AUROC +0.114 [+0.056, +0.171]. It also produces the study's only
+   resolution gain with an interval excluding zero (LLaMA +0.012
+   [+0.003, +0.021]), which still leaves resolution at 0.018. On GPT-5.4's
+   pre-cutoff events the same arm reaches AUROC 0.812 and resolution 0.050 — the
+   recall signature, absent post-cutoff, which is exactly the contrast the
+   pre/post split exists to expose.
+6. **Ensembling models with opposite biases gives the best-calibrated forecaster
+   in the study and no discrimination at all.** The six-model mean-probability
+   ensemble reaches Brier 0.267 [0.258, 0.276] with bias index +0.046, beating
+   every member on the same items by 0.014 to 0.066 Brier, entirely through
+   reliability; its AUROC is 0.503 [0.464, 0.543], exactly chance. Majority voting is much worse
+   calibrated than either probability-averaging rule (Brier 0.317 vs 0.267)
+   because it discards the confidence information.
+7. **The direction of the effect does not depend on the model's baseline bias for
+   calibration, only for accuracy.** Each intervention shifts bias in a fixed
+   direction for every model — prompts toward No, retrieval toward Yes,
+   probabilities toward the middle — so whether accuracy rises or falls depends on
+   whether that shift opposes the model's own bias: arm E helps LLaMA
+   (+0.033 accuracy, bias +0.830 → +0.565) and not GPT-4o (−0.003, bias −0.605 →
+   −0.505); retrieval helps GPT-4o (+0.029) and not GPT-5.4 (−0.027). The
+   reliability gain from E, by contrast, appears in all three regardless of
+   baseline bias. That is a bias correction that sometimes helps, not a
+   calibration improvement that generalises.
 
-## 3. Suggested text for the response letter
+## 3. Design as run
+
+| | LLaMA 3.3 70B | GPT-5.4 | GPT-4o |
+|---|---|---|---|
+| Response bias (Table S13, full corpus) | +0.839 (strong Yes) | +0.238 (mild Yes) | −0.576 (strong No) |
+| Knowledge cutoff | 2023-12 | 2025-08 | 2023-10 |
+| Post-cutoff events in the pinned subset | 500 (no pre-cutoff partition) | 144 (356 pre) | 500 (no pre-cutoff partition) |
+| Post-cutoff binary items (original + perturbed) | 690 | 188 | 690 |
+| Post-cutoff MCQ items | 435 | 125 | 435 |
+| Arm D samples per item | n = 10 | n = 5 | n = 5 |
+| Arm C source | generated 2026-09-20 | stored WS+Cutoff | stored WS+Cutoff |
+
+Reference rows that need no new inference: DeepSeek R1 (arms A and C) and GPT-OSS 20B (arm A). Statistics: 10,000 event-level (cluster) bootstrap resamples, one shared resample matrix so every arm is paired; two-sided percentile bootstrap p, Holm–Bonferroni across arms within each model × task × partition × metric. Partition rule: main: pre if pub_month < cutoff_month (cutoff month counts as post). ECE/MCE and the Murphy decomposition use 10 equal-width; ece_q 10 equal-mass; MCE bins n>=10; log loss clips to [0.01, 0.99].
+
+## 4. Binary (original + perturbed), post-cutoff: event-framed probabilities
+
+P(Yes) = confidence when the answer is Yes, 1 − confidence when it is No; for arm D the Yes-vote fraction; for arm E the elicited probability. Outcome y = 1 for original questions, 0 for perturbed twins. BSS = 1 − Brier/UNC, the Brier skill score against the constant base-rate forecast (UNC = 0.245 throughout); negative means worse than always predicting the base rate. REL and RES are the Murphy reliability and resolution terms (lower REL is better, higher RES is better).
+
+| model | arm | n | Brier | BSS | REL | RES | log loss | ECE | MCE | AUROC | bias index | merged acc. |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| LLaMA 3.3 70B | A base | 656 | 0.336 [0.323, 0.350] | -0.37 [-0.45, -0.31] | 0.097 [0.084, 0.116] | 0.005 [0.003, 0.013] | 0.896 [0.865, 0.928] | 0.302 [0.281, 0.332] | 0.339 [0.313, 0.514] | 0.569 [0.534, 0.604] | 0.830 [0.783, 0.874] | 0.457 [0.430, 0.483] |
+| LLaMA 3.3 70B | B1 prompt (asym.) | 690 | 0.333 [0.320, 0.346] | -0.36 [-0.43, -0.30] | 0.095 [0.083, 0.113] | 0.007 [0.004, 0.015] | 0.887 [0.857, 0.917] | 0.301 [0.277, 0.327] | 0.363 [0.322, 0.425] | 0.569 [0.535, 0.604] | 0.790 [0.738, 0.841] | 0.451 [0.425, 0.477] |
+| LLaMA 3.3 70B | B2 prompt (sym.) | 690 | 0.341 [0.327, 0.355] | -0.39 [-0.46, -0.33] | 0.101 [0.087, 0.119] | 0.005 [0.002, 0.012] | 0.905 [0.875, 0.937] | 0.311 [0.287, 0.338] | 0.350 [0.325, 0.562] | 0.553 [0.519, 0.587] | 0.794 [0.742, 0.843] | 0.442 [0.415, 0.469] |
+| LLaMA 3.3 70B | C retrieval | 688 | 0.342 [0.326, 0.358] | -0.40 [-0.47, -0.32] | 0.115 [0.100, 0.136] | 0.018 [0.013, 0.028] | 0.924 [0.884, 0.964] | 0.317 [0.294, 0.347] | 0.425 [0.375, 0.542] | 0.611 [0.579, 0.644] | 0.687 [0.626, 0.745] | 0.472 [0.444, 0.501] |
+| LLaMA 3.3 70B | D self-consistency | 690 | 0.528 [0.504, 0.552] | -1.16 [-1.28, -1.04] | 0.287 [0.264, 0.316] | 0.003 [0.002, 0.010] | 2.312 [2.196, 2.428] | 0.528 [0.505, 0.555] | 0.554 [0.539, 0.769] | 0.530 [0.507, 0.553] | 0.889 [0.850, 0.925] | 0.435 [0.410, 0.459] |
+| LLaMA 3.3 70B | E probabilistic | 690 | 0.306 [0.293, 0.318] | -0.25 [-0.31, -0.19] | 0.069 [0.057, 0.084] | 0.006 [0.004, 0.014] | 0.830 [0.799, 0.862] | 0.255 [0.230, 0.282] | 0.285 [0.271, 0.486] | 0.562 [0.527, 0.596] | 0.565 [0.496, 0.635] | 0.491 [0.462, 0.520] |
+| GPT-5.4 | A base | 188 | 0.272 [0.248, 0.298] | -0.16 [-0.29, -0.05] | 0.048 [0.034, 0.084] | 0.011 [0.007, 0.037] | 0.754 [0.694, 0.818] | 0.175 [0.144, 0.240] | 0.427 [0.263, 0.643] | 0.565 [0.488, 0.636] | 0.200 [0.044, 0.357] | 0.537 [0.472, 0.598] |
+| GPT-5.4 | B1 prompt (asym.) | 188 | 0.280 [0.252, 0.309] | -0.19 [-0.33, -0.07] | 0.055 [0.037, 0.098] | 0.009 [0.007, 0.032] | 0.790 [0.712, 0.878] | 0.195 [0.144, 0.265] | 0.298 [0.245, 0.675] | 0.558 [0.480, 0.635] | 0.071 [-0.087, 0.229] | 0.505 [0.437, 0.573] |
+| GPT-5.4 | B2 prompt (sym.) | 188 | 0.273 [0.251, 0.296] | -0.16 [-0.28, -0.06] | 0.046 [0.030, 0.084] | 0.005 [0.004, 0.024] | 0.753 [0.697, 0.819] | 0.179 [0.130, 0.252] | 0.358 [0.214, 0.542] | 0.532 [0.459, 0.602] | 0.051 [-0.111, 0.217] | 0.489 [0.423, 0.553] |
+| GPT-5.4 | C retrieval | 188 | 0.321 [0.286, 0.356] | -0.36 [-0.55, -0.20] | 0.108 [0.085, 0.151] | 0.022 [0.014, 0.047] | 0.940 [0.834, 1.047] | 0.295 [0.255, 0.357] | 0.442 [0.393, 0.600] | 0.665 [0.592, 0.735] | 0.515 [0.374, 0.649] | 0.511 [0.452, 0.568] |
+| GPT-5.4 | D self-consistency | 188 | 0.381 [0.332, 0.433] | -0.62 [-0.87, -0.41] | 0.153 [0.116, 0.209] | 0.006 [0.003, 0.026] | 1.557 [1.328, 1.803] | 0.353 [0.296, 0.420] | 0.562 [0.470, 0.662] | 0.574 [0.505, 0.641] | 0.175 [0.012, 0.339] | 0.553 [0.494, 0.612] |
+| GPT-5.4 | E probabilistic | 188 | 0.262 [0.238, 0.287] | -0.11 [-0.23, -0.01] | 0.038 [0.024, 0.073] | 0.012 [0.008, 0.033] | 0.731 [0.670, 0.802] | 0.161 [0.113, 0.225] | 0.408 [0.168, 0.605] | 0.531 [0.456, 0.604] | -0.264 [-0.413, -0.112] | 0.559 [0.492, 0.623] |
+| GPT-4o | A base | 690 | 0.291 [0.278, 0.304] | -0.19 [-0.24, -0.14] | 0.050 [0.039, 0.065] | 0.004 [0.002, 0.008] | 0.796 [0.766, 0.827] | 0.202 [0.173, 0.231] | 0.332 [0.290, 0.446] | 0.477 [0.445, 0.508] | -0.605 [-0.672, -0.538] | 0.535 [0.507, 0.562] |
+| GPT-4o | B1 prompt (asym.) | 690 | 0.286 [0.272, 0.298] | -0.17 [-0.21, -0.12] | 0.045 [0.035, 0.061] | 0.004 [0.002, 0.010] | 0.784 [0.753, 0.814] | 0.185 [0.156, 0.213] | 0.375 [0.310, 0.525] | 0.471 [0.439, 0.504] | -0.640 [-0.703, -0.575] | 0.548 [0.521, 0.576] |
+| GPT-4o | B2 prompt (sym.) | 690 | 0.284 [0.271, 0.297] | -0.16 [-0.21, -0.11] | 0.040 [0.030, 0.056] | 0.001 [0.001, 0.006] | 0.779 [0.748, 0.810] | 0.183 [0.155, 0.215] | 0.331 [0.261, 0.555] | 0.499 [0.465, 0.533] | -0.603 [-0.666, -0.537] | 0.543 [0.514, 0.573] |
+| GPT-4o | C retrieval | 690 | 0.293 [0.275, 0.310] | -0.19 [-0.27, -0.12] | 0.056 [0.043, 0.074] | 0.007 [0.004, 0.016] | 0.813 [0.770, 0.855] | 0.205 [0.174, 0.237] | 0.387 [0.327, 0.453] | 0.569 [0.533, 0.605] | -0.153 [-0.238, -0.070] | 0.564 [0.533, 0.595] |
+| GPT-4o | D self-consistency | 690 | 0.403 [0.378, 0.428] | -0.64 [-0.74, -0.55] | 0.159 [0.137, 0.185] | 0.001 [0.000, 0.006] | 1.666 [1.544, 1.787] | 0.380 [0.350, 0.412] | 0.559 [0.460, 0.667] | 0.497 [0.463, 0.531] | -0.638 [-0.702, -0.573] | 0.533 [0.506, 0.562] |
+| GPT-4o | E probabilistic | 690 | 0.273 [0.262, 0.283] | -0.11 [-0.15, -0.07] | 0.029 [0.022, 0.042] | 0.002 [0.001, 0.008] | 0.752 [0.727, 0.778] | 0.138 [0.113, 0.169] | 0.339 [0.253, 0.470] | 0.490 [0.457, 0.525] | -0.505 [-0.579, -0.430] | 0.532 [0.503, 0.560] |
+| DeepSeek R1 | A base | 539 | 0.321 [0.307, 0.335] | -0.33 [-0.41, -0.26] | 0.081 [0.068, 0.104] | 0.003 [0.002, 0.012] | 0.865 [0.829, 0.903] | 0.265 [0.240, 0.302] | 0.415 [0.326, 0.756] | 0.487 [0.441, 0.531] | 0.055 [-0.043, 0.154] | 0.474 [0.438, 0.509] |
+| DeepSeek R1 | C retrieval | 542 | 0.335 [0.316, 0.353] | -0.39 [-0.49, -0.30] | 0.099 [0.083, 0.125] | 0.007 [0.004, 0.017] | 0.912 [0.864, 0.961] | 0.296 [0.265, 0.334] | 0.431 [0.361, 0.542] | 0.526 [0.482, 0.572] | 0.130 [0.036, 0.223] | 0.489 [0.451, 0.526] |
+| GPT-OSS 20B | A base | 578 | 0.286 [0.269, 0.304] | -0.18 [-0.25, -0.11] | 0.048 [0.036, 0.069] | 0.004 [0.003, 0.013] | 0.799 [0.756, 0.843] | 0.199 [0.165, 0.237] | 0.328 [0.259, 0.469] | 0.503 [0.458, 0.547] | -0.581 [-0.656, -0.503] | 0.559 [0.530, 0.590] |
+
+Two reading notes. ECE is a non-negative statistic, so where the point estimate is near zero the bootstrap distribution sits above it and the interval can exclude the point estimate (LLaMA arm E on MCQ, 0.016 with interval [0.017, 0.074], is the clearest case); this is a property of the statistic, not an error, and it is why Brier and log loss carry the argument. MCE is read over bins with at least 10 items, so it is the noisiest column and its intervals are wide.
+
+Equal-mass ECE (binning robustness), arm A → E: LLaMA 3.3 70B 0.301 → 0.246; GPT-5.4 0.173 → 0.157; GPT-4o 0.202 → 0.126.
+
+### 4.1 Paired deltas versus base (arm − A), post-cutoff binary
+
+Each delta is computed on the intersection of items valid in both arms, with the shared event bootstrap; p is Holm-adjusted across arms; \* marks Holm p < 0.05.
+
+| model | arm | ΔBrier | ΔREL | ΔRES | ΔAUROC | Δbias index | Δaccuracy |
+|---|---|---|---|---|---|---|---|
+| LLaMA 3.3 70B | B1 prompt (asym.) | -0.002 [-0.011, +0.007] 0.97 | +0.000 [-0.009, +0.010] 0.95 | +0.002 [-0.004, +0.008] 1 | -0.001 [-0.032, +0.031] 0.98 | -0.041 [-0.080, -0.004] 0.059 | -0.007 [-0.027, +0.013] 0.74 |
+| LLaMA 3.3 70B | B2 prompt (sym.) | +0.006 [-0.003, +0.016] 0.58 | +0.006 [-0.004, +0.017] 0.48 | +0.000 [-0.006, +0.006] 1 | -0.017 [-0.048, +0.013] 0.81 | -0.037 [-0.079, +0.001] 0.059 | -0.016 [-0.037, +0.004] 0.44 |
+| LLaMA 3.3 70B | C retrieval | +0.005 [-0.009, +0.020] 0.97 | +0.017 [+0.002, +0.032] 0.07 | +0.012 [+0.003, +0.021] 0.031\* | +0.038 [-0.002, +0.079] 0.24 | -0.142 [-0.203, -0.081] 0.001\* | +0.013 [-0.014, +0.040] 0.74 |
+| LLaMA 3.3 70B | D self-consistency | +0.195 [+0.181, +0.209] 0.001\* | +0.194 [+0.180, +0.209] 0.001\* | -0.002 [-0.007, +0.005] 1 | -0.045 [-0.075, -0.013] 0.027\* | +0.059 [+0.025, +0.093] 0.0012\* | -0.023 [-0.039, -0.008] 0.015\* |
+| LLaMA 3.3 70B | E probabilistic | -0.028 [-0.039, -0.016] 0.001\* | -0.027 [-0.039, -0.015] 0.001\* | -0.000 [-0.007, +0.006] 1 | -0.012 [-0.044, +0.021] 0.93 | -0.267 [-0.326, -0.209] 0.001\* | +0.033 [+0.006, +0.061] 0.085 |
+| GPT-5.4 | B1 prompt (asym.) | +0.008 [-0.014, +0.030] 1 | +0.008 [-0.018, +0.037] 1 | -0.002 [-0.021, +0.016] 1 | -0.007 [-0.067, +0.057] 1 | -0.130 [-0.270, +0.008] 0.13 | -0.032 [-0.098, +0.032] 1 |
+| GPT-5.4 | B2 prompt (sym.) | +0.000 [-0.019, +0.020] 1 | -0.001 [-0.026, +0.023] 1 | -0.006 [-0.026, +0.009] 1 | -0.032 [-0.093, +0.028] 1 | -0.149 [-0.284, -0.021] 0.061 | -0.048 [-0.108, +0.011] 0.65 |
+| GPT-5.4 | C retrieval | +0.049 [+0.015, +0.082] 0.018\* | +0.061 [+0.031, +0.087] 0.001\* | +0.011 [-0.012, +0.031] 1 | +0.100 [+0.016, +0.190] 0.11 | +0.314 [+0.133, +0.492] 0.0024\* | -0.027 [-0.093, +0.041] 1 |
+| GPT-5.4 | D self-consistency | +0.109 [+0.073, +0.146] 0.001\* | +0.105 [+0.066, +0.141] 0.001\* | -0.005 [-0.025, +0.009] 1 | +0.009 [-0.042, +0.062] 1 | -0.026 [-0.139, +0.088] 0.67 | +0.016 [-0.042, +0.073] 1 |
+| GPT-5.4 | E probabilistic | -0.010 [-0.032, +0.011] 1 | -0.010 [-0.036, +0.015] 1 | +0.001 [-0.020, +0.018] 1 | -0.034 [-0.095, +0.028] 1 | -0.464 [-0.612, -0.322] 0.001\* | +0.021 [-0.045, +0.088] 1 |
+| GPT-4o | B1 prompt (asym.) | -0.006 [-0.017, +0.005] 0.69 | -0.005 [-0.017, +0.008] 0.94 | +0.001 [-0.003, +0.006] 1 | -0.005 [-0.033, +0.023] 0.7 | -0.035 [-0.085, +0.016] 0.53 | +0.013 [-0.013, +0.040] 1 |
+| GPT-4o | B2 prompt (sym.) | -0.007 [-0.019, +0.004] 0.66 | -0.010 [-0.022, +0.004] 0.46 | -0.003 [-0.006, +0.002] 1 | +0.023 [-0.006, +0.052] 0.46 | +0.003 [-0.055, +0.061] 0.93 | +0.009 [-0.019, +0.036] 1 |
+| GPT-4o | C retrieval | +0.001 [-0.016, +0.020] 0.89 | +0.006 [-0.010, +0.024] 0.94 | +0.004 [-0.002, +0.011] 1 | +0.093 [+0.052, +0.132] 0.001\* | +0.452 [+0.366, +0.536] 0.001\* | +0.029 [-0.007, +0.064] 0.61 |
+| GPT-4o | D self-consistency | +0.112 [+0.093, +0.130] 0.001\* | +0.108 [+0.090, +0.129] 0.001\* | -0.003 [-0.006, +0.002] 1 | +0.021 [-0.012, +0.053] 0.63 | -0.033 [-0.089, +0.023] 0.53 | -0.001 [-0.026, +0.023] 1 |
+| GPT-4o | E probabilistic | -0.019 [-0.028, -0.008] 0.001\* | -0.021 [-0.032, -0.008] 0.0016\* | -0.002 [-0.005, +0.004] 1 | +0.014 [-0.015, +0.043] 0.68 | +0.100 [+0.045, +0.155] 0.001\* | -0.003 [-0.030, +0.024] 1 |
+
+## 5. MCQ, post-cutoff: confidence in the chosen option versus correctness
+
+| model | arm | n | accuracy | mean confidence | Brier | log loss | ECE | REL | RES | AUROC |
+|---|---|---|---|---|---|---|---|---|---|---|
+| LLaMA 3.3 70B | A base | 432 | 0.490 [0.443, 0.535] | 0.820 [0.814, 0.826] | 0.359 [0.329, 0.390] | 0.983 [0.910, 1.060] | 0.336 [0.291, 0.383] | 0.115 [0.087, 0.149] | 0.006 [0.002, 0.015] | 0.540 [0.496, 0.584] |
+| LLaMA 3.3 70B | B1 prompt (asym.) | 435 | 0.441 [0.394, 0.486] | 0.810 [0.806, 0.814] | 0.380 [0.352, 0.409] | 1.018 [0.951, 1.088] | 0.369 [0.326, 0.417] | 0.142 [0.111, 0.181] | 0.009 [0.003, 0.021] | 0.539 [0.502, 0.577] |
+| LLaMA 3.3 70B | B2 prompt (sym.) | 435 | 0.471 [0.424, 0.517] | 0.810 [0.806, 0.814] | 0.359 [0.331, 0.388] | 0.966 [0.899, 1.035] | 0.339 [0.296, 0.387] | 0.122 [0.094, 0.159] | 0.013 [0.006, 0.024] | 0.565 [0.527, 0.603] |
+| LLaMA 3.3 70B | C retrieval | 431 | 0.533 [0.486, 0.580] | 0.844 [0.838, 0.850] | 0.332 [0.301, 0.365] | 0.925 [0.844, 1.006] | 0.309 [0.265, 0.357] | 0.109 [0.081, 0.143] | 0.025 [0.014, 0.041] | 0.656 [0.608, 0.703] |
+| LLaMA 3.3 70B | D self-consistency | 435 | 0.476 [0.429, 0.522] | 0.917 [0.903, 0.930] | 0.441 [0.400, 0.483] | 1.814 [1.629, 2.005] | 0.441 [0.396, 0.488] | 0.201 [0.164, 0.247] | 0.009 [0.004, 0.020] | 0.576 [0.533, 0.620] |
+| LLaMA 3.3 70B | E probabilistic | 435 | 0.430 [0.384, 0.476] | 0.418 [0.409, 0.428] | 0.232 [0.221, 0.244] | 0.657 [0.633, 0.681] | 0.016 [0.017, 0.074] | 0.001 [0.001, 0.008] | 0.014 [0.007, 0.028] | 0.624 [0.574, 0.673] |
+| GPT-5.4 | A base | 125 | 0.816 [0.748, 0.882] | 0.815 [0.796, 0.834] | 0.133 [0.096, 0.172] | 0.423 [0.331, 0.522] | 0.026 [0.029, 0.108] | 0.003 [0.002, 0.022] | 0.022 [0.009, 0.051] | 0.729 [0.609, 0.841] |
+| GPT-5.4 | B1 prompt (asym.) | 125 | 0.824 [0.756, 0.889] | 0.800 [0.782, 0.817] | 0.131 [0.096, 0.169] | 0.421 [0.336, 0.514] | 0.067 [0.049, 0.135] | 0.018 [0.008, 0.035] | 0.035 [0.014, 0.063] | 0.698 [0.575, 0.811] |
+| GPT-5.4 | B2 prompt (sym.) | 125 | 0.808 [0.737, 0.875] | 0.810 [0.793, 0.827] | 0.141 [0.105, 0.181] | 0.440 [0.351, 0.535] | 0.061 [0.037, 0.131] | 0.008 [0.003, 0.027] | 0.020 [0.008, 0.042] | 0.703 [0.594, 0.803] |
+| GPT-5.4 | C retrieval | 125 | 0.784 [0.708, 0.853] | 0.830 [0.809, 0.849] | 0.159 [0.117, 0.205] | 0.483 [0.377, 0.602] | 0.076 [0.047, 0.158] | 0.016 [0.006, 0.046] | 0.024 [0.010, 0.052] | 0.696 [0.588, 0.794] |
+| GPT-5.4 | D self-consistency | 125 | 0.824 [0.754, 0.889] | 0.978 [0.962, 0.991] | 0.164 [0.105, 0.229] | 0.727 [0.459, 1.015] | 0.154 [0.101, 0.227] | 0.025 [0.012, 0.057] | 0.006 [0.000, 0.029] | 0.566 [0.489, 0.655] |
+| GPT-5.4 | E probabilistic | 125 | 0.824 [0.756, 0.888] | 0.602 [0.580, 0.622] | 0.185 [0.167, 0.204] | 0.554 [0.513, 0.594] | 0.222 [0.158, 0.285] | 0.053 [0.031, 0.088] | 0.011 [0.004, 0.032] | 0.700 [0.590, 0.803] |
+| GPT-4o | A base | 435 | 0.543 [0.496, 0.590] | 0.873 [0.867, 0.877] | 0.353 [0.318, 0.387] | 1.008 [0.916, 1.097] | 0.330 [0.284, 0.376] | 0.113 [0.084, 0.147] | 0.008 [0.003, 0.018] | 0.587 [0.539, 0.634] |
+| GPT-4o | B1 prompt (asym.) | 435 | 0.510 [0.464, 0.558] | 0.863 [0.859, 0.866] | 0.369 [0.335, 0.402] | 1.034 [0.947, 1.120] | 0.352 [0.306, 0.398] | 0.132 [0.101, 0.169] | 0.013 [0.005, 0.026] | 0.606 [0.563, 0.650] |
+| GPT-4o | B2 prompt (sym.) | 435 | 0.522 [0.475, 0.569] | 0.855 [0.853, 0.857] | 0.359 [0.325, 0.392] | 1.001 [0.917, 1.085] | 0.333 [0.287, 0.380] | 0.113 [0.085, 0.148] | 0.004 [0.001, 0.012] | 0.540 [0.506, 0.574] |
+| GPT-4o | C retrieval | 435 | 0.589 [0.542, 0.634] | 0.895 [0.890, 0.898] | 0.331 [0.295, 0.367] | 0.970 [0.873, 1.068] | 0.310 [0.265, 0.356] | 0.103 [0.077, 0.136] | 0.012 [0.004, 0.024] | 0.638 [0.597, 0.679] |
+| GPT-4o | D self-consistency | 435 | 0.533 [0.487, 0.580] | 0.915 [0.900, 0.929] | 0.397 [0.356, 0.439] | 1.656 [1.470, 1.846] | 0.385 [0.341, 0.433] | 0.154 [0.122, 0.195] | 0.006 [0.002, 0.016] | 0.567 [0.525, 0.609] |
+| GPT-4o | E probabilistic | 435 | 0.425 [0.379, 0.471] | 0.402 [0.396, 0.408] | 0.229 [0.219, 0.239] | 0.650 [0.629, 0.671] | 0.056 [0.032, 0.101] | 0.009 [0.004, 0.018] | 0.022 [0.013, 0.036] | 0.663 [0.614, 0.711] |
+| DeepSeek R1 | A base | 308 | 0.574 [0.519, 0.628] | 0.911 [0.904, 0.917] | 0.355 [0.310, 0.400] | 1.129 [0.989, 1.273] | 0.335 [0.281, 0.391] | 0.114 [0.081, 0.155] | 0.002 [0.000, 0.010] | 0.530 [0.472, 0.588] |
+| DeepSeek R1 | C retrieval | 346 | 0.616 [0.564, 0.667] | 0.924 [0.918, 0.929] | 0.325 [0.282, 0.368] | 1.046 [0.911, 1.182] | 0.308 [0.258, 0.359] | 0.097 [0.070, 0.133] | 0.008 [0.002, 0.020] | 0.589 [0.540, 0.638] |
+| GPT-OSS 20B | A base | 367 | 0.480 [0.430, 0.531] | 0.833 [0.826, 0.841] | 0.361 [0.327, 0.394] | 0.997 [0.909, 1.085] | 0.354 [0.303, 0.402] | 0.129 [0.097, 0.168] | 0.017 [0.007, 0.032] | 0.651 [0.595, 0.705] |
+
+### 5.1 Paired deltas versus base, post-cutoff MCQ
+
+| model | arm | Δaccuracy | ΔBrier | ΔECE | ΔAUROC |
+|---|---|---|---|---|---|
+| LLaMA 3.3 70B | B1 prompt (asym.) | -0.048 [-0.077, -0.021] 0.0024\* | +0.020 [+0.003, +0.039] 0.062 | +0.031 [+0.005, +0.063] 0.061 | -0.003 [-0.044, +0.036] 0.86 |
+| LLaMA 3.3 70B | B2 prompt (sym.) | -0.018 [-0.044, +0.007] 0.33 | -0.001 [-0.017, +0.016] 0.94 | +0.001 [-0.022, +0.030] 0.8 | +0.023 [-0.015, +0.060] 0.69 |
+| LLaMA 3.3 70B | C retrieval | +0.042 [-0.007, +0.089] 0.3 | -0.026 [-0.057, +0.005] 0.19 | -0.027 [-0.072, +0.021] 0.58 | +0.114 [+0.056, +0.171] 0.002\* |
+| LLaMA 3.3 70B | D self-consistency | -0.014 [-0.037, +0.009] 0.33 | +0.080 [+0.058, +0.102] 0.001\* | +0.104 [+0.076, +0.130] 0.001\* | +0.036 [-0.023, +0.095] 0.69 |
+| LLaMA 3.3 70B | E probabilistic | -0.060 [-0.094, -0.027] 0.002\* | -0.127 [-0.163, -0.091] 0.001\* | -0.320 [-0.349, -0.229] 0.001\* | +0.083 [+0.024, +0.140] 0.017\* |
+| GPT-5.4 | B1 prompt (asym.) | +0.008 [-0.026, +0.043] 1 | -0.002 [-0.022, +0.018] 0.89 | +0.042 [-0.027, +0.072] 0.88 | -0.031 [-0.111, +0.050] 1 |
+| GPT-5.4 | B2 prompt (sym.) | -0.008 [-0.037, +0.017] 1 | +0.009 [-0.008, +0.029] 0.71 | +0.035 [-0.037, +0.068] 0.88 | -0.026 [-0.098, +0.039] 1 |
+| GPT-5.4 | C retrieval | -0.032 [-0.104, +0.038] 1 | +0.026 [-0.017, +0.072] 0.71 | +0.050 [-0.028, +0.101] 0.88 | -0.033 [-0.160, +0.089] 1 |
+| GPT-5.4 | D self-consistency | +0.008 [-0.026, +0.045] 1 | +0.032 [-0.005, +0.071] 0.36 | +0.128 [+0.020, +0.161] 0.071 | -0.162 [-0.287, -0.032] 0.087 |
+| GPT-5.4 | E probabilistic | +0.008 [-0.033, +0.051] 1 | +0.053 [+0.020, +0.084] 0.007\* | +0.197 [+0.069, +0.225] 0.007\* | -0.028 [-0.123, +0.068] 1 |
+| GPT-4o | B1 prompt (asym.) | -0.032 [-0.060, -0.007] 0.08 | +0.016 [-0.003, +0.036] 0.31 | +0.022 [-0.004, +0.050] 0.3 | +0.019 [-0.024, +0.063] 0.77 |
+| GPT-4o | B2 prompt (sym.) | -0.021 [-0.045, +0.002] 0.21 | +0.006 [-0.011, +0.024] 0.5 | +0.003 [-0.021, +0.028] 0.8 | -0.047 [-0.093, -0.001] 0.19 |
+| GPT-4o | C retrieval | +0.046 [+0.000, +0.091] 0.17 | -0.022 [-0.056, +0.013] 0.44 | -0.020 [-0.064, +0.027] 0.79 | +0.051 [-0.006, +0.111] 0.24 |
+| GPT-4o | D self-consistency | -0.009 [-0.032, +0.013] 0.47 | +0.044 [+0.024, +0.065] 0.001\* | +0.055 [+0.030, +0.081] 0.0016\* | -0.020 [-0.077, +0.038] 0.77 |
+| GPT-4o | E probabilistic | -0.117 [-0.159, -0.076] 0.001\* | -0.124 [-0.164, -0.084] 0.001\* | -0.274 [-0.326, -0.198] 0.001\* | +0.076 [+0.012, +0.140] 0.093 |
+
+## 6. The one model with a pre/post split: GPT-5.4
+
+LLaMA 3.3 and GPT-4o have cutoffs that predate the corpus, so they have no pre-cutoff partition. GPT-5.4 has 356 pre-cutoff and 144 post-cutoff events, which is what separates recall from forecasting within a single model.
+
+| arm | partition | n | Brier | REL | RES | AUROC | bias index | accuracy |
+|---|---|---|---|---|---|---|---|---|
+| A base | pre | 502 | 0.303 [0.284, 0.321] | 0.059 [0.045, 0.082] | 0.005 [0.004, 0.016] | 0.530 [0.485, 0.575] | 0.283 [0.191, 0.374] | 0.484 [0.447, 0.522] |
+| A base | post | 188 | 0.272 [0.248, 0.298] | 0.048 [0.034, 0.084] | 0.011 [0.007, 0.037] | 0.565 [0.488, 0.636] | 0.200 [0.044, 0.357] | 0.537 [0.472, 0.598] |
+| B1 prompt (asym.) | pre | 502 | 0.304 [0.285, 0.323] | 0.063 [0.048, 0.088] | 0.007 [0.005, 0.019] | 0.515 [0.473, 0.561] | 0.136 [0.040, 0.231] | 0.494 [0.456, 0.533] |
+| B1 prompt (asym.) | post | 188 | 0.280 [0.252, 0.309] | 0.055 [0.037, 0.098] | 0.009 [0.007, 0.032] | 0.558 [0.480, 0.635] | 0.071 [-0.087, 0.229] | 0.505 [0.437, 0.573] |
+| B2 prompt (sym.) | pre | 502 | 0.293 [0.277, 0.309] | 0.046 [0.033, 0.069] | 0.003 [0.002, 0.013] | 0.486 [0.443, 0.531] | 0.039 [-0.056, 0.135] | 0.494 [0.456, 0.534] |
+| B2 prompt (sym.) | post | 188 | 0.273 [0.251, 0.296] | 0.046 [0.030, 0.084] | 0.005 [0.004, 0.024] | 0.532 [0.459, 0.602] | 0.051 [-0.111, 0.217] | 0.489 [0.423, 0.553] |
+| C retrieval | pre | 502 | 0.298 [0.270, 0.327] | 0.107 [0.088, 0.131] | 0.050 [0.038, 0.066] | 0.812 [0.777, 0.846] | 0.537 [0.463, 0.609] | 0.624 [0.587, 0.660] |
+| C retrieval | post | 188 | 0.321 [0.286, 0.356] | 0.108 [0.085, 0.151] | 0.022 [0.014, 0.047] | 0.665 [0.592, 0.735] | 0.515 [0.374, 0.649] | 0.511 [0.452, 0.568] |
+| D self-consistency | pre | 502 | 0.419 [0.387, 0.451] | 0.176 [0.147, 0.211] | 0.004 [0.002, 0.012] | 0.528 [0.487, 0.570] | 0.287 [0.194, 0.379] | 0.526 [0.490, 0.563] |
+| D self-consistency | post | 188 | 0.381 [0.332, 0.433] | 0.153 [0.116, 0.209] | 0.006 [0.003, 0.026] | 0.574 [0.505, 0.641] | 0.175 [0.012, 0.339] | 0.553 [0.494, 0.612] |
+| E probabilistic | pre | 502 | 0.285 [0.268, 0.302] | 0.043 [0.031, 0.065] | 0.007 [0.004, 0.019] | 0.521 [0.480, 0.565] | -0.093 [-0.187, 0.002] | 0.518 [0.479, 0.556] |
+| E probabilistic | post | 188 | 0.262 [0.238, 0.287] | 0.038 [0.024, 0.073] | 0.012 [0.008, 0.033] | 0.531 [0.456, 0.604] | -0.264 [-0.413, -0.112] | 0.559 [0.492, 0.623] |
+
+## 7. Arm F — ensembles (derived from arm A; not independent of it)
+
+Each model's answer and confidence are converted to P(Yes), then aggregated three ways. Computed on the item-level intersection where every member answered. MCQ is aggregated by option text, since each model drew its own option permutation in the base run.
+
+**Three-model panel (LLaMA 3.3, GPT-5.4, GPT-4o).**
+
+| task | rule | n | accuracy | Brier | BSS | REL | RES | AUROC | bias index |
+|---|---|---|---|---|---|---|---|---|---|
+| binary | mean prob | 656 | 0.494 [0.462, 0.526] | 0.271 [0.262, 0.280] | -0.11 [-0.15, -0.07] | 0.029 [0.022, 0.042] | 0.003 [0.002, 0.009] | 0.530 [0.495, 0.566] | 0.272 [0.188, 0.354] |
+| binary | mean logit | 656 | 0.486 [0.455, 0.518] | 0.274 [0.264, 0.284] | -0.12 [-0.17, -0.07] | 0.031 [0.024, 0.045] | 0.002 [0.002, 0.009] | 0.534 [0.499, 0.571] | 0.298 [0.214, 0.379] |
+| binary | majority | 656 | 0.491 [0.458, 0.524] | 0.335 [0.316, 0.354] | -0.37 [-0.45, -0.29] | 0.090 [0.073, 0.111] | 0.000 [0.000, 0.003] | 0.512 [0.478, 0.545] | 0.277 [0.193, 0.360] |
+| MCQ | mean prob | 432 | 0.644 [0.598, 0.688] | 0.196 [0.178, 0.215] | — | 0.011 [0.005, 0.026] | 0.044 [0.031, 0.064] | 0.749 [0.702, 0.794] | — |
+| MCQ | mean logit | 432 | 0.641 [0.596, 0.685] | 0.239 [0.209, 0.269] | — | 0.054 [0.038, 0.081] | 0.045 [0.031, 0.066] | 0.756 [0.709, 0.801] | — |
+| MCQ | majority | 432 | 0.644 [0.598, 0.688] | 0.223 [0.197, 0.250] | — | 0.029 [0.017, 0.047] | 0.035 [0.022, 0.053] | 0.706 [0.660, 0.750] | — |
+
+Mean-probability ensemble versus each member's own base condition on the same items: LLaMA 3.3 70B ΔBrier -0.065 [-0.077, -0.054], ΔRES -0.002, ΔAUROC -0.039; GPT-5.4 ΔBrier -0.009 [-0.026, +0.009], ΔRES +0.004, ΔAUROC +0.044; GPT-4o ΔBrier -0.020 [-0.032, -0.008], ΔRES -0.002, ΔAUROC +0.055.
+
+**All six models with stored confidence.**
+
+| task | rule | n | accuracy | Brier | BSS | REL | RES | AUROC | bias index |
+|---|---|---|---|---|---|---|---|---|---|
+| binary | mean prob | 569 | 0.490 [0.454, 0.527] | 0.267 [0.258, 0.276] | -0.09 [-0.13, -0.05] | 0.026 [0.018, 0.040] | 0.003 [0.002, 0.010] | 0.503 [0.464, 0.543] | 0.046 [-0.044, 0.136] |
+| binary | mean logit | 569 | 0.497 [0.461, 0.534] | 0.271 [0.261, 0.281] | -0.10 [-0.15, -0.06] | 0.028 [0.020, 0.043] | 0.002 [0.002, 0.011] | 0.506 [0.467, 0.546] | 0.055 [-0.036, 0.144] |
+| binary | majority | 569 | 0.480 [0.444, 0.515] | 0.317 [0.299, 0.335] | -0.29 [-0.37, -0.21] | 0.072 [0.056, 0.095] | 0.001 [0.001, 0.008] | 0.495 [0.456, 0.534] | 0.372 [0.288, 0.456] |
+| MCQ | mean prob | 358 | 0.673 [0.625, 0.720] | 0.176 [0.159, 0.194] | — | 0.008 [0.005, 0.020] | 0.053 [0.038, 0.075] | 0.770 [0.718, 0.820] | — |
+| MCQ | mean logit | 358 | 0.679 [0.631, 0.726] | 0.202 [0.173, 0.232] | — | 0.024 [0.015, 0.045] | 0.038 [0.025, 0.061] | 0.758 [0.706, 0.809] | — |
+| MCQ | majority | 358 | 0.676 [0.628, 0.723] | 0.181 [0.156, 0.206] | — | 0.011 [0.006, 0.023] | 0.050 [0.035, 0.070] | 0.774 [0.723, 0.823] | — |
+
+Mean-probability ensemble versus each member's own base condition on the same items: LLaMA 3.3 70B ΔBrier -0.066 [-0.081, -0.052], ΔRES -0.002, ΔAUROC -0.065; DeepSeek R1 ΔBrier -0.057 [-0.071, -0.042], ΔRES -0.001, ΔAUROC +0.041; GPT-4o ΔBrier -0.030 [-0.044, -0.017], ΔRES -0.001, ΔAUROC +0.035; GPT-OSS 20B ΔBrier -0.027 [-0.043, -0.011], ΔRES -0.003, ΔAUROC +0.030; GPT-5.4 ΔBrier -0.025 [-0.046, -0.005], ΔRES +0.000, ΔAUROC +0.060; Claude Sonnet 4.5 ΔBrier -0.014 [-0.031, +0.003], ΔRES -0.000, ΔAUROC +0.023.
+
+## 8. Why self-consistency fails here: the vote distributions
+
+| model | n per item | binary items unanimous | MCQ items unanimous | distinct P(Yes) values | mean distance of P(Yes) from 0.5 |
+|---|---|---|---|---|---|
+| LLaMA 3.3 70B | 10 | 577/690 (84%) | 295/435 (68%) | 11 | 0.462 |
+| GPT-5.4 | 5 | 427/690 (62%) | 397/435 (91%) | 6 | 0.392 |
+| GPT-4o | 5 | 467/690 (68%) | 316/435 (73%) | 6 | 0.414 |
+
+Full vote distributions over the four MCQ options, per item, are in `calibration_study/tables/vote_distributions.json`. Laplace-smoothed ((k+1)/(n+2)) and raw-with-clipping log losses are both in the master table; the smoothed binary log losses for arm D are LLaMA 3.3 70B 1.339 (base 0.896); GPT-5.4 0.863 (base 0.754); GPT-4o 0.891 (base 0.796).
+
+## 9. Confidence granularity and the arm E sum-to-one audit
+
+Verbalized confidence is coarse and clumps on a few values, which is why Brier and log loss are the load-bearing numbers and ECE is supporting.
+
+| model | arm | distinct values | three most common (share) |
+|---|---|---|---|
+| LLaMA 3.3 70B | A base | 8 | 0.8 (55%), 0.7 (39%), 0.6 (3%) |
+| LLaMA 3.3 70B | E probabilistic | 18 | 0.7 (30%), 0.8 (17%), 0.72 (16%) |
+| GPT-5.4 | A base | 46 | 0.62 (11%), 0.58 (9%), 0.72 (7%) |
+| GPT-5.4 | E probabilistic | 29 | 0.62 (29%), 0.58 (14%), 0.72 (10%) |
+| GPT-4o | A base | 7 | 0.7 (62%), 0.8 (16%), 0.75 (15%) |
+| GPT-4o | E probabilistic | 12 | 0.65 (42%), 0.6 (22%), 0.7 (11%) |
+
+MCQ probability vectors under arm E were audited for summing to 1: LLaMA 3.3 70B 435 items, mean sum 1.000, max deviation 0.000, 0% outside ±0.01; GPT-5.4 435 items, mean sum 1.000, max deviation 0.000, 0% outside ±0.01; GPT-4o 435 items, mean sum 1.000, max deviation 0.000, 0% outside ±0.01. No model ever failed to normalise, so the renormalised and raw values coincide and the audit is null.
+
+## 10. Cost and token accounting
+
+Arms A and C reused stored outputs and arm F is derived, so neither cost anything. Actual usage from the raw JSONL, at assumed list prices (`calibration_study/prices.json`):
+
+| run | records | API calls | input tokens | output tokens | USD |
+|---|---|---|---|---|---|
+| gpt4o_B1 | 1125 | 1125 | 199,770 | 94,827 | $1.45 |
+| gpt4o_B2 | 1125 | 1125 | 202,020 | 98,374 | $1.49 |
+| gpt4o_D | 1125 | 5625 | 847,875 | 343,888 | $5.56 |
+| gpt4o_E | 1125 | 1125 | 206,805 | 113,555 | $1.65 |
+| gpt54_B1 | 1125 | 1125 | 198,645 | 120,318 | $2.30 |
+| gpt54_B2 | 1125 | 1125 | 200,895 | 119,047 | $2.29 |
+| gpt54_D | 1125 | 5625 | 842,250 | 496,373 | $9.55 |
+| gpt54_E | 1125 | 1125 | 205,680 | 120,758 | $2.33 |
+| llama33_B1 | 1125 | 1125 | 227,354 | 91,570 | $0.23 |
+| llama33_B2 | 1125 | 1125 | 230,729 | 90,204 | $0.23 |
+| llama33_D | 1125 | 11250 | 1,981,929 | 785,547 | $1.96 |
+| llama33_E | 1125 | 1125 | 234,824 | 89,857 | $0.23 |
+| **total** | | | | | **$29.26** |
+
+Zero errors, zero refusals and zero parse failures across all 13,500 records and 33,750 calls. The LLaMA 3.3 retrieval run generated for arm C cost a further $4 and is accounted in `results_llama33_run1/`.
+
+## 11. Suggested text for the response letter
 
 We thank the reviewer and have added a dedicated calibration-intervention study
-(new Supplementary Section S-C, Tables S-C1–S-C4, Figures S-C1–S-C3). On the
-pinned 500-event subset and three models chosen to span response bias, we
-compare six conditions paired on identical items — base, two debiasing prompts,
-retrieval restricted to pre-cutoff documents, self-consistency sampling, direct
-probability elicitation, and three ensembling rules — and decompose the Brier
-score into reliability and resolution so that better-behaved probabilities can be
-distinguished from more informative ones.
+(new Supplementary Section S-C, Tables S-C1–S-C6, Figures S-C1–S-C3). On the
+pinned 500-event subset and three models chosen to span response bias (LLaMA 3.3,
+bias +0.84; GPT-5.4, +0.24; GPT-4o, −0.58), we compare six conditions paired on
+identical items — base, two debiasing prompts, retrieval restricted to pre-cutoff
+documents, self-consistency sampling, direct probability elicitation, and three
+ensembling rules — and decompose the Brier score into reliability and resolution
+so that better-behaved probabilities can be distinguished from more informative
+ones. All intervals are 10,000-resample event-level bootstraps, Holm-corrected
+across arms.
 
-The interventions can move reliability substantially: eliciting a probability
-instead of a label lowers the Brier score for every model, and averaging models
-with opposite biases gives the best-calibrated forecasts in the study. None of
-them moves resolution or discrimination: resolution stays within 0.00–0.02 for
-every model and condition, no condition reaches the Brier score of a constant
-base-rate forecast, and the only condition that raises AUROC (retrieval) does so
-while worsening calibration. Prompting has no effect and self-consistency
-sampling degrades calibration because the models' samples are nearly unanimous.
-We therefore keep our claim, now stated more precisely: elicitation determines
-how badly miscalibrated the forecasts are, but not whether they contain
-information about which events occur.
+The interventions move reliability substantially. Eliciting a probability instead
+of a label lowers the Brier score for every model (−0.010 to −0.028) and cuts
+MCQ calibration error by an order of magnitude for the two weaker models, and
+averaging models with opposite biases gives the best-calibrated forecasts in the
+study (Brier 0.267, beating every member on the same items by 0.014 to 0.066).
+None of them moves resolution or discrimination. On post-cutoff events resolution
+stays within 0.001–0.022 against an uncertainty of 0.245 for every model and
+condition; no condition reaches the
+Brier score of a constant base-rate forecast; and the only condition that raises
+discrimination, pre-cutoff retrieval, does so while leaving calibration unchanged
+or worse, and reaches AUROC 0.81 on pre-cutoff events against 0.67 post-cutoff,
+which is the signature of recall rather than foresight. Prompting has no
+measurable effect, and self-consistency sampling degrades calibration because the
+models' samples are nearly unanimous (62–91% of items) so the vote fraction
+restates the model's bias.
 
-## 4. Manuscript changes proposed
+We therefore keep our claim, now stated more precisely: elicitation determines how
+badly miscalibrated the forecasts are, but not whether they contain information
+about which events occur.
 
-* New supplementary section: design table; master table (model × arm × task ×
-  pre/post with all metrics and CIs); delta-vs-base table with corrected
-  p-values; reliability diagrams and confidence histograms faceted model × arm;
-  ensemble table; cost table.
+## 12. Manuscript changes proposed
+
+* New supplementary section containing the design table (§3 above), the master
+  table (§4–§6), the delta-vs-base tables with Holm-corrected p-values (§4.1,
+  §5.1), the ensemble table (§7), the self-consistency vote diagnostics (§8), the
+  confidence-granularity and probability-sum audit (§9), and the cost table (§10);
+  plus reliability diagrams and confidence histograms faceted model × arm.
 * Main text: one paragraph in Results replacing the current calibration
-  paragraph, and the precise claim above in Discussion.
+  paragraph, and the precise claim above in the Discussion.
 
-## 5. Panel composition (DeepSeek R1 → GPT-5.4)
+## 13. Panel composition (DeepSeek R1 → GPT-5.4)
 
-The design called for DeepSeek R1 as the balanced model. Its Azure Foundry
-deployment was retired before the study ran (HTTP 410 `model_deprecated`; no
-other endpoint serves the original weights, and the R1-0528 / MAI-DS-R1
-checkpoints are neither deployed nor the same model), so paired intervention
-arms could not be generated for it. GPT-5.4 (bias +0.238, the next-closest to
-neutral with a live deployment and a stored WS+Cutoff run) takes the middle
-position, so the panel still spans strong-Yes, mild-Yes and strong-No bias. R1
-stays in the tables for the two arms that need no new inference (base and
-stored retrieval), and its retrieval arm tells the same story as the panel:
-post-cutoff Brier +0.013 [−0.004, +0.031], resolution unchanged, AUROC +0.038
-[−0.018, +0.095]; pre-cutoff AUROC +0.164 [+0.050, +0.281] and accuracy
-+0.156, i.e. recall rather than foresight. The stored R1 base outputs are
-untouched. Cost of the new inference: about $33 (arms B, D, E for three
-models, plus the LLaMA retrieval arm) at list prices.
+The design called for DeepSeek R1 as the balanced model (bias index −0.025). Its
+Azure Foundry deployment was retired before the study ran (HTTP 410
+`model_deprecated`; no other endpoint serves the original weights, and the
+R1-0528 and MAI-DS-R1 checkpoints are neither deployed nor the same model), so
+paired intervention arms could not be generated for it. GPT-5.4 (bias +0.238, the
+next-closest to neutral with a live deployment and a stored WS+Cutoff run) takes
+the middle position, so the panel still spans strong-Yes, mild-Yes and strong-No
+bias. R1 stays in the tables for the two arms that need no new inference, and its
+retrieval arm tells the same story as the panel: post-cutoff ΔBrier +0.013
+[−0.004, +0.031], resolution unchanged, ΔAUROC +0.038 [−0.018, +0.095];
+pre-cutoff ΔAUROC +0.164 [+0.050, +0.281] and Δaccuracy +0.156, i.e. recall
+rather than foresight. The stored R1 base outputs are untouched.
+
+## 14. Caveats to state
+
+* LLaMA 3.3 and GPT-4o have knowledge cutoffs that predate the corpus, so they
+  have no pre-cutoff partition; only GPT-5.4 supports the within-model pre/post
+  contrast, with 144 post-cutoff events, so its intervals are the widest in the
+  study.
+* Two cutoffs used elsewhere in the paper are vendor-unpublished; the three models
+  here are not affected (LLaMA 3.3 Dec 2023, GPT-4o Oct 2023, GPT-5.4 Aug 2025,
+  all verified against vendor documentation on 2026-09-20).
+* The stored LLaMA and GPT-5.4 base runs have no surviving inference log, so their
+  serving stack and, for GPT-5.4, its reasoning-effort setting are not recorded;
+  the new arms used the Foundry deployments with no reasoning_effort and an
+  explicit temperature.
+* Verbalized confidence is coarse (7–8 distinct values for LLaMA and GPT-4o, 46
+  for GPT-5.4), so ECE is binning-sensitive; Brier and log loss are the
+  load-bearing numbers and equal-mass ECE is reported alongside the equal-width
+  one.
+* Prices in `calibration_study/prices.json` are assumed list prices, not invoice
+  figures.
