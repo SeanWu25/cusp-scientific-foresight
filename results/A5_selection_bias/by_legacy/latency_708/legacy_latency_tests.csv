@@ -1,0 +1,73 @@
+model,partition,task,n_strata,range,min_stratum,max_stratum,p_raw,p_holm
+Claude Opus 4.8,overall,binary,3,0.048903,0 mo,1 mo,0.495550,1.000000
+Claude Opus 4.8,overall,date,3,0.026281,1 mo,2-3 mo,0.846515,1.000000
+Claude Opus 4.8,overall,frq,3,0.107303,1 mo,2-3 mo,0.675132,1.000000
+Claude Opus 4.8,overall,mcq,3,0.074444,1 mo,0 mo,0.031797,1.000000
+Claude Opus 4.8,post,binary,3,0.048903,0 mo,1 mo,0.495550,1.000000
+Claude Opus 4.8,post,date,3,0.026281,1 mo,2-3 mo,0.846515,1.000000
+Claude Opus 4.8,post,frq,3,0.107303,1 mo,2-3 mo,0.675132,1.000000
+Claude Opus 4.8,post,mcq,3,0.074444,1 mo,0 mo,0.031797,1.000000
+Claude S4.5,overall,binary,3,0.033802,0 mo,1 mo,0.813219,1.000000
+Claude S4.5,overall,date,2,0.011185,1 mo,0 mo,0.859714,1.000000
+Claude S4.5,overall,frq,3,0.102041,0 mo,1 mo,0.457454,1.000000
+Claude S4.5,overall,mcq,3,0.061754,1 mo,2-3 mo,0.611839,1.000000
+Claude S4.5,post,binary,3,0.033802,0 mo,1 mo,0.813219,1.000000
+Claude S4.5,post,date,2,0.011185,1 mo,0 mo,0.859714,1.000000
+Claude S4.5,post,frq,3,0.102041,0 mo,1 mo,0.457454,1.000000
+Claude S4.5,post,mcq,3,0.061754,1 mo,2-3 mo,0.611839,1.000000
+Claude Sonnet 5,overall,binary,3,0.082726,1 mo,2-3 mo,0.434657,1.000000
+Claude Sonnet 5,overall,date,3,0.097544,1 mo,2-3 mo,0.387461,1.000000
+Claude Sonnet 5,overall,frq,3,0.279807,1 mo,2-3 mo,0.069293,1.000000
+Claude Sonnet 5,overall,mcq,3,0.070082,1 mo,0 mo,0.127387,1.000000
+Claude Sonnet 5,post,binary,3,0.082726,1 mo,2-3 mo,0.434657,1.000000
+Claude Sonnet 5,post,date,3,0.097544,1 mo,2-3 mo,0.387461,1.000000
+Claude Sonnet 5,post,frq,3,0.279807,1 mo,2-3 mo,0.069293,1.000000
+Claude Sonnet 5,post,mcq,3,0.070082,1 mo,0 mo,0.127387,1.000000
+DeepSeek-V4-Pro,overall,binary,3,0.048160,1 mo,2-3 mo,0.522148,1.000000
+DeepSeek-V4-Pro,overall,date,3,0.073348,0 mo,1 mo,0.645935,1.000000
+DeepSeek-V4-Pro,overall,frq,3,0.199801,0 mo,2-3 mo,0.096890,1.000000
+DeepSeek-V4-Pro,overall,mcq,3,0.054454,1 mo,2-3 mo,0.616438,1.000000
+DeepSeek-V4-Pro,post,binary,3,0.048160,1 mo,2-3 mo,0.522148,1.000000
+DeepSeek-V4-Pro,post,date,3,0.073348,0 mo,1 mo,0.645935,1.000000
+DeepSeek-V4-Pro,post,frq,3,0.199801,0 mo,2-3 mo,0.096890,1.000000
+DeepSeek-V4-Pro,post,mcq,3,0.054454,1 mo,2-3 mo,0.616438,1.000000
+GPT-4o,overall,binary,3,0.059348,2-3 mo,1 mo,0.451855,1.000000
+GPT-4o,overall,date,3,0.079926,1 mo,0 mo,0.613539,1.000000
+GPT-4o,overall,frq,3,0.164624,0 mo,2-3 mo,0.223878,1.000000
+GPT-4o,overall,mcq,3,0.091474,1 mo,2-3 mo,0.425157,1.000000
+GPT-4o,post,binary,3,0.059348,2-3 mo,1 mo,0.451855,1.000000
+GPT-4o,post,date,3,0.079926,1 mo,0 mo,0.613539,1.000000
+GPT-4o,post,frq,3,0.164624,0 mo,2-3 mo,0.223878,1.000000
+GPT-4o,post,mcq,3,0.091474,1 mo,2-3 mo,0.425157,1.000000
+GPT-5.4,overall,binary,3,0.060265,1 mo,2-3 mo,0.663734,1.000000
+GPT-5.4,overall,date,3,0.042537,2-3 mo,0 mo,0.518648,1.000000
+GPT-5.4,overall,frq,3,0.180972,1 mo,2-3 mo,0.303170,1.000000
+GPT-5.4,overall,mcq,3,0.003184,0 mo,2-3 mo,0.997300,1.000000
+GPT-5.4,post,binary,3,0.060265,1 mo,2-3 mo,0.663734,1.000000
+GPT-5.4,post,date,3,0.042537,2-3 mo,0 mo,0.518648,1.000000
+GPT-5.4,post,frq,3,0.180972,1 mo,2-3 mo,0.303170,1.000000
+GPT-5.4,post,mcq,3,0.003184,0 mo,2-3 mo,0.997300,1.000000
+GPT-5.6 Sol,overall,binary,3,0.035911,0 mo,2-3 mo,0.788121,1.000000
+GPT-5.6 Sol,overall,date,3,0.044801,0 mo,1 mo,0.313669,1.000000
+GPT-5.6 Sol,overall,frq,3,0.391677,1 mo,2-3 mo,0.006699,0.482352
+GPT-5.6 Sol,overall,mcq,3,0.052904,1 mo,0 mo,0.403960,1.000000
+GPT-5.6 Sol,post,binary,3,0.035911,0 mo,2-3 mo,0.788121,1.000000
+GPT-5.6 Sol,post,date,3,0.044801,0 mo,1 mo,0.313669,1.000000
+GPT-5.6 Sol,post,frq,3,0.391677,1 mo,2-3 mo,0.006699,0.482352
+GPT-5.6 Sol,post,mcq,3,0.052904,1 mo,0 mo,0.403960,1.000000
+GPT-OSS 20B,overall,binary,3,0.066206,0 mo,1 mo,0.331967,1.000000
+GPT-OSS 20B,overall,date,3,0.087144,2-3 mo,0 mo,0.381462,1.000000
+GPT-OSS 20B,overall,frq,3,0.309259,1 mo,2-3 mo,0.039196,1.000000
+GPT-OSS 20B,overall,mcq,3,0.164199,1 mo,2-3 mo,0.065693,1.000000
+GPT-OSS 20B,post,binary,3,0.066206,0 mo,1 mo,0.331967,1.000000
+GPT-OSS 20B,post,date,3,0.087144,2-3 mo,0 mo,0.381462,1.000000
+GPT-OSS 20B,post,frq,3,0.309259,1 mo,2-3 mo,0.039196,1.000000
+GPT-OSS 20B,post,mcq,3,0.164199,1 mo,2-3 mo,0.065693,1.000000
+LLaMA 3.3 70B,overall,binary,3,0.024603,1 mo,0 mo,0.378762,1.000000
+LLaMA 3.3 70B,overall,date,3,0.022402,1 mo,0 mo,0.683132,1.000000
+LLaMA 3.3 70B,overall,frq,3,0.120792,0 mo,2-3 mo,0.386661,1.000000
+LLaMA 3.3 70B,overall,mcq,3,0.179365,1 mo,2-3 mo,0.013299,0.930907
+LLaMA 3.3 70B,post,binary,3,0.024603,1 mo,0 mo,0.378762,1.000000
+LLaMA 3.3 70B,post,date,3,0.022402,1 mo,0 mo,0.683132,1.000000
+LLaMA 3.3 70B,post,frq,3,0.120792,0 mo,2-3 mo,0.386661,1.000000
+LLaMA 3.3 70B,post,mcq,3,0.179365,1 mo,2-3 mo,0.013299,0.930907

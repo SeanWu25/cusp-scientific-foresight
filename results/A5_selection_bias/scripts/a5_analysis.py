@@ -23,19 +23,17 @@ OUT = os.path.dirname(HERE)
 PARTS = ["pre", "post", "overall"]
 
 
-def build(meta, args):
-    """model -> list of per-event records, with stratum keys attached."""
-    edges = C.citation_quartiles(meta)
+def build(meta, args, R):
+    """model -> list of per-event records, with every stratum key attached."""
     data = {}
     for name, cutoff, op, ep in C.PANEL:
         recs = C.load_model_events(name, cutoff, [op, ep], meta)
         for r in recs:
             m = meta[r["id"]]
-            r["source"] = m["source"]
-            r["visibility"] = C.cite_bin(m["citations"], edges)
-            r["latency"] = C.latency_bin(m["latency"])
+            for dim, spec in R.items():
+                r[dim] = spec["key"](m)
         data[name] = (cutoff, recs)
-    return data, edges
+    return data
 
 
 def group(recs, dim, part):
@@ -160,14 +158,16 @@ def main():
     ap.add_argument("--perm", type=int, default=10000)
     ap.add_argument("--seed", type=int, default=20260923)
     ap.add_argument("--min-n", type=int, default=20)
-    ap.add_argument("--only", default=None, help="source|visibility|latency")
+    ap.add_argument("--only", default=None, help="comma-separated dims from C.DIMS_ALL")
     ap.add_argument("--smoke", action="store_true", help="1 model, few draws")
+    ap.add_argument("--manifest-only", action="store_true", help="write MANIFEST.json, run no dimension")
     args = ap.parse_args()
     if args.smoke:
         args.boot, args.perm = 200, 500
 
     meta, n_cite = C.load_meta()
-    data, edges = build(meta, args)
+    R = C.dim_registry(meta, OUT)
+    data = build(meta, args, R)
     if args.smoke:
         data = {k: v for k, v in list(data.items())[:2]}
 
@@ -177,6 +177,9 @@ def main():
         print(f"  {r['model']:18s} {r['cutoff']}  n={r['n_events']:5d}  "
               f"pre={r['pre']:5d}  post={r['post']:5d}")
 
+    def cov(field):
+        return sum(1 for m in meta.values() if m.get(field) is not None)
+
     manifest = dict(
         git_sha=subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True,
                                text=True, cwd=C.REPO).stdout.strip(),
@@ -184,65 +187,91 @@ def main():
                                  text=True).stdout.strip(),
         seed=args.seed, n_bootstrap=args.boot, n_permutations=args.perm,
         min_n=args.min_n, partition_rule="main (cutoff month counts as POST)",
-        citation_retrieval_date=C.CITE_RETRIEVED,
-        citation_source="Semantic Scholar batch API (OpenAlex fallback)",
-        citation_file=C.CITE, n_events_with_citations=n_cite,
-        citation_quartile_edges=dict(Q1_max=edges[0], Q2_max=edges[1], Q3_max=edges[2]),
+        metadata_snapshot_date=C.SNAPSHOT,
+        citation_source="Semantic Scholar batch API (primary), OpenAlex (fallback); "
+                        "metadata/s2_citations.jsonl, metadata/openalex_citations.jsonl",
+        n_events_with_citations=cov("cites"),
+        citation_quartile_edges=C.quartile_edges(meta, "cites"),
+        citation_rate_quartile_edges=C.quartile_edges(meta, "cite_rate"),
+        latency_source="Crossref works API; metadata/crossref_dates.jsonl and "
+                       "metadata/crossref_preprints.jsonl",
+        n_events_with_latency=cov("lat_obs"),
+        n_events_with_editorial_latency=cov("lat_review"),
+        latency_bins=dict(observable=C.LAT_OBS_ORDER, editorial=C.LAT_REVIEW_ORDER),
+        legacy_citation_file=C.CITE, legacy_citation_retrieval_date=C.CITE_RETRIEVED,
+        legacy_n_events_with_citations=n_cite,
+        legacy_n_events_with_latency=cov("latency"),
         frq_scores="published rubric judge_frq_combined, sha256 fc24e69d... "
                    "(stage-2 complete for all 10 models; NOT the archived legacy scores)",
         binary_metric="balanced accuracy = mean(recall on real, specificity on perturbed)",
         panel=[dict(model=n, cutoff=c, original=o, extension=e) for n, c, o, e in C.PANEL],
         partition_sizes=sizes,
         benchmarks=dict(original=C.ORIG, extension=C.EXT),
+        dimensions={k: dict(title=v["title"], order=[v["labels"].get(x, x) for x in v["order"]],
+                            outdir=v["outdir"]) for k, v in R.items()},
+        n_journal_doi=sum(1 for m in meta.values() if m.get("kind") == "doi"),
+        n_crossref_resolved=sum(1 for m in meta.values() if m.get("online") is not None),
+        n_arxiv=sum(1 for m in meta.values() if m.get("kind") == "arxiv"),
+        n_linked=sum(1 for m in meta.values() if m.get("doi")),
+        n_citations_by_source={src: sum(1 for m in meta.values() if m.get("cite_src") == src)
+                               for src in ("s2", "openalex")},
+        n_linked_without_citation=sum(1 for m in meta.values() if m.get("doi") and m.get("cites") is None),
     )
+    lat = [m["lat_obs"] for m in meta.values() if m.get("lat_obs") is not None]
+    if lat:
+        manifest["latency_distribution"] = dict(
+            n=len(lat), share_0=sum(1 for v in lat if v == 0) / len(lat),
+            share_1_6=sum(1 for v in lat if 1 <= v <= 6) / len(lat),
+            share_gt6=sum(1 for v in lat if v > 6) / len(lat),
+            share_gt3=sum(1 for v in lat if v > 3) / len(lat),
+            share_gt12=sum(1 for v in lat if v > 12) / len(lat),
+            n_clipped_negative=sum(1 for m in meta.values() if m.get("lat_obs_raw") is not None and m["lat_obs_raw"] < 0),
+            histogram={str(k): sum(1 for v in lat if v == k) for k in range(0, 13)}, max=int(max(lat)),
+            by_source={src: dict(n=sum(1 for m in meta.values() if m.get("lat_obs") is not None and m["source"] == src),
+                                 share_0=(sum(1 for m in meta.values() if m.get("lat_obs") == 0 and m["source"] == src)
+                                          / max(1, sum(1 for m in meta.values() if m.get("lat_obs") is not None and m["source"] == src))))
+                       for src in ("nature", "science", "cell")})
+        rev = [m["lat_review"] for m in meta.values() if m.get("lat_review") is not None]
+        manifest["editorial_latency_distribution"] = dict(
+            n=len(rev), quartiles=[float(np.percentile(rev, q)) for q in (25, 50, 75)],
+            share_by_bin={lab: sum(1 for v in rev if C.edge_bin(v, C.LAT_REVIEW_BINS) == lab) / len(rev)
+                          for lab in C.LAT_REVIEW_ORDER}) if rev else None
+        n_pre = sum(1 for m in meta.values() if m.get("preprint") is not None)
+        manifest["n_events_with_crossref_preprint_link"] = n_pre
+        gaps = [m["preprint_gap"] for m in meta.values() if m.get("preprint_gap") is not None and m["preprint_gap"] > 0]
+        manifest["n_preprint_earlier_than_cusp_date"] = len(gaps)
+        manifest["preprint_gap_months_quartiles"] = [float(np.percentile(gaps, q)) for q in (25, 50, 75)] if gaps else None
+        manifest["preprint_gap_months_max"] = max(gaps) if gaps else None
+    # events a model sees as post-cutoff whose Crossref-linked preprint predates
+    # its cutoff: observable before the cutoff, so leakage-prone under the
+    # benchmark's own dating. Reported, not corrected (the partition rule is the
+    # benchmark's).
+    manifest["preprint_before_cutoff_among_post"] = {}
+    for name, cutoff, _, _ in C.PANEL:
+        cm = C.mo(cutoff)
+        post = [m for m in meta.values() if C.mo(m["pub"]) is not None and C.mo(m["pub"]) >= cm
+                and m.get("kind") == "doi"]
+        leak = [m for m in post if m.get("preprint") and C.mo(m["preprint"]) < cm]
+        manifest["preprint_before_cutoff_among_post"][name] = dict(
+            cutoff=cutoff, post_journal_events=len(post), preprint_before_cutoff=len(leak))
+    pairs = [(m["citations"], m["cites"]) for m in meta.values()
+             if m.get("citations") is not None and m.get("cites") is not None]
+    if len(pairs) > 10:
+        from scipy.stats import spearmanr
+        manifest["legacy_vs_new_spearman"] = float(spearmanr([a for a, _ in pairs], [b for _, b in pairs]).correlation)
+        manifest["legacy_vs_new_n"] = len(pairs)
+    for dim, spec in R.items():
+        manifest["dimensions"][dim]["coverage"] = {
+            part: sum(1 for _, (_, recs) in data.items() for r in recs
+                      if r.get(dim) is not None and (part == "overall" or r["part"] == part))
+            for part in PARTS}
 
-    dims = [
-        ("source", "A5.1 -- performance by source / repository",
-         C.SOURCE_ORDER, C.SOURCE_LABEL, f"{OUT}/by_source",
-         ["Entire dataset (5,575 events); `source` is one-to-one with the venue "
-          "(Nature = 10.1038/s41586, Science = 10.1126/science, Cell = "
-          "10.1016/j.cell, both AI feeds = arXiv), so this is simultaneously the "
-          "per-journal stratification. No stratum is a singleton, so no 'other' "
-          "bucket is needed.",
-          "", "Cells are `value [95% CI] (n observations)`; binary n counts the "
-          "real and perturbed question separately. Cells below n=20 are printed "
-          "as `n<20 (n)` with no point estimate. `p (perm)` is a 10,000-draw "
-          "permutation test shuffling stratum labels across events; `p (Holm)` "
-          "is Holm-Bonferroni corrected across every model x partition x task "
-          "test in this stratification."]),
-        ("visibility", "A5.2 -- performance by event visibility (citation quartile)",
-         C.CITE_ORDER, {"Q1": f"Q1 (<={int(edges[0])})", "Q2": f"Q2 (<={int(edges[1])})",
-                        "Q3": f"Q3 (<={int(edges[2])})", "Q4": f"Q4 (>{int(edges[2])})"},
-         f"{OUT}/by_visibility",
-         [f"Citation counts exist for {n_cite} events only ({100*n_cite/5575:.1f}% of "
-          "the corpus), all in the original half, all inside the pinned 500-event "
-          f"retrieval subset. Retrieved {C.CITE_RETRIEVED} from the Semantic Scholar "
-          "batch API (OpenAlex fallback); counts move over time and this is a "
-          "single snapshot.",
-          "", f"Quartile edges over those {n_cite} events: Q1 <= {int(edges[0])}, "
-          f"Q2 <= {int(edges[1])}, Q3 <= {int(edges[2])}, Q4 > {int(edges[2])} -- "
-          "identical to the edges used in published Supplementary Tables S19-S23.",
-          "", "Because the subset spans 2024-01 to 2026-03 only, models with early "
-          "cutoffs have every citation-bearing event post-cutoff and models with "
-          "late cutoffs have every one pre-cutoff; the missing partition is absent "
-          "by construction, not by suppression."]),
-        ("latency", "A5.3 -- performance by publication latency",
-         C.LATENCY_ORDER, {s: s for s in C.LATENCY_ORDER}, f"{OUT}/by_latency",
-         ["Latency = original_publication_date - first_date_found, computable for "
-          "708 extension events (12.7% of the corpus). The original half carries no "
-          "preprint/first-seen date at all, so it cannot contribute.",
-          "", "Observed latency is 0-3 months (0: 442, 1: 156, 2: 101, 3: 9). The "
-          "3-month cell has n=9, so 2 and 3 are pooled. The distribution is "
-          "right-censored by the extension window (Apr-Aug 2026): a paper first "
-          "seen in August cannot show a long latency inside the corpus.",
-          "", "The extension is post-cutoff for every model in the panel, so this "
-          "stratification has NO pre-cutoff partition for any model and OVERALL "
-          "equals POST-CUTOFF."]),
-    ]
+    dims = [(dim, spec["title"], spec["order"], spec["labels"], spec["outdir"], spec["notes"])
+            for dim, spec in R.items()]
 
     written = []
     for dim, title, order, labels, outdir, notes in dims:
-        if args.only and args.only != dim:
+        if args.manifest_only or (args.only and dim not in args.only.split(",")):
             continue
         print(f"\n=== {dim} ===")
         cells, tests = analyse(data, dim, order, args)

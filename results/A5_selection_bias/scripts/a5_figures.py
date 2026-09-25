@@ -27,10 +27,15 @@ YLAB = {"binary": "balanced accuracy", "mcq": "accuracy",
 MODEL_ORDER = [p[0] for p in C.PANEL]
 
 
+META, _ = C.load_meta()
+REG = C.dim_registry(META, OUT)
+
+
 def read(dim):
-    path = f"{OUT}/by_{dim}/{dim}_cells.csv"
-    rows = list(csv.DictReader(open(path)))
-    return rows
+    path = f"{REG[dim]['outdir']}/{dim}_cells.csv"
+    if not os.path.exists(path):
+        return []
+    return list(csv.DictReader(open(path)))
 
 
 def draw(dim, part, order_labels, title):
@@ -93,26 +98,11 @@ def draw(dim, part, order_labels, title):
 
 def main():
     made = []
-    labels = {
-        "source": [C.SOURCE_LABEL[s] for s in C.SOURCE_ORDER],
-        "visibility": None,   # filled from the CSV (edges are numeric)
-        "latency": C.LATENCY_ORDER,
-    }
-    vis_rows = read("visibility")
-    seen = []
-    for r in vis_rows:
-        if r["stratum"] not in seen:
-            seen.append(r["stratum"])
-    labels["visibility"] = sorted(seen)
-
-    titles = {
-        "source": "A5.1  Performance by source / venue",
-        "visibility": "A5.2  Performance by citation quartile (481 events, original half)",
-        "latency": "A5.3  Performance by publication latency (708 extension events)",
-    }
-    for dim in ("source", "visibility", "latency"):
+    for dim in C.DIMS_ALL:
+        labels = [REG[dim]["labels"].get(x, x) for x in REG[dim]["order"]]
+        title = REG[dim]["title"].split(" -- ", 1)[-1]
         for part in ("pre", "post", "overall"):
-            p = draw(dim, part, labels[dim], f"{titles[dim]} — {part.upper()}-cutoff")
+            p = draw(dim, part, labels, f"{dim}: {title} \u2014 {part.upper()}-cutoff")
             if p:
                 made.append(p)
                 print("wrote", p)

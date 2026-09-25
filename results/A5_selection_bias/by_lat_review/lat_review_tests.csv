@@ -1,0 +1,113 @@
+model,partition,task,n_strata,range,min_stratum,max_stratum,p_raw,p_holm
+Claude Opus 4.8,overall,binary,4,0.027559,13-24 mo,<=6 mo,0.457954,1.000000
+Claude Opus 4.8,overall,date,4,0.039525,13-24 mo,<=6 mo,0.277972,1.000000
+Claude Opus 4.8,overall,frq,4,0.203038,<=6 mo,13-24 mo,0.000500,0.051495
+Claude Opus 4.8,overall,mcq,4,0.030667,7-12 mo,>24 mo,0.671333,1.000000
+Claude Opus 4.8,post,binary,4,0.043948,<=6 mo,>24 mo,0.799720,1.000000
+Claude Opus 4.8,post,date,3,0.025708,<=6 mo,7-12 mo,0.586141,1.000000
+Claude Opus 4.8,post,frq,4,0.217433,<=6 mo,13-24 mo,0.232677,1.000000
+Claude Opus 4.8,post,mcq,4,0.018011,7-12 mo,>24 mo,0.946505,1.000000
+Claude Opus 4.8,pre,binary,4,0.061454,>24 mo,<=6 mo,0.217378,1.000000
+Claude Opus 4.8,pre,date,4,0.029419,13-24 mo,<=6 mo,0.601840,1.000000
+Claude Opus 4.8,pre,frq,4,0.217605,<=6 mo,13-24 mo,0.000500,0.051495
+Claude Opus 4.8,pre,mcq,4,0.036013,7-12 mo,>24 mo,0.632737,1.000000
+Claude S4.5,overall,binary,4,0.038580,13-24 mo,>24 mo,0.490951,1.000000
+Claude S4.5,overall,date,4,0.024360,<=6 mo,13-24 mo,0.469453,1.000000
+Claude S4.5,overall,frq,4,0.194770,<=6 mo,13-24 mo,0.001600,0.150385
+Claude S4.5,overall,mcq,4,0.057623,<=6 mo,>24 mo,0.399760,1.000000
+Claude S4.5,post,binary,4,0.047552,13-24 mo,>24 mo,0.547545,1.000000
+Claude S4.5,post,date,4,0.035496,>24 mo,13-24 mo,0.267573,1.000000
+Claude S4.5,post,frq,4,0.226151,<=6 mo,13-24 mo,0.004400,0.395960
+Claude S4.5,post,mcq,4,0.100258,<=6 mo,>24 mo,0.317268,1.000000
+Claude S4.5,pre,binary,4,0.032069,13-24 mo,>24 mo,0.742226,1.000000
+Claude S4.5,pre,date,4,0.016330,<=6 mo,7-12 mo,0.915008,1.000000
+Claude S4.5,pre,frq,4,0.142766,<=6 mo,13-24 mo,0.376762,1.000000
+Claude S4.5,pre,mcq,4,0.029813,13-24 mo,7-12 mo,0.775722,1.000000
+Claude Sonnet 5,overall,binary,4,0.035367,13-24 mo,>24 mo,0.754625,1.000000
+Claude Sonnet 5,overall,date,4,0.049422,13-24 mo,<=6 mo,0.040896,1.000000
+Claude Sonnet 5,overall,frq,4,0.263487,<=6 mo,13-24 mo,0.000100,0.011199
+Claude Sonnet 5,overall,mcq,4,0.073145,13-24 mo,>24 mo,0.051195,1.000000
+Claude Sonnet 5,post,binary,4,0.107816,<=6 mo,7-12 mo,0.040896,1.000000
+Claude Sonnet 5,post,date,3,0.038477,7-12 mo,<=6 mo,0.640436,1.000000
+Claude Sonnet 5,post,frq,4,0.573428,<=6 mo,>24 mo,0.000700,0.070693
+Claude Sonnet 5,post,mcq,4,0.128319,13-24 mo,>24 mo,0.204280,1.000000
+Claude Sonnet 5,pre,binary,4,0.016504,7-12 mo,>24 mo,0.957004,1.000000
+Claude Sonnet 5,pre,date,4,0.043555,13-24 mo,<=6 mo,0.133587,1.000000
+Claude Sonnet 5,pre,frq,4,0.267548,>24 mo,13-24 mo,0.000100,0.011199
+Claude Sonnet 5,pre,mcq,4,0.055595,13-24 mo,>24 mo,0.274573,1.000000
+DeepSeek-R1,overall,binary,4,0.048636,<=6 mo,13-24 mo,0.080292,1.000000
+DeepSeek-R1,overall,date,4,0.067199,<=6 mo,13-24 mo,0.001100,0.107789
+DeepSeek-R1,overall,frq,4,0.161502,<=6 mo,13-24 mo,0.004300,0.391261
+DeepSeek-R1,overall,mcq,4,0.067805,>24 mo,13-24 mo,0.586241,1.000000
+DeepSeek-R1,post,binary,4,0.067029,<=6 mo,13-24 mo,0.019898,1.000000
+DeepSeek-R1,post,date,4,0.098492,<=6 mo,13-24 mo,0.000400,0.041596
+DeepSeek-R1,post,frq,4,0.205817,<=6 mo,13-24 mo,0.001600,0.150385
+DeepSeek-R1,post,mcq,4,0.057116,>24 mo,13-24 mo,0.782522,1.000000
+DeepSeek-R1,pre,binary,4,0.160771,7-12 mo,>24 mo,0.360964,1.000000
+DeepSeek-R1,pre,date,3,0.025167,13-24 mo,<=6 mo,0.307169,1.000000
+DeepSeek-R1,pre,frq,3,0.034792,<=6 mo,7-12 mo,0.925607,1.000000
+DeepSeek-R1,pre,mcq,3,0.062940,<=6 mo,13-24 mo,0.542046,1.000000
+DeepSeek-V4-Pro,overall,binary,4,0.007034,13-24 mo,>24 mo,0.934607,1.000000
+DeepSeek-V4-Pro,overall,date,4,0.046411,>24 mo,13-24 mo,0.015398,1.000000
+DeepSeek-V4-Pro,overall,frq,4,0.427093,<=6 mo,>24 mo,0.000100,0.011199
+DeepSeek-V4-Pro,overall,mcq,4,0.093626,<=6 mo,>24 mo,0.243476,1.000000
+DeepSeek-V4-Pro,post,binary,4,0.041041,>24 mo,13-24 mo,0.921408,1.000000
+DeepSeek-V4-Pro,post,date,3,0.187819,7-12 mo,13-24 mo,0.020698,1.000000
+DeepSeek-V4-Pro,post,frq,3,0.411088,<=6 mo,13-24 mo,0.004600,0.409359
+DeepSeek-V4-Pro,post,mcq,3,0.112984,<=6 mo,13-24 mo,0.322368,1.000000
+DeepSeek-V4-Pro,pre,binary,4,0.013142,13-24 mo,>24 mo,0.839216,1.000000
+DeepSeek-V4-Pro,pre,date,4,0.055024,>24 mo,13-24 mo,0.054495,1.000000
+DeepSeek-V4-Pro,pre,frq,4,0.443761,<=6 mo,>24 mo,0.000100,0.011199
+DeepSeek-V4-Pro,pre,mcq,4,0.075501,<=6 mo,>24 mo,0.458954,1.000000
+GPT-4o,overall,binary,4,0.038910,>24 mo,13-24 mo,0.249675,1.000000
+GPT-4o,overall,date,4,0.054979,<=6 mo,13-24 mo,0.001100,0.107789
+GPT-4o,overall,frq,4,0.108278,<=6 mo,13-24 mo,0.144786,1.000000
+GPT-4o,overall,mcq,4,0.059300,<=6 mo,13-24 mo,0.144586,1.000000
+GPT-4o,post,binary,4,0.038910,>24 mo,13-24 mo,0.249675,1.000000
+GPT-4o,post,date,4,0.054979,<=6 mo,13-24 mo,0.001100,0.107789
+GPT-4o,post,frq,4,0.108278,<=6 mo,13-24 mo,0.144786,1.000000
+GPT-4o,post,mcq,4,0.059300,<=6 mo,13-24 mo,0.144586,1.000000
+GPT-5.4,overall,binary,4,0.017742,7-12 mo,13-24 mo,0.722728,1.000000
+GPT-5.4,overall,date,4,0.043450,<=6 mo,13-24 mo,0.042696,1.000000
+GPT-5.4,overall,frq,4,0.197541,<=6 mo,13-24 mo,0.000100,0.011199
+GPT-5.4,overall,mcq,4,0.053877,13-24 mo,>24 mo,0.446255,1.000000
+GPT-5.4,post,binary,4,0.086290,>24 mo,13-24 mo,0.162384,1.000000
+GPT-5.4,post,date,3,0.029260,7-12 mo,13-24 mo,0.369363,1.000000
+GPT-5.4,post,frq,4,0.186615,<=6 mo,13-24 mo,0.105589,1.000000
+GPT-5.4,post,mcq,4,0.090024,13-24 mo,>24 mo,0.400860,1.000000
+GPT-5.4,pre,binary,4,0.036788,7-12 mo,>24 mo,0.728227,1.000000
+GPT-5.4,pre,date,4,0.057487,<=6 mo,7-12 mo,0.011399,1.000000
+GPT-5.4,pre,frq,4,0.225976,<=6 mo,13-24 mo,0.000300,0.031497
+GPT-5.4,pre,mcq,4,0.038195,7-12 mo,>24 mo,0.783022,1.000000
+GPT-5.6 Sol,overall,binary,4,0.016504,>24 mo,7-12 mo,0.956604,1.000000
+GPT-5.6 Sol,overall,date,4,0.039977,>24 mo,7-12 mo,0.428957,1.000000
+GPT-5.6 Sol,overall,frq,4,0.207787,<=6 mo,>24 mo,0.001100,0.107789
+GPT-5.6 Sol,overall,mcq,4,0.050790,7-12 mo,>24 mo,0.294871,1.000000
+GPT-5.6 Sol,post,binary,4,0.051239,>24 mo,13-24 mo,0.883712,1.000000
+GPT-5.6 Sol,post,date,3,0.044060,13-24 mo,<=6 mo,0.218878,1.000000
+GPT-5.6 Sol,post,frq,4,0.474638,<=6 mo,>24 mo,0.025197,1.000000
+GPT-5.6 Sol,post,mcq,4,0.123636,7-12 mo,>24 mo,0.176382,1.000000
+GPT-5.6 Sol,pre,binary,4,0.020770,>24 mo,7-12 mo,0.885411,1.000000
+GPT-5.6 Sol,pre,date,4,0.034336,>24 mo,7-12 mo,0.687231,1.000000
+GPT-5.6 Sol,pre,frq,4,0.185084,<=6 mo,13-24 mo,0.003600,0.331167
+GPT-5.6 Sol,pre,mcq,4,0.035648,7-12 mo,>24 mo,0.721828,1.000000
+GPT-OSS 20B,overall,binary,4,0.028313,<=6 mo,13-24 mo,0.265273,1.000000
+GPT-OSS 20B,overall,date,4,0.047359,<=6 mo,13-24 mo,0.024898,1.000000
+GPT-OSS 20B,overall,frq,4,0.243096,<=6 mo,13-24 mo,0.000100,0.011199
+GPT-OSS 20B,overall,mcq,4,0.091625,>24 mo,13-24 mo,0.207379,1.000000
+GPT-OSS 20B,post,binary,4,0.037626,<=6 mo,13-24 mo,0.163084,1.000000
+GPT-OSS 20B,post,date,4,0.057611,<=6 mo,13-24 mo,0.025397,1.000000
+GPT-OSS 20B,post,frq,4,0.279429,<=6 mo,13-24 mo,0.000100,0.011199
+GPT-OSS 20B,post,mcq,4,0.086650,>24 mo,13-24 mo,0.327067,1.000000
+GPT-OSS 20B,pre,binary,4,0.023106,>24 mo,<=6 mo,0.940706,1.000000
+GPT-OSS 20B,pre,date,3,0.003822,7-12 mo,<=6 mo,0.971703,1.000000
+GPT-OSS 20B,pre,frq,3,0.211698,7-12 mo,13-24 mo,0.129987,1.000000
+GPT-OSS 20B,pre,mcq,3,0.070974,<=6 mo,7-12 mo,0.496550,1.000000
+LLaMA 3.3 70B,overall,binary,4,0.028413,7-12 mo,>24 mo,0.015498,1.000000
+LLaMA 3.3 70B,overall,date,4,0.079139,<=6 mo,>24 mo,0.100290,1.000000
+LLaMA 3.3 70B,overall,frq,4,0.153503,<=6 mo,13-24 mo,0.000800,0.079992
+LLaMA 3.3 70B,overall,mcq,4,0.032479,>24 mo,13-24 mo,0.707229,1.000000
+LLaMA 3.3 70B,post,binary,4,0.028413,7-12 mo,>24 mo,0.015498,1.000000
+LLaMA 3.3 70B,post,date,4,0.079139,<=6 mo,>24 mo,0.100290,1.000000
+LLaMA 3.3 70B,post,frq,4,0.153503,<=6 mo,13-24 mo,0.000800,0.079992
+LLaMA 3.3 70B,post,mcq,4,0.032479,>24 mo,13-24 mo,0.707229,1.000000

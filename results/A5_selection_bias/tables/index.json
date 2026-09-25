@@ -1,9 +1,23 @@
 {
+  "A5_source_pre": "tables/A5_source_pre.csv",
   "A5_source_post": "tables/A5_source_post.csv",
   "A5_source_overall": "tables/A5_source_overall.csv",
+  "A5_visibility_pre": "tables/A5_visibility_pre.csv",
   "A5_visibility_post": "tables/A5_visibility_post.csv",
   "A5_visibility_overall": "tables/A5_visibility_overall.csv",
+  "A5_vis_rate_pre": "tables/A5_vis_rate_pre.csv",
+  "A5_vis_rate_post": "tables/A5_vis_rate_post.csv",
+  "A5_vis_rate_overall": "tables/A5_vis_rate_overall.csv",
+  "A5_latency_pre": "tables/A5_latency_pre.csv",
   "A5_latency_post": "tables/A5_latency_post.csv",
   "A5_latency_overall": "tables/A5_latency_overall.csv",
+  "A5_lat_review_pre": "tables/A5_lat_review_pre.csv",
+  "A5_lat_review_post": "tables/A5_lat_review_post.csv",
+  "A5_lat_review_overall": "tables/A5_lat_review_overall.csv",
+  "A5_legacy_visibility_pre": "tables/A5_legacy_visibility_pre.csv",
+  "A5_legacy_visibility_post": "tables/A5_legacy_visibility_post.csv",
+  "A5_legacy_visibility_overall": "tables/A5_legacy_visibility_overall.csv",
+  "A5_legacy_latency_post": "tables/A5_legacy_latency_post.csv",
+  "A5_legacy_latency_overall": "tables/A5_legacy_latency_overall.csv",
   "A5_partition_sizes": "tables/A5_partition_sizes.csv"
 }

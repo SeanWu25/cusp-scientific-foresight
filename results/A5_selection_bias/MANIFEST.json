@@ -1,20 +1,44 @@
 {
-  "git_sha": "124a51d4ff3166b0da3feb51fc6407e3774918f9",
-  "generated": "2026-09-23T08:28:09-07:00",
+  "git_sha": "ed930fc23053d2a1803ff47fd879faaa978148ff",
+  "generated": "2026-09-25T09:31:05-07:00",
   "seed": 20260923,
   "n_bootstrap": 2000,
   "n_permutations": 10000,
   "min_n": 20,
   "partition_rule": "main (cutoff month counts as POST)",
-  "citation_retrieval_date": "2026-05-12",
-  "citation_source": "Semantic Scholar batch API (OpenAlex fallback)",
-  "citation_file": "/home/seanwu/FutureScience_backup_20260508_013823/benchmark_data/CUSP/sample_500_stratified_with_citations.jsonl",
-  "n_events_with_citations": 481,
-  "citation_quartile_edges": {
-    "Q1_max": 8.0,
-    "Q2_max": 22.0,
-    "Q3_max": 59.0
+  "metadata_snapshot_date": "2026-09-25",
+  "citation_source": "Semantic Scholar batch API (primary), OpenAlex (fallback); metadata/s2_citations.jsonl, metadata/openalex_citations.jsonl",
+  "n_events_with_citations": 5513,
+  "citation_quartile_edges": [
+    10.0,
+    28.0,
+    68.0
+  ],
+  "citation_rate_quartile_edges": [
+    0.9583333333333334,
+    1.8333333333333333,
+    3.9411764705882355
+  ],
+  "latency_source": "Crossref works API; metadata/crossref_dates.jsonl and metadata/crossref_preprints.jsonl",
+  "n_events_with_latency": 4326,
+  "n_events_with_editorial_latency": 3740,
+  "latency_bins": {
+    "observable": [
+      "0 mo",
+      "1-6 mo",
+      ">6 mo"
+    ],
+    "editorial": [
+      "<=6 mo",
+      "7-12 mo",
+      "13-24 mo",
+      ">24 mo"
+    ]
   },
+  "legacy_citation_file": "/home/seanwu/FutureScience_backup_20260508_013823/benchmark_data/CUSP/sample_500_stratified_with_citations.jsonl",
+  "legacy_citation_retrieval_date": "2026-05-12",
+  "legacy_n_events_with_citations": 481,
+  "legacy_n_events_with_latency": 708,
   "frq_scores": "published rubric judge_frq_combined, sha256 fc24e69d... (stage-2 complete for all 10 models; NOT the archived legacy scores)",
   "binary_metric": "balanced accuracy = mean(recall on real, specificity on perturbed)",
   "panel": [
@@ -155,73 +179,235 @@
     "original": "/home/seanwu/FutureScience/archive/data/canonical/merged_validated_cusp_fixed.jsonl",
     "extension": "/home/seanwu/FutureScience/benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026_monthnorm.jsonl"
   },
-  "outputs": [
-    "/home/seanwu/FutureScience/results/A5_selection_bias/by_source/source_tables.md",
-    "/home/seanwu/FutureScience/results/A5_selection_bias/by_visibility/visibility_tables.md",
-    "/home/seanwu/FutureScience/results/A5_selection_bias/by_latency/latency_tables.md"
+  "dimensions": {
+    "source": {
+      "title": "A5.1 -- performance by source / repository",
+      "order": [
+        "Nature",
+        "Science",
+        "Cell",
+        "HF Daily Papers (arXiv)",
+        "Top-10 AI Paper of Week (arXiv)",
+        "Leaderboards"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias/by_source",
+      "coverage": {
+        "pre": 24656,
+        "post": 30279,
+        "overall": 54935
+      }
+    },
+    "visibility": {
+      "title": "A5.2 -- performance by event visibility (citation quartile, whole corpus)",
+      "order": [
+        "Q1 (<=10)",
+        "Q2 (<=28)",
+        "Q3 (<=68)",
+        "Q4 (>68)"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias/by_visibility",
+      "coverage": {
+        "pre": 24426,
+        "post": 29889,
+        "overall": 54315
+      }
+    },
+    "vis_rate": {
+      "title": "A5.2b -- performance by citation rate (citations per month since first observable, whole corpus)",
+      "order": [
+        "Q1 (<=0.96/mo)",
+        "Q2 (<=1.83/mo)",
+        "Q3 (<=3.94/mo)",
+        "Q4 (>3.94/mo)"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias/by_vis_rate",
+      "coverage": {
+        "pre": 24426,
+        "post": 29889,
+        "overall": 54315
+      }
+    },
+    "latency": {
+      "title": "A5.3 -- performance by publication latency (months publicly observable before the journal version)",
+      "order": [
+        "0 mo",
+        "1-6 mo",
+        ">6 mo"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias/by_latency",
+      "coverage": {
+        "pre": 19434,
+        "post": 23142,
+        "overall": 42576
+      }
+    },
+    "lat_review": {
+      "title": "A5.3b -- performance by editorial latency (received -> online, Nature and Science)",
+      "order": [
+        "<=6 mo",
+        "7-12 mo",
+        "13-24 mo",
+        ">24 mo"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias/by_lat_review",
+      "coverage": {
+        "pre": 16892,
+        "post": 19916,
+        "overall": 36808
+      }
+    },
+    "legacy_visibility": {
+      "title": "LEGACY A5.2 (first pass) -- citation quartile over the 481 pinned-subset events",
+      "order": [
+        "Q1 (<=8)",
+        "Q2 (<=22)",
+        "Q3 (<=59)",
+        "Q4 (>59)"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias/by_legacy/visibility_481",
+      "coverage": {
+        "pre": 2513,
+        "post": 2297,
+        "overall": 4810
+      }
+    },
+    "legacy_latency": {
+      "title": "LEGACY A5.3 (first pass) -- extension latency over 708 events",
+      "order": [
+        "0 mo",
+        "1 mo",
+        "2-3 mo"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias/by_legacy/latency_708",
+      "coverage": {
+        "pre": 0,
+        "post": 6372,
+        "overall": 6372
+      }
+    }
+  },
+  "n_journal_doi": 4326,
+  "n_crossref_resolved": 4326,
+  "n_arxiv": 1190,
+  "n_linked": 5516,
+  "n_citations_by_source": {
+    "s2": 5443,
+    "openalex": 70
+  },
+  "n_linked_without_citation": 3,
+  "latency_distribution": {
+    "n": 4326,
+    "share_0": 0.8409616273693944,
+    "share_1_6": 0.05386037910309755,
+    "share_gt6": 0.10517799352750809,
+    "share_gt3": 0.1317614424410541,
+    "share_gt12": 0.03952843273231623,
+    "n_clipped_negative": 0,
+    "histogram": {
+      "0": 3638,
+      "1": 48,
+      "2": 30,
+      "3": 40,
+      "4": 22,
+      "5": 43,
+      "6": 50,
+      "7": 57,
+      "8": 60,
+      "9": 43,
+      "10": 56,
+      "11": 43,
+      "12": 25
+    },
+    "max": 54,
+    "by_source": {
+      "nature": {
+        "n": 2493,
+        "share_0": 0.8190934616927397
+      },
+      "science": {
+        "n": 1249,
+        "share_0": 0.8839071257005604
+      },
+      "cell": {
+        "n": 584,
+        "share_0": 0.8424657534246576
+      }
+    }
+  },
+  "editorial_latency_distribution": {
+    "n": 3740,
+    "quartiles": [
+      7.0,
+      11.0,
+      15.0
+    ],
+    "share_by_bin": {
+      "<=6 mo": 0.1767379679144385,
+      "7-12 mo": 0.44385026737967914,
+      "13-24 mo": 0.3342245989304813,
+      ">24 mo": 0.04518716577540107
+    }
+  },
+  "n_events_with_crossref_preprint_link": 493,
+  "n_preprint_earlier_than_cusp_date": 246,
+  "preprint_gap_months_quartiles": [
+    7.0,
+    11.0,
+    15.0
   ],
-  "study": "A5 \u2014 benchmark selection bias (Reviewer 1, comment 5)",
-  "regenerate": "bash results/A5_selection_bias/run_all.sh",
-  "analyses": {
-    "by_source": "6 venue strata, entire corpus (5,575). source is one-to-one with venue.",
-    "by_source/within_discipline": "venue effect with discipline fixed; 7 disciplines with >=2 venues at n>=100",
-    "by_visibility": "citation quartile, 481 events (original half, pinned-500 subset)",
-    "by_visibility/citation_gap_S19_S23": "regenerated + extended published S19-S23 (3 -> 7 models)",
-    "by_latency": "publication latency 0-3 months, 708 extension events, post-cutoff only",
-    "novelty": "NOT computed by instruction; see novelty_discussion.md"
+  "preprint_gap_months_max": 54,
+  "preprint_before_cutoff_among_post": {
+    "GPT-4o": {
+      "cutoff": "2023-10",
+      "post_journal_events": 4326,
+      "preprint_before_cutoff": 55
+    },
+    "LLaMA 3.3 70B": {
+      "cutoff": "2023-12",
+      "post_journal_events": 4326,
+      "preprint_before_cutoff": 78
+    },
+    "GPT-OSS 20B": {
+      "cutoff": "2024-06",
+      "post_journal_events": 3759,
+      "preprint_before_cutoff": 113
+    },
+    "DeepSeek-R1": {
+      "cutoff": "2024-07",
+      "post_journal_events": 3606,
+      "preprint_before_cutoff": 109
+    },
+    "Claude S4.5": {
+      "cutoff": "2025-01",
+      "post_journal_events": 2721,
+      "preprint_before_cutoff": 96
+    },
+    "GPT-5.4": {
+      "cutoff": "2025-08",
+      "post_journal_events": 1618,
+      "preprint_before_cutoff": 77
+    },
+    "Claude Sonnet 5": {
+      "cutoff": "2026-01",
+      "post_journal_events": 981,
+      "preprint_before_cutoff": 43
+    },
+    "GPT-5.6 Sol": {
+      "cutoff": "2026-02",
+      "post_journal_events": 824,
+      "preprint_before_cutoff": 34
+    },
+    "DeepSeek-V4-Pro": {
+      "cutoff": "2026-04",
+      "post_journal_events": 684,
+      "preprint_before_cutoff": 26
+    },
+    "Claude Opus 4.8": {
+      "cutoff": "2026-01",
+      "post_journal_events": 981,
+      "preprint_before_cutoff": 43
+    }
   },
-  "statistics": {
-    "binary_metric": "balanced accuracy = mean(recall on real, specificity on perturbed)",
-    "ci": "2,000-draw event-clustered bootstrap, percentile",
-    "test": "10,000-draw permutation of stratum labels across events (5,000 for within-discipline)",
-    "correction": "Holm-Bonferroni within each stratification",
-    "suppression": "cells below n=20 print no point estimate",
-    "pooling": "columns average only over models carrying every stratum"
-  },
-  "results_summary": {
-    "source": "85/112 tests Holm-significant; driven by date (arXiv>journal 10/10 models, median +0.27 overall) and the leaderboard item type",
-    "within_discipline": "4/705 tests Holm-significant -> venue does not predict performance once discipline is fixed",
-    "visibility": "6/93 significant, all on date; 0/71 on binary/MCQ/FRQ",
-    "latency": "0/72 significant",
-    "confound": "only 34 of 1,274 AI events are in journals (2.7%), so arXiv-vs-journal is not separable from AI-vs-other"
-  },
-  "file_sha256_16": {
-    "MANIFEST.json": "3d8e3bf4ab0fca00",
-    "metadata_audit.md": "ca5885ca6de1bf55",
-    "novelty_discussion.md": "72dcd1a31641ac9f",
-    "response_A5.md": "f66e233a174614a2",
-    "run_all.sh": "56704ebafafeda90",
-    "by_latency/latency_cells.csv": "266b05d0e1fd358f",
-    "by_latency/latency_tables.md": "f53976e8be2d8eb1",
-    "by_latency/latency_tests.csv": "120fbadccddd0dea",
-    "tables/A5_latency_overall.csv": "36640120e8379ad5",
-    "tables/A5_latency_post.csv": "36640120e8379ad5",
-    "tables/A5_partition_sizes.csv": "85cf8797ffdf5571",
-    "tables/A5_source_overall.csv": "0b1250484d2cc760",
-    "tables/A5_source_post.csv": "d902b39671925acf",
-    "tables/A5_tables.md": "8ca41c275f3c4b15",
-    "tables/A5_visibility_overall.csv": "cc5838c34d5f675f",
-    "tables/A5_visibility_post.csv": "b639346af943ef0c",
-    "tables/index.json": "def569f58c684744",
-    "scripts/a5_analysis.py": "e6733568e742a260",
-    "scripts/a5_citation_gap.py": "cdf40e4af2786dd7",
-    "scripts/a5_common.py": "0b55d399598a5c88",
-    "scripts/a5_figures.py": "efad68d73b2e5b3b",
-    "scripts/a5_summarize.py": "7cad1a2d72321362",
-    "scripts/a5_tables.py": "d6096a7f21798117",
-    "scripts/a5_verify.py": "b89568d4479903ca",
-    "scripts/a5_within_discipline.py": "c08816c1a2a08244",
-    "scripts/__pycache__/a5_common.cpython-313.pyc": "51d078aebc00e396",
-    "by_visibility/citation_gap_S19_S23.json": "549b411b4129e532",
-    "by_visibility/citation_gap_S19_S23.md": "8ecc0b9837a66485",
-    "by_visibility/visibility_cells.csv": "56ef027aa04a6f4c",
-    "by_visibility/visibility_tables.md": "9b6c2517ea57f6c3",
-    "by_visibility/visibility_tests.csv": "87ec122caafe345e",
-    "by_source/source_cells.csv": "954b207523a3154c",
-    "by_source/source_tables.md": "64333572ba5e33b7",
-    "by_source/source_tests.csv": "864f9bc9e8ab2fdd",
-    "by_source/within_discipline.md": "2b41ce7ac359f67e",
-    "by_source/within_discipline_cells.csv": "024eb9d0bf27c1c3",
-    "by_source/within_discipline_tests.csv": "504a8f79f6d21ba4"
-  }
+  "legacy_vs_new_spearman": 0.9649537545025294,
+  "legacy_vs_new_n": 481
 }

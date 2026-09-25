@@ -13,14 +13,11 @@ HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.dirname(HERE)
 sys.path.insert(0, HERE); import a5_common as C  # noqa: E402
 TAB = f"{OUT}/tables"; os.makedirs(TAB, exist_ok=True)
 
-DIMS = {
-    "source": ["Nature", "Science", "Cell", "HF Daily Papers (arXiv)",
-               "Top-10 AI Paper of Week (arXiv)", "Leaderboards"],
-    "visibility": ["Q1 (<=8)", "Q2 (<=22)", "Q3 (<=59)", "Q4 (>59)"],
-    "latency": ["0 mo", "1 mo", "2-3 mo"],
-}
-TITLE = {"source": "source / venue", "visibility": "citation quartile",
-         "latency": "publication latency"}
+META, _ = C.load_meta()
+REG = C.dim_registry(META, OUT)
+DIMS = {d: [REG[d]["labels"].get(x, x) for x in REG[d]["order"]] for d in C.DIMS_ALL}
+TITLE = {d: REG[d]["short"] for d in C.DIMS_ALL}
+PARTS_OUT = ("pre", "post", "overall")
 
 
 def load(p):
@@ -68,11 +65,11 @@ def main():
     index = {}
 
     for dim, order in DIMS.items():
-        cells = load(f"{OUT}/by_{dim}/{dim}_cells.csv")
-        tests = load(f"{OUT}/by_{dim}/{dim}_tests.csv")
+        cells = load(f"{REG[dim]['outdir']}/{dim}_cells.csv")
+        tests = load(f"{REG[dim]['outdir']}/{dim}_tests.csv")
         if not cells:
             continue
-        for part in ("post", "overall"):
+        for part in PARTS_OUT:
             rows = pooled(cells, tests, dim, order, part)
             if not rows:
                 continue

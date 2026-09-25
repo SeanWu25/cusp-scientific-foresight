@@ -1,73 +1,107 @@
 model,partition,task,n_strata,range,min_stratum,max_stratum,p_raw,p_holm
-Claude Opus 4.8,overall,binary,3,0.048903,0 mo,1 mo,0.495550,1.000000
-Claude Opus 4.8,overall,date,3,0.026281,1 mo,2-3 mo,0.846515,1.000000
-Claude Opus 4.8,overall,frq,3,0.107303,1 mo,2-3 mo,0.675132,1.000000
-Claude Opus 4.8,overall,mcq,3,0.074444,1 mo,0 mo,0.031797,1.000000
-Claude Opus 4.8,post,binary,3,0.048903,0 mo,1 mo,0.495550,1.000000
-Claude Opus 4.8,post,date,3,0.026281,1 mo,2-3 mo,0.846515,1.000000
-Claude Opus 4.8,post,frq,3,0.107303,1 mo,2-3 mo,0.675132,1.000000
-Claude Opus 4.8,post,mcq,3,0.074444,1 mo,0 mo,0.031797,1.000000
-Claude S4.5,overall,binary,3,0.033802,0 mo,1 mo,0.813219,1.000000
-Claude S4.5,overall,date,2,0.011185,1 mo,0 mo,0.859714,1.000000
-Claude S4.5,overall,frq,3,0.102041,0 mo,1 mo,0.457454,1.000000
-Claude S4.5,overall,mcq,3,0.061754,1 mo,2-3 mo,0.611839,1.000000
-Claude S4.5,post,binary,3,0.033802,0 mo,1 mo,0.813219,1.000000
-Claude S4.5,post,date,2,0.011185,1 mo,0 mo,0.859714,1.000000
-Claude S4.5,post,frq,3,0.102041,0 mo,1 mo,0.457454,1.000000
-Claude S4.5,post,mcq,3,0.061754,1 mo,2-3 mo,0.611839,1.000000
-Claude Sonnet 5,overall,binary,3,0.082726,1 mo,2-3 mo,0.434657,1.000000
-Claude Sonnet 5,overall,date,3,0.097544,1 mo,2-3 mo,0.387461,1.000000
-Claude Sonnet 5,overall,frq,3,0.279807,1 mo,2-3 mo,0.069293,1.000000
-Claude Sonnet 5,overall,mcq,3,0.070082,1 mo,0 mo,0.127387,1.000000
-Claude Sonnet 5,post,binary,3,0.082726,1 mo,2-3 mo,0.434657,1.000000
-Claude Sonnet 5,post,date,3,0.097544,1 mo,2-3 mo,0.387461,1.000000
-Claude Sonnet 5,post,frq,3,0.279807,1 mo,2-3 mo,0.069293,1.000000
-Claude Sonnet 5,post,mcq,3,0.070082,1 mo,0 mo,0.127387,1.000000
-DeepSeek-V4-Pro,overall,binary,3,0.048160,1 mo,2-3 mo,0.522148,1.000000
-DeepSeek-V4-Pro,overall,date,3,0.073348,0 mo,1 mo,0.645935,1.000000
-DeepSeek-V4-Pro,overall,frq,3,0.199801,0 mo,2-3 mo,0.096890,1.000000
-DeepSeek-V4-Pro,overall,mcq,3,0.054454,1 mo,2-3 mo,0.616438,1.000000
-DeepSeek-V4-Pro,post,binary,3,0.048160,1 mo,2-3 mo,0.522148,1.000000
-DeepSeek-V4-Pro,post,date,3,0.073348,0 mo,1 mo,0.645935,1.000000
-DeepSeek-V4-Pro,post,frq,3,0.199801,0 mo,2-3 mo,0.096890,1.000000
-DeepSeek-V4-Pro,post,mcq,3,0.054454,1 mo,2-3 mo,0.616438,1.000000
-GPT-4o,overall,binary,3,0.059348,2-3 mo,1 mo,0.451855,1.000000
-GPT-4o,overall,date,3,0.079926,1 mo,0 mo,0.613539,1.000000
-GPT-4o,overall,frq,3,0.164624,0 mo,2-3 mo,0.223878,1.000000
-GPT-4o,overall,mcq,3,0.091474,1 mo,2-3 mo,0.425157,1.000000
-GPT-4o,post,binary,3,0.059348,2-3 mo,1 mo,0.451855,1.000000
-GPT-4o,post,date,3,0.079926,1 mo,0 mo,0.613539,1.000000
-GPT-4o,post,frq,3,0.164624,0 mo,2-3 mo,0.223878,1.000000
-GPT-4o,post,mcq,3,0.091474,1 mo,2-3 mo,0.425157,1.000000
-GPT-5.4,overall,binary,3,0.060265,1 mo,2-3 mo,0.663734,1.000000
-GPT-5.4,overall,date,3,0.042537,2-3 mo,0 mo,0.518648,1.000000
-GPT-5.4,overall,frq,3,0.180972,1 mo,2-3 mo,0.303170,1.000000
-GPT-5.4,overall,mcq,3,0.003184,0 mo,2-3 mo,0.997300,1.000000
-GPT-5.4,post,binary,3,0.060265,1 mo,2-3 mo,0.663734,1.000000
-GPT-5.4,post,date,3,0.042537,2-3 mo,0 mo,0.518648,1.000000
-GPT-5.4,post,frq,3,0.180972,1 mo,2-3 mo,0.303170,1.000000
-GPT-5.4,post,mcq,3,0.003184,0 mo,2-3 mo,0.997300,1.000000
-GPT-5.6 Sol,overall,binary,3,0.035911,0 mo,2-3 mo,0.788121,1.000000
-GPT-5.6 Sol,overall,date,3,0.044801,0 mo,1 mo,0.313669,1.000000
-GPT-5.6 Sol,overall,frq,3,0.391677,1 mo,2-3 mo,0.006699,0.482352
-GPT-5.6 Sol,overall,mcq,3,0.052904,1 mo,0 mo,0.403960,1.000000
-GPT-5.6 Sol,post,binary,3,0.035911,0 mo,2-3 mo,0.788121,1.000000
-GPT-5.6 Sol,post,date,3,0.044801,0 mo,1 mo,0.313669,1.000000
-GPT-5.6 Sol,post,frq,3,0.391677,1 mo,2-3 mo,0.006699,0.482352
-GPT-5.6 Sol,post,mcq,3,0.052904,1 mo,0 mo,0.403960,1.000000
-GPT-OSS 20B,overall,binary,3,0.066206,0 mo,1 mo,0.331967,1.000000
-GPT-OSS 20B,overall,date,3,0.087144,2-3 mo,0 mo,0.381462,1.000000
-GPT-OSS 20B,overall,frq,3,0.309259,1 mo,2-3 mo,0.039196,1.000000
-GPT-OSS 20B,overall,mcq,3,0.164199,1 mo,2-3 mo,0.065693,1.000000
-GPT-OSS 20B,post,binary,3,0.066206,0 mo,1 mo,0.331967,1.000000
-GPT-OSS 20B,post,date,3,0.087144,2-3 mo,0 mo,0.381462,1.000000
-GPT-OSS 20B,post,frq,3,0.309259,1 mo,2-3 mo,0.039196,1.000000
-GPT-OSS 20B,post,mcq,3,0.164199,1 mo,2-3 mo,0.065693,1.000000
-LLaMA 3.3 70B,overall,binary,3,0.024603,1 mo,0 mo,0.378762,1.000000
-LLaMA 3.3 70B,overall,date,3,0.022402,1 mo,0 mo,0.683132,1.000000
-LLaMA 3.3 70B,overall,frq,3,0.120792,0 mo,2-3 mo,0.386661,1.000000
-LLaMA 3.3 70B,overall,mcq,3,0.179365,1 mo,2-3 mo,0.013299,0.930907
-LLaMA 3.3 70B,post,binary,3,0.024603,1 mo,0 mo,0.378762,1.000000
-LLaMA 3.3 70B,post,date,3,0.022402,1 mo,0 mo,0.683132,1.000000
-LLaMA 3.3 70B,post,frq,3,0.120792,0 mo,2-3 mo,0.386661,1.000000
-LLaMA 3.3 70B,post,mcq,3,0.179365,1 mo,2-3 mo,0.013299,0.930907
+Claude Opus 4.8,overall,binary,3,0.016060,1-6 mo,0 mo,0.835816,1.000000
+Claude Opus 4.8,overall,date,3,0.080956,0 mo,>6 mo,0.000200,0.021198
+Claude Opus 4.8,overall,frq,3,0.144676,0 mo,1-6 mo,0.030897,1.000000
+Claude Opus 4.8,overall,mcq,3,0.014491,1-6 mo,>6 mo,0.730927,1.000000
+Claude Opus 4.8,post,binary,2,0.083315,0 mo,>6 mo,0.236400,1.000000
+Claude Opus 4.8,post,frq,2,0.048302,0 mo,>6 mo,0.768523,1.000000
+Claude Opus 4.8,post,mcq,2,0.008611,>6 mo,0 mo,0.849915,1.000000
+Claude Opus 4.8,pre,binary,3,0.019431,1-6 mo,0 mo,0.709329,1.000000
+Claude Opus 4.8,pre,date,3,0.052397,0 mo,>6 mo,0.039296,1.000000
+Claude Opus 4.8,pre,frq,3,0.073102,0 mo,1-6 mo,0.338866,1.000000
+Claude Opus 4.8,pre,mcq,3,0.016405,1-6 mo,>6 mo,0.753225,1.000000
+Claude S4.5,overall,binary,3,0.018275,0 mo,>6 mo,0.620638,1.000000
+Claude S4.5,overall,date,3,0.012043,>6 mo,1-6 mo,0.886011,1.000000
+Claude S4.5,overall,frq,3,0.098840,>6 mo,0 mo,0.158984,1.000000
+Claude S4.5,overall,mcq,3,0.052502,0 mo,1-6 mo,0.168383,1.000000
+Claude S4.5,post,binary,3,0.014398,0 mo,>6 mo,0.888011,1.000000
+Claude S4.5,post,date,3,0.018765,1-6 mo,>6 mo,0.882312,1.000000
+Claude S4.5,post,frq,3,0.164965,>6 mo,0 mo,0.111789,1.000000
+Claude S4.5,post,mcq,3,0.033851,0 mo,>6 mo,0.714329,1.000000
+Claude S4.5,pre,binary,3,0.012403,0 mo,>6 mo,0.889411,1.000000
+Claude S4.5,pre,date,3,0.035991,0 mo,1-6 mo,0.570943,1.000000
+Claude S4.5,pre,frq,3,0.035808,1-6 mo,0 mo,0.865513,1.000000
+Claude S4.5,pre,mcq,3,0.079407,0 mo,1-6 mo,0.229777,1.000000
+Claude Sonnet 5,overall,binary,3,0.016369,1-6 mo,0 mo,0.826117,1.000000
+Claude Sonnet 5,overall,date,3,0.065707,0 mo,1-6 mo,0.000300,0.031197
+Claude Sonnet 5,overall,frq,3,0.148621,>6 mo,1-6 mo,0.165983,1.000000
+Claude Sonnet 5,overall,mcq,3,0.013588,0 mo,1-6 mo,0.717928,1.000000
+Claude Sonnet 5,post,binary,2,0.063409,0 mo,>6 mo,0.400860,1.000000
+Claude Sonnet 5,post,frq,2,0.131338,>6 mo,0 mo,0.420558,1.000000
+Claude Sonnet 5,post,mcq,2,0.077874,0 mo,>6 mo,0.284272,1.000000
+Claude Sonnet 5,pre,binary,3,0.019823,1-6 mo,0 mo,0.753825,1.000000
+Claude Sonnet 5,pre,date,3,0.052274,0 mo,>6 mo,0.010099,0.979602
+Claude Sonnet 5,pre,frq,3,0.120492,>6 mo,1-6 mo,0.316168,1.000000
+Claude Sonnet 5,pre,mcq,3,0.006387,0 mo,1-6 mo,0.962304,1.000000
+DeepSeek-R1,overall,binary,3,0.016746,1-6 mo,0 mo,0.762724,1.000000
+DeepSeek-R1,overall,date,3,0.062899,>6 mo,1-6 mo,0.009899,0.970103
+DeepSeek-R1,overall,frq,3,0.049162,>6 mo,0 mo,0.590341,1.000000
+DeepSeek-R1,overall,mcq,3,0.034166,0 mo,1-6 mo,0.666033,1.000000
+DeepSeek-R1,post,binary,3,0.031188,1-6 mo,0 mo,0.595540,1.000000
+DeepSeek-R1,post,date,3,0.057368,>6 mo,1-6 mo,0.229277,1.000000
+DeepSeek-R1,post,frq,3,0.125726,>6 mo,0 mo,0.081692,1.000000
+DeepSeek-R1,post,mcq,3,0.020315,>6 mo,1-6 mo,0.928007,1.000000
+DeepSeek-R1,pre,binary,3,0.031837,>6 mo,1-6 mo,0.841216,1.000000
+DeepSeek-R1,pre,date,3,0.041025,>6 mo,1-6 mo,0.207579,1.000000
+DeepSeek-R1,pre,frq,3,0.121357,0 mo,>6 mo,0.329267,1.000000
+DeepSeek-R1,pre,mcq,3,0.100955,0 mo,1-6 mo,0.389861,1.000000
+DeepSeek-V4-Pro,overall,binary,3,0.025776,1-6 mo,>6 mo,0.417058,1.000000
+DeepSeek-V4-Pro,overall,date,3,0.056714,>6 mo,0 mo,0.000200,0.021198
+DeepSeek-V4-Pro,overall,frq,3,0.122905,>6 mo,0 mo,0.037596,1.000000
+DeepSeek-V4-Pro,overall,mcq,3,0.051559,0 mo,>6 mo,0.112489,1.000000
+DeepSeek-V4-Pro,post,binary,2,0.066237,0 mo,>6 mo,0.327890,1.000000
+DeepSeek-V4-Pro,pre,binary,3,0.031281,1-6 mo,>6 mo,0.198480,1.000000
+DeepSeek-V4-Pro,pre,date,3,0.047897,>6 mo,0 mo,0.001300,0.131287
+DeepSeek-V4-Pro,pre,frq,3,0.114069,>6 mo,0 mo,0.073293,1.000000
+DeepSeek-V4-Pro,pre,mcq,3,0.050062,0 mo,>6 mo,0.138986,1.000000
+GPT-4o,overall,binary,3,0.013305,>6 mo,1-6 mo,0.844316,1.000000
+GPT-4o,overall,date,3,0.049543,>6 mo,0 mo,0.001000,0.102990
+GPT-4o,overall,frq,3,0.111788,1-6 mo,0 mo,0.250975,1.000000
+GPT-4o,overall,mcq,3,0.078747,0 mo,>6 mo,0.003000,0.299970
+GPT-4o,post,binary,3,0.013305,>6 mo,1-6 mo,0.844316,1.000000
+GPT-4o,post,date,3,0.049543,>6 mo,0 mo,0.001000,0.102990
+GPT-4o,post,frq,3,0.111788,1-6 mo,0 mo,0.250975,1.000000
+GPT-4o,post,mcq,3,0.078747,0 mo,>6 mo,0.003000,0.299970
+GPT-5.4,overall,binary,3,0.053087,1-6 mo,0 mo,0.134787,1.000000
+GPT-5.4,overall,date,3,0.046545,1-6 mo,>6 mo,0.191281,1.000000
+GPT-5.4,overall,frq,3,0.063121,0 mo,1-6 mo,0.395160,1.000000
+GPT-5.4,overall,mcq,3,0.028011,0 mo,1-6 mo,0.532947,1.000000
+GPT-5.4,post,binary,3,0.083206,1-6 mo,>6 mo,0.506649,1.000000
+GPT-5.4,post,date,3,0.047357,0 mo,>6 mo,0.509149,1.000000
+GPT-5.4,post,frq,3,0.046825,0 mo,1-6 mo,0.872813,1.000000
+GPT-5.4,post,mcq,3,0.077476,0 mo,>6 mo,0.306369,1.000000
+GPT-5.4,pre,binary,3,0.059111,1-6 mo,0 mo,0.122288,1.000000
+GPT-5.4,pre,date,3,0.047586,1-6 mo,>6 mo,0.301670,1.000000
+GPT-5.4,pre,frq,3,0.043109,0 mo,1-6 mo,0.802120,1.000000
+GPT-5.4,pre,mcq,3,0.027645,>6 mo,1-6 mo,0.717928,1.000000
+GPT-5.6 Sol,overall,binary,3,0.012976,1-6 mo,0 mo,0.744726,1.000000
+GPT-5.6 Sol,overall,date,3,0.046253,>6 mo,0 mo,0.115788,1.000000
+GPT-5.6 Sol,overall,frq,3,0.075287,0 mo,>6 mo,0.347265,1.000000
+GPT-5.6 Sol,overall,mcq,3,0.041061,0 mo,>6 mo,0.034497,1.000000
+GPT-5.6 Sol,post,binary,2,0.027551,>6 mo,0 mo,0.753225,1.000000
+GPT-5.6 Sol,post,frq,2,0.090572,0 mo,>6 mo,0.604040,1.000000
+GPT-5.6 Sol,post,mcq,2,0.046876,0 mo,>6 mo,0.571043,1.000000
+GPT-5.6 Sol,pre,binary,3,0.011592,>6 mo,0 mo,0.741126,1.000000
+GPT-5.6 Sol,pre,date,3,0.062680,>6 mo,0 mo,0.028397,1.000000
+GPT-5.6 Sol,pre,frq,3,0.069367,1-6 mo,>6 mo,0.554345,1.000000
+GPT-5.6 Sol,pre,mcq,3,0.039491,0 mo,>6 mo,0.041796,1.000000
+GPT-OSS 20B,overall,binary,3,0.017914,0 mo,>6 mo,0.484252,1.000000
+GPT-OSS 20B,overall,date,3,0.044954,>6 mo,0 mo,0.023098,1.000000
+GPT-OSS 20B,overall,frq,3,0.036924,>6 mo,1-6 mo,0.893911,1.000000
+GPT-OSS 20B,overall,mcq,3,0.045016,0 mo,>6 mo,0.135986,1.000000
+GPT-OSS 20B,post,binary,3,0.028409,0 mo,>6 mo,0.262774,1.000000
+GPT-OSS 20B,post,date,3,0.027269,>6 mo,0 mo,0.389361,1.000000
+GPT-OSS 20B,post,frq,3,0.082193,>6 mo,1-6 mo,0.595740,1.000000
+GPT-OSS 20B,post,mcq,3,0.033199,0 mo,>6 mo,0.487551,1.000000
+GPT-OSS 20B,pre,binary,3,0.036401,1-6 mo,0 mo,0.493651,1.000000
+GPT-OSS 20B,pre,date,3,0.035547,1-6 mo,>6 mo,0.335166,1.000000
+GPT-OSS 20B,pre,frq,3,0.103676,1-6 mo,>6 mo,0.747425,1.000000
+GPT-OSS 20B,pre,mcq,3,0.117631,0 mo,1-6 mo,0.185081,1.000000
+LLaMA 3.3 70B,overall,binary,3,0.011549,1-6 mo,>6 mo,0.757724,1.000000
+LLaMA 3.3 70B,overall,date,3,0.046389,>6 mo,0 mo,0.021898,1.000000
+LLaMA 3.3 70B,overall,frq,3,0.095486,1-6 mo,>6 mo,0.310869,1.000000
+LLaMA 3.3 70B,overall,mcq,3,0.053705,>6 mo,1-6 mo,0.412259,1.000000
+LLaMA 3.3 70B,post,binary,3,0.011549,1-6 mo,>6 mo,0.757724,1.000000
+LLaMA 3.3 70B,post,date,3,0.046389,>6 mo,0 mo,0.021898,1.000000
+LLaMA 3.3 70B,post,frq,3,0.095486,1-6 mo,>6 mo,0.310869,1.000000
+LLaMA 3.3 70B,post,mcq,3,0.053705,>6 mo,1-6 mo,0.412259,1.000000

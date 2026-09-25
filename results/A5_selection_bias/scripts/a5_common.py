@@ -6,9 +6,17 @@ Reads finalized reports and benchmark metadata only. No inference, no writes
 outside results/A5_selection_bias/.
 
 Stratification metadata available per event (see metadata_audit.md):
-  source     -- 6 strata, 100% coverage, pooled corpora (5,575 events)
-  citations  -- 481 events (8.6%), original corpus only, pinned-500 subset
-  latency    -- 708 events (12.7%), extension only, 0-3 months, right-censored
+  source        -- 6 strata, 100% coverage, pooled corpora (5,575 events)
+  visibility    -- OpenAlex cited_by_count, single snapshot (metadata/SNAPSHOT.json),
+                   every linked event that resolves (whole corpus)
+  vis_rate      -- the same counts per month since first observable date
+  latency       -- Crossref online-publication month minus CUSP first-observable
+                   month, every journal event (Nature/Science/Cell, both halves)
+  lat_review    -- Crossref online month minus manuscript-received month
+                   (Nature and Science deposit the received date; Cell does not)
+  legacy        -- the first-pass 481-event Semantic Scholar citations and the
+                   708-event extension latency, kept only so the earlier tables
+                   and the S19-S23 fold-in remain reproducible
 """
 from __future__ import annotations
 import json, math, os, sys
@@ -25,6 +33,9 @@ EXT  = f"{REPO}/benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026_monthn
 CITE = ("/home/seanwu/FutureScience_backup_20260508_013823/benchmark_data/"
         "CUSP/sample_500_stratified_with_citations.jsonl")
 CITE_RETRIEVED = "2026-05-12"          # mtime of CITE; Semantic Scholar batch API
+META_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "metadata")
+SNAPSHOT = (json.load(open(os.path.join(META_DIR, "SNAPSHOT.json")))["snapshot_date"]
+            if os.path.exists(os.path.join(META_DIR, "SNAPSHOT.json")) else None)
 
 TASKS = ["binary", "mcq", "date", "frq"]
 TASK_LABEL = {"binary": "Binary (bal. acc)", "mcq": "MCQ (acc)",
@@ -74,7 +85,132 @@ def load_meta():
                 n_cite += 1
     else:
         print(f"  WARN citation file missing: {CITE}", file=sys.stderr)
+    _attach_whole_corpus(meta)
     return meta, n_cite
+
+
+def _jsonl_by_doi(path):
+    out = {}
+    if os.path.exists(path):
+        for line in open(path, encoding="utf-8"):
+            if line.strip():
+                r = json.loads(line)
+                out[r["doi"]] = r
+    return out
+
+
+def _attach_whole_corpus(meta):
+    """Whole-corpus fields from metadata/ (a5_fetch_metadata.py), one snapshot.
+
+    cites      : Semantic Scholar citationCount, OpenAlex cited_by_count as the
+                 fallback (cite_src records which); None if neither resolved.
+                 S2 is primary because OpenAlex credits most arXiv citations to
+                 the later journal version and returns ~0 for arXiv records.
+    cite_rate  : cites per month between first-observable month and snapshot
+    online     : Crossref published-online (else created) month of the journal
+                 version, journal DOIs only
+    first_obs  : the earlier of CUSP's publication_date and any Crossref-linked
+                 preprint's posted month (the build pipeline missed some)
+    lat_obs    : online - first_obs, months the finding was publicly observable
+                 before formal publication (0 = no earlier public trace);
+                 negatives are clipped to 0 and counted in the manifest
+    lat_review : online - received (Nature, Science)
+    preprint   : earliest Crossref-linked preprint month, when a link exists
+    """
+    ids = os.path.join(META_DIR, "event_ids.json")
+    for m in meta.values():
+        m.update(doi=None, kind="none", cites=None, cite_rate=None, online=None,
+                 lat_obs=None, lat_review=None, preprint=None)
+    if not os.path.exists(ids) or SNAPSHOT is None:
+        print("  WARN whole-corpus metadata missing; run a5_fetch_metadata.py",
+              file=sys.stderr)
+        return
+    oa = _jsonl_by_doi(os.path.join(META_DIR, "openalex_citations.jsonl"))
+    s2 = _jsonl_by_doi(os.path.join(META_DIR, "s2_citations.jsonl"))
+    cr = _jsonl_by_doi(os.path.join(META_DIR, "crossref_dates.jsonl"))
+    pp = _jsonl_by_doi(os.path.join(META_DIR, "crossref_preprints.jsonl"))
+    snap_m = mo(SNAPSHOT)
+    for e in json.load(open(ids)):
+        m = meta.get(e["id"])
+        if m is None:
+            continue
+        m["doi"], m["kind"] = e["doi"], e["kind"]
+        m["cite_src"] = None
+        w = s2.get(e["doi"]) if e["doi"] else None
+        if w and w.get("found") and w.get("citation_count") is not None:
+            m["cites"], m["cite_src"] = int(w["citation_count"]), "s2"
+        else:
+            w = oa.get(e["doi"]) if e["doi"] else None
+            if w and w.get("found") and w.get("cited_by_count") is not None:
+                m["cites"], m["cite_src"] = int(w["cited_by_count"]), "openalex"
+        if m["cites"] is not None:
+            age = max(1, snap_m - mo(m["pub"]))
+            m["cite_rate"] = m["cites"] / age
+        r = cr.get(e["doi"]) if e["kind"] == "doi" else None
+        if r and r.get("found"):
+            posted = []
+            for pdoi in r.get("has_preprint") or []:
+                q = pp.get(pdoi)
+                if q and q.get("found"):
+                    d = q.get("posted") or q.get("created")
+                    if d and mo(d) is not None:
+                        posted.append(d[:7])
+            if posted:
+                m["preprint"] = min(posted)
+            # first observable = the earlier of CUSP's date and any Crossref-
+            # linked preprint the build pipeline missed. The cutoff partition
+            # stays on CUSP's publication_date (the benchmark's definition);
+            # only the latency uses the corrected date.
+            first = m["pub"]
+            if m["preprint"] and mo(m["preprint"]) < mo(first):
+                first = m["preprint"]
+            m["first_obs"] = first
+            m["preprint_gap"] = mo(m["pub"]) - mo(m["preprint"]) if m["preprint"] else None
+            online = r.get("published_online") or r.get("created")
+            if online and mo(online) is not None:
+                m["online"] = online[:7]
+                m["lat_obs_raw"] = mo(online) - mo(first)
+                m["lat_obs"] = max(0, m["lat_obs_raw"])
+                rec = (r.get("assertions") or {}).get("received")
+                if rec and mo(rec) is not None and mo(online) >= mo(rec):
+                    m["lat_review"] = mo(online) - mo(rec)
+
+
+def quartile_edges(meta, field):
+    vals = sorted(m[field] for m in meta.values() if m.get(field) is not None)
+    if not vals:
+        return None
+    return [float(np.quantile(vals, p)) for p in (0.25, 0.50, 0.75)]
+
+
+def qbin(v, edges):
+    if v is None or edges is None:
+        return None
+    if v <= edges[0]:
+        return "Q1"
+    if v <= edges[1]:
+        return "Q2"
+    if v <= edges[2]:
+        return "Q3"
+    return "Q4"
+
+
+# Whole-corpus latency bins. Edges are inclusive upper bounds in months; the
+# labels are what the tables print. Chosen from the observed distributions
+# (see metadata_audit.md, section 4) and fixed here so every script agrees.
+LAT_OBS_BINS = [(0, "0 mo"), (6, "1-6 mo"), (10**6, ">6 mo")]
+LAT_REVIEW_BINS = [(6, "<=6 mo"), (12, "7-12 mo"), (24, "13-24 mo"), (10**6, ">24 mo")]
+LAT_OBS_ORDER = [lab for _, lab in LAT_OBS_BINS]
+LAT_REVIEW_ORDER = [lab for _, lab in LAT_REVIEW_BINS]
+
+
+def edge_bin(v, bins):
+    if v is None:
+        return None
+    for hi, lab in bins:
+        if v <= hi:
+            return lab
+    return None
 
 
 def citation_quartiles(meta):
@@ -313,3 +449,122 @@ def fmt(c, dec=3):
     if c.get("suppressed"):
         return f"n<20 ({c['n']})"
     return f"{c['stat']:.{dec}f} [{c['lo']:.{dec}f}, {c['hi']:.{dec}f}] ({c['n']:,})"
+
+
+# --------------------------------------------------------------------------
+# stratification registry -- the single place that says which dimensions
+# exist, their stratum order and labels, and where their outputs live.
+# a5_analysis / a5_tables / a5_summarize / a5_figures / a5_make_response all
+# read this, so a dimension added here appears everywhere.
+# --------------------------------------------------------------------------
+def _qlabels(edges, fmt):
+    return {"Q1": f"Q1 (<={fmt(edges[0])})", "Q2": f"Q2 (<={fmt(edges[1])})",
+            "Q3": f"Q3 (<={fmt(edges[2])})", "Q4": f"Q4 (>{fmt(edges[2])})"}
+
+
+def dim_registry(meta, out_root):
+    """dim -> dict(title, short, order, labels, outdir, notes, key(meta_rec))."""
+    e_c = quartile_edges(meta, "cites")
+    e_r = quartile_edges(meta, "cite_rate")
+    e_l = citation_quartiles(meta)
+    n_c = sum(1 for m in meta.values() if m.get("cites") is not None)
+    n_r = sum(1 for m in meta.values() if m.get("cite_rate") is not None)
+    n_lo = sum(1 for m in meta.values() if m.get("lat_obs") is not None)
+    n_lr = sum(1 for m in meta.values() if m.get("lat_review") is not None)
+    n_leg_c = sum(1 for m in meta.values() if m.get("citations") is not None)
+    n_leg_l = sum(1 for m in meta.values() if m.get("latency") is not None)
+    N = len(meta)
+    cellnote = ("Cells are `value [95% CI] (n observations)`; binary n counts the "
+                "real and perturbed question separately. Cells below n=20 are printed "
+                "as `n<20 (n)` with no point estimate. `p (perm)` is a 10,000-draw "
+                "permutation test shuffling stratum labels across events; `p (Holm)` "
+                "is Holm-Bonferroni corrected across every model x partition x task "
+                "test in this stratification.")
+    R = {}
+    R["source"] = dict(
+        title="A5.1 -- performance by source / repository", short="source / venue",
+        order=SOURCE_ORDER, labels=SOURCE_LABEL, outdir=f"{out_root}/by_source",
+        key=lambda m: m["source"],
+        notes=["Entire dataset (5,575 events); `source` is one-to-one with the venue "
+               "(Nature = 10.1038/s41586, Science = 10.1126/science, Cell = "
+               "10.1016/j.cell, both AI feeds = arXiv), so this is simultaneously the "
+               "per-journal stratification. No stratum is a singleton, so no 'other' "
+               "bucket is needed.", "", cellnote])
+    R["visibility"] = dict(
+        title="A5.2 -- performance by event visibility (citation quartile, whole corpus)",
+        short="citation quartile", order=CITE_ORDER,
+        labels=_qlabels(e_c, lambda v: f"{int(v)}") if e_c else {},
+        outdir=f"{out_root}/by_visibility",
+        key=lambda m: qbin(m.get("cites"), e_c),
+        notes=[f"Citation counts for {n_c:,} of {N:,} events ({100*n_c/N:.1f}%): every "
+               "event with a paper link that resolved at Semantic Scholar (primary) or "
+               f"OpenAlex (fallback), one snapshot taken {SNAPSHOT}. Quartile edges over "
+               f"all {n_c:,} events: Q1 <= {int(e_c[0])}, Q2 <= {int(e_c[1])}, "
+               f"Q3 <= {int(e_c[2])}, Q4 > {int(e_c[2])}." if e_c else "no counts",
+               "", "Raw counts favour older events: an Apr-Aug 2026 extension event has "
+               "had a few months to be cited, a Jan 2024 event has had two and a half "
+               "years. Read this table together with the citation-rate version (A5.2b), "
+               "which divides by months since the first-observable date.", "", cellnote])
+    R["vis_rate"] = dict(
+        title="A5.2b -- performance by citation rate (citations per month since first observable, whole corpus)",
+        short="citation-rate quartile", order=CITE_ORDER,
+        labels=_qlabels(e_r, lambda v: f"{v:.2f}/mo") if e_r else {},
+        outdir=f"{out_root}/by_vis_rate",
+        key=lambda m: qbin(m.get("cite_rate"), e_r),
+        notes=[f"Citation rate = citations / max(1, months from first-observable month to "
+               f"the {SNAPSHOT} snapshot), for the same {n_r:,} events as A5.2. Quartile "
+               f"edges: Q1 <= {e_r[0]:.2f}, Q2 <= {e_r[1]:.2f}, Q3 <= {e_r[2]:.2f}, "
+               f"Q4 > {e_r[2]:.2f} citations per month." if e_r else "no rates",
+               "", "This is the age-adjusted visibility measure and the one we treat as "
+               "primary: it puts a 2026 extension event and a 2024 event on the same "
+               "footing.", "", cellnote])
+    R["latency"] = dict(
+        title="A5.3 -- performance by publication latency (months publicly observable before the journal version)",
+        short="publication latency", order=LAT_OBS_ORDER,
+        labels={s: s for s in LAT_OBS_ORDER}, outdir=f"{out_root}/by_latency",
+        key=lambda m: edge_bin(m.get("lat_obs"), LAT_OBS_BINS),
+        notes=[f"Latency = Crossref online-publication month of the journal version minus "
+               f"CUSP's first-observable month (`publication_date`, which the build "
+               f"pipeline set to the earliest date found across Crossref, bioRxiv, "
+               f"medRxiv, Semantic Scholar and Europe PMC). Computable for {n_lo:,} "
+               f"journal events (Nature, Science, Cell; both halves), i.e. every journal "
+               f"event whose DOI resolved at Crossref on {SNAPSHOT}. arXiv events have no "
+               "journal version and are excluded by construction; leaderboard items have "
+               "no paper.",
+               "", "0 mo means no earlier public trace was found: the first observable "
+               "date is the journal's own online date. Larger values mean a preprint or "
+               "other public record predated the journal version by that many months.",
+               "", cellnote])
+    R["lat_review"] = dict(
+        title="A5.3b -- performance by editorial latency (received -> online, Nature and Science)",
+        short="editorial latency", order=LAT_REVIEW_ORDER,
+        labels={s: s for s in LAT_REVIEW_ORDER}, outdir=f"{out_root}/by_lat_review",
+        key=lambda m: edge_bin(m.get("lat_review"), LAT_REVIEW_BINS),
+        notes=[f"Editorial latency = Crossref online-publication month minus the "
+               f"manuscript-received month deposited by the publisher. Nature and Science "
+               f"deposit received dates; Cell (Elsevier) does not, so this covers "
+               f"{n_lr:,} Nature and Science events. This measures how long the result "
+               "sat in peer review, a different construct from A5.3.", "", cellnote])
+    R["legacy_visibility"] = dict(
+        title="LEGACY A5.2 (first pass) -- citation quartile over the 481 pinned-subset events",
+        short="citation quartile (legacy 481)", order=CITE_ORDER,
+        labels=_qlabels(e_l, lambda v: f"{int(v)}") if e_l else {},
+        outdir=f"{out_root}/by_legacy/visibility_481",
+        key=lambda m: cite_bin(m.get("citations"), e_l),
+        notes=[f"Superseded by A5.2 / A5.2b. Kept so the first-pass tables and the "
+               f"S19-S23 fold-in remain reproducible: {n_leg_c} events, Semantic Scholar, "
+               f"retrieved {CITE_RETRIEVED}, original half only.", "", cellnote])
+    R["legacy_latency"] = dict(
+        title="LEGACY A5.3 (first pass) -- extension latency over 708 events",
+        short="publication latency (legacy 708)", order=LATENCY_ORDER,
+        labels={s: s for s in LATENCY_ORDER}, outdir=f"{out_root}/by_legacy/latency_708",
+        key=lambda m: latency_bin(m.get("latency")),
+        notes=[f"Superseded by A5.3. original_publication_date - first_date_found over "
+               f"{n_leg_l} extension events; for 96% of them first_date_found is the "
+               "Crossref record-creation date, so this mostly measured online-first "
+               "versus print-issue scheduling.", "", cellnote])
+    return R
+
+
+DIMS_MAIN = ["source", "visibility", "vis_rate", "latency", "lat_review"]
+DIMS_ALL = DIMS_MAIN + ["legacy_visibility", "legacy_latency"]

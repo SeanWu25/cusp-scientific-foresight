@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """
-a5_verify.py -- assert that every figure quoted in response_A5.md still matches
-the regenerated tables. Exits non-zero on any mismatch.
+a5_verify.py -- integrity checks for study A5. Exits non-zero on any failure.
+
+1. response_A5.md is byte-identical to a fresh run of a5_make_response.py
+   (so no number in it can have drifted from the CSVs).
+2. Every markdown table in the response has a consistent column count.
+3. The first-pass (legacy) dimensions still reproduce their published counts:
+   source 85/112, legacy visibility 6/93, legacy latency 0/72, within-discipline
+   4/705, S19-S23 fold-in 101 cells / 32 suppressed / 7 models.
+4. Coverage facts quoted in metadata_audit.md match MANIFEST.json.
+5. No stratification table prints a point estimate for a cell with n < 20.
 """
-import csv, json, sys, os
+import csv, json, os, re, subprocess, sys, tempfile
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.dirname(HERE)
-resp = open(f"{OUT}/response_A5.md").read()
-tab = open(f"{OUT}/tables/A5_tables.md").read()
-wd_md = open(f"{OUT}/by_source/within_discipline.md").read()
+PY = sys.executable
 fails, checks = [], 0
 
 
@@ -19,91 +25,63 @@ def ck(desc, cond):
     print(("PASS " if cond else "FAIL ") + desc)
 
 
-def sig(dim):
-    rows = list(csv.DictReader(open(f"{OUT}/by_{dim}/{dim}_tests.csv")))
+def sig(path):
+    rows = list(csv.DictReader(open(path)))
     return sum(1 for r in rows if float(r["p_holm"]) < 0.05), len(rows)
 
 
-def row_of(section, task):
-    blk = tab.split(f"## {section}")[1].split("\n## ")[0]
-    for line in blk.splitlines():
-        if line.startswith(f"| {task} |"):
-            return [x.strip() for x in line.strip().strip("|").split("|")][1:]
-    return None
+# 1. regenerate and diff
+tmp = tempfile.NamedTemporaryFile(suffix=".md", delete=False).name
+subprocess.run([PY, f"{HERE}/a5_make_response.py", "--out", tmp], check=True,
+               capture_output=True)
+resp = open(f"{OUT}/response_A5.md").read()
+ck("response_A5.md identical to a fresh a5_make_response.py run", open(tmp).read() == resp)
+os.unlink(tmp)
 
+# 2. table integrity
+bad, n_tab = 0, 0
+for block in re.split(r"\n\s*\n", resp):
+    lines = [l for l in block.splitlines() if l.startswith("|")]
+    if len(lines) >= 2 and lines[1].startswith("|---"):
+        n_tab += 1
+        w = lines[0].count("|")
+        bad += sum(1 for l in lines if l.count("|") != w)
+ck(f"{n_tab} markdown tables, all rows have consistent column counts", n_tab > 30 and bad == 0)
 
-def vals(section, task, k):
-    return [c.split(" ")[0] for c in row_of(section, task)[:k]]
-
-
-ck("source 85/112", sig("source") == (85, 112) and "85 of 112" in resp)
-ck("visibility 6/93", sig("visibility") == (6, 93) and "6 of 93" in resp)
-ck("latency 0/72", sig("latency") == (0, 72) and "0 of 72" in resp)
-wd = list(csv.DictReader(open(f"{OUT}/by_source/within_discipline_tests.csv")))
-ck("within-discipline 4/705",
-   (sum(1 for r in wd if float(r["p_holm"]) < 0.05), len(wd)) == (4, 705)
-   and "4 of 705" in resp)
-vrows = [r for r in csv.DictReader(open(f"{OUT}/by_visibility/visibility_tests.csv"))
-         if r["task"] != "date"]
-ck("visibility non-date 0/71",
-   len(vrows) == 71 and sum(1 for r in vrows if float(r["p_holm"]) < 0.05) == 0
-   and "0 of 71" in resp)
-
-S = "Source / Venue — OVERALL-cutoff"
-ck("source overall binary", vals(S, "Binary (bal. acc)", 6)
-   == ["0.517", "0.508", "0.519", "0.512", "0.525", "0.679"]
-   and "| Binary (bal. acc) | 0.517 | 0.508 | 0.519 | 0.512 | 0.525 | **0.679** |" in resp)
-ck("source overall mcq", vals(S, "MCQ (acc)", 6)
-   == ["0.711", "0.685", "0.696", "0.683", "0.700", "0.529"]
-   and "| MCQ (acc) | 0.711 | 0.685 | 0.696 | 0.683 | 0.700 | **0.529** |" in resp)
-ck("source overall date", vals(S, "Date (score)", 6)
-   == ["0.280", "0.248", "0.291", "0.502", "0.538", "0.464"]
-   and "| Date (score) | 0.280 | 0.248 | 0.291 | **0.502** | **0.538** | 0.464 |" in resp)
-ck("source overall frq", vals(S, "FRQ (0-10)", 5)
-   == ["4.16", "4.10", "4.32", "4.32", "4.34"]
-   and "| FRQ (0–10) | 4.16 | 4.10 | 4.32 | 4.32 | 4.34 | no items |" in resp)
-
-for task, exp, line in [
-    ("Binary (bal. acc)", ["0.528", "0.509", "0.517", "0.521"],
-     "| Binary (bal. acc) | 0.528 | 0.509 | 0.517 | 0.521 | 0 / 10 |"),
-    ("MCQ (acc)", ["0.693", "0.712", "0.703", "0.740"],
-     "| MCQ (acc) | 0.693 | 0.712 | 0.703 | 0.740 | 0 / 10 |"),
-    ("Date (score)", ["0.319", "0.346", "0.298", "0.338"],
-     "| Date (score) | 0.319 | 0.346 | 0.298 | 0.338 | 4 / 10 |"),
-    ("FRQ (0-10)", ["4.26", "4.20", "4.27", "4.18"],
-     "| FRQ (0–10) | 4.26 | 4.20 | 4.27 | 4.18 | 0 / 10 |")]:
-    ck(f"visibility overall {task}",
-       vals("Citation Quartile — OVERALL-cutoff", task, 4) == exp and line in resp)
-
-for task, exp, line in [
-    ("Binary (bal. acc)", ["0.499", "0.510", "0.519"],
-     "| Binary (bal. acc) | 0.499 | 0.510 | 0.519 | 0 / 9 |"),
-    ("MCQ (acc)", ["0.722", "0.658", "0.732"],
-     "| MCQ (acc) | 0.722 | 0.658 | 0.732 | 0 / 9 |"),
-    ("Date (score)", ["0.277", "0.267", "0.274"],
-     "| Date (score) | 0.277 | 0.267 | 0.274 | 0 / 9 |"),
-    ("FRQ (0-10)", ["4.12", "4.11", "4.27"],
-     "| FRQ (0–10) | 4.12 | 4.11 | 4.27 | 0 / 9 |")]:
-    ck(f"latency overall {task}",
-       vals("Publication Latency — OVERALL-cutoff", task, 3) == exp and line in resp)
-
-for disc, n, t, s in [("Biology", "1,438", "110", "2"),
-                      ("Artificial Intelligence", "1,181", "95", "1"),
-                      ("Medicine", "878", "105", "0"),
-                      ("Materials Science", "460", "110", "1"),
-                      ("Physics", "444", "98", "0"),
-                      ("Neuroscience", "379", "93", "0"),
-                      ("Chemistry", "226", "94", "0")]:
-    ck(f"within-discipline row {disc}",
-       f"| {n} | {t} | **{s}** |" in wd_md and f"| {n} | {t} | {s} |" in resp)
-
+# 3. legacy reproduction
+ck("source 85/112", sig(f"{OUT}/by_source/source_tests.csv") == (85, 112))
+ck("legacy visibility 6/93", sig(f"{OUT}/by_legacy/visibility_481/legacy_visibility_tests.csv") == (6, 93))
+ck("legacy latency 0/72", sig(f"{OUT}/by_legacy/latency_708/legacy_latency_tests.csv") == (0, 72))
+ck("within-discipline 4/705", sig(f"{OUT}/by_source/within_discipline_tests.csv") == (4, 705))
 g = json.load(open(f"{OUT}/by_visibility/citation_gap_S19_S23.json"))
 ck("S19-S23 101 cells / 32 suppressed / 7 models",
-   len(g) == 101 and sum(1 for r in g if r["suppressed"]) == 32
-   and len({r["model"] for r in g}) == 7
-   and "101 cells, **32 are" in resp and "three models to the seven" in resp)
-for s in ("481", "2026-05-12", "708", "34 of 1,274", "8.6%", "12.7%"):
-    ck(f"metadata fact {s!r} present", s in resp)
+   len(g) == 101 and sum(1 for r in g if r["suppressed"]) == 32 and len({r["model"] for r in g}) == 7)
+
+# 4. audit facts vs manifest
+man = json.load(open(f"{OUT}/MANIFEST.json"))
+audit = open(f"{OUT}/metadata_audit.md").read()
+for key, label in (("n_events_with_citations", "citations"), ("n_events_with_latency", "latency"),
+                   ("n_events_with_editorial_latency", "editorial latency")):
+    v = man[key]
+    ck(f"audit quotes {label} coverage {v:,}", f"{v:,}" in audit)
+ck("audit quotes snapshot date", man["metadata_snapshot_date"] in audit)
+ck("response quotes snapshot date", man["metadata_snapshot_date"] in resp)
+for dim in ("visibility", "vis_rate", "latency", "lat_review"):
+    ck(f"{dim} tables exist with all three partitions",
+       {r["partition"] for r in csv.DictReader(open(f"{man['dimensions'][dim]['outdir']}/{dim}_cells.csv"))}
+       >= {"pre", "post", "overall"})
+
+# 5. suppression honoured everywhere
+leak = 0
+for dim, spec in man["dimensions"].items():
+    p = f"{spec['outdir']}/{dim}_cells.csv"
+    if os.path.exists(p):
+        for r in csv.DictReader(open(p)):
+            if int(r["n_obs"]) < man["min_n"] and r["suppressed"] != "1":
+                leak += 1
+ck("no cell below min_n carries an unsuppressed estimate", leak == 0)
+ck("response prints no unsuppressed n<20 cell",
+   not re.search(r"\d\.\d{3} \[[^\]]+\] \((?:1?\d)\)", resp))
 
 print(f"\n{checks - len(fails)}/{checks} passed")
 if fails:

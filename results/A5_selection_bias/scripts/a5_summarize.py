@@ -14,10 +14,9 @@ from collections import defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.dirname(HERE)
 sys.path.insert(0, HERE); import a5_common as C
 
-DIMS = [("source", ["Nature", "Science", "Cell", "HF Daily Papers (arXiv)",
-                    "Top-10 AI Paper of Week (arXiv)", "Leaderboards"]),
-        ("visibility", ["Q1 (<=8)", "Q2 (<=22)", "Q3 (<=59)", "Q4 (>59)"]),
-        ("latency", ["0 mo", "1 mo", "2-3 mo"])]
+META, _ = C.load_meta()
+REG = C.dim_registry(META, OUT)
+DIMS = [(d, [REG[d]["labels"].get(x, x) for x in REG[d]["order"]]) for d in C.DIMS_ALL]
 
 
 def load(p):
@@ -39,8 +38,8 @@ def balanced(rows, part, task, order):
 
 def main():
     for dim, order in DIMS:
-        tests = load(f"{OUT}/by_{dim}/{dim}_tests.csv")
-        cells = load(f"{OUT}/by_{dim}/{dim}_cells.csv")
+        tests = load(f"{REG[dim]['outdir']}/{dim}_tests.csv")
+        cells = load(f"{REG[dim]['outdir']}/{dim}_cells.csv")
         if not tests:
             print(f"\n##### {dim}: no tests"); continue
         print(f"\n##### {dim.upper()}  ({len(cells)} cells, {len(tests)} tests)")

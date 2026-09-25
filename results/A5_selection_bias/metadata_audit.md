@@ -1,4 +1,4 @@
-# A5 Step 0 — what source metadata actually exists per event
+# A5 Step 0 — what source metadata actually exists per event (updated 2026-09-25)
 
 Reviewer 1, comment 5 asks us to stratify by **journal, repository, event
 visibility, novelty, and publication latency**. This file reports what the
@@ -69,74 +69,98 @@ Per-stratum task availability (events offering each task):
 | Top-10 AI Paper | 296 | 144 | 270 | 230 | 273 | 144 |
 | Leaderboards | 59 | 59 | 59 | 59 | **0** | 59 |
 
-## 3. Event visibility (citations) — FEASIBLE ONLY ON 8.6% OF THE CORPUS
+## 3. Event visibility (citations) — NOW FEASIBLE ON THE WHOLE CORPUS
 
-`citation_count` was never collected for the benchmark. It exists **only** for
-the pinned 500-event retrieval subset, in a file outside this repository:
+*First pass (2026-09-23).* `citation_count` had never been collected for the
+benchmark; it existed only for the pinned 500-event retrieval subset, in a file
+outside this repository (`/home/seanwu/FutureScience_backup_20260508_013823/benchmark_data/CUSP/sample_500_stratified_with_citations.jsonl`,
+481 of 500 events, Semantic Scholar with OpenAlex fallback, retrieved
+2026-05-12, quartile edges ≤8 / ≤22 / ≤59 — the edges of published S19–S23).
+That covered 8.6% of the benchmark and 0% of the extension.
 
-- file: `/home/seanwu/FutureScience_backup_20260508_013823/benchmark_data/CUSP/sample_500_stratified_with_citations.jsonl`
-- **481 of 500** events carry a count (19 failed: 10 "link format not
-  recognised", 9 "not found in S2 or OpenAlex")
-- source: **Semantic Scholar** batch API, OpenAlex fallback (`add_citations.py`)
-- **retrieval date: 2026-05-12** (file mtime; the script fetches live counts).
-  Counts move over time and this is one snapshot — it is now ~4 months stale.
-- range 0–1,161, median 22
-- all 481 are in the **original** half, publication dates 2024-01 → 2026-03
+*Second pass (2026-09-25).* The limit was a limit of the corpus files, not of
+the events, so `scripts/a5_fetch_metadata.py` and `scripts/a5_fetch_s2.py`
+took one snapshot over every event with a paper link:
 
-So the visibility stratification covers **481/5,575 = 8.6% of the benchmark**,
-and **0% of the extension**. It cannot be computed "on the full dataset" as the
-prompt asks. We did not fetch new counts: doing so would mix two retrieval
-dates in one analysis, and re-fetching all 5,575 would produce counts measured
-2026-09 against outcomes resolved by 2026-08, a different (and for the recent
-half, near-zero-by-construction) quantity.
+| source | role | requests | resolved |
+|---|---|---|---|
+| Semantic Scholar `/graph/v1/paper/batch` (`ARXIV:<id>` / `DOI:<doi>`, 500 per call) | primary | 11 | 5,443 |
+| OpenAlex `/works?filter=doi:` (50 per call) | fallback | 110 | +70 |
+| leaderboard items | no paper | — | 59 excluded |
 
-Quartile edges over those 481 events are **Q1 ≤ 8, Q2 ≤ 22, Q3 ≤ 59, Q4 > 59** —
-recomputed here and identical to the edges used in published Supplementary
-Tables S19–S23, confirming those tables used this same file.
+**5,513 of 5,575 events (98.9%) carry a citation count**; 3 linked events
+resolved at neither service. Snapshot date is in `metadata/SNAPSHOT.json`; the
+raw records are `metadata/s2_citations.jsonl` and `metadata/openalex_citations.jsonl`,
+cached so a rerun never re-fetches.
 
-A further structural limit: because the subset spans 2024-01 to 2026-03, a model
-with an early cutoff has *every* citation-bearing event post-cutoff, and a model
-with a late cutoff has *every* one pre-cutoff. For most models one of the two
-partitions does not exist at all — by construction, not by suppression.
+Two things learned on the way:
 
-## 4. Publication latency — FEASIBLE ONLY ON THE EXTENSION (12.7%), AND CENSORED
+- **OpenAlex is unusable for arXiv items.** It credits most arXiv citations to
+  the later journal version and returned a median of 0 citations for the HF
+  Daily Papers feed (and no record at all for 229 of 1,190 arXiv events).
+  Semantic Scholar gives the same feed a median of 61. Hence S2 primary.
+- **The two snapshots agree.** On the 481 first-pass events, May-2026 S2 counts
+  versus September-2026 counts have Spearman ρ = 0.965. The earlier tables
+  were narrow, not wrong.
 
-The original half has **no preprint or first-seen date field whatsoever**, so it
-contributes nothing. The extension has three date fields on 708/815 events.
+Quartile edges over all 5,513 events are Q1 ≤ 10, Q2 ≤ 28, Q3 ≤ 68. Because
+raw counts favour older events (the extension has had at most five months to be
+cited), the analysis also uses a **citation rate** — count divided by months
+from the first-observable month to the snapshot — with edges 0.96 / 1.83 /
+3.94 citations per month. The S19–S23 fold-in keeps the May-2026 file and
+edges, because its job is to reproduce the published tables.
 
-One trap we checked before using them: `first_date_found` is **identical to
-`publication_date` for all 708 events** (verified, 708/708), because
-`publication_date` was *derived* from it during month-normalisation. Computing
-latency as `publication_date − first_date_found` therefore returns exactly 0 for
-every event — a spurious null. The real interval is:
+## 4. Publication latency — NOW FEASIBLE ON EVERY JOURNAL EVENT
 
-> **latency = `original_publication_date` − `first_date_found`**
+*First pass.* The only latency-like fields were the extension's
+`first_date_found` / `original_publication_date` (708 events). On inspection,
+`first_date_found` is the Crossref record-creation date for 96% of them, so
+`original_publication_date − first_date_found` mostly measured online-first
+versus print-issue scheduling (0–3 months), with no pre-cutoff partition. It is
+kept under `by_legacy/latency_708/` and is superseded.
 
-| latency | n | share |
-|---|---|---|
-| 0 months | 442 | 62.4% |
-| 1 month | 156 | 22.0% |
-| 2 months | 101 | 14.3% |
-| 3 months | 9 | 1.3% |
+*Second pass.* Two facts make a whole-corpus latency computable:
 
-Bins used: **0 mo / 1 mo / 2–3 mo** (the 3-month cell has n=9 and is pooled
-upward rather than printed). Excluded for lack of a preprint date: **107
-extension events + all 4,760 original events = 4,867 of 5,575 (87.3%)**.
+1. **CUSP's `publication_date` is already the first-observable date.** The build
+   pipeline set it to the earliest date found across Crossref, bioRxiv, medRxiv,
+   Semantic Scholar and Europe PMC (verified in the horizon study: the cached
+   lookup equals `publication_date` for all 3,642 original DOI events).
+2. **Crossref returns the journal version's own dates for every journal DOI.**
+   `scripts/a5_fetch_metadata.py` fetched all 4,326 (Nature 2,493, Science
+   1,249, Cell 584; both halves): `created`, `published-online`,
+   `published-print`, `issued`; the `received` / `accepted` / `first_online`
+   assertions; and `has-preprint` relations, then the posted date of each of
+   the 503 linked preprints. Raw records: `metadata/crossref_dates.jsonl`,
+   `metadata/crossref_preprints.jsonl`.
 
-`first_date_source` for the 708: Crossref `created` 677, arXiv 24, bioRxiv
-preprint 4, Semantic Scholar 2, OpenAlex 1. Crossref `created` is a DOI-record
-date, not a true preprint posting date, so for 96% of these events the measured
-quantity is "first indexed → issue publication", not "preprint → publication".
+Definitions used:
 
-The range is **right-censored by the extension window** (Apr–Aug 2026): a paper
-first seen in August cannot exhibit a 4-month latency inside the corpus, so the
-upper tail is missing rather than empty.
+> **latency** = online month of the journal version − first-observable month,
+> where first-observable = the earlier of CUSP's `publication_date` and any
+> Crossref-linked preprint's posted month. **4,326 events (77.6%)**, both
+> halves, all three partitions.
+>
+> **editorial latency** = online month − manuscript-received month. Nature and
+> Science deposit received dates; Cell (Elsevier) does not. **3,740 events
+> (67.1%)**.
 
-Finally, the extension is **post-cutoff for every model in the panel** (it
-postdates the latest cutoff, 2026-04). This stratification therefore has **no
-pre-cutoff partition for any model**, and its OVERALL column equals its
-POST-CUTOFF column. The pre/post contrast the prompt asks for cannot be formed
-here.
+Distribution of latency: 0 months for 84.1% of journal events (no earlier
+public record found by either the build pipeline or Crossref), 1–6 months for
+5.4%, more than six months for 10.5% (maximum 54). Bins are therefore
+0 / 1–6 / >6 months; finer bins fall below n = 20 in most per-model
+post-cutoff cells. Editorial latency quartiles are 7 / 11 / 15 months; bins
+≤6 / 7–12 / 13–24 / >24.
+
+**A dating correction this surfaced.** For 246 of the 493 journal events with a
+Crossref-linked preprint, the preprint was posted before CUSP's
+`publication_date` — median 11 months earlier (IQR 7–15) — so the build
+pipeline's earliest-date search missed them. The latency uses the corrected
+date; the cutoff partition keeps the benchmark's own date, and the response
+reports per model how many post-cutoff journal events had a preprint before
+the cutoff (1.3–4.8%).
+
+arXiv events (1,190) have no journal version and no latency by construction;
+leaderboard items (59) have no paper.
 
 ## 5. Novelty — NOT COMPUTED
 
@@ -171,14 +195,15 @@ postdates their cutoffs — so their PRE columns are empty everywhere below.
 DeepSeek-V4-Pro's post-cutoff partition is exactly the 815-event extension.
 DeepSeek-R1 covers the original half only (4,760).
 
-## 7. Verdict on feasibility
+## 7. Verdict on feasibility (second pass)
 
 | stratification | verdict | coverage | partitions available |
 |---|---|---|---|
-| **Journal** | feasible; **identical to repository** | 100% | pre / post / overall |
-| **Repository / source** | feasible as specified | 100% | pre / post / overall |
-| **Event visibility (citations)** | **feasible on 8.6% only** | 481 events, original half, pinned-500 | one partition per model, by construction |
-| **Publication latency** | **feasible on 12.7% only**, censored, and the interval is "first indexed → published" not "preprint → published" for 96% of it | 708 events, extension only | **post only** |
+| **Journal** | feasible; **identical to repository** | 100% (5,575) | pre / post / overall |
+| **Repository / source** | feasible as specified | 100% (5,575) | pre / post / overall |
+| **Event visibility (citations)** | feasible on the whole corpus, single snapshot 2026-09-25; raw and age-adjusted quartiles | 5,513 events (98.9%) | pre / post / overall |
+| **Publication latency** | feasible on every journal event; arXiv items have no journal version | 4,326 events (77.6%) | pre / post / overall |
+| **Editorial latency** | feasible for Nature and Science | 3,740 events (67.1%) | pre / post / overall |
 | **Novelty** | not computed by instruction | — | — |
 
 ## 8. What we used for FRQ
