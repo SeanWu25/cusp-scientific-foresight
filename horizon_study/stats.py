@@ -60,7 +60,9 @@ def auroc(s, y):
 
 # ----------------------------------------------------------------------------- metric extraction
 def outcome_columns(task_group: str) -> list[str]:
-    return {"binary_merged": ["accuracy"], "mcq": ["accuracy"], "date": ["signed_err", "abs_err", "date_score"]}[task_group]
+    return {"binary_merged": ["accuracy"], "mcq": ["accuracy"],
+            "date": ["signed_err", "abs_err", "date_score"],
+            "frq": ["frq_score"]}[task_group]
 
 
 def metric_series(df: pd.DataFrame, task_group: str, metric: str) -> pd.Series:

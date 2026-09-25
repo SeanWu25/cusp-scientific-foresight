@@ -47,6 +47,17 @@
   {
    "dataset": "orig",
    "model": "claude45",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.14427718831234804,
+   "doi": 0.09031847823347446,
+   "same_sign": true,
+   "sig_first": true,
+   "sig_doi": false
+  },
+  {
+   "dataset": "orig",
+   "model": "claude45",
    "task": "mcq",
    "metric": "accuracy",
    "first": -0.02699733281559441,
@@ -98,6 +109,17 @@
    "same_sign": true,
    "sig_first": true,
    "sig_doi": true
+  },
+  {
+   "dataset": "orig",
+   "model": "deepseek_r1",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.05966296092475404,
+   "doi": 0.025776555416408352,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
   },
   {
    "dataset": "orig",
@@ -157,6 +179,17 @@
   {
    "dataset": "orig",
    "model": "gpt4o",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.036773804500949824,
+   "doi": 0.040657660153369,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
+  },
+  {
+   "dataset": "orig",
+   "model": "gpt4o",
    "task": "mcq",
    "metric": "accuracy",
    "first": -0.04088274646781168,
@@ -205,6 +238,17 @@
    "metric": "date_score",
    "first": -0.056429897957706844,
    "doi": -0.003968767473068062,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
+  },
+  {
+   "dataset": "orig",
+   "model": "gpt54",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.24161459713543804,
+   "doi": 0.21355679084046375,
    "same_sign": true,
    "sig_first": false,
    "sig_doi": false
@@ -267,6 +311,17 @@
   {
    "dataset": "orig",
    "model": "gptoss20b",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.06532730873938412,
+   "doi": 0.08847072549714179,
+   "same_sign": true,
+   "sig_first": true,
+   "sig_doi": true
+  },
+  {
+   "dataset": "orig",
+   "model": "gptoss20b",
    "task": "mcq",
    "metric": "accuracy",
    "first": -0.030605097257395526,
@@ -318,6 +373,17 @@
    "same_sign": true,
    "sig_first": true,
    "sig_doi": true
+  },
+  {
+   "dataset": "orig",
+   "model": "llama33",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": -0.033059412440023014,
+   "doi": -0.022184536326664922,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
   },
   {
    "dataset": "orig",
@@ -377,6 +443,17 @@
   {
    "dataset": "merged",
    "model": "claude45",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.030191152160595383,
+   "doi": 0.020568470607163054,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
+  },
+  {
+   "dataset": "merged",
+   "model": "claude45",
    "task": "mcq",
    "metric": "accuracy",
    "first": 0.020705881081963216,
@@ -432,6 +509,17 @@
   {
    "dataset": "merged",
    "model": "deepseek_r1",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.05966296092475404,
+   "doi": 0.025776555416408352,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
+  },
+  {
+   "dataset": "merged",
+   "model": "deepseek_r1",
    "task": "mcq",
    "metric": "accuracy",
    "first": -0.014189114383098937,
@@ -480,6 +568,17 @@
    "metric": "date_score",
    "first": 0.18349922216821052,
    "doi": 0.11254020815802304,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
+  },
+  {
+   "dataset": "merged",
+   "model": "dsv4pro",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.02777645740672014,
+   "doi": 0.5845866865639744,
    "same_sign": true,
    "sig_first": false,
    "sig_doi": false
@@ -542,6 +641,17 @@
   {
    "dataset": "merged",
    "model": "gpt4o",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.06305160291206814,
+   "doi": 0.06702986620939898,
+   "same_sign": true,
+   "sig_first": true,
+   "sig_doi": true
+  },
+  {
+   "dataset": "merged",
+   "model": "gpt4o",
    "task": "mcq",
    "metric": "accuracy",
    "first": -0.04637353332239817,
@@ -590,6 +700,17 @@
    "metric": "date_score",
    "first": -0.10129814488466228,
    "doi": -0.06648116272129938,
+   "same_sign": true,
+   "sig_first": true,
+   "sig_doi": true
+  },
+  {
+   "dataset": "merged",
+   "model": "gpt54",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": -0.30298971930932966,
+   "doi": -0.28406705827063417,
    "same_sign": true,
    "sig_first": true,
    "sig_doi": true
@@ -652,6 +773,17 @@
   {
    "dataset": "merged",
    "model": "gptoss20b",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.0276318197053222,
+   "doi": 0.04347847291200338,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
+  },
+  {
+   "dataset": "merged",
+   "model": "gptoss20b",
    "task": "mcq",
    "metric": "accuracy",
    "first": 0.0012575150188207961,
@@ -707,11 +839,88 @@
   {
    "dataset": "merged",
    "model": "llama33",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": -0.04087874659351661,
+   "doi": -0.03358432089358267,
+   "same_sign": true,
+   "sig_first": true,
+   "sig_doi": true
+  },
+  {
+   "dataset": "merged",
+   "model": "llama33",
    "task": "mcq",
    "metric": "accuracy",
    "first": -0.018670504743835456,
    "doi": -0.01208829158726167,
    "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "binary_merged",
+   "metric": "accuracy",
+   "first": 0.16683032230566117,
+   "doi": 0.16466513449648643,
+   "same_sign": true,
+   "sig_first": true,
+   "sig_doi": true
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "date",
+   "metric": "signed_err",
+   "first": -23.817598809502716,
+   "doi": -13.776315087257387,
+   "same_sign": true,
+   "sig_first": true,
+   "sig_doi": false
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "date",
+   "metric": "abs_err",
+   "first": 20.340708983648362,
+   "doi": 13.013075267286922,
+   "same_sign": true,
+   "sig_first": true,
+   "sig_doi": false
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "date",
+   "metric": "date_score",
+   "first": -0.332921358591308,
+   "doi": -0.24861644211044243,
+   "same_sign": true,
+   "sig_first": true,
+   "sig_doi": true
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": -0.28161247011144963,
+   "doi": -0.15585586439649496,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "mcq",
+   "metric": "accuracy",
+   "first": 0.05532140641832925,
+   "doi": -0.006305080702181744,
+   "same_sign": false,
    "sig_first": false,
    "sig_doi": false
   },
@@ -758,6 +967,17 @@
    "same_sign": true,
    "sig_first": false,
    "sig_doi": true
+  },
+  {
+   "dataset": "merged",
+   "model": "sol",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": 0.059777637478999425,
+   "doi": -0.18699501688877226,
+   "same_sign": false,
+   "sig_first": false,
+   "sig_doi": false
   },
   {
    "dataset": "merged",
@@ -817,6 +1037,17 @@
   {
    "dataset": "merged",
    "model": "sonnet5",
+   "task": "frq",
+   "metric": "frq_score",
+   "first": -0.22287681577491295,
+   "doi": -0.05699718103178955,
+   "same_sign": true,
+   "sig_first": false,
+   "sig_doi": false
+  },
+  {
+   "dataset": "merged",
+   "model": "sonnet5",
    "task": "mcq",
    "metric": "accuracy",
    "first": 0.0992649762919279,
@@ -829,48 +1060,48 @@
  "doi_pooled": {
   "orig": {
    "binary_merged": {
-    "mean": -0.015886678464650854,
-    "sd": 0.02368202488383523,
-    "ci_lo": -0.0623034472369679,
-    "ci_hi": 0.030530090307666194,
-    "z": -0.6708327747554522
+    "mean": -0.019594293281435898,
+    "sd": 0.02389460747328071,
+    "ci_lo": -0.0664277239290661,
+    "ci_hi": 0.027239137366194297,
+    "z": -0.8200299294870825
    },
    "mcq": {
-    "mean": -0.18212494939816817,
-    "sd": 0.07712802566744752,
-    "ci_lo": -0.3332958797063653,
-    "ci_hi": -0.03095401908997103,
-    "z": -2.361332963240046
+    "mean": -0.18237147964574688,
+    "sd": 0.07712100852628485,
+    "ci_lo": -0.3335286563572652,
+    "ci_hi": -0.031214302934228555,
+    "z": -2.364744485720644
    },
    "date:abs_err": {
-    "mean": -5.390319909523519,
-    "sd": 0.5541021228626286,
-    "ci_lo": -6.4763600703342705,
-    "ci_hi": -4.304279748712767,
-    "z": -9.728026093233126
+    "mean": -5.1221917483550445,
+    "sd": 0.5437498151280948,
+    "ci_lo": -6.18794138600611,
+    "ci_hi": -4.056442110703979,
+    "z": -9.420125958384695
    }
   },
   "merged": {
    "binary_merged": {
-    "mean": -0.04267854778019613,
-    "sd": 0.020712270498552808,
-    "ci_lo": -0.08327459795735963,
-    "ci_hi": -0.0020824976030326264,
-    "z": -2.0605441486088223
+    "mean": -0.03933102494668309,
+    "sd": 0.021203364613866887,
+    "ci_lo": -0.08088961958986218,
+    "ci_hi": 0.0022275696964960054,
+    "z": -1.8549426311784882
    },
    "mcq": {
-    "mean": -0.12369357748948152,
-    "sd": 0.06099975075621525,
-    "ci_lo": -0.24325308897166342,
-    "ci_hi": -0.004134066007299639,
-    "z": -2.027771850803479
+    "mean": -0.125459029371029,
+    "sd": 0.060956576267469156,
+    "ci_lo": -0.24493391885526855,
+    "ci_hi": -0.005984139886789475,
+    "z": -2.0581705379995734
    },
    "date:abs_err": {
-    "mean": -5.16119446095795,
-    "sd": 0.4660281516972495,
-    "ci_lo": -6.074609638284559,
-    "ci_hi": -4.247779283631341,
-    "z": -11.074855547162027
+    "mean": -4.950768014905221,
+    "sd": 0.45509782091456014,
+    "ci_lo": -5.8427597438977585,
+    "ci_hi": -4.058776285912684,
+    "z": -10.878470050584303
    }
   }
  },
@@ -914,6 +1145,16 @@
    "alt": 0.005329898179928053,
    "n_primary": 1293,
    "n_alt": 677
+  },
+  {
+   "dataset": "orig",
+   "model": "claude45",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.14427718831234804,
+   "alt": -0.27049576134774306,
+   "n_primary": 2181,
+   "n_alt": 1151
   },
   {
    "dataset": "orig",
@@ -968,6 +1209,16 @@
   {
    "dataset": "orig",
    "model": "deepseek_r1",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.05966296092475404,
+   "alt": 0.04581537295072234,
+   "n_primary": 3231,
+   "n_alt": 4100
+  },
+  {
+   "dataset": "orig",
+   "model": "deepseek_r1",
    "task": "mcq",
    "metric": "accuracy",
    "primary": -0.014189114383098937,
@@ -1018,6 +1269,16 @@
   {
    "dataset": "merged",
    "model": "claude45",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.030191152160595383,
+   "alt": -0.18922194438050638,
+   "n_primary": 2739,
+   "n_alt": 1709
+  },
+  {
+   "dataset": "merged",
+   "model": "claude45",
    "task": "mcq",
    "metric": "accuracy",
    "primary": 0.020705881081963216,
@@ -1064,6 +1325,16 @@
    "alt": 0.2079895816871894,
    "n_primary": 1702,
    "n_alt": 2326
+  },
+  {
+   "dataset": "merged",
+   "model": "deepseek_r1",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.05966296092475404,
+   "alt": 0.04581537295072234,
+   "n_primary": 3231,
+   "n_alt": 4100
   },
   {
    "dataset": "merged",
@@ -1120,6 +1391,16 @@
   {
    "dataset": "orig",
    "model": "claude45",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.14427718831234804,
+   "alt": 0.1187966666535625,
+   "n_primary": 2181,
+   "n_alt": 2349
+  },
+  {
+   "dataset": "orig",
+   "model": "claude45",
    "task": "mcq",
    "metric": "accuracy",
    "primary": -0.02699733281559441,
@@ -1166,6 +1447,16 @@
    "alt": 0.1959756941164999,
    "n_primary": 1702,
    "n_alt": 1806
+  },
+  {
+   "dataset": "orig",
+   "model": "deepseek_r1",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.05966296092475404,
+   "alt": 0.07542558089242253,
+   "n_primary": 3231,
+   "n_alt": 3374
   },
   {
    "dataset": "orig",
@@ -1220,6 +1511,16 @@
   {
    "dataset": "orig",
    "model": "gpt54",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.24161459713543804,
+   "alt": 0.25307995654819837,
+   "n_primary": 1019,
+   "n_alt": 1205
+  },
+  {
+   "dataset": "orig",
+   "model": "gpt54",
    "task": "mcq",
    "metric": "accuracy",
    "primary": -0.17362968089181854,
@@ -1266,6 +1567,16 @@
    "alt": 0.17846125048245376,
    "n_primary": 2126,
    "n_alt": 2256
+  },
+  {
+   "dataset": "orig",
+   "model": "gptoss20b",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.06532730873938412,
+   "alt": 0.06710380340152948,
+   "n_primary": 3390,
+   "n_alt": 3552
   },
   {
    "dataset": "orig",
@@ -1320,6 +1631,16 @@
   {
    "dataset": "merged",
    "model": "claude45",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.030191152160595383,
+   "alt": 0.025958853698909573,
+   "n_primary": 2739,
+   "n_alt": 2907
+  },
+  {
+   "dataset": "merged",
+   "model": "claude45",
    "task": "mcq",
    "metric": "accuracy",
    "primary": 0.020705881081963216,
@@ -1366,6 +1687,16 @@
    "alt": 0.1959756941164999,
    "n_primary": 1702,
    "n_alt": 1806
+  },
+  {
+   "dataset": "merged",
+   "model": "deepseek_r1",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.05966296092475404,
+   "alt": 0.07542558089242253,
+   "n_primary": 3231,
+   "n_alt": 3374
   },
   {
    "dataset": "merged",
@@ -1420,6 +1751,16 @@
   {
    "dataset": "merged",
    "model": "dsv4pro",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.02777645740672014,
+   "alt": 0.09191747990622845,
+   "n_primary": 497,
+   "n_alt": 629
+  },
+  {
+   "dataset": "merged",
+   "model": "dsv4pro",
    "task": "mcq",
    "metric": "accuracy",
    "primary": 0.07096569538224945,
@@ -1466,6 +1807,16 @@
    "alt": -0.09752276021190204,
    "n_primary": 765,
    "n_alt": 876
+  },
+  {
+   "dataset": "merged",
+   "model": "gpt54",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": -0.30298971930932966,
+   "alt": -0.23388511156513916,
+   "n_primary": 1647,
+   "n_alt": 1833
   },
   {
    "dataset": "merged",
@@ -1520,12 +1871,82 @@
   {
    "dataset": "merged",
    "model": "gptoss20b",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.0276318197053222,
+   "alt": 0.03162260145140454,
+   "n_primary": 4018,
+   "n_alt": 4180
+  },
+  {
+   "dataset": "merged",
+   "model": "gptoss20b",
    "task": "mcq",
    "metric": "accuracy",
    "primary": 0.0012575150188207961,
    "alt": 0.007960178751021316,
    "n_primary": 3986,
    "n_alt": 4151
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "binary_merged",
+   "metric": "accuracy",
+   "primary": 0.16683032230566117,
+   "alt": 0.1895632105966406,
+   "n_primary": 1130,
+   "n_alt": 1354
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "date",
+   "metric": "signed_err",
+   "primary": -23.817598809502716,
+   "alt": -13.876257131094516,
+   "n_primary": 314,
+   "n_alt": 400
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "date",
+   "metric": "abs_err",
+   "primary": 20.340708983648362,
+   "alt": 16.374856925700907,
+   "n_primary": 314,
+   "n_alt": 400
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "date",
+   "metric": "date_score",
+   "primary": -0.332921358591308,
+   "alt": -0.2032706531926966,
+   "n_primary": 314,
+   "n_alt": 400
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": -0.28161247011144963,
+   "alt": -0.24973562778892663,
+   "n_primary": 827,
+   "n_alt": 1001
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "mcq",
+   "metric": "accuracy",
+   "primary": 0.05532140641832925,
+   "alt": 0.027266019104002136,
+   "n_primary": 759,
+   "n_alt": 910
   },
   {
    "dataset": "merged",
@@ -1566,6 +1987,16 @@
    "alt": -0.09070811079988103,
    "n_primary": 199,
    "n_alt": 319
+  },
+  {
+   "dataset": "merged",
+   "model": "sol",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": 0.059777637478999425,
+   "alt": -0.30357052811904206,
+   "n_primary": 633,
+   "n_alt": 827
   },
   {
    "dataset": "merged",
@@ -1616,6 +2047,16 @@
    "alt": -0.2531843676541302,
    "n_primary": 315,
    "n_alt": 403
+  },
+  {
+   "dataset": "merged",
+   "model": "sonnet5",
+   "task": "frq",
+   "metric": "frq_score",
+   "primary": -0.22287681577491295,
+   "alt": -0.14539051786411947,
+   "n_primary": 822,
+   "n_alt": 996
   },
   {
    "dataset": "merged",
@@ -1731,6 +2172,33 @@
     "6m": {
      "delta": -7.491558441558442,
      "dir": -1,
+     "n_bins": 3,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "orig",
+   "model": "claude45",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.19905611708733773,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": 0.2215703901771855,
+     "dir": 1,
+     "n_bins": 7,
+     "monotone": 0.5
+    },
+    "6m": {
+     "delta": 0.1400229301849052,
+     "dir": 1,
      "n_bins": 3,
      "monotone": 1.0
     }
@@ -1875,6 +2343,33 @@
   {
    "dataset": "orig",
    "model": "deepseek_r1",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.09476322829914441,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": 0.1782913165266109,
+     "dir": 1,
+     "n_bins": 10,
+     "monotone": 0.5555555555555556
+    },
+    "6m": {
+     "delta": 0.0906144884732134,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "orig",
+   "model": "deepseek_r1",
    "task": "mcq",
    "metric": "accuracy",
    "schemes": {
@@ -2010,6 +2505,33 @@
   {
    "dataset": "orig",
    "model": "gpt4o",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": -0.1332241476472249,
+     "dir": -1,
+     "n_bins": 5,
+     "monotone": 0.5
+    },
+    "2m": {
+     "delta": 0.017236947791164692,
+     "dir": 1,
+     "n_bins": 13,
+     "monotone": 0.5833333333333334
+    },
+    "6m": {
+     "delta": 0.1269974217003087,
+     "dir": 1,
+     "n_bins": 5,
+     "monotone": 0.5
+    }
+   },
+   "agree": false
+  },
+  {
+   "dataset": "orig",
+   "model": "gpt4o",
    "task": "mcq",
    "metric": "accuracy",
    "schemes": {
@@ -2114,6 +2636,28 @@
     },
     "2m": {
      "delta": 6.13504411841487,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "6m": null
+   },
+   "agree": true
+  },
+  {
+   "dataset": "orig",
+   "model": "gpt54",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.05997214298624076,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": 0.08163953488372133,
      "dir": 1,
      "n_bins": 3,
      "monotone": 1.0
@@ -2246,6 +2790,33 @@
     "6m": {
      "delta": -11.988737747255971,
      "dir": -1,
+     "n_bins": 4,
+     "monotone": 0.6666666666666666
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "orig",
+   "model": "gptoss20b",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.09385005325807239,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": 0.027861382298885573,
+     "dir": 1,
+     "n_bins": 10,
+     "monotone": 0.4444444444444444
+    },
+    "6m": {
+     "delta": 0.03388946155196715,
+     "dir": 1,
      "n_bins": 4,
      "monotone": 0.6666666666666666
     }
@@ -2390,6 +2961,33 @@
   {
    "dataset": "orig",
    "model": "llama33",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": -0.07217485984339511,
+     "dir": -1,
+     "n_bins": 5,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": 0.032661290322580694,
+     "dir": 1,
+     "n_bins": 13,
+     "monotone": 0.5
+    },
+    "6m": {
+     "delta": -0.07065709340806547,
+     "dir": -1,
+     "n_bins": 5,
+     "monotone": 0.75
+    }
+   },
+   "agree": false
+  },
+  {
+   "dataset": "orig",
+   "model": "llama33",
    "task": "mcq",
    "metric": "accuracy",
    "schemes": {
@@ -2494,6 +3092,28 @@
     },
     "2m": {
      "delta": -5.931497418244405,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    },
+    "6m": null
+   },
+   "agree": false
+  },
+  {
+   "dataset": "ext",
+   "model": "dsv4pro",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.07373629868858878,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -0.022561827694907777,
      "dir": -1,
      "n_bins": 2,
      "monotone": 1.0
@@ -2635,6 +3255,33 @@
   {
    "dataset": "ext",
    "model": "gptoss20b",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": -0.06136383357195552,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -0.15418609168609176,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "6m": {
+     "delta": -0.06136383357195552,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "ext",
+   "model": "gptoss20b",
    "task": "mcq",
    "metric": "accuracy",
    "schemes": {
@@ -2653,6 +3300,168 @@
     "6m": {
      "delta": -0.06068241469816271,
      "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "ext",
+   "model": "opus48",
+   "task": "binary_merged",
+   "metric": "accuracy",
+   "schemes": {
+    "primary": {
+     "delta": -0.0489338436303991,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -0.0026957872612629608,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "6m": {
+     "delta": -0.012996727442730283,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "ext",
+   "model": "opus48",
+   "task": "date",
+   "metric": "abs_err",
+   "schemes": {
+    "primary": {
+     "delta": 7.0821428571428555,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "2m": {
+     "delta": 6.9559800664451785,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "6m": {
+     "delta": 7.501082251082249,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "ext",
+   "model": "opus48",
+   "task": "date",
+   "metric": "date_score",
+   "schemes": {
+    "primary": {
+     "delta": -0.03392893391284982,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -0.047891489411133414,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "6m": {
+     "delta": -0.02648133232097058,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "ext",
+   "model": "opus48",
+   "task": "date",
+   "metric": "signed_err",
+   "schemes": {
+    "primary": {
+     "delta": -14.860714285714284,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -12.372923588039868,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "6m": {
+     "delta": -12.678138528138525,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "ext",
+   "model": "opus48",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.12501863446630956,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "2m": {
+     "delta": 0.10594557469557486,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "6m": {
+     "delta": 0.12573321948321947,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "ext",
+   "model": "opus48",
+   "task": "mcq",
+   "metric": "accuracy",
+   "schemes": {
+    "primary": {
+     "delta": 0.08573216520650817,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": 0.05319148936170215,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "6m": {
+     "delta": 0.04808510638297869,
+     "dir": 1,
      "n_bins": 2,
      "monotone": 1.0
     }
@@ -2746,6 +3555,28 @@
     "6m": null
    },
    "agree": true
+  },
+  {
+   "dataset": "ext",
+   "model": "sol",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.023566422427524714,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -0.052797654541840267,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "6m": null
+   },
+   "agree": false
   },
   {
    "dataset": "ext",
@@ -2871,6 +3702,33 @@
     "6m": {
      "delta": -16.675108225108225,
      "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "ext",
+   "model": "sonnet5",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.22273650937006018,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "2m": {
+     "delta": 0.20044968766463445,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "6m": {
+     "delta": 0.2932038834951456,
+     "dir": 1,
      "n_bins": 2,
      "monotone": 1.0
     }
@@ -3015,6 +3873,33 @@
   {
    "dataset": "merged",
    "model": "claude45",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.11500143150619557,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 0.6666666666666666
+    },
+    "2m": {
+     "delta": 0.09732415902140668,
+     "dir": 1,
+     "n_bins": 10,
+     "monotone": 0.4444444444444444
+    },
+    "6m": {
+     "delta": 0.015776699029126373,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 0.3333333333333333
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "claude45",
    "task": "mcq",
    "metric": "accuracy",
    "schemes": {
@@ -3150,6 +4035,33 @@
   {
    "dataset": "merged",
    "model": "deepseek_r1",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.09476322829914441,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": 0.1782913165266109,
+     "dir": 1,
+     "n_bins": 10,
+     "monotone": 0.5555555555555556
+    },
+    "6m": {
+     "delta": 0.0906144884732134,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "deepseek_r1",
    "task": "mcq",
    "metric": "accuracy",
    "schemes": {
@@ -3254,6 +4166,28 @@
     },
     "2m": {
      "delta": -5.931497418244405,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    },
+    "6m": null
+   },
+   "agree": false
+  },
+  {
+   "dataset": "merged",
+   "model": "dsv4pro",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.07373629868858878,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -0.022561827694907777,
      "dir": -1,
      "n_bins": 2,
      "monotone": 1.0
@@ -3395,6 +4329,33 @@
   {
    "dataset": "merged",
    "model": "gpt4o",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": -0.09441770582658826,
+     "dir": -1,
+     "n_bins": 5,
+     "monotone": 0.5
+    },
+    "2m": {
+     "delta": 0.12039030647304072,
+     "dir": 1,
+     "n_bins": 15,
+     "monotone": 0.5714285714285714
+    },
+    "6m": {
+     "delta": 0.19488880973766554,
+     "dir": 1,
+     "n_bins": 6,
+     "monotone": 0.6
+    }
+   },
+   "agree": false
+  },
+  {
+   "dataset": "merged",
+   "model": "gpt4o",
    "task": "mcq",
    "metric": "accuracy",
    "schemes": {
@@ -3520,6 +4481,33 @@
     },
     "6m": {
      "delta": -10.367516109523908,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "gpt54",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": -0.191657701273086,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "2m": {
+     "delta": -0.21393493320138557,
+     "dir": -1,
+     "n_bins": 6,
+     "monotone": 0.6
+    },
+    "6m": {
+     "delta": -0.22149517974592303,
      "dir": -1,
      "n_bins": 2,
      "monotone": 1.0
@@ -3665,6 +4653,33 @@
   {
    "dataset": "merged",
    "model": "gptoss20b",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.011564417746630085,
+     "dir": 1,
+     "n_bins": 5,
+     "monotone": 0.75
+    },
+    "2m": {
+     "delta": -0.014856474762135363,
+     "dir": -1,
+     "n_bins": 13,
+     "monotone": 0.5833333333333334
+    },
+    "6m": {
+     "delta": -0.01202560394534391,
+     "dir": -1,
+     "n_bins": 5,
+     "monotone": 0.5
+    }
+   },
+   "agree": false
+  },
+  {
+   "dataset": "merged",
+   "model": "gptoss20b",
    "task": "mcq",
    "metric": "accuracy",
    "schemes": {
@@ -3800,6 +4815,33 @@
   {
    "dataset": "merged",
    "model": "llama33",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": -0.08392651019622921,
+     "dir": -1,
+     "n_bins": 5,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -0.053723404255319185,
+     "dir": -1,
+     "n_bins": 16,
+     "monotone": 0.5333333333333333
+    },
+    "6m": {
+     "delta": -0.14047997410317548,
+     "dir": -1,
+     "n_bins": 6,
+     "monotone": 0.8
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "llama33",
    "task": "mcq",
    "metric": "accuracy",
    "schemes": {
@@ -3820,6 +4862,168 @@
      "dir": -1,
      "n_bins": 6,
      "monotone": 0.6
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "binary_merged",
+   "metric": "accuracy",
+   "schemes": {
+    "primary": {
+     "delta": 0.02659818098540867,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "2m": {
+     "delta": 0.06890567578603513,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 0.6666666666666666
+    },
+    "6m": {
+     "delta": 0.012730071185788505,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "date",
+   "metric": "abs_err",
+   "schemes": {
+    "primary": {
+     "delta": 11.92701863354037,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": 13.528630460448639,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 0.6666666666666666
+    },
+    "6m": {
+     "delta": 10.051198801198797,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "date",
+   "metric": "date_score",
+   "schemes": {
+    "primary": {
+     "delta": -0.11589236462598662,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -0.14298771362206492,
+     "dir": -1,
+     "n_bins": 4,
+     "monotone": 1.0
+    },
+    "6m": {
+     "delta": -0.0757724936406643,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "date",
+   "metric": "signed_err",
+   "schemes": {
+    "primary": {
+     "delta": -16.812111801242235,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -17.45720188902007,
+     "dir": -1,
+     "n_bins": 4,
+     "monotone": 0.6666666666666666
+    },
+    "6m": {
+     "delta": -14.700049950049948,
+     "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.0054554352832800745,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "2m": {
+     "delta": -0.06978189493433362,
+     "dir": -1,
+     "n_bins": 4,
+     "monotone": 0.6666666666666666
+    },
+    "6m": {
+     "delta": 0.07029670709650038,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": false
+  },
+  {
+   "dataset": "merged",
+   "model": "opus48",
+   "task": "mcq",
+   "metric": "accuracy",
+   "schemes": {
+    "primary": {
+     "delta": 0.05869999311437035,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": 0.04176931690929453,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 0.6666666666666666
+    },
+    "6m": {
+     "delta": 0.04628059510478322,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
     }
    },
    "agree": true
@@ -3911,6 +5115,28 @@
     "6m": null
    },
    "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "sol",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.02183091392353287,
+     "dir": 1,
+     "n_bins": 2,
+     "monotone": 1.0
+    },
+    "2m": {
+     "delta": -0.05161255610895843,
+     "dir": -1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "6m": null
+   },
+   "agree": false
   },
   {
    "dataset": "merged",
@@ -4036,6 +5262,33 @@
     "6m": {
      "delta": -19.218641114982578,
      "dir": -1,
+     "n_bins": 2,
+     "monotone": 1.0
+    }
+   },
+   "agree": true
+  },
+  {
+   "dataset": "merged",
+   "model": "sonnet5",
+   "task": "frq",
+   "metric": "frq_score",
+   "schemes": {
+    "primary": {
+     "delta": 0.15951631242893338,
+     "dir": 1,
+     "n_bins": 3,
+     "monotone": 0.5
+    },
+    "2m": {
+     "delta": 0.1195388349514559,
+     "dir": 1,
+     "n_bins": 4,
+     "monotone": 0.3333333333333333
+    },
+    "6m": {
+     "delta": 0.24393035094589255,
+     "dir": 1,
      "n_bins": 2,
      "monotone": 1.0
     }

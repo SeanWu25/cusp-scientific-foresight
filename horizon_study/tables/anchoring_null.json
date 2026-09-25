@@ -317,6 +317,50 @@
    "model": "dsv4pro",
    "skipped": true,
    "n": 0
+  },
+  "opus48": {
+   "model": "opus48",
+   "skipped": false,
+   "n": 121,
+   "choices": {
+    "max_score": {
+     "k": 1,
+     "mean_signed": -0.04132231404958678,
+     "mean_abs": 0.04132231404958678,
+     "mean_score": 0.9960676619023123,
+     "slope_signed": -0.9999999999999997,
+     "slope_abs": 0.9999999999999997,
+     "slope_score": -0.0951625819640392
+    },
+    "min_abs": {
+     "k": 1,
+     "mean_signed": -0.04132231404958678,
+     "mean_abs": 0.04132231404958678,
+     "mean_score": 0.9960676619023123,
+     "slope_signed": -0.9999999999999997,
+     "slope_abs": 0.9999999999999997,
+     "slope_score": -0.0951625819640392
+    },
+    "model_median_offset": {
+     "k": -10,
+     "mean_signed": -11.041322314049587,
+     "mean_abs": 11.041322314049587,
+     "mean_score": 0.33156212205403496,
+     "slope_signed": -1.0000000000000175,
+     "slope_abs": 1.0000000000000175,
+     "slope_score": -0.03167687178587775
+    }
+   },
+   "model_slopes": {
+    "slope_signed": 2.0637931034482824,
+    "slope_abs": -6.236206896551731,
+    "slope_score": -0.005070645216020144,
+    "mean_signed": -14.578512396694215,
+    "mean_abs": 18.578512396694215,
+    "mean_score": 0.3201312609345127
+   },
+   "mean_prediction_minus_cutoff_months": -13.537190082644628,
+   "median_prediction_minus_cutoff_months": -10.0
   }
  },
  "ext": {
@@ -676,6 +720,50 @@
    },
    "mean_prediction_minus_cutoff_months": 26.0718954248366,
    "median_prediction_minus_cutoff_months": 14.0
+  },
+  "opus48": {
+   "model": "opus48",
+   "skipped": false,
+   "n": 193,
+   "choices": {
+    "max_score": {
+     "k": 5,
+     "mean_signed": 0.15025906735751296,
+     "mean_abs": 1.1554404145077721,
+     "mean_score": 0.8932359926343587,
+     "slope_signed": -1.0000000000000004,
+     "slope_abs": -0.05496303655436381,
+     "slope_score": 0.0048784866042222
+    },
+    "min_abs": {
+     "k": 5,
+     "mean_signed": 0.15025906735751296,
+     "mean_abs": 1.1554404145077721,
+     "mean_score": 0.8932359926343587,
+     "slope_signed": -1.0000000000000004,
+     "slope_abs": -0.05496303655436381,
+     "slope_score": 0.0048784866042222
+    },
+    "model_median_offset": {
+     "k": -16,
+     "mean_signed": -20.849740932642487,
+     "mean_abs": 20.849740932642487,
+     "mean_score": 0.1254491667797777,
+     "slope_signed": -1.0000000000000022,
+     "slope_abs": 1.0000000000000022,
+     "slope_score": -0.012394064866150077
+    }
+   },
+   "model_slopes": {
+    "slope_signed": -2.790725535458609,
+    "slope_abs": 1.2749028431171998,
+    "slope_score": -0.016317783937739406,
+    "mean_signed": -21.196891191709845,
+    "mean_abs": 25.694300518134714,
+    "mean_score": 0.1997830283122413
+   },
+   "mean_prediction_minus_cutoff_months": -16.34715025906736,
+   "median_prediction_minus_cutoff_months": -16.0
   }
  },
  "merged": {
@@ -1074,6 +1162,50 @@
    },
    "mean_prediction_minus_cutoff_months": 26.0718954248366,
    "median_prediction_minus_cutoff_months": 14.0
+  },
+  "opus48": {
+   "model": "opus48",
+   "skipped": false,
+   "n": 314,
+   "choices": {
+    "max_score": {
+     "k": 3,
+     "mean_signed": -0.3821656050955414,
+     "mean_abs": 1.89171974522293,
+     "mean_score": 0.8324004860853232,
+     "slope_signed": -1.0000000000000007,
+     "slope_abs": 0.2218098393182984,
+     "slope_score": -0.016907417370544825
+    },
+    "min_abs": {
+     "k": 3,
+     "mean_signed": -0.3821656050955414,
+     "mean_abs": 1.89171974522293,
+     "mean_score": 0.8324004860853232,
+     "slope_signed": -1.0000000000000007,
+     "slope_abs": 0.2218098393182984,
+     "slope_score": -0.016907417370544825
+    },
+    "model_median_offset": {
+     "k": -15,
+     "mean_signed": -18.38216560509554,
+     "mean_abs": 18.38216560509554,
+     "mean_score": 0.1627116830454053,
+     "slope_signed": -1.000000000000002,
+     "slope_abs": 1.000000000000002,
+     "slope_score": -0.01574330547306507
+    }
+   },
+   "model_slopes": {
+    "slope_signed": -1.984799900791893,
+    "slope_abs": 1.6950590819706968,
+    "slope_score": -0.027743446549275665,
+    "mean_signed": -18.646496815286625,
+    "mean_abs": 22.952229299363058,
+    "mean_score": 0.2461592580806962
+   },
+   "mean_prediction_minus_cutoff_months": -15.264331210191083,
+   "median_prediction_minus_cutoff_months": -15.0
   }
  }
 }

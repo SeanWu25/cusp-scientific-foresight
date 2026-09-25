@@ -60,7 +60,7 @@ horizon and calendar are the same variable, so a within-model slope mixes
 horizon with corpus drift. Across models, the same event sits at different
 horizons, and the crossed random-effects model uses that. But a *linear*
 horizon effect is still only separable from calendar drift through the
-between-model relation between cutoff date and model level (nine models,
+between-model relation between cutoff date and model level (ten models,
 confounded with model vintage). The requested "add calendar as a covariate"
 fit makes this concrete: on original-corpus MCQ the horizon coefficient jumps
 from −0.26 to −1.56 log-odds per year and calendar absorbs +1.33; that is
@@ -86,7 +86,8 @@ the same sign and similar magnitude; that is what we can honestly say.
   `tables/dates_gap.md`.
 * **Cutoffs** (`tables/n_post_cutoff.md`). Verified against vendor pages on
   2026-09-20: GPT-4o Oct 2023, LLaMA 3.3 Dec 2023, GPT-OSS-20B Jun 2024, GPT-5.4
-  Aug 31 2025, Claude Sonnet 5 Jan 2026, GPT-5.6 Sol Feb 16 2026. Claude Sonnet
+  Aug 31 2025, Claude Sonnet 5 Jan 2026, Claude Opus 4.8 Jan 2026 (added
+  2026-09-25), GPT-5.6 Sol Feb 16 2026. Claude Sonnet
   4.5 has two published dates (reliable Jan 2025, used; training data Jul 2025,
   sensitivity). DeepSeek-V4-Pro's April 2026 cutoff is confirmed by the authors (the vendor
   publishes none; release 2026-04-24). DeepSeek R1 (2024-07) is the one cutoff
@@ -100,6 +101,17 @@ the same sign and similar magnitude; that is what we can honestly say.
   WS+Cutoff: GPT-4o 456, LLaMA 3.3 456 (run generated 2026-09-20, see
   `results_llama33_run1/`), DeepSeek R1 342, Claude S4.5 241, GPT-5.4 108,
   Sonnet 5 26 and Sol 1 (the last two too thin to bin; pooled fit only).
+* **Maximum horizon is set by the calendar, not by coverage.** For any model,
+  max h = (corpus end) − (cutoff), and the corpus ends Aug 2026. So GPT-4o reaches
+  34 months while Sol reaches 6, Opus 4.8 and Sonnet 5 reach 7, and DeepSeek-V4-Pro
+  reaches 4. Merged post-cutoff horizon ranges (base condition, `tables/n_post_cutoff.md`):
+  GPT-4o 3–34, LLaMA 3.3 1–32, GPT-OSS 1–26, DeepSeek R1 1–20, Claude S4.5 1–19,
+  GPT-5.4 1–12, Sonnet 5 1–7, Opus 4.8 1–7, Sol 1–6, DeepSeek-V4-Pro 1–4. The
+  April–August 2026 extension is what gives the recent models any horizon spread at
+  all: without it Sol would have 12 post-cutoff binary events at a single horizon
+  (h = 1) instead of 692 across six months. The recent models therefore constrain
+  the *short* end of every horizon curve and say nothing about the long end; only
+  the three oldest models reach beyond two years.
 * **Sol's retrieval runs.** The stored WS+Cutoff and WS runs for GPT-5.6 Sol had
   `web_search_error` on all 500 rows (the query-generation call sent a
   temperature the model rejects), so no retrieval context reached the model.
@@ -205,6 +217,100 @@ and provide no evidence of a horizon beyond which prediction collapses. The
 date-task breakpoints (17 months for absolute error and score, tightly
 estimated) are where the constant-late-prediction geometry crosses the event
 dates and carry no forecasting content (see the null below).
+
+## FRQ (solution quality) by horizon (`tables/binned_merged.md`, `tables/trends.md`, `tables/pooled.md`)
+
+Added 2026-09-25, together with Claude Opus 4.8. FRQ is the published-rubric mean
+(0–10, `judge_frq_combined`); it enters as a continuous outcome, so it is fitted
+with the Gaussian crossed GLMM used for the date metrics, not the logistic one.
+Post-cutoff FRQ items, merged corpus: GPT-4o 4,758, LLaMA 3.3 4,723, GPT-OSS 4,018,
+DeepSeek R1 3,231, Claude S4.5 2,739, GPT-5.4 1,647, Claude Sonnet 5 822,
+Claude Opus 4.8 827, GPT-5.6 Sol 633, DeepSeek-V4-Pro 497.
+
+**1. Pooled, FRQ is the flattest of the four tasks.** Crossed event × model GLMM,
+merged corpus, 23,895 items / 4,765 events / 10 models / horizon 1–34 months:
+
+| task | horizon coef per year [95% CI] | Holm p |
+|---|---|---|
+| Binary (log-odds) | −0.057 [−0.098, −0.016] | 0.086 |
+| MCQ (log-odds) | −0.171 [−0.288, −0.054] | 0.058 |
+| Date score | +0.136 [+0.126, +0.146] | **0*** |
+| **FRQ (points/10)** | **+0.014 [−0.012, +0.039]** | **1** |
+
+Solution quality does not decay with forecast horizon. Over 34 months the point
+estimate moves FRQ by +0.04 points on a 0–10 scale, and the CI excludes anything
+larger than ±0.11. The broken-stick fit agrees: linear slope 0.0010 per month,
+breakpoint 27 months with a CI of [4, 30] — i.e. unidentified — and a gain over
+the straight line of 1.6 SSE units, negligible on 23,895 items.
+
+**2. The variance decomposition is the interesting part.** In the same fit,
+
+| task | event SD | model SD |
+|---|---|---|
+| MCQ (log-odds) | **2.407** | 1.517 |
+| FRQ (points) | 0.472 | **1.393** |
+
+MCQ and FRQ sit on opposite sides of the same question. Which *paper* is asked
+drives MCQ accuracy more than which model answers; for FRQ it is the reverse —
+model identity accounts for roughly three times the spread that paper identity
+does. A model's FRQ score is close to a property of the model, nearly independent
+of both the paper and how far ahead it is being asked to see. That is consistent
+with §6b of RUN2_RESULTS.md, where the FRQ retrospective ceiling is ≈ 1.0, and it
+is a second, independent reason to doubt that FRQ measures foresight.
+
+**3. Per-model trends, merged corpus** (`tables/trends.md`; slope per 12 months,
+event bootstrap, Holm across the whole 203-test family):
+
+| model | horizon | FRQ slope /yr [95% CI] | p | Holm |
+|---|---|---|---|---|
+| GPT-4o | 3–34 | +0.063 [+0.027, +0.099] | 0.001 | 0.163 |
+| LLaMA 3.3 70B | 1–32 | −0.041 [−0.071, −0.011] | 0.006 | 0.973 |
+| GPT-OSS 20B | 1–26 | +0.028 [−0.018, +0.073] | 0.24 | 1 |
+| DeepSeek R1 | 1–20 | +0.060 [−0.003, +0.124] | 0.065 | 1 |
+| Claude S4.5 | 1–19 | +0.030 [−0.043, +0.101] | 0.425 | 1 |
+| GPT-5.4 | 1–12 | −0.303 [−0.442, −0.165] | 0.0002 | **0.041*** |
+| Claude Sonnet 5 | 1–7 | −0.223 [−0.570, +0.118] | 0.21 | 1 |
+| Claude Opus 4.8 | 1–7 | −0.282 [−0.622, +0.064] | 0.11 | 1 |
+| GPT-5.6 Sol | 1–6 | +0.060 [−0.478, +0.591] | 0.819 | 1 |
+| DeepSeek-V4-Pro | 1–4 | +0.028 [−0.755, +0.821] | 0.947 | 1 |
+
+**GPT-5.4 is the only Holm-significant FRQ trend in the panel — and it is an
+artefact of corpus composition, not a horizon effect.** Split by corpus, its slope
+is **+0.242/yr within the original** half and **−0.298/yr within the extension**,
+neither significant; what the merged fit picks up is the −0.220 level difference
+between the two halves (orig mean 5.049, n=1,019; ext mean 4.829, n=628). Because
+GPT-5.4's cutoff (Aug 2025) places the original corpus at horizons 1–7 and the
+extension at 8–12, a level drop between corpora is read as a downward slope. Study
+A5 shows why the halves differ: FRQ runs ≈ 0.2 points lower on journal-sourced
+events than on arXiv-sourced ones, and the extension is the more journal-heavy
+half (84% vs 77%). The same mechanism sits behind the negative point estimates for
+Sonnet 5 and Opus 4.8 (level shifts −0.125 and −0.174). **No model shows a
+within-corpus FRQ decline with horizon.**
+
+**4. What the short-horizon models can and cannot tell us.** Sol spans horizons
+1–6 and DeepSeek-V4-Pro 1–4, because their cutoffs (Feb and Apr 2026) sit close to
+the corpus end (Aug 2026): max horizon = corpus end − cutoff, so this is a
+property of the calendar, not of the data we collected. Their FRQ CIs are
+correspondingly wide — ±0.5 and ±0.8 points per year — and neither can distinguish
+a real decline from none. Opus 4.8's original-corpus-only slope is not reportable
+at all (horizon range 1–2 months, n=205; the per-year extrapolation is +5.3, which
+is arithmetic, not a finding). Any claim about long-horizon FRQ in this panel rests
+on GPT-4o, LLaMA 3.3 and GPT-OSS, whose horizons reach 26–34 months and whose
+slopes are +0.063, −0.041 and +0.028.
+
+**5. Retrieval does not change the FRQ horizon slope** (`tables/ws_vs_base.md`).
+On the pinned 500 subset, paired base vs WS+Cutoff on identical items, the
+difference in FRQ slope is −0.123 [−0.303, +0.049] for GPT-4o, −0.127
+[−0.383, +0.127] for DeepSeek R1, +0.058 [−0.424, +0.543] for Claude S4.5 and
++0.799 [−0.340, +2.013] for GPT-5.4 — every CI spanning zero. Sonnet 5, Opus 4.8
+and Sol have 24, 24 and 1 paired post-cutoff items and are not fitted.
+
+**6. Level ordering is stable across horizon** (`figures/horizon_merged.png`,
+bottom right). The FRQ panel is a set of near-horizontal, well-separated lines:
+GPT-5.4 ≈ 5.0 > Sol ≈ 4.85 > Opus 4.8 ≈ 4.6 > Sonnet 5 ≈ 4.45 > DeepSeek R1 ≈ 4.2 >
+Claude S4.5 ≈ DeepSeek-V4-Pro ≈ 4.0 > GPT-OSS ≈ 3.85 > LLaMA 3.3 ≈ 3.5 >
+GPT-4o ≈ 3.3. No pair of models changes rank across the horizon bins where both
+are populated.
 
 ## Binary discrimination by horizon: MCC (`tables/mcc_by_horizon.md`, `figures/mcc_horizon_*.png`)
 

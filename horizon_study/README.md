@@ -22,6 +22,9 @@ reports by two commands; nothing here runs a model, a judge, or the scoring code
 
 ## Definitions
 
+* **Tasks**: binary (merged), MCQ, date, and FRQ (added 2026-09-25 as a continuous
+  0-10 rubric outcome, fitted with the Gaussian GLMM). Ten models, Claude Opus 4.8
+  included.
 * **Horizon** h = months(first-observable date) − months(model cutoff). Post-cutoff =
   h ≥ 1; the cutoff month itself is excluded (month resolution; Sol's cutoff is the
   16th). `data.load_items` asserts this and a sensitivity run includes h = 0.

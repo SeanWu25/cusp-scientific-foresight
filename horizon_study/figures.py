@@ -9,12 +9,13 @@ import data as D, stats as S
 
 T, F = D.STUDY / "tables", D.STUDY / "figures"; F.mkdir(exist_ok=True)
 COLORS = {"gpt4o": "#D55E00", "llama33": "#56B4E9", "gptoss20b": "#E69F00", "deepseek_r1": "#CC79A7", "claude45": "#0072B2",
-          "gpt54": "#009E73", "sonnet5": "#000000", "sol": "#F0E442", "dsv4pro": "#999999"}
-MARK = {"gpt4o": "s", "llama33": "P", "gptoss20b": "v", "deepseek_r1": "D", "claude45": "o", "gpt54": "^", "sonnet5": "X", "sol": "*", "dsv4pro": "h"}
+          "gpt54": "#009E73", "sonnet5": "#000000", "sol": "#F0E442", "dsv4pro": "#999999", "opus48": "#8B4A9C"}
+MARK = {"gpt4o": "s", "llama33": "P", "gptoss20b": "v", "deepseek_r1": "D", "claude45": "o", "gpt54": "^", "sonnet5": "X", "sol": "*", "dsv4pro": "h", "opus48": "p"}
 DS_TITLE = {"orig": "Original corpus (Jan 2024–Mar 2026), base", "ext": "Extension (Apr–Aug 2026), base", "merged": "Merged original + extension, base", "ws": "Pinned 500 subset"}
 PANELS = [("binary_merged", "accuracy", "Binary (merged) accuracy", (0.3, 0.8)), ("binary_merged", "bias_index", "Binary bias index (acc_orig − acc_pert)", (-1, 1)),
           ("binary_merged", "auroc", "Binary AUROC of P(Yes)", (0.3, 0.8)), ("mcq", "accuracy", "MCQ accuracy", (0.2, 1.0)),
-          ("date", "abs_err", "Date |error| (months)", None), ("date", "signed_err", "Date signed error (months, + = late)", None)]
+          ("date", "abs_err", "Date |error| (months)", None), ("date", "signed_err", "Date signed error (months, + = late)", None),
+          ("frq", "frq_score", "FRQ rubric score (0-10)", (3.0, 5.5))]
 
 
 def _load_binned(ds, scheme="primary"):
@@ -44,7 +45,11 @@ def _plot_lines(ax, df, tg, metric, cond="base", annotate_n=True):
 def fig_horizon(ds):
     df = _load_binned(ds)
     if df is None: return
-    fig, axes = plt.subplots(2, 3, figsize=(13, 7.2))
+    ncol = 4                                   # grid sized from PANELS, not fixed at 6
+    nrow = -(-len(PANELS) // ncol)
+    fig, axes = plt.subplots(nrow, ncol, figsize=(4.35 * ncol, 3.6 * nrow))
+    for ax in axes.ravel()[len(PANELS):]:
+        ax.set_visible(False)
     for ax, (tg, metric, title, ylim) in zip(axes.ravel(), PANELS):
         _plot_lines(ax, df, tg, metric)
         ax.set_title(title, fontsize=9); ax.set_xlabel("horizon (months after cutoff, first-observable date)", fontsize=7); ax.tick_params(labelsize=7); ax.grid(color="#EEEEEE", lw=0.5)
@@ -64,7 +69,7 @@ def fig_horizon(ds):
 def fig_ws():
     df = _load_binned("ws")
     if df is None: return
-    panels = [("binary_merged", "accuracy", "Binary (merged) accuracy", (0.3, 0.8)), ("mcq", "accuracy", "MCQ accuracy", (0.2, 1.0)), ("date", "abs_err", "Date |error| (months)", None)]
+    panels = [("binary_merged", "accuracy", "Binary (merged) accuracy", (0.3, 0.8)), ("mcq", "accuracy", "MCQ accuracy", (0.2, 1.0)), ("date", "abs_err", "Date |error| (months)", None), ("frq", "frq_score", "FRQ rubric score (0-10)", (3.0, 5.5))]
     fig, axes = plt.subplots(2, 3, figsize=(13, 7))
     for row, cond in enumerate(("base", "ws_cutoff")):
         for ax, (tg, metric, title, ylim) in zip(axes[row], panels):

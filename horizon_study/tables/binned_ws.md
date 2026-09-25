@@ -14,6 +14,7 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | GPT-5.4 | 0.533 [0.444, 0.627] n=75 sd=0.50 bias=+0.17 AUROC=0.53 | 0.530 [0.430, 0.627] n=83 sd=0.50 bias=+0.13 AUROC=0.58 | n=1 | n=0 | n=0 |
 | Claude Sonnet 5 | 0.568 [0.441, 0.694] n=37 sd=0.50 | n=0 | n=0 | n=0 | n=0 |
 | GPT-5.6 Sol | n=1 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | 0.595 [0.459, 0.730] n=37 sd=0.50 | n=0 | n=0 | n=0 | n=0 |
 
 ## mcq — accuracy — condition `base`
 
@@ -25,6 +26,7 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | Claude S4.5 | 0.661 [0.536, 0.786] n=56 sd=0.48 | 0.796 [0.673, 0.898] n=49 sd=0.41 | 0.720 [0.624, 0.806] n=93 sd=0.45 | 0.636 [0.455, 0.818] n=22 sd=0.49 | n=0 |
 | GPT-5.4 | 0.902 [0.804, 0.980] n=51 sd=0.30 | 0.741 [0.611, 0.852] n=54 sd=0.44 | n=0 | n=0 | n=0 |
 | Claude Sonnet 5 | 0.826 [0.652, 0.957] n=23 sd=0.39 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | 1.000 [1.000, 1.000] n=22 sd=0.00 | n=0 | n=0 | n=0 | n=0 |
 
 ## date — signed_err — condition `base`
 
@@ -36,6 +38,7 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | Claude S4.5 | 15.000 [7.879, 21.607] n=33 sd=20.64 | 33.854 [3.293, 82.369] n=41 sd=137.28 | 10.098 [1.156, 21.020] n=51 sd=35.72 | n=14 | n=0 |
 | GPT-5.4 | 6.929 [-10.714, 25.357] n=28 sd=50.16 | 22.613 [14.774, 30.968] n=31 sd=23.44 | n=0 | n=0 | n=0 |
 | Claude Sonnet 5 | n=14 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | n=13 | n=0 | n=0 | n=0 | n=0 |
 
 ## date — abs_err — condition `base`
 
@@ -47,6 +50,7 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | Claude S4.5 | 22.818 [19.152, 26.545] n=33 sd=11.00 | 47.659 [19.438, 94.687] n=41 sd=133.02 | 21.196 [14.392, 30.627] n=51 sd=30.35 | n=14 | n=0 |
 | GPT-5.4 | 33.857 [21.606, 47.857] n=28 sd=37.11 | 25.710 [19.129, 32.872] n=31 sd=19.87 | n=0 | n=0 | n=0 |
 | Claude Sonnet 5 | n=14 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | n=13 | n=0 | n=0 | n=0 | n=0 |
 
 ## date — date_score — condition `base`
 
@@ -58,6 +62,20 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | Claude S4.5 | 0.172 [0.115, 0.237] n=33 sd=0.18 | 0.292 [0.210, 0.378] n=41 sd=0.28 | 0.301 [0.237, 0.368] n=51 sd=0.25 | n=14 | n=0 |
 | GPT-5.4 | 0.232 [0.144, 0.336] n=28 sd=0.27 | 0.242 [0.152, 0.341] n=31 sd=0.28 | n=0 | n=0 | n=0 |
 | Claude Sonnet 5 | n=14 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | n=13 | n=0 | n=0 | n=0 | n=0 |
+
+## frq — frq_score — condition `base`
+
+| model | 1-3 | 4-6 | 7-12 | 13-24 | 25+ |
+|---|---|---|---|---|---|
+| GPT-4o | n=3 | 3.250 [2.988, 3.518] n=42 sd=0.88 | 3.288 [3.068, 3.508] n=92 sd=1.08 | 3.205 [3.080, 3.329] n=215 sd=0.93 | 3.486 [3.284, 3.682] n=74 sd=0.88 |
+| LLaMA 3.3 70B | 3.519 [3.154, 3.865] n=26 sd=0.93 | 3.438 [3.260, 3.620] n=52 sd=0.68 | 3.394 [3.224, 3.560] n=87 sd=0.81 | 3.490 [3.396, 3.586] n=217 sd=0.72 | 3.494 [3.262, 3.726] n=41 sd=0.77 |
+| DeepSeek R1 | 4.073 [3.768, 4.360] n=41 sd=0.98 | 4.317 [4.085, 4.543] n=41 sd=0.76 | 4.159 [4.010, 4.305] n=123 sd=0.84 | 4.329 [4.171, 4.488] n=124 sd=0.91 | n=0 |
+| Claude S4.5 | 3.800 [3.485, 4.092] n=65 sd=1.27 | 4.010 [3.847, 4.179] n=49 sd=0.60 | 3.976 [3.742, 4.191] n=94 sd=1.13 | 4.185 [3.815, 4.533] n=23 sd=0.90 | n=0 |
+| GPT-5.4 | 5.192 [4.966, 5.413] n=52 sd=0.83 | 4.921 [4.731, 5.111] n=54 sd=0.73 | n=1 | n=0 | n=0 |
+| Claude Sonnet 5 | 4.906 [4.594, 5.198] n=24 sd=0.80 | n=0 | n=0 | n=0 | n=0 |
+| GPT-5.6 Sol | n=1 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | 5.021 [4.667, 5.365] n=24 sd=0.90 | n=0 | n=0 | n=0 | n=0 |
 
 ## binary_merged — accuracy — condition `ws_cutoff`
 
@@ -70,6 +88,7 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | GPT-5.4 | 0.440 [0.353, 0.526] n=75 sd=0.50 bias=+0.72 AUROC=0.60 | 0.542 [0.462, 0.623] n=83 sd=0.50 bias=+0.32 AUROC=0.65 | n=1 | n=0 | n=0 |
 | Claude Sonnet 5 | 0.658 [0.529, 0.784] n=38 sd=0.48 | n=0 | n=0 | n=0 | n=0 |
 | GPT-5.6 Sol | n=1 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | 0.472 [0.342, 0.606] n=36 sd=0.51 | n=0 | n=0 | n=0 | n=0 |
 
 ## mcq — accuracy — condition `ws_cutoff`
 
@@ -81,6 +100,7 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | Claude S4.5 | 0.691 [0.564, 0.800] n=55 sd=0.47 | 0.735 [0.612, 0.857] n=49 sd=0.45 | 0.722 [0.622, 0.811] n=90 sd=0.45 | 0.636 [0.409, 0.818] n=22 sd=0.49 | n=0 |
 | GPT-5.4 | 0.863 [0.765, 0.941] n=51 sd=0.35 | 0.685 [0.556, 0.797] n=54 sd=0.47 | n=0 | n=0 | n=0 |
 | Claude Sonnet 5 | 0.870 [0.739, 1.000] n=23 sd=0.34 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | 0.909 [0.773, 1.000] n=22 sd=0.29 | n=0 | n=0 | n=0 | n=0 |
 
 ## date — signed_err — condition `ws_cutoff`
 
@@ -92,6 +112,7 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | Claude S4.5 | 11.000 [3.708, 18.583] n=24 sd=18.99 | 1.086 [-7.229, 8.172] n=35 sd=23.60 | 0.750 [-13.526, 16.301] n=40 sd=48.47 | n=11 | n=0 |
 | GPT-5.4 | 5.750 [-3.143, 16.286] n=28 sd=27.29 | 2.871 [-9.065, 14.032] n=31 sd=33.24 | n=0 | n=0 | n=0 |
 | Claude Sonnet 5 | n=15 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | n=13 | n=0 | n=0 | n=0 | n=0 |
 
 ## date — abs_err — condition `ws_cutoff`
 
@@ -103,6 +124,7 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | Claude S4.5 | 17.000 [12.000, 22.542] n=24 sd=13.62 | 16.343 [11.486, 22.571] n=35 sd=16.83 | 28.300 [17.300, 41.051] n=40 sd=39.10 | n=11 | n=0 |
 | GPT-5.4 | 16.964 [10.036, 25.607] n=28 sd=21.92 | 23.452 [16.096, 32.162] n=31 sd=23.35 | n=0 | n=0 | n=0 |
 | Claude Sonnet 5 | n=15 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | n=13 | n=0 | n=0 | n=0 | n=0 |
 
 ## date — date_score — condition `ws_cutoff`
 
@@ -114,3 +136,16 @@ Cells with n < 20 items are suppressed. CI = 95% percentile bootstrap over event
 | Claude S4.5 | 0.323 [0.226, 0.424] n=24 sd=0.26 | 0.362 [0.268, 0.461] n=35 sd=0.29 | 0.336 [0.246, 0.430] n=40 sd=0.30 | n=11 | n=0 |
 | GPT-5.4 | 0.373 [0.288, 0.461] n=28 sd=0.24 | 0.271 [0.193, 0.349] n=31 sd=0.23 | n=0 | n=0 | n=0 |
 | Claude Sonnet 5 | n=15 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | n=13 | n=0 | n=0 | n=0 | n=0 |
+
+## frq — frq_score — condition `ws_cutoff`
+
+| model | 1-3 | 4-6 | 7-12 | 13-24 | 25+ |
+|---|---|---|---|---|---|
+| GPT-4o | n=3 | 3.750 [3.411, 4.095] n=42 sd=1.14 | 3.758 [3.569, 3.945] n=91 sd=0.93 | 3.659 [3.533, 3.787] n=215 sd=0.98 | 3.760 [3.557, 3.963] n=74 sd=0.89 |
+| DeepSeek R1 | 4.296 [3.980, 4.592] n=38 sd=0.98 | 4.341 [4.085, 4.591] n=41 sd=0.84 | 4.200 [4.062, 4.344] n=120 sd=0.79 | 4.355 [4.202, 4.504] n=121 sd=0.86 | n=0 |
+| Claude S4.5 | 3.988 [3.754, 4.210] n=63 sd=0.93 | 4.000 [3.714, 4.260] n=49 sd=0.97 | 4.168 [3.981, 4.346] n=91 sd=0.89 | 4.071 [3.548, 4.476] n=21 sd=1.13 | n=0 |
+| GPT-5.4 | 5.245 [5.019, 5.466] n=52 sd=0.84 | 5.325 [5.113, 5.542] n=53 sd=0.80 | n=1 | n=0 | n=0 |
+| Claude Sonnet 5 | 5.135 [4.740, 5.510] n=24 sd=0.98 | n=0 | n=0 | n=0 | n=0 |
+| GPT-5.6 Sol | n=1 | n=0 | n=0 | n=0 | n=0 |
+| Claude Opus 4.8 | 4.979 [4.583, 5.365] n=24 sd=0.99 | n=0 | n=0 | n=0 | n=0 |

@@ -70,13 +70,17 @@ MODELS = {
     "dsv4pro":    dict(name="DeepSeek-V4-Pro", cutoff="2026-04", cutoff_alt=None,
                        cutoff_source="April 2026, confirmed by the authors (2026-09-20); the vendor publishes no cutoff and the model was released 2026-04-24. Original corpus is entirely pre-cutoff for it.",
                        orig=ROOT / "results_dsv4pro_run1/reports/base_run1.json", ext="deepseekv4pro_base.json", ws=None),
+    "opus48":     dict(name="Claude Opus 4.8", cutoff="2026-01", cutoff_alt=None,
+                       cutoff_source="platform.claude.com models/opus-4-8/overview: reliable and training cutoff Jan 2026 (verified 2026-09-22). Same cutoff as Sonnet 5, so the two share a horizon grid.",
+                       orig=ROOT / "results_opus48_run1/reports/base_medium_run1.json", ext="opus48_base_run1.json",
+                       ws=ROOT / "results_opus48_run1/reports/ws_cutoff_500.json", ws_ext="opus48_ws_cutoff.json"),
 }
 EXT_REPORTS = ROOT / "results_extension_run2/reports"
 MODEL_ORDER = list(MODELS)
 PRIMARY_BINS = [(1, 3), (4, 6), (7, 12), (13, 24), (25, 999)]
 BINS_2M = [(k, k + 1) for k in range(1, 33, 2)]
 BINS_6M = [(1, 6), (7, 12), (13, 18), (19, 24), (25, 30), (31, 999)]
-TASKS = ["binary_merged", "mcq", "date"]
+TASKS = ["binary_merged", "mcq", "date", "frq"]
 
 
 def months(ym) -> int | None:
@@ -140,7 +144,8 @@ def load_events() -> pd.DataFrame:
         rows.append(dict(id=r["id"], corpus="orig", first_obs=first, doi_date=doi, doi_known=(kind == "doi" and doi != pub) or kind == "arxiv",
                          link_kind=kind, area=r["main_area"], source=r["source"],
                          has_binary=bool(r.get("binary_question")), has_pert=bool(r.get("binary_question_perturbed")),
-                         has_mcq=bool(r.get("mcq_question")), has_date=bool(r.get("date_prediction_prompt"))))
+                         has_mcq=bool(r.get("mcq_question")), has_frq=bool(r.get("frq_prompt")),
+                         has_date=bool(r.get("date_prediction_prompt"))))
     for l in open(BENCH_EXT, encoding="utf-8"):
         if not l.strip():
             continue
@@ -149,7 +154,8 @@ def load_events() -> pd.DataFrame:
         rows.append(dict(id=r["id"], corpus="ext", first_obs=first, doi_date=doi, doi_known=bool(r.get("first_date_found")),
                          link_kind=("arxiv" if "arxiv" in (r.get("paper_link") or "") else "doi"), area=r["main_area"], source=r["source"],
                          has_binary=bool(r.get("binary_question")), has_pert=bool(r.get("binary_question_perturbed")),
-                         has_mcq=bool(r.get("mcq_question")), has_date=bool(r.get("date_prediction_prompt")) and not re.fullmatch(r"\d{4}-\d{2}", str(r.get("date_prediction_prompt")))))
+                         has_mcq=bool(r.get("mcq_question")), has_frq=bool(r.get("frq_prompt")),
+                         has_date=bool(r.get("date_prediction_prompt")) and not re.fullmatch(r"\d{4}-\d{2}", str(r.get("date_prediction_prompt")))))
     ev = pd.DataFrame(rows)
     ev["first_m"] = ev.first_obs.map(months); ev["doi_m"] = ev.doi_date.map(months)
     assert ev.id.is_unique
@@ -172,6 +178,11 @@ def _rows_from_report(path: Path, model: str, condition: str) -> list[dict]:
                     p_yes = float(conf) if ans == "yes" else 1 - float(conf)
                 out.append(dict(model=model, condition=condition, id=r["id"], task=task, y=int(bool(d["correct"])),
                                 conf=conf, p_yes=p_yes, pred_m=None))
+        d = t.get("frq")
+        if d and not d.get("skipped") and not d.get("refused") and d.get("score") is not None:
+            out.append(dict(model=model, condition=condition, id=r["id"], task="frq", y=None,
+                            conf=d.get("confidence"), p_yes=None, pred_m=None,
+                            frq_score=float(d["score"])))
         d = t.get("date")
         if d and not d.get("skipped") and not d.get("refused") and d.get("parsed_date"):
             pm = months(d["parsed_date"])

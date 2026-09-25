@@ -187,10 +187,13 @@ def stage_pooled(ev):
             r["event_fe_bins"] = S.event_fe_bins(d, tg)
             r["n"] = len(d); r["n_events"] = int(d.id.nunique()); r["n_models"] = int(d.model.nunique()); r["h_range"] = [int(d.h.min()), int(d.h.max())]
             res[ds][tg] = r; print(f"  pooled {ds} {tg}", file=sys.stderr)
-        d = _prep(df[df.task_group == "date"])
-        if d.model.nunique() >= 3 and len(d) >= 300:
+        for cont_tg in ("date", "frq"):          # continuous outcomes: Gaussian GLMM
+            d = _prep(df[df.task_group == cont_tg])
+            if d.model.nunique() < 3 or len(d) < 300:
+                res[ds][cont_tg] = dict(skipped=True, n=len(d), n_models=int(d.model.nunique()))
+                continue
             r = {}
-            for metric in ("signed_err", "abs_err", "date_score"):
+            for metric in S.outcome_columns(cont_tg):
                 r[metric] = {}
                 for label, cols in (("h", ["hy"]), ("h+cal", ["hy", "caly"]), ("h+h2", ["hy", "hy2"])):
                     try:
@@ -198,15 +201,16 @@ def stage_pooled(ev):
                     except Exception as e:
                         r[metric][label] = dict(error=str(e)[:200])
             r["n"] = len(d); r["n_events"] = int(d.id.nunique()); r["n_models"] = int(d.model.nunique())
-            res[ds]["date"] = r; print(f"  pooled {ds} date", file=sys.stderr)
+            r["h_range"] = [int(d.h.min()), int(d.h.max())]
+            res[ds][cont_tg] = r; print(f"  pooled {ds} {cont_tg}", file=sys.stderr)
     # Holm across the family of pooled horizon coefficients (model 'h', per dataset x task/metric)
     fam = []
     for ds in res:
         for tg, r in res[ds].items():
             if r.get("skipped"): continue
-            if tg == "date":
-                for metric in ("signed_err", "abs_err", "date_score"):
-                    c = r[metric].get("h", {}).get("coef", {}).get("hy")
+            if tg in ("date", "frq"):
+                for metric in S.outcome_columns(tg):
+                    c = r.get(metric, {}).get("h", {}).get("coef", {}).get("hy")
                     if c: fam.append((ds, tg, metric, c))
             else:
                 c = r.get("h", {}).get("coef", {}).get("hy")
@@ -217,12 +221,12 @@ def stage_pooled(ev):
         c["p"] = p; c["p_holm"] = ph
     dump("pooled", res)
     L = ["# Pooled mixed-effects results (post-cutoff, base condition)", "",
-         "Crossed random intercepts for EVENT and MODEL, horizon in years (centred), Laplace-approximated GLMM (logistic for binary/MCQ, Gaussian for date metrics), "
+         "Crossed random intercepts for EVENT and MODEL, horizon in years (centred), Laplace-approximated GLMM (logistic for binary/MCQ, Gaussian for date and FRQ metrics), "
          "fixed-effect SE from the inverse augmented Hessian. `h+cal` adds calendar month of the event (years, centred). `h+h2` adds a quadratic. "
          "`event_fe_h2` is a conditional logit stratified by event with model fixed effects; there a LINEAR horizon term is exactly collinear "
          "(h = calendar − cutoff, both absorbed), so only curvature is reported. Holm across the family of pooled linear-horizon coefficients (`h` model); `*` = Holm p < 0.05.", "",
          "**Identification note.** With one cutoff per model, horizon = calendar − cutoff. Adding calendar as a covariate leaves the linear horizon coefficient identified only "
-         "through the between-model relation between cutoff date and model random intercept (nine models). Where `h+cal` moves the horizon coefficient far from the `h` fit, that is the "
+         "through the between-model relation between cutoff date and model random intercept (ten models). Where `h+cal` moves the horizon coefficient far from the `h` fit, that is the "
          "collinearity speaking, not new information. The `h` fit answers 'does performance fall with horizon, allowing each event its own difficulty and each model its own level'; "
          "it cannot separate horizon from calendar drift. The quadratic term and the event-FE curvature ARE identified and answer the reviewer's shape question.", ""]
     for ds in DATASETS:
@@ -230,9 +234,9 @@ def stage_pooled(ev):
         for tg, r in res.get(ds, {}).items():
             if r.get("skipped"):
                 L.append(f"- {tg}: skipped (n={r['n']}, models={r['n_models']})"); continue
-            if tg == "date":
-                L += [f"### date — n={r['n']} items, {r['n_events']} events, {r['n_models']} models\n", "| metric | model | horizon coef (per year) [CI] | p / Holm | calendar coef | quadratic | event SD | model SD | resid SD |", "|---|---|---|---|---|---|---|---|---|"]
-                for metric in ("signed_err", "abs_err", "date_score"):
+            if tg in ("date", "frq"):
+                L += [f"### {tg} — n={r['n']} items, {r['n_events']} events, {r['n_models']} models, horizon {r['h_range'][0]}–{r['h_range'][1]} months\n", "| metric | model | horizon coef (per year) [CI] | p / Holm | calendar coef | quadratic | event SD | model SD | resid SD |", "|---|---|---|---|---|---|---|---|---|"]
+                for metric in S.outcome_columns(tg):
                     for label in ("h", "h+cal", "h+h2"):
                         f = r[metric].get(label, {})
                         if "coef" not in f: L.append(f"| {metric} | {label} | error: {f.get('error')} | | | | | | |"); continue
