@@ -326,3 +326,56 @@ the ambiguous cutoff month), so no coefficient here changes; the correction
 matters for the knowledge-access decomposition elsewhere in the paper. Sonnet 5's
 retrieval runs were checked and are unaffected. A LLaMA 3.3 WS+Cutoff run, which
 never existed, was generated for dataset 3 (`results_llama33_run1/`).
+
+## 9. Horizon entered as bin dummies: the coefficients of the mixed model (added 2026-09-27)
+
+Full tables: `horizon_study/tables/binned_coef.md` (both bin schemes, both corpora, every outcome); figures `horizon_study/figures/binned_coef_*.png`.
+
+The reviewer-4 model, `g(E[Y_imc]) = β₀ + β₁H_im + β₂R_c + β₃(H_im × R_c) + u_i + v_m`, was refitted with the horizon term replaced by **bin dummies** (1-month and 3-month schemes, reference = the shortest bin, sparse bins pooled upward to n ≥ 30), so that each β_b is the change at that horizon relative to the first months after the cutoff, with its own CI and n. Two estimators for every fit: the equation as written (crossed random intercepts for event and model, Laplace GLMM) and an event-fixed-effects version (conditional logit by event with model fixed effects; event-demeaned OLS with event-clustered SE for date and FRQ). The second is the assumption-free companion: the bin contrasts are identified there because a bin is a non-linear function of horizon, whereas a *linear* horizon term is not (h = calendar − cutoff). Base performance is fitted on the original corpus and on the merged corpus (to Aug 2026); the retrieval term is fitted on the pinned 500 subset with base and WS+Cutoff on the same items, where the stratified estimator conditions on (event, model, question) so that only the condition varies within a stratum. Post-cutoff only, four tasks. `python horizon_study/binned_coef.py` regenerates everything.
+
+**Reading rule.** The *pattern* across bins is the identified quantity. A smooth drift across bins cannot be separated from calendar drift by either estimator; a knee, plateau or collapse can. Where the two estimators agree on the pattern, the result does not depend on the random-effects assumption; where the event-FE intervals balloon, that is the design telling us the long bins are populated by only the oldest models and the contrast rests on few between-model comparisons.
+
+### Base performance, original corpus, 3-month bins (β_b = change vs the 1–3-month bin)
+
+| horizon | n binary | binary β_b (log-odds) GLMM / stratified | n MCQ | MCQ β_b (log-odds) GLMM / stratified | FRQ β_b (points) GLMM / stratified | date score β_b GLMM / stratified |
+|---|---|---|---|---|---|---|
+| 1–3 | 4127 | 0 (ref) / 0 (ref) | 2545 | 0 (ref) / 0 (ref) | 0 (ref) / 0 (ref) | 0 (ref) / 0 (ref) |
+| 4–6 | 4392 | -0.00 [-0.09, +0.08] / -0.04 [-0.18, +0.10] | 2755 | -0.16 [-0.34, +0.03] / -0.09 [-0.37, +0.19] | +0.07 [+0.02, +0.11] / +0.07 [+0.01, +0.13] | +0.04 [+0.02, +0.05] / +0.01 [-0.01, +0.04] |
+| 7–9 | 3971 | -0.03 [-0.12, +0.06] / -0.10 [-0.32, +0.12] | 2459 | -0.15 [-0.33, +0.03] / -0.13 [-0.55, +0.29] | +0.09 [+0.04, +0.13] / +0.08 [-0.01, +0.18] | +0.12 [+0.10, +0.14] / +0.06 [+0.02, +0.10] |
+| 10–12 | 3761 | -0.04 [-0.13, +0.06] / -0.14 [-0.45, +0.17] | 2399 | -0.25 [-0.45, -0.05] / -0.25 [-0.84, +0.33] | +0.09 [+0.04, +0.14] / +0.08 [-0.05, +0.21] | +0.17 [+0.15, +0.19] / +0.08 [+0.02, +0.14] |
+| 13–15 | 3378 | -0.08 [-0.18, +0.02] / -0.24 [-0.64, +0.17] | 2134 | -0.28 [-0.50, -0.06] / -0.29 [-1.06, +0.48] | +0.09 [+0.04, +0.14] / +0.07 [-0.10, +0.25] | +0.22 [+0.20, +0.24] / +0.10 [+0.02, +0.17] |
+| 16–18 | 3132 | -0.02 [-0.12, +0.08] / -0.20 [-0.70, +0.30] | 1992 | -0.33 [-0.57, -0.09] / -0.32 [-1.27, +0.63] | +0.09 [+0.04, +0.15] / +0.07 [-0.15, +0.28] | +0.30 [+0.28, +0.32] / +0.15 [+0.05, +0.24] |
+| 19–21 | 2416 | -0.09 [-0.20, +0.02] / -0.29 [-0.88, +0.30] | 1618 | -0.33 [-0.60, -0.06] / -0.39 [-1.51, +0.73] | +0.08 [+0.01, +0.14] / +0.05 [-0.21, +0.30] | +0.27 [+0.25, +0.30] / +0.10 [-0.02, +0.21] |
+| 22–24 | 1504 | -0.03 [-0.16, +0.10] / -0.28 [-0.98, +0.42] | 977 | -0.55 [-0.87, -0.23] / -0.61 [-1.94, +0.72] | +0.06 [-0.02, +0.13] / +0.01 [-0.29, +0.31] | +0.26 [+0.23, +0.29] / +0.05 [-0.08, +0.18] |
+| 25–27 | 1288 | -0.09 [-0.23, +0.04] / -0.39 [-1.18, +0.39] | 856 | -0.63 [-0.98, -0.29] / -0.73 [-2.23, +0.77] | +0.09 [+0.01, +0.17] / +0.05 [-0.28, +0.39] | +0.25 [+0.22, +0.28] / +0.04 [-0.11, +0.19] |
+| 28–30 | 329 | -0.05 [-0.28, +0.19] / -0.33 [-1.22, +0.56] | 206 | -0.55 [-1.05, -0.05] / -0.68 [-2.36, +1.01] | +0.15 [+0.03, +0.27] / +0.09 [-0.29, +0.47] | +0.37 [+0.32, +0.42] / +0.15 [-0.01, +0.32] |
+
+Omnibus (bin block = 0): binary GLMM p = 0.75; stratified p = 0.88; MCQ GLMM p = 0.072; stratified p = 0.9; FRQ GLMM p = 0.025; stratified p = 0.014; date score GLMM p = 1.4e-222; stratified p = 3.7e-50.
+
+### Retrieval effect by horizon bin (β₂ + β₃_b), pinned 500 subset, 3-month bins, stratified estimator
+
+| horizon | n pairs (binary) | binary: WS − base (log-odds) | MCQ: WS − base (log-odds) | date score: WS − base | date abs. error: WS − base (months) | FRQ: WS − base (points) |
+|---|---|---|---|---|---|---|
+| 1–3 | 351 | -0.22 [-0.63, +0.19] | +0.15 [-0.47, +0.76] | +0.13 [+0.05, +0.20] | -13.72 [-26.96, -0.48] | +0.09 [-0.15, +0.32] |
+| 4–6 | 409 | +0.37 [-0.03, +0.77] | +0.14 [-0.38, +0.67] | +0.06 [-0.01, +0.12] | -13.36 [-35.95, +9.23] | +0.13 [-0.08, +0.34] |
+| 7–9 | 344 | -0.07 [-0.50, +0.36] | -0.13 [-0.63, +0.37] | +0.07 [-0.01, +0.14] | -8.98 [-22.88, +4.91] | +0.08 [-0.12, +0.28] |
+| 10–12 | 291 | +0.20 [-0.24, +0.64] | +0.42 [-0.19, +1.04] | +0.04 [-0.04, +0.12] | -2.87 [-16.83, +11.09] | +0.11 [-0.11, +0.34] |
+| 13–15 | 252 | +0.31 [-0.18, +0.79] | +0.75 [-0.05, +1.54] | +0.07 [-0.02, +0.16] | -6.76 [-21.25, +7.72] | +0.17 [-0.07, +0.41] |
+| 16–18 | 276 | +0.22 [-0.24, +0.68] | +0.50 [-0.10, +1.10] | -0.11 [-0.19, -0.02] | -1.68 [-17.78, +14.42] | +0.05 [-0.21, +0.31] |
+| 19–21 | 216 | +0.42 [-0.16, +1.00] | +0.22 [-0.43, +0.88] | -0.02 [-0.11, +0.08] | -4.46 [-22.91, +14.00] | +0.01 [-0.27, +0.30] |
+| 22–24 | 145 | -0.86 [-1.69, -0.04] | +0.83 [-0.06, +1.71] | -0.12 [-0.23, -0.01] | +6.24 [-12.23, +24.71] | -0.15 [-0.50, +0.21] |
+| 25–27 | 135 | +0.25 [-0.45, +0.95] | +0.37 [-0.39, +1.14] | -0.02 [-0.13, +0.09] | +0.36 [-17.35, +18.07] | -0.12 [-0.51, +0.27] |
+| 28–30 | 40 | -0.41 [-2.19, +1.38] | -1.39 [-3.58, +0.81] | +0.01 [-0.16, +0.18] | -4.58 [-22.41, +13.26] | -0.18 [-0.62, +0.25] |
+
+Interaction omnibus (all β₃_b = 0), stratified Wald / GLMM LR: binary p = 0.18 / 0.72; MCQ 0.45 / 0.6; date score 1.9e-08 / (GLMM LR negative, optimiser artefact); date abs. error 0.00018 / 0.38; FRQ 0.82 / 0.95.
+
+
+**What the bin coefficients say.**
+
+- **Binary: flat.** Every 3-month bin on the original corpus is within −0.1 log-odds of the 1–3-month bin under both estimators (omnibus p = 0.75 / 0.88); with 1-month bins p = 0.99 / 1.0. On the merged corpus the 28–33-month bins (GPT-4o and LLaMA on the extension) are lower (GLMM −0.38 and −0.23; stratified −1.05 and −0.87 with intervals ±0.8), and the two estimators disagree on the bins between — a sign of thin identification there, not of a threshold; the MCC analysis in §3 already shows no discrimination structure by horizon for binary.
+- **MCQ: a gradual, monotone decline with no knee.** GLMM β_b goes −0.16, −0.15, −0.25, −0.28, −0.33, −0.33, −0.55, −0.63, −0.55 from the 4–6-month bin to the 28–30-month bin, and the stratified point estimates track it almost exactly (−0.09, −0.13, −0.25, −0.29, −0.32, −0.39, −0.61, −0.73, −0.68). No adjacent pair of bins differs by more than ~0.2 log-odds; the cumulative −0.6 at two years is the −0.26 log-odds per year of the linear fit. The event-FE intervals widen from ±0.3 at 4–6 months to ±1.5 at 25–27 months, so the stratified omnibus is not significant (p = 0.90) while the GLMM's is borderline (p = 0.07): the shape is the same, the power is not. On the merged corpus the 31–36-month bins are −0.8 and −1.1 (GLMM), on the extrapolated line.
+- **FRQ: a small step, not a slope.** +0.07 to +0.09 points (on 0–10) from the 4–6-month bin onward, then flat, under both estimators (p = 0.025 / 0.014). It is the between-bin equivalent of the +0.03 per year slope in §4 and is too small to matter.
+- **Date: the anchoring signature.** Date score rises with every bin (+0.04 at 4–6 months to +0.30 at 16–18 months under the GLMM; +0.01 to +0.15 stratified), because the ground truth moves away from the cutoff while predictions stay anchored near it; the anchoring null in §3 reproduces this.
+- **Retrieval by horizon.** For binary, MCQ and FRQ the retrieval effect is the same at every horizon: the interaction block is not significant (stratified p = 0.18, 0.45, 0.82; GLMM 0.72, 0.60, 0.95), and the effect itself is null in the reference bin (binary −0.22 [−0.63, +0.19], MCQ +0.15 [−0.47, +0.76], FRQ +0.09 [−0.15, +0.32]). For the date task the retrieval benefit is concentrated in the first months after the cutoff and gone within about a year: absolute error improves by 13.7 months [−27.0, −0.5] at 1–3 months, 9.0 at 7–9, 2.9 at 10–12, and by nothing from 16 months on; the date-score benefit is +0.13 [+0.05, +0.20] at 1–3 months and ≈0 or negative beyond 15 months (interaction p = 1.9 × 10⁻⁸ stratified). Pre-cutoff retrieval locates near-cutoff events and does nothing for distant ones, as the linear interaction already indicated.
+- **1-month bins** give the same pictures with proportionally wider intervals (all tables in `tables/binned_coef.md`). Two 1-month stratified fits on the merged corpus (MCQ, FRQ) are rank-deficient — with event fixed effects, bin membership varies only through the model's cutoff, and 34 one-month bins are too fine for ten cutoffs — and are flagged rather than reported. The GLMM as written fits at 1-month resolution because the random effects regularise it, which is also why its long-bin intervals are narrower than the stratified ones: that narrowness is borrowed from the random-effects assumption.
+
