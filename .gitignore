@@ -172,3 +172,5 @@ results/A4_retrieval/A4_3_fixed_queries/reports/*.json
 results_opus48_run1/**/*.jsonl
 results_opus48_run1/**/*.log
 results_opus48_run1/**/*.bak
+results/frq_human_study/export/
+results/frq_human_study/*.zip
