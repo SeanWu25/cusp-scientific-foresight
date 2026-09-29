@@ -174,3 +174,4 @@ results_opus48_run1/**/*.log
 results_opus48_run1/**/*.bak
 results/frq_human_study/export/
 results/frq_human_study/*.zip
+results/frq_human_study/export_gpt4o_ws/
