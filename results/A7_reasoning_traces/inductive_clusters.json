@@ -1,0 +1,792 @@
+{
+ "binary": [
+  {
+   "cluster": 0,
+   "n": 188,
+   "top_terms": [
+    "models",
+    "rapid",
+    "benchmark",
+    "advancements",
+    "plausible",
+    "performance",
+    "benchmarks",
+    "model",
+    "progress",
+    "achieving",
+    "like",
+    "reasoning"
+   ],
+   "example_trace_ids": [
+    "96d60a3ccd15c1d7",
+    "626a2d44ae02df07",
+    "c8f4c5ad7899b97e",
+    "856e78c2ecd3ea6d",
+    "c2d2a90687d09844",
+    "b0c5a465db5a1c08"
+   ]
+  },
+  {
+   "cluster": 1,
+   "n": 129,
+   "top_terms": [
+    "reported",
+    "yes",
+    "exceeding",
+    "method",
+    "roughly",
+    "demonstrated",
+    "benchmark",
+    "methods",
+    "threshold",
+    "around",
+    "above",
+    "including"
+   ],
+   "example_trace_ids": [
+    "efc3932eba867135",
+    "c15d60f8d915e8d3",
+    "64d79e03e31dcf10",
+    "92df856c0da57369",
+    "29baeea7293fa8dc",
+    "a52396e28a6bd8bf"
+   ]
+  },
+  {
+   "cluster": 2,
+   "n": 257,
+   "top_terms": [
+    "achieving",
+    "current",
+    "progress",
+    "high",
+    "significant",
+    "advancements",
+    "materials",
+    "challenging",
+    "recent",
+    "demonstrated",
+    "specific",
+    "extremely"
+   ],
+   "example_trace_ids": [
+    "69c556ac7e38198c",
+    "19734c2492ca9ba3",
+    "ff6652a84dbc7692",
+    "dd4956a8a206900a",
+    "aaadb455179feaf4",
+    "25c7b847f3601935"
+   ]
+  },
+  {
+   "cluster": 3,
+   "n": 231,
+   "top_terms": [
+    "specific",
+    "published",
+    "highly",
+    "claim",
+    "study",
+    "precise",
+    "describes",
+    "exact",
+    "finding",
+    "evidence",
+    "research",
+    "question"
+   ],
+   "example_trace_ids": [
+    "a5c6af0e6cf2c256",
+    "d73c3bf5aa1579b6",
+    "c56ada5c1c2d77c6",
+    "1d49f6f4d5c250be",
+    "179a6ef0216f1ff4",
+    "98318669d4c9c28a"
+   ]
+  },
+  {
+   "cluster": 4,
+   "n": 247,
+   "top_terms": [
+    "research",
+    "studies",
+    "plausible",
+    "ongoing",
+    "methods",
+    "recent",
+    "method",
+    "active",
+    "cell",
+    "making",
+    "specific",
+    "including"
+   ],
+   "example_trace_ids": [
+    "625a14b767b1be74",
+    "4d76ae02ab139496",
+    "da6a5dc2bab9fa49",
+    "e084b76bf8b19cb4",
+    "a5f0132636386adf",
+    "3d38d20942f4148e"
+   ]
+  },
+  {
+   "cluster": 5,
+   "n": 148,
+   "top_terms": [
+    "method",
+    "evidence",
+    "literature",
+    "yet",
+    "current",
+    "published",
+    "specific",
+    "limited",
+    "reported",
+    "established",
+    "demonstrated",
+    "validated"
+   ],
+   "example_trace_ids": [
+    "7f6fc0caedbb89de",
+    "7c01f5e3fa13c43c",
+    "0b37b69eabce9f84",
+    "eaad72cdaaffc5d3",
+    "da1f663b5fa8378f",
+    "fcb61494a6637803"
+   ]
+  }
+ ],
+ "binary_perturbed": [
+  {
+   "cluster": 0,
+   "n": 228,
+   "top_terms": [
+    "research",
+    "significant",
+    "advancements",
+    "achieving",
+    "current",
+    "ongoing",
+    "require",
+    "validation",
+    "studies",
+    "method",
+    "timeframe",
+    "like"
+   ],
+   "example_trace_ids": [
+    "653f5be6aeb4a123",
+    "fecc5b66bb7fe6cc",
+    "f6ccbacf74312ef9",
+    "fc6872f02b7657df",
+    "d0e84ca0b2ca4f37",
+    "f5a1590094d988d8"
+   ]
+  },
+  {
+   "cluster": 1,
+   "n": 211,
+   "top_terms": [
+    "progress",
+    "achieving",
+    "benchmark",
+    "rapid",
+    "current",
+    "plausible",
+    "challenging",
+    "models",
+    "data",
+    "methods",
+    "accuracy",
+    "reasoning"
+   ],
+   "example_trace_ids": [
+    "ef668c17f90c4440",
+    "f6acbdcbe499bbc2",
+    "2f801e09997454b3",
+    "287ef8786ff29b6b",
+    "359bdad4bb2990d8",
+    "935d9712277aeeef"
+   ]
+  },
+  {
+   "cluster": 2,
+   "n": 134,
+   "top_terms": [
+    "performance",
+    "models",
+    "efficiency",
+    "efficient",
+    "benchmarks",
+    "methods",
+    "learning",
+    "training",
+    "plausible",
+    "optimization",
+    "computational",
+    "rapid"
+   ],
+   "example_trace_ids": [
+    "e305948667adbd6c",
+    "6ddf383f01bab1ba",
+    "3660ef6f20ac3ef2",
+    "412651bd4ecdbb15",
+    "6c332fc4ee44af89",
+    "1f9f942cb33283f5"
+   ]
+  },
+  {
+   "cluster": 3,
+   "n": 213,
+   "top_terms": [
+    "demonstrated",
+    "method",
+    "reported",
+    "breakthrough",
+    "early",
+    "above",
+    "current",
+    "literature",
+    "below",
+    "known",
+    "achieving",
+    "threshold"
+   ],
+   "example_trace_ids": [
+    "49093b4998f77ef4",
+    "791e82e90c4989b7",
+    "44ff3b1c9934812a",
+    "7eb8edda75087f4b",
+    "10f390f7eaf746bc",
+    "25f6a26ff8e1f738"
+   ]
+  },
+  {
+   "cluster": 4,
+   "n": 195,
+   "top_terms": [
+    "already",
+    "method",
+    "plausible",
+    "studies",
+    "methods",
+    "research",
+    "making",
+    "published",
+    "identified",
+    "developed",
+    "single-cell",
+    "rapidly"
+   ],
+   "example_trace_ids": [
+    "53288900581dba27",
+    "d696d31b96310ffd",
+    "7e912026fb5c4c56",
+    "ada0ea4a1f5afaa3",
+    "c66b782dd397fac7",
+    "61e2ea8d817e5c87"
+   ]
+  },
+  {
+   "cluster": 5,
+   "n": 219,
+   "top_terms": [
+    "specific",
+    "highly",
+    "claim",
+    "precise",
+    "question",
+    "exact",
+    "published",
+    "benchmark",
+    "date",
+    "research",
+    "method",
+    "evidence"
+   ],
+   "example_trace_ids": [
+    "5709845de98a20dd",
+    "3ab928dfa4d65d48",
+    "f975c9d56e44a0a9",
+    "b9628962a94ec327",
+    "d1bcb61ae7f029a3",
+    "ef8b423f0fa44797"
+   ]
+  }
+ ],
+ "mcq": [
+  {
+   "cluster": 0,
+   "n": 282,
+   "top_terms": [
+    "directly",
+    "cells",
+    "approach",
+    "option",
+    "pathways",
+    "making",
+    "targeted",
+    "signaling",
+    "plausible",
+    "immune",
+    "options",
+    "strategy"
+   ],
+   "example_trace_ids": [
+    "af056578e10e4ccf",
+    "1a88bf4956296c4a",
+    "bb3eb1575adf86ff",
+    "342fe71f586b01de",
+    "18bdcabc41c468d4",
+    "5fc688e1f800414c"
+   ]
+  },
+  {
+   "cluster": 1,
+   "n": 183,
+   "top_terms": [
+    "learning",
+    "data",
+    "reasoning",
+    "training",
+    "models",
+    "tasks",
+    "multimodal",
+    "approaches",
+    "aligns",
+    "diverse",
+    "performance",
+    "datasets"
+   ],
+   "example_trace_ids": [
+    "8944221781ff6ed1",
+    "54b5d197c368660e",
+    "749d2c761e0f24e2",
+    "97c0b8beb3efb1a2",
+    "5d19dcd15e648d17",
+    "d88d11e09f16973a"
+   ]
+  },
+  {
+   "cluster": 2,
+   "n": 221,
+   "top_terms": [
+    "structural",
+    "recent",
+    "approach",
+    "experimental",
+    "states",
+    "direct",
+    "cryo-em",
+    "control",
+    "achieving",
+    "structures",
+    "dynamics",
+    "directly"
+   ],
+   "example_trace_ids": [
+    "45c41ab484071b49",
+    "c7020fac5449494f",
+    "61bc49706cc42c4f",
+    "bc2631f49b6d4443",
+    "90846587d5c9af1e",
+    "110da5c8f5ea84ec"
+   ]
+  },
+  {
+   "cluster": 3,
+   "n": 181,
+   "top_terms": [
+    "approach",
+    "high",
+    "performance",
+    "achieve",
+    "option",
+    "achieving",
+    "specific",
+    "aligns",
+    "memory",
+    "metrics",
+    "method",
+    "attention"
+   ],
+   "example_trace_ids": [
+    "a6ac69793ed47422",
+    "42c9b22a3548f5e0",
+    "009205684d1ae80a",
+    "e1337130ef9cccde",
+    "8ebfe1a3cc53fe74",
+    "4a585b66625aafde"
+   ]
+  },
+  {
+   "cluster": 4,
+   "n": 235,
+   "top_terms": [
+    "spatial",
+    "resolution",
+    "direct",
+    "data",
+    "approach",
+    "sequencing",
+    "genetic",
+    "directly",
+    "analysis",
+    "single-cell",
+    "identifying",
+    "gene"
+   ],
+   "example_trace_ids": [
+    "0c5b0c22c8766cb0",
+    "dbb8ea06c93b04fc",
+    "343f525804cb593a",
+    "e023bd3e591922e3",
+    "d193cb6df92dc8a7",
+    "5726516f5faea4b2"
+   ]
+  },
+  {
+   "cluster": 5,
+   "n": 98,
+   "top_terms": [
+    "models",
+    "generation",
+    "diffusion",
+    "target",
+    "video",
+    "approach",
+    "achieving",
+    "option",
+    "crucial",
+    "shown",
+    "recent",
+    "logical"
+   ],
+   "example_trace_ids": [
+    "9f534a4c28724d80",
+    "082316b507644dbf",
+    "dd934a636d069c33",
+    "da1a5a53479c7347",
+    "224169eb095c9d31",
+    "b3f4adbd1b506930"
+   ]
+  }
+ ],
+ "date": [
+  {
+   "cluster": 0,
+   "n": 202,
+   "top_terms": [
+    "validation",
+    "years",
+    "current",
+    "research",
+    "studies",
+    "specific",
+    "requires",
+    "highly",
+    "already",
+    "require",
+    "advanced",
+    "imaging"
+   ],
+   "example_trace_ids": [
+    "97d07040bb358222",
+    "2b55d2318095daa7",
+    "a138407488ccee22",
+    "ace113c346c2cb62",
+    "3e8c77050cff4eb1",
+    "1c37f0dd6dfa6e62"
+   ]
+  },
+  {
+   "cluster": 1,
+   "n": 231,
+   "top_terms": [
+    "next",
+    "advancements",
+    "years",
+    "research",
+    "pace",
+    "current",
+    "breakthrough",
+    "complexity",
+    "occur",
+    "considering",
+    "method",
+    "significant"
+   ],
+   "example_trace_ids": [
+    "728c155cc3482f49",
+    "d661c4f505e5c91e",
+    "689ceb5b778e9d0d",
+    "33946b6a4806e73a",
+    "606b315729909369",
+    "46266ef59e779316"
+   ]
+  },
+  {
+   "cluster": 2,
+   "n": 200,
+   "top_terms": [
+    "demonstration",
+    "public",
+    "first",
+    "near-term",
+    "mid-",
+    "plausible",
+    "result",
+    "around",
+    "making",
+    "mature",
+    "early",
+    "plausibly"
+   ],
+   "example_trace_ids": [
+    "81f742fdfbe85d7f",
+    "89d9498d24031b0f",
+    "451c6f1bcbe821b2",
+    "f2a147723c1315c6",
+    "c095d3ef7e0f0369",
+    "4895954fe5669b40"
+   ]
+  },
+  {
+   "cluster": 3,
+   "n": 285,
+   "top_terms": [
+    "achieving",
+    "current",
+    "progress",
+    "requires",
+    "rapid",
+    "years",
+    "advances",
+    "significant",
+    "recent",
+    "models",
+    "research",
+    "benchmarks"
+   ],
+   "example_trace_ids": [
+    "b89dc2f49330b071",
+    "d6673e7357950d39",
+    "764124ea9e644aba",
+    "99c8deaf8f5cb89b",
+    "981bcf021029d3b8",
+    "946fdafe72beb578"
+   ]
+  },
+  {
+   "cluster": 4,
+   "n": 185,
+   "top_terms": [
+    "published",
+    "describes",
+    "specific",
+    "around",
+    "recent",
+    "study",
+    "research",
+    "consistent",
+    "work",
+    "corresponds",
+    "nature",
+    "paper"
+   ],
+   "example_trace_ids": [
+    "7d53d1e11985d3b4",
+    "f3fcff1fb6d9c2f9",
+    "5e73e91b6a78cd01",
+    "2ca990b1c780c26a",
+    "4557b91dad558021",
+    "6b4fc2677c824796"
+   ]
+  },
+  {
+   "cluster": 5,
+   "n": 97,
+   "top_terms": [
+    "publicly",
+    "reported",
+    "demonstrated",
+    "matches",
+    "results",
+    "description",
+    "first",
+    "match",
+    "released",
+    "method",
+    "described",
+    "study"
+   ],
+   "example_trace_ids": [
+    "16df2ee19db743c6",
+    "e971542f42fa9344",
+    "4dae74a1b11626a7",
+    "d54bf7dbc193c723",
+    "73fb0adf05bc99f5",
+    "828d3febc3c3bc06"
+   ]
+  }
+ ],
+ "frq": [
+  {
+   "cluster": 0,
+   "n": 168,
+   "top_terms": [
+    "cryo-em",
+    "dna",
+    "structural",
+    "method",
+    "imaging",
+    "lipid",
+    "microscopy",
+    "capture",
+    "high-level",
+    "protein",
+    "activity",
+    "states"
+   ],
+   "example_trace_ids": [
+    "958e457e605703fe",
+    "74f2bf5cd91ab387",
+    "2649ddad1884b94e",
+    "5a1b6d29ef8eb770",
+    "4ff7564fa0562aa8",
+    "6b3485d6f4cd3cb4"
+   ]
+  },
+  {
+   "cluster": 1,
+   "n": 175,
+   "top_terms": [
+    "data",
+    "model",
+    "framework",
+    "method",
+    "against",
+    "deep",
+    "system",
+    "technical",
+    "high-level",
+    "develop",
+    "implementation",
+    "observations"
+   ],
+   "example_trace_ids": [
+    "ec3a671f68f96554",
+    "9218bab5782fd1ce",
+    "bb5b67390e551df2",
+    "790cb7ea066dc72d",
+    "1237153f06290a9c",
+    "c2b5cf3d1a74de0d"
+   ]
+  },
+  {
+   "cluster": 2,
+   "n": 244,
+   "top_terms": [
+    "model",
+    "reasoning",
+    "latent",
+    "train",
+    "training",
+    "transformer",
+    "memory",
+    "graph",
+    "retrieval",
+    "lightweight",
+    "language",
+    "tokens"
+   ],
+   "example_trace_ids": [
+    "688dcaea06748f90",
+    "941b9413c4671c2c",
+    "4aa7ef1c31b10798",
+    "7a0dbef10c1109a4",
+    "fd1ffaa9f0aa83ad",
+    "638adbcfb38bab33"
+   ]
+  },
+  {
+   "cluster": 3,
+   "n": 213,
+   "top_terms": [
+    "approach",
+    "provide",
+    "address",
+    "cannot",
+    "implementation",
+    "plan",
+    "leveraging",
+    "sorry",
+    "technical",
+    "method",
+    "involve",
+    "researchers"
+   ],
+   "example_trace_ids": [
+    "8fa79c92b88e67f0",
+    "9d2998d07bbfb35c",
+    "6da25ee480ecd42b",
+    "03a5774e1a821642",
+    "19e5b3cfc5186661",
+    "097da5b91729039d"
+   ]
+  },
+  {
+   "cluster": 4,
+   "n": 224,
+   "top_terms": [
+    "single-cell",
+    "cell",
+    "spatial",
+    "cells",
+    "transcriptomics",
+    "tumor",
+    "immune",
+    "map",
+    "multi-omics",
+    "human",
+    "profiling",
+    "causal"
+   ],
+   "example_trace_ids": [
+    "b72f010ad441bdb3",
+    "c6e73c5f17ce565d",
+    "a78daedf674bb019",
+    "201cb2ff2a8d4bb4",
+    "2f83d55e2575516d",
+    "81af74b651b972cd"
+   ]
+  },
+  {
+   "cluster": 5,
+   "n": 176,
+   "top_terms": [
+    "optical",
+    "method",
+    "chiral",
+    "phase",
+    "perovskite",
+    "high",
+    "layer",
+    "plan",
+    "catalyst",
+    "implementation",
+    "quantum",
+    "lattice"
+   ],
+   "example_trace_ids": [
+    "a548d92f8b3d8826",
+    "853f1c1f9129f793",
+    "0b0bfe0e7a636763",
+    "c7371f7e2ea80928",
+    "b9ade580f3c2e34d",
+    "2dca3181dad24bb4"
+   ]
+  }
+ ]
+}

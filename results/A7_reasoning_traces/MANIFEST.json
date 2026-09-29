@@ -1,0 +1,245 @@
+{
+ "study": "A7 analysis of stated reasoning (Reviewer 2, C5)",
+ "created_utc": "2026-09-29T22:56:00.469211+00:00",
+ "git_sha": "7a250a62b3e0974e6e64ea04be2b4f2d964b1b10",
+ "git_branch": "sonnet5-run1",
+ "git_dirty": "?? results/A7_reasoning_traces/",
+ "nature_of_traces": "in-answer 1-2 sentence justifications emitted in the same call as the answer; no provider-native thinking text exists for any model in this panel (see inventory.md)",
+ "n_traces_total": 234049,
+ "coding_sample": {
+  "n": 11849,
+  "seed": 13,
+  "cap_main": 80,
+  "cap_date": 300,
+  "paired_events": 30,
+  "min_words": 5,
+  "ids_sha256": "7e0da421a1d9dfbbe6f701c7cbdb4e6e5f7aef79061d5e4743f240485fe0a9c6"
+ },
+ "coders": {
+  "haiku45": {
+   "display": "Claude Haiku 4.5",
+   "model": "claude-haiku-4-5",
+   "provider": "anthropic",
+   "reasoning_effort": null,
+   "price_usd_per_mtok": {
+    "input": 1.0,
+    "output": 5.0,
+    "source": "assumed list prices, not verified against invoices"
+   }
+  },
+  "gpt54mini": {
+   "display": "GPT-5.4-mini",
+   "model": "gpt-5.4-mini",
+   "provider": "openai",
+   "reasoning_effort": "none",
+   "price_usd_per_mtok": {
+    "input": 0.25,
+    "output": 2.0,
+    "source": "assumed list prices, not verified against invoices"
+   }
+  },
+  "gpt54mini_low": {
+   "display": "GPT-5.4-mini (low effort)",
+   "model": "gpt-5.4-mini",
+   "provider": "openai",
+   "reasoning_effort": "low",
+   "price_usd_per_mtok": {
+    "input": 0.25,
+    "output": 2.0,
+    "source": "assumed list prices, not verified against invoices"
+   }
+  }
+ },
+ "blinding": {
+  "enforced_by": "a7_prompts.blind_view + assert_blind (template reconstruction + identity scan)",
+  "tests": "scripts/a7_test_blinding.py",
+  "forbidden_fields": [
+   "answer_raw",
+   "condition",
+   "confidence",
+   "correct",
+   "cutoff",
+   "frq_score",
+   "ground_truth",
+   "half",
+   "model",
+   "model_key",
+   "month_distance",
+   "parsed_answer",
+   "partition",
+   "publication_date",
+   "raw_path",
+   "report_path",
+   "score",
+   "signed_error_months"
+  ]
+ },
+ "prompts": {
+  "codebook_prompt_sha256": "8a0ccd11f0f16bd954811e59ba0a08e81982101d6bd5fbec89b72e1c7192c77a",
+  "codebook_prompt_chars": 17443,
+  "faithfulness_prompt_sha256": "f65fd6a6dd0483487ec198288ed0b0e0646a6cdf93612ea78ebabff8b22d91d3",
+  "codes": [
+   "BASE_RATE",
+   "HYPOTHESIS_COMPARISON",
+   "EVIDENCE_CITED",
+   "KNOWLEDGE_GAP_ADMITTED",
+   "ABSENCE_AS_EVIDENCE",
+   "CONSTRAINT_CHECKED",
+   "RATE_OF_PROGRESS",
+   "ROUND_ANCHOR",
+   "CUTOFF_REFERENCED",
+   "DIFFICULTY_APPEAL",
+   "SPECIFICITY_AS_IMPLAUSIBLE",
+   "PROVENANCE_INFERRED",
+   "CONJUNCTION_BURDEN",
+   "FIELD_MOMENTUM",
+   "RESTATEMENT_ONLY",
+   "HEDGING"
+  ]
+ },
+ "reliability": {
+  "kappa_min": 0.6,
+  "min_positive": 30,
+  "reliable_codes": [
+   "RATE_OF_PROGRESS",
+   "ABSENCE_AS_EVIDENCE",
+   "HEDGING",
+   "PROVENANCE_INFERRED",
+   "ROUND_ANCHOR",
+   "FIELD_MOMENTUM",
+   "KNOWLEDGE_GAP_ADMITTED",
+   "EVIDENCE_CITED"
+  ],
+  "excluded": [
+   "SPECIFICITY_AS_IMPLAUSIBLE",
+   "DIFFICULTY_APPEAL",
+   "HYPOTHESIS_COMPARISON",
+   "BASE_RATE",
+   "CONSTRAINT_CHECKED",
+   "CONJUNCTION_BURDEN",
+   "CUTOFF_REFERENCED",
+   "RESTATEMENT_ONLY"
+  ]
+ },
+ "inductive_sample": {
+  "n": 300,
+  "seed": 7,
+  "file": "inductive_sample.jsonl"
+ },
+ "examples": {
+  "n": 14,
+  "seed": 31,
+  "selection": "programmatic rule per box, see scripts/a7_examples.py"
+ },
+ "human_validation": {
+  "file": "human_validation.csv",
+  "rows": 6581,
+  "traces": 300,
+  "seed": 23,
+  "annotators": 3,
+  "shared_block_fraction": 0.2,
+  "status": "built, not run"
+ },
+ "runs": {
+  "gpt54mini_low": {
+   "n_records": 11849,
+   "api_reported_snapshots": {
+    "gpt-5.4-mini-2026-03-17": 11849
+   },
+   "statuses": {
+    "ok": 11848,
+    "parse_error": 1
+   },
+   "input_tokens": 50492561,
+   "output_tokens": 2132351,
+   "cache_read_tokens": 45419520,
+   "cache_write_tokens": 0,
+   "started_utc": "2026-09-29T22:15:37.451274+00:00",
+   "finished_utc": "2026-09-29T22:38:58.473783+00:00",
+   "cost_usd_at_assumed_prices": 6.67,
+   "sha256": "aa335294dfd18b10e1de2e228b93a93227d30980ae4fcece878f5785cd2b78c0"
+  },
+  "haiku45": {
+   "n_records": 11849,
+   "api_reported_snapshots": {
+    "claude-haiku-4-5-20251001": 11849
+   },
+   "statuses": {
+    "ok": 11846,
+    "parse_error": 3
+   },
+   "input_tokens": 2570946,
+   "output_tokens": 1252414,
+   "cache_read_tokens": 52251316,
+   "cache_write_tokens": 26472,
+   "started_utc": "2026-09-29T22:13:44.284984+00:00",
+   "finished_utc": "2026-09-29T22:35:48.786691+00:00",
+   "cost_usd_at_assumed_prices": 11.52,
+   "sha256": "d4527536c8f7303393c5e23747d54a57b78c2dcf4874c10b34125d8636dd51cd"
+  },
+  "haiku45_faith": {
+   "n_records": 6190,
+   "api_reported_snapshots": {
+    "claude-haiku-4-5-20251001": 6190
+   },
+   "statuses": {
+    "ok": 6168,
+    "parse_error": 22
+   },
+   "input_tokens": 2120962,
+   "output_tokens": 385689,
+   "cache_read_tokens": 0,
+   "cache_write_tokens": 0,
+   "started_utc": "2026-09-29T22:38:57.866883+00:00",
+   "finished_utc": "2026-09-29T22:46:25.154979+00:00",
+   "cost_usd_at_assumed_prices": 4.05,
+   "sha256": "e53119cc439fabb47dfdcfb4df8ac256a628d1ece4a8f618e1821bb85e53b2bf"
+  }
+ },
+ "total_cost_usd_at_assumed_prices": 22.24,
+ "inputs_read_only": [
+  "/home/seanwu/FutureScience/archive/model_outputs/benchmark_logs_model_outputs/predictions_gpt-4o.jsonl",
+  "/home/seanwu/FutureScience/archive/model_outputs/benchmark_logs_model_outputs/llama-3.3-70b-full.jsonl.jsonl",
+  "/home/seanwu/FutureScience/archive/model_outputs/benchmark_logs_model_outputs/gpt-oss-20b-full.jsonl",
+  "/home/seanwu/FutureScience/archive/model_outputs/benchmark_logs_model_outputs/predictions_DeepSeek-R1.jsonl",
+  "/home/seanwu/FutureScience/archive/model_outputs/benchmark_logs_model_outputs/predictions_claude-sonnet-4-5_20260428_092848.jsonl",
+  "/home/seanwu/FutureScience/archive/model_outputs/benchmark_logs_model_outputs/predictions_gpt-5.4.jsonl",
+  "/home/seanwu/FutureScience/results_sonnet5_run1/raw/base_medium_run1.jsonl",
+  "/home/seanwu/FutureScience/results_sol_run1/raw/base_medium_run1.jsonl",
+  "/home/seanwu/FutureScience/results_dsv4pro_run1/raw/base_run1.jsonl",
+  "/home/seanwu/FutureScience/results_opus48_run1/raw/base_medium_run1.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/gpt4o_base.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/llama33_base.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/gptoss20b_base.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/sonnet45_base.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/gpt54_base.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/sonnet5_base_run1.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/sol_base.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/deepseekv4pro_base.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/opus48_base_run1.jsonl",
+  "/home/seanwu/FutureScience/archive/model_outputs/benchmark_logs_model_outputs/gpt_4o_web_search.jsonl",
+  "/home/seanwu/FutureScience/archive/model_outputs/benchmark_logs_model_outputs/gpt_4o_web_search_no_cutoff.jsonl",
+  "/home/seanwu/FutureScience/archive/model_outputs/predictions_gpt-5.4_20260506_055209.jsonl",
+  "/home/seanwu/FutureScience/archive/model_outputs/benchmark_logs_model_outputs/gpt-5_4_web_search_subset.jsonl",
+  "/home/seanwu/FutureScience_backup_20260508_013823/benchmark_logs/predictions_deepseek-r1_20260510_120503.jsonl",
+  "/home/seanwu/FutureScience_backup_20260508_013823/benchmark_logs/predictions_deepseek-r1_20260510_123317.jsonl",
+  "/home/seanwu/FutureScience_backup_20260508_013823/benchmark_logs/model_outputs/claude_500_web_constrained.jsonl",
+  "/home/seanwu/FutureScience_backup_20260508_013823/benchmark_logs/model_outputs/claude_web_search_full.jsonl",
+  "/home/seanwu/FutureScience/results_llama33_run1/raw/ws_cutoff_500.jsonl",
+  "/home/seanwu/FutureScience/results_sonnet5_run1/raw/ws_cutoff_500.jsonl",
+  "/home/seanwu/FutureScience/results_sonnet5_run1/raw/ws_500.jsonl",
+  "/home/seanwu/FutureScience/results_sol_run1/raw/ws_cutoff_500.jsonl",
+  "/home/seanwu/FutureScience/results_sol_run1/raw/ws_500.jsonl",
+  "/home/seanwu/FutureScience/results_opus48_run1/raw/ws_cutoff_500.jsonl",
+  "/home/seanwu/FutureScience/results_opus48_run1/raw/ws_500.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/sonnet5_ws_cutoff.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/sonnet5_ws.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/opus48_ws_cutoff.jsonl",
+  "/home/seanwu/FutureScience/results_extension_run2/raw/opus48_ws.jsonl"
+ ],
+ "frozen_code_sha256": {
+  "scripts/eval.py": "6ef4d7dc7ed523df3776d23fe76f6246a686d0f8d6c5ce24d6ab233ce5153719",
+  "scripts/test_LLM.py": "20070b7f00535cb2d704d6f8cf6f98d33b70e789d628194d1cb967da4c04636f"
+ },
+ "note": "No benchmark inference was run. The only API calls are coding and the faithfulness judge."
+}

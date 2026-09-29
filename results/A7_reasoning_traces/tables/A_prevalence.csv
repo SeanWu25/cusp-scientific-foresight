@@ -1,0 +1,1216 @@
+code,scope,model,task,condition,partition,n,rate,lo,hi
+BASE_RATE,overall,all,all,all,all,11849,0.0035,0.0025,0.0047
+BASE_RATE,by_task,all,binary,base,all,1645,0.0073,0.0036,0.0116
+BASE_RATE,by_task,all,binary_perturbed,base,all,1647,0.0140,0.0086,0.0199
+BASE_RATE,by_task,all,date,base,all,3179,0.0006,0.0000,0.0016
+BASE_RATE,by_task,all,frq,base,all,1640,0.0000,0.0000,0.0000
+BASE_RATE,by_task,all,mcq,base,all,1638,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,Claude Opus 4.8,binary,base,all,190,0.0105,0.0000,0.0263
+BASE_RATE,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.0159,0.0000,0.0370
+BASE_RATE,by_model_task,Claude Opus 4.8,date,base,all,328,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,Claude S4.5,binary,base,all,190,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.0105,0.0000,0.0263
+BASE_RATE,by_model_task,Claude S4.5,date,base,all,326,0.0031,0.0000,0.0092
+BASE_RATE,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,Claude S4.5,mcq,base,all,185,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,Claude Sonnet 5,binary,base,all,187,0.0107,0.0000,0.0267
+BASE_RATE,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.0423,0.0159,0.0741
+BASE_RATE,by_model_task,Claude Sonnet 5,date,base,all,325,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,DeepSeek-R1,binary,base,all,189,0.0053,0.0000,0.0159
+BASE_RATE,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,DeepSeek-R1,date,base,all,323,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.0063,0.0000,0.0250
+BASE_RATE,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.0063,0.0000,0.0187
+BASE_RATE,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-4o,binary,base,all,109,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0091,0.0000,0.0273
+BASE_RATE,by_model_task,GPT-4o,date,base,all,324,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-4o,mcq,base,all,110,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-5.4,binary,base,all,190,0.0263,0.0053,0.0526
+BASE_RATE,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0105,0.0000,0.0263
+BASE_RATE,by_model_task,GPT-5.4,date,base,all,327,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-5.4,mcq,base,all,188,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0053,0.0000,0.0158
+BASE_RATE,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0053,0.0000,0.0158
+BASE_RATE,by_model_task,GPT-5.6 Sol,date,base,all,326,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0312,0.0063,0.0625
+BASE_RATE,by_model_task,GPT-OSS 20B,date,base,all,300,0.0033,0.0000,0.0100
+BASE_RATE,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+BASE_RATE,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,binary,base,all,1645,0.0073,0.0036,0.0116
+BASE_RATE,by_condition,all,binary,ws,all,210,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,binary,ws_cutoff,all,210,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,binary_perturbed,base,all,1647,0.0140,0.0086,0.0199
+BASE_RATE,by_condition,all,binary_perturbed,ws,all,210,0.0048,0.0000,0.0147
+BASE_RATE,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0190,0.0046,0.0386
+BASE_RATE,by_condition,all,date,base,all,3179,0.0006,0.0000,0.0016
+BASE_RATE,by_condition,all,date,ws,all,210,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,date,ws_cutoff,all,210,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,frq,base,all,1640,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,frq,ws,all,210,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,frq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,mcq,base,all,1638,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,mcq,ws,all,210,0.0000,0.0000,0.0000
+BASE_RATE,by_condition,all,mcq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+BASE_RATE,by_partition,all,binary,base,post,866,0.0023,0.0000,0.0058
+BASE_RATE,by_partition,all,binary,base,pre,779,0.0128,0.0052,0.0219
+BASE_RATE,by_partition,all,binary_perturbed,base,post,887,0.0147,0.0077,0.0226
+BASE_RATE,by_partition,all,binary_perturbed,base,pre,760,0.0132,0.0065,0.0223
+BASE_RATE,by_partition,all,date,base,post,1708,0.0006,0.0000,0.0018
+BASE_RATE,by_partition,all,date,base,pre,1471,0.0007,0.0000,0.0021
+BASE_RATE,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+BASE_RATE,by_partition,all,frq,base,pre,756,0.0000,0.0000,0.0000
+BASE_RATE,by_partition,all,mcq,base,post,881,0.0000,0.0000,0.0000
+BASE_RATE,by_partition,all,mcq,base,pre,757,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,overall,all,all,all,all,11849,0.0589,0.0539,0.0638
+HYPOTHESIS_COMPARISON,by_task,all,binary,base,all,1645,0.0018,0.0000,0.0042
+HYPOTHESIS_COMPARISON,by_task,all,binary_perturbed,base,all,1647,0.0036,0.0012,0.0068
+HYPOTHESIS_COMPARISON,by_task,all,date,base,all,3179,0.0006,0.0000,0.0016
+HYPOTHESIS_COMPARISON,by_task,all,frq,base,all,1640,0.0012,0.0000,0.0031
+HYPOTHESIS_COMPARISON,by_task,all,mcq,base,all,1638,0.3516,0.3286,0.3749
+HYPOTHESIS_COMPARISON,by_model_task,Claude Opus 4.8,binary,base,all,190,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude Opus 4.8,date,base,all,328,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0585,0.0319,0.0904
+HYPOTHESIS_COMPARISON,by_model_task,Claude S4.5,binary,base,all,190,0.0053,0.0000,0.0158
+HYPOTHESIS_COMPARISON,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude S4.5,date,base,all,326,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude S4.5,frq,base,all,188,0.0053,0.0000,0.0160
+HYPOTHESIS_COMPARISON,by_model_task,Claude S4.5,mcq,base,all,185,0.3946,0.3297,0.4649
+HYPOTHESIS_COMPARISON,by_model_task,Claude Sonnet 5,binary,base,all,187,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude Sonnet 5,date,base,all,325,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.1000,0.0579,0.1421
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-R1,binary,base,all,189,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-R1,date,base,all,323,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-R1,mcq,base,all,189,0.7778,0.7143,0.8307
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.2562,0.1875,0.3250
+HYPOTHESIS_COMPARISON,by_model_task,GPT-4o,binary,base,all,109,0.0092,0.0000,0.0275
+HYPOTHESIS_COMPARISON,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0091,0.0000,0.0273
+HYPOTHESIS_COMPARISON,by_model_task,GPT-4o,date,base,all,324,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,GPT-4o,mcq,base,all,110,0.3091,0.2270,0.3909
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.4,binary,base,all,190,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0105,0.0000,0.0263
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.4,date,base,all,327,0.0061,0.0000,0.0153
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.4,frq,base,all,190,0.0053,0.0000,0.0158
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.4,mcq,base,all,188,0.7340,0.6755,0.7979
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0053,0.0000,0.0158
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0158,0.0000,0.0368
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.6 Sol,date,base,all,326,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.4096,0.3404,0.4787
+HYPOTHESIS_COMPARISON,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,GPT-OSS 20B,date,base,all,300,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.1875,0.1313,0.2439
+HYPOTHESIS_COMPARISON,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0750,0.0250,0.1375
+HYPOTHESIS_COMPARISON,by_condition,all,binary,base,all,1645,0.0018,0.0000,0.0042
+HYPOTHESIS_COMPARISON,by_condition,all,binary,ws,all,210,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_condition,all,binary,ws_cutoff,all,210,0.0095,0.0000,0.0246
+HYPOTHESIS_COMPARISON,by_condition,all,binary_perturbed,base,all,1647,0.0036,0.0012,0.0068
+HYPOTHESIS_COMPARISON,by_condition,all,binary_perturbed,ws,all,210,0.0048,0.0000,0.0146
+HYPOTHESIS_COMPARISON,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_condition,all,date,base,all,3179,0.0006,0.0000,0.0016
+HYPOTHESIS_COMPARISON,by_condition,all,date,ws,all,210,0.0048,0.0000,0.0152
+HYPOTHESIS_COMPARISON,by_condition,all,date,ws_cutoff,all,210,0.0048,0.0000,0.0152
+HYPOTHESIS_COMPARISON,by_condition,all,frq,base,all,1640,0.0012,0.0000,0.0031
+HYPOTHESIS_COMPARISON,by_condition,all,frq,ws,all,210,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_condition,all,frq,ws_cutoff,all,210,0.0095,0.0000,0.0237
+HYPOTHESIS_COMPARISON,by_condition,all,mcq,base,all,1638,0.3516,0.3286,0.3749
+HYPOTHESIS_COMPARISON,by_condition,all,mcq,ws,all,210,0.2000,0.1449,0.2594
+HYPOTHESIS_COMPARISON,by_condition,all,mcq,ws_cutoff,all,210,0.2857,0.2238,0.3443
+HYPOTHESIS_COMPARISON,by_partition,all,binary,base,post,866,0.0023,0.0000,0.0058
+HYPOTHESIS_COMPARISON,by_partition,all,binary,base,pre,779,0.0013,0.0000,0.0039
+HYPOTHESIS_COMPARISON,by_partition,all,binary_perturbed,base,post,887,0.0045,0.0000,0.0091
+HYPOTHESIS_COMPARISON,by_partition,all,binary_perturbed,base,pre,760,0.0026,0.0000,0.0067
+HYPOTHESIS_COMPARISON,by_partition,all,date,base,post,1708,0.0006,0.0000,0.0018
+HYPOTHESIS_COMPARISON,by_partition,all,date,base,pre,1471,0.0007,0.0000,0.0021
+HYPOTHESIS_COMPARISON,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+HYPOTHESIS_COMPARISON,by_partition,all,frq,base,pre,756,0.0026,0.0000,0.0066
+HYPOTHESIS_COMPARISON,by_partition,all,mcq,base,post,881,0.3485,0.3161,0.3797
+HYPOTHESIS_COMPARISON,by_partition,all,mcq,base,pre,757,0.3554,0.3250,0.3894
+EVIDENCE_CITED,overall,all,all,all,all,11849,0.1845,0.1743,0.1951
+EVIDENCE_CITED,by_task,all,binary,base,all,1645,0.1568,0.1377,0.1778
+EVIDENCE_CITED,by_task,all,binary_perturbed,base,all,1647,0.1645,0.1469,0.1841
+EVIDENCE_CITED,by_task,all,date,base,all,3179,0.0915,0.0813,0.1023
+EVIDENCE_CITED,by_task,all,frq,base,all,1640,0.0122,0.0068,0.0179
+EVIDENCE_CITED,by_task,all,mcq,base,all,1638,0.1172,0.1022,0.1334
+EVIDENCE_CITED,by_model_task,Claude Opus 4.8,binary,base,all,190,0.1842,0.1316,0.2368
+EVIDENCE_CITED,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.1905,0.1323,0.2487
+EVIDENCE_CITED,by_model_task,Claude Opus 4.8,date,base,all,328,0.1128,0.0823,0.1494
+EVIDENCE_CITED,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0160,0.0000,0.0372
+EVIDENCE_CITED,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.1755,0.1223,0.2340
+EVIDENCE_CITED,by_model_task,Claude S4.5,binary,base,all,190,0.2684,0.2053,0.3316
+EVIDENCE_CITED,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.2474,0.1842,0.3105
+EVIDENCE_CITED,by_model_task,Claude S4.5,date,base,all,326,0.1564,0.1196,0.1963
+EVIDENCE_CITED,by_model_task,Claude S4.5,frq,base,all,188,0.0319,0.0106,0.0585
+EVIDENCE_CITED,by_model_task,Claude S4.5,mcq,base,all,185,0.2162,0.1622,0.2757
+EVIDENCE_CITED,by_model_task,Claude Sonnet 5,binary,base,all,187,0.2781,0.2139,0.3422
+EVIDENCE_CITED,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.2698,0.2116,0.3333
+EVIDENCE_CITED,by_model_task,Claude Sonnet 5,date,base,all,325,0.2031,0.1569,0.2523
+EVIDENCE_CITED,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0374,0.0107,0.0695
+EVIDENCE_CITED,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.2263,0.1684,0.2895
+EVIDENCE_CITED,by_model_task,DeepSeek-R1,binary,base,all,189,0.1270,0.0847,0.1746
+EVIDENCE_CITED,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.1746,0.1217,0.2275
+EVIDENCE_CITED,by_model_task,DeepSeek-R1,date,base,all,323,0.1610,0.1207,0.2012
+EVIDENCE_CITED,by_model_task,DeepSeek-R1,frq,base,all,187,0.0160,0.0000,0.0374
+EVIDENCE_CITED,by_model_task,DeepSeek-R1,mcq,base,all,189,0.1164,0.0741,0.1640
+EVIDENCE_CITED,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.1125,0.0625,0.1625
+EVIDENCE_CITED,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.1187,0.0688,0.1750
+EVIDENCE_CITED,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.0733,0.0467,0.1034
+EVIDENCE_CITED,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+EVIDENCE_CITED,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.1500,0.0938,0.2064
+EVIDENCE_CITED,by_model_task,GPT-4o,binary,base,all,109,0.0000,0.0000,0.0000
+EVIDENCE_CITED,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0273,0.0000,0.0636
+EVIDENCE_CITED,by_model_task,GPT-4o,date,base,all,324,0.0093,0.0000,0.0216
+EVIDENCE_CITED,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+EVIDENCE_CITED,by_model_task,GPT-4o,mcq,base,all,110,0.0091,0.0000,0.0273
+EVIDENCE_CITED,by_model_task,GPT-5.4,binary,base,all,190,0.0684,0.0368,0.1053
+EVIDENCE_CITED,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0737,0.0368,0.1158
+EVIDENCE_CITED,by_model_task,GPT-5.4,date,base,all,327,0.0306,0.0122,0.0520
+EVIDENCE_CITED,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+EVIDENCE_CITED,by_model_task,GPT-5.4,mcq,base,all,188,0.0585,0.0266,0.0957
+EVIDENCE_CITED,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.2211,0.1632,0.2842
+EVIDENCE_CITED,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.1947,0.1368,0.2526
+EVIDENCE_CITED,by_model_task,GPT-5.6 Sol,date,base,all,326,0.0644,0.0368,0.0920
+EVIDENCE_CITED,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0053,0.0000,0.0211
+EVIDENCE_CITED,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0213,0.0053,0.0426
+EVIDENCE_CITED,by_model_task,GPT-OSS 20B,binary,base,all,160,0.1375,0.0875,0.2000
+EVIDENCE_CITED,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.1875,0.1313,0.2500
+EVIDENCE_CITED,by_model_task,GPT-OSS 20B,date,base,all,300,0.0967,0.0633,0.1300
+EVIDENCE_CITED,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+EVIDENCE_CITED,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0875,0.0500,0.1313
+EVIDENCE_CITED,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0125,0.0000,0.0375
+EVIDENCE_CITED,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0125,0.0000,0.0375
+EVIDENCE_CITED,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0000,0.0000,0.0000
+EVIDENCE_CITED,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+EVIDENCE_CITED,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+EVIDENCE_CITED,by_condition,all,binary,base,all,1645,0.1568,0.1377,0.1778
+EVIDENCE_CITED,by_condition,all,binary,ws,all,210,0.7429,0.6809,0.8037
+EVIDENCE_CITED,by_condition,all,binary,ws_cutoff,all,210,0.6619,0.5902,0.7290
+EVIDENCE_CITED,by_condition,all,binary_perturbed,base,all,1647,0.1645,0.1469,0.1841
+EVIDENCE_CITED,by_condition,all,binary_perturbed,ws,all,210,0.7714,0.7143,0.8233
+EVIDENCE_CITED,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.6429,0.5787,0.7081
+EVIDENCE_CITED,by_condition,all,date,base,all,3179,0.0915,0.0813,0.1023
+EVIDENCE_CITED,by_condition,all,date,ws,all,210,0.6619,0.6021,0.7204
+EVIDENCE_CITED,by_condition,all,date,ws_cutoff,all,210,0.6095,0.5428,0.6716
+EVIDENCE_CITED,by_condition,all,frq,base,all,1640,0.0122,0.0068,0.0179
+EVIDENCE_CITED,by_condition,all,frq,ws,all,210,0.2048,0.1561,0.2619
+EVIDENCE_CITED,by_condition,all,frq,ws_cutoff,all,210,0.0857,0.0488,0.1262
+EVIDENCE_CITED,by_condition,all,mcq,base,all,1638,0.1172,0.1022,0.1334
+EVIDENCE_CITED,by_condition,all,mcq,ws,all,210,0.5952,0.5291,0.6603
+EVIDENCE_CITED,by_condition,all,mcq,ws_cutoff,all,210,0.5190,0.4439,0.5853
+EVIDENCE_CITED,by_partition,all,binary,base,post,866,0.1051,0.0838,0.1266
+EVIDENCE_CITED,by_partition,all,binary,base,pre,779,0.2144,0.1843,0.2443
+EVIDENCE_CITED,by_partition,all,binary_perturbed,base,post,887,0.1015,0.0808,0.1220
+EVIDENCE_CITED,by_partition,all,binary_perturbed,base,pre,760,0.2382,0.2090,0.2697
+EVIDENCE_CITED,by_partition,all,date,base,post,1708,0.0720,0.0599,0.0843
+EVIDENCE_CITED,by_partition,all,date,base,pre,1471,0.1142,0.0977,0.1306
+EVIDENCE_CITED,by_partition,all,frq,base,post,884,0.0124,0.0057,0.0201
+EVIDENCE_CITED,by_partition,all,frq,base,pre,756,0.0119,0.0051,0.0211
+EVIDENCE_CITED,by_partition,all,mcq,base,post,881,0.0783,0.0618,0.0963
+EVIDENCE_CITED,by_partition,all,mcq,base,pre,757,0.1625,0.1359,0.1900
+KNOWLEDGE_GAP_ADMITTED,overall,all,all,all,all,11849,0.0050,0.0037,0.0064
+KNOWLEDGE_GAP_ADMITTED,by_task,all,binary,base,all,1645,0.0140,0.0086,0.0194
+KNOWLEDGE_GAP_ADMITTED,by_task,all,binary_perturbed,base,all,1647,0.0170,0.0105,0.0231
+KNOWLEDGE_GAP_ADMITTED,by_task,all,date,base,all,3179,0.0003,0.0000,0.0010
+KNOWLEDGE_GAP_ADMITTED,by_task,all,frq,base,all,1640,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_task,all,mcq,base,all,1638,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Opus 4.8,binary,base,all,190,0.0263,0.0053,0.0526
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.0317,0.0106,0.0582
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Opus 4.8,date,base,all,328,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude S4.5,binary,base,all,190,0.0474,0.0211,0.0789
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.0684,0.0368,0.1053
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude S4.5,date,base,all,326,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude S4.5,mcq,base,all,185,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Sonnet 5,binary,base,all,187,0.0321,0.0107,0.0588
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.0423,0.0159,0.0741
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Sonnet 5,date,base,all,325,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-R1,binary,base,all,189,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-R1,date,base,all,323,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-4o,binary,base,all,109,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-4o,date,base,all,324,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-4o,mcq,base,all,110,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.4,binary,base,all,190,0.0105,0.0000,0.0263
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0053,0.0000,0.0158
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.4,date,base,all,327,0.0031,0.0000,0.0122
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.4,mcq,base,all,188,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0053,0.0000,0.0158
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.6 Sol,date,base,all,326,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-OSS 20B,date,base,all,300,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,binary,base,all,1645,0.0140,0.0086,0.0194
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,binary,ws,all,210,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,binary,ws_cutoff,all,210,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,binary_perturbed,base,all,1647,0.0170,0.0105,0.0231
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,binary_perturbed,ws,all,210,0.0190,0.0046,0.0379
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0048,0.0000,0.0144
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,date,base,all,3179,0.0003,0.0000,0.0010
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,date,ws,all,210,0.0095,0.0000,0.0243
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,date,ws_cutoff,all,210,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,frq,base,all,1640,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,frq,ws,all,210,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,frq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,mcq,base,all,1638,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,mcq,ws,all,210,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_condition,all,mcq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,binary,base,post,866,0.0058,0.0012,0.0113
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,binary,base,pre,779,0.0231,0.0126,0.0342
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,binary_perturbed,base,post,887,0.0068,0.0022,0.0124
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,binary_perturbed,base,pre,760,0.0289,0.0180,0.0419
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,date,base,post,1708,0.0006,0.0000,0.0018
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,date,base,pre,1471,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,frq,base,pre,756,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,mcq,base,post,881,0.0000,0.0000,0.0000
+KNOWLEDGE_GAP_ADMITTED,by_partition,all,mcq,base,pre,757,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,overall,all,all,all,all,11849,0.0522,0.0475,0.0566
+ABSENCE_AS_EVIDENCE,by_task,all,binary,base,all,1645,0.1398,0.1230,0.1583
+ABSENCE_AS_EVIDENCE,by_task,all,binary_perturbed,base,all,1647,0.1536,0.1351,0.1717
+ABSENCE_AS_EVIDENCE,by_task,all,date,base,all,3179,0.0047,0.0025,0.0072
+ABSENCE_AS_EVIDENCE,by_task,all,frq,base,all,1640,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_task,all,mcq,base,all,1638,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Opus 4.8,binary,base,all,190,0.0789,0.0421,0.1158
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.0952,0.0582,0.1376
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Opus 4.8,date,base,all,328,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,Claude S4.5,binary,base,all,190,0.1105,0.0684,0.1579
+ABSENCE_AS_EVIDENCE,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.1263,0.0842,0.1789
+ABSENCE_AS_EVIDENCE,by_model_task,Claude S4.5,date,base,all,326,0.0031,0.0000,0.0092
+ABSENCE_AS_EVIDENCE,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,Claude S4.5,mcq,base,all,185,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Sonnet 5,binary,base,all,187,0.1711,0.1176,0.2299
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.1746,0.1270,0.2328
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Sonnet 5,date,base,all,325,0.0031,0.0000,0.0092
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-R1,binary,base,all,189,0.0635,0.0317,0.0952
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0847,0.0476,0.1270
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-R1,date,base,all,323,0.0031,0.0000,0.0093
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.2375,0.1688,0.3063
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.2250,0.1625,0.2875
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.0333,0.0167,0.0567
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-4o,binary,base,all,109,0.0183,0.0000,0.0459
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0273,0.0000,0.0636
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-4o,date,base,all,324,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-4o,mcq,base,all,110,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.4,binary,base,all,190,0.0053,0.0000,0.0158
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0421,0.0158,0.0737
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.4,date,base,all,327,0.0031,0.0000,0.0092
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.4,mcq,base,all,188,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0737,0.0421,0.1158
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.1421,0.0947,0.1947
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.6 Sol,date,base,all,326,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-OSS 20B,binary,base,all,160,0.5938,0.5248,0.6687
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.5500,0.4688,0.6314
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-OSS 20B,date,base,all,300,0.0033,0.0000,0.0101
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_condition,all,binary,base,all,1645,0.1398,0.1230,0.1583
+ABSENCE_AS_EVIDENCE,by_condition,all,binary,ws,all,210,0.0571,0.0284,0.0913
+ABSENCE_AS_EVIDENCE,by_condition,all,binary,ws_cutoff,all,210,0.0857,0.0476,0.1261
+ABSENCE_AS_EVIDENCE,by_condition,all,binary_perturbed,base,all,1647,0.1536,0.1351,0.1717
+ABSENCE_AS_EVIDENCE,by_condition,all,binary_perturbed,ws,all,210,0.2476,0.1941,0.3029
+ABSENCE_AS_EVIDENCE,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.1762,0.1225,0.2322
+ABSENCE_AS_EVIDENCE,by_condition,all,date,base,all,3179,0.0047,0.0025,0.0072
+ABSENCE_AS_EVIDENCE,by_condition,all,date,ws,all,210,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_condition,all,date,ws_cutoff,all,210,0.0048,0.0000,0.0148
+ABSENCE_AS_EVIDENCE,by_condition,all,frq,base,all,1640,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_condition,all,frq,ws,all,210,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_condition,all,frq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_condition,all,mcq,base,all,1638,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_condition,all,mcq,ws,all,210,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_condition,all,mcq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_partition,all,binary,base,post,866,0.0982,0.0766,0.1190
+ABSENCE_AS_EVIDENCE,by_partition,all,binary,base,pre,779,0.1861,0.1592,0.2147
+ABSENCE_AS_EVIDENCE,by_partition,all,binary_perturbed,base,post,887,0.1094,0.0882,0.1318
+ABSENCE_AS_EVIDENCE,by_partition,all,binary_perturbed,base,pre,760,0.2053,0.1774,0.2326
+ABSENCE_AS_EVIDENCE,by_partition,all,date,base,post,1708,0.0041,0.0012,0.0075
+ABSENCE_AS_EVIDENCE,by_partition,all,date,base,pre,1471,0.0054,0.0020,0.0096
+ABSENCE_AS_EVIDENCE,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_partition,all,frq,base,pre,756,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_partition,all,mcq,base,post,881,0.0000,0.0000,0.0000
+ABSENCE_AS_EVIDENCE,by_partition,all,mcq,base,pre,757,0.0000,0.0000,0.0000
+CONSTRAINT_CHECKED,overall,all,all,all,all,11849,0.1807,0.1730,0.1888
+CONSTRAINT_CHECKED,by_task,all,binary,base,all,1645,0.3313,0.3085,0.3545
+CONSTRAINT_CHECKED,by_task,all,binary_perturbed,base,all,1647,0.3880,0.3646,0.4114
+CONSTRAINT_CHECKED,by_task,all,date,base,all,3179,0.0557,0.0473,0.0645
+CONSTRAINT_CHECKED,by_task,all,frq,base,all,1640,0.1195,0.1045,0.1355
+CONSTRAINT_CHECKED,by_task,all,mcq,base,all,1638,0.0928,0.0789,0.1067
+CONSTRAINT_CHECKED,by_model_task,Claude Opus 4.8,binary,base,all,190,0.2000,0.1421,0.2579
+CONSTRAINT_CHECKED,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.2593,0.2011,0.3228
+CONSTRAINT_CHECKED,by_model_task,Claude Opus 4.8,date,base,all,328,0.0213,0.0061,0.0366
+CONSTRAINT_CHECKED,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0106,0.0000,0.0266
+CONSTRAINT_CHECKED,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0266,0.0053,0.0532
+CONSTRAINT_CHECKED,by_model_task,Claude S4.5,binary,base,all,190,0.4737,0.4053,0.5421
+CONSTRAINT_CHECKED,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.4895,0.4211,0.5579
+CONSTRAINT_CHECKED,by_model_task,Claude S4.5,date,base,all,326,0.0859,0.0552,0.1166
+CONSTRAINT_CHECKED,by_model_task,Claude S4.5,frq,base,all,188,0.0479,0.0213,0.0798
+CONSTRAINT_CHECKED,by_model_task,Claude S4.5,mcq,base,all,185,0.2270,0.1676,0.2865
+CONSTRAINT_CHECKED,by_model_task,Claude Sonnet 5,binary,base,all,187,0.1551,0.1068,0.2032
+CONSTRAINT_CHECKED,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.1958,0.1376,0.2593
+CONSTRAINT_CHECKED,by_model_task,Claude Sonnet 5,date,base,all,325,0.0154,0.0031,0.0308
+CONSTRAINT_CHECKED,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0053,0.0000,0.0160
+CONSTRAINT_CHECKED,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0105,0.0000,0.0263
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-R1,binary,base,all,189,0.5873,0.5185,0.6561
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.6085,0.5397,0.6772
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-R1,date,base,all,323,0.0867,0.0557,0.1176
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-R1,frq,base,all,187,0.0588,0.0267,0.0963
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0899,0.0476,0.1323
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.4562,0.3750,0.5250
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.6062,0.5312,0.6814
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.1000,0.0667,0.1367
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0312,0.0063,0.0625
+CONSTRAINT_CHECKED,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.1375,0.0875,0.1938
+CONSTRAINT_CHECKED,by_model_task,GPT-4o,binary,base,all,109,0.2936,0.2110,0.3853
+CONSTRAINT_CHECKED,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.3182,0.2364,0.4091
+CONSTRAINT_CHECKED,by_model_task,GPT-4o,date,base,all,324,0.0031,0.0000,0.0093
+CONSTRAINT_CHECKED,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+CONSTRAINT_CHECKED,by_model_task,GPT-4o,mcq,base,all,110,0.0455,0.0091,0.0909
+CONSTRAINT_CHECKED,by_model_task,GPT-5.4,binary,base,all,190,0.4579,0.3842,0.5263
+CONSTRAINT_CHECKED,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.4895,0.4211,0.5579
+CONSTRAINT_CHECKED,by_model_task,GPT-5.4,date,base,all,327,0.0826,0.0550,0.1131
+CONSTRAINT_CHECKED,by_model_task,GPT-5.4,frq,base,all,190,0.4053,0.3316,0.4686
+CONSTRAINT_CHECKED,by_model_task,GPT-5.4,mcq,base,all,188,0.0745,0.0372,0.1170
+CONSTRAINT_CHECKED,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.1368,0.0895,0.1895
+CONSTRAINT_CHECKED,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.2789,0.2211,0.3422
+CONSTRAINT_CHECKED,by_model_task,GPT-5.6 Sol,date,base,all,326,0.0276,0.0123,0.0460
+CONSTRAINT_CHECKED,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.2579,0.2000,0.3211
+CONSTRAINT_CHECKED,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0266,0.0053,0.0532
+CONSTRAINT_CHECKED,by_model_task,GPT-OSS 20B,binary,base,all,160,0.3500,0.2812,0.4250
+CONSTRAINT_CHECKED,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.4062,0.3312,0.4875
+CONSTRAINT_CHECKED,by_model_task,GPT-OSS 20B,date,base,all,300,0.1400,0.1000,0.1800
+CONSTRAINT_CHECKED,by_model_task,GPT-OSS 20B,frq,base,all,160,0.2437,0.1750,0.3125
+CONSTRAINT_CHECKED,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.2437,0.1873,0.3125
+CONSTRAINT_CHECKED,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0375,0.0000,0.0753
+CONSTRAINT_CHECKED,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0250,0.0000,0.0625
+CONSTRAINT_CHECKED,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0000,0.0000,0.0000
+CONSTRAINT_CHECKED,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0375,0.0000,0.0875
+CONSTRAINT_CHECKED,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0125,0.0000,0.0375
+CONSTRAINT_CHECKED,by_condition,all,binary,base,all,1645,0.3313,0.3085,0.3545
+CONSTRAINT_CHECKED,by_condition,all,binary,ws,all,210,0.2048,0.1493,0.2605
+CONSTRAINT_CHECKED,by_condition,all,binary,ws_cutoff,all,210,0.3333,0.2685,0.4048
+CONSTRAINT_CHECKED,by_condition,all,binary_perturbed,base,all,1647,0.3880,0.3646,0.4114
+CONSTRAINT_CHECKED,by_condition,all,binary_perturbed,ws,all,210,0.5190,0.4434,0.5958
+CONSTRAINT_CHECKED,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.4810,0.4138,0.5518
+CONSTRAINT_CHECKED,by_condition,all,date,base,all,3179,0.0557,0.0473,0.0645
+CONSTRAINT_CHECKED,by_condition,all,date,ws,all,210,0.1000,0.0566,0.1515
+CONSTRAINT_CHECKED,by_condition,all,date,ws_cutoff,all,210,0.0952,0.0563,0.1350
+CONSTRAINT_CHECKED,by_condition,all,frq,base,all,1640,0.1195,0.1045,0.1355
+CONSTRAINT_CHECKED,by_condition,all,frq,ws,all,210,0.1429,0.0995,0.1916
+CONSTRAINT_CHECKED,by_condition,all,frq,ws_cutoff,all,210,0.0857,0.0490,0.1256
+CONSTRAINT_CHECKED,by_condition,all,mcq,base,all,1638,0.0928,0.0789,0.1067
+CONSTRAINT_CHECKED,by_condition,all,mcq,ws,all,210,0.0429,0.0184,0.0732
+CONSTRAINT_CHECKED,by_condition,all,mcq,ws_cutoff,all,210,0.0524,0.0238,0.0821
+CONSTRAINT_CHECKED,by_partition,all,binary,base,post,866,0.3476,0.3126,0.3805
+CONSTRAINT_CHECKED,by_partition,all,binary,base,pre,779,0.3132,0.2791,0.3481
+CONSTRAINT_CHECKED,by_partition,all,binary_perturbed,base,post,887,0.3991,0.3649,0.4323
+CONSTRAINT_CHECKED,by_partition,all,binary_perturbed,base,pre,760,0.3750,0.3403,0.4088
+CONSTRAINT_CHECKED,by_partition,all,date,base,post,1708,0.0556,0.0441,0.0685
+CONSTRAINT_CHECKED,by_partition,all,date,base,pre,1471,0.0557,0.0425,0.0677
+CONSTRAINT_CHECKED,by_partition,all,frq,base,post,884,0.1222,0.0988,0.1432
+CONSTRAINT_CHECKED,by_partition,all,frq,base,pre,756,0.1164,0.0937,0.1395
+CONSTRAINT_CHECKED,by_partition,all,mcq,base,post,881,0.0965,0.0766,0.1194
+CONSTRAINT_CHECKED,by_partition,all,mcq,base,pre,757,0.0885,0.0683,0.1068
+RATE_OF_PROGRESS,overall,all,all,all,all,11849,0.0919,0.0860,0.0969
+RATE_OF_PROGRESS,by_task,all,binary,base,all,1645,0.0158,0.0098,0.0220
+RATE_OF_PROGRESS,by_task,all,binary_perturbed,base,all,1647,0.0140,0.0086,0.0196
+RATE_OF_PROGRESS,by_task,all,date,base,all,3179,0.2960,0.2793,0.3119
+RATE_OF_PROGRESS,by_task,all,frq,base,all,1640,0.0055,0.0024,0.0097
+RATE_OF_PROGRESS,by_task,all,mcq,base,all,1638,0.0037,0.0012,0.0068
+RATE_OF_PROGRESS,by_model_task,Claude Opus 4.8,binary,base,all,190,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,Claude Opus 4.8,date,base,all,328,0.0274,0.0122,0.0457
+RATE_OF_PROGRESS,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0053,0.0000,0.0160
+RATE_OF_PROGRESS,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0106,0.0000,0.0266
+RATE_OF_PROGRESS,by_model_task,Claude S4.5,binary,base,all,190,0.0684,0.0367,0.1053
+RATE_OF_PROGRESS,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.0526,0.0211,0.0842
+RATE_OF_PROGRESS,by_model_task,Claude S4.5,date,base,all,326,0.7147,0.6656,0.7607
+RATE_OF_PROGRESS,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,Claude S4.5,mcq,base,all,185,0.0162,0.0000,0.0378
+RATE_OF_PROGRESS,by_model_task,Claude Sonnet 5,binary,base,all,187,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.0053,0.0000,0.0159
+RATE_OF_PROGRESS,by_model_task,Claude Sonnet 5,date,base,all,325,0.0677,0.0431,0.0924
+RATE_OF_PROGRESS,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,DeepSeek-R1,binary,base,all,189,0.0476,0.0212,0.0794
+RATE_OF_PROGRESS,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0370,0.0106,0.0688
+RATE_OF_PROGRESS,by_model_task,DeepSeek-R1,date,base,all,323,0.6656,0.6160,0.7152
+RATE_OF_PROGRESS,by_model_task,DeepSeek-R1,frq,base,all,187,0.0267,0.0053,0.0535
+RATE_OF_PROGRESS,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.0063,0.0000,0.0187
+RATE_OF_PROGRESS,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.0187,0.0000,0.0437
+RATE_OF_PROGRESS,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.2067,0.1633,0.2500
+RATE_OF_PROGRESS,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-4o,binary,base,all,109,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-4o,date,base,all,324,0.5154,0.4660,0.5679
+RATE_OF_PROGRESS,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-4o,mcq,base,all,110,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-5.4,binary,base,all,190,0.0053,0.0000,0.0158
+RATE_OF_PROGRESS,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-5.4,date,base,all,327,0.0703,0.0428,0.0979
+RATE_OF_PROGRESS,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-5.4,mcq,base,all,188,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0053,0.0000,0.0158
+RATE_OF_PROGRESS,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0053,0.0000,0.0158
+RATE_OF_PROGRESS,by_model_task,GPT-5.6 Sol,date,base,all,326,0.1840,0.1442,0.2270
+RATE_OF_PROGRESS,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0063,0.0000,0.0187
+RATE_OF_PROGRESS,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0063,0.0000,0.0187
+RATE_OF_PROGRESS,by_model_task,GPT-OSS 20B,date,base,all,300,0.4900,0.4333,0.5433
+RATE_OF_PROGRESS,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0187,0.0000,0.0375
+RATE_OF_PROGRESS,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0063,0.0000,0.0187
+RATE_OF_PROGRESS,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0100,0.0000,0.0233
+RATE_OF_PROGRESS,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_condition,all,binary,base,all,1645,0.0158,0.0098,0.0220
+RATE_OF_PROGRESS,by_condition,all,binary,ws,all,210,0.0048,0.0000,0.0149
+RATE_OF_PROGRESS,by_condition,all,binary,ws_cutoff,all,210,0.0095,0.0000,0.0243
+RATE_OF_PROGRESS,by_condition,all,binary_perturbed,base,all,1647,0.0140,0.0086,0.0196
+RATE_OF_PROGRESS,by_condition,all,binary_perturbed,ws,all,210,0.0143,0.0000,0.0321
+RATE_OF_PROGRESS,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0190,0.0046,0.0398
+RATE_OF_PROGRESS,by_condition,all,date,base,all,3179,0.2960,0.2793,0.3119
+RATE_OF_PROGRESS,by_condition,all,date,ws,all,210,0.1143,0.0739,0.1628
+RATE_OF_PROGRESS,by_condition,all,date,ws_cutoff,all,210,0.2381,0.1840,0.2961
+RATE_OF_PROGRESS,by_condition,all,frq,base,all,1640,0.0055,0.0024,0.0097
+RATE_OF_PROGRESS,by_condition,all,frq,ws,all,210,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_condition,all,frq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_condition,all,mcq,base,all,1638,0.0037,0.0012,0.0068
+RATE_OF_PROGRESS,by_condition,all,mcq,ws,all,210,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_condition,all,mcq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+RATE_OF_PROGRESS,by_partition,all,binary,base,post,866,0.0208,0.0124,0.0304
+RATE_OF_PROGRESS,by_partition,all,binary,base,pre,779,0.0103,0.0039,0.0180
+RATE_OF_PROGRESS,by_partition,all,binary_perturbed,base,post,887,0.0203,0.0120,0.0301
+RATE_OF_PROGRESS,by_partition,all,binary_perturbed,base,pre,760,0.0066,0.0013,0.0132
+RATE_OF_PROGRESS,by_partition,all,date,base,post,1708,0.3425,0.3217,0.3657
+RATE_OF_PROGRESS,by_partition,all,date,base,pre,1471,0.2420,0.2203,0.2642
+RATE_OF_PROGRESS,by_partition,all,frq,base,post,884,0.0079,0.0023,0.0139
+RATE_OF_PROGRESS,by_partition,all,frq,base,pre,756,0.0026,0.0000,0.0066
+RATE_OF_PROGRESS,by_partition,all,mcq,base,post,881,0.0057,0.0011,0.0111
+RATE_OF_PROGRESS,by_partition,all,mcq,base,pre,757,0.0013,0.0000,0.0041
+ROUND_ANCHOR,overall,all,all,all,all,11849,0.0689,0.0641,0.0736
+ROUND_ANCHOR,by_task,all,binary,base,all,1645,0.0030,0.0006,0.0060
+ROUND_ANCHOR,by_task,all,binary_perturbed,base,all,1647,0.0036,0.0012,0.0067
+ROUND_ANCHOR,by_task,all,date,base,all,3179,0.2394,0.2232,0.2548
+ROUND_ANCHOR,by_task,all,frq,base,all,1640,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_task,all,mcq,base,all,1638,0.0018,0.0000,0.0042
+ROUND_ANCHOR,by_model_task,Claude Opus 4.8,binary,base,all,190,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.0106,0.0000,0.0265
+ROUND_ANCHOR,by_model_task,Claude Opus 4.8,date,base,all,328,0.0610,0.0366,0.0884
+ROUND_ANCHOR,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude S4.5,binary,base,all,190,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude S4.5,date,base,all,326,0.0460,0.0215,0.0736
+ROUND_ANCHOR,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude S4.5,mcq,base,all,185,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude Sonnet 5,binary,base,all,187,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude Sonnet 5,date,base,all,325,0.0677,0.0431,0.0985
+ROUND_ANCHOR,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,DeepSeek-R1,binary,base,all,189,0.0106,0.0000,0.0265
+ROUND_ANCHOR,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0106,0.0000,0.0265
+ROUND_ANCHOR,by_model_task,DeepSeek-R1,date,base,all,323,0.2879,0.2384,0.3344
+ROUND_ANCHOR,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.3267,0.2766,0.3800
+ROUND_ANCHOR,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0063,0.0000,0.0187
+ROUND_ANCHOR,by_model_task,GPT-4o,binary,base,all,109,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-4o,date,base,all,324,0.0802,0.0525,0.1142
+ROUND_ANCHOR,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-4o,mcq,base,all,110,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-5.4,binary,base,all,190,0.0053,0.0000,0.0158
+ROUND_ANCHOR,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0053,0.0000,0.0158
+ROUND_ANCHOR,by_model_task,GPT-5.4,date,base,all,327,0.7615,0.7186,0.8073
+ROUND_ANCHOR,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-5.4,mcq,base,all,188,0.0053,0.0000,0.0160
+ROUND_ANCHOR,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-5.6 Sol,date,base,all,326,0.1319,0.0951,0.1687
+ROUND_ANCHOR,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0125,0.0000,0.0375
+ROUND_ANCHOR,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0063,0.0000,0.0187
+ROUND_ANCHOR,by_model_task,GPT-OSS 20B,date,base,all,300,0.6500,0.5967,0.7000
+ROUND_ANCHOR,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0063,0.0000,0.0187
+ROUND_ANCHOR,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_condition,all,binary,base,all,1645,0.0030,0.0006,0.0060
+ROUND_ANCHOR,by_condition,all,binary,ws,all,210,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_condition,all,binary,ws_cutoff,all,210,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_condition,all,binary_perturbed,base,all,1647,0.0036,0.0012,0.0067
+ROUND_ANCHOR,by_condition,all,binary_perturbed,ws,all,210,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0048,0.0000,0.0151
+ROUND_ANCHOR,by_condition,all,date,base,all,3179,0.2394,0.2232,0.2548
+ROUND_ANCHOR,by_condition,all,date,ws,all,210,0.0762,0.0417,0.1117
+ROUND_ANCHOR,by_condition,all,date,ws_cutoff,all,210,0.1095,0.0688,0.1560
+ROUND_ANCHOR,by_condition,all,frq,base,all,1640,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_condition,all,frq,ws,all,210,0.0048,0.0000,0.0146
+ROUND_ANCHOR,by_condition,all,frq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_condition,all,mcq,base,all,1638,0.0018,0.0000,0.0042
+ROUND_ANCHOR,by_condition,all,mcq,ws,all,210,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_condition,all,mcq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_partition,all,binary,base,post,866,0.0046,0.0011,0.0092
+ROUND_ANCHOR,by_partition,all,binary,base,pre,779,0.0013,0.0000,0.0040
+ROUND_ANCHOR,by_partition,all,binary_perturbed,base,post,887,0.0045,0.0011,0.0092
+ROUND_ANCHOR,by_partition,all,binary_perturbed,base,pre,760,0.0026,0.0000,0.0067
+ROUND_ANCHOR,by_partition,all,date,base,post,1708,0.2307,0.2105,0.2503
+ROUND_ANCHOR,by_partition,all,date,base,pre,1471,0.2495,0.2276,0.2722
+ROUND_ANCHOR,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_partition,all,frq,base,pre,756,0.0000,0.0000,0.0000
+ROUND_ANCHOR,by_partition,all,mcq,base,post,881,0.0023,0.0000,0.0057
+ROUND_ANCHOR,by_partition,all,mcq,base,pre,757,0.0013,0.0000,0.0040
+CUTOFF_REFERENCED,overall,all,all,all,all,11849,0.0046,0.0034,0.0058
+CUTOFF_REFERENCED,by_task,all,binary,base,all,1645,0.0146,0.0087,0.0202
+CUTOFF_REFERENCED,by_task,all,binary_perturbed,base,all,1647,0.0158,0.0097,0.0227
+CUTOFF_REFERENCED,by_task,all,date,base,all,3179,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_task,all,frq,base,all,1640,0.0006,0.0000,0.0018
+CUTOFF_REFERENCED,by_task,all,mcq,base,all,1638,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude Opus 4.8,binary,base,all,190,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude Opus 4.8,date,base,all,328,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude S4.5,binary,base,all,190,0.1105,0.0683,0.1579
+CUTOFF_REFERENCED,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.1211,0.0789,0.1684
+CUTOFF_REFERENCED,by_model_task,Claude S4.5,date,base,all,326,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude S4.5,mcq,base,all,185,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude Sonnet 5,binary,base,all,187,0.0053,0.0000,0.0160
+CUTOFF_REFERENCED,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.0106,0.0000,0.0265
+CUTOFF_REFERENCED,by_model_task,Claude Sonnet 5,date,base,all,325,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,DeepSeek-R1,binary,base,all,189,0.0106,0.0000,0.0265
+CUTOFF_REFERENCED,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,DeepSeek-R1,date,base,all,323,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-4o,binary,base,all,109,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-4o,date,base,all,324,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-4o,mcq,base,all,110,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-5.4,binary,base,all,190,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0053,0.0000,0.0158
+CUTOFF_REFERENCED,by_model_task,GPT-5.4,date,base,all,327,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-5.4,mcq,base,all,188,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-5.6 Sol,date,base,all,326,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0053,0.0000,0.0158
+CUTOFF_REFERENCED,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-OSS 20B,date,base,all,300,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,binary,base,all,1645,0.0146,0.0087,0.0202
+CUTOFF_REFERENCED,by_condition,all,binary,ws,all,210,0.0048,0.0000,0.0146
+CUTOFF_REFERENCED,by_condition,all,binary,ws_cutoff,all,210,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,binary_perturbed,base,all,1647,0.0158,0.0097,0.0227
+CUTOFF_REFERENCED,by_condition,all,binary_perturbed,ws,all,210,0.0095,0.0000,0.0239
+CUTOFF_REFERENCED,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,date,base,all,3179,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,date,ws,all,210,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,date,ws_cutoff,all,210,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,frq,base,all,1640,0.0006,0.0000,0.0018
+CUTOFF_REFERENCED,by_condition,all,frq,ws,all,210,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,frq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,mcq,base,all,1638,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,mcq,ws,all,210,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_condition,all,mcq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_partition,all,binary,base,post,866,0.0081,0.0024,0.0149
+CUTOFF_REFERENCED,by_partition,all,binary,base,pre,779,0.0218,0.0128,0.0329
+CUTOFF_REFERENCED,by_partition,all,binary_perturbed,base,post,887,0.0056,0.0011,0.0113
+CUTOFF_REFERENCED,by_partition,all,binary_perturbed,base,pre,760,0.0276,0.0170,0.0398
+CUTOFF_REFERENCED,by_partition,all,date,base,post,1708,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_partition,all,date,base,pre,1471,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_partition,all,frq,base,pre,756,0.0013,0.0000,0.0040
+CUTOFF_REFERENCED,by_partition,all,mcq,base,post,881,0.0000,0.0000,0.0000
+CUTOFF_REFERENCED,by_partition,all,mcq,base,pre,757,0.0000,0.0000,0.0000
+DIFFICULTY_APPEAL,overall,all,all,all,all,11849,0.1685,0.1602,0.1765
+DIFFICULTY_APPEAL,by_task,all,binary,base,all,1645,0.3307,0.3075,0.3535
+DIFFICULTY_APPEAL,by_task,all,binary_perturbed,base,all,1647,0.3018,0.2787,0.3239
+DIFFICULTY_APPEAL,by_task,all,date,base,all,3179,0.2513,0.2367,0.2676
+DIFFICULTY_APPEAL,by_task,all,frq,base,all,1640,0.0152,0.0097,0.0214
+DIFFICULTY_APPEAL,by_task,all,mcq,base,all,1638,0.0128,0.0079,0.0185
+DIFFICULTY_APPEAL,by_model_task,Claude Opus 4.8,binary,base,all,190,0.1316,0.0842,0.1789
+DIFFICULTY_APPEAL,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.1799,0.1270,0.2381
+DIFFICULTY_APPEAL,by_model_task,Claude Opus 4.8,date,base,all,328,0.0335,0.0152,0.0549
+DIFFICULTY_APPEAL,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0106,0.0000,0.0266
+DIFFICULTY_APPEAL,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0106,0.0000,0.0266
+DIFFICULTY_APPEAL,by_model_task,Claude S4.5,binary,base,all,190,0.4895,0.4158,0.5579
+DIFFICULTY_APPEAL,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.3842,0.3158,0.4526
+DIFFICULTY_APPEAL,by_model_task,Claude S4.5,date,base,all,326,0.3436,0.2914,0.3926
+DIFFICULTY_APPEAL,by_model_task,Claude S4.5,frq,base,all,188,0.0106,0.0000,0.0266
+DIFFICULTY_APPEAL,by_model_task,Claude S4.5,mcq,base,all,185,0.0541,0.0216,0.0865
+DIFFICULTY_APPEAL,by_model_task,Claude Sonnet 5,binary,base,all,187,0.1444,0.0963,0.1979
+DIFFICULTY_APPEAL,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.1058,0.0635,0.1534
+DIFFICULTY_APPEAL,by_model_task,Claude Sonnet 5,date,base,all,325,0.0215,0.0062,0.0400
+DIFFICULTY_APPEAL,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0160,0.0000,0.0374
+DIFFICULTY_APPEAL,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0053,0.0000,0.0158
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-R1,binary,base,all,189,0.5714,0.5026,0.6349
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.4550,0.3862,0.5291
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-R1,date,base,all,323,0.3870,0.3282,0.4427
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-R1,frq,base,all,187,0.0053,0.0000,0.0160
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0212,0.0053,0.0423
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.6438,0.5687,0.7127
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.6250,0.5500,0.7000
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.5067,0.4500,0.5633
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0063,0.0000,0.0187
+DIFFICULTY_APPEAL,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0000,0.0000,0.0000
+DIFFICULTY_APPEAL,by_model_task,GPT-4o,binary,base,all,109,0.8073,0.7339,0.8807
+DIFFICULTY_APPEAL,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.7273,0.6455,0.8091
+DIFFICULTY_APPEAL,by_model_task,GPT-4o,date,base,all,324,0.3395,0.2870,0.3951
+DIFFICULTY_APPEAL,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+DIFFICULTY_APPEAL,by_model_task,GPT-4o,mcq,base,all,110,0.0091,0.0000,0.0273
+DIFFICULTY_APPEAL,by_model_task,GPT-5.4,binary,base,all,190,0.2895,0.2211,0.3528
+DIFFICULTY_APPEAL,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.3000,0.2368,0.3632
+DIFFICULTY_APPEAL,by_model_task,GPT-5.4,date,base,all,327,0.2875,0.2385,0.3394
+DIFFICULTY_APPEAL,by_model_task,GPT-5.4,frq,base,all,190,0.0526,0.0211,0.0842
+DIFFICULTY_APPEAL,by_model_task,GPT-5.4,mcq,base,all,188,0.0160,0.0000,0.0372
+DIFFICULTY_APPEAL,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0684,0.0368,0.1053
+DIFFICULTY_APPEAL,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0947,0.0579,0.1368
+DIFFICULTY_APPEAL,by_model_task,GPT-5.6 Sol,date,base,all,326,0.1380,0.1012,0.1779
+DIFFICULTY_APPEAL,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0211,0.0053,0.0421
+DIFFICULTY_APPEAL,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+DIFFICULTY_APPEAL,by_model_task,GPT-OSS 20B,binary,base,all,160,0.1375,0.0813,0.1938
+DIFFICULTY_APPEAL,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.1250,0.0750,0.1752
+DIFFICULTY_APPEAL,by_model_task,GPT-OSS 20B,date,base,all,300,0.0900,0.0600,0.1233
+DIFFICULTY_APPEAL,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0125,0.0000,0.0312
+DIFFICULTY_APPEAL,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0000,0.0000,0.0000
+DIFFICULTY_APPEAL,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.1250,0.0625,0.2000
+DIFFICULTY_APPEAL,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.1125,0.0500,0.1875
+DIFFICULTY_APPEAL,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.3867,0.3300,0.4433
+DIFFICULTY_APPEAL,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+DIFFICULTY_APPEAL,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+DIFFICULTY_APPEAL,by_condition,all,binary,base,all,1645,0.3307,0.3075,0.3535
+DIFFICULTY_APPEAL,by_condition,all,binary,ws,all,210,0.0238,0.0047,0.0443
+DIFFICULTY_APPEAL,by_condition,all,binary,ws_cutoff,all,210,0.1476,0.1043,0.1970
+DIFFICULTY_APPEAL,by_condition,all,binary_perturbed,base,all,1647,0.3018,0.2787,0.3239
+DIFFICULTY_APPEAL,by_condition,all,binary_perturbed,ws,all,210,0.0476,0.0237,0.0743
+DIFFICULTY_APPEAL,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.2000,0.1457,0.2560
+DIFFICULTY_APPEAL,by_condition,all,date,base,all,3179,0.2513,0.2367,0.2676
+DIFFICULTY_APPEAL,by_condition,all,date,ws,all,210,0.0143,0.0000,0.0313
+DIFFICULTY_APPEAL,by_condition,all,date,ws_cutoff,all,210,0.0667,0.0346,0.1010
+DIFFICULTY_APPEAL,by_condition,all,frq,base,all,1640,0.0152,0.0097,0.0214
+DIFFICULTY_APPEAL,by_condition,all,frq,ws,all,210,0.0095,0.0000,0.0239
+DIFFICULTY_APPEAL,by_condition,all,frq,ws_cutoff,all,210,0.0095,0.0000,0.0243
+DIFFICULTY_APPEAL,by_condition,all,mcq,base,all,1638,0.0128,0.0079,0.0185
+DIFFICULTY_APPEAL,by_condition,all,mcq,ws,all,210,0.0000,0.0000,0.0000
+DIFFICULTY_APPEAL,by_condition,all,mcq,ws_cutoff,all,210,0.0095,0.0000,0.0237
+DIFFICULTY_APPEAL,by_partition,all,binary,base,post,866,0.4099,0.3772,0.4438
+DIFFICULTY_APPEAL,by_partition,all,binary,base,pre,779,0.2426,0.2094,0.2753
+DIFFICULTY_APPEAL,by_partition,all,binary_perturbed,base,post,887,0.3698,0.3356,0.4007
+DIFFICULTY_APPEAL,by_partition,all,binary_perturbed,base,pre,760,0.2224,0.1922,0.2513
+DIFFICULTY_APPEAL,by_partition,all,date,base,post,1708,0.2992,0.2787,0.3220
+DIFFICULTY_APPEAL,by_partition,all,date,base,pre,1471,0.1958,0.1744,0.2166
+DIFFICULTY_APPEAL,by_partition,all,frq,base,post,884,0.0113,0.0045,0.0182
+DIFFICULTY_APPEAL,by_partition,all,frq,base,pre,756,0.0198,0.0106,0.0312
+DIFFICULTY_APPEAL,by_partition,all,mcq,base,post,881,0.0125,0.0057,0.0207
+DIFFICULTY_APPEAL,by_partition,all,mcq,base,pre,757,0.0132,0.0054,0.0215
+SPECIFICITY_AS_IMPLAUSIBLE,overall,all,all,all,all,11849,0.0690,0.0638,0.0742
+SPECIFICITY_AS_IMPLAUSIBLE,by_task,all,binary,base,all,1645,0.2030,0.1831,0.2256
+SPECIFICITY_AS_IMPLAUSIBLE,by_task,all,binary_perturbed,base,all,1647,0.1676,0.1508,0.1849
+SPECIFICITY_AS_IMPLAUSIBLE,by_task,all,date,base,all,3179,0.0544,0.0466,0.0626
+SPECIFICITY_AS_IMPLAUSIBLE,by_task,all,frq,base,all,1640,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_task,all,mcq,base,all,1638,0.0024,0.0006,0.0049
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Opus 4.8,binary,base,all,190,0.4211,0.3526,0.4842
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.4339,0.3598,0.5026
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Opus 4.8,date,base,all,328,0.0396,0.0213,0.0610
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0053,0.0000,0.0160
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude S4.5,binary,base,all,190,0.3053,0.2421,0.3686
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.2579,0.2000,0.3263
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude S4.5,date,base,all,326,0.1779,0.1380,0.2209
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude S4.5,mcq,base,all,185,0.0108,0.0000,0.0270
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Sonnet 5,binary,base,all,187,0.4064,0.3369,0.4759
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.4339,0.3598,0.5026
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Sonnet 5,date,base,all,325,0.0338,0.0154,0.0523
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0053,0.0000,0.0158
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-R1,binary,base,all,189,0.0423,0.0159,0.0741
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0212,0.0053,0.0423
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-R1,date,base,all,323,0.0062,0.0000,0.0155
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.3000,0.2375,0.3750
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.1750,0.1125,0.2313
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.1700,0.1300,0.2133
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-4o,binary,base,all,109,0.0275,0.0000,0.0642
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0182,0.0000,0.0455
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-4o,date,base,all,324,0.0123,0.0031,0.0247
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-4o,mcq,base,all,110,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.4,binary,base,all,190,0.1579,0.1105,0.2053
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0895,0.0526,0.1317
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.4,date,base,all,327,0.0122,0.0031,0.0275
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.4,mcq,base,all,188,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0368,0.0105,0.0684
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0158,0.0000,0.0368
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.6 Sol,date,base,all,326,0.0399,0.0215,0.0613
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-OSS 20B,binary,base,all,160,0.1500,0.1000,0.2062
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0563,0.0250,0.0938
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-OSS 20B,date,base,all,300,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0567,0.0333,0.0833
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,binary,base,all,1645,0.2030,0.1831,0.2256
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,binary,ws,all,210,0.0190,0.0000,0.0423
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,binary,ws_cutoff,all,210,0.0381,0.0140,0.0667
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,binary_perturbed,base,all,1647,0.1676,0.1508,0.1849
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,binary_perturbed,ws,all,210,0.0333,0.0134,0.0599
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0381,0.0145,0.0637
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,date,base,all,3179,0.0544,0.0466,0.0626
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,date,ws,all,210,0.0048,0.0000,0.0152
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,date,ws_cutoff,all,210,0.0095,0.0000,0.0243
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,frq,base,all,1640,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,frq,ws,all,210,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,frq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,mcq,base,all,1638,0.0024,0.0006,0.0049
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,mcq,ws,all,210,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_condition,all,mcq,ws_cutoff,all,210,0.0048,0.0000,0.0148
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,binary,base,post,866,0.2194,0.1891,0.2486
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,binary,base,pre,779,0.1849,0.1570,0.2108
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,binary_perturbed,base,post,887,0.1623,0.1372,0.1888
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,binary_perturbed,base,pre,760,0.1737,0.1470,0.2011
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,date,base,post,1708,0.0550,0.0433,0.0667
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,date,base,pre,1471,0.0537,0.0423,0.0663
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,frq,base,pre,756,0.0000,0.0000,0.0000
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,mcq,base,post,881,0.0034,0.0000,0.0080
+SPECIFICITY_AS_IMPLAUSIBLE,by_partition,all,mcq,base,pre,757,0.0013,0.0000,0.0040
+PROVENANCE_INFERRED,overall,all,all,all,all,11849,0.1220,0.1141,0.1297
+PROVENANCE_INFERRED,by_task,all,binary,base,all,1645,0.0869,0.0736,0.1019
+PROVENANCE_INFERRED,by_task,all,binary_perturbed,base,all,1647,0.0255,0.0185,0.0335
+PROVENANCE_INFERRED,by_task,all,date,base,all,3179,0.1585,0.1459,0.1725
+PROVENANCE_INFERRED,by_task,all,frq,base,all,1640,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_task,all,mcq,base,all,1638,0.0751,0.0621,0.0880
+PROVENANCE_INFERRED,by_model_task,Claude Opus 4.8,binary,base,all,190,0.1632,0.1158,0.2158
+PROVENANCE_INFERRED,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.0476,0.0212,0.0794
+PROVENANCE_INFERRED,by_model_task,Claude Opus 4.8,date,base,all,328,0.5061,0.4482,0.5610
+PROVENANCE_INFERRED,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.1489,0.1011,0.2021
+PROVENANCE_INFERRED,by_model_task,Claude S4.5,binary,base,all,190,0.1105,0.0684,0.1579
+PROVENANCE_INFERRED,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.0158,0.0000,0.0368
+PROVENANCE_INFERRED,by_model_task,Claude S4.5,date,base,all,326,0.1043,0.0706,0.1350
+PROVENANCE_INFERRED,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,Claude S4.5,mcq,base,all,185,0.0486,0.0216,0.0811
+PROVENANCE_INFERRED,by_model_task,Claude Sonnet 5,binary,base,all,187,0.2460,0.1818,0.3102
+PROVENANCE_INFERRED,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.0635,0.0317,0.1005
+PROVENANCE_INFERRED,by_model_task,Claude Sonnet 5,date,base,all,325,0.4185,0.3692,0.4708
+PROVENANCE_INFERRED,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.2474,0.1895,0.3158
+PROVENANCE_INFERRED,by_model_task,DeepSeek-R1,binary,base,all,189,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,DeepSeek-R1,date,base,all,323,0.0031,0.0000,0.0093
+PROVENANCE_INFERRED,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.0063,0.0000,0.0250
+PROVENANCE_INFERRED,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.1067,0.0700,0.1433
+PROVENANCE_INFERRED,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0625,0.0312,0.1000
+PROVENANCE_INFERRED,by_model_task,GPT-4o,binary,base,all,109,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,GPT-4o,date,base,all,324,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,GPT-4o,mcq,base,all,110,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,GPT-5.4,binary,base,all,190,0.0789,0.0421,0.1211
+PROVENANCE_INFERRED,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0263,0.0053,0.0526
+PROVENANCE_INFERRED,by_model_task,GPT-5.4,date,base,all,327,0.1713,0.1346,0.2141
+PROVENANCE_INFERRED,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,GPT-5.4,mcq,base,all,188,0.0957,0.0532,0.1436
+PROVENANCE_INFERRED,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.1526,0.1000,0.2054
+PROVENANCE_INFERRED,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0632,0.0316,0.1000
+PROVENANCE_INFERRED,by_model_task,GPT-5.6 Sol,date,base,all,326,0.2362,0.1933,0.2822
+PROVENANCE_INFERRED,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0532,0.0213,0.0904
+PROVENANCE_INFERRED,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0063,0.0000,0.0187
+PROVENANCE_INFERRED,by_model_task,GPT-OSS 20B,date,base,all,300,0.0067,0.0000,0.0167
+PROVENANCE_INFERRED,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0063,0.0000,0.0187
+PROVENANCE_INFERRED,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_condition,all,binary,base,all,1645,0.0869,0.0736,0.1019
+PROVENANCE_INFERRED,by_condition,all,binary,ws,all,210,0.4286,0.3514,0.5023
+PROVENANCE_INFERRED,by_condition,all,binary,ws_cutoff,all,210,0.2524,0.1979,0.3136
+PROVENANCE_INFERRED,by_condition,all,binary_perturbed,base,all,1647,0.0255,0.0185,0.0335
+PROVENANCE_INFERRED,by_condition,all,binary_perturbed,ws,all,210,0.1095,0.0672,0.1514
+PROVENANCE_INFERRED,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0762,0.0413,0.1165
+PROVENANCE_INFERRED,by_condition,all,date,base,all,3179,0.1585,0.1459,0.1725
+PROVENANCE_INFERRED,by_condition,all,date,ws,all,210,0.7000,0.6250,0.7636
+PROVENANCE_INFERRED,by_condition,all,date,ws_cutoff,all,210,0.4905,0.4267,0.5567
+PROVENANCE_INFERRED,by_condition,all,frq,base,all,1640,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_condition,all,frq,ws,all,210,0.0381,0.0146,0.0657
+PROVENANCE_INFERRED,by_condition,all,frq,ws_cutoff,all,210,0.0095,0.0000,0.0243
+PROVENANCE_INFERRED,by_condition,all,mcq,base,all,1638,0.0751,0.0621,0.0880
+PROVENANCE_INFERRED,by_condition,all,mcq,ws,all,210,0.5524,0.4829,0.6191
+PROVENANCE_INFERRED,by_condition,all,mcq,ws_cutoff,all,210,0.3571,0.2927,0.4198
+PROVENANCE_INFERRED,by_partition,all,binary,base,post,866,0.0647,0.0471,0.0836
+PROVENANCE_INFERRED,by_partition,all,binary,base,pre,779,0.1117,0.0885,0.1363
+PROVENANCE_INFERRED,by_partition,all,binary_perturbed,base,post,887,0.0101,0.0034,0.0178
+PROVENANCE_INFERRED,by_partition,all,binary_perturbed,base,pre,760,0.0434,0.0289,0.0591
+PROVENANCE_INFERRED,by_partition,all,date,base,post,1708,0.0861,0.0719,0.1011
+PROVENANCE_INFERRED,by_partition,all,date,base,pre,1471,0.2427,0.2196,0.2645
+PROVENANCE_INFERRED,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_partition,all,frq,base,pre,756,0.0000,0.0000,0.0000
+PROVENANCE_INFERRED,by_partition,all,mcq,base,post,881,0.0318,0.0206,0.0444
+PROVENANCE_INFERRED,by_partition,all,mcq,base,pre,757,0.1255,0.1003,0.1502
+CONJUNCTION_BURDEN,overall,all,all,all,all,11849,0.0955,0.0892,0.1020
+CONJUNCTION_BURDEN,by_task,all,binary,base,all,1645,0.1818,0.1640,0.2019
+CONJUNCTION_BURDEN,by_task,all,binary_perturbed,base,all,1647,0.1293,0.1121,0.1458
+CONJUNCTION_BURDEN,by_task,all,date,base,all,3179,0.1167,0.1048,0.1282
+CONJUNCTION_BURDEN,by_task,all,frq,base,all,1640,0.0738,0.0619,0.0873
+CONJUNCTION_BURDEN,by_task,all,mcq,base,all,1638,0.0177,0.0116,0.0246
+CONJUNCTION_BURDEN,by_model_task,Claude Opus 4.8,binary,base,all,190,0.1474,0.1000,0.1947
+CONJUNCTION_BURDEN,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.1640,0.1164,0.2171
+CONJUNCTION_BURDEN,by_model_task,Claude Opus 4.8,date,base,all,328,0.0122,0.0030,0.0274
+CONJUNCTION_BURDEN,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0213,0.0052,0.0426
+CONJUNCTION_BURDEN,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0160,0.0000,0.0372
+CONJUNCTION_BURDEN,by_model_task,Claude S4.5,binary,base,all,190,0.2263,0.1684,0.2895
+CONJUNCTION_BURDEN,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.1737,0.1211,0.2263
+CONJUNCTION_BURDEN,by_model_task,Claude S4.5,date,base,all,326,0.2393,0.1963,0.2883
+CONJUNCTION_BURDEN,by_model_task,Claude S4.5,frq,base,all,188,0.0904,0.0532,0.1330
+CONJUNCTION_BURDEN,by_model_task,Claude S4.5,mcq,base,all,185,0.0595,0.0270,0.0973
+CONJUNCTION_BURDEN,by_model_task,Claude Sonnet 5,binary,base,all,187,0.1497,0.0963,0.2032
+CONJUNCTION_BURDEN,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.1217,0.0794,0.1693
+CONJUNCTION_BURDEN,by_model_task,Claude Sonnet 5,date,base,all,325,0.0246,0.0092,0.0431
+CONJUNCTION_BURDEN,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0909,0.0535,0.1337
+CONJUNCTION_BURDEN,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0053,0.0000,0.0158
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-R1,binary,base,all,189,0.1958,0.1376,0.2540
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0847,0.0476,0.1270
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-R1,date,base,all,323,0.1331,0.0960,0.1673
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-R1,frq,base,all,187,0.0374,0.0107,0.0642
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0106,0.0000,0.0265
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.3125,0.2500,0.3937
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.1875,0.1313,0.2500
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.2300,0.1833,0.2800
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0437,0.0125,0.0750
+CONJUNCTION_BURDEN,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0187,0.0000,0.0437
+CONJUNCTION_BURDEN,by_model_task,GPT-4o,binary,base,all,109,0.1376,0.0734,0.2110
+CONJUNCTION_BURDEN,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0636,0.0182,0.1091
+CONJUNCTION_BURDEN,by_model_task,GPT-4o,date,base,all,324,0.0586,0.0340,0.0864
+CONJUNCTION_BURDEN,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+CONJUNCTION_BURDEN,by_model_task,GPT-4o,mcq,base,all,110,0.0091,0.0000,0.0273
+CONJUNCTION_BURDEN,by_model_task,GPT-5.4,binary,base,all,190,0.3000,0.2368,0.3632
+CONJUNCTION_BURDEN,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.1947,0.1420,0.2474
+CONJUNCTION_BURDEN,by_model_task,GPT-5.4,date,base,all,327,0.2232,0.1804,0.2661
+CONJUNCTION_BURDEN,by_model_task,GPT-5.4,frq,base,all,190,0.2421,0.1895,0.3053
+CONJUNCTION_BURDEN,by_model_task,GPT-5.4,mcq,base,all,188,0.0266,0.0053,0.0532
+CONJUNCTION_BURDEN,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.1211,0.0789,0.1684
+CONJUNCTION_BURDEN,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.1421,0.0947,0.1895
+CONJUNCTION_BURDEN,by_model_task,GPT-5.6 Sol,date,base,all,326,0.1074,0.0736,0.1411
+CONJUNCTION_BURDEN,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0737,0.0421,0.1158
+CONJUNCTION_BURDEN,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0106,0.0000,0.0267
+CONJUNCTION_BURDEN,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0938,0.0500,0.1437
+CONJUNCTION_BURDEN,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0563,0.0250,0.0939
+CONJUNCTION_BURDEN,by_model_task,GPT-OSS 20B,date,base,all,300,0.0900,0.0600,0.1233
+CONJUNCTION_BURDEN,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0500,0.0187,0.0875
+CONJUNCTION_BURDEN,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0000,0.0000,0.0000
+CONJUNCTION_BURDEN,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0375,0.0000,0.0753
+CONJUNCTION_BURDEN,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+CONJUNCTION_BURDEN,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0500,0.0267,0.0733
+CONJUNCTION_BURDEN,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0125,0.0000,0.0375
+CONJUNCTION_BURDEN,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0125,0.0000,0.0375
+CONJUNCTION_BURDEN,by_condition,all,binary,base,all,1645,0.1818,0.1640,0.2019
+CONJUNCTION_BURDEN,by_condition,all,binary,ws,all,210,0.0238,0.0047,0.0474
+CONJUNCTION_BURDEN,by_condition,all,binary,ws_cutoff,all,210,0.0714,0.0400,0.1100
+CONJUNCTION_BURDEN,by_condition,all,binary_perturbed,base,all,1647,0.1293,0.1121,0.1458
+CONJUNCTION_BURDEN,by_condition,all,binary_perturbed,ws,all,210,0.0619,0.0294,0.0982
+CONJUNCTION_BURDEN,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0857,0.0495,0.1277
+CONJUNCTION_BURDEN,by_condition,all,date,base,all,3179,0.1167,0.1048,0.1282
+CONJUNCTION_BURDEN,by_condition,all,date,ws,all,210,0.0524,0.0236,0.0885
+CONJUNCTION_BURDEN,by_condition,all,date,ws_cutoff,all,210,0.0381,0.0141,0.0667
+CONJUNCTION_BURDEN,by_condition,all,frq,base,all,1640,0.0738,0.0619,0.0873
+CONJUNCTION_BURDEN,by_condition,all,frq,ws,all,210,0.0524,0.0245,0.0837
+CONJUNCTION_BURDEN,by_condition,all,frq,ws_cutoff,all,210,0.0810,0.0469,0.1168
+CONJUNCTION_BURDEN,by_condition,all,mcq,base,all,1638,0.0177,0.0116,0.0246
+CONJUNCTION_BURDEN,by_condition,all,mcq,ws,all,210,0.0000,0.0000,0.0000
+CONJUNCTION_BURDEN,by_condition,all,mcq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+CONJUNCTION_BURDEN,by_partition,all,binary,base,post,866,0.2182,0.1887,0.2463
+CONJUNCTION_BURDEN,by_partition,all,binary,base,pre,779,0.1412,0.1158,0.1673
+CONJUNCTION_BURDEN,by_partition,all,binary_perturbed,base,post,887,0.1522,0.1271,0.1778
+CONJUNCTION_BURDEN,by_partition,all,binary_perturbed,base,pre,760,0.1026,0.0810,0.1258
+CONJUNCTION_BURDEN,by_partition,all,date,base,post,1708,0.1130,0.0981,0.1295
+CONJUNCTION_BURDEN,by_partition,all,date,base,pre,1471,0.1210,0.1030,0.1383
+CONJUNCTION_BURDEN,by_partition,all,frq,base,post,884,0.0735,0.0567,0.0903
+CONJUNCTION_BURDEN,by_partition,all,frq,base,pre,756,0.0741,0.0554,0.0943
+CONJUNCTION_BURDEN,by_partition,all,mcq,base,post,881,0.0136,0.0057,0.0224
+CONJUNCTION_BURDEN,by_partition,all,mcq,base,pre,757,0.0225,0.0131,0.0334
+FIELD_MOMENTUM,overall,all,all,all,all,11849,0.1762,0.1688,0.1840
+FIELD_MOMENTUM,by_task,all,binary,base,all,1645,0.2553,0.2334,0.2787
+FIELD_MOMENTUM,by_task,all,binary_perturbed,base,all,1647,0.2708,0.2492,0.2919
+FIELD_MOMENTUM,by_task,all,date,base,all,3179,0.3432,0.3252,0.3601
+FIELD_MOMENTUM,by_task,all,frq,base,all,1640,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_task,all,mcq,base,all,1638,0.0110,0.0061,0.0165
+FIELD_MOMENTUM,by_model_task,Claude Opus 4.8,binary,base,all,190,0.1211,0.0789,0.1684
+FIELD_MOMENTUM,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.1164,0.0741,0.1642
+FIELD_MOMENTUM,by_model_task,Claude Opus 4.8,date,base,all,328,0.1402,0.1037,0.1799
+FIELD_MOMENTUM,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0053,0.0000,0.0160
+FIELD_MOMENTUM,by_model_task,Claude S4.5,binary,base,all,190,0.1895,0.1316,0.2474
+FIELD_MOMENTUM,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.2737,0.2105,0.3421
+FIELD_MOMENTUM,by_model_task,Claude S4.5,date,base,all,326,0.2331,0.1902,0.2822
+FIELD_MOMENTUM,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,Claude S4.5,mcq,base,all,185,0.0216,0.0054,0.0432
+FIELD_MOMENTUM,by_model_task,Claude Sonnet 5,binary,base,all,187,0.1016,0.0642,0.1444
+FIELD_MOMENTUM,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.1429,0.0899,0.1905
+FIELD_MOMENTUM,by_model_task,Claude Sonnet 5,date,base,all,325,0.1662,0.1262,0.2092
+FIELD_MOMENTUM,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0105,0.0000,0.0263
+FIELD_MOMENTUM,by_model_task,DeepSeek-R1,binary,base,all,189,0.3492,0.2804,0.4233
+FIELD_MOMENTUM,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.3545,0.2910,0.4286
+FIELD_MOMENTUM,by_model_task,DeepSeek-R1,date,base,all,323,0.3344,0.2817,0.3870
+FIELD_MOMENTUM,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0106,0.0000,0.0265
+FIELD_MOMENTUM,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.2250,0.1625,0.2875
+FIELD_MOMENTUM,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.1938,0.1375,0.2625
+FIELD_MOMENTUM,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.3733,0.3199,0.4267
+FIELD_MOMENTUM,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0312,0.0063,0.0625
+FIELD_MOMENTUM,by_model_task,GPT-4o,binary,base,all,109,0.5872,0.4862,0.6789
+FIELD_MOMENTUM,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.6000,0.5091,0.7000
+FIELD_MOMENTUM,by_model_task,GPT-4o,date,base,all,324,0.7562,0.7099,0.8056
+FIELD_MOMENTUM,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,GPT-4o,mcq,base,all,110,0.0091,0.0000,0.0273
+FIELD_MOMENTUM,by_model_task,GPT-5.4,binary,base,all,190,0.4632,0.3947,0.5368
+FIELD_MOMENTUM,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.4158,0.3474,0.4842
+FIELD_MOMENTUM,by_model_task,GPT-5.4,date,base,all,327,0.3425,0.2905,0.3945
+FIELD_MOMENTUM,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,GPT-5.4,mcq,base,all,188,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0579,0.0263,0.0947
+FIELD_MOMENTUM,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.1053,0.0632,0.1526
+FIELD_MOMENTUM,by_model_task,GPT-5.6 Sol,date,base,all,326,0.1258,0.0890,0.1626
+FIELD_MOMENTUM,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0813,0.0437,0.1250
+FIELD_MOMENTUM,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0875,0.0498,0.1375
+FIELD_MOMENTUM,by_model_task,GPT-OSS 20B,date,base,all,300,0.2800,0.2300,0.3300
+FIELD_MOMENTUM,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0063,0.0000,0.0187
+FIELD_MOMENTUM,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.8000,0.7125,0.8750
+FIELD_MOMENTUM,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.8500,0.7622,0.9125
+FIELD_MOMENTUM,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.7100,0.6600,0.7601
+FIELD_MOMENTUM,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0250,0.0000,0.0625
+FIELD_MOMENTUM,by_condition,all,binary,base,all,1645,0.2553,0.2334,0.2787
+FIELD_MOMENTUM,by_condition,all,binary,ws,all,210,0.0190,0.0046,0.0383
+FIELD_MOMENTUM,by_condition,all,binary,ws_cutoff,all,210,0.1190,0.0746,0.1651
+FIELD_MOMENTUM,by_condition,all,binary_perturbed,base,all,1647,0.2708,0.2492,0.2919
+FIELD_MOMENTUM,by_condition,all,binary_perturbed,ws,all,210,0.0714,0.0390,0.1068
+FIELD_MOMENTUM,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.1238,0.0796,0.1697
+FIELD_MOMENTUM,by_condition,all,date,base,all,3179,0.3432,0.3252,0.3601
+FIELD_MOMENTUM,by_condition,all,date,ws,all,210,0.0286,0.0093,0.0524
+FIELD_MOMENTUM,by_condition,all,date,ws_cutoff,all,210,0.1571,0.1060,0.2143
+FIELD_MOMENTUM,by_condition,all,frq,base,all,1640,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_condition,all,frq,ws,all,210,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_condition,all,frq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_condition,all,mcq,base,all,1638,0.0110,0.0061,0.0165
+FIELD_MOMENTUM,by_condition,all,mcq,ws,all,210,0.0048,0.0000,0.0147
+FIELD_MOMENTUM,by_condition,all,mcq,ws_cutoff,all,210,0.0143,0.0000,0.0327
+FIELD_MOMENTUM,by_partition,all,binary,base,post,866,0.3349,0.3028,0.3670
+FIELD_MOMENTUM,by_partition,all,binary,base,pre,779,0.1669,0.1425,0.1916
+FIELD_MOMENTUM,by_partition,all,binary_perturbed,base,post,887,0.3766,0.3451,0.4095
+FIELD_MOMENTUM,by_partition,all,binary_perturbed,base,pre,760,0.1474,0.1252,0.1743
+FIELD_MOMENTUM,by_partition,all,date,base,post,1708,0.4280,0.4048,0.4516
+FIELD_MOMENTUM,by_partition,all,date,base,pre,1471,0.2447,0.2219,0.2676
+FIELD_MOMENTUM,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_partition,all,frq,base,pre,756,0.0000,0.0000,0.0000
+FIELD_MOMENTUM,by_partition,all,mcq,base,post,881,0.0182,0.0101,0.0272
+FIELD_MOMENTUM,by_partition,all,mcq,base,pre,757,0.0026,0.0000,0.0067
+RESTATEMENT_ONLY,overall,all,all,all,all,11849,0.0020,0.0012,0.0030
+RESTATEMENT_ONLY,by_task,all,binary,base,all,1645,0.0006,0.0000,0.0019
+RESTATEMENT_ONLY,by_task,all,binary_perturbed,base,all,1647,0.0012,0.0000,0.0030
+RESTATEMENT_ONLY,by_task,all,date,base,all,3179,0.0022,0.0006,0.0044
+RESTATEMENT_ONLY,by_task,all,frq,base,all,1640,0.0006,0.0000,0.0019
+RESTATEMENT_ONLY,by_task,all,mcq,base,all,1638,0.0067,0.0031,0.0111
+RESTATEMENT_ONLY,by_model_task,Claude Opus 4.8,binary,base,all,190,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude Opus 4.8,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude Opus 4.8,date,base,all,328,0.0030,0.0000,0.0091
+RESTATEMENT_ONLY,by_model_task,Claude Opus 4.8,frq,base,all,188,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude Opus 4.8,mcq,base,all,188,0.0266,0.0053,0.0532
+RESTATEMENT_ONLY,by_model_task,Claude S4.5,binary,base,all,190,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude S4.5,binary_perturbed,base,all,190,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude S4.5,date,base,all,326,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude S4.5,frq,base,all,188,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude S4.5,mcq,base,all,185,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude Sonnet 5,binary,base,all,187,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude Sonnet 5,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude Sonnet 5,date,base,all,325,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude Sonnet 5,frq,base,all,187,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,Claude Sonnet 5,mcq,base,all,190,0.0105,0.0000,0.0263
+RESTATEMENT_ONLY,by_model_task,DeepSeek-R1,binary,base,all,189,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,DeepSeek-R1,binary_perturbed,base,all,189,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,DeepSeek-R1,date,base,all,323,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,DeepSeek-R1,frq,base,all,187,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,DeepSeek-R1,mcq,base,all,189,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,DeepSeek-V4-Pro,binary,base,all,160,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,DeepSeek-V4-Pro,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,DeepSeek-V4-Pro,date,base,all,300,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,DeepSeek-V4-Pro,frq,base,all,160,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,DeepSeek-V4-Pro,mcq,base,all,160,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-4o,binary,base,all,109,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-4o,binary_perturbed,base,all,110,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-4o,date,base,all,324,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-4o,frq,base,all,110,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-4o,mcq,base,all,110,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-5.4,binary,base,all,190,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-5.4,binary_perturbed,base,all,190,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-5.4,date,base,all,327,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-5.4,frq,base,all,190,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-5.4,mcq,base,all,188,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-5.6 Sol,binary,base,all,190,0.0053,0.0000,0.0158
+RESTATEMENT_ONLY,by_model_task,GPT-5.6 Sol,binary_perturbed,base,all,190,0.0105,0.0000,0.0263
+RESTATEMENT_ONLY,by_model_task,GPT-5.6 Sol,date,base,all,326,0.0092,0.0000,0.0215
+RESTATEMENT_ONLY,by_model_task,GPT-5.6 Sol,frq,base,all,190,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-5.6 Sol,mcq,base,all,188,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-OSS 20B,binary,base,all,160,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-OSS 20B,binary_perturbed,base,all,160,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,GPT-OSS 20B,date,base,all,300,0.0033,0.0000,0.0100
+RESTATEMENT_ONLY,by_model_task,GPT-OSS 20B,frq,base,all,160,0.0063,0.0000,0.0187
+RESTATEMENT_ONLY,by_model_task,GPT-OSS 20B,mcq,base,all,160,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,LLaMA 3.3 70B,binary,base,all,80,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,LLaMA 3.3 70B,binary_perturbed,base,all,80,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,LLaMA 3.3 70B,date,base,all,300,0.0067,0.0000,0.0167
+RESTATEMENT_ONLY,by_model_task,LLaMA 3.3 70B,frq,base,all,80,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_model_task,LLaMA 3.3 70B,mcq,base,all,80,0.0500,0.0125,0.1000
+RESTATEMENT_ONLY,by_condition,all,binary,base,all,1645,0.0006,0.0000,0.0019
+RESTATEMENT_ONLY,by_condition,all,binary,ws,all,210,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_condition,all,binary,ws_cutoff,all,210,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_condition,all,binary_perturbed,base,all,1647,0.0012,0.0000,0.0030
+RESTATEMENT_ONLY,by_condition,all,binary_perturbed,ws,all,210,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_condition,all,binary_perturbed,ws_cutoff,all,210,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_condition,all,date,base,all,3179,0.0022,0.0006,0.0044
+RESTATEMENT_ONLY,by_condition,all,date,ws,all,210,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_condition,all,date,ws_cutoff,all,210,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_condition,all,frq,base,all,1640,0.0006,0.0000,0.0019
+RESTATEMENT_ONLY,by_condition,all,frq,ws,all,210,0.0048,0.0000,0.0148
+RESTATEMENT_ONLY,by_condition,all,frq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_condition,all,mcq,base,all,1638,0.0067,0.0031,0.0111
+RESTATEMENT_ONLY,by_condition,all,mcq,ws,all,210,0.0048,0.0000,0.0149
+RESTATEMENT_ONLY,by_condition,all,mcq,ws_cutoff,all,210,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_partition,all,binary,base,post,866,0.0012,0.0000,0.0035
+RESTATEMENT_ONLY,by_partition,all,binary,base,pre,779,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_partition,all,binary_perturbed,base,post,887,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_partition,all,binary_perturbed,base,pre,760,0.0026,0.0000,0.0066
+RESTATEMENT_ONLY,by_partition,all,date,base,post,1708,0.0035,0.0006,0.0075
+RESTATEMENT_ONLY,by_partition,all,date,base,pre,1471,0.0007,0.0000,0.0027
+RESTATEMENT_ONLY,by_partition,all,frq,base,post,884,0.0000,0.0000,0.0000
+RESTATEMENT_ONLY,by_partition,all,frq,base,pre,756,0.0013,0.0000,0.0040
+RESTATEMENT_ONLY,by_partition,all,mcq,base,post,881,0.0068,0.0022,0.0126
+RESTATEMENT_ONLY,by_partition,all,mcq,base,pre,757,0.0066,0.0013,0.0132

@@ -175,3 +175,8 @@ results_opus48_run1/**/*.bak
 results/frq_human_study/export/
 results/frq_human_study/*.zip
 results/frq_human_study/export_gpt4o_ws/
+
+# A7: large derived tables, regenerated from results/A7_reasoning_traces/raw by run_all.sh
+results/A7_reasoning_traces/traces.jsonl
+results/A7_reasoning_traces/coded_traces.jsonl
+results/A7_reasoning_traces/inductive_sample.jsonl
