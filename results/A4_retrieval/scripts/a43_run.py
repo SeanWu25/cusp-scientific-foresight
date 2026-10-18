@@ -25,30 +25,35 @@ MODELS = {
                      env={"OPENAI_API_BASE": "https://bascolm.services.ai.azure.com/openai/v1", "OPENAI_API_KEY": os.environ.get("AZURE_OPENAI_KEY", "")}),
     "llama33":  dict(name="LLaMA 3.3 70B",   provider="OPENAI",    model="Llama-3.3-70B-Instruct",      bound="2023-12-01", extra=["--temperature", "0", "--frq-max-tokens", "2048"],
                      env={"OPENAI_API_BASE": "https://bascolm.services.ai.azure.com/openai/v1", "OPENAI_API_KEY": os.environ.get("AZURE_OPENAI_KEY", "")}),
+    # DeepSeek R1 (original weights, HF deepseek-ai/DeepSeek-R1) via a Together AI dedicated endpoint (OpenAI-compatible), added 2026-10-09;
+    # the Azure Foundry deployment used by the original runs was retired. Model id is read from env R1_TOGETHER_MODEL (endpoint name).
+    "deepseek_r1": dict(name="DeepSeek R1",     provider="OPENAI",    model=os.environ.get("R1_TOGETHER_MODEL", "deepseek-ai/DeepSeek-R1"), bound="2024-07-01", extra=["--temperature", "0", "--frq-max-tokens", "2048"],
+                     env={"OPENAI_API_BASE": "https://api.together.xyz/v1", "OPENAI_API_KEY": os.environ.get("TOGETHER_API_KEY", "")}),
     "claude45": dict(name="Claude S4.5",     provider="ANTHROPIC", model="claude-sonnet-4-5-20250929",  bound="2025-01-01", extra=["--temperature", "0", "--frq-max-tokens", "250"]),
     "sonnet5":  dict(name="Claude Sonnet 5", provider="ANTHROPIC", model="claude-sonnet-5",             bound="2026-01-01", extra=["--effort", "medium", "--frq-max-tokens", "384"]),
     "sol":      dict(name="GPT-5.6 Sol",     provider="OPENAI",    model="gpt-5.6-sol",                 bound="2026-02-01", extra=["--effort", "medium", "--frq-max-tokens", "2048"]),
 }
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--model", required=True, choices=list(MODELS)); ap.add_argument("--condition", required=True, choices=["fixed_ws_cutoff", "fixed_ws"])
-    ap.add_argument("--max-rows", type=int, default=None); ap.add_argument("--concurrency", type=int, default=6); a = ap.parse_args()
+    ap.add_argument("--max-rows", type=int, default=None); ap.add_argument("--concurrency", type=int, default=6); ap.add_argument("--set", default="main", choices=list(A43_SETS)); a = ap.parse_args()
+    ids_file, d3 = A43_SETS[a.set]
     M = MODELS[a.model]
     for k, v in (M.get("env") or {}).items(): os.environ[k] = v
     bound = M["bound"] if a.condition == "fixed_ws_cutoff" else "unrestricted"
     evidence = {}
-    for l in open(OUT / f"A4_3_fixed_queries/evidence/{bound}.jsonl"):
+    for l in open(d3 / f"evidence/{bound}.jsonl"):
         r = json.loads(l)
         if r.get("context") is not None: evidence[r["id"]] = r
     args = RC.build_parser().parse_args(["--input", str(ROOT / "archive/data/canonical/merged_validated_cusp_fixed.jsonl"), "--output", "unused", "--provider", M["provider"], "--model", M["model"],
-                                          "--condition", "ws_cutoff", "--run-index", "1", "--max-tokens", "2048", "--ids-file", str(SUBSET), "--seed", "42"] + M["extra"])
+                                          "--condition", "ws_cutoff", "--run-index", "1", "--max-tokens", "2048", "--ids-file", str(ids_file), "--seed", "42"] + M["extra"])
     client, model_name = RC.setup_client(args.provider, args.model); args.model = model_name; args.condition = a.condition
     RC.load_citations(args.citations)
-    rows = [json.loads(l) for l in open(args.input, encoding="utf-8") if l.strip()]; keep = {l.strip() for l in open(SUBSET) if l.strip()}; rows = [r for r in rows if r["id"] in keep]
+    rows = [json.loads(l) for bf in BENCH_FILES for l in open(bf, encoding="utf-8") if l.strip()]; keep = {l.strip() for l in open(ids_file) if l.strip()}; rows = [r for r in rows if r["id"] in keep]
     import random; rng = random.Random(args.seed); shuffles = {}
     for r in rows:
         if not RC.detect_tasks(r)["mcq"]: continue
         oc = list(r["mcq_choices"]); correct = oc[r["mcq_answer_key"]]; idx = list(range(len(oc))); rng.shuffle(idx); sc = [oc[i] for i in idx]; shuffles[r["id"]] = (sc, RC.LABELS[sc.index(correct)])
-    outp = OUT / "A4_3_fixed_queries/model_outputs.jsonl"; done = set()
+    outp = d3 / "model_outputs.jsonl"; done = set()
     if outp.exists():
         for l in open(outp):
             try: r = json.loads(l); done.add((r.get("model_key"), r.get("condition"), r.get("id")))

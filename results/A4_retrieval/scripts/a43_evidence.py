@@ -12,14 +12,15 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from dotenv import load_dotenv; load_dotenv(str(ROOT / ".env"))
 import web_search as W
 from youdotcom import You
-BOUNDS = {"2023-10-01": "GPT-4o", "2023-12-01": "LLaMA 3.3 70B", "2025-01-01": "Claude S4.5", "2025-08-01": "GPT-5.4", "2026-01-01": "Claude Sonnet 5", "2026-02-01": "GPT-5.6 Sol", "unrestricted": "all (WS)"}
+BOUNDS = {"2023-10-01": "GPT-4o", "2023-12-01": "LLaMA 3.3 70B", "2024-07-01": "DeepSeek R1", "2025-01-01": "Claude S4.5", "2025-08-01": "GPT-5.4", "2026-01-01": "Claude Sonnet 5", "2026-02-01": "GPT-5.6 Sol", "unrestricted": "all (WS)"}
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--bounds", default=",".join(BOUNDS)); ap.add_argument("--max", type=int, default=None); ap.add_argument("--concurrency", type=int, default=4); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--bounds", default=",".join(BOUNDS)); ap.add_argument("--max", type=int, default=None); ap.add_argument("--concurrency", type=int, default=4); ap.add_argument("--set", default="main", choices=list(A43_SETS)); a = ap.parse_args()
+    d3 = A43_SETS[a.set][1]
     qs = {}
-    for l in open(OUT / "A4_3_fixed_queries/queries.jsonl"):
+    for l in open(d3 / "queries.jsonl"):
         r = json.loads(l)
         if r.get("query"): qs[r["id"]] = r["query"]
-    you = You(os.environ["YOU_API_KEY"]); ev_dir = OUT / "A4_3_fixed_queries/evidence"; ev_dir.mkdir(exist_ok=True)
+    you = You(os.environ["YOU_API_KEY"]); ev_dir = d3 / "evidence"; ev_dir.mkdir(exist_ok=True)
     for bound in a.bounds.split(","):
         outp = ev_dir / f"{bound}.jsonl"; done = set()
         if outp.exists():

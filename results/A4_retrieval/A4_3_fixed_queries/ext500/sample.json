@@ -1,0 +1,44 @@
+{
+ "seed": 20261018,
+ "n": 500,
+ "rule": "(seeded, no inference): pool = every CUSP event (original corpus + Apr-Aug 2026 extension) that\n  (1) is not in the first subset,\n  (2) has publication month > 2026-02 (so it is post-cutoff for EVERY evaluated model, including Sol),\n  (3) has a stored base-condition record for all six evaluated models.\nDraw 500 without replacement, stratified by publication month (proportional allocation, largest\nremainder), uniform within month. Writes ext500/subset_ext500_ids.txt and ext500/sample.json.",
+ "pool": 852,
+ "pool_by_month": {
+  "2026-03": 37,
+  "2026-04": 176,
+  "2026-05": 166,
+  "2026-06": 170,
+  "2026-07": 173,
+  "2026-08": 130
+ },
+ "sample_by_month": {
+  "2026-03": 22,
+  "2026-04": 103,
+  "2026-05": 97,
+  "2026-06": 100,
+  "2026-07": 102,
+  "2026-08": 76
+ },
+ "sample_by_area": {
+  "Biology": 120,
+  "Artificial Intelligence": 103,
+  "Medicine": 77,
+  "Materials Science": 52,
+  "Physics": 42,
+  "Neuroscience": 33,
+  "Other": 32,
+  "Environmental Science": 27,
+  "Chemistry": 14
+ },
+ "pool_by_area": {
+  "Biology": 204,
+  "Artificial Intelligence": 170,
+  "Medicine": 132,
+  "Materials Science": 85,
+  "Physics": 85,
+  "Neuroscience": 55,
+  "Other": 54,
+  "Environmental Science": 44,
+  "Chemistry": 23
+ }
+}

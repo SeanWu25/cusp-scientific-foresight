@@ -11,10 +11,11 @@ from dotenv import load_dotenv; load_dotenv(str(ROOT / ".env"))
 import web_search as W, anthropic
 QUERY_MODEL = "claude-opus-4-8"   # outside the evaluated panel; override with --query-model
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--max", type=int, default=None); ap.add_argument("--concurrency", type=int, default=4); ap.add_argument("--query-model", default=QUERY_MODEL); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--max", type=int, default=None); ap.add_argument("--concurrency", type=int, default=4); ap.add_argument("--query-model", default=QUERY_MODEL); ap.add_argument("--set", default="main", choices=list(A43_SETS)); a = ap.parse_args()
+    ids_file, d3 = A43_SETS[a.set]
     qmodel = a.query_model
-    ev = load_events(); sub = [l.strip() for l in open(SUBSET) if l.strip()]
-    outp = OUT / "A4_3_fixed_queries/queries.jsonl"; done = set()
+    ev = load_events(); sub = [l.strip() for l in open(ids_file) if l.strip()]
+    outp = d3 / "queries.jsonl"; done = set()
     if outp.exists():
         for l in open(outp):
             if l.strip():

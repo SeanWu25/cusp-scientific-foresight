@@ -7,6 +7,10 @@ BK = Path("/home/seanwu/FutureScience_backup_20260508_013823/benchmark_logs")
 A = ROOT / "archive/model_outputs/benchmark_logs_model_outputs"
 OUT = ROOT / "results/A4_retrieval"
 SUBSET = ROOT / "results_sonnet5_run1/subset500_ids.txt"
+# A4.3 event sets: "main" = the first 500 (pinned subset), "ext500" = 500 added 2026-10-18 (a43_ext_sample.py)
+A43_SETS = {"main": (SUBSET, OUT / "A4_3_fixed_queries"),
+            "ext500": (OUT / "A4_3_fixed_queries/ext500/subset_ext500_ids.txt", OUT / "A4_3_fixed_queries/ext500")}
+BENCH_FILES = [ROOT / "archive/data/canonical/merged_validated_cusp_fixed.jsonl", ROOT / "benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026_monthnorm.jsonl"]
 # run key -> (model, condition, dataset, path, mechanism, cutoff YYYY-MM-DD used for freshness, run_date for WS re-query cap)
 RUNS = {
     "gpt4o:ws_cutoff":   ("GPT-4o",          "ws_cutoff", "orig", A / "gpt_4o_web_search.jsonl",                              "youcom", "2023-10-01", None),

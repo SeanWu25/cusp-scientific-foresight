@@ -1,0 +1,1392 @@
+[
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "post",
+  "task": "Binary",
+  "n": 426,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 0.20892018779342722,
+  "mean_wscut_fixed": 0.5,
+  "mean_ws_fixed": 0.8474178403755869,
+  "know_fixed": 0.29107981220657275,
+  "know_fixed_ci": [
+   0.23817572176086385,
+   0.3439839026522816
+  ],
+  "fore_fixed": 0.3474178403755869,
+  "fore_fixed_ci": [
+   0.2981100763912365,
+   0.39672560435993726
+  ]
+ },
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "post",
+  "task": "Binary (pert.)",
+  "n": 795,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 0.7220125786163522,
+  "mean_wscut_fixed": 0.5735849056603773,
+  "mean_ws_fixed": 0.4477987421383648,
+  "know_fixed": -0.14842767295597484,
+  "know_fixed_ci": [
+   -0.18715860732956335,
+   -0.10969673858238631
+  ],
+  "fore_fixed": -0.12578616352201258,
+  "fore_fixed_ci": [
+   -0.16282521115945758,
+   -0.08874711588456757
+  ]
+ },
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "post",
+  "task": "MCQ",
+  "n": 814,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 0.48894348894348894,
+  "mean_wscut_fixed": 0.585995085995086,
+  "mean_ws_fixed": 0.8292383292383292,
+  "know_fixed": 0.09705159705159705,
+  "know_fixed_ci": [
+   0.06337824727484019,
+   0.1307249468283539
+  ],
+  "fore_fixed": 0.24324324324324326,
+  "fore_fixed_ci": [
+   0.20935467079601058,
+   0.27713181569047596
+  ]
+ },
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "post",
+  "task": "FRQ (0-10)",
+  "n": 811,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 3.3489519112207153,
+  "mean_wscut_fixed": 3.840320591861899,
+  "mean_ws_fixed": 4.536066584463625,
+  "know_fixed": 0.4913686806411837,
+  "know_fixed_ci": [
+   0.41455074784498147,
+   0.568186613437386
+  ],
+  "fore_fixed": 0.6957459926017263,
+  "fore_fixed_ci": [
+   0.6070956119474527,
+   0.784396373256
+  ]
+ },
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "post",
+  "task": "Date (0-1)",
+  "n": 426,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 0.2855537558685446,
+  "mean_wscut_fixed": 0.3647394366197183,
+  "mean_ws_fixed": 0.4733115023474178,
+  "know_fixed": 0.07918568075117371,
+  "know_fixed_ci": [
+   0.04344983827903866,
+   0.11492152322330877
+  ],
+  "fore_fixed": 0.10857206572769953,
+  "fore_fixed_ci": [
+   0.06845090702826259,
+   0.14869322442713648
+  ]
+ },
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "pre",
+  "task": "Binary",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "pre",
+  "task": "Binary (pert.)",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "pre",
+  "task": "MCQ",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "pre",
+  "task": "FRQ (0-10)",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "GPT-4o",
+  "model_key": "gpt4o",
+  "cutoff": "2023-10",
+  "scope": "pre",
+  "task": "Date (0-1)",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "post",
+  "task": "Binary",
+  "n": 424,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 0.9433962264150944,
+  "mean_wscut_fixed": 0.8938679245283019,
+  "mean_ws_fixed": 0.9669811320754716,
+  "know_fixed": -0.049528301886792456,
+  "know_fixed_ci": [
+   -0.08021366983265879,
+   -0.018842933940926117
+  ],
+  "fore_fixed": 0.07311320754716981,
+  "fore_fixed_ci": [
+   0.042858905140364015,
+   0.1033675099539756
+  ]
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "post",
+  "task": "Binary (pert.)",
+  "n": 794,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 0.08060453400503778,
+  "mean_wscut_fixed": 0.20025188916876574,
+  "mean_ws_fixed": 0.20780856423173805,
+  "know_fixed": 0.11964735516372796,
+  "know_fixed_ci": [
+   0.09109335878393092,
+   0.14820135154352498
+  ],
+  "fore_fixed": 0.007556675062972292,
+  "fore_fixed_ci": [
+   -0.024071279693665043,
+   0.03918462981960963
+  ]
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "post",
+  "task": "MCQ",
+  "n": 812,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 0.45935960591133007,
+  "mean_wscut_fixed": 0.5307881773399015,
+  "mean_ws_fixed": 0.8078817733990148,
+  "know_fixed": 0.07142857142857142,
+  "know_fixed_ci": [
+   0.03660686047028172,
+   0.10625028238686113
+  ],
+  "fore_fixed": 0.2770935960591133,
+  "fore_fixed_ci": [
+   0.24391938750788567,
+   0.310267804610341
+  ]
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "post",
+  "task": "FRQ (0-10)",
+  "n": 808,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 3.4452351485148514,
+  "mean_wscut_fixed": 3.9501856435643563,
+  "mean_ws_fixed": 4.684715346534653,
+  "know_fixed": 0.504950495049505,
+  "know_fixed_ci": [
+   0.44147071871194976,
+   0.5684302713870601
+  ],
+  "fore_fixed": 0.7345297029702971,
+  "fore_fixed_ci": [
+   0.6581946166631161,
+   0.8108647892774781
+  ]
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "post",
+  "task": "Date (0-1)",
+  "n": 424,
+  "n_events": 1000,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 500
+  },
+  "mean_base": 0.43776061320754717,
+  "mean_wscut_fixed": 0.3888910377358491,
+  "mean_ws_fixed": 0.4984358490566037,
+  "know_fixed": -0.048869575471698116,
+  "know_fixed_ci": [
+   -0.07824293513533218,
+   -0.019496215808064064
+  ],
+  "fore_fixed": 0.10954481132075472,
+  "fore_fixed_ci": [
+   0.07433266497815505,
+   0.1447569576633544
+  ]
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "pre",
+  "task": "Binary",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "pre",
+  "task": "Binary (pert.)",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "pre",
+  "task": "MCQ",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "pre",
+  "task": "FRQ (0-10)",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "LLaMA 3.3 70B",
+  "model_key": "llama33",
+  "cutoff": "2023-12",
+  "scope": "pre",
+  "task": "Date (0-1)",
+  "n": 0,
+  "n_events": 0,
+  "n_events_by_set": {},
+  "suppressed": true
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "post",
+  "task": "Binary",
+  "n": 250,
+  "n_events": 786,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 286
+  },
+  "mean_base": 0.28,
+  "mean_wscut_fixed": 0.364,
+  "mean_ws_fixed": 0.828,
+  "know_fixed": 0.084,
+  "know_fixed_ci": [
+   0.014072554227333903,
+   0.1539274457726661
+  ],
+  "fore_fixed": 0.464,
+  "fore_fixed_ci": [
+   0.4010678287494127,
+   0.5269321712505873
+  ]
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "post",
+  "task": "Binary (pert.)",
+  "n": 520,
+  "n_events": 786,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 286
+  },
+  "mean_base": 0.6884615384615385,
+  "mean_wscut_fixed": 0.698076923076923,
+  "mean_ws_fixed": 0.573076923076923,
+  "know_fixed": 0.009615384615384616,
+  "know_fixed_ci": [
+   -0.033887497698007016,
+   0.05311826692877625
+  ],
+  "fore_fixed": -0.125,
+  "fore_fixed_ci": [
+   -0.16881637546799388,
+   -0.08118362453200612
+  ]
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "post",
+  "task": "MCQ",
+  "n": 479,
+  "n_events": 786,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 286
+  },
+  "mean_base": 0.7369519832985386,
+  "mean_wscut_fixed": 0.7369519832985386,
+  "mean_ws_fixed": 0.8350730688935282,
+  "know_fixed": 0.0,
+  "know_fixed_ci": [
+   -0.045979012425225334,
+   0.045979012425225334
+  ],
+  "fore_fixed": 0.09812108559498957,
+  "fore_fixed_ci": [
+   0.05355250787996403,
+   0.1426896633100151
+  ]
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "post",
+  "task": "FRQ (0-10)",
+  "n": 556,
+  "n_events": 786,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 286
+  },
+  "mean_base": 4.013039568345324,
+  "mean_wscut_fixed": 4.254046762589928,
+  "mean_ws_fixed": 4.70818345323741,
+  "know_fixed": 0.24100719424460432,
+  "know_fixed_ci": [
+   0.16350738991352196,
+   0.31850699857568665
+  ],
+  "fore_fixed": 0.454136690647482,
+  "fore_fixed_ci": [
+   0.3769890422558442,
+   0.5312843390391199
+  ]
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "post",
+  "task": "Date (0-1)",
+  "n": 248,
+  "n_events": 786,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 286
+  },
+  "mean_base": 0.303725,
+  "mean_wscut_fixed": 0.26776814516129027,
+  "mean_ws_fixed": 0.4516475806451613,
+  "know_fixed": -0.03595685483870968,
+  "know_fixed_ci": [
+   -0.08007701501679332,
+   0.008163305339373955
+  ],
+  "fore_fixed": 0.18387943548387098,
+  "fore_fixed_ci": [
+   0.12658643726435495,
+   0.241172433703387
+  ]
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "pre",
+  "task": "Binary",
+  "n": 135,
+  "n_events": 214,
+  "n_events_by_set": {
+   "main": 214
+  },
+  "mean_base": 0.3333333333333333,
+  "mean_wscut_fixed": 0.725925925925926,
+  "mean_ws_fixed": 0.8,
+  "know_fixed": 0.3925925925925926,
+  "know_fixed_ci": [
+   0.2935497818011499,
+   0.49163540338403533
+  ],
+  "fore_fixed": 0.07407407407407407,
+  "fore_fixed_ci": [
+   0.013533314686004327,
+   0.1346148334621438
+  ]
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "pre",
+  "task": "Binary (pert.)",
+  "n": 144,
+  "n_events": 214,
+  "n_events_by_set": {
+   "main": 214
+  },
+  "mean_base": 0.6666666666666666,
+  "mean_wscut_fixed": 0.6805555555555556,
+  "mean_ws_fixed": 0.6736111111111112,
+  "know_fixed": 0.013888888888888888,
+  "know_fixed_ci": [
+   -0.08457850641277737,
+   0.11235628419055513
+  ],
+  "fore_fixed": -0.006944444444444444,
+  "fore_fixed_ci": [
+   -0.06324887171801856,
+   0.04935998282912968
+  ]
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "pre",
+  "task": "MCQ",
+  "n": 158,
+  "n_events": 214,
+  "n_events_by_set": {
+   "main": 214
+  },
+  "mean_base": 0.7848101265822784,
+  "mean_wscut_fixed": 0.810126582278481,
+  "mean_ws_fixed": 0.7911392405063291,
+  "know_fixed": 0.02531645569620253,
+  "know_fixed_ci": [
+   -0.058993343690602495,
+   0.10962625508300755
+  ],
+  "fore_fixed": -0.0189873417721519,
+  "fore_fixed_ci": [
+   -0.0859372149833855,
+   0.04796253143908169
+  ]
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "pre",
+  "task": "FRQ (0-10)",
+  "n": 162,
+  "n_events": 214,
+  "n_events_by_set": {
+   "main": 214
+  },
+  "mean_base": 3.939814814814815,
+  "mean_wscut_fixed": 4.765432098765432,
+  "mean_ws_fixed": 4.845679012345679,
+  "know_fixed": 0.8256172839506173,
+  "know_fixed_ci": [
+   0.6314799556649799,
+   1.0197546122362546
+  ],
+  "fore_fixed": 0.08024691358024691,
+  "fore_fixed_ci": [
+   -0.04866746672809044,
+   0.20916129388858426
+  ]
+ },
+ {
+  "model": "Claude S4.5",
+  "model_key": "claude45",
+  "cutoff": "2025-01",
+  "scope": "pre",
+  "task": "Date (0-1)",
+  "n": 133,
+  "n_events": 214,
+  "n_events_by_set": {
+   "main": 214
+  },
+  "mean_base": 0.24222180451127823,
+  "mean_wscut_fixed": 0.5353240601503759,
+  "mean_ws_fixed": 0.46413834586466163,
+  "know_fixed": 0.2931022556390978,
+  "know_fixed_ci": [
+   0.20859908356301232,
+   0.3776054277151832
+  ],
+  "fore_fixed": -0.0711857142857143,
+  "fore_fixed_ci": [
+   -0.15095736194216275,
+   0.00858593337073417
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "post",
+  "task": "Binary",
+  "n": 189,
+  "n_events": 623,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 123
+  },
+  "mean_base": 0.671957671957672,
+  "mean_wscut_fixed": 0.8042328042328042,
+  "mean_ws_fixed": 0.9523809523809523,
+  "know_fixed": 0.13227513227513227,
+  "know_fixed_ci": [
+   0.0589767508758304,
+   0.20557351367443413
+  ],
+  "fore_fixed": 0.14814814814814814,
+  "fore_fixed_ci": [
+   0.09327330614088256,
+   0.20302299015541372
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "post",
+  "task": "Binary (pert.)",
+  "n": 501,
+  "n_events": 623,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 123
+  },
+  "mean_base": 0.36127744510978044,
+  "mean_wscut_fixed": 0.29141716566866266,
+  "mean_ws_fixed": 0.29141716566866266,
+  "know_fixed": -0.06986027944111776,
+  "know_fixed_ci": [
+   -0.11562236776338111,
+   -0.024098191118854417
+  ],
+  "fore_fixed": 0.0,
+  "fore_fixed_ci": [
+   -0.043254582210854015,
+   0.043254582210854015
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "post",
+  "task": "MCQ",
+  "n": 484,
+  "n_events": 623,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 123
+  },
+  "mean_base": 0.8367768595041323,
+  "mean_wscut_fixed": 0.7892561983471075,
+  "mean_ws_fixed": 0.9194214876033058,
+  "know_fixed": -0.047520661157024795,
+  "know_fixed_ci": [
+   -0.08722016092300182,
+   -0.00782116139104777
+  ],
+  "fore_fixed": 0.13016528925619836,
+  "fore_fixed_ci": [
+   0.09605580234491232,
+   0.1642747761674844
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "post",
+  "task": "FRQ (0-10)",
+  "n": 486,
+  "n_events": 623,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 123
+  },
+  "mean_base": 4.864197530864198,
+  "mean_wscut_fixed": 5.260802469135802,
+  "mean_ws_fixed": 5.92798353909465,
+  "know_fixed": 0.3966049382716049,
+  "know_fixed_ci": [
+   0.31128812156893204,
+   0.4819217549742778
+  ],
+  "fore_fixed": 0.6671810699588477,
+  "fore_fixed_ci": [
+   0.5711165236013194,
+   0.7632456163163761
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "post",
+  "task": "Date (0-1)",
+  "n": 189,
+  "n_events": 623,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 123
+  },
+  "mean_base": 0.19657460317460312,
+  "mean_wscut_fixed": 0.29152592592592597,
+  "mean_ws_fixed": 0.6785052910052911,
+  "know_fixed": 0.09495132275132274,
+  "know_fixed_ci": [
+   0.05268046544247922,
+   0.13722218006016626
+  ],
+  "fore_fixed": 0.38697936507936515,
+  "fore_fixed_ci": [
+   0.33317610584393276,
+   0.4407826243147974
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "pre",
+  "task": "Binary",
+  "n": 237,
+  "n_events": 377,
+  "n_events_by_set": {
+   "main": 377
+  },
+  "mean_base": 0.6497890295358649,
+  "mean_wscut_fixed": 0.919831223628692,
+  "mean_ws_fixed": 0.9324894514767933,
+  "know_fixed": 0.270042194092827,
+  "know_fixed_ci": [
+   0.20337132897002297,
+   0.336713059215631
+  ],
+  "fore_fixed": 0.012658227848101266,
+  "fore_fixed_ci": [
+   -0.02147400898472989,
+   0.04679046468093242
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "pre",
+  "task": "Binary (pert.)",
+  "n": 294,
+  "n_events": 377,
+  "n_events_by_set": {
+   "main": 377
+  },
+  "mean_base": 0.36054421768707484,
+  "mean_wscut_fixed": 0.41836734693877553,
+  "mean_ws_fixed": 0.4387755102040816,
+  "know_fixed": 0.05782312925170068,
+  "know_fixed_ci": [
+   -0.01594330307176383,
+   0.1315895615751652
+  ],
+  "fore_fixed": 0.02040816326530612,
+  "fore_fixed_ci": [
+   -0.026754807883191702,
+   0.06757113441380394
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "pre",
+  "task": "MCQ",
+  "n": 330,
+  "n_events": 377,
+  "n_events_by_set": {
+   "main": 377
+  },
+  "mean_base": 0.8484848484848485,
+  "mean_wscut_fixed": 0.9424242424242424,
+  "mean_ws_fixed": 0.9424242424242424,
+  "know_fixed": 0.09393939393939393,
+  "know_fixed_ci": [
+   0.05355677206435015,
+   0.1343220158144377
+  ],
+  "fore_fixed": 0.0,
+  "fore_fixed_ci": [
+   -0.022256925406763127,
+   0.022256925406763127
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "pre",
+  "task": "FRQ (0-10)",
+  "n": 319,
+  "n_events": 377,
+  "n_events_by_set": {
+   "main": 377
+  },
+  "mean_base": 5.0501567398119125,
+  "mean_wscut_fixed": 6.147335423197492,
+  "mean_ws_fixed": 6.119905956112853,
+  "know_fixed": 1.09717868338558,
+  "know_fixed_ci": [
+   0.9680961977406829,
+   1.2262611690304768
+  ],
+  "fore_fixed": -0.0274294670846395,
+  "fore_fixed_ci": [
+   -0.1150700438935085,
+   0.060211109724229495
+  ]
+ },
+ {
+  "model": "GPT-5.4",
+  "model_key": "gpt54",
+  "cutoff": "2025-08",
+  "scope": "pre",
+  "task": "Date (0-1)",
+  "n": 237,
+  "n_events": 377,
+  "n_events_by_set": {
+   "main": 377
+  },
+  "mean_base": 0.2839620253164557,
+  "mean_wscut_fixed": 0.737632911392405,
+  "mean_ws_fixed": 0.7599886075949367,
+  "know_fixed": 0.4536708860759493,
+  "know_fixed_ci": [
+   0.3971059889822294,
+   0.5102357831696693
+  ],
+  "fore_fixed": 0.022355696202531646,
+  "fore_fixed_ci": [
+   -0.012201586714561292,
+   0.056912979119624584
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "post",
+  "task": "Binary",
+  "n": 144,
+  "n_events": 531,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 31
+  },
+  "mean_base": 0.3333333333333333,
+  "mean_wscut_fixed": 0.4444444444444444,
+  "mean_ws_fixed": 0.8819444444444444,
+  "know_fixed": 0.1111111111111111,
+  "know_fixed_ci": [
+   0.010534855552207692,
+   0.21168736667001453
+  ],
+  "fore_fixed": 0.4375,
+  "fore_fixed_ci": [
+   0.3539281095223347,
+   0.5210718904776652
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "post",
+  "task": "Binary (pert.)",
+  "n": 408,
+  "n_events": 531,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 31
+  },
+  "mean_base": 0.7573529411764706,
+  "mean_wscut_fixed": 0.6691176470588235,
+  "mean_ws_fixed": 0.6176470588235294,
+  "know_fixed": -0.08823529411764706,
+  "know_fixed_ci": [
+   -0.13147648945611157,
+   -0.04499409877918256
+  ],
+  "fore_fixed": -0.051470588235294115,
+  "fore_fixed_ci": [
+   -0.0950038710390203,
+   -0.007937305431567919
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "post",
+  "task": "MCQ",
+  "n": 375,
+  "n_events": 531,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 31
+  },
+  "mean_base": 0.896,
+  "mean_wscut_fixed": 0.8826666666666667,
+  "mean_ws_fixed": 0.9573333333333334,
+  "know_fixed": -0.013333333333333334,
+  "know_fixed_ci": [
+   -0.046817785077621576,
+   0.020151118410954905
+  ],
+  "fore_fixed": 0.07466666666666667,
+  "fore_fixed_ci": [
+   0.04160369591122362,
+   0.10772963742210973
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "post",
+  "task": "FRQ (0-10)",
+  "n": 402,
+  "n_events": 531,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 31
+  },
+  "mean_base": 4.508706467661692,
+  "mean_wscut_fixed": 4.921019900497512,
+  "mean_ws_fixed": 5.754353233830845,
+  "know_fixed": 0.4123134328358209,
+  "know_fixed_ci": [
+   0.31347002330658696,
+   0.5111568423650549
+  ],
+  "fore_fixed": 0.8333333333333334,
+  "fore_fixed_ci": [
+   0.7122875790801169,
+   0.9543790875865499
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "post",
+  "task": "Date (0-1)",
+  "n": 144,
+  "n_events": 531,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 31
+  },
+  "mean_base": 0.2334173611111111,
+  "mean_wscut_fixed": 0.32385138888888887,
+  "mean_ws_fixed": 0.7065687500000001,
+  "know_fixed": 0.09043402777777779,
+  "know_fixed_ci": [
+   0.044532895638875254,
+   0.13633515991668033
+  ],
+  "fore_fixed": 0.3827173611111111,
+  "fore_fixed_ci": [
+   0.3250406458964882,
+   0.440394076325734
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "pre",
+  "task": "Binary",
+  "n": 271,
+  "n_events": 469,
+  "n_events_by_set": {
+   "main": 469
+  },
+  "mean_base": 0.4944649446494465,
+  "mean_wscut_fixed": 0.7749077490774908,
+  "mean_ws_fixed": 0.8007380073800738,
+  "know_fixed": 0.28044280442804426,
+  "know_fixed_ci": [
+   0.2091948960085162,
+   0.3516907128475723
+  ],
+  "fore_fixed": 0.025830258302583026,
+  "fore_fixed_ci": [
+   -0.014395120378493328,
+   0.06605563698365938
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "pre",
+  "task": "Binary (pert.)",
+  "n": 356,
+  "n_events": 469,
+  "n_events_by_set": {
+   "main": 469
+  },
+  "mean_base": 0.6432584269662921,
+  "mean_wscut_fixed": 0.6460674157303371,
+  "mean_ws_fixed": 0.6573033707865169,
+  "know_fixed": 0.0028089887640449437,
+  "know_fixed_ci": [
+   -0.055277201089680955,
+   0.06089517861777084
+  ],
+  "fore_fixed": 0.011235955056179775,
+  "fore_fixed_ci": [
+   -0.020890967213417308,
+   0.04336287732577686
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "pre",
+  "task": "MCQ",
+  "n": 373,
+  "n_events": 469,
+  "n_events_by_set": {
+   "main": 469
+  },
+  "mean_base": 0.8900804289544236,
+  "mean_wscut_fixed": 0.9463806970509383,
+  "mean_ws_fixed": 0.9624664879356568,
+  "know_fixed": 0.05630026809651475,
+  "know_fixed_ci": [
+   0.022274320594187595,
+   0.09032621559884191
+  ],
+  "fore_fixed": 0.0160857908847185,
+  "fore_fixed_ci": [
+   -0.00047283199105705234,
+   0.032644413760494054
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "pre",
+  "task": "FRQ (0-10)",
+  "n": 390,
+  "n_events": 469,
+  "n_events_by_set": {
+   "main": 469
+  },
+  "mean_base": 4.5301282051282055,
+  "mean_wscut_fixed": 5.9557692307692305,
+  "mean_ws_fixed": 5.98974358974359,
+  "know_fixed": 1.4256410256410257,
+  "know_fixed_ci": [
+   1.2992894405582767,
+   1.5519926107237747
+  ],
+  "fore_fixed": 0.03397435897435897,
+  "fore_fixed_ci": [
+   -0.05303688279992173,
+   0.12098560074863968
+  ]
+ },
+ {
+  "model": "Claude Sonnet 5",
+  "model_key": "sonnet5",
+  "cutoff": "2026-01",
+  "scope": "pre",
+  "task": "Date (0-1)",
+  "n": 271,
+  "n_events": 469,
+  "n_events_by_set": {
+   "main": 469
+  },
+  "mean_base": 0.44394944649446494,
+  "mean_wscut_fixed": 0.7734047970479704,
+  "mean_ws_fixed": 0.7920129151291513,
+  "know_fixed": 0.3294553505535055,
+  "know_fixed_ci": [
+   0.2789661637885103,
+   0.3799445373185007
+  ],
+  "fore_fixed": 0.018608118081180812,
+  "fore_fixed_ci": [
+   -0.009162104486099724,
+   0.046378340648461344
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "post",
+  "task": "Binary",
+  "n": 131,
+  "n_events": 504,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 4
+  },
+  "mean_base": 0.7557251908396947,
+  "mean_wscut_fixed": 0.7938931297709924,
+  "mean_ws_fixed": 0.9694656488549618,
+  "know_fixed": 0.03816793893129771,
+  "know_fixed_ci": [
+   -0.019630214627832876,
+   0.0959660924904283
+  ],
+  "fore_fixed": 0.17557251908396945,
+  "fore_fixed_ci": [
+   0.10680816530738471,
+   0.2443368728605542
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "post",
+  "task": "Binary (pert.)",
+  "n": 404,
+  "n_events": 504,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 4
+  },
+  "mean_base": 0.39851485148514854,
+  "mean_wscut_fixed": 0.3613861386138614,
+  "mean_ws_fixed": 0.44801980198019803,
+  "know_fixed": -0.03712871287128713,
+  "know_fixed_ci": [
+   -0.08909331592544817,
+   0.014835890182873922
+  ],
+  "fore_fixed": 0.08663366336633663,
+  "fore_fixed_ci": [
+   0.03168422542419222,
+   0.14158310130848104
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "post",
+  "task": "MCQ",
+  "n": 379,
+  "n_events": 504,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 4
+  },
+  "mean_base": 0.8575197889182058,
+  "mean_wscut_fixed": 0.8522427440633246,
+  "mean_ws_fixed": 0.9366754617414248,
+  "know_fixed": -0.005277044854881266,
+  "know_fixed_ci": [
+   -0.041889573793274695,
+   0.031335484083512166
+  ],
+  "fore_fixed": 0.08443271767810026,
+  "fore_fixed_ci": [
+   0.05035855033172069,
+   0.11850688502447984
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "post",
+  "task": "FRQ (0-10)",
+  "n": 380,
+  "n_events": 504,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 4
+  },
+  "mean_base": 4.878947368421053,
+  "mean_wscut_fixed": 5.159868421052631,
+  "mean_ws_fixed": 5.870394736842106,
+  "know_fixed": 0.28092105263157896,
+  "know_fixed_ci": [
+   0.17922780711453262,
+   0.3826142981486253
+  ],
+  "fore_fixed": 0.7105263157894737,
+  "fore_fixed_ci": [
+   0.5886452185521406,
+   0.8324074130268068
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "post",
+  "task": "Date (0-1)",
+  "n": 131,
+  "n_events": 504,
+  "n_events_by_set": {
+   "ext500": 500,
+   "main": 4
+  },
+  "mean_base": 0.2339030534351145,
+  "mean_wscut_fixed": 0.3245679389312977,
+  "mean_ws_fixed": 0.7059534351145037,
+  "know_fixed": 0.0906648854961832,
+  "know_fixed_ci": [
+   0.04923986013067642,
+   0.13208991086169
+  ],
+  "fore_fixed": 0.3813854961832061,
+  "fore_fixed_ci": [
+   0.3224069937930747,
+   0.4403639985733375
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "pre",
+  "task": "Binary",
+  "n": 294,
+  "n_events": 496,
+  "n_events_by_set": {
+   "main": 496
+  },
+  "mean_base": 0.8775510204081632,
+  "mean_wscut_fixed": 0.8945578231292517,
+  "mean_ws_fixed": 0.9285714285714286,
+  "know_fixed": 0.017006802721088437,
+  "know_fixed_ci": [
+   -0.030644121113428107,
+   0.06465772655560498
+  ],
+  "fore_fixed": 0.034013605442176874,
+  "fore_fixed_ci": [
+   0.0075869265149977674,
+   0.06044028436935598
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "pre",
+  "task": "Binary (pert.)",
+  "n": 389,
+  "n_events": 496,
+  "n_events_by_set": {
+   "main": 496
+  },
+  "mean_base": 0.33676092544987146,
+  "mean_wscut_fixed": 0.480719794344473,
+  "mean_ws_fixed": 0.480719794344473,
+  "know_fixed": 0.14395886889460155,
+  "know_fixed_ci": [
+   0.08689441027417424,
+   0.20102332751502885
+  ],
+  "fore_fixed": 0.0,
+  "fore_fixed_ci": [
+   -0.031099772077696295,
+   0.031099772077696295
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "pre",
+  "task": "MCQ",
+  "n": 425,
+  "n_events": 496,
+  "n_events_by_set": {
+   "main": 496
+  },
+  "mean_base": 0.8752941176470588,
+  "mean_wscut_fixed": 0.9482352941176471,
+  "mean_ws_fixed": 0.9623529411764706,
+  "know_fixed": 0.07294117647058823,
+  "know_fixed_ci": [
+   0.040707028220986645,
+   0.10517532472018981
+  ],
+  "fore_fixed": 0.01411764705882353,
+  "fore_fixed_ci": [
+   0.0011275556667324962,
+   0.027107738450914562
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "pre",
+  "task": "FRQ (0-10)",
+  "n": 410,
+  "n_events": 496,
+  "n_events_by_set": {
+   "main": 496
+  },
+  "mean_base": 5.077439024390244,
+  "mean_wscut_fixed": 6.157926829268293,
+  "mean_ws_fixed": 6.223780487804878,
+  "know_fixed": 1.0804878048780489,
+  "know_fixed_ci": [
+   0.9645643646447379,
+   1.1964112451113598
+  ],
+  "fore_fixed": 0.06585365853658537,
+  "fore_fixed_ci": [
+   -0.007865424725175069,
+   0.1395727417983458
+  ]
+ },
+ {
+  "model": "GPT-5.6 Sol",
+  "model_key": "sol",
+  "cutoff": "2026-02",
+  "scope": "pre",
+  "task": "Date (0-1)",
+  "n": 295,
+  "n_events": 496,
+  "n_events_by_set": {
+   "main": 496
+  },
+  "mean_base": 0.36118067796610176,
+  "mean_wscut_fixed": 0.7662494915254237,
+  "mean_ws_fixed": 0.790148813559322,
+  "know_fixed": 0.40506881355932206,
+  "know_fixed_ci": [
+   0.3527698242064472,
+   0.4573678029121969
+  ],
+  "fore_fixed": 0.023899322033898305,
+  "fore_fixed_ci": [
+   0.00015580351742697923,
+   0.04764284055036963
+  ]
+ }
+]
