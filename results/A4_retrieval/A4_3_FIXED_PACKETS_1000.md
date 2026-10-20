@@ -1,124 +1,158 @@
-# Fixed-evidence-packet experiment (Figure 3a): extension from 500 to 1,000 events
+# Fixed evidence packets on 1,000 events: results
 
-Run on 2026-10-18. The original 500 events are unchanged. 500 events were added, every one of them published after
-February 2026, so every added event is post-cutoff for every evaluated model.
+CUSP revision, Reviewer 2 comment C4.3 (knowledge-access experiment, Figure 3a, response Tables 20–22). Computed 2026-10-20.
 
 ## Summary
 
-- **The goal is met.** Claude Sonnet 5 now has 531 post-cutoff events (31 before) and GPT-5.6 Sol has 504 (4 before).
-- **No post-cutoff cell of Figure 3a is suppressed any more.** Before, Sol had no post-cutoff values at all, and Sonnet 5 lacked Feasibility Assessment and Temporal Prediction.
-- **The pattern of the paper holds for the two new models.** On post-cutoff events the forecasting gap is positive in every task family, and the knowledge gap is small (between −0.02 and +0.10).
-- **The added events reproduce the first 500.** For the four models with post-cutoff events in both halves, the forecasting gaps agree in sign in every task family. The knowledge gaps agree except GPT-4o Temporal Prediction (see Caveats) and Claude S4.5 Mechanistic Forecasting, whose two values are both near zero.
+- **Both designs give the same picture.** Across 50 model × task × partition cells, the knowledge gap correlates at r = 0.99 between the original design and the fixed-evidence design, and the forecasting gap at r = 0.91.
+- **After the cutoff, forecasting gaps dominate.** With fixed evidence, the forecasting gap is larger than the knowledge gap in all 24 post-cutoff model × task-family comparisons.
+- **Before the cutoff, knowledge gaps dominate.** The knowledge gap is larger than the forecasting gap in all 16 pre-cutoff comparisons.
+- **The two late-cutoff models are now covered.** Claude Sonnet 5 and GPT-5.6 Sol had too few post-cutoff events in the first 500 (31 and 4). With 1,000 events they have 143–399 and 131–403 matched post-cutoff events per task, and they show the same pattern as the other models.
 
-## Events per model
+## Design
 
-Post-cutoff means the publication month is after the cutoff month. An event counts when the base run and both fixed-packet runs have a record for it.
+- **Original design.** Each evaluated model writes its own search query. WS+Cutoff retrieves only documents dated before the model's knowledge cutoff; WS has no date limit. GPT-4o and GPT-5.4 used the OpenAI web-search tool in WS; all other runs used one You.com query per event.
+- **Fixed-evidence design.** Claude Opus 4.8 wrote one query per event (GPT-5.4-mini for events Opus declined). Each query was sent once per date limit, so every model received the same evidence packet for a given limit.
+- **Gaps.** Knowledge gap = WS+Cutoff − Base. Forecasting gap = WS − WS+Cutoff. Post-cutoff events have a publication month after the model's cutoff month.
+- **Statistics.** Paired differences on events present in all conditions of both designs ("matched events"), with normal 95% confidence intervals. Cells with fewer than 20 events are not reported. Binary, MCQ and Date use a 0–1 scale; FRQ uses rubric points on 0–10.
 
-| Model | Cutoff | Pre-cutoff events | Post-cutoff events (500-event set) | Post-cutoff events (1,000-event set) |
+## Events
+
+The 1,000 events are the pinned 500-event subset (published Jan 2024 – Mar 2026) and 500 added events published Mar–Aug 2026 (seed 20261018, stratified by month). Every added event is a post-cutoff event for all six models.
+
+| Model | Knowledge cutoff | Matched pre-cutoff events (max over tasks) | Matched post-cutoff events (max over tasks) |
+|---|---|---|---|
+| GPT-4o | 2023-10 | 0 | 805 |
+| LLaMA 3.3 70B | 2023-12 | 0 | 809 |
+| Claude S4.5 | 2025-01 | 152 | 539 |
+| GPT-5.4 | 2025-08 | 330 | 500 |
+| Claude Sonnet 5 | 2026-01 | 381 | 399 |
+| GPT-5.6 Sol | 2026-02 | 423 | 403 |
+
+## Table 20. Pre-cutoff gaps, original vs fixed evidence
+
+| Model | Task | N | Knowledge gap, original | Knowledge gap, fixed | Forecasting gap, original | Forecasting gap, fixed |
+|---|---|---|---|---|---|---|
+| Claude S4.5 | Binary | 129 | +0.380 [+0.267, +0.492] | +0.380 [+0.278, +0.481] | +0.039 [-0.034, +0.112] | +0.078 [+0.014, +0.141] |
+|  | Binary (perturbed) | 137 | -0.007 [-0.104, +0.089] | +0.022 [-0.079, +0.122] | +0.015 [-0.056, +0.085] | -0.007 [-0.066, +0.052] |
+|  | MCQ | 152 | +0.039 [-0.044, +0.123] | +0.020 [-0.067, +0.106] | -0.013 [-0.084, +0.058] | -0.013 [-0.082, +0.055] |
+|  | FRQ (0–10) | 142 | +0.683 [+0.485, +0.881] | +0.780 [+0.579, +0.981] | +0.130 [-0.021, +0.282] | +0.058 [-0.068, +0.185] |
+|  | Date | 129 | +0.235 [+0.145, +0.325] | +0.287 [+0.201, +0.372] | +0.083 [-0.000, +0.167] | -0.072 [-0.155, +0.010] |
+| GPT-5.4 | Binary | 237 | +0.270 [+0.201, +0.339] | +0.270 [+0.203, +0.337] | +0.051 [+0.011, +0.091] | +0.013 [-0.021, +0.047] |
+|  | Binary (perturbed) | 294 | +0.024 [-0.050, +0.098] | +0.058 [-0.016, +0.132] | -0.061 [-0.126, +0.003] | +0.020 [-0.027, +0.068] |
+|  | MCQ | 330 | +0.088 [+0.047, +0.128] | +0.094 [+0.054, +0.134] | +0.030 [+0.004, +0.057] | +0.000 [-0.022, +0.022] |
+|  | FRQ (0–10) | 317 | +1.003 [+0.869, +1.137] | +1.096 [+0.967, +1.225] | -0.294 [-0.432, -0.157] | -0.019 [-0.105, +0.068] |
+|  | Date | 237 | +0.440 [+0.383, +0.498] | +0.454 [+0.397, +0.510] | +0.024 [-0.033, +0.080] | +0.022 [-0.012, +0.057] |
+| Claude Sonnet 5 | Binary | 266 | +0.267 [+0.195, +0.339] | +0.286 [+0.214, +0.357] | +0.004 [-0.046, +0.053] | +0.026 [-0.013, +0.066] |
+|  | Binary (perturbed) | 349 | +0.011 [-0.050, +0.073] | -0.003 [-0.061, +0.055] | +0.032 [-0.003, +0.066] | +0.011 [-0.021, +0.044] |
+|  | MCQ | 371 | +0.062 [+0.030, +0.094] | +0.057 [+0.022, +0.091] | +0.011 [-0.006, +0.027] | +0.016 [-0.000, +0.033] |
+|  | FRQ (0–10) | 381 | +1.394 [+1.262, +1.526] | +1.430 [+1.303, +1.558] | -0.044 [-0.141, +0.053] | +0.029 [-0.060, +0.117] |
+|  | Date | 268 | +0.325 [+0.274, +0.376] | +0.326 [+0.275, +0.376] | +0.011 [-0.023, +0.045] | +0.020 [-0.008, +0.048] |
+| GPT-5.6 Sol | Binary | 294 | +0.034 [-0.013, +0.081] | +0.017 [-0.031, +0.065] | -0.007 [-0.041, +0.027] | +0.034 [+0.008, +0.060] |
+|  | Binary (perturbed) | 388 | +0.168 [+0.106, +0.229] | +0.144 [+0.087, +0.202] | +0.010 [-0.030, +0.050] | +0.003 [-0.028, +0.033] |
+|  | MCQ | 423 | +0.059 [+0.026, +0.092] | +0.073 [+0.041, +0.106] | +0.014 [-0.005, +0.034] | +0.014 [+0.001, +0.027] |
+|  | FRQ (0–10) | 407 | +1.094 [+0.978, +1.210] | +1.080 [+0.963, +1.197] | +0.079 [-0.018, +0.175] | +0.065 [-0.009, +0.139] |
+|  | Date | 295 | +0.417 [+0.366, +0.468] | +0.405 [+0.353, +0.457] | +0.016 [-0.016, +0.049] | +0.024 [+0.000, +0.048] |
+
+GPT-4o and LLaMA 3.3 70B have no pre-cutoff events.
+
+## Table 21. Post-cutoff gaps, original vs fixed evidence
+
+| Model | Task | N | Knowledge gap, original | Knowledge gap, fixed | Forecasting gap, original | Forecasting gap, fixed |
+|---|---|---|---|---|---|---|
+| GPT-4o | Binary | 421 | +0.290 [+0.237, +0.343] | +0.292 [+0.239, +0.346] | +0.361 [+0.306, +0.416] | +0.342 [+0.293, +0.392] |
+|  | Binary (perturbed) | 789 | -0.147 [-0.183, -0.111] | -0.147 [-0.186, -0.108] | +0.151 [+0.110, +0.192] | -0.127 [-0.164, -0.090] |
+|  | MCQ | 805 | +0.045 [+0.010, +0.080] | +0.097 [+0.063, +0.131] | +0.340 [+0.303, +0.378] | +0.243 [+0.209, +0.278] |
+|  | FRQ (0–10) | 799 | +0.297 [+0.223, +0.371] | +0.485 [+0.408, +0.562] | +0.642 [+0.522, +0.762] | +0.697 [+0.608, +0.786] |
+|  | Date | 421 | +0.093 [+0.056, +0.129] | +0.078 [+0.042, +0.114] | +0.273 [+0.225, +0.322] | +0.104 [+0.064, +0.145] |
+| LLaMA 3.3 70B | Binary | 424 | -0.064 [-0.095, -0.033] | -0.050 [-0.080, -0.019] | +0.052 [+0.019, +0.085] | +0.073 [+0.043, +0.103] |
+|  | Binary (perturbed) | 793 | +0.116 [+0.087, +0.145] | +0.120 [+0.091, +0.148] | -0.006 [-0.037, +0.025] | +0.008 [-0.024, +0.039] |
+|  | MCQ | 809 | +0.042 [+0.008, +0.077] | +0.073 [+0.038, +0.108] | +0.284 [+0.249, +0.319] | +0.277 [+0.244, +0.310] |
+|  | FRQ (0–10) | 805 | +0.409 [+0.344, +0.474] | +0.507 [+0.444, +0.571] | +0.648 [+0.568, +0.728] | +0.733 [+0.656, +0.809] |
+|  | Date | 424 | -0.042 [-0.068, -0.016] | -0.049 [-0.078, -0.019] | +0.084 [+0.049, +0.118] | +0.110 [+0.074, +0.145] |
+| Claude S4.5 | Binary | 247 | +0.097 [+0.025, +0.169] | +0.085 [+0.014, +0.156] | +0.449 [+0.384, +0.515] | +0.462 [+0.398, +0.525] |
+|  | Binary (perturbed) | 509 | +0.020 [-0.024, +0.063] | +0.010 [-0.034, +0.053] | -0.151 [-0.195, -0.108] | -0.128 [-0.172, -0.083] |
+|  | MCQ | 475 | -0.029 [-0.074, +0.015] | +0.004 [-0.042, +0.050] | +0.158 [+0.114, +0.202] | +0.097 [+0.052, +0.142] |
+|  | FRQ (0–10) | 539 | +0.159 [+0.077, +0.240] | +0.229 [+0.155, +0.303] | +0.333 [+0.251, +0.415] | +0.464 [+0.385, +0.542] |
+|  | Date | 244 | -0.019 [-0.061, +0.023] | -0.039 [-0.083, +0.006] | +0.111 [+0.054, +0.167] | +0.182 [+0.125, +0.240] |
+| GPT-5.4 | Binary | 188 | +0.128 [+0.061, +0.195] | +0.128 [+0.055, +0.201] | +0.191 [+0.133, +0.250] | +0.149 [+0.094, +0.204] |
+|  | Binary (perturbed) | 500 | -0.082 [-0.127, -0.037] | -0.068 [-0.114, -0.022] | -0.020 [-0.067, +0.027] | +0.000 [-0.043, +0.043] |
+|  | MCQ | 483 | -0.056 [-0.096, -0.016] | -0.048 [-0.087, -0.008] | +0.182 [+0.146, +0.219] | +0.130 [+0.096, +0.165] |
+|  | FRQ (0–10) | 484 | +0.437 [+0.350, +0.524] | +0.398 [+0.312, +0.483] | +0.163 [+0.064, +0.263] | +0.668 [+0.571, +0.764] |
+|  | Date | 188 | +0.086 [+0.045, +0.128] | +0.093 [+0.051, +0.135] | +0.538 [+0.480, +0.596] | +0.389 [+0.335, +0.443] |
+| Claude Sonnet 5 | Binary | 143 | +0.140 [+0.045, +0.234] | +0.112 [+0.011, +0.213] | +0.406 [+0.320, +0.491] | +0.434 [+0.350, +0.517] |
+|  | Binary (perturbed) | 399 | -0.075 [-0.119, -0.032] | -0.090 [-0.134, -0.047] | -0.108 [-0.152, -0.063] | -0.058 [-0.102, -0.014] |
+|  | MCQ | 367 | -0.027 [-0.059, +0.005] | -0.011 [-0.045, +0.023] | +0.071 [+0.035, +0.107] | +0.074 [+0.041, +0.106] |
+|  | FRQ (0–10) | 396 | +0.332 [+0.226, +0.438] | +0.422 [+0.322, +0.522] | +0.828 [+0.706, +0.950] | +0.838 [+0.717, +0.959] |
+|  | Date | 143 | +0.094 [+0.050, +0.137] | +0.091 [+0.045, +0.137] | +0.338 [+0.279, +0.396] | +0.379 [+0.322, +0.437] |
+| GPT-5.6 Sol | Binary | 131 | +0.061 [+0.006, +0.116] | +0.038 [-0.020, +0.096] | +0.153 [+0.084, +0.221] | +0.176 [+0.107, +0.244] |
+|  | Binary (perturbed) | 403 | +0.007 [-0.043, +0.058] | -0.037 [-0.089, +0.015] | +0.089 [+0.035, +0.144] | +0.087 [+0.032, +0.142] |
+|  | MCQ | 378 | +0.011 [-0.025, +0.046] | -0.005 [-0.042, +0.031] | +0.085 [+0.051, +0.118] | +0.085 [+0.050, +0.119] |
+|  | FRQ (0–10) | 380 | +0.365 [+0.264, +0.466] | +0.281 [+0.179, +0.383] | +0.742 [+0.620, +0.864] | +0.711 [+0.589, +0.832] |
+|  | Date | 131 | +0.054 [+0.017, +0.091] | +0.091 [+0.049, +0.132] | +0.396 [+0.333, +0.458] | +0.381 [+0.322, +0.440] |
+
+## Table 22. Agreement between the original and fixed-evidence designs
+
+One point per model × task × partition cell with at least 20 matched events. FRQ is divided by 10 so all tasks share a 0–1 scale. r = Pearson correlation; MAD = mean absolute difference. Brackets: 95% CIs from 10,000 cell-level bootstrap resamples.
+
+| Quantity | r (pre + post) | MAD (pre + post) | r (post only) | MAD (post only) |
 |---|---|---|---|---|
-| GPT-4o | 2023-10 | 0 | 500 | **1000** |
-| LLaMA 3.3 70B | 2023-12 | 0 | 500 | **1000** |
-| Claude S4.5 | 2025-01 | 214 | 286 | **786** |
-| GPT-5.4 | 2025-08 | 377 | 123 | **623** |
-| Claude Sonnet 5 | 2026-01 | 469 | 31 | **531** |
-| GPT-5.6 Sol | 2026-02 | 496 | 4 | **504** |
+| WS+Cutoff performance | 1.00 [0.99, 1.00] | 0.015 [0.012, 0.019] | 0.99 [0.99, 1.00] | 0.016 [0.011, 0.020] |
+| Unrestricted WS performance | 0.96 [0.91, 0.99] | 0.037 [0.025, 0.052] | 0.95 [0.87, 0.99] | 0.043 [0.025, 0.065] |
+| **Knowledge gap** | 0.99 [0.98, 0.99] | 0.015 [0.012, 0.019] | 0.97 [0.92, 0.99] | 0.016 [0.011, 0.020] |
+| **Forecasting gap** | 0.91 [0.79, 0.97] | 0.037 [0.024, 0.053] | 0.90 [0.77, 0.98] | 0.044 [0.025, 0.066] |
+| Forecasting gap, without GPT-4o | 0.95 [0.89, 0.98] | 0.028 [0.019, 0.038] | 0.97 [0.95, 0.99] | 0.030 [0.019, 0.043] |
 
-Not every event has all five tasks. In the added 500, 130 events have a Binary and a Date question, 401 a perturbed Binary question, 379 an MCQ and 385 an FRQ. This is how the extension corpus was built.
+Cells: 50 (pre + post), 30 (post only); without GPT-4o: 45 and 25.
 
-## Figure 3a values on post-cutoff events
+## FRQ only (rubric points, 0–10)
 
-Each cell is knowledge gap / forecasting gap. Knowledge gap = WS+Cutoff − base. Forecasting gap = WS − WS+Cutoff. Feasibility Assessment is the mean of the original and perturbed binary gaps. Solution Design is the FRQ score divided by 10. A dash means a cell with fewer than 20 events. The 500-event rows are the values in the current Figure 3a, which also require the original-setup runs, so their event sets differ slightly from the first-500 rows of the consistency check.
+| Quantity | r (pre + post) | MAD (pre + post) | Cells | r (post only) | MAD (post only) | Cells |
+|---|---|---|---|---|---|---|
+| WS+Cutoff score | 1.00 [0.99, 1.00] | 0.081 [0.055, 0.111] | 10 | 1.00 [0.99, 1.00] | 0.095 [0.063, 0.136] | 6 |
+| WS score | 0.97 [0.91, 1.00] | 0.184 [0.105, 0.271] | 10 | 0.97 [0.88, 1.00] | 0.218 [0.136, 0.326] | 6 |
+| Knowledge gap | 0.98 [0.90, 1.00] | 0.081 [0.055, 0.111] | 10 | 0.56 [-0.84, 0.96] | 0.095 [0.063, 0.136] | 6 |
+| Forecasting gap | 0.89 [0.67, 0.99] | 0.125 [0.051, 0.225] | 10 | 0.68 [0.20, 1.00] | 0.136 [0.038, 0.290] | 6 |
 
-| Model | Events | Feasibility Assessment | Mechanistic Forecasting | Temporal Prediction | Solution Design |
-|---|---|---|---|---|---|
-| GPT-4o | 500 | +0.052 / +0.112 | +0.094 / +0.197 | +0.173 / +0.132 | +0.063 / +0.065 |
-| GPT-4o | 1,000 | +0.071 / +0.111 | +0.097 / +0.243 | +0.079 / +0.109 | +0.049 / +0.070 |
-| LLaMA 3.3 70B | 500 | +0.017 / +0.045 | +0.093 / +0.242 | -0.041 / +0.105 | +0.060 / +0.070 |
-| LLaMA 3.3 70B | 1,000 | +0.035 / +0.040 | +0.071 / +0.277 | -0.049 / +0.110 | +0.050 / +0.073 |
-| Claude S4.5 | 500 | +0.031 / +0.165 | -0.016 / +0.119 | -0.024 / +0.235 | +0.025 / +0.044 |
-| Claude S4.5 | 1,000 | +0.047 / +0.170 | +0.000 / +0.098 | -0.036 / +0.184 | +0.024 / +0.045 |
-| GPT-5.4 | 500 | +0.016 / +0.087 | -0.058 / +0.135 | +0.085 / +0.373 | +0.031 / +0.062 |
-| GPT-5.4 | 1,000 | +0.031 / +0.074 | -0.048 / +0.130 | +0.095 / +0.387 | +0.040 / +0.067 |
-| Claude Sonnet 5 | 500 | — | +0.000 / +0.083 | — | +0.040 / +0.079 |
-| Claude Sonnet 5 | 1,000 | +0.011 / +0.193 | -0.013 / +0.075 | +0.090 / +0.383 | +0.041 / +0.083 |
-| GPT-5.6 Sol | 500 | — | — | — | — |
-| GPT-5.6 Sol | 1,000 | +0.001 / +0.131 | -0.005 / +0.084 | +0.091 / +0.381 | +0.028 / +0.071 |
+The post-only FRQ rows have six cells, so their intervals are wide.
 
-## Per-task post-cutoff gaps with 95% CIs (1,000 events)
+## Figure 3a values (fixed evidence)
 
-FRQ is on the 0–10 scale here. CIs are paired normal intervals, as in the gap decomposition code.
+Knowledge gap / forecasting gap per task family. Feasibility Assessment is the mean of the original and perturbed binary gaps; Solution Design is FRQ ÷ 10. These are the Fixed columns of Tables 20 and 21.
 
-| Model | Task | n | Knowledge gap [95% CI] | Forecasting gap [95% CI] |
+**Post-cutoff events**
+
+| Model | Feasibility Assessment | Mechanistic Forecasting | Temporal Prediction | Solution Design |
 |---|---|---|---|---|
-| GPT-4o | Binary | 426 | +0.291 [+0.238, +0.344] | +0.347 [+0.298, +0.397] |
-| GPT-4o | Binary (pert.) | 795 | -0.148 [-0.187, -0.110] | -0.126 [-0.163, -0.089] |
-| GPT-4o | MCQ | 814 | +0.097 [+0.063, +0.131] | +0.243 [+0.209, +0.277] |
-| GPT-4o | FRQ (0-10) | 811 | +0.491 [+0.415, +0.568] | +0.696 [+0.607, +0.784] |
-| GPT-4o | Date (0-1) | 426 | +0.079 [+0.043, +0.115] | +0.109 [+0.068, +0.149] |
-| LLaMA 3.3 70B | Binary | 424 | -0.050 [-0.080, -0.019] | +0.073 [+0.043, +0.103] |
-| LLaMA 3.3 70B | Binary (pert.) | 794 | +0.120 [+0.091, +0.148] | +0.008 [-0.024, +0.039] |
-| LLaMA 3.3 70B | MCQ | 812 | +0.071 [+0.037, +0.106] | +0.277 [+0.244, +0.310] |
-| LLaMA 3.3 70B | FRQ (0-10) | 808 | +0.505 [+0.441, +0.568] | +0.735 [+0.658, +0.811] |
-| LLaMA 3.3 70B | Date (0-1) | 424 | -0.049 [-0.078, -0.019] | +0.110 [+0.074, +0.145] |
-| Claude S4.5 | Binary | 250 | +0.084 [+0.014, +0.154] | +0.464 [+0.401, +0.527] |
-| Claude S4.5 | Binary (pert.) | 520 | +0.010 [-0.034, +0.053] | -0.125 [-0.169, -0.081] |
-| Claude S4.5 | MCQ | 479 | +0.000 [-0.046, +0.046] | +0.098 [+0.054, +0.143] |
-| Claude S4.5 | FRQ (0-10) | 556 | +0.241 [+0.164, +0.319] | +0.454 [+0.377, +0.531] |
-| Claude S4.5 | Date (0-1) | 248 | -0.036 [-0.080, +0.008] | +0.184 [+0.127, +0.241] |
-| GPT-5.4 | Binary | 189 | +0.132 [+0.059, +0.206] | +0.148 [+0.093, +0.203] |
-| GPT-5.4 | Binary (pert.) | 501 | -0.070 [-0.116, -0.024] | +0.000 [-0.043, +0.043] |
-| GPT-5.4 | MCQ | 484 | -0.048 [-0.087, -0.008] | +0.130 [+0.096, +0.164] |
-| GPT-5.4 | FRQ (0-10) | 486 | +0.397 [+0.311, +0.482] | +0.667 [+0.571, +0.763] |
-| GPT-5.4 | Date (0-1) | 189 | +0.095 [+0.053, +0.137] | +0.387 [+0.333, +0.441] |
-| Claude Sonnet 5 | Binary | 144 | +0.111 [+0.011, +0.212] | +0.438 [+0.354, +0.521] |
-| Claude Sonnet 5 | Binary (pert.) | 408 | -0.088 [-0.131, -0.045] | -0.051 [-0.095, -0.008] |
-| Claude Sonnet 5 | MCQ | 375 | -0.013 [-0.047, +0.020] | +0.075 [+0.042, +0.108] |
-| Claude Sonnet 5 | FRQ (0-10) | 402 | +0.412 [+0.313, +0.511] | +0.833 [+0.712, +0.954] |
-| Claude Sonnet 5 | Date (0-1) | 144 | +0.090 [+0.045, +0.136] | +0.383 [+0.325, +0.440] |
-| GPT-5.6 Sol | Binary | 131 | +0.038 [-0.020, +0.096] | +0.176 [+0.107, +0.244] |
-| GPT-5.6 Sol | Binary (pert.) | 404 | -0.037 [-0.089, +0.015] | +0.087 [+0.032, +0.142] |
-| GPT-5.6 Sol | MCQ | 379 | -0.005 [-0.042, +0.031] | +0.084 [+0.050, +0.119] |
-| GPT-5.6 Sol | FRQ (0-10) | 380 | +0.281 [+0.179, +0.383] | +0.711 [+0.589, +0.832] |
-| GPT-5.6 Sol | Date (0-1) | 131 | +0.091 [+0.049, +0.132] | +0.381 [+0.322, +0.440] |
+| GPT-4o | +0.073 / +0.108 | +0.097 / +0.243 | +0.078 / +0.104 | +0.048 / +0.070 |
+| LLaMA 3.3 70B | +0.035 / +0.040 | +0.073 / +0.277 | -0.049 / +0.110 | +0.051 / +0.073 |
+| Claude S4.5 | +0.047 / +0.167 | +0.004 / +0.097 | -0.039 / +0.182 | +0.023 / +0.046 |
+| GPT-5.4 | +0.030 / +0.074 | -0.048 / +0.130 | +0.093 / +0.389 | +0.040 / +0.067 |
+| Claude Sonnet 5 | +0.011 / +0.188 | -0.011 / +0.074 | +0.091 / +0.379 | +0.042 / +0.084 |
+| GPT-5.6 Sol | +0.000 / +0.131 | -0.005 / +0.085 | +0.091 / +0.381 | +0.028 / +0.071 |
 
-## Consistency check: first 500 against added 500 (post-cutoff)
+**Pre-cutoff events**
 
-| Model | Half | Feasibility Assessment | Mechanistic Forecasting | Temporal Prediction | Solution Design |
-|---|---|---|---|---|---|
-| GPT-4o | first 500 | +0.051 / +0.117 | +0.094 / +0.198 | +0.174 / +0.138 | +0.064 / +0.065 |
-| GPT-4o | added 500 | +0.096 / +0.091 | +0.100 / +0.296 | -0.136 / +0.042 | +0.032 / +0.074 |
-| LLaMA 3.3 70B | first 500 | +0.017 / +0.045 | +0.090 / +0.242 | -0.041 / +0.105 | +0.059 / +0.071 |
-| LLaMA 3.3 70B | added 500 | +0.056 / +0.028 | +0.050 / +0.317 | -0.067 / +0.119 | +0.041 / +0.076 |
-| Claude S4.5 | first 500 | +0.031 / +0.171 | -0.026 / +0.122 | -0.019 / +0.237 | +0.028 / +0.042 |
-| Claude S4.5 | added 500 | +0.049 / +0.174 | +0.017 / +0.083 | -0.055 / +0.124 | +0.022 / +0.048 |
-| GPT-5.4 | first 500 | +0.019 / +0.086 | -0.057 / +0.133 | +0.091 / +0.367 | +0.030 / +0.062 |
-| GPT-5.4 | added 500 | +0.024 / +0.076 | -0.045 / +0.129 | +0.097 / +0.396 | +0.042 / +0.068 |
+| Model | Feasibility Assessment | Mechanistic Forecasting | Temporal Prediction | Solution Design |
+|---|---|---|---|---|
+| Claude S4.5 | +0.201 / +0.035 | +0.020 / -0.013 | +0.287 / -0.072 | +0.078 / +0.006 |
+| GPT-5.4 | +0.164 / +0.017 | +0.094 / +0.000 | +0.454 / +0.022 | +0.110 / -0.002 |
+| Claude Sonnet 5 | +0.141 / +0.019 | +0.057 / +0.016 | +0.326 / +0.020 | +0.143 / +0.003 |
+| GPT-5.6 Sol | +0.081 / +0.018 | +0.073 / +0.014 | +0.405 / +0.024 | +0.108 / +0.007 |
 
-## Caveats
+## Where the two designs differ
 
-- **GPT-4o Temporal Prediction knowledge gap.** It is +0.174 on the first 500 and -0.136 on the added 500. The fixed-packet scores are similar (0.355 and 0.387), but the base score moves from 0.181 to 0.524. Most added events take their base scores from the Apr–Aug 2026 extension base runs (the Table 1 runs), not from the original-corpus base runs. The base Date scores of the older models differ between those runs. LLaMA 3.3 shows the same base shift (0.506 to 0.283), in the other direction. The shift is in the base, not in the evidence. The paper should not read much into the GPT-4o and LLaMA 3.3 Temporal Prediction knowledge gaps.
-- **Retrieval date.** The added evidence was retrieved on 2026-10-18; the first 500 on 2026-09-21.
-- **Original-setup comparison stays on 500 events.** The self-query runs of the original manuscript exist only for the first 500. The fixed − original tables (response Tables 20/21) are unchanged. Only Figure 3a, which uses base and fixed-packet runs, moves to 1,000 events.
-- **Query writer.** The fixed queries are again from Claude Opus 4.8, which is now in the evaluated panel (open decision 1 in REVISION_STATUS.md applies to the added events too).
+- **Knowledge gap.** The fixed-evidence value lies inside the original value's 95% CI in 47 of 50 cells. The exceptions are GPT-4o MCQ (+0.045 → +0.097); GPT-4o FRQ (0-10) (+0.297 → +0.485); LLaMA 3.3 70B FRQ (0-10) (+0.409 → +0.507). In each, fixed evidence gives the larger knowledge gap.
+- **Forecasting gap.** Inside the CI in 34 of 50 cells. GPT-4o changes most, because its original unrestricted run used the OpenAI web-search tool rather than a single You.com query; without GPT-4o the forecasting-gap correlation rises to 0.95.
+- **Single answers.** The same WS+Cutoff answer is given under both designs for 84.0% of Binary items and 86.3% of MCQ items (Cohen's κ 0.604 and 0.639).
 
-## Method
+## Notes and caveats
 
-- **Sample.** Pool: CUSP events not in the first 500, published after 2026-02, with a stored base record for all six models (852 events). 500 were drawn, stratified by month, seed 20261018. By month: 2026-03 22, 2026-04 103, 2026-05 97, 2026-06 100, 2026-07 102, 2026-08 76.
-- **Queries.** Claude Opus 4.8 wrote 466 queries with the same prompt (same prompt hash). It returned empty content for 34 events; those got gpt-5.4-mini queries, as in the first 500.
-- **Evidence.** One You.com call per event for each of seven freshness bounds (the six model cutoffs and unrestricted), filtered by the unmodified retrieval code. 3,500 calls, no errors, one empty packet. The DeepSeek R1 bound was skipped; R1 has no fixed-packet run.
-- **Model runs.** Six models × two conditions × 500 events, each model with its original decoding parameters. 97 records hit provider rate limits (GPT-4o, LLaMA 3.3, GPT-5.4); they were removed and re-run until no transport errors remained. Claude Sonnet 4.5 API refusals were kept as model behaviour, as in the first 500.
-- **FRQ.** Graded with the same stage-2 rubric and Azure judge as the first 500. Every judgeable answer in all 12 runs has a score.
+- **Added events, original design.** Each model was re-run on the 500 added events with the harness, prompts and decoding settings of its original retrieval run. The retired Azure OpenAI deployments of GPT-4o, GPT-5.4 and LLaMA 3.3 were replaced by the Azure AI Foundry deployments of the same models.
+- **Retrieval dates.** Fixed packets were retrieved on 2026-09-21 (first 500) and 2026-10-18 (added 500); the added original-design runs were made on 2026-10-19/20.
+- **FRQ token limits.** The fixed-packet FRQ answers of GPT-4o, GPT-5.4 and Claude Sonnet 4.5 were capped at 250 tokens (their original runs: 2,048 for GPT-4o and GPT-5.4).
+- **Claude Sonnet 4.5 query failures.** It returned no search query for 84–85 of the added events (37 in the first 500). As in its original runs, those events keep the answer given without retrieved evidence.
+- **Query writer.** Claude Opus 4.8 wrote the fixed queries; it is evaluated elsewhere in the paper but not in this experiment.
+- **DeepSeek R1** is not included: its deployment was retired before the fixed-evidence runs.
 
-## Files
-
-- `results/A4_retrieval/A4_3_fixed_queries/ext500/`: sample, queries, evidence, model outputs, judgements, reports, logs, README.
-- `results/A4_retrieval/A4_3_fixed_queries/gaps_fixed1000.md` and `results/A4_retrieval/tables/A4_3_gaps_fixed1000*.json`: full tables, including pre-cutoff.
-- `manuscript_updates/forecasting_gap_rev_1000.png` (and `.pdf`): Figure 3 with panel a on 1,000 events. Panel b is unchanged. Not pushed to Overleaf.
-
-Regenerate (no inference):
-
-```
-python results/A4_retrieval/scripts/a43_gaps_1000.py
-python results/A4_retrieval/scripts/a43_report_1000.py
-python run_evaluation/make_fig3_overleaf.py --packets 1000
-```
+Source: `results/A4_retrieval/` (scripts `a43_pre_post_correlation.py` with `A43_EVENTS=1000`, `a43_report_1000.py`).
