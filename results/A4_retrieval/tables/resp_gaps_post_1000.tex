@@ -1,0 +1,294 @@
+\begin{table}[p]
+\centering
+\footnotesize
+
+\caption{
+\textbf{Post-cutoff gap estimates under the original and fixed-evidence retrieval designs (1,000 events).}
+Values are paired performance differences on matched events with 95\%
+confidence intervals.
+Knowledge gap $=\mathrm{WS+Cutoff}-\mathrm{Base}$;
+forecasting gap $=\mathrm{WS}-\mathrm{WS+Cutoff}$.
+Binary, MCQ, and Date are reported on the $[0,1]$ scale; FRQ is reported
+in rubric points on the 0--10 scale.
+}
+\label{tab:gaps_post}
+
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+
+\begin{tabular}{l l r c c c c}
+\toprule
+& & & \multicolumn{2}{c}{\textbf{Knowledge gap}} & \multicolumn{2}{c}{\textbf{Forecasting gap}} \\
+\cmidrule(lr){4-5}
+\cmidrule(lr){6-7}
+\textbf{Model} & \textbf{Task} & $N$ & \textbf{Original} & \textbf{Fixed} & \textbf{Original} & \textbf{Fixed} \\
+\midrule
+
+GPT-4o
+& Binary
+& 421
+& $+.290$ {\tiny[$+.237,+.343$]}
+& $+.292$ {\tiny[$+.239,+.346$]}
+& $+.361$ {\tiny[$+.306,+.416$]}
+& $+.342$ {\tiny[$+.293,+.392$]} \\
+
+
+& Binary (pert.)
+& 789
+& $-.147$ {\tiny[$-.183,-.111$]}
+& $-.147$ {\tiny[$-.186,-.108$]}
+& $+.151$ {\tiny[$+.110,+.192$]}
+& $-.127$ {\tiny[$-.164,-.090$]} \\
+
+
+& MCQ
+& 805
+& $+.045$ {\tiny[$+.010,+.080$]}
+& $+.097$ {\tiny[$+.063,+.131$]}
+& $+.340$ {\tiny[$+.303,+.378$]}
+& $+.243$ {\tiny[$+.209,+.278$]} \\
+
+
+& FRQ (0--10)
+& 799
+& $+.297$ {\tiny[$+.223,+.371$]}
+& $+.485$ {\tiny[$+.408,+.562$]}
+& $+.642$ {\tiny[$+.522,+.762$]}
+& $+.697$ {\tiny[$+.608,+.786$]} \\
+
+
+& Date
+& 421
+& $+.093$ {\tiny[$+.056,+.129$]}
+& $+.078$ {\tiny[$+.042,+.114$]}
+& $+.273$ {\tiny[$+.225,+.322$]}
+& $+.104$ {\tiny[$+.064,+.145$]} \\
+
+\addlinespace
+
+GPT-5.4
+& Binary
+& 188
+& $+.128$ {\tiny[$+.061,+.195$]}
+& $+.128$ {\tiny[$+.055,+.201$]}
+& $+.191$ {\tiny[$+.133,+.250$]}
+& $+.149$ {\tiny[$+.094,+.204$]} \\
+
+
+& Binary (pert.)
+& 500
+& $-.082$ {\tiny[$-.127,-.037$]}
+& $-.068$ {\tiny[$-.114,-.022$]}
+& $-.020$ {\tiny[$-.067,+.027$]}
+& $+.000$ {\tiny[$-.043,+.043$]} \\
+
+
+& MCQ
+& 483
+& $-.056$ {\tiny[$-.096,-.016$]}
+& $-.048$ {\tiny[$-.087,-.008$]}
+& $+.182$ {\tiny[$+.146,+.219$]}
+& $+.130$ {\tiny[$+.096,+.165$]} \\
+
+
+& FRQ (0--10)
+& 484
+& $+.437$ {\tiny[$+.350,+.524$]}
+& $+.398$ {\tiny[$+.312,+.483$]}
+& $+.163$ {\tiny[$+.064,+.263$]}
+& $+.668$ {\tiny[$+.571,+.764$]} \\
+
+
+& Date
+& 188
+& $+.086$ {\tiny[$+.045,+.128$]}
+& $+.093$ {\tiny[$+.051,+.135$]}
+& $+.538$ {\tiny[$+.480,+.596$]}
+& $+.389$ {\tiny[$+.335,+.443$]} \\
+
+\addlinespace
+
+LLaMA 3.3 70B
+& Binary
+& 424
+& $-.064$ {\tiny[$-.095,-.033$]}
+& $-.050$ {\tiny[$-.080,-.019$]}
+& $+.052$ {\tiny[$+.019,+.085$]}
+& $+.073$ {\tiny[$+.043,+.103$]} \\
+
+
+& Binary (pert.)
+& 793
+& $+.116$ {\tiny[$+.087,+.145$]}
+& $+.120$ {\tiny[$+.091,+.148$]}
+& $-.006$ {\tiny[$-.037,+.025$]}
+& $+.008$ {\tiny[$-.024,+.039$]} \\
+
+
+& MCQ
+& 809
+& $+.042$ {\tiny[$+.008,+.077$]}
+& $+.073$ {\tiny[$+.038,+.108$]}
+& $+.284$ {\tiny[$+.249,+.319$]}
+& $+.277$ {\tiny[$+.244,+.310$]} \\
+
+
+& FRQ (0--10)
+& 805
+& $+.409$ {\tiny[$+.344,+.474$]}
+& $+.507$ {\tiny[$+.444,+.571$]}
+& $+.648$ {\tiny[$+.568,+.728$]}
+& $+.733$ {\tiny[$+.656,+.809$]} \\
+
+
+& Date
+& 424
+& $-.042$ {\tiny[$-.068,-.016$]}
+& $-.049$ {\tiny[$-.078,-.019$]}
+& $+.084$ {\tiny[$+.049,+.118$]}
+& $+.110$ {\tiny[$+.074,+.145$]} \\
+
+\addlinespace
+
+Claude S4.5
+& Binary
+& 247
+& $+.097$ {\tiny[$+.025,+.169$]}
+& $+.085$ {\tiny[$+.014,+.156$]}
+& $+.449$ {\tiny[$+.384,+.515$]}
+& $+.462$ {\tiny[$+.398,+.525$]} \\
+
+
+& Binary (pert.)
+& 509
+& $+.020$ {\tiny[$-.024,+.063$]}
+& $+.010$ {\tiny[$-.034,+.053$]}
+& $-.151$ {\tiny[$-.195,-.108$]}
+& $-.128$ {\tiny[$-.172,-.083$]} \\
+
+
+& MCQ
+& 475
+& $-.029$ {\tiny[$-.074,+.015$]}
+& $+.004$ {\tiny[$-.042,+.050$]}
+& $+.158$ {\tiny[$+.114,+.202$]}
+& $+.097$ {\tiny[$+.052,+.142$]} \\
+
+
+& FRQ (0--10)
+& 539
+& $+.159$ {\tiny[$+.077,+.240$]}
+& $+.229$ {\tiny[$+.155,+.303$]}
+& $+.333$ {\tiny[$+.251,+.415$]}
+& $+.464$ {\tiny[$+.385,+.542$]} \\
+
+
+& Date
+& 244
+& $-.019$ {\tiny[$-.061,+.023$]}
+& $-.039$ {\tiny[$-.083,+.006$]}
+& $+.111$ {\tiny[$+.054,+.167$]}
+& $+.182$ {\tiny[$+.125,+.240$]} \\
+
+\addlinespace
+
+Claude Sonnet 5
+& Binary
+& 143
+& $+.140$ {\tiny[$+.045,+.234$]}
+& $+.112$ {\tiny[$+.011,+.213$]}
+& $+.406$ {\tiny[$+.320,+.491$]}
+& $+.434$ {\tiny[$+.350,+.517$]} \\
+
+
+& Binary (pert.)
+& 399
+& $-.075$ {\tiny[$-.119,-.032$]}
+& $-.090$ {\tiny[$-.134,-.047$]}
+& $-.108$ {\tiny[$-.152,-.063$]}
+& $-.058$ {\tiny[$-.102,-.014$]} \\
+
+
+& MCQ
+& 367
+& $-.027$ {\tiny[$-.059,+.005$]}
+& $-.011$ {\tiny[$-.045,+.023$]}
+& $+.071$ {\tiny[$+.035,+.107$]}
+& $+.074$ {\tiny[$+.041,+.106$]} \\
+
+
+& FRQ (0--10)
+& 396
+& $+.332$ {\tiny[$+.226,+.438$]}
+& $+.422$ {\tiny[$+.322,+.522$]}
+& $+.828$ {\tiny[$+.706,+.950$]}
+& $+.838$ {\tiny[$+.717,+.959$]} \\
+
+
+& Date
+& 143
+& $+.094$ {\tiny[$+.050,+.137$]}
+& $+.091$ {\tiny[$+.045,+.137$]}
+& $+.338$ {\tiny[$+.279,+.396$]}
+& $+.379$ {\tiny[$+.322,+.437$]} \\
+
+\addlinespace
+
+GPT-5.6 Sol
+& Binary
+& 131
+& $+.061$ {\tiny[$+.006,+.116$]}
+& $+.038$ {\tiny[$-.020,+.096$]}
+& $+.153$ {\tiny[$+.084,+.221$]}
+& $+.176$ {\tiny[$+.107,+.244$]} \\
+
+
+& Binary (pert.)
+& 403
+& $+.007$ {\tiny[$-.043,+.058$]}
+& $-.037$ {\tiny[$-.089,+.015$]}
+& $+.089$ {\tiny[$+.035,+.144$]}
+& $+.087$ {\tiny[$+.032,+.142$]} \\
+
+
+& MCQ
+& 378
+& $+.011$ {\tiny[$-.025,+.046$]}
+& $-.005$ {\tiny[$-.042,+.031$]}
+& $+.085$ {\tiny[$+.051,+.118$]}
+& $+.085$ {\tiny[$+.050,+.119$]} \\
+
+
+& FRQ (0--10)
+& 380
+& $+.365$ {\tiny[$+.264,+.466$]}
+& $+.281$ {\tiny[$+.179,+.383$]}
+& $+.742$ {\tiny[$+.620,+.864$]}
+& $+.711$ {\tiny[$+.589,+.832$]} \\
+
+
+& Date
+& 131
+& $+.054$ {\tiny[$+.017,+.091$]}
+& $+.091$ {\tiny[$+.049,+.132$]}
+& $+.396$ {\tiny[$+.333,+.458$]}
+& $+.381$ {\tiny[$+.322,+.440$]} \\
+\bottomrule
+\end{tabular}
+
+\vspace{3pt}
+\begin{minipage}{0.98\textwidth}
+\scriptsize
+\textit{Notes.}
+The 1,000 events are the pinned 500-event subset and 500 events published from March to August 2026, which are post-cutoff events for every model.
+Post-cutoff events have a publication month after the model's knowledge cutoff.
+$N$ is the number of matched events; gap estimates are reported only for partitions with at least 20 matched events.
+Original denotes the original retrieval design, in which each evaluated model generated its own search query; for the 500 added events, each model was run again with the harness and settings of its original run.
+Fixed denotes the replication using evidence packets generated independently of the evaluated model.
+The original WS runs of GPT-4o and GPT-5.4 used the OpenAI web-search tool; all other runs used the single-query You.com pipeline.
+The fixed-packet FRQ answers of GPT-4o, GPT-5.4 and Claude S4.5 had a limit of 250 output tokens (original: 2,048 for GPT-4o and GPT-5.4).
+The Fixed columns are the values shown in revised Figure~3a.
+Brackets report 95\% confidence intervals.
+\end{minipage}
+
+\end{table}

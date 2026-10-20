@@ -1,0 +1,210 @@
+\begin{table}[p]
+\centering
+\footnotesize
+
+\caption{
+\textbf{Pre-cutoff gap estimates under the original and fixed-evidence retrieval designs (1,000 events).}
+Values are paired performance differences on matched events with 95\%
+confidence intervals.
+Knowledge gap $=\mathrm{WS+Cutoff}-\mathrm{Base}$;
+forecasting gap $=\mathrm{WS}-\mathrm{WS+Cutoff}$.
+Binary, MCQ, and Date are reported on the $[0,1]$ scale; FRQ is reported
+in rubric points on the 0--10 scale.
+}
+\label{tab:gaps_pre}
+
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+
+\begin{tabular}{l l r c c c c}
+\toprule
+& & & \multicolumn{2}{c}{\textbf{Knowledge gap}} & \multicolumn{2}{c}{\textbf{Forecasting gap}} \\
+\cmidrule(lr){4-5}
+\cmidrule(lr){6-7}
+\textbf{Model} & \textbf{Task} & $N$ & \textbf{Original} & \textbf{Fixed} & \textbf{Original} & \textbf{Fixed} \\
+\midrule
+
+GPT-5.4
+& Binary
+& 237
+& $+.270$ {\tiny[$+.201,+.339$]}
+& $+.270$ {\tiny[$+.203,+.337$]}
+& $+.051$ {\tiny[$+.011,+.091$]}
+& $+.013$ {\tiny[$-.021,+.047$]} \\
+
+
+& Binary (pert.)
+& 294
+& $+.024$ {\tiny[$-.050,+.098$]}
+& $+.058$ {\tiny[$-.016,+.132$]}
+& $-.061$ {\tiny[$-.126,+.003$]}
+& $+.020$ {\tiny[$-.027,+.068$]} \\
+
+
+& MCQ
+& 330
+& $+.088$ {\tiny[$+.047,+.128$]}
+& $+.094$ {\tiny[$+.054,+.134$]}
+& $+.030$ {\tiny[$+.004,+.057$]}
+& $+.000$ {\tiny[$-.022,+.022$]} \\
+
+
+& FRQ (0--10)
+& 317
+& $+1.003$ {\tiny[$+.869,+1.137$]}
+& $+1.096$ {\tiny[$+.967,+1.225$]}
+& $-.294$ {\tiny[$-.432,-.157$]}
+& $-.019$ {\tiny[$-.105,+.068$]} \\
+
+
+& Date
+& 237
+& $+.440$ {\tiny[$+.383,+.498$]}
+& $+.454$ {\tiny[$+.397,+.510$]}
+& $+.024$ {\tiny[$-.033,+.080$]}
+& $+.022$ {\tiny[$-.012,+.057$]} \\
+
+\addlinespace
+
+Claude S4.5
+& Binary
+& 129
+& $+.380$ {\tiny[$+.267,+.492$]}
+& $+.380$ {\tiny[$+.278,+.481$]}
+& $+.039$ {\tiny[$-.034,+.112$]}
+& $+.078$ {\tiny[$+.014,+.141$]} \\
+
+
+& Binary (pert.)
+& 137
+& $-.007$ {\tiny[$-.104,+.089$]}
+& $+.022$ {\tiny[$-.079,+.122$]}
+& $+.015$ {\tiny[$-.056,+.085$]}
+& $-.007$ {\tiny[$-.066,+.052$]} \\
+
+
+& MCQ
+& 152
+& $+.039$ {\tiny[$-.044,+.123$]}
+& $+.020$ {\tiny[$-.067,+.106$]}
+& $-.013$ {\tiny[$-.084,+.058$]}
+& $-.013$ {\tiny[$-.082,+.055$]} \\
+
+
+& FRQ (0--10)
+& 142
+& $+.683$ {\tiny[$+.485,+.881$]}
+& $+.780$ {\tiny[$+.579,+.981$]}
+& $+.130$ {\tiny[$-.021,+.282$]}
+& $+.058$ {\tiny[$-.068,+.185$]} \\
+
+
+& Date
+& 129
+& $+.235$ {\tiny[$+.145,+.325$]}
+& $+.287$ {\tiny[$+.201,+.372$]}
+& $+.083$ {\tiny[$-.000,+.167$]}
+& $-.072$ {\tiny[$-.155,+.010$]} \\
+
+\addlinespace
+
+Claude Sonnet 5
+& Binary
+& 266
+& $+.267$ {\tiny[$+.195,+.339$]}
+& $+.286$ {\tiny[$+.214,+.357$]}
+& $+.004$ {\tiny[$-.046,+.053$]}
+& $+.026$ {\tiny[$-.013,+.066$]} \\
+
+
+& Binary (pert.)
+& 349
+& $+.011$ {\tiny[$-.050,+.073$]}
+& $-.003$ {\tiny[$-.061,+.055$]}
+& $+.032$ {\tiny[$-.003,+.066$]}
+& $+.011$ {\tiny[$-.021,+.044$]} \\
+
+
+& MCQ
+& 371
+& $+.062$ {\tiny[$+.030,+.094$]}
+& $+.057$ {\tiny[$+.022,+.091$]}
+& $+.011$ {\tiny[$-.006,+.027$]}
+& $+.016$ {\tiny[$-.000,+.033$]} \\
+
+
+& FRQ (0--10)
+& 381
+& $+1.394$ {\tiny[$+1.262,+1.526$]}
+& $+1.430$ {\tiny[$+1.303,+1.558$]}
+& $-.044$ {\tiny[$-.141,+.053$]}
+& $+.029$ {\tiny[$-.060,+.117$]} \\
+
+
+& Date
+& 268
+& $+.325$ {\tiny[$+.274,+.376$]}
+& $+.326$ {\tiny[$+.275,+.376$]}
+& $+.011$ {\tiny[$-.023,+.045$]}
+& $+.020$ {\tiny[$-.008,+.048$]} \\
+
+\addlinespace
+
+GPT-5.6 Sol
+& Binary
+& 294
+& $+.034$ {\tiny[$-.013,+.081$]}
+& $+.017$ {\tiny[$-.031,+.065$]}
+& $-.007$ {\tiny[$-.041,+.027$]}
+& $+.034$ {\tiny[$+.008,+.060$]} \\
+
+
+& Binary (pert.)
+& 388
+& $+.168$ {\tiny[$+.106,+.229$]}
+& $+.144$ {\tiny[$+.087,+.202$]}
+& $+.010$ {\tiny[$-.030,+.050$]}
+& $+.003$ {\tiny[$-.028,+.033$]} \\
+
+
+& MCQ
+& 423
+& $+.059$ {\tiny[$+.026,+.092$]}
+& $+.073$ {\tiny[$+.041,+.106$]}
+& $+.014$ {\tiny[$-.005,+.034$]}
+& $+.014$ {\tiny[$+.001,+.027$]} \\
+
+
+& FRQ (0--10)
+& 407
+& $+1.094$ {\tiny[$+.978,+1.210$]}
+& $+1.080$ {\tiny[$+.963,+1.197$]}
+& $+.079$ {\tiny[$-.018,+.175$]}
+& $+.065$ {\tiny[$-.009,+.139$]} \\
+
+
+& Date
+& 295
+& $+.417$ {\tiny[$+.366,+.468$]}
+& $+.405$ {\tiny[$+.353,+.457$]}
+& $+.016$ {\tiny[$-.016,+.049$]}
+& $+.024$ {\tiny[$+.000,+.048$]} \\
+\bottomrule
+\end{tabular}
+
+\vspace{3pt}
+\begin{minipage}{0.98\textwidth}
+\scriptsize
+\textit{Notes.}
+The 1,000 events are the pinned 500-event subset and 500 events published from March to August 2026, which are post-cutoff events for every model.
+Pre-cutoff events have a publication month at or before the model's knowledge cutoff. GPT-4o and LLaMA~3.3 are not shown because no event is a pre-cutoff event for these models.
+$N$ is the number of matched events; gap estimates are reported only for partitions with at least 20 matched events.
+Original denotes the original retrieval design, in which each evaluated model generated its own search query; for the 500 added events, each model was run again with the harness and settings of its original run.
+Fixed denotes the replication using evidence packets generated independently of the evaluated model.
+The original WS runs of GPT-4o and GPT-5.4 used the OpenAI web-search tool; all other runs used the single-query You.com pipeline.
+The fixed-packet FRQ answers of GPT-4o, GPT-5.4 and Claude S4.5 had a limit of 250 output tokens (original: 2,048 for GPT-4o and GPT-5.4).
+The Fixed columns are the values shown in revised Figure~3a.
+Brackets report 95\% confidence intervals.
+\end{minipage}
+
+\end{table}
