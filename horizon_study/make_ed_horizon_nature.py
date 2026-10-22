@@ -9,6 +9,7 @@ import json, sys
 from pathlib import Path
 import numpy as np, pandas as pd
 import matplotlib as mpl; mpl.use("Agg"); import matplotlib.pyplot as plt
+import sys as _s; _s.path.insert(0, "/home/seanwu/FutureScience/run_evaluation"); import display_names; display_names.install()
 from matplotlib.lines import Line2D
 H = Path(__file__).resolve().parent; sys.path.insert(0, str(H))
 import make_ed_horizon as E, data as D

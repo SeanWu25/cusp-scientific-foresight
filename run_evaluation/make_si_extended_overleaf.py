@@ -148,6 +148,7 @@ if ORIG:
     sys.exit()
 # ---- figures
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+import sys as _s; _s.path.insert(0, "/home/seanwu/FutureScience/run_evaluation"); import display_names; display_names.install()
 plt.rcParams.update({"font.family": "DejaVu Sans", "axes.spines.top": False, "axes.spines.right": False})
 DC = {"alignment": "#D6604D", "specificity": "#F4A582", "novelty": "#92C5DE", "feasibility": "#4DAC26"}
 ordf = sorted(M, key=lambda m: np.mean(D[m]["d"]["frq"]))
