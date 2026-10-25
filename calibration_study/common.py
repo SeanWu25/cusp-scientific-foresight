@@ -62,9 +62,20 @@ ARM_LABEL = {"A": "A base", "B1": "B1 prompt (asym)", "B2": "B2 prompt (sym)",
              "C": "C retrieval (WS+cutoff)", "D": "D self-consistency", "E": "E probabilistic"}
 TASKS = ["binary_merged", "binary", "binary_perturbed", "mcq"]
 
-# Partition rule: the MAIN-TABLE convention (make_latex_tables.py / compare_models.py):
-# an event is 'pre' if pub_month < cutoff_month, so the cutoff month itself is 'post'.
-PARTITION_RULE = "main: pre if pub_month < cutoff_month (cutoff month counts as post)"
+# Partition rule. CUTOFF_MONTH_PRE (default on, env CUTOFF_MONTH_PRE=0 to switch off):
+#   on  -> an event is 'post' iff pub_month > cutoff_month, so the cutoff month itself
+#          is 'pre' (the rule the manuscript now uses everywhere, matching the
+#          information-access analysis). Outputs go to tables_cmpre/ and figures_cmpre/.
+#   off -> the old main-table rule: 'pre' iff pub_month < cutoff_month (cutoff month
+#          is 'post'). Outputs go to the original tables/ and figures/.
+CUTOFF_MONTH_PRE = os.environ.get("CUTOFF_MONTH_PRE", "1") != "0"
+SUFFIX = "_cmpre" if CUTOFF_MONTH_PRE else ""
+PARTITION_RULE = ("cutoff-month-pre: post iff pub_month > cutoff_month (cutoff month counts as pre)"
+                  if CUTOFF_MONTH_PRE else
+                  "main: pre if pub_month < cutoff_month (cutoff month counts as post)")
+TABLES = STUDY / f"tables{SUFFIX}"
+FIGS   = STUDY / f"figures{SUFFIX}"
+TABLES.mkdir(exist_ok=True); FIGS.mkdir(exist_ok=True)
 
 
 def months(ym: str) -> int:
@@ -73,6 +84,8 @@ def months(ym: str) -> int:
 
 
 def partition(pub: str, cutoff: str) -> str:
+    if CUTOFF_MONTH_PRE:
+        return "post" if months(pub) > months(cutoff) else "pre"
     return "pre" if months(pub) < months(cutoff) else "post"
 
 

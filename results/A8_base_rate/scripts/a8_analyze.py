@@ -227,7 +227,7 @@ def main():
         slopes[mk] = {"frac_yes": slope_stats(rbx, W, ev_index, "isyes"), "mean_pyes": slope_stats(rbx, W, ev_index, "p_yes"),
                       "mean_conf": slope_stats(rbx, W, ev_index, "conf"), "bal_acc_note": "see curves",
                       "n_common": len(common)}
-        # by partition (main-table rule against the model's own cutoff), common set
+        # by partition (C.partition rule against the model's own cutoff), common set
         ps = {}
         for part in ("pre", "post"):
             sel = {i for i in common if C.partition(sample["events"][i]["publication_date"], C.MODELS[mk]["cutoff"]) == part}
@@ -236,7 +236,7 @@ def main():
                             base_frac_yes=(np.mean([r["answer"] == "yes" for r in by["base"] if r["id"] in sel]) if sel else math.nan))
         part_slopes[mk] = ps
     # ---------------------------------------------------------------- outputs.jsonl (one record per item per model per X)
-    with open(C.STUDY / "outputs.jsonl", "w", encoding="utf-8") as f:
+    with open(C.OUTPUTS, "w", encoding="utf-8") as f:
         for mk in ran:
             sw = load_sweep(mk)
             for x in C.XS:
@@ -286,7 +286,7 @@ def main():
                 v = s[k]; csv.append(f"{names[mk]},{s['n_common']},{k},{fmt(v['slope'],5)},{fmt(v['lo'],5)},{fmt(v['hi'],5)},{fmt(v['p'],5)},{fmt(v['d90_10'],5)},{fmt(v['d_lo'],5)},{fmt(v['d_hi'],5)}")
     (C.TABLES / "slopes.md").write_text("\n".join(md) + "\n"); (C.TABLES / "slopes.csv").write_text("\n".join(csv) + "\n")
     # partition slopes
-    md = ["# Sensitivity by partition (pre / post each model's own cutoff, main-table rule), common item set\n",
+    md = [f"# Sensitivity by partition (pre / post each model's own cutoff; cutoff month counts as {'pre' if C.CUTOFF_MONTH_PRE else 'post'}), common item set\n",
           f"Slopes of fraction-Yes and mean P(Yes) on X within each partition; partitions with < {MIN_N} events suppressed.\n",
           "| model | cutoff | partition | n events | base frac-Yes | slope frac-Yes [CI] | slope mean P(Yes) [CI] |", "|---|---|---|---|---|---|---|"]
     for mk, ps in part_slopes.items():

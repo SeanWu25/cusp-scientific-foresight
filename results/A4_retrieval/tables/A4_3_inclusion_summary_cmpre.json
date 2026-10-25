@@ -1,0 +1,108 @@
+{
+ "2023-10-01": {
+  "n": 497,
+  "n_pre": 0,
+  "n_post": 497,
+  "inc_all": 110,
+  "inc_pre": 0,
+  "inc_post": 110,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 92,
+   "sciencedirect.com": 4,
+   "arxiv.org": 2,
+   "academia.edu": 2,
+   "pubmed.ncbi.nlm.nih.gov": 2
+  }
+ },
+ "2023-12-01": {
+  "n": 496,
+  "n_pre": 0,
+  "n_post": 496,
+  "inc_all": 122,
+  "inc_pre": 0,
+  "inc_post": 122,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 96,
+   "biorxiv.org": 5,
+   "sciencedirect.com": 4,
+   "researchsquare.com": 3,
+   "academia.edu": 3
+  }
+ },
+ "2025-01-01": {
+  "n": 497,
+  "n_pre": 213,
+  "n_post": 284,
+  "inc_all": 253,
+  "inc_pre": 174,
+  "inc_post": 79,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 46,
+   "arxiv.org": 9,
+   "biorxiv.org": 9,
+   "pubmed.ncbi.nlm.nih.gov": 4,
+   "sciencedirect.com": 2
+  }
+ },
+ "2025-08-01": {
+  "n": 498,
+  "n_pre": 376,
+  "n_post": 122,
+  "inc_all": 333,
+  "inc_pre": 301,
+  "inc_post": 32,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 17,
+   "arxiv.org": 4,
+   "biorxiv.org": 4,
+   "pubmed.ncbi.nlm.nih.gov": 3,
+   "ncbi.nlm.nih.gov": 1
+  }
+ },
+ "2026-01-01": {
+  "n": 497,
+  "n_pre": 467,
+  "n_post": 30,
+  "inc_all": 391,
+  "inc_pre": 382,
+  "inc_post": 9,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 3,
+   "biorxiv.org": 2,
+   "medrxiv.org": 1,
+   "arxiv.org": 1,
+   "huggingface.co": 1
+  }
+ },
+ "2026-02-01": {
+  "n": 497,
+  "n_pre": 493,
+  "n_post": 4,
+  "inc_all": 394,
+  "inc_pre": 394,
+  "inc_post": 0,
+  "url_match_post": 0,
+  "post_domains": {}
+ },
+ "unrestricted": {
+  "n": 498,
+  "n_pre": 0,
+  "n_post": 498,
+  "inc_all": 406,
+  "inc_pre": 0,
+  "inc_post": 406,
+  "url_match_post": 106,
+  "post_domains": {
+   "nature.com": 177,
+   "arxiv.org": 70,
+   "researchgate.net": 32,
+   "cell.com": 28,
+   "science.org": 16
+  }
+ }
+}

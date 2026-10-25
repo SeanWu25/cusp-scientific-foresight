@@ -19,6 +19,9 @@ import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 import sys as _s; _s.path.insert(0, "/home/seanwu/FutureScience/run_evaluation"); import display_names; display_names.install()
 ROOT = Path(__file__).resolve().parents[1]; OUT = ROOT / "manuscript_updates"
 sys.path.insert(0, str(ROOT / "run_evaluation")); import make_table1_overleaf as T
+# Cutoff-month rule (2026-10-25): an event published in the model's knowledge-cutoff month counts as PRE-cutoff
+# (post iff pub_month > cutoff_month), as in Table 1 and the information-access gaps. False = old rule (cutoff month = post).
+CUTOFF_MONTH_PRE = True
 sys.path.insert(0, str(ROOT / "results/A4_retrieval/scripts")); import a43_gaps as G
 
 plt.rcParams.update({"font.family": "DejaVu Sans", "axes.spines.top": False, "axes.spines.right": False, "pdf.fonttype": 42})
@@ -66,7 +69,7 @@ for name, cut, icon, op, ep, new in T.MODELS:
             if l.strip(): r = json.loads(l); pubd[r["id"]] = r["publication_date"]
     for p in [op] + ([ep] if ep else []):
         for r in json.load(open(ROOT / p))["results"]:
-            if r["id"] in seen or r["id"] not in pubd or T.mo(pubd[r["id"]]) < cm: continue
+            if r["id"] in seen or r["id"] not in pubd or (T.mo(pubd[r["id"]]) <= cm if CUTOFF_MONTH_PRE else T.mo(pubd[r["id"]]) < cm): continue
             seen.add(r["id"]); a = meta[r["id"]]; t = r.get("tasks", {})
             for task in ("binary", "binary_perturbed"):
                 v = t.get(task)

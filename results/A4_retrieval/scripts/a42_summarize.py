@@ -1,6 +1,13 @@
 """A4.2 summary: ground-truth inclusion rates per model x condition (Wilson 95% CI), by task and by domain; writes results.md + tables."""
 import json, math, collections, sys
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).parent)); from a42_common import *
+import argparse as _ap
+_p = _ap.ArgumentParser(); _p.add_argument("--cutoff-month", choices=("pre", "post"), default="pre",
+    help="pre (default): an event published in the ceiling/cutoff month counts as PRE-cutoff (post iff pub month > ceiling month), the rule used everywhere in the paper; "
+         "post: the original rule of this audit (post iff pub month >= ceiling month), which writes the original output files")
+_p.add_argument("--suffix", default=None, help="output-file suffix; default '_cmpre' for --cutoff-month pre and '' for post")
+ARGS = _p.parse_args(); CM_PRE = ARGS.cutoff_month == "pre"; SFX = ARGS.suffix if ARGS.suffix is not None else ("_cmpre" if CM_PRE else "")
+def is_post(pub_m, cut_m): return pub_m > cut_m if CM_PRE else pub_m >= cut_m
 def wilson(k, n, z=1.96):
     if n == 0: return (float("nan"), float("nan"))
     p = k / n; d = 1 + z * z / n; c = (p + z * z / (2 * n)) / d; h = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
@@ -21,6 +28,7 @@ def cell(sub, key=None):
     k, n, lo, hi = rate(sub, key) if key else rate(sub)
     return f"{k/n:.1%} [{lo:.1%}, {hi:.1%}] (n={n})" if n else "—"
 L = ["# A4.2 — Does the retrieved evidence contain the ground truth?", "",
+     ("**Cutoff-month rule: an event published in the ceiling month counts as PRE-cutoff (post iff publication month > ceiling month). The Findings paragraph below is the original prose (old rule: post iff month >= ceiling month); the split tables are recomputed.**\n" if CM_PRE else "") +
      "**Findings.** (1) In the unrestricted WS condition the retrieved evidence contains the source paper or its stated outcome for 74–93% of events (the provider's native tool for GPT-4o/GPT-5.4: 88–93%; the single-query You.com pipeline: 74–85%). "
      "(2) In WS+Cutoff the rate on PRE-cutoff events is 77–85% (the paper existed before the cutoff, so this is recall, not leakage) and on POST-cutoff events it is 20–37% by judge on re-queried evidence, "
      "with 9–20% confirmed on the exact URLs the model received (Sol 37% on 30 events). (3) The post-cutoff leakage is not the source paper's own page (URL match 0–3%); it is snippet text: You.com dates a page by `page_age`, "
@@ -63,15 +71,15 @@ L += ["\n## WS+Cutoff runs: split by whether the event predates the model's cuto
 for m in MODEL_ORDER:
     sub = [r for r in ok if r["model"] == m and r["condition"] == "ws_cutoff"]
     if not sub: continue
-    cut = months(RUNS[sub[0]["run"]][5][:7]); pre = [r for r in sub if months(ev[r["id"]]["publication_date"]) < cut]; post = [r for r in sub if months(ev[r["id"]]["publication_date"]) >= cut]
+    cut = months(RUNS[sub[0]["run"]][5][:7]); pre = [r for r in sub if not is_post(months(ev[r["id"]]["publication_date"]), cut)]; post = [r for r in sub if is_post(months(ev[r["id"]]["publication_date"]), cut)]
     dom = collections.Counter(r["matched_domain"] for r in post if r["judge"]["verdict"] == "INCLUDED")
     L.append(f"| {m} | {cell(pre)} | {cell(pre, lambda r: bool(r.get('url_match_stored')))} | {cell(post)} | {cell(post, lambda r: bool(r.get('judge_url_in_stored')))} | {cell(post, lambda r: bool(r.get('url_match_stored')))} | {', '.join(f'{d} {n}' for d, n in dom.most_common(3))} |")
 L += ["\n## Where the leaked ground truth comes from (WS+Cutoff, post-cutoff events, judge INCLUDED)\n", "| domain of matched result | cases | of which URL in stored list |", "|---|---|---|"]
-leak = [r for r in ok if r["condition"] == "ws_cutoff" and r["judge"]["verdict"] == "INCLUDED" and months(ev[r["id"]]["publication_date"]) >= months(RUNS[r["run"]][5][:7])]
+leak = [r for r in ok if r["condition"] == "ws_cutoff" and r["judge"]["verdict"] == "INCLUDED" and is_post(months(ev[r["id"]]["publication_date"]), months(RUNS[r["run"]][5][:7]))]
 for d, n in collections.Counter(r["matched_domain"] for r in leak).most_common(12):
     L.append(f"| {d} | {n} | {sum(1 for r in leak if r['matched_domain'] == d and r.get('judge_url_in_stored'))} |")
-json.dump(summary, open(OUT / "tables/A4_2_inclusion_summary.json", "w"), indent=1)
-(OUT / "A4_2_groundtruth_inclusion/results.md").write_text("\n".join(L) + "\n"); print("\n".join(L[:20]))
+json.dump(summary, open(OUT / f"tables/A4_2_inclusion_summary{SFX}.json", "w"), indent=1)
+(OUT / f"A4_2_groundtruth_inclusion/results{SFX}.md").write_text("\n".join(L) + "\n"); print("\n".join(L[:20]))
 
 # figure: inclusion rate per model x condition
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
@@ -90,11 +98,11 @@ ax.legend(fontsize=7, frameon=False); ax.grid(axis="y", color="#EEEEEE", lw=0.5)
 for i, m in enumerate(MODEL_ORDER):
     sub = [r for r in ok if r["model"] == m and r["condition"] == "ws_cutoff"]
     if not sub: continue
-    cut = months(RUNS[sub[0]["run"]][5][:7]); post = [r for r in sub if months(ev[r["id"]]["publication_date"]) >= cut]
+    cut = months(RUNS[sub[0]["run"]][5][:7]); post = [r for r in sub if is_post(months(ev[r["id"]]["publication_date"]), cut)]
     if not post: continue
     k1 = sum(r["judge"]["verdict"] == "INCLUDED" for r in post); k2 = sum(bool(r.get("judge_url_in_stored")) for r in post); n = len(post)
     ax2.bar(i - 0.18, k1 / n, width=0.34, color="#CC79A7", alpha=0.85, label="judge INCLUDED (re-queried evidence)" if i == 0 else None); ax2.bar(i + 0.18, k2 / n, width=0.34, color="#882255", alpha=0.9, label="confirmed on the model's stored URLs" if i == 0 else None)
     lo, hi = wilson(k1, n); ax2.errorbar(i - 0.18, k1 / n, yerr=[[k1 / n - lo], [hi - k1 / n]], fmt="none", ecolor="black", capsize=2, lw=0.8); ax2.annotate(f"n={n}", (i, 0.01), ha="center", fontsize=6)
 ax2.set_xticks(range(len(MODEL_ORDER))); ax2.set_xticklabels(MODEL_ORDER, fontsize=7, rotation=15); ax2.set_ylim(0, 1); ax2.tick_params(labelsize=7); ax2.grid(axis="y", color="#EEEEEE", lw=0.5); ax2.legend(fontsize=6.5, frameon=False)
 ax2.set_title("WS+Cutoff, POST-cutoff events only: ground truth leaked through the date filter", fontsize=8)
-fig.tight_layout(); fig.savefig(OUT / "figures/a42_inclusion.png", dpi=200); fig.savefig(OUT / "figures/a42_inclusion.pdf"); plt.close(fig)
+fig.tight_layout(); fig.savefig(OUT / f"figures/a42_inclusion{SFX}.png", dpi=200); fig.savefig(OUT / f"figures/a42_inclusion{SFX}.pdf"); plt.close(fig)

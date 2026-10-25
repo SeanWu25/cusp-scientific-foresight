@@ -88,8 +88,21 @@ def months(ym: str) -> int:
     return int(y) * 12 + int(m)
 
 
+# CUTOFF_MONTH_PRE (default on; env CUTOFF_MONTH_PRE=0 restores the old rule):
+#   on  -> post iff pub_month > cutoff_month (the cutoff month counts as pre), the rule the
+#          manuscript now uses everywhere. Outputs go to tables_cmpre/, figures_cmpre/,
+#          outputs_cmpre.jsonl so the stored old-rule files are never overwritten.
+#   off -> old main-table rule: pre iff pub_month < cutoff_month (cutoff month counts as post).
+# Only the pre/post partition slopes (tables/partition_slopes.md) depend on this rule.
+CUTOFF_MONTH_PRE = os.environ.get("CUTOFF_MONTH_PRE", "1") != "0"
+SUFFIX = "_cmpre" if CUTOFF_MONTH_PRE else ""
+TABLES, FIGS = STUDY / f"tables{SUFFIX}", STUDY / f"figures{SUFFIX}"
+OUTPUTS = STUDY / f"outputs{SUFFIX}.jsonl"
+
+
 def partition(pub: str, cutoff: str) -> str:
-    """Main-table rule: pre if pub_month < cutoff_month (cutoff month counts as post)."""
+    if CUTOFF_MONTH_PRE:
+        return "post" if months(pub) > months(cutoff) else "pre"
     return "pre" if months(pub) < months(cutoff) else "post"
 
 

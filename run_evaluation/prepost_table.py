@@ -96,7 +96,10 @@ def main():
     ap.add_argument("--rule", choices=["main", "gap"], default="main")
     ap.add_argument("--out-md", default="results_extension_run2/tables/09_prepost_full_corpus.md")
     ap.add_argument("--out-json", default="results_extension_run2/tables/09_prepost_full_corpus.json")
+    ap.add_argument("--exclude", default="", help="comma-separated model names to drop (e.g. DeepSeek-V4-Pro)")
     a = ap.parse_args()
+    excl = {x.strip() for x in a.exclude.split(",") if x.strip()}
+    panel = [p for p in PANEL if p[0] not in excl]
     pub = load_dates(["archive/data/canonical/merged_validated_cusp_fixed.jsonl",
                       "benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026_monthnorm.jsonl"])
 
@@ -107,9 +110,11 @@ def main():
           "Original + extension, 5,575 events (DeepSeek-R1: original only, 4,760). Partition rule: "
           f"`{a.rule}` — an event published in the cutoff month counts as {'POST' if a.rule=='main' else 'PRE'}. "
           "GPT-4o and LLaMA 3.3 have cutoffs before the corpus starts, so they have no pre-cutoff rows. "
-          "DeepSeek-V4-Pro (cutoff 2026-04) is the inverse profile: under this rule its 4,760 original-corpus "
+          + ("DeepSeek-V4-Pro (cutoff 2026-04) is the inverse profile: under this rule its 4,760 original-corpus "
           "events are all pre-cutoff and the 815 extension events (April included) are post; §2 of "
-          "RUN2_RESULTS.md reports it May–Aug only, and the April choice moves MCC by 0.003.\n",
+          "RUN2_RESULTS.md reports it May–Aug only, and the April choice moves MCC by 0.003.\n"
+             if "DeepSeek-V4-Pro" not in excl else
+             f"Models excluded: {', '.join(sorted(excl))}.\n"),
           "Binary is **balanced accuracy** (mean of recall on the real question and specificity on the perturbed "
           "twin): raw merged accuracy is confounded by class balance × response bias, and its pre/post ratio "
           "would mislead. FRQ is the published-rubric mean; every model is graded. Refusals excluded. "
@@ -119,7 +124,7 @@ def main():
     for key, title, dec in TASKS:
         md.append(f"\n## {title}\n")
         md.append("| model | cutoff | pre-cutoff | post-cutoff | Δ (post−pre) | ratio |\n|---|---|---|---|---|---|")
-        for name, cutoff, op, ep in PANEL:
+        for name, cutoff, op, ep in panel:
             acc, cm4 = collect(name, cutoff, [op, ep], pub, a.rule)
             if key == "binary":
                 pre, post = bal_acc(cm4["pre"]), bal_acc(cm4["post"])

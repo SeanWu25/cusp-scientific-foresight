@@ -1,0 +1,395 @@
+{
+  "git_sha": "a556597cefc11839efcc542a6cbc6c8e57551f84",
+  "generated": "2026-10-25T09:05:44-07:00",
+  "seed": 20260923,
+  "n_bootstrap": 2000,
+  "n_permutations": 10000,
+  "min_n": 20,
+  "partition_rule": "cmpre (cutoff month counts as PRE; post iff pub_month > cutoff_month)",
+  "metadata_snapshot_date": "2026-09-25",
+  "citation_source": "Semantic Scholar batch API (primary), OpenAlex (fallback); metadata/s2_citations.jsonl, metadata/openalex_citations.jsonl",
+  "n_events_with_citations": 5513,
+  "citation_quartile_edges": [
+    10.0,
+    28.0,
+    68.0
+  ],
+  "citation_rate_quartile_edges": [
+    0.9583333333333334,
+    1.8333333333333333,
+    3.9411764705882355
+  ],
+  "latency_source": "Crossref works API; metadata/crossref_dates.jsonl and metadata/crossref_preprints.jsonl",
+  "n_events_with_latency": 4326,
+  "n_events_with_editorial_latency": 3740,
+  "latency_bins": {
+    "observable": [
+      "0 mo",
+      "1-6 mo",
+      ">6 mo"
+    ],
+    "editorial": [
+      "<=6 mo",
+      "7-12 mo",
+      "13-24 mo",
+      ">24 mo"
+    ]
+  },
+  "legacy_citation_file": "/home/seanwu/FutureScience_backup_20260508_013823/benchmark_data/CUSP/sample_500_stratified_with_citations.jsonl",
+  "legacy_citation_retrieval_date": "2026-05-12",
+  "legacy_n_events_with_citations": 481,
+  "legacy_n_events_with_latency": 708,
+  "frq_scores": "published rubric judge_frq_combined, sha256 fc24e69d... (stage-2 complete for all 10 models; NOT the archived legacy scores)",
+  "binary_metric": "balanced accuracy = mean(recall on real, specificity on perturbed)",
+  "panel": [
+    {
+      "model": "GPT-4o",
+      "cutoff": "2023-10",
+      "original": "run_evaluation/frq_results/gpt_4o_reeval.json",
+      "extension": "results_extension_run2/reports/gpt4o_base.json"
+    },
+    {
+      "model": "LLaMA 3.3 70B",
+      "cutoff": "2023-12",
+      "original": "run_evaluation/frq_results/llama_3_3_full.json",
+      "extension": "results_extension_run2/reports/llama33_base.json"
+    },
+    {
+      "model": "GPT-OSS 20B",
+      "cutoff": "2024-06",
+      "original": "run_evaluation/frq_results/gpt_oss_20B_reeval.json",
+      "extension": "results_extension_run2/reports/gptoss20b_base.json"
+    },
+    {
+      "model": "DeepSeek-R1",
+      "cutoff": "2024-07",
+      "original": "run_evaluation/frq_results/deepseek_r1.json",
+      "extension": null
+    },
+    {
+      "model": "Claude S4.5",
+      "cutoff": "2025-01",
+      "original": "run_evaluation/frq_results/claude_sonnet.json",
+      "extension": "results_extension_run2/reports/sonnet45_base.json"
+    },
+    {
+      "model": "GPT-5.4",
+      "cutoff": "2025-08",
+      "original": "run_evaluation/frq_results/gpt_5_4_eval.json",
+      "extension": "results_extension_run2/reports/gpt54_base.json"
+    },
+    {
+      "model": "Claude Sonnet 5",
+      "cutoff": "2026-01",
+      "original": "results_sonnet5_run1/reports/base_medium_run1.json",
+      "extension": "results_extension_run2/reports/sonnet5_base_run1.json"
+    },
+    {
+      "model": "GPT-5.6 Sol",
+      "cutoff": "2026-02",
+      "original": "results_sol_run1/reports/base_medium_run1.json",
+      "extension": "results_extension_run2/reports/sol_base.json"
+    },
+    {
+      "model": "Claude Opus 4.8",
+      "cutoff": "2026-01",
+      "original": "results_opus48_run1/reports/base_medium_run1.json",
+      "extension": "results_extension_run2/reports/opus48_base_run1.json"
+    }
+  ],
+  "partition_sizes": [
+    {
+      "model": "GPT-4o",
+      "cutoff": "2023-10",
+      "n_events": 5575,
+      "pre": 0,
+      "post": 5575
+    },
+    {
+      "model": "LLaMA 3.3 70B",
+      "cutoff": "2023-12",
+      "n_events": 5575,
+      "pre": 0,
+      "post": 5575
+    },
+    {
+      "model": "GPT-OSS 20B",
+      "cutoff": "2024-06",
+      "n_events": 5575,
+      "pre": 842,
+      "post": 4733
+    },
+    {
+      "model": "DeepSeek-R1",
+      "cutoff": "2024-07",
+      "n_events": 4760,
+      "pre": 1028,
+      "post": 3732
+    },
+    {
+      "model": "Claude S4.5",
+      "cutoff": "2025-01",
+      "n_events": 5575,
+      "pre": 2124,
+      "post": 3451
+    },
+    {
+      "model": "GPT-5.4",
+      "cutoff": "2025-08",
+      "n_events": 5575,
+      "pre": 3587,
+      "post": 1988
+    },
+    {
+      "model": "Claude Sonnet 5",
+      "cutoff": "2026-01",
+      "n_events": 5575,
+      "pre": 4508,
+      "post": 1067
+    },
+    {
+      "model": "GPT-5.6 Sol",
+      "cutoff": "2026-02",
+      "n_events": 5575,
+      "pre": 4719,
+      "post": 856
+    },
+    {
+      "model": "Claude Opus 4.8",
+      "cutoff": "2026-01",
+      "n_events": 5575,
+      "pre": 4508,
+      "post": 1067
+    }
+  ],
+  "benchmarks": {
+    "original": "/home/seanwu/FutureScience/archive/data/canonical/merged_validated_cusp_fixed.jsonl",
+    "extension": "/home/seanwu/FutureScience/benchmark_data/CUSP_extension/cusp_extension_apr_aug_2026_monthnorm.jsonl"
+  },
+  "dimensions": {
+    "source": {
+      "title": "A5.1 -- performance by source / repository",
+      "order": [
+        "Nature",
+        "Science",
+        "Cell",
+        "HF Daily Papers (arXiv)",
+        "Top-10 AI Paper of Week (arXiv)",
+        "Leaderboards"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias_cmpre/by_source",
+      "coverage": {
+        "pre": 21316,
+        "post": 28044,
+        "overall": 49360
+      }
+    },
+    "visibility": {
+      "title": "A5.2 -- performance by event visibility (citation quartile, whole corpus)",
+      "order": [
+        "Q1 (<=10)",
+        "Q2 (<=28)",
+        "Q3 (<=68)",
+        "Q4 (>68)"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias_cmpre/by_visibility",
+      "coverage": {
+        "pre": 21117,
+        "post": 27685,
+        "overall": 48802
+      }
+    },
+    "vis_rate": {
+      "title": "A5.2b -- performance by citation rate (citations per month since first observable, whole corpus)",
+      "order": [
+        "Q1 (<=0.96/mo)",
+        "Q2 (<=1.83/mo)",
+        "Q3 (<=3.94/mo)",
+        "Q4 (>3.94/mo)"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias_cmpre/by_vis_rate",
+      "coverage": {
+        "pre": 21117,
+        "post": 27685,
+        "overall": 48802
+      }
+    },
+    "latency": {
+      "title": "A5.3 -- performance by publication latency (months publicly observable before the journal version)",
+      "order": [
+        "0 mo",
+        "1-6 mo",
+        ">6 mo"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias_cmpre/by_latency",
+      "coverage": {
+        "pre": 16880,
+        "post": 21370,
+        "overall": 38250
+      }
+    },
+    "lat_review": {
+      "title": "A5.3b -- performance by editorial latency (received -> online, Nature and Science)",
+      "order": [
+        "<=6 mo",
+        "7-12 mo",
+        "13-24 mo",
+        ">24 mo"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias_cmpre/by_lat_review",
+      "coverage": {
+        "pre": 14659,
+        "post": 18409,
+        "overall": 33068
+      }
+    },
+    "legacy_visibility": {
+      "title": "LEGACY A5.2 (first pass) -- citation quartile over the 481 pinned-subset events",
+      "order": [
+        "Q1 (<=8)",
+        "Q2 (<=22)",
+        "Q3 (<=59)",
+        "Q4 (>59)"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias_cmpre/by_legacy/visibility_481",
+      "coverage": {
+        "pre": 2166,
+        "post": 2163,
+        "overall": 4329
+      }
+    },
+    "legacy_latency": {
+      "title": "LEGACY A5.3 (first pass) -- extension latency over 708 events",
+      "order": [
+        "0 mo",
+        "1 mo",
+        "2-3 mo"
+      ],
+      "outdir": "/home/seanwu/FutureScience/results/A5_selection_bias_cmpre/by_legacy/latency_708",
+      "coverage": {
+        "pre": 0,
+        "post": 5664,
+        "overall": 5664
+      }
+    }
+  },
+  "n_journal_doi": 4326,
+  "n_crossref_resolved": 4326,
+  "n_arxiv": 1190,
+  "n_linked": 5516,
+  "n_citations_by_source": {
+    "s2": 5443,
+    "openalex": 70
+  },
+  "n_linked_without_citation": 3,
+  "latency_distribution": {
+    "n": 4326,
+    "share_0": 0.8409616273693944,
+    "share_1_6": 0.05386037910309755,
+    "share_gt6": 0.10517799352750809,
+    "share_gt3": 0.1317614424410541,
+    "share_gt12": 0.03952843273231623,
+    "n_clipped_negative": 0,
+    "histogram": {
+      "0": 3638,
+      "1": 48,
+      "2": 30,
+      "3": 40,
+      "4": 22,
+      "5": 43,
+      "6": 50,
+      "7": 57,
+      "8": 60,
+      "9": 43,
+      "10": 56,
+      "11": 43,
+      "12": 25
+    },
+    "max": 54,
+    "by_source": {
+      "nature": {
+        "n": 2493,
+        "share_0": 0.8190934616927397
+      },
+      "science": {
+        "n": 1249,
+        "share_0": 0.8839071257005604
+      },
+      "cell": {
+        "n": 584,
+        "share_0": 0.8424657534246576
+      }
+    }
+  },
+  "editorial_latency_distribution": {
+    "n": 3740,
+    "quartiles": [
+      7.0,
+      11.0,
+      15.0
+    ],
+    "share_by_bin": {
+      "<=6 mo": 0.1767379679144385,
+      "7-12 mo": 0.44385026737967914,
+      "13-24 mo": 0.3342245989304813,
+      ">24 mo": 0.04518716577540107
+    }
+  },
+  "n_events_with_crossref_preprint_link": 493,
+  "n_preprint_earlier_than_cusp_date": 246,
+  "preprint_gap_months_quartiles": [
+    7.0,
+    11.0,
+    15.0
+  ],
+  "preprint_gap_months_max": 54,
+  "preprint_before_cutoff_among_post": {
+    "GPT-4o": {
+      "cutoff": "2023-10",
+      "post_journal_events": 4326,
+      "preprint_before_cutoff": 69
+    },
+    "LLaMA 3.3 70B": {
+      "cutoff": "2023-12",
+      "post_journal_events": 4326,
+      "preprint_before_cutoff": 83
+    },
+    "GPT-OSS 20B": {
+      "cutoff": "2024-06",
+      "post_journal_events": 3606,
+      "preprint_before_cutoff": 109
+    },
+    "DeepSeek-R1": {
+      "cutoff": "2024-07",
+      "post_journal_events": 3445,
+      "preprint_before_cutoff": 104
+    },
+    "Claude S4.5": {
+      "cutoff": "2025-01",
+      "post_journal_events": 2550,
+      "preprint_before_cutoff": 92
+    },
+    "GPT-5.4": {
+      "cutoff": "2025-08",
+      "post_journal_events": 1469,
+      "preprint_before_cutoff": 71
+    },
+    "Claude Sonnet 5": {
+      "cutoff": "2026-01",
+      "post_journal_events": 824,
+      "preprint_before_cutoff": 34
+    },
+    "GPT-5.6 Sol": {
+      "cutoff": "2026-02",
+      "post_journal_events": 684,
+      "preprint_before_cutoff": 25
+    },
+    "Claude Opus 4.8": {
+      "cutoff": "2026-01",
+      "post_journal_events": 824,
+      "preprint_before_cutoff": 34
+    }
+  },
+  "legacy_vs_new_spearman": 0.9649537545025294,
+  "legacy_vs_new_n": 481
+}

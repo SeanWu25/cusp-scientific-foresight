@@ -15,6 +15,9 @@ import numpy as np
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 import sys as _s; _s.path.insert(0, "/home/seanwu/FutureScience/run_evaluation"); import display_names; display_names.install()
 ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT / "run_evaluation")); import make_table1_overleaf as T
+# Cutoff-month rule (2026-10-25): an event published in the model's knowledge-cutoff month counts as PRE-cutoff
+# (post iff pub_month > cutoff_month), as in Table 1 and the information-access gaps. False = old rule (cutoff month = post).
+CUTOFF_MONTH_PRE = True
 COL = {"GPT-4o": "#D55E00", "GPT-OSS": "#E69F00", "DeepSeek R1": "#CC79A7", "LLaMA 3.3": "#56B4E9", "Claude S4.5": "#0072B2",
        "GPT-5.4": "#009E73", "Claude Opus 4.8": "#7B4FA0", "Claude Sonnet 5": "#B2182B", "GPT-5.6 Sol": "#6E6E6E"}
 DIMC = {"alignment": "#D6604D", "specificity": "#F4A582", "novelty": "#92C5DE", "feasibility": "#4DAC26"}
@@ -43,7 +46,7 @@ for name, cut, icon, op, ep, new in T.MODELS:
     for p in [op]:   # ORIGINAL corpus only for every model (DeepSeek R1 has no extension run), 2026-10-22
         for r in json.load(open(ROOT / p))["results"]:
             if r["id"] in seen or r["id"] not in pub: continue
-            seen.add(r["id"]); post = T.mo(pub[r["id"]]) >= cm; t = r["tasks"]
+            seen.add(r["id"]); post = (T.mo(pub[r["id"]]) > cm) if CUTOFF_MONTH_PRE else (T.mo(pub[r["id"]]) >= cm); t = r["tasks"]
             for k, truth in (("binary", "yes"), ("binary_perturbed", "no")):
                 v = t.get(k)
                 if v and "correct" in v:

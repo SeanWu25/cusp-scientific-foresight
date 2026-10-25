@@ -50,9 +50,12 @@ A("| | LLaMA 3.3 70B | GPT-5.4 | GPT-4o |")
 A("|---|---|---|---|")
 A("| Response bias (Table S13, full corpus) | +0.839 (strong Yes) | +0.238 (mild Yes) | −0.576 (strong No) |")
 A("| Knowledge cutoff | 2023-12 | 2025-08 | 2023-10 |")
-A("| Post-cutoff events in the pinned subset | 500 (no pre-cutoff partition) | 144 (356 pre) | 500 (no pre-cutoff partition) |")
-A("| Post-cutoff binary items (original + perturbed) | 690 | 188 | 690 |")
-A("| Post-cutoff MCQ items | 435 | 125 | 435 |")
+_B, _S = C.load_bench(), C.load_subset()
+_NPOST = sum(C.partition(_B[i]["publication_date"], C.MODELS["gpt54"]["cutoff"]) == "post" for i in _S)
+_NI = lambda m, t: int(CELLS[m]["A"][t]["post"]["n"]["value"])
+A(f"| Post-cutoff events in the pinned subset | 500 (no pre-cutoff partition) | {_NPOST} ({500 - _NPOST} pre) | 500 (no pre-cutoff partition) |")
+A(f"| Post-cutoff binary items (original + perturbed) | {_NI('llama33', 'binary_merged')} | {_NI('gpt54', 'binary_merged')} | {_NI('gpt4o', 'binary_merged')} |")
+A(f"| Post-cutoff MCQ items | {_NI('llama33', 'mcq')} | {_NI('gpt54', 'mcq')} | {_NI('gpt4o', 'mcq')} |")
 A(f"| Arm D samples per item | n = {META['n_self_consistency']['llama33']} | n = {META['n_self_consistency']['gpt54']} | n = {META['n_self_consistency']['gpt4o']} |")
 A("| Arm C source | generated 2026-09-20 | stored WS+Cutoff | stored WS+Cutoff |")
 A("")
@@ -118,7 +121,7 @@ A("")
 
 # ---------------------------------------------------------------- pre/post
 A("## 6. The one model with a pre/post split: GPT-5.4\n")
-A("LLaMA 3.3 and GPT-4o have cutoffs that predate the corpus, so they have no pre-cutoff partition. GPT-5.4 has 356 pre-cutoff and 144 post-cutoff events, "
+A(f"LLaMA 3.3 and GPT-4o have cutoffs that predate the corpus, so they have no pre-cutoff partition. GPT-5.4 has {500 - _NPOST} pre-cutoff and {_NPOST} post-cutoff events, "
   "which is what separates recall from forecasting within a single model.\n")
 A("| arm | partition | n | Brier | REL | RES | AUROC | bias index | accuracy |")
 A("|---|---|---|---|---|---|---|---|---|")
@@ -137,21 +140,27 @@ A("Each model's answer and confidence are converted to P(Yes), then aggregated t
 for pn, title in (("panel3", "Three-model panel (LLaMA 3.3, GPT-5.4, GPT-4o)"), ("all_models", "All six models with stored confidence")):
     p = E["panels"][pn]
     A(f"**{title}.**\n")
-    A("| task | rule | n | accuracy | Brier | BSS | REL | RES | AUROC | bias index |")
+    def q(c, k, dp=3):
+        x = c.get(k)
+        if not x: return "—"
+        s = f"{x['value']:.{dp}f}"
+        if x.get("ci"): s += f" [{x['ci'][0]:.{dp}f}, {x['ci'][1]:.{dp}f}]"
+        return s
+    A("Binary (original + perturbed), P(Yes) versus outcome — same columns as §4:\n")
+    A("| rule | n | Brier | BSS | REL | RES | log loss | ECE | MCE | AUROC | bias index | merged acc. |")
+    A("|---|---|---|---|---|---|---|---|---|---|---|---|")
+    for rule in ("mean_prob", "mean_logit", "majority"):
+        c = p["tasks"]["binary_merged"].get(rule, {}).get("post") or p["tasks"]["binary_merged"].get(rule, {}).get("all")
+        if not c: continue
+        A(f"| {rule.replace('_', ' ')} | {int(c['n']['value'])} | {q(c,'brier')} | {q(c,'bss',2)} | {q(c,'rel')} | {q(c,'res')} | {q(c,'logloss')} | {q(c,'ece')} | {q(c,'mce')} | {q(c,'auroc')} | {q(c,'bias_index')} | {q(c,'accuracy')} |")
+    A("")
+    A("MCQ, confidence in the chosen option versus correctness — same columns as §5:\n")
+    A("| rule | n | accuracy | mean confidence | Brier | log loss | ECE | REL | RES | AUROC |")
     A("|---|---|---|---|---|---|---|---|---|---|")
-    for task in ("binary_merged", "mcq"):
-        for rule in ("mean_prob", "mean_logit", "majority"):
-            c = p["tasks"].get(task, {}).get(rule, {}).get("post") or p["tasks"].get(task, {}).get(rule, {}).get("all")
-            if not c: continue
-            def q(k, dp=3):
-                x = c.get(k)
-                if not x: return "—"
-                s = f"{x['value']:.{dp}f}"
-                if x.get("ci"): s += f" [{x['ci'][0]:.{dp}f}, {x['ci'][1]:.{dp}f}]"
-                return s
-            key = "brier" if task != "mcq" else "brier_c"; ak = "auroc" if task != "mcq" else "auroc_c"
-            rk = "rel" if task != "mcq" else "rel_c"; sk = "res" if task != "mcq" else "res_c"
-            A(f"| {'binary' if task != 'mcq' else 'MCQ'} | {rule.replace('_', ' ')} | {int(c['n']['value'])} | {q('accuracy')} | {q(key)} | {q('bss', 2)} | {q(rk)} | {q(sk)} | {q(ak)} | {q('bias_index')} |")
+    for rule in ("mean_prob", "mean_logit", "majority"):
+        c = p["tasks"]["mcq"].get(rule, {}).get("post") or p["tasks"]["mcq"].get(rule, {}).get("all")
+        if not c: continue
+        A(f"| {rule.replace('_', ' ')} | {int(c['n']['value'])} | {q(c,'accuracy')} | {q(c,'mean_conf')} | {q(c,'brier_c')} | {q(c,'logloss_c')} | {q(c,'ece_c')} | {q(c,'rel_c')} | {q(c,'res_c')} | {q(c,'auroc_c')} |")
     A("")
     dm = (p["tasks"]["binary_merged"]["mean_prob"].get("post") or p["tasks"]["binary_merged"]["mean_prob"]["all"]).get("delta_vs_member_base", {})
     if dm:
@@ -159,6 +168,7 @@ for pn, title in (("panel3", "Three-model panel (LLaMA 3.3, GPT-5.4, GPT-4o)"), 
             f"{NAME[mem]} ΔBrier {d['brier']['delta']:+.3f} [{d['brier']['ci'][0]:+.3f}, {d['brier']['ci'][1]:+.3f}], ΔRES {d['res']['delta']:+.3f}, ΔAUROC {d['auroc']['delta']:+.3f}"
             for mem, d in dm.items() if d.get("brier")) + ".")
         A("")
+A("Manuscript Table 10 (both panels, all three rules, full metric set) is generated from the same JSON by `make_table10.py` → `tables/table10_ensemble.{tex,md}`.\n")
 
 # ---------------------------------------------------------------- arm D diagnostics
 A("## 8. Why self-consistency fails here: the vote distributions\n")
@@ -208,5 +218,5 @@ A("Zero errors, zero refusals and zero parse failures across all 13,500 records 
 A("")
 
 out = "\n".join(L) + "\n"
-Path(C.STUDY / "response_tables.md").write_text(out)
+Path(C.STUDY / f"response_tables{C.SUFFIX}.md").write_text(out)  # _cmpre under the default cutoff-month-pre rule
 print(out)

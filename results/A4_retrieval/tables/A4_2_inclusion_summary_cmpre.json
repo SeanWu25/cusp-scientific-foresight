@@ -1,0 +1,184 @@
+{
+ "GPT-4o|ws_cutoff": {
+  "n": 497,
+  "included": 123,
+  "rate": 0.24748490945674045,
+  "ci": [
+   0.21157687345390086,
+   0.2872666730885589
+  ],
+  "source_paper": 84,
+  "outcome_stated": 39,
+  "url_match": 0,
+  "mechanism": "youcom",
+  "overlap": 0.3473906933665485
+ },
+ "GPT-4o|ws": {
+  "n": 498,
+  "included": 438,
+  "rate": 0.8795180722891566,
+  "ci": [
+   0.8479840142500245,
+   0.905241704781638
+  ],
+  "source_paper": 414,
+  "outcome_stated": 24,
+  "url_match": 381,
+  "mechanism": "native",
+  "overlap": null
+ },
+ "LLaMA 3.3 70B|ws_cutoff": {
+  "n": 496,
+  "included": 99,
+  "rate": 0.19959677419354838,
+  "ci": [
+   0.16678902340637425,
+   0.23702210395877504
+  ],
+  "source_paper": 74,
+  "outcome_stated": 25,
+  "url_match": 0,
+  "mechanism": "youcom",
+  "overlap": 0.7281930043522785
+ },
+ "DeepSeek R1|ws_cutoff": {
+  "n": 396,
+  "included": 139,
+  "rate": 0.351010101010101,
+  "ci": [
+   0.30563637147908557,
+   0.3992467622418678
+  ],
+  "source_paper": 111,
+  "outcome_stated": 28,
+  "url_match": 29,
+  "mechanism": "youcom",
+  "overlap": 0.3890732724066057
+ },
+ "DeepSeek R1|ws": {
+  "n": 402,
+  "included": 327,
+  "rate": 0.8134328358208955,
+  "ci": [
+   0.7724485240039971,
+   0.8484833863768018
+  ],
+  "source_paper": 299,
+  "outcome_stated": 28,
+  "url_match": 218,
+  "mechanism": "youcom",
+  "overlap": 0.3933112216694306
+ },
+ "Claude S4.5|ws_cutoff": {
+  "n": 463,
+  "included": 230,
+  "rate": 0.49676025917926564,
+  "ci": [
+   0.451431178480614,
+   0.5421426589837423
+  ],
+  "source_paper": 211,
+  "outcome_stated": 19,
+  "url_match": 92,
+  "mechanism": "youcom",
+  "overlap": 0.4206683465322774
+ },
+ "Claude S4.5|ws": {
+  "n": 462,
+  "included": 370,
+  "rate": 0.8008658008658008,
+  "ci": [
+   0.762034740638973,
+   0.834734633328487
+  ],
+  "source_paper": 345,
+  "outcome_stated": 25,
+  "url_match": 260,
+  "mechanism": "youcom",
+  "overlap": 0.40545935545935546
+ },
+ "GPT-5.4|ws_cutoff": {
+  "n": 497,
+  "included": 350,
+  "rate": 0.704225352112676,
+  "ci": [
+   0.6626574623855984,
+   0.7426603067454002
+  ],
+  "source_paper": 324,
+  "outcome_stated": 26,
+  "url_match": 204,
+  "mechanism": "youcom",
+  "overlap": 0.3974290185557791
+ },
+ "GPT-5.4|ws": {
+  "n": 498,
+  "included": 463,
+  "rate": 0.929718875502008,
+  "ci": [
+   0.9038238059751633,
+   0.9490349446744442
+  ],
+  "source_paper": 440,
+  "outcome_stated": 23,
+  "url_match": 392,
+  "mechanism": "native",
+  "overlap": null
+ },
+ "Claude Sonnet 5|ws_cutoff": {
+  "n": 499,
+  "included": 318,
+  "rate": 0.6372745490981964,
+  "ci": [
+   0.5941891637010172,
+   0.6782624393485316
+  ],
+  "source_paper": 288,
+  "outcome_stated": 30,
+  "url_match": 218,
+  "mechanism": "youcom",
+  "overlap": 0.701580939657092
+ },
+ "Claude Sonnet 5|ws": {
+  "n": 501,
+  "included": 368,
+  "rate": 0.7345309381237525,
+  "ci": [
+   0.6941845760971511,
+   0.7713079665142343
+  ],
+  "source_paper": 331,
+  "outcome_stated": 37,
+  "url_match": 281,
+  "mechanism": "youcom",
+  "overlap": 0.695808383233533
+ },
+ "GPT-5.6 Sol|ws_cutoff": {
+  "n": 497,
+  "included": 401,
+  "rate": 0.806841046277666,
+  "ci": [
+   0.7698328637343883,
+   0.8391421095905112
+  ],
+  "source_paper": 371,
+  "outcome_stated": 30,
+  "url_match": 272,
+  "mechanism": "youcom",
+  "overlap": 0.7869438855354349
+ },
+ "GPT-5.6 Sol|ws": {
+  "n": 498,
+  "included": 423,
+  "rate": 0.8493975903614458,
+  "ci": [
+   0.8153160704419967,
+   0.878129829618899
+  ],
+  "source_paper": 393,
+  "outcome_stated": 30,
+  "url_match": 288,
+  "mechanism": "youcom",
+  "overlap": 0.7823771275578505
+ }
+}
