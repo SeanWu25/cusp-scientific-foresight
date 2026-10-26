@@ -18,6 +18,12 @@ ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT / "run_e
 # Cutoff-month rule (2026-10-25): an event published in the model's knowledge-cutoff month counts as PRE-cutoff
 # (post iff pub_month > cutoff_month), as in Table 1 and the information-access gaps. False = old rule (cutoff month = post).
 CUTOFF_MONTH_PRE = True
+# 2026-10-26: every panel uses post-cutoff events only (POST_ONLY=1, default). FIG4_CORPUS=orig (default) keeps the original
+# corpus for every model; FIG4_CORPUS=full adds the Apr-Aug 2026 extension for models with an extension run (DeepSeek R1:
+# original only) and writes *_full files.
+import os
+POST_ONLY = os.environ.get("POST_ONLY", "1") != "0"
+CORPUS = os.environ.get("FIG4_CORPUS", "orig"); SUF = "" if CORPUS == "orig" else "_full"
 COL = {"GPT-4o": "#D55E00", "GPT-OSS": "#E69F00", "DeepSeek R1": "#CC79A7", "LLaMA 3.3": "#56B4E9", "Claude S4.5": "#0072B2",
        "GPT-5.4": "#009E73", "Claude Opus 4.8": "#7B4FA0", "Claude Sonnet 5": "#B2182B", "GPT-5.6 Sol": "#6E6E6E"}
 DIMC = {"alignment": "#D6604D", "specificity": "#F4A582", "novelty": "#92C5DE", "feasibility": "#4DAC26"}
@@ -43,10 +49,12 @@ for b in T.BENCH:
 D = {}
 for name, cut, icon, op, ep, new in T.MODELS:
     cm = T.mo(cut); seen = set(); d = defaultdict(list)
-    for p in [op]:   # ORIGINAL corpus only for every model (DeepSeek R1 has no extension run), 2026-10-22
+    for p in ([op] if CORPUS == "orig" or not ep else [op, ep]):   # ORIGINAL corpus only for every model by default (DeepSeek R1 has no extension run), 2026-10-22
         for r in json.load(open(ROOT / p))["results"]:
             if r["id"] in seen or r["id"] not in pub: continue
             seen.add(r["id"]); post = (T.mo(pub[r["id"]]) > cm) if CUTOFF_MONTH_PRE else (T.mo(pub[r["id"]]) >= cm); t = r["tasks"]
+            if POST_ONLY and not post: continue
+            d["n_events"].append(1)
             for k, truth in (("binary", "yes"), ("binary_perturbed", "no")):
                 v = t.get(k)
                 if v and "correct" in v:
@@ -68,8 +76,8 @@ for name, cut, icon, op, ep, new in T.MODELS:
     D[name] = dict(d, cut=cut)
 order = sorted(D, key=lambda m: -np.mean(D[m]["ans_yes"] + D[m]["ans_no"]))
 nums = {m: dict(ece_bin_post=fece(D[m]["bcal"], .5), ece_mcq_post=fece(D[m]["mcal"], .25), yes_truth_yes=np.mean(D[m]["ans_yes"]), yes_truth_no=np.mean(D[m]["ans_no"]),
-                err_median=float(np.median(D[m]["err"])), err_mean=float(np.mean(D[m]["err"])), within12=float(np.mean(np.abs(D[m]["err"]) <= 12))) for m in D}
-json.dump(nums, open(ROOT / "manuscript_updates/fig4_numbers.json", "w"), indent=1)
+                n_events=len(D[m]["n_events"]), n_bin=len(D[m]["ans_yes"]) + len(D[m]["ans_no"]), n_bcal=len(D[m]["bcal"]), n_mcal=len(D[m]["mcal"]), n_err=len(D[m]["err"]), frq_means={k: float(np.mean(D[m][k])) for k in DIMC}, err_median=float(np.median(D[m]["err"])), err_mean=float(np.mean(D[m]["err"])), within12=float(np.mean(np.abs(D[m]["err"]) <= 12))) for m in D}
+json.dump(nums, open(ROOT / f"manuscript_updates/fig4_numbers{SUF}.json", "w"), indent=1)
 
 plt.rcParams.update({"font.family": "DejaVu Sans", "axes.spines.top": False, "axes.spines.right": False, "pdf.fonttype": 42})
 fig = plt.figure(figsize=(18, 25))
@@ -123,7 +131,7 @@ for i, m in enumerate(order):
     if i >= 6: ax.set_xlabel("Signed error (months)\n+ = predicted too late", fontsize=8)
 # e
 ge = gs[2, :].subgridspec(1, 3, wspace=0.3)
-for i, m in enumerate(["DeepSeek R1", "Claude S4.5", "Claude Opus 4.8"]):
+for i, m in enumerate(["DeepSeek R1", "Claude S4.5", "GPT-5.4"]):   # GPT-5.4 replaces Claude Opus 4.8 (2026-10-26): post-cutoff, original corpus leaves O4.8 only Feb-Mar 2026
     ax = fig.add_subplot(ge[i]); FIRST.setdefault("e", ax); g = np.array([h[0] for h in D[m]["hex"]]); p_ = np.array([h[1] for h in D[m]["hex"]])
     lo, hi = g.min() - 1, g.max() + 1; keep = (p_ >= lo - 12) & (p_ <= lo + 72)
     from matplotlib.colors import LinearSegmentedColormap
@@ -143,5 +151,5 @@ for _ax in fig.axes:
         _ax.set_position([_L1 + (_b.x0 - _L0) * (_R - _L1) / (_R - _L0), _b.y0, _b.width * (_R - _L1) / (_R - _L0), _b.height])
 for lab, ax_ in FIRST.items():
     bb = ax_.get_position(); fig.text(bb.x0 - (0.07 if lab == "a" else 0.035), bb.y1 + 0.012, lab, fontsize=30, fontweight="bold", va="bottom")
-fig.savefig(ROOT / "manuscript_updates/Failure_Modes_rev.png", dpi=200, bbox_inches="tight"); fig.savefig(ROOT / "manuscript_updates/Failure_Modes_rev.pdf", bbox_inches="tight")
+fig.savefig(ROOT / f"manuscript_updates/Failure_Modes_rev{SUF}.png", dpi=200, bbox_inches="tight"); fig.savefig(ROOT / f"manuscript_updates/Failure_Modes_rev{SUF}.pdf", bbox_inches="tight")
 for m in order: print(f"{m:16s} yes|truth=yes {100*nums[m]['yes_truth_yes']:.0f}% yes|truth=no {100*nums[m]['yes_truth_no']:.0f}%  ECE bin {nums[m]['ece_bin_post']:.3f} mcq {nums[m]['ece_mcq_post']:.3f}  median {nums[m]['err_median']:+.0f}")

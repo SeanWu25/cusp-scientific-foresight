@@ -4,13 +4,15 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).parent)); from a42_common import *
 import a42_judge as J, anthropic
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--concurrency", type=int, default=4); ap.add_argument("--max", type=int, default=None); a = ap.parse_args()
-    ev = load_events(); outp = OUT / "A4_3_fixed_queries/inclusion_verdicts.jsonl"; done = set()
+    ap = argparse.ArgumentParser(); ap.add_argument("--concurrency", type=int, default=4); ap.add_argument("--max", type=int, default=None)
+    ap.add_argument("--set", choices=list(A43_SETS), default="main", help="main = first 500 events (original files); ext500 = the 500 added events (writes ext500/inclusion_verdicts.jsonl)")
+    a = ap.parse_args(); SET_DIR = A43_SETS[a.set][1]
+    ev = load_events(); outp = SET_DIR / "inclusion_verdicts.jsonl"; done = set()
     if outp.exists():
         for l in open(outp):
             if l.strip(): done.add(json.loads(l)["case"])
     cases = []
-    for p in sorted((OUT / "A4_3_fixed_queries/evidence").glob("*.jsonl")):
+    for p in sorted((SET_DIR / "evidence").glob("*.jsonl")):
         for l in open(p):
             r = json.loads(l)
             if r.get("context") is None: continue

@@ -5,15 +5,16 @@ import argparse as _ap
 _p = _ap.ArgumentParser(); _p.add_argument("--cutoff-month", choices=("pre", "post"), default="pre",
     help="pre (default): an event published in the ceiling/cutoff month counts as PRE-cutoff (post iff pub month > ceiling month), the rule used everywhere in the paper; "
          "post: the original rule of this audit (post iff pub month >= ceiling month), which writes the original output files")
+_p.add_argument("--events", choices=("500", "1000"), default="500", help="500 = first 500 events (original verdict file); 1000 = first 500 + ext500 verdicts (suffix _1000)")
 _p.add_argument("--suffix", default=None, help="output-file suffix; default '_cmpre' for --cutoff-month pre and '' for post")
-ARGS = _p.parse_args(); CM_PRE = ARGS.cutoff_month == "pre"; SFX = ARGS.suffix if ARGS.suffix is not None else ("_cmpre" if CM_PRE else "")
+ARGS = _p.parse_args(); CM_PRE = ARGS.cutoff_month == "pre"; SFX = ARGS.suffix if ARGS.suffix is not None else ("_cmpre" if CM_PRE else "") + ("_1000" if ARGS.events == "1000" else "")
 def is_post(pub_m, cut_m): return pub_m > cut_m if CM_PRE else pub_m >= cut_m
 from urllib.parse import urlparse
 def wilson(k, n, z=1.96):
     if n == 0: return (float("nan"), float("nan"))
     p = k / n; d = 1 + z * z / n; c = (p + z * z / (2 * n)) / d; h = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d; return (max(0, c - h), min(1, c + h))
 def months(ym): y, m = ym.split("-")[:2]; return int(y) * 12 + int(m)
-ev = load_events(); rs = [json.loads(l) for l in open(OUT / "A4_3_fixed_queries/inclusion_verdicts.jsonl") if l.strip()]
+ev = load_events(); rs = [json.loads(l) for f in ([OUT / "A4_3_fixed_queries/inclusion_verdicts.jsonl"] + ([A43_SETS["ext500"][1] / "inclusion_verdicts.jsonl"] if ARGS.events == "1000" else [])) for l in open(f) if l.strip()]
 ok = [r for r in rs if (r.get("judge") or {}).get("verdict") in ("INCLUDED", "NOT_INCLUDED")]
 BOUNDS = {"2023-10-01": "GPT-4o", "2023-12-01": "LLaMA 3.3 70B", "2025-01-01": "Claude S4.5", "2025-08-01": "GPT-5.4", "2026-01-01": "Claude Sonnet 5", "2026-02-01": "GPT-5.6 Sol", "unrestricted": "WS (all models)"}
 def cell(sub):
