@@ -180,3 +180,6 @@ results/frq_human_study/export_gpt4o_ws/
 results/A7_reasoning_traces/traces.jsonl
 results/A7_reasoning_traces/coded_traces.jsonl
 results/A7_reasoning_traces/inductive_sample.jsonl
+
+# manuscript working outputs stay local (Sean, 2026-10-27)
+manuscript_updates/
