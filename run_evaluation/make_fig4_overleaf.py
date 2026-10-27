@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 make_fig4_overleaf.py — revision version of the failure-modes figure (main.tex fig:radar_areas, Figures/Failure_Modes_final.png)
-for the nine Table-1 models, ORIGINAL corpus (Jan 2024–Mar 2026) for every model, so DeepSeek R1 is comparable.
+for the nine Table-1 models, post-cutoff events of the FULL corpus (Jan 2024–Aug 2026; DeepSeek R1: original corpus only).
 (Until 2026-10-22 the figure used the full corpus; those numbers are kept in manuscript_updates/fig4_numbers_fullcorpus.json.) Panels as submitted:
  a  binary answer distribution by truth (all events)          b  FRQ sub-dimension violins (all events)
  c  reliability curves + ECE, Binary and MCQ (post-cutoff)     d  signed date error histograms (post-cutoff)
@@ -18,12 +18,12 @@ ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT / "run_e
 # Cutoff-month rule (2026-10-25): an event published in the model's knowledge-cutoff month counts as PRE-cutoff
 # (post iff pub_month > cutoff_month), as in Table 1 and the information-access gaps. False = old rule (cutoff month = post).
 CUTOFF_MONTH_PRE = True
-# 2026-10-26: every panel uses post-cutoff events only (POST_ONLY=1, default). FIG4_CORPUS=orig (default) keeps the original
-# corpus for every model; FIG4_CORPUS=full adds the Apr-Aug 2026 extension for models with an extension run (DeepSeek R1:
-# original only) and writes *_full files.
+# 2026-10-26: every panel uses post-cutoff events only (POST_ONLY=1, default). 2026-10-27: FIG4_CORPUS=full (default) uses the
+# original corpus + the Apr-Aug 2026 extension for models with an extension run (DeepSeek R1: original only);
+# FIG4_CORPUS=orig keeps the original corpus for every model and writes *_orig files.
 import os
 POST_ONLY = os.environ.get("POST_ONLY", "1") != "0"
-CORPUS = os.environ.get("FIG4_CORPUS", "orig"); SUF = "" if CORPUS == "orig" else "_full"
+CORPUS = os.environ.get("FIG4_CORPUS", "full"); SUF = "" if CORPUS == "full" else "_orig"   # 2026-10-27: full corpus is the default (Sean)
 COL = {"GPT-4o": "#D55E00", "GPT-OSS": "#E69F00", "DeepSeek R1": "#CC79A7", "LLaMA 3.3": "#56B4E9", "Claude S4.5": "#0072B2",
        "GPT-5.4": "#009E73", "Claude Opus 4.8": "#7B4FA0", "Claude Sonnet 5": "#B2182B", "GPT-5.6 Sol": "#6E6E6E"}
 DIMC = {"alignment": "#D6604D", "specificity": "#F4A582", "novelty": "#92C5DE", "feasibility": "#4DAC26"}
