@@ -1,5 +1,7 @@
 """make_ed_anchor.py — Extended Data figure: anchor-point effect in temporal prediction for the nine Table 1 models
-(original corpus, Jan 2024–Mar 2026, all date questions, as main Fig. 4e; DeepSeek R1 has no extension run).
+(2026-10-28: post-cutoff date questions of the FULL corpus, Jan 2024–Aug 2026, as main Fig. 4e; DeepSeek R1 has no extension
+run, so it uses the original corpus. Post-cutoff = publication month after the cutoff month. ED_ANCHOR_ALL=1 restores the old
+original-corpus, all-events version.)
 Each panel: predicted vs ground-truth month (hexbin, model colour), y = x (dashed), knowledge cutoff (dotted), and a
 marginal histogram of predicted months; text = share of predictions on the three most frequent months.
 Writes manuscript_updates/ed_anchor.{pdf,png} and manuscript_updates/ed_anchor_numbers.json."""
@@ -18,28 +20,40 @@ mpl.rcParams.update({"font.family": "FreeSans", "font.size": 6.5, "axes.linewidt
 ORDER = [("GPT-4o", "#E07B22"), ("LLaMA 3.3", "#6EC0EA"), ("GPT-OSS", "#E8AE25"), ("DeepSeek R1", "#D58BB4"), ("Claude S4.5", "#1F7BB8"),
          ("GPT-5.4", "#22A884"), ("Claude Opus 4.8", "#7B4FA0"), ("Claude Sonnet 5", "#C0392B"), ("GPT-5.6 Sol", "#7F7F7F")]
 LO, HI = T.mo("2022-01"), T.mo("2031-12")
+import os
+ALL_EVENTS = os.environ.get("ED_ANCHOR_ALL") == "1"
+PUB = {}
+for b in T.BENCH:
+    for l in open(ROOT / b):
+        if l.strip(): r = json.loads(l); PUB[r["id"]] = r["publication_date"][:7]
+X0, X1 = (T.mo("2023-12"), T.mo("2026-04")) if ALL_EVENTS else (T.mo("2023-12"), T.mo("2026-09"))
 def main():
-    M = {name: (cut, op) for name, cut, icon, op, ep, new in T.MODELS}
+    M = {name: (cut, op if ALL_EVENTS or not ep else [op, ep]) for name, cut, icon, op, ep, new in T.MODELS}
     fig = plt.figure(figsize=(183 * MM, 190 * MM)); outer = fig.add_gridspec(3, 3, left=0.075, right=0.985, top=0.965, bottom=0.075, wspace=0.42, hspace=0.42)
     nums = {}
     for k, (name, col) in enumerate(ORDER):
-        cut, op = M[name]; g, p = [], []
-        for r in json.load(open(ROOT / op))["results"]:
+        cut, op = M[name]; g, p = [], []; seen = set()
+        rows = [r for f in (op if isinstance(op, list) else [op]) for r in json.load(open(ROOT / f))["results"]]
+        for r in rows:
+            if r["id"] in seen or r["id"] not in PUB: continue
+            seen.add(r["id"])
+            if not ALL_EVENTS and not (T.mo(PUB[r["id"]]) > T.mo(cut)): continue
             v = (r.get("tasks") or {}).get("date")
             if v and v.get("parsed_date") and v.get("ground_truth"):
                 pm, gm = T.mo(v["parsed_date"]), T.mo(v["ground_truth"])
                 if pm and gm: g.append(gm); p.append(pm)
         g, p = np.array(g), np.array(p); n = len(p); cnt = collections.Counter(p.tolist()); top = cnt.most_common(3)
         share3 = sum(c for _, c in top) / n; out = float(np.mean((p < LO) | (p > HI)))
-        nums[name] = dict(n=n, top3=[(T.ym(m), c / n) for m, c in top], top3_share=share3, distinct_pred=len(cnt), distinct_truth=int(len(set(g.tolist()))), outside_range=out)
+        nums[name] = dict(n=n, top3=[(T.ym(m), c / n) for m, c in top], top3_share=share3, distinct_pred=len(cnt), distinct_truth=int(len(set(g.tolist()))), truth_span=[T.ym(int(g.min())), T.ym(int(g.max()))], outside_range=out,
+                          top1_month=T.ym(top[0][0]))
         inner = outer[k // 3, k % 3].subgridspec(1, 2, width_ratios=[4.2, 1], wspace=0.06)
         ax = fig.add_subplot(inner[0]); mx = fig.add_subplot(inner[1], sharey=ax)
         keep = (p >= LO) & (p <= HI)
         cmap = LinearSegmentedColormap.from_list("c", ["#F4F4F4", col])
-        ax.hexbin(g[keep], p[keep], gridsize=(14, 22), extent=(T.mo("2023-12"), T.mo("2026-04"), LO, HI), mincnt=1, cmap=cmap, bins="log", linewidths=0.1)
-        ax.plot([T.mo("2023-12"), T.mo("2026-04")], [T.mo("2023-12"), T.mo("2026-04")], ls=(0, (3, 2)), color="#333", lw=0.7)
-        cm = T.mo(cut); ax.axhline(cm, color=col, ls=":", lw=0.9); ax.text(T.mo("2026-03"), cm + 1.2, "cutoff", color=col, fontsize=5.4, ha="right", bbox=dict(boxstyle="round,pad=0.1", fc="white", ec="none", alpha=0.8))
-        ax.set_xlim(T.mo("2023-12"), T.mo("2026-04")); ax.set_ylim(LO, HI)
+        ax.hexbin(g[keep], p[keep], gridsize=(14, 22), extent=(X0, X1, LO, HI), mincnt=1, cmap=cmap, bins="log", linewidths=0.1)
+        ax.plot([X0, X1], [X0, X1], ls=(0, (3, 2)), color="#333", lw=0.7)
+        cm = T.mo(cut); ax.axhline(cm, color=col, ls=":", lw=0.9); ax.text(X1 - 1, cm + 1.2, "cutoff", color=col, fontsize=5.4, ha="right", bbox=dict(boxstyle="round,pad=0.1", fc="white", ec="none", alpha=0.8))
+        ax.set_xlim(X0, X1); ax.set_ylim(LO, HI)
         ax.set_xticks([T.mo(x) for x in ("2024-01", "2025-01", "2026-01")]); ax.set_xticklabels(["2024", "2025", "2026"])
         ax.set_yticks([T.mo(f"{y}-01") for y in range(2022, 2032, 2)]); ax.set_yticklabels([str(y) for y in range(2022, 2032, 2)])
         ax.set_title(name, loc="left", fontsize=7, fontweight="bold", color="#222", pad=3)
@@ -54,7 +68,8 @@ def main():
         if k // 3 == 2: ax.set_xlabel("True month", labelpad=1.5)
         if k % 3 == 0: ax.set_ylabel("Predicted month", labelpad=1.5)
         ax.text(-0.3 if k % 3 == 0 else -0.2, 1.08, "abcdefghi"[k], transform=ax.transAxes, fontsize=8.5, fontweight="bold", va="bottom")
-    out = ROOT / "manuscript_updates"; fig.savefig(out / "ed_anchor.pdf"); fig.savefig(out / "ed_anchor.png", dpi=600); plt.close(fig)
-    json.dump(nums, open(out / "ed_anchor_numbers.json", "w"), indent=1)
+    out = ROOT / "manuscript_updates"; sfx = "_allevents_orig" if ALL_EVENTS else ""
+    fig.savefig(out / f"ed_anchor{sfx}.pdf"); fig.savefig(out / f"ed_anchor{sfx}.png", dpi=600); plt.close(fig)
+    json.dump(nums, open(out / f"ed_anchor_numbers{sfx}.json", "w"), indent=1)
     for m, v in nums.items(): print(f"{m:16s} n={v['n']} top3={100*v['top3_share']:.0f}% {v['top3'][0][0]} distinct={v['distinct_pred']} out={100*v['outside_range']:.1f}%")
 if __name__ == "__main__": main()
