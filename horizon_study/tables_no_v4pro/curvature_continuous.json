@@ -1,0 +1,82 @@
+{
+ "orig": {
+  "frq": {
+   "n_items": 18461,
+   "n_events": 4135,
+   "n_models": 9,
+   "curvature": {
+    "coef": -0.05545183955086464,
+    "se": 0.01738098576862765,
+    "ci_lo": -0.08951794567317806,
+    "ci_hi": -0.02138573342855122,
+    "p": 0.0014208894081114275,
+    "method": "OLS with event and model fixed effects (within-event demeaning), event-clustered SE"
+   },
+   "glmm_quadratic": {
+    "coef": -0.05001226637001777,
+    "ci_lo": -0.08131038677027688,
+    "ci_hi": -0.01871414596975867,
+    "z": -3.1319466099447726
+   }
+  },
+  "date": {
+   "n_items": 11285,
+   "n_events": 2752,
+   "n_models": 9,
+   "curvature": {
+    "coef": -0.07611705734086957,
+    "se": 0.005772950491580349,
+    "ci_lo": -0.08743183238889986,
+    "ci_hi": -0.06480228229283928,
+    "p": 1.0688075182986559e-39,
+    "method": "OLS with event and model fixed effects (within-event demeaning), event-clustered SE"
+   },
+   "glmm_quadratic": {
+    "coef": -0.09154444545439734,
+    "ci_lo": -0.10449863854415999,
+    "ci_hi": -0.0785902523646347,
+    "z": -13.850890738413906
+   }
+  }
+ },
+ "merged": {
+  "frq": {
+   "n_items": 23398,
+   "n_events": 4765,
+   "n_models": 9,
+   "curvature": {
+    "coef": 0.01213647780887841,
+    "se": 0.01102276733618308,
+    "ci_lo": -0.009467749180004937,
+    "ci_hi": 0.033740704797761756,
+    "p": 0.2708804306043805,
+    "method": "OLS with event and model fixed effects (within-event demeaning), event-clustered SE"
+   },
+   "glmm_quadratic": {
+    "coef": 0.009736794699960619,
+    "ci_lo": -0.009772044704369197,
+    "ci_hi": 0.029245634104290437,
+    "z": 0.978229263996466
+   }
+  },
+  "date": {
+   "n_items": 12765,
+   "n_events": 2948,
+   "n_models": 9,
+   "curvature": {
+    "coef": -0.03223567534750564,
+    "se": 0.005252959273110376,
+    "ci_lo": -0.04253128633505768,
+    "ci_hi": -0.021940064359953604,
+    "p": 8.426940595104174e-10,
+    "method": "OLS with event and model fixed effects (within-event demeaning), event-clustered SE"
+   },
+   "glmm_quadratic": {
+    "coef": -0.05505453452969352,
+    "ci_lo": -0.06481179337091765,
+    "ci_hi": -0.04529727568846939,
+    "z": -11.059139604075675
+   }
+  }
+ }
+}
