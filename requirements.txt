@@ -17,8 +17,18 @@ seaborn>=0.13.0
 # HTTP requests (scrapers and API calls)
 requests>=2.31.0
 
+# Benchmark download (scripts/eval.py, judge_frq.py, build_report.py)
+huggingface_hub>=0.20.0
+
+# Retrieval conditions WS+Cutoff / WS (scripts/web_search.py)
+youdotcom>=2.3.0
+
 # Development
 pytest>=8.0.0
+
+# Optional: local open-weight inference through scripts/test_LLM.py --model_path
+# transformers>=4.57.0
+# torch>=2.4.0
 
 # Optional: web scrapers
 # beautifulsoup4>=4.12.0

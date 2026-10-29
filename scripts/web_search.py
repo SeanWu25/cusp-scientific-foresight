@@ -7,6 +7,9 @@ from datetime import datetime
 from youdotcom import You
 
 
+_no_temperature: dict = {}   # models seen to reject `temperature` (query generation then uses the API default)
+
+
 def _chat(client, model: str, prompt: str, retries: int = 3) -> str:
     """Single-turn chat helper — works with OpenAI, AzureOpenAI, and Anthropic clients.
     Retries on None content or transient errors."""
@@ -29,11 +32,21 @@ def _chat(client, model: str, prompt: str, retries: int = 3) -> str:
 
             else:
 
-                response = client.chat.completions.create(
-                    model=model,
-                    messages=[{"role": "user", "content": prompt}],
-                    temperature=0,
-                )
+                kwargs = dict(model=model, messages=[{"role": "user", "content": prompt}])
+                if not _no_temperature.get(model):
+                    kwargs["temperature"] = 0
+                try:
+                    response = client.chat.completions.create(**kwargs)
+                except Exception as e:
+                    # Reasoning models (e.g. gpt-5.6-sol) reject any temperature but the
+                    # default with a 400 'unsupported_value'. Drop the parameter for this
+                    # model and retry once, instead of failing retrieval for the whole run.
+                    if "temperature" in str(e) and "unsupported" in str(e).lower() and "temperature" in kwargs:
+                        _no_temperature[model] = True
+                        kwargs.pop("temperature")
+                        response = client.chat.completions.create(**kwargs)
+                    else:
+                        raise
 
                 text = (
                     response.choices[0].message.content

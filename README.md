@@ -55,6 +55,30 @@ jupyter notebook notebooks/quickstart.ipynb
 
 Set `OPENAI_API_KEY` or `AZURE_OPENAI_KEY` in your environment or a `.env` file.
 
+## Reproduce Model Inference
+
+**Entry point: [`docs/INFERENCE.md`](docs/INFERENCE.md).** It gives the full protocol to run a model on CUSP and score it, with the settings of the paper.
+
+| Step | Script |
+|------|--------|
+| Inference (all five tasks, Base / WS+Cutoff / WS) | [`scripts/run_cusp.py`](scripts/run_cusp.py) |
+| Model API wrappers, task prompts, response parser | [`scripts/test_LLM.py`](scripts/test_LLM.py) |
+| Retrieval (You.com, optional date ceiling) | [`scripts/web_search.py`](scripts/web_search.py) |
+| FRQ judge (leakage check + 4-dimension rubric) | [`scripts/judge_frq.py`](scripts/judge_frq.py) |
+| Scoring and report | [`scripts/build_report.py`](scripts/build_report.py), [`scripts/eval.py`](scripts/eval.py) |
+| Decoding settings of every model in the paper | [`configs/model_settings.json`](configs/model_settings.json) |
+
+```bash
+python scripts/run_cusp.py --input CUSP_final.jsonl --output results/sonnet5/base_run1.jsonl \
+  --provider ANTHROPIC --model claude-sonnet-5 --condition base \
+  --effort medium --max-tokens 2048 --frq-max-tokens 384 --resume
+python scripts/judge_frq.py --predictions results/sonnet5/base_run1.jsonl --output results/sonnet5/frq_judged.jsonl
+python scripts/build_report.py --predictions results/sonnet5/base_run1.jsonl \
+  --judged results/sonnet5/frq_judged.jsonl --out results/sonnet5/report.json
+```
+
+Proprietary models (OpenAI, Anthropic), the FRQ judge (GPT-5 on Azure OpenAI) and the retrieval conditions (You.com) need API keys. LLaMA 3.3 70B, GPT-OSS 20B and DeepSeek R1 have open weights and can run locally behind an OpenAI-compatible server (for example vLLM); see [`docs/INFERENCE.md`](docs/INFERENCE.md#proprietary-api-access-vs-open-weights).
+
 ## Dataset Construction
 
 The full pipeline that built CUSP is included:
