@@ -1,0 +1,5646 @@
+{
+ "summary": {
+  "total_rows": 86,
+  "predictions_found": 84,
+  "predictions_missing": 2,
+  "joint_pass_count": 77,
+  "joint_pass_rate": 0.8953,
+  "outcome_pass_count": 83,
+  "outcome_pass_rate": 0.9651,
+  "reasoning_pass_count": 80,
+  "reasoning_pass_rate": 0.9302,
+  "mean_overall_score": 0.6183,
+  "outcome_weight": 0.6,
+  "reasoning_weight": 0.4
+ },
+ "task_availability": {
+  "mcq": 63,
+  "frq": 72,
+  "binary_perturbed": 74,
+  "binary": 23,
+  "date": 23
+ },
+ "task_metrics": {
+  "binary": {
+   "count": 23,
+   "correct": 19,
+   "accuracy": 0.8261,
+   "mean_score": 0.8261,
+   "mean_confidence": 0.8478
+  },
+  "binary_perturbed": {
+   "count": 72,
+   "correct": 44,
+   "accuracy": 0.6111,
+   "mean_score": 0.6111,
+   "mean_confidence": 0.7167
+  },
+  "mcq": {
+   "count": 59,
+   "correct": 57,
+   "accuracy": 0.9661,
+   "mean_score": 0.9661,
+   "mean_confidence": 0.7866
+  },
+  "frq": {
+   "count": 70,
+   "scored": 70,
+   "mean_score": 5.7393,
+   "min_score": 2.5,
+   "max_score": 7.75,
+   "pass_rate": 0.8,
+   "mean_alignment": 5.6429,
+   "mean_specificity": 6.1429,
+   "mean_novelty": 4.5714,
+   "mean_feasibility": 6.6
+  },
+  "date": {
+   "count": 23,
+   "exact_matches": 4,
+   "exact_match_rate": 0.1739,
+   "mean_month_distance": 10.3,
+   "median_month_distance": 5,
+   "mean_score": 0.5375,
+   "mean_confidence": 0.5196
+  }
+ },
+ "reasoning_metrics": {
+  "leakage": {
+   "count": 86,
+   "pass": 59,
+   "fail": 6,
+   "unclear": 21,
+   "pass_rate": 0.686,
+   "fail_rate": 0.0698,
+   "mean_score": 0.5457
+  },
+  "mechanistic": {
+   "count": 86,
+   "pass": 0,
+   "fail": 0,
+   "unclear": 86,
+   "pass_rate": 0.0,
+   "fail_rate": 0.0,
+   "mean_score": 0.5
+  },
+  "constraint": {
+   "count": 86,
+   "pass": 0,
+   "fail": 0,
+   "unclear": 86,
+   "pass_rate": 0.0,
+   "fail_rate": 0.0,
+   "mean_score": 0.5
+  }
+ },
+ "results": [
+  {
+   "id": "27607091-5c99-4e29-8cb5-39f97436789e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6875,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": 6.25,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s main thesis fairly well: data-driven, map-free transit route generation from origin-destination information via LLM training. It is moderately specific but includes several unsupported implementation guesses (e.g., RL, JSON constraints), so specificity is limited and novelty is mostly standard rather than distinctive.",
+     "urls": [
+      "https://arxiv.org/abs/2605.22355",
+      "https://github.com/HotTricker/TransitLM"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "No post-cutoff named entity is explicitly named in a way that indicates leakage; \"TransitLM-style\" is a descriptive reference, and TransitLM was first publicly released in May 2026, not after 2026-05.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "01acb53a-d578-4b32-a9a2-12edc9e3136d",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.75,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": 7.5,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 9.0,
+     "rationale": "The response is strongly aligned with the paper\u2019s actual approach: RationalRewards, PARROT, multi-dimensional critiques, train-time RL rewards, and test-time Generate-Critique-Refine are all central to the method. It is technically concrete and feasible, though a bit less exact on implementation details than the paper itself, and its novelty is moderate because it mainly restates a well-grounded method rather than proposing a new one.",
+     "urls": [
+      "https://arxiv.org/abs/2604.11626",
+      "https://github.com/TIGER-AI-Lab/RationalRewards"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "The response names \"RationalRewards,\" but that exact name was publicly released on arXiv in April 2026, not after the cutoff. No clearly post-2026-04 entity is explicitly named in a way that meets the leakage criteria.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "8cc166dc-b6ac-4b20-9458-d93707e68292",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6725,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response matches the paper\u2019s broad infrastructure framing and correctly gestures toward standardized evaluation and deployment, but several implementation details are invented or unsupported by the source abstract. It is technically concrete, but the added snapshot-hashing/network-mocking/AutoJudge ideas reduce fidelity to the actual method; novelty is moderate because it mostly repackages standard infrastructure ideas rather than the paper\u2019s specific GiGPO+PRM and full-stack GUI-agent pipeline.",
+     "urls": [
+      "https://arxiv.org/abs/2604.11784",
+      "https://github.com/ZJU-REAL/ClawGUI"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No post-cutoff entity is explicitly named in a way that indicates leakage; the only concrete system name visible is \"ClawGUI,\" which was released in April 2026, i.e. not after the cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "0c29edce-57a1-4688-a11b-d1d8bfdf3d7e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.685,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The proposed MV-SGM pipeline is technically plausible, but it does not match the paper\u2019s real method, which instead uses Molmo2-ER, OpenFAST, per-layer KV conditioning to a flow-matching action expert, and adaptive depth reasoning. It is moderately specific in implementation terms, but the core idea is a different architecture than the reference, so alignment is low; novelty is modest because multi-view geometric fusion is a known robotics design, and feasibility is reasonable though unverified for the paper\u2019s setup.",
+     "urls": [
+      "https://arxiv.org/abs/2605.02881",
+      "https://allenai.org/blog/molmoact2"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.92,
+     "reason": "No explicit post-cutoff entity is named in the LLM response. The only specific named benchmark, \"MV-RoboBench,\" was publicly released before 2026-05, so it does not qualify as leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "750088fa-cfa0-42cc-8bf7-08b91eb7d12d",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.285,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": false,
+     "parsed_answer": "A",
+     "ground_truth": "D",
+     "score": 0.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": 4.25,
+     "alignment": 3.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad idea that self-distillation should treat deliberation tokens differently from structural tokens, but it misstates the actual mechanism: the paper uses sign-reversed divergence ascent plus an entropy gate, not a probe-driven epistemic reweighting or entropy-preserving KL regularizer. The writeup is moderately concrete, but its implementation plan is mostly speculative relative to the paper; the idea is plausible in principle, though it is not the described method and would require additional design choices to validate.",
+     "urls": [
+      "https://arxiv.org/abs/2605.11609",
+      "https://anti-sd.github.io/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.46,
+     "reason": "The response contains the verbatim name \"Epistemic-Aware Self-Distillation (EASD)\", but I could not verify that this exact named system was first publicly released after 2026-05. The acronym \"EASD\" is also used for an unrelated pre-2026 paper, so the name is ambiguous rather than a clear leakage indicator.",
+     "details": {
+      "leakage_indicators": [
+       "Epistemic-Aware Self-Distillation (EASD)",
+       "EASD"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "d3d52e09-ccf6-45f7-8831-2651d09366ff",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.705,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.5
+    },
+    "frq": {
+     "score": 5.25,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 3.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the paper\u2019s broad objective\u2014reducing repeated failure modes via memory of past rollouts\u2014but it diverges from the actual MEDS mechanism by introducing GRPO-specific novelty shaping and dynamic entropy/KL controls not described in the paper. It is moderately specific, but the implementation details are speculative rather than faithful to the paper; the novelty is low-to-moderate because it mostly rephrases a known memory-based reward-shaping idea. Feasibility is plausible in general, but some proposed knobs (multiplicative novelty inside group-relative advantage, entropy-floor heuristics) are not grounded in the reference method.",
+     "urls": [
+      "https://arxiv.org/abs/2604.11297",
+      "https://arxiv.org/pdf/2604.11297"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.33,
+     "reason": "The response contains the quoted name \"Diversity-Aware Group Relative Policy Optimization\" / \"D-GRPO\", but I could not verify that this exact name was first publicly released after 2026-04. The search results only showed different or unrelated GRPO variants, so I cannot confidently classify it as a leaked post-cutoff entity.",
+     "details": {
+      "leakage_indicators": [
+       "\"Diversity-Aware Group Relative Policy Optimization\"",
+       "\"D-GRPO\""
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "55f4e7a0-462b-42fa-8fbb-83bdbe86ee33",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.695,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response correctly identifies the hypernetwork-generated repository-specific LoRA idea and the static vs. evolving split, which is the paper\u2019s main contribution, but it adds unverified implementation details and does not fully capture the GRU-backed Evo design. It is technically concrete and feasible, but the novelty is mostly the paper\u2019s known approach rather than an especially original extension.",
+     "urls": [
+      "https://arxiv.org/abs/2606.06492",
+      "https://arxiv.org/pdf/2606.06492"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.11,
+     "reason": "No post-cutoff named entity leakage: the only explicit system name is \"Code2LoRA\", which was first publicly released in 2026-06, not after 2026-06.",
+     "details": {
+      "leakage_indicators": [
+       "Code2LoRA"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "1f5f7935-aee8-4b95-b888-21e46366b52a",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.735,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.8
+    },
+    "frq": {
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main architecture well: a recursively self-improving deep research agent with alternating research and self-improvement loops, plus autonomous context updating. It is somewhat less precise because it invents or over-specifies training details (e.g., GRPO/PPO and dense verification rewards) that are not evident from the reference abstract, but the overall approach is feasible and technically plausible.",
+     "urls": [
+      "https://arxiv.org/abs/2607.21461"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.23,
+     "reason": "No explicit post-cutoff entity is named verbatim in a way that clearly identifies a specific released system; the response mostly describes a method and uses generic RL terminology.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "0436b11d-fb2a-4829-93a2-8891e1c11480",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.735,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.97
+    },
+    "frq": {
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the paper\u2019s main direction\u2014compound acoustic simulation plus progressive acoustic-to-semantic optimization with WER-gated RL\u2014but it misses the concrete named components and the precise staged curriculum used in the paper. It is technically plausible and implementable, but the description is more high-level than implementation-ready and adds some generic details not explicitly supported by the paper.",
+     "urls": [
+      "https://arxiv.org/abs/2605.19833",
+      "https://xzf-thu.github.io/Mega-ASR/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "The response names \"Voices-in-the-Wild\" and related Mega-ASR components, but the identified project was publicly released in May 2026 (not after 2026-05), so it is not a post-cutoff leakage indicator.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "a0396810-46e4-4870-95d7-2a7861656a6f",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.7,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": 5.0,
+     "alignment": 3.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response proposes a plausible artifact-oriented middleware architecture, but it does not describe the paper\u2019s actual DataFlow-Harness design: typed incremental DAG mutations, DataFlow-Skills, MCP live state exposure, and synchronized visual editing. It is technically specific and implementable in general, but the idea is generic compared with the paper\u2019s grounded platform-native workflow construction, so novelty is moderate and feasibility is good but not tightly validated against the reference system.",
+     "urls": [
+      "https://arxiv.org/html/2607.16617v2",
+      "https://github.com/OpenDCAI/DataFlow-WebUI"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.94,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE; the text only describes a generic architecture and components.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "05d718cb-9c9c-4dc2-bead-4ab297404bcb",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5908,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.9
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the central idea of an execution-free, agentic patch verifier that reasons from repository context, so it is fairly well aligned with the paper. However, it adds unsupported training/distillation details and omits the paper\u2019s emphasis on evidence gathering via repository exploration and question-driven verification, reducing precision. The idea is moderately novel but not especially original beyond the paper\u2019s core contribution, and it is feasible because it relies on static repository inspection rather than environment-heavy execution.",
+     "urls": [
+      "https://arxiv.org/abs/2606.28436",
+      "https://openreview.net/pdf?id=B0bXY1hJfj"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 5,
+     "parsed_date": "2026-02",
+     "ground_truth": "2026-07",
+     "score": 0.6065,
+     "confidence": 0.5
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM response. The named benchmark references are pre-cutoff releases, and the rest is a generic method description.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "eb005c52-3f37-446b-86a0-425a7381a9b6",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.545,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 7.0,
+     "feasibility": 8.0,
+     "rationale": "The response is well aligned with the paper\u2019s main contribution: DOPD, privilege illusion, and token-wise dual routing based on advantage/probability signals. It is moderately specific but stops short of the paper\u2019s full technical recipe, so it lacks implementation-level detail; the idea is novel enough for this area and appears feasible because it matches a concrete distillation framework described in the paper.",
+     "urls": [
+      "https://arxiv.org/abs/2606.30626",
+      "https://arxiv.org/html/2606.30626"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.9,
+     "reason": "The only explicit name in the LLM response is \"DOPD (Dual On-Policy Distillation)\"; web results indicate it was publicly available by late June/early July 2026, so it is not clearly first released after 2026-07.",
+     "details": {
+      "leakage_indicators": [
+       "DOPD (Dual On-Policy Distillation)"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "dddfc0c6-f2a0-49cf-b24f-ffe29d3c1417",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.572,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad StateM theme of externalizing execution state and enforcing transitions, but it departs from the paper by introducing its own SEM architecture and extra state-reconciliation machinery. It is moderately specific and feasible as a systems design, but the novelty is mostly incremental rather than a distinctive insight from the paper.",
+     "urls": [
+      "https://arxiv.org/abs/2608.15089",
+      "https://github.com/henryqin1997/statem"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 1,
+     "parsed_date": "2026-07",
+     "ground_truth": "2026-08",
+     "score": 0.9048,
+     "confidence": 0.4
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.92,
+     "reason": "No explicit post-cutoff entity name is present in the LLM_RESPONSE; it only describes a generic method and acronym.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "9d915e02-19e4-4711-a92b-cf9a52f89c03",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.485,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad idea of using self-supervision and asymmetry, but the paper\u2019s real method is much simpler: an EMA teacher sees the original image while the student sees a strongly augmented view, with the learning signal coming from their distributional disagreement. The proposed crop/mining/contrastive QA pipeline is technically concrete but mostly unrelated to the paper, making it only modestly feasible as a different method rather than a faithful description of S^2VOPD.",
+     "urls": [
+      "https://arxiv.org/abs/2608.14144",
+      "https://williamium3000.github.io/s2vopd/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.17,
+     "reason": "No specific post-cutoff entity is named verbatim in the LLM_RESPONSE; it only describes a method. The web results show related post-cutoff paper titles, but those titles do not appear in the response and therefore do not count as leakage.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "92cd7699-1235-4a5b-95f4-317c96738e23",
+   "joint_pass": false,
+   "outcome_pass": true,
+   "reasoning_pass": false,
+   "overall_score": 0.65,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": 5.0,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The answer captures the central idea of pyridine nitrogen transposition via sequential nitrogen insertion and deletion, but its mechanistic description is partly speculative and not a precise match to the paper. It is moderately specific, yet it invents implementation details (e.g., N-oxidation/ring opening, diazo/triazene intermediates) that are not supported by the reference. The idea itself is not especially novel relative to the paper\u2019s reported skeletal-editing concept, and the proposed route is only plausibly feasible rather than clearly grounded in the documented method.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-11006-4",
+      "https://pubmed.ncbi.nlm.nih.gov/42717079/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "fail",
+     "score": 0.96,
+     "reason": "\"nitrogen transposition\"",
+     "details": {
+      "leakage_indicators": [
+       "nitrogen transposition"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "fd879170-3943-4125-a66a-73659d7a50f9",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.95
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.95
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "75be408c-2048-4133-820f-f0f2cdf01698",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6072,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.92
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.68
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": 5.75,
+     "alignment": 5.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad theme of evolving a stateful environment to expose cumulative agent risks, which matches OpenART/EMHA at a high level, but it replaces the paper\u2019s actual black-box authorized-state-transition attack with a more generic simulation-and-perturbation harness. It is technically concrete, but much of that concreteness is speculative relative to the paper; the idea is plausible and feasible, though less faithful to the source than a precise EMHA description.",
+     "urls": [
+      "https://arxiv.org/abs/2608.00677",
+      "https://arxiv.org/pdf/2608.00677"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 2,
+     "parsed_date": "2026-06",
+     "ground_truth": "2026-08",
+     "score": 0.8187,
+     "confidence": 0.25
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No verbatim post-cutoff proper noun, model name, paper title, system name, or dataset name appears in the LLM_RESPONSE; it only describes a method generically.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "395edce1-2684-4df2-a61b-5ebeb9279455",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.65,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": 5.0,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 7.0,
+     "feasibility": 5.0,
+     "rationale": "The response captures the broad theme of cell-type-specific eQTL analysis, but it misidentifies the core method: the paper used a variance component model, not a joint fine-mapping / low-rank latent-factor framework with chromatin accessibility integration. It is moderately specific because it names statistical machinery and implementation ideas, but those details are largely invented relative to the paper; the approach is novel on its own, yet only partially feasible because the proposed multi-omic fine-mapping pipeline is more complex than the study design described in the reference.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10577-6",
+      "https://pubmed.ncbi.nlm.nih.gov/42649298/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity is named in the LLM response. The only clear proper noun is \"CASE-Fusion,\" which appears to be a coined method name in the response rather than a known post-2026-08 release, and \"OneK1K\" was publicly available before 2026-08.",
+     "details": {
+      "leakage_indicators": [
+       "CASE-Fusion",
+       "OneK1K"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "bf563cce-0baa-4963-adb9-c2bd521579e8",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.4025,
+   "tasks": {
+    "mcq": {
+     "correct": false,
+     "parsed_answer": "C",
+     "ground_truth": "D",
+     "score": 0.0,
+     "confidence": 0.5
+    },
+    "frq": {
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 7.0,
+     "feasibility": 7.0,
+     "rationale": "The response correctly identifies the broad pangenome/graph strategy and mentions relevant classes of tools, but it does not match the paper\u2019s specific Emblask+Weaver trio-based assembly and population-scale mapping workflow. It is technically concrete and plausible, with some implementation-level detail, but it stays at a generalized method-proposal level rather than reproducing the actual paper method.",
+     "urls": [],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No verbatim name in the LLM response appears to be a post-2026-08 release; the named items PanGenie and Moni-align were publicly available before 2026-08, and HPRC refers to an earlier pangenome consortium release rather than a post-cutoff entity.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "73ec53e1-548c-45b7-8e12-2cade996a70a",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.465,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.8
+    },
+    "frq": {
+     "score": 3.25,
+     "alignment": 1.0,
+     "specificity": 4.0,
+     "novelty": 5.0,
+     "feasibility": 3.0,
+     "rationale": "The paper actually centers on a within-subject fMRI/EEG study with machine learning to extract low-dimensional brain trajectories and show context-aligned organization under psilocybin, not PET-based 5-HT2A occupancy, dynamic causal modeling, or a placebo-controlled crossover with micro-phenomenology probes ([Nature article](https://www.nature.com/articles/s41586-026-10910-z)). The response is somewhat technically concrete, but it substantially misstates the methodology and adds several unsupported elements; the ideas are plausible in principle, but the proposed PET-plus-DCM program is not what the paper did and is only loosely feasible as a follow-on study.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10910-z",
+      "https://www.biorxiv.org/content/biorxiv/early/2026/05/05/2025.03.09.642197.full.pdf"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM response; it only describes methods and mentions common compounds (e.g., psilocybin, LSD), which are not leakage indicators.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "b478c0f3-2251-4eb5-969f-d3533a451f75",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.72
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.95
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "ae372c69-aa9b-4e54-8e15-2ff6e464ff4e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.715,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": 5.75,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 6.0,
+     "feasibility": 4.0,
+     "rationale": "The response captures the paper\u2019s central compositional-control framing and the broad hippocampus/ACC/OFC division of labor, but it overextends beyond the actual method by inventing additional modeling and perturbation components. It is moderately specific in describing a technical pipeline, yet much of that pipeline is not in the paper; the novelty is decent but mostly consists of standard combinations of known techniques. Feasibility is limited because the proposed closed-loop optogenetic/TMS and multimodal alignment plan is not realistic for the human intracranial setting described in the study.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10896-8",
+      "https://www.biorxiv.org/content/10.1101/2025.03.17.643774v2"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.06,
+     "reason": "No explicit post-cutoff named entity appears verbatim in the LLM_RESPONSE; it only describes generic methods and brain regions.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "a70e40ff-a270-4ba6-a861-9871e8669d46",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.2,
+   "tasks": {
+    "binary_perturbed": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "mcq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "frq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": false,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null,
+   "retrieval_failed": true
+  },
+  {
+   "id": "0f750485-1705-4ba3-ae85-a7bc286a43a1",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.7512,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.97
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.98
+    },
+    "frq": {
+     "score": 6.75,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 3.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s core method very closely: AlCl3-mediated, mild-temperature upcycling of PVC with \u03b1-olefins to form vinyl-derived PAOs, which is exactly the reported approach ([Nature paper](https://www.nature.com/articles/s41586-026-10867-z)). It is technically concrete and feasible, but the writeup is a bit incomplete and slightly overconfident in mechanistic language (for example, it presents a generic Friedel-Crafts/olefin-insertion description rather than the paper\u2019s fuller PVC-template chemistry and downstream property tuning), so novelty is low because it mostly restates the paper rather than adding new insight.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10867-z",
+      "https://www.nature.com/articles/s41586-026-10867-z.pdf"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": true,
+     "month_distance": 0,
+     "parsed_date": "2026-08",
+     "ground_truth": "2026-08",
+     "score": 1.0,
+     "confidence": 0.8
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff named entity appears in the LLM_RESPONSE; it only describes a method and generic chemical terms.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "98ec894a-0272-44f6-b3b0-7c66fb6a8541",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.71,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 8.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s core approach well: a prospective, longitudinal multi-omic cohort of 1,154 hospitalized COVID-19 patients analyzing Herpesviridae/Anelloviridae reactivation and linking it to immune and clinical outcomes ([Nature paper](https://www.nature.com/articles/s41586-026-10740-z)). It is fairly concrete, but it adds methods not stated in the reference (e.g., proteomics, single-cell RNA-seq, explicit GAMMs, and a 3\u201312 month follow-up design), so it is slightly over-specified relative to the actual study; the novelty is moderate because it mostly restates the study design rather than proposing a distinctly new idea.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10740-z",
+      "https://researchdiscovery.drexel.edu/esploro/outputs/journalArticle/Virus-reactivation-in-acute-and-long/991022201459504721"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.0,
+     "reason": "Could not parse response as JSON: The response explicitly names several specific entities, but they are all long-established viruses and methods rather than post-cutoff systems. I checked one representative named entity, Epstein\u2013Barr virus, and it was publicly identified in 1964, far before 2026-08 ([Epstein\u2013Barr virus](https://en.w",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "0dc2dd64-5b00-446b-be4f-d5379dfdc77e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6875,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": 6.25,
+     "alignment": 8.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the core experimental concept and key physics of the paper\u2014an all-optical PTC in an InSb-based plasmonic metamaterial driven by strong THz modulation, with Floquet mixing near an exceptional point\u2014but it is less precise about the actual device and mechanism than the paper itself. It is technically concrete and feasible, but some details are generic or slightly off (for example, the proposed gold resonator array framing), and the \u201cimplementation plan\u201d is more a plausible reconstruction than a faithful description of the published method. Novelty is moderate because it mostly restates the paper\u2019s established mechanism rather than proposing a distinct new idea.",
+     "urls": [],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "No exact post-cutoff named entity is explicitly named in the LLM_RESPONSE. The closest matching work ('Plasmonic metamaterial time crystal') was publicly released in 2026, not after 2026-07, so this is not leakage under the benchmark rules.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "15fe65b2-afc7-4cc1-b6a8-f76f5e1f5175",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.95
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "4f791da2-4e30-45f3-8930-24849c530f22",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6275,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "frq": {
+     "score": 4.25,
+     "alignment": 1.0,
+     "specificity": 6.0,
+     "novelty": 3.0,
+     "feasibility": 7.0,
+     "rationale": "The response is technically concrete, but it targets a different method than the actual paper: a Sleeping Beauty transposon screen in CIN mice instead of CRISPR-KOALA bidirectional screening of chromosome-arm genes in BLBC. Because the proposed approach is internally coherent and feasible, feasibility is moderate-high, but novelty is limited since it mostly restates a standard forward genetic screening concept rather than the paper\u2019s actual bidirectional in vivo CRISPR strategy.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10752-9",
+      "https://procure-oncology.com/aneuploidy-selects-for-the-acquisition-of-driver-genes-in-breast-cancer/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No exact post-cutoff entity is named in the LLM_RESPONSE; the text only contains general methods and pre-existing biological terms such as 'Sleeping Beauty', 'BubR1', and 'CENP-E'.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "2d9f6202-0145-4332-9ba1-ce5f269ba4dc",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.7,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": 5.0,
+     "alignment": 4.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad theme of additive-mediated suppression of halide segregation and defect passivation, but it does not identify the paper\u2019s defining photo-transformable TDB mechanism and instead substitutes a generic Lewis-base/zwitterionic design. It is moderately specific in proposing candidate functional groups and a concentration range, but the implementation details are largely speculative; the idea is feasible in principle, though less faithful to the actual method than a precise description would be.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10869-x",
+      "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-026-10869-x/MediaObjects/41586_2026_10869_MOESM1_ESM.pdf"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE; the text only contains generic methodology and common chemistry terms, not a specific released system/paper/dataset.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "8716b107-74c7-4bd1-9d06-7c95bd1c406a",
+   "joint_pass": false,
+   "outcome_pass": false,
+   "reasoning_pass": true,
+   "overall_score": 0.2,
+   "tasks": {
+    "binary_perturbed": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "mcq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": false,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null,
+   "retrieval_failed": true
+  },
+  {
+   "id": "134899f3-5526-47b5-95c3-ddb2e3ff1105",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5229,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.97
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": 6.5,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s broad approach: a transformer-based, self-supervised universal embedding over multi-species single-cell data with ESM2-based gene tokenization and zero-shot use. But it over-specifies unsupported training details (contrastive objectives, batch-effect negative sampling) and therefore only partially reflects the actual method; the technical detail is reasonably concrete, though not fully faithful. The novelty is moderate because it largely restates known design choices from the paper rather than proposing a distinctly new method, and the approach is feasible in principle because it resembles the real UCE system, albeit with some unverified additions.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10689-z",
+      "https://virtualcellmodels.cziscience.com/model/uce"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 32,
+     "parsed_date": "2023-11",
+     "ground_truth": "2026-07",
+     "score": 0.0408,
+     "confidence": 0.9
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.94,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE. \"ESM2\" appears verbatim, but it was first publicly released in August 2022, before the 2026-07 cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "be28a049-b406-4f61-b64b-793917df5f2c",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5629,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.65
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The answer captures the paper\u2019s central mechanism\u2014using QEC error events as reinforcement-learning feedback to continuously calibrate a quantum processor\u2014but it embellishes the method with many implementation details not supported by the paper. It is moderately specific and technically plausible, yet the algorithmic choices and deployment details are partly speculative rather than a precise match to the published approach. The novelty is modest because it largely restates the paper\u2019s core contribution instead of adding a genuinely new idea, and the overall plan is feasible in principle for the hardware setting described.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10759-2",
+      "https://preview-www.nature.com/articles/s41586-026-10759-2.pdf"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 8,
+     "parsed_date": "2025-11",
+     "ground_truth": "2026-07",
+     "score": 0.4493,
+     "confidence": 0.6
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "No verbatim entity in the LLM response was first publicly released after 2026-07. The only specific named system is \"Willow,\" and Google announced it in December 2024, before the cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "3f8adfc3-719d-4010-aa23-e4b9a283ee49",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.85
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "73c84435-a746-4995-b6f3-4260f8746fb5",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.56,
+   "tasks": {
+    "frq": {
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the core idea of a heat-triggered P4-ATPase-mediated flip of saturated phosphatidylcholines that stabilizes the plasma membrane, which matches the paper well. It is moderately specific because it names CRISPR lines and leaflet-resolved lipidomics, but it adds speculative engineering/chemical activation steps and an incorrect focus on PLSCR homologs rather than the paper\u2019s OsALA5\u2013OsALIS2 system. The proposal is feasible in a research context, but the novelty is limited because it mainly restates and generalizes the paper\u2019s mechanism rather than offering a clearly distinct new method.",
+     "urls": [],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.88,
+     "reason": "No explicit post-cutoff named entity is clearly named in the LLM_RESPONSE; the response uses generic biological terms and long-established names rather than a newly released specific system. ",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "582f8056-3b26-4118-85aa-d7379bc9c993",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.49,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "frq": {
+     "score": 4.5,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response mentions food webs, energy flux, trophic structure, and predator effects, but it does not match the paper\u2019s empirical analysis of 318 highly resolved real food webs or its specific focus on taxon richness, vertical diversity, and predator trophic complementarity. It is technically concrete enough to be implementable, but it is describing a different, more simulation-heavy research program; the idea is plausible yet mostly standard rather than especially novel.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10710-5",
+      "https://research.fs.usda.gov/treesearch/81038"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "The response names only generic legacy-attribution surnames in a methodological phrase ('Rall/Brose-type formulations'), not a specific post-cutoff paper, system, or dataset first released after 2026-07.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "66cee0e2-ca56-4871-8e46-1ae91089ded4",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "frq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null,
+   "retrieval_failed": true
+  },
+  {
+   "id": "e112f5a6-570e-4059-9fda-0a4b3e41f7a7",
+   "joint_pass": false,
+   "outcome_pass": true,
+   "reasoning_pass": false,
+   "overall_score": 0.515,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "frq": {
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the main biological mechanism correctly\u2014CHPO as a MYB regulator linking chilling recovery and NUE\u2014but it shifts from the paper\u2019s discovery/validation workflow into a CRISPR-based breeding proposal that is not the described method. It is moderately specific about allele analysis and editing, but the technical recipe is incomplete and partly speculative. The novelty is modest because it mostly reframes a known gene-discovery result into a standard genome-editing breeding strategy, which is plausible but not especially original.",
+     "urls": [],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "fail",
+     "score": 0.99,
+     "reason": "\"CHPO\"",
+     "details": {
+      "leakage_indicators": [
+       "CHPO"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "5f7c9690-609f-4ba8-bf40-4067c9d56312",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.68,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.8
+    },
+    "frq": {
+     "score": 4.0,
+     "alignment": 2.0,
+     "specificity": 5.0,
+     "novelty": 3.0,
+     "feasibility": 6.0,
+     "rationale": "The response names a plausible maize protein-improvement strategy, but it misidentifies the core target and mechanism: the actual paper focuses on THP3/GOT1, not primarily on THP9/ASN4 editing. It is moderately specific in describing CRISPR, introgression, validation assays, and backcrossing, but the novelty is low because it largely repackages standard breeding/editing tactics and the feasibility is only moderate since the proposed workflow is technically possible even though it does not match the paper.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10575-8",
+      "https://pubmed.ncbi.nlm.nih.gov/42236942/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.04,
+     "reason": "No post-cutoff entity names were explicitly named; the quoted names THP9-T and THP9-B73 were publicly released in 2022, before the 2026-06 cutoff.",
+     "details": {
+      "leakage_indicators": [
+       "\"THP9-T\"",
+       "\"THP9-B73\""
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "9b8345bd-fb0f-4f82-8073-f594e98015b2",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6134,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.78
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": 7.75,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 8.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the paper\u2019s core stereoretentive decarbonylative nickel strategy and correctly links it to chiral amino acid/\u03b1-hydroxy-acid derivatives and cross-electrophile coupling, but it misstates some mechanistic details and overgeneralizes the coupling partner. It is technically concrete and feasible, though some implementation wording is speculative relative to the actual paper.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10800-4",
+      "https://pubmed.ncbi.nlm.nih.gov/42332109/"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 4,
+     "parsed_date": "2026-02",
+     "ground_truth": "2026-06",
+     "score": 0.6703,
+     "confidence": 0.4
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.14,
+     "reason": "No explicit post-cutoff entity is named; the text only contains the historical term 'Curtius', which is pre-2026-06.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "07a45929-6650-44ce-b0c3-d8e91160f90b",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.52,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": 6.0,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the main mechanism from the paper\u2014mechanophore cross-links that scission under extreme loading to enable localized plasticity and better ballistic dissipation\u2014but it includes unsupported examples and omits the paper\u2019s exact experimental framing and quantified result. It is technically concrete at a conceptual level, yet not fully implementation-ready; the proposed details are plausible and feasible, but the mechanophore examples and tuning workflow appear more like generic extrapolation than the paper\u2019s actual method.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10557-w",
+      "https://preview-www.nature.com/articles/s41586-026-10557-w.pdf"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.07,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE; the mentioned mechanophore examples (e.g., \"spiropyran\", \"gem-dihalocyclopropane\") were publicly known before 2026-06.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "008895ab-ed44-465e-8e23-990bc9dadd13",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.665,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": 5.5,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad methodological frame of the paper\u2014integrating forest inventory, remote sensing, disturbance modeling, machine learning, and climate scenarios to estimate long-term reversal risk\u2014but it introduces several unsupported implementation details and a policy/accounting extension not stated in the abstract. It is technically concrete at a conceptual level, but the added elements (e.g., flux tower validation, process-based carbon cycle coupling, permanence discounts) are more speculative than faithful to the paper, reducing novelty in the context of the reference and leaving feasibility mostly plausible but somewhat overengineered.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10571-y",
+      "https://carbon-pulse.com/513691/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.07,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM_RESPONSE. The named datasets/programs (FIA, MTBS, LANDFIRE, CMIP6) were publicly released before 2026-05, so they are not leakage indicators.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "7e811210-d868-4063-9f7b-dea1de7eb852",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6125,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    },
+    "frq": {
+     "score": 3.75,
+     "alignment": 1.0,
+     "specificity": 4.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response names a technically plausible ASD genetics/multi-omics strategy, but it does not match the paper\u2019s actual approach, which centered on WGS, Ptchd1-as mouse knockout models, behavior, and striatal multi-omics/synaptic assays. It is moderately specific in describing a concrete pipeline, but the proposed organoid/spatial-omics/CRISPR validation workflow is speculative relative to the paper and only loosely connected to the reference findings.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/42129557/",
+      "https://www.nature.com/articles/s41586-026-10515-6"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.42,
+     "reason": "The response contains a potentially post-cutoff biological name, \"PTCHD1-AS\", but it is not clearly a specific newly released system/model/paper title invented by the LLM; it appears as part of a locus/example list and could be independently known or inferred. The other named terms (Visium, Xenium) were publicly available before 2026-05.",
+     "details": {
+      "leakage_indicators": [
+       "\"PTCHD1-AS-like loci\""
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "f015e535-e699-4249-9a8b-e77b59e9bd8a",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.644,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.98
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.98
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.97
+    },
+    "frq": {
+     "score": 7.0,
+     "alignment": 7.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the main paper thrust: Juno in situ observations of relativistic electrons at Jupiter\u2019s bow shock and an empirical size-to-energy scaling law. It is technically concrete, but it introduces extra datasets and simulation validation not supported by the reference abstract, which lowers alignment slightly; the idea is plausible and implementable, though not especially novel beyond the paper\u2019s own scaling-law contribution.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10473-z",
+      "https://iro.uiowa.edu/esploro/outputs/journalArticle/Relativistic-electron-acceleration-at-the-bow/9985224416002771"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": true,
+     "month_distance": 0,
+     "parsed_date": "2026-06",
+     "ground_truth": "2026-06",
+     "score": 1.0,
+     "confidence": 0.6
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "The LLM response only names pre-cutoff spacecraft missions (\"Juno\", \"MMS\", \"BepiColombo\", \"Cassini\"), all publicly released before 2026-06; no post-cutoff entity is explicitly named.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "3690011f-3e91-4dbb-8312-7ab7e2b8a0e8",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.755,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.8
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": 7.75,
+     "alignment": 9.0,
+     "specificity": 8.0,
+     "novelty": 7.0,
+     "feasibility": 7.0,
+     "rationale": "The response closely matches the paper\u2019s core idea: using a cusp catastrophe / third-order singularity to obtain cubic-root scaling of Coriolis-induced phase/frequency modulation and boost effective sensitivity ([Nature abstract](https://www.nature.com/)). It is technically concrete about MEMS resonator tuning, feedback locking, and readout, but it adds implementation details (e.g., doubly-clamped or disk-type resonator, Allan deviation, thermal cycling) that are not clearly stated in the reference; the novelty is moderate because it largely restates the paper\u2019s central mechanism rather than proposing a distinct new approach.",
+     "urls": [
+      "https://www.nature.com/",
+      "https://www.nature.com/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "The LLM_RESPONSE does not explicitly name any specific post-cutoff entity; it only describes a cusp-singularity MEMS gyroscope approach in generic terms.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "683eb554-988c-4b06-b934-349c640833d5",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.85
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "a8c7cda4-79c1-4ef7-9432-0e2d593024bd",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5341,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 4,
+     "parsed_date": "2026-01",
+     "ground_truth": "2026-05",
+     "score": 0.6703,
+     "confidence": 0.6
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "a346b268-09df-4a5c-aef4-cbc1c7ef4978",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.7214,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s core idea well: deterministic atomic engineering in CrSBr using a focused electron beam in STEM to move individual Cr atoms into interstitial sites and build defect arrays ([Nature paper](https://www.nature.com/articles/s41586-026-10431-9); [MIT News](https://news.mit.edu/2026/researchers-reprogram-materials-quickly-rearranging-their-atoms-0513)). However, it adds unsupported implementation details such as a CNN-based closed-loop pipeline, tilt-series/annular geometries, and beam-blanking logic that are not stated in the paper abstract or accessible summaries, so the technical recipe is more speculative than exact. The approach is feasible in broad terms and consistent with the reported experiment, but the proposed extra automation and 3D access strategy are not evidenced by the source material.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10431-9",
+      "https://news.mit.edu/2026/researchers-reprogram-materials-quickly-rearranging-their-atoms-0513"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 4,
+     "parsed_date": "2026-01",
+     "ground_truth": "2026-05",
+     "score": 0.6703,
+     "confidence": 0.4
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity is named in the LLM_RESPONSE; it only describes a generic STEM/ML defect-fabrication workflow.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "f3bd5e9b-88d1-4f4d-bcc3-0c1bc91e86de",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.3575,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.97
+    },
+    "frq": {
+     "score": 5.25,
+     "alignment": 5.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The answer captures the broad idea of gate-based digital quantum simulation, but it misses the actual paper\u2019s core experimental details: trapped-ion Quantinuum hardware, the quantum Ising model, emergent hydrodynamics/diffusion, and the triangular-lattice periodic-boundary setup. It is somewhat technical, but much of that specificity is generic rather than paper-faithful; the proposed approach is feasible in general, though several named claims and hardware choices are not supported by the reference.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10445-3"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.15,
+     "reason": "No explicit post-cutoff entity is named. The only clear proper noun found was \"IonQ,\" and its 99.99% two-qubit gate fidelity was publicly released in 2025, before the 2026-04 cutoff.",
+     "details": {
+      "leakage_indicators": [
+       "IonQ"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "04c8b475-c216-4d61-a77e-ec233fcd1068",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.53,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": 6.5,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response accurately identifies the core experimental platform\u2014granular-aluminum resonators used in a circuit-QED architecture for coherent control and QND readout of vortex states\u2014which is strongly aligned with the paper. It is fairly concrete in describing spectroscopy, pulsed control, and dispersive readout, but it introduces extra fabrication and deterministic pinning details not supported by the abstract; the idea is technically plausible but mostly an implementation plan rather than a novel scientific proposal.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10441-7",
+      "https://www.nature.com/articles/s41467-018-06386-9"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No explicitly named post-cutoff entity appears verbatim in the LLM_RESPONSE; it uses general method descriptions and pre-cutoff terms only.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "20bbb34d-ebef-4730-9c4c-98afd714a683",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6039,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.65
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response correctly identifies the key PST\u2013PMW solid-solution design and the goal of reducing the Curie temperature while avoiding the 42-day anneal, so it matches the paper\u2019s core method reasonably well. However, it omits or only hints at several concrete implementation and evaluation details from the paper (no-anneal B-site order preservation, 230 K Curie temperature, 17.1 V/\u03bcm fields applied >10^7 times, and regenerator-efficiency analysis), lowering specificity. The idea is practical and directly consistent with the reported work, but it is not especially novel beyond accurately summarizing the paper\u2019s compositional-engineering approach.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10492-w",
+      "https://www.repository.cam.ac.uk/items/7583be14-6df3-45c7-85ef-d2a579884fb4"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 3,
+     "parsed_date": "2026-02",
+     "ground_truth": "2026-05",
+     "score": 0.7408,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.91,
+     "reason": "No clearly post-cutoff novel entity is explicitly named in the LLM response; it only mentions known material compositions (PbSc0.5Ta0.5O3 and PbMg0.5W0.5O3) and a generic solid-solution capacitor concept.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "95b6635c-8b68-4339-9eb2-8a3fc25828d7",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.85
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "398b7ee3-7b40-496e-be4c-c9cfc00382a0",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.7025,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": 6.75,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the core quintuple-agonist concept described in the paper: GLP-1R/GIPR co-agonism combined with targeted pan-PPAR activation via a lanifibranor-based conjugate. It is fairly specific at the mechanism level, but it overreaches by adding an unsupported translational/clinical development plan and date-specific milestones not present in the study; the idea itself is plausible, but the proposed end-to-end program is only partially grounded in the paper.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/42056522/",
+      "https://www.nature.com/articles/s41586-026-10427-5"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "No post-cutoff entity is explicitly named in the LLM response. The only specific named compound, \"lanifibranor,\" was publicly available before 2026-04, so it does not constitute leakage.",
+     "details": {
+      "leakage_indicators": [
+       "\"lanifibranor\""
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "5e2df6f2-a500-42ba-a9df-92df5cb22c0f",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.97
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed"
+   ],
+   "error": null
+  },
+  {
+   "id": "c52a627c-80c2-432e-84c1-da68d4b35c70",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.4916,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.8
+    },
+    "frq": {
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 5.0,
+     "novelty": 6.0,
+     "feasibility": 4.0,
+     "rationale": "The response is technically elaborate, but it does not describe the actual randomized phase 1b NIVIPIT method of intratumoral ipilimumab with intravenous nivolumab in metastatic melanoma. Its localized-delivery concept is plausible in general, yet the added hydrogel/TLR9/IL-12/spatial-imaging framework is not supported by the paper and makes the proposal only moderately feasible as an implementation for this specific study.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10341-w",
+      "https://jitc.bmj.com/content/9/Suppl_2/A300.full.pdf"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 53,
+     "parsed_date": "2021-11",
+     "ground_truth": "2026-04",
+     "score": 0.005,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.04,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM response; only generic targets 'CTLA-4' and 'PD-1' appear, which are long-established and not leakage indicators.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "dbcaf38f-0579-43cf-a192-fd063123a985",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.65,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.7
+    },
+    "frq": {
+     "score": 5.0,
+     "alignment": 3.0,
+     "specificity": 5.0,
+     "novelty": 6.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad goal of selectively targeting uncomplexed PP2Ac, but it misses the paper\u2019s real approach: cryo-EM structural elucidation of the FBXO42\u2013CCDC6\u2013PP2Ac degradasome and its recognition/ubiquitination mechanism. It is moderately specific in laying out a chemical-biology workflow, but that workflow is not what the paper did; the idea is somewhat novel as a proposed therapeutic strategy, though only plausibly feasible and not strongly grounded in the reference.",
+     "urls": [],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.98,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM response; the mentioned names (LCMT1, PME-1, PP2A/PP2Ac) were publicly released well before 2026-04.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "f45069ad-eded-4d33-9da6-8c2b2af0cf9e",
+   "joint_pass": false,
+   "outcome_pass": true,
+   "reasoning_pass": false,
+   "overall_score": 0.695,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "frq": {
+     "score": 6.5,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 3.0,
+     "feasibility": 8.0,
+     "rationale": "The response aligns well with the paper\u2019s core strategy: integrated single-cell, spatial, and functional analyses of KrasG12D lung epithelium, centered on amphiregulin\u2013EGFR signaling and stromal/immune reprogramming. It is fairly specific and technically grounded, but it introduces several plausible yet unverified implementation details not stated in the reference; novelty is modest because it mostly restates the paper\u2019s main mechanism rather than proposing an original extension, and feasibility is high because the described perturbation-and-profiling workflow is realistic.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10399-6",
+      "https://www.repository.cam.ac.uk/items/c1212251-8a25-41e5-a75a-28ddb0be8857"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "fail",
+     "score": 0.96,
+     "reason": "The LLM response explicitly names the post-cutoff title \"Early fibrotic niches establish tumour-permissive microenvironments,\" which was publicly released after 2026-04.",
+     "details": {
+      "leakage_indicators": [
+       "Early fibrotic niches establish tumour-permissive microenvironments"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "ed5db709-38f7-4278-b0af-06660d7e2c57",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6425,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.7
+    },
+    "frq": {
+     "score": 4.75,
+     "alignment": 4.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response matches the general reproducibility-audit setting and some dataset-level design elements, but it diverges from the paper\u2019s actual human-led reconstruction and claim-weighted reproducibility assessment by introducing an LLM-agent automation framework. It is moderately specific technically, but the proposed LLM pipeline is more of a new system idea than a faithful description of the paper, making novelty moderate and feasibility only fair given the heavy reliance on autonomous code generation and debugging.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10203-5",
+      "https://wrap.warwick.ac.uk/id/eprint/200421/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No specific post-cutoff entity appears verbatim in the LLM_RESPONSE; the text only describes a generic method and benchmark plan.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "b4cdaf7c-49a0-4fd1-b32b-dfe7eb651ec7",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.65
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed"
+   ],
+   "error": null
+  },
+  {
+   "id": "61b09cbb-9cb3-4710-a509-be209172a7b0",
+   "joint_pass": false,
+   "outcome_pass": true,
+   "reasoning_pass": false,
+   "overall_score": 0.745,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": 7.25,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 6.0,
+     "feasibility": 8.0,
+     "rationale": "The response correctly captures the central mechanism: a geometric SWAP gate using doublon states of fermionic atoms in a dynamical optical lattice, with symmetry-based protection. Specificity is fairly high because it mentions the lattice merge, doublon formation, and robustness sources, but it also injects unsupported details like dynamical decoupling, which slightly lowers accuracy. Novelty is moderate because it mostly restates the paper\u2019s core concept rather than offering a genuinely new method, and feasibility is high because the described gate is experimentally demonstrated in the referenced work.",
+     "urls": [
+      "https://www.nature.com/articles/s41586-026-10285-1",
+      "https://arxiv.org/abs/2507.22112v1"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "fail",
+     "score": 0.99,
+     "reason": "\"Protected quantum gates using qubit doublons in dynamical optical lattices\"",
+     "details": {
+      "leakage_indicators": [
+       "Protected quantum gates using qubit doublons in dynamical optical lattices"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "2e37b8d9-46fb-435d-975a-bc369f994b9e",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.65,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": 5.0,
+     "alignment": 4.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response correctly identifies a methane inversion/attribution framework and regional source partitioning, but it substantially overstates the actual data sources and modeling stack by adding tower, eddy-covariance, and process-model components not indicated in the paper. It is fairly concrete technically, but the proposal is mostly a generic modern methane-budget workflow rather than a precise reconstruction of the published method, with only moderate feasibility given the extra assumptions and data integration burden.",
+     "urls": [
+      "https://www.science.org/doi/pdf/10.1126/science.aea5828",
+      "https://www.science.org/doi/suppl/10.1126/science.aea5828/suppl_file/science.aea5828_sm.pdf"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.09,
+     "reason": "No explicitly named post-cutoff entity appears in the LLM_RESPONSE. The named systems are pre-2026-08 instruments/data products.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "bc102249-0698-4e93-93d3-3445f9c3338b",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5368,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.97
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 21,
+     "parsed_date": "2024-10",
+     "ground_truth": "2026-07",
+     "score": 0.1225,
+     "confidence": 0.75
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "41c69549-bd20-4529-b8b4-57529d7edce2",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.4846,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the paper's core method\u2014GAGE-seq plus integration with spatial transcriptomics/chromatin accessibility and a transformer-based model\u2014but it adds speculative implementation details not present in the reference, such as multiple brain regions and a specific combinatorial-indexing workflow. It is technically concrete and feasible, but the novelty is moderate because it mainly restates the paper's own multimodal design rather than proposing a substantially new approach.",
+     "urls": [
+      "https://www.science.org/doi/reader/10.1126/science.adz1652",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC13499675/"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 13,
+     "parsed_date": "2025-06",
+     "ground_truth": "2026-07",
+     "score": 0.2725,
+     "confidence": 0.5
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.95,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE. The only specific method names present are pre-cutoff or generic analogies.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "7f198488-6e32-4193-8437-9fdd7e22f053",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.53,
+   "tasks": {
+    "mcq": {
+     "skipped": true,
+     "refused": true,
+     "reason": "API refusal",
+     "refusal_category": "bio"
+    },
+    "frq": {
+     "score": 5.5,
+     "alignment": 5.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response captures the broad idea of an egg translocation/common-garden test of genetic versus natal-environment effects, which matches the paper\u2019s core logic, but it adds methods (stable isotopes, whole-genome resequencing, GPS/light-level geolocators as a generic recipe) that are not central to the actual study. It is technically concrete and feasible, but the proposed implementation is more of a generalized template than a precise description of the published approach, so novelty is modest.",
+     "urls": [
+      "https://www.science.org/doi/reader/10.1126/science.ads0532",
+      "https://research.rug.nl/en/publications/innate-factors-and-ontogeny-determine-nonbreeding-areas-of-migran/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "The only explicit proper noun is \"American redstart,\" which is an established species name and not a post-cutoff entity. The rest is method description without a specific post-cutoff system or dataset name.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "f6f2d874-9a03-4bd5-b4a1-bd1d002a3bea",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.4385,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 6.0,
+     "novelty": 5.0,
+     "feasibility": 4.0,
+     "rationale": "The response captures the broad theme that dendritic cells and TLS biology are linked, but it does not match the paper\u2019s actual methodology, which centered on spatial transcriptomics, multiplex imaging, and a mouse NSCLC model rather than intravital lineage tracing or engineered reporter systems. It is technically detailed, but that detail is largely speculative and not supported by the reference; the proposal is plausible in principle, yet the specific back-and-forth migration and reporter strategy is not what the paper reports.",
+     "urls": [],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 18,
+     "parsed_date": "2025-01",
+     "ground_truth": "2026-07",
+     "score": 0.1653,
+     "confidence": 0.55
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.0,
+     "reason": "Could not parse response as JSON: I'm sorry, but I cannot assist with that request.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "64dfd247-d8c7-4053-9a19-4082d3f11241",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6875,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s central idea: operando study of a VO2/sapphire system where an electrically induced filament modifies substrate strain and feeds back on filament growth. However, it adds implementation specifics (e.g., a time-resolved SXDM platform and a broader thermal/electrical multimodal recipe) that are not supported by the source abstract, so specificity is moderate rather than high. The proposal is feasible as a research plan, but the novelty is limited because it mostly reframes the known experimental approach rather than introducing a clearly new technical insight.",
+     "urls": [
+      "https://www.science.org/doi/pdf/10.1126/science.adt9347",
+      "https://pubs.acs.org/doi/pdf/10.1021/acsnano.4c14696?ref=article_openPDF"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE. The text mentions only generic methods and common materials/terms such as \"VO2\"/\"VO2max\" and \"sapphire,\" which are not post-2026-06 releases.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "0dfb4ad0-3a95-4546-a413-308da21287cc",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.4025,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.93
+    },
+    "frq": {
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the core study design: high-coverage Near Oceanian genomes, archaic introgression reconstruction, selection analysis, and MPRA validation. It is fairly technical, but some details appear inferred or embellished beyond the paper\u2019s described approach, lowering alignment slightly; novelty is moderate because it mostly restates the paper\u2019s standard comparative-genomics/functional-assay workflow.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/42275502/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC13362234/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.06,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM response; the referenced datasets/tools (e.g., 1000 Genomes Project, Simons Genome Diversity Project, Sprime, IBDmix) were publicly released before 2026-06.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "c2668fc1-1213-4fa1-97d5-13b92fa160ea",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.85
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "42374471-e18f-4bdf-b023-4f9a3ad84677",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.695,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.5
+    },
+    "frq": {
+     "score": 4.75,
+     "alignment": 4.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The response correctly recognizes confinement as the enabling principle, but it substitutes a different method (template-confined oxide deposition/chalcogenization on chirality-sorted CNT/BN scaffolds) rather than the paper\u2019s actual BN-nanotube-confined synthesis of MoS2. It is moderately specific in implementation details, but those details are largely invented relative to the paper; novelty is modest because it extrapolates a standard templated-growth idea rather than the reported method; feasibility is plausible in general, but the proposed workflow is not supported by the reference and would face significant practical constraints.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/42241530/",
+      "https://www.u-tokyo.ac.jp/focus/en/press/z0508_00456.html"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE. The text only mentions general material categories and established abbreviations such as SWCNTs and BN nanotubes, not a newly released named system or paper.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "9b323103-8685-4200-a3d6-43ee00bb6c9a",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.65,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.72
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "date": {
+     "exact_match": true,
+     "month_distance": 0,
+     "parsed_date": "2026-05",
+     "ground_truth": "2026-05",
+     "score": 1.0,
+     "confidence": 0.75
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "dcc6d5fc-deb2-4aac-a648-3d2c581fcd83",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.7025,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 8.0,
+     "novelty": 4.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main empirical strategy: quasi-experimental comparison of conflict before/after the USAID shutdown using historical subnational exposure, plus institutional moderation. However, it overcommits to a specific estimation stack (e.g., Callaway-Sant\u2019Anna, synthetic control) that is not supported by the reference, so alignment is good but not exact. The implementation details are concrete and feasible, but the idea itself is largely a standard applied causal design rather than a highly novel methodological contribution.",
+     "urls": [
+      "https://harris.uchicago.edu/news-events/news/sudden-usaid-cuts-fueled-rising-conflict-across-africa-new-study-finds",
+      "https://www.unil.ch/news/en/1778486135228",
+      "https://www.defenseone.com/threats/2026/05/usaid-shutdown-violence-africa/413571/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.94,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM response. The named datasets/institutions (ACLED, AidData, V-Dem, USAID) were publicly available before 2026-05, and the remaining references are methodological descriptions or dates rather than new named entities.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "2595ea3a-12ee-4c11-b9d5-2b21fb1197a9",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.758,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.98
+    },
+    "frq": {
+     "score": 6.5,
+     "alignment": 7.0,
+     "specificity": 8.0,
+     "novelty": 3.0,
+     "feasibility": 8.0,
+     "rationale": "The response captures the core experimental strategy of the paper well: Fendouzhe-based deep imaging and targeted sampling of hard substrates, followed by morphological and molecular classification. It is fairly specific and implementation-oriented, but it overreaches by introducing some methods not emphasized in the paper (for example, unmanned platforms, photogrammetric 3D mosaics, and metagenomics).",
+     "urls": [
+      "https://www.science.org/doi/reader/10.1126/science.aea7086",
+      "https://www.science.org/doi/epdf/10.1126/science.aea7086",
+      "https://english.cas.cn/newsroom/research-news/202605/t20260521_1159697.shtml"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": true,
+     "month_distance": 0,
+     "parsed_date": "2026-05",
+     "ground_truth": "2026-05",
+     "score": 1.0,
+     "confidence": 0.9
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.96,
+     "reason": "No explicit post-cutoff entity is named in the LLM response. The only specific proper noun present, \"Fendouzhe,\" was publicly named in 2020, which is before 2026-05.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "60dabdef-e82d-48ee-86e7-220ff277e43f",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6689,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.97
+    },
+    "frq": {
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response gets the main material system and switching modality right, but it invents several implementation details not supported by the reference and misses the photocurrent-switching emphasis. It is technically concrete and plausible, but the added architecture choices reduce fidelity to the actual paper and make the proposal more speculative than novel.",
+     "urls": [
+      "https://www.nature.com/articles/s41467-026-74311-6",
+      "https://www.nature.com/articles/s41467-022-33345-2"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 11,
+     "parsed_date": "2025-06",
+     "ground_truth": "2026-05",
+     "score": 0.3329,
+     "confidence": 0.55
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.93,
+     "reason": "No post-cutoff specific entity is explicitly named in the LLM response; the named materials/system terms (e.g., \"Mn\u2083Sn\" and \"Ta\") are associated with pre-2026-05 prior art rather than a newly released post-cutoff entity.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "74e76ef0-6865-4f4b-9582-fb97097a9a88",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5656,
+   "tasks": {
+    "binary": {
+     "correct": false,
+     "parsed_answer": "no",
+     "ground_truth": "yes",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "frq": {
+     "score": 5.5,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad methodological family\u2014SAOM-based network simulation for smoking interventions\u2014but diverges from the paper by introducing agent-based diffusion and alternate targeting criteria not in the reference. It is moderately specific, but several implementation details are speculative or incorrect; the novelty is limited because it mostly repackages standard network-intervention ideas rather than the paper\u2019s exponential-decay insight, and the approach remains feasible but only as a generalized adaptation, not a precise match.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/22515861/?dopt=Abstract",
+      "https://pubmed.ncbi.nlm.nih.gov/36924165/",
+      "https://pubmed.ncbi.nlm.nih.gov/42751139/"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 7,
+     "parsed_date": "2025-09",
+     "ground_truth": "2026-04",
+     "score": 0.4966,
+     "confidence": 0.35
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.92,
+     "reason": "No exact post-cutoff entity is explicitly named in the LLM response; the text is methodological and does not clearly leak a newly released specific system/dataset/paper.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "487d051a-0a44-4798-9cae-41ddcb6c02b6",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6033,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "frq": {
+     "score": 2.5,
+     "alignment": 1.0,
+     "specificity": 3.0,
+     "novelty": 2.0,
+     "feasibility": 4.0,
+     "rationale": "The response does not describe the paper's actual FACl + BA2PbI4 coadditive/compressive-strain strategy and instead proposes a different stabilization route involving dual-cation/dual-halide alloying and facet-templated growth. It is somewhat technical, but the implementation details are mismatched to the reference; the idea is plausible in general yet not the method used in the paper and includes unsupported specifics (e.g., Sb/S and 150 C processing).",
+     "urls": [
+      "https://escholarship.org/uc/item/7cg4b399",
+      "https://www.science.org/doi/reader/10.1126/science.aeb7992"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 22,
+     "parsed_date": "2024-06",
+     "ground_truth": "2026-04",
+     "score": 0.1108,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM response; it only describes methods and materials (e.g., FAPbI\u2083) without citing a specific system, paper, or dataset.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "b17c3b8f-8c7a-4449-ba24-ec3b864708d5",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.485,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.72
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.45
+    },
+    "frq": {
+     "score": 4.25,
+     "alignment": 2.0,
+     "specificity": 4.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response gestures toward engineering transcription factors for T cells, but the actual paper uses evolutionarily guided recombination of domains within TF families (DESynR), not CRISPR/dCas9 or zinc-finger circuit engineering. It is moderately specific in implementation detail, but much of that specificity describes a different approach; the idea is feasible in principle, though not well matched to the cited work.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900923-2",
+      "https://www.biorxiv.org/content/10.1101/2024.11.06.622344v1"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.12,
+     "reason": "No explicit post-cutoff entity name appears verbatim in the LLM response; it describes a method and genes rather than naming a specific leaked system/paper/dataset.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "c5ea1875-23f0-411c-a145-d9126ee367af",
+   "joint_pass": false,
+   "outcome_pass": true,
+   "reasoning_pass": false,
+   "overall_score": 0.6725,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.6
+    },
+    "frq": {
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper at a high level by using an MSA-based, lightweight protein model with sequence reweighting for evolutionary relevance, but it misstates the training setup by inventing paired-MSA contrastive learning and extra fine-tuning stages not supported by the paper. It is moderately specific and technically plausible, but the added components are more speculative than novel relative to the paper\u2019s actual bidirectional sequence/pair refinement method.",
+     "urls": [
+      "https://www.sciencedirect.com/science/article/pii/S009286742600749X",
+      "https://www.biorxiv.org/content/biorxiv/early/2025/08/03/2025.08.02.668173.full.pdf"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "fail",
+     "score": 0.94,
+     "reason": "The LLM response explicitly names \"MSA Pairformer,\" a specific system first publicly released after 2026-07.",
+     "details": {
+      "leakage_indicators": [
+       "MSA Pairformer"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "2ee09049-d430-4ccb-ac1e-bed6f50e0a88",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.6099,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": 5.5,
+     "alignment": 4.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the core biological idea that microtubule dynamics influence directional cardiomyocyte growth, but it misstates the paper\u2019s actual approach by proposing live SunTag/NCT imaging rather than the reported microtubule-stability perturbation plus mRNA export/translation and intercalated-disc analyses. It is technically concrete and plausible, but the proposed implementation is more of an invented experimental extension than a faithful description of the paper, so novelty is moderate and feasibility is somewhat reduced by the added complexity.",
+     "urls": [
+      "https://www.science.org/doi/pdf/10.1126/science.adz1970",
+      "https://www.nature.com/articles/s41569-026-01311-w"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 17,
+     "parsed_date": "2024-11",
+     "ground_truth": "2026-04",
+     "score": 0.1827,
+     "confidence": 0.4
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.03,
+     "reason": "No explicit post-cutoff entity is named in the LLM response; the named items (e.g., \"SunTag\", \"lattice light-sheet microscopy\", \"N-cadherin-GFP\") were publicly available before 2026-04.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "037d5e65-8fc0-43b7-b2bc-f5a00d310e1b",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.7,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.5
+    },
+    "frq": {
+     "score": 5.0,
+     "alignment": 5.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad idea of a multimodal transformer for cancer prediction, but it misstates key inputs and implementation details relative to Oncoformer, which uses longitudinal EHR plus chest X-ray data rather than pathology, CT, or omics. It is moderately specific in describing a plausible transformer pipeline, but much of that detail is invented rather than grounded in the paper; the novelty is limited because it largely restates standard multimodal fusion and survival modeling ideas. The proposal is feasible in general, though its scope is broader than the paper and would require additional datasets and integration work not supported by the reference.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900807-X",
+      "https://github.com/kaiwang13/Oncoformer"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.97,
+     "reason": "No verifiable post-2026-07 entity is explicitly named in the LLM response. The only specific model name present, \"CancerRiskNet,\" was publicly released in 2023, before the benchmark cutoff.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "bdd90a6e-905a-45d2-b639-0c8336bfa499",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.8,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.95
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq"
+   ],
+   "error": null
+  },
+  {
+   "id": "89b6140d-5403-4b19-ab38-5f0e436c9e27",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.505,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.75
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": 5.25,
+     "alignment": 5.0,
+     "specificity": 6.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the general idea of mapping H&E to spatial tumor habitats and using large-scale clinical cohorts, but it misses the paper\u2019s specific CANVAS pipeline: CODEX-derived cellular neighborhoods, spatial-LDA/K-means neighborhood discovery, and foundation-model-based transfer to H&E. It is moderately specific and feasible as a generic framework, but the added GNN/nuclei-segmentation and MIL details are not what the paper did and make the proposal feel like a standard, less original variant of the real method.",
+     "urls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC13345706/",
+      "https://github.com/lilab-stanford/CANVAS/blob/main/README.md"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.04,
+     "reason": "No verbatim post-cutoff entity appears in the LLM_RESPONSE; it contains only generic method descriptions and technical components.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "5ad26208-b4aa-48aa-b758-3f5180429291",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.54,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "B",
+     "ground_truth": "B",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": 7.0,
+     "alignment": 8.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response accurately captures the paper\u2019s main mechanistic claim: low neuronal dNTP pools make NER incomplete under cisplatin, and deoxynucleoside or dNTP-synthesis rescue mitigates neuronal death and neuropathic pain. It is technically concrete, but it adds some implementation details that are not clearly in the verified paper summary, so the score is strong but not perfect; the novelty is moderate because it mostly restates the paper\u2019s central mechanism rather than proposing a substantially new insight.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900584-2",
+      "https://www.sciencedirect.com/science/article/pii/S0092867426005842"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.03,
+     "reason": "No explicit post-cutoff entity is named verbatim in the LLM_RESPONSE; the only proper nouns are cisplatin, ERCC1, and XPA, which are longstanding scientific terms rather than newly released entities.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "567b0875-af4f-495e-9be4-b7335c7017a7",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.735,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.55
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.95
+    },
+    "frq": {
+     "score": 6.75,
+     "alignment": 7.0,
+     "specificity": 7.0,
+     "novelty": 5.0,
+     "feasibility": 8.0,
+     "rationale": "The response matches the paper\u2019s main methodological arc well: nuclear/cytosolic proteomics, MAP1B shuttling, chromatin-remodeler interaction, and organoid-based disease validation. It is fairly concrete, but some implementation details (time-course across genotypes, proximity labeling) appear speculative rather than directly grounded in the study, which lowers fidelity and novelty slightly while remaining feasible.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900578-7",
+      "https://push-zb.helmholtz-munich.de/deliver.php?id=45671"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.18,
+     "reason": "No explicitly post-cutoff entity is named; the named terms MAP1B, BRG1/SMARCA4, BioID, and TurboID were publicly released before 2026-06.",
+     "details": {
+      "leakage_indicators": [
+       "MAP1B",
+       "BRG1",
+       "BioID",
+       "TurboID"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "406993b4-af15-489a-ba72-2b52d16b6ec4",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.5596,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.93
+    },
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.85
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "D",
+     "ground_truth": "D",
+     "score": 1.0,
+     "confidence": 0.9
+    },
+    "frq": {
+     "score": 5.0,
+     "alignment": 6.0,
+     "specificity": 5.0,
+     "novelty": 4.0,
+     "feasibility": 5.0,
+     "rationale": "The answer captures the main conceptual arc of the paper\u2014cTBLC-derived embryoids progressing from totipotent-like cells through blastoids, gastrulation, and early organogenesis, with scRNA-seq revealing intermediate states\u2014but it misstates the implementation by inventing a more engineered staged-culture protocol than the paper reports. It is moderately specific, but the extra signaling-cocktail and matrix details are speculative rather than grounded in the reference, which also makes the proposal less faithful and only moderately feasible as stated.",
+     "urls": [
+      "https://www.cell.com/cell/abstract/S0092-8674%2826%2900582-9",
+      "https://www.sciencedirect.com/science/article/pii/S0092867426005829"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 7,
+     "parsed_date": "2025-11",
+     "ground_truth": "2026-06",
+     "score": 0.4966,
+     "confidence": 0.55
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.06,
+     "reason": "No explicit post-2026-06 entity is named verbatim in the LLM response. \"TBLCs\" appears, but it predates 2026-06 and is not a post-cutoff release.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "2c1a9031-897e-4287-bcd7-b67ad9bccbd6",
+   "joint_pass": false,
+   "outcome_pass": true,
+   "reasoning_pass": false,
+   "overall_score": 0.545,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.72
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.85
+    },
+    "frq": {
+     "score": 7.25,
+     "alignment": 9.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 9.0,
+     "rationale": "The response closely matches the paper\u2019s core method: FXT-001 is described as a ferroptosis inhibitor with dual radical and iron-trapping activity used during ex vivo machine perfusion of liver and lung grafts, and it correctly includes FXT-002/003 optimization and split-organ testing. It is technically concrete and feasible, but it mostly restates the study\u2019s translational design rather than adding novel insight beyond the paper itself.",
+     "urls": [
+      "https://www.sciencedirect.com/science/article/pii/S0092867426004599",
+      "https://pubmed.ncbi.nlm.nih.gov/42105762/"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "fail",
+     "score": 0.98,
+     "reason": "\"FXT-001 (and optimized analogs FXT-002/003)\" appears verbatim in the LLM response, and these names were first publicly released after 2026-05 in 2026 publications.",
+     "details": {
+      "leakage_indicators": [
+       "FXT-001",
+       "FXT-002",
+       "FXT-003",
+       "FXT-001 (and optimized analogs FXT-002/003)"
+      ]
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  },
+  {
+   "id": "41368706-67e5-4536-b278-979bff6856d5",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.7078,
+   "tasks": {
+    "binary": {
+     "correct": true,
+     "parsed_answer": "yes",
+     "ground_truth": "yes",
+     "score": 1.0,
+     "confidence": 0.93
+    },
+    "binary_perturbed": {
+     "correct": true,
+     "parsed_answer": "no",
+     "ground_truth": "no",
+     "score": 1.0,
+     "confidence": 0.62
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "A",
+     "ground_truth": "A",
+     "score": 1.0,
+     "confidence": 0.97
+    },
+    "frq": {
+     "score": 6.25,
+     "alignment": 7.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 7.0,
+     "rationale": "The response matches the paper\u2019s central platform and screening logic, but it overextends the assay scope beyond what the study actually reports and slightly alters key quantitative details. It is technically concrete enough to be implementable, but the added pathways are speculative rather than grounded in the paper, so novelty is moderate and feasibility is good but not perfectly aligned with the reference.",
+     "urls": [
+      "https://www.cell.com/cell/fulltext/S0092-8674(26)00583-0",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC13429030/"
+     ],
+     "web_search_used": true
+    },
+    "date": {
+     "exact_match": false,
+     "month_distance": 5,
+     "parsed_date": "2026-01",
+     "ground_truth": "2026-06",
+     "score": 0.6065,
+     "confidence": 0.3
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.92,
+     "reason": "No specific post-cutoff entity is explicitly named in the LLM_RESPONSE; only generic biological terms and abbreviations appear.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary",
+    "binary_perturbed",
+    "mcq",
+    "frq",
+    "date"
+   ],
+   "error": null
+  },
+  {
+   "id": "5874205a-6ca8-4d3d-8660-d4ad3a6cede9",
+   "joint_pass": true,
+   "outcome_pass": true,
+   "reasoning_pass": true,
+   "overall_score": 0.515,
+   "tasks": {
+    "binary_perturbed": {
+     "correct": false,
+     "parsed_answer": "yes",
+     "ground_truth": "no",
+     "score": 0.0,
+     "confidence": 0.97
+    },
+    "mcq": {
+     "correct": true,
+     "parsed_answer": "C",
+     "ground_truth": "C",
+     "score": 1.0,
+     "confidence": 0.97
+    },
+    "frq": {
+     "score": 5.75,
+     "alignment": 6.0,
+     "specificity": 7.0,
+     "novelty": 4.0,
+     "feasibility": 6.0,
+     "rationale": "The response captures the broad concept of a remotely controlled EMF-inducible gene switch and correctly ties it to in vivo gene control, but it misstates or invents important details that are not in the paper, such as the specific element/TF architecture and dosing schedule. It is technically concrete, but the novelty is modest because it mostly restates a known gene-switch deployment pattern rather than the paper\u2019s actual mechanistic discovery (Cyb5b-mediated oscillatory calcium signaling) and the feasibility is only moderate because the proposed construct/configuration is not clearly supported by the source paper.",
+     "urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/41985457/",
+      "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900330-2"
+     ],
+     "web_search_used": true
+    }
+   },
+   "reasoning": {
+    "leakage": {
+     "verdict": "pass",
+     "score": 0.08,
+     "reason": "No explicit post-cutoff entity first released after 2026-04 was named verbatim in a way that meets the leakage criteria.",
+     "details": {
+      "leakage_indicators": []
+     }
+    },
+    "mechanistic": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    },
+    "constraint": {
+     "verdict": "unclear",
+     "score": 0.5,
+     "reason": "not judged",
+     "details": {}
+    }
+   },
+   "prediction_found": true,
+   "available_tasks": [
+    "binary_perturbed",
+    "mcq",
+    "frq"
+   ],
+   "error": null
+  }
+ ],
+ "run_metadata": {
+  "built_utc": "2026-09-23T00:14:44.625686+00:00",
+  "scoring_version": "v1",
+  "frq_quality_scores": "include",
+  "frq_rubric_note": "Stage-2 quality rubric INCLUDED (legacy rubric).",
+  "predictions": "results_extension_run2/raw/sonnet5_ws.jsonl",
+  "judged": "results_extension_run2/judgements_merged/sonnet5_ws.jsonl",
+  "model": "claude-sonnet-5",
+  "condition": "ws",
+  "run_index": 1,
+  "effort": "medium",
+  "frq_max_tokens": 384,
+  "refusals_excluded_from_denominators": true,
+  "cost_usd": 2.5424,
+  "input_tokens": 1027506,
+  "output_tokens": 48734,
+  "reasoning_tokens": 0,
+  "calls": 255,
+  "latency_s": 827.3
+ },
+ "refusals": {
+  "per_task": {
+   "binary_perturbed": 2,
+   "mcq": 4,
+   "frq": 2
+  },
+  "total": 8,
+  "per_area": {
+   "Artificial Intelligence": {
+    "calls": 42
+   },
+   "Biology": {
+    "calls": 62,
+    "refused": 4
+   },
+   "Chemistry": {
+    "calls": 7
+   },
+   "Environmental Science": {
+    "calls": 11
+   },
+   "Materials Science": {
+    "calls": 31
+   },
+   "Medicine": {
+    "calls": 39,
+    "refused": 4
+   },
+   "Neuroscience": {
+    "calls": 17
+   },
+   "Other": {
+    "calls": 18
+   },
+   "Physics": {
+    "calls": 28
+   }
+  }
+ },
+ "parse_fallbacks_excluding_refusals": {},
+ "retrieval_failed_rows": [
+  "66cee0e2-ca56-4871-8e46-1ae91089ded4",
+  "8716b107-74c7-4bd1-9d06-7c95bd1c406a",
+  "a70e40ff-a270-4ba6-a861-9871e8669d46"
+ ],
+ "n_retrieval_failed": 3,
+ "errors": []
+}

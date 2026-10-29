@@ -1,0 +1,19 @@
+Metric                             GPT-5.4 (2025-08)             DeepSeek-R1 (2024-07)           Claude Sonnet (2025-01)         Claude Sonnet 5 (2026-01)             GPT-5.6 Sol (2026-02)
+                        d_know      d_fore         n      d_know      d_fore         n      d_know      d_fore         n      d_know      d_fore         n      d_know      d_fore         n
+Binary                  +0.172      +0.172        58      +0.050      +0.248       202      +0.074      +0.426       136          --          --        14          --          --         1
+Binary (pert.)          -0.162      +0.000        99      -0.007      -0.026       303      -0.029      -0.122       205      -0.083      -0.125        24          --          --         4
+MCQ                     -0.048      +0.154       104      +0.068      +0.116       293      -0.020      +0.112       205      +0.042      +0.000        24          --          --         3
+FRQ (0-10)              +0.233      +0.138       105      +0.043      +0.412       311      +0.122      +0.328       211          --          --         0          --          --         0
+Date (0-1)              +0.070      +0.436        58      +0.086      +0.121       203      +0.007      +0.117       136          --          --        14          --          --         1
+
+GPT-5.4: shared ids=500  post-cutoff ids=123
+
+DeepSeek-R1: shared ids=500  post-cutoff ids=381
+
+Claude Sonnet: shared ids=500  post-cutoff ids=286
+
+Claude Sonnet 5: shared ids=471  post-cutoff ids=30
+
+GPT-5.6 Sol: shared ids=500  post-cutoff ids=4
+
+wrote results_sonnet5_run1/tables/gap_decomposition.json

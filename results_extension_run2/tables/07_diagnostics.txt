@@ -1,0 +1,147 @@
+====================================================================================================
+1. REFUSALS BY MODEL AND AREA (extension, 815 events, 2,277 task instances)
+   Refusals are their own outcome category and are excluded from
+   denominators in the reported tables. Block 2 bounds that choice.
+====================================================================================================
+model              calls  refused    rate         Biology        Medicine       all other
+GPT-4o              2277        0    0.0%    0/508 (0.0%)    0/347 (0.0%)   0/1422 (0.0%)
+LLaMA 3.3 70B       2277        0    0.0%    0/508 (0.0%)    0/347 (0.0%)   0/1422 (0.0%)
+GPT-OSS 20B         2277        0    0.0%    0/508 (0.0%)    0/347 (0.0%)   0/1422 (0.0%)
+Claude S4.5         2277      361   15.9% 182/508 (35.8%)  97/347 (28.0%)  82/1422 (5.8%)
+GPT-5.4             2277        1    0.0%    0/508 (0.0%)    1/347 (0.3%)   0/1422 (0.0%)
+Claude Sonnet 5     2277       76    3.3%   40/508 (7.9%)   30/347 (8.6%)   6/1422 (0.4%)
+GPT-5.6 Sol         2277       11    0.5%    5/508 (1.0%)    6/347 (1.7%)   0/1422 (0.0%)
+DeepSeek-V4-Pro     2277        0    0.0%    0/508 (0.0%)    0/347 (0.0%)   0/1422 (0.0%)
+Claude Opus 4.8     2277       79    3.5%   44/508 (8.7%)   28/347 (8.1%)   7/1422 (0.5%)
+
+====================================================================================================
+2. SENSITIVITY TO THE REFUSAL CONVENTION
+   left  = refusals excluded from the denominator (what the tables report)
+   right = refusals scored as incorrect (worst case)
+   A ranking that changes between the two columns is convention-dependent.
+====================================================================================================
+model            task                           excluded            as wrong    shift
+Claude S4.5      binary                    0.316 (n=174)       0.281 (n=196)   -0.035
+Claude S4.5      binary_perturbed          0.636 (n=538)       0.535 (n=649)   -0.101
+Claude S4.5      mcq                       0.755 (n=473)       0.592 (n=606)   -0.162
+Claude S4.5      date                      0.317 (n=172)       0.278 (n=196)   -0.039
+
+GPT-5.4          binary                    0.673 (n=196)       0.673 (n=196)   +0.000
+GPT-5.4          binary_perturbed          0.345 (n=649)       0.345 (n=649)   +0.000
+GPT-5.4          mcq                       0.858 (n=606)       0.858 (n=606)   +0.000
+GPT-5.4          date                      0.154 (n=196)       0.154 (n=196)   +0.000
+
+Claude Sonnet 5  binary                    0.295 (n=193)       0.291 (n=196)   -0.005
+Claude Sonnet 5  binary_perturbed          0.766 (n=628)       0.741 (n=649)   -0.025
+Claude Sonnet 5  mcq                       0.910 (n=569)       0.855 (n=606)   -0.056
+Claude Sonnet 5  date                      0.228 (n=193)       0.225 (n=196)   -0.003
+
+GPT-5.6 Sol      binary                    0.719 (n=196)       0.719 (n=196)   +0.000
+GPT-5.6 Sol      binary_perturbed          0.398 (n=649)       0.398 (n=649)   +0.000
+GPT-5.6 Sol      mcq                       0.869 (n=602)       0.863 (n=606)   -0.006
+GPT-5.6 Sol      date                      0.221 (n=196)       0.221 (n=196)   +0.000
+
+Claude Opus 4.8  binary                    0.203 (n=192)       0.199 (n=196)   -0.004
+Claude Opus 4.8  binary_perturbed          0.775 (n=622)       0.743 (n=649)   -0.032
+Claude Opus 4.8  mcq                       0.928 (n=569)       0.871 (n=606)   -0.057
+Claude Opus 4.8  date                      0.200 (n=193)       0.197 (n=196)   -0.003
+
+   Models not listed refused nothing; their two columns are identical.
+====================================================================================================
+3. RUN-TO-RUN VARIANCE (repeated passes; models that reject temperature=0)
+   These models reject every sampling parameter, so temperature=0 is
+   unavailable. Repeated passes bound the resulting non-determinism.
+====================================================================================================
+
+Claude Sonnet 5  (3 passes)
+metric                    run1      run2      run3      mean       sd    range
+merged_binary           0.6553    0.6390    0.6561    0.6501   0.0096   0.0171
+binary                  0.2953    0.2902    0.2694    0.2850   0.0137   0.0259
+binary_perturbed        0.7659    0.7464    0.7751    0.7625   0.0147   0.0287
+mcq                     0.9104    0.9030    0.9014    0.9049   0.0048   0.0090
+date_score              0.2282    0.2303    0.2362    0.2316   0.0041   0.0080
+refusals               76.0000   79.0000   78.0000   77.6667   1.5275   3.0000
+
+Claude Opus 4.8  (3 passes)
+metric                    run1      run2      run3      mean       sd    range
+merged_binary           0.6400    0.6450    0.6364    0.6405   0.0043   0.0086
+binary                  0.2031    0.2188    0.2240    0.2153   0.0109   0.0209
+binary_perturbed        0.7749    0.7765    0.7637    0.7717   0.0070   0.0128
+mcq                     0.9279    0.9227    0.9246    0.9251   0.0026   0.0052
+date_score              0.1998    0.2021    0.1969    0.1996   0.0026   0.0052
+refusals               79.0000   79.0000   78.0000   78.6667   0.5774   1.0000
+
+====================================================================================================
+4. COST AND TOKEN ACCOUNTING (extension, per model, base condition)
+   'API time' is the SUM of per-call latencies, not wall clock: runs
+   were concurrent, so wall clock is far shorter. Cost is computed
+   from token counts at list prices, and is shown only for
+   first-party APIs -- Azure deployments bill at negotiated rates and
+   GPT-OSS 20B ran on local GPUs.
+====================================================================================================
+model              serving  calls   input tok  output tok   reasoning API time h        cost
+GPT-4o               azure   2277     353,854     174,486           0        0.6 n/a (azure)
+LLaMA 3.3 70B        azure   2277     411,191     190,708           0        1.1 n/a (azure)
+GPT-OSS 20B          local   2277     490,474   1,131,760           0        2.4 n/a (local)
+Claude S4.5            api   2277     395,412     310,594           0        2.8       $5.85
+GPT-5.4                api   2277     351,455   1,429,331   1,142,642        4.3      $14.73
+Claude Sonnet 5        api   2277     567,329     424,979           0        2.0       $5.38
+GPT-5.6 Sol            api   2277     349,850     865,700     639,437        5.1      $18.71
+DeepSeek-V4-Pro      azure   2277     339,381     200,271           0        2.1 n/a (azure)
+Claude Opus 4.8        api   2277     567,047     407,056           0        2.6      $13.01
+                                                                           first-party total $57.69
+
+====================================================================================================
+5. CONSTANT-ANSWER BASELINES FOR MERGED BINARY
+   binary -> ground truth always 'yes'; perturbed -> always 'no'.
+   So the class balance is just the task-type ratio, which differs
+   between corpora. Compare models to these baselines, not to each
+   other across corpora.
+====================================================================================================
+   original (Jan 24-Mar 26)   n=6408   always-YES 0.430   always-NO 0.570
+   extension (Apr-Aug 26)     n=845    always-YES 0.232   always-NO 0.768
+
+   Panel vs the always-NO baseline on the extension (0.768):
+   model              merged binary   vs baseline
+   GPT-4o                     0.566        -0.202
+   LLaMA 3.3 70B              0.271        -0.497
+   GPT-OSS 20B                0.567        -0.201
+   Claude S4.5                0.558        -0.210
+   GPT-5.4                    0.421        -0.347
+   Claude Sonnet 5            0.655        -0.113
+   GPT-5.6 Sol                0.472        -0.296
+   DeepSeek-V4-Pro            0.673        -0.095
+   Claude Opus 4.8            0.640        -0.128
+
+   0 of 9 models beat a constant 'no' on the extension.
+
+====================================================================================================
+6. MCQ PERMUTATION: where does the correct answer land?
+   uniform = 25% per slot; chi-square df=3, critical 7.81 at p=.05
+====================================================================================================
+model                 n          A       B       C       D    chi2   verdict   perms
+GPT-4o              606      26.6%   22.4%   24.6%   26.4%    2.70   uniform   24/24
+LLaMA 3.3 70B       606      26.6%   22.4%   24.6%   26.4%    2.70   uniform   24/24
+GPT-OSS 20B         606      26.6%   22.4%   24.6%   26.4%    2.70   uniform   24/24
+Claude S4.5         606      26.6%   22.4%   24.6%   26.4%    2.70   uniform   24/24
+GPT-5.4             606      26.6%   22.4%   24.6%   26.4%    2.70   uniform   24/24
+Claude Sonnet 5     606      26.6%   22.4%   24.6%   26.4%    2.70   uniform   24/24
+GPT-5.6 Sol         606      26.6%   22.4%   24.6%   26.4%    2.70   uniform   24/24
+DeepSeek-V4-Pro     606      26.6%   22.4%   24.6%   26.4%    2.70   uniform   24/24
+Claude Opus 4.8     606      26.6%   22.4%   24.6%   26.4%    2.70   uniform   24/24
+
+   identical correct-answer distribution across models: YES
+
+   model answer distribution (first-option bias shows up here):
+   model                   A       B       C       D
+   GPT-4o              32.7%   21.5%   25.2%   20.6%
+   LLaMA 3.3 70B       30.7%   21.8%   25.9%   21.6%
+   GPT-OSS 20B         26.9%   21.7%   27.4%   24.0%
+   Claude S4.5         24.3%   24.3%   25.4%   26.0%
+   GPT-5.4             28.2%   23.0%   22.5%   26.3%
+   Claude Sonnet 5     25.5%   20.9%   26.9%   26.7%
+   GPT-5.6 Sol         26.7%   23.4%   24.3%   25.6%
+   DeepSeek-V4-Pro     24.1%   24.3%   29.0%   22.6%
+   Claude Opus 4.8     25.8%   24.3%   24.4%   25.5%
+
+wrote results_extension_run2/tables/07_diagnostics.json

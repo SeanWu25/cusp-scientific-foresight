@@ -1,0 +1,157 @@
+{
+ "manifest_version": 1,
+ "created_utc": "2026-09-22T12:39:06.247880+00:00",
+ "run_label": "claude-opus-4-8 base/ws/ws_cutoff, original + extension",
+ "corpus_window": "2024-01..2026-03",
+ "repo": {
+  "git_sha": "c4d3f268a06cd347606d0d7857a3becbbfabe62e",
+  "branch": "sonnet5-run1",
+  "dirty": "(working-tree status omitted)"
+ },
+ "datasets": {
+  "corpus": {
+   "path": "archive/data/canonical/merged_validated_cusp_fixed.jsonl",
+   "sha256": "d9a05b199cac2ee846a01836face693a9cc2203d9092de6381023c81dde6a0ba",
+   "md5": "648f325afb0fefa22c8c05a069067152",
+   "n_rows": 4760
+  },
+  "pinned_500_subset": {
+   "path": "archive/data/sample/sample_500_stratified.jsonl",
+   "sha256": "42ca01bbaed4075f421a3fc51443929fa46ec0b67d17e60fd567e2522f935184",
+   "md5": "c46d86a7a36d21f86a17ee136fdaba02",
+   "n_rows": 500
+  }
+ },
+ "prompt_templates": {
+  "BINARY_SYSTEM": {
+   "sha256": "c081ba7a87eb6d3ef4915939d8bfcc2ca7be5a10aaa96b55f0c763233a3294d7",
+   "chars": 348
+  },
+  "MCQ_SYSTEM": {
+   "sha256": "5d735232358a25114b8049cf8e90a241b2342aba71d04029734eff4198d54c00",
+   "chars": 361
+  },
+  "FRQ_SYSTEM": {
+   "sha256": "aac836d590d05cd7dd1a7a9142c46c5941a5d721ce3e02b0b58e6abd382508a2",
+   "chars": 231
+  },
+  "DATE_SYSTEM": {
+   "sha256": "b29900b445b1f80029cb9e3b590e659ef1abc0a8f8fb02315ff1d394ac0e4db4",
+   "chars": 328
+  }
+ },
+ "judge_rubrics": {
+  "judge_frq_combined": {
+   "sha256": "fc24e69dfec1b214eee6bdfc87357b2f65e447fed79969702a7b25fe56474679",
+   "chars": 2697
+  },
+  "judge_leakage": {
+   "sha256": null,
+   "chars": null,
+   "note": "prompt is an f-string; hashed from source text",
+   "source_sha256": "c3b420732a52712ce201a03452ccca151da3e0d171a1be4b4cf5f695be330954"
+  },
+  "judge_mechanistic": {
+   "sha256": "d1d56e1a22a8e57f6748dee22ad73a3e5ca5e7cea7ebe51bcae2d9d1fba81d0f",
+   "chars": 1011
+  },
+  "judge_constraint": {
+   "sha256": "301ddee2c99b74433caa46896ac1f62215a237455a7b74dabf5e4951c7f3568c",
+   "chars": 1578
+  },
+  "grade_frq_legacy": {
+   "sha256": "8438e9ce1622b0cc7c6d21ae70e137ab1073d1e731c1c5adb453bb51642a8ba5",
+   "chars": 1117
+  }
+ },
+ "code_sha256": {
+  "scripts/eval.py": "6ef4d7dc7ed523df3776d23fe76f6246a686d0f8d6c5ce24d6ab233ce5153719",
+  "scripts/test_LLM.py": "20070b7f00535cb2d704d6f8cf6f98d33b70e789d628194d1cb967da4c04636f",
+  "scripts/web_search.py": "e5ec34c66dc65c63996eadb7026e3677f249bf16da8a613485cd48ac558a6e71",
+  "scripts/run_cusp.py": "3e4b91c2cbdc637cb7e8c2669e26756adfd01e7c8d578e22fba05a8cdbc240f6"
+ },
+ "scoring_constants": {
+  "date_score": "exp(-0.1 * |months between predicted and ground truth|)",
+  "frq_scale": "0-10 per dimension; frq_score = mean(alignment, specificity, novelty, feasibility); FRQ pass = score >= 5.0",
+  "merged_binary": "pooled correct counts: (c_orig + c_pert)/(n_orig + n_pert)",
+  "outcome_weight": 0.6,
+  "reasoning_weight": 0.4,
+  "mcq_shuffle_seed": 42
+ },
+ "partition_rule": {
+  "field": "publication_date (YYYY-MM) from the benchmark JSONL",
+  "main_tables": "pre if pub_month < cutoff_month else post (cutoff month counts as POST) \u2014 make_latex_tables.py, compare_models.py",
+  "gap_and_calibration_tables": "post if pub_month > cutoff_month (cutoff month counts as PRE) \u2014 filter_ids_by_cutoff in make_web_search_cutoff_table.py",
+  "note": "These two conventions differ by one month and BOTH are used in the published tables. Each table is reproduced under the convention its own generator used, so every Sonnet 5 row is comparable with the six published rows in that same table."
+ },
+ "model_under_test": {
+  "display_name": "Claude Opus 4.8",
+  "model_id": "claude-opus-4-8",
+  "provider": "ANTHROPIC",
+  "knowledge_cutoff": "2026-01",
+  "training_cutoff": "2026-01",
+  "cutoff_source": "https://platform.claude.com/docs/en/models/opus-4-8/overview (Reliable knowledge cutoff: Jan 2026; Training data cutoff: Jan 2026)",
+  "released": "2026-05-28",
+  "api_probe": {
+   "requested_model_id": "claude-opus-4-8",
+   "api_reported_model": "claude-opus-4-8",
+   "sdk_version": "0.94.1",
+   "is_pinned_snapshot": true,
+   "snapshot_note": "Claude 4.6-generation and later use dateless model IDs. Per Anthropic's model-versioning docs the dateless ID IS the pinned snapshot, not a floating alias; weights for a given ID never change. https://platform.claude.com/docs/en/about-claude/models/model-ids-and-versions",
+   "rejected_sampling_params": {
+    "temperature": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': '`temperature` is deprecated for this model.'}, 'request_id': 'req_011CfJVVW1EqGgz1VUGtpMsD'}",
+    "top_p": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': '`top_p` is deprecated for this model.'}, 'request_id': 'req_011CfJVVX1Wnun4PjPqzScq2'}",
+    "top_k": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': '`top_k` is deprecated for this model.'}, 'request_id': 'req_011CfJVVXwZwJDrTYbqfe1ca'}"
+   }
+  },
+  "status": "active (legacy)",
+  "list_price_usd_per_mtok": {
+   "input": 5.0,
+   "output": 25.0,
+   "source": "same page"
+  },
+  "snapshot_note": "dateless ID is a pinned snapshot (4.6 generation onward); response.model echoes claude-opus-4-8",
+  "sampling": "temperature/top_p/top_k rejected with 400 (verified 2026-09-22); effort=medium; repeated passes bound non-determinism"
+ },
+ "decoding": {
+  "temperature": null,
+  "top_p": null,
+  "top_k": null,
+  "effort": "medium",
+  "thinking": "adaptive (always on for this model; not configurable off in the way older models were effectively greedy)",
+  "max_tokens": 2048,
+  "frq_max_tokens": 384,
+  "retries": 2,
+  "retry_backoff": "2**attempt seconds"
+ },
+ "unmatchable_parameters": [
+  {
+   "parameter": "temperature",
+   "six_published_models": 0.0,
+   "sonnet5": "cannot be sent \u2014 HTTP 400 'temperature is deprecated for this model'. The model runs at its default sampling setting, so it is stochastic where the other six were greedy. This is the reason run 1 is executed three times."
+  },
+  {
+   "parameter": "reasoning/thinking effort",
+   "six_published_models": "not exposed; no run recorded a reasoning effort setting",
+   "sonnet5": "adaptive thinking always on; effort pinned to 'medium' (API default is 'high')"
+  },
+  {
+   "parameter": "FRQ max_tokens",
+   "six_published_models": "250 for Claude Sonnet 4.5 (ANTHROPIC branch), 2048 for the five OpenAI/Azure models",
+   "sonnet5": "384; note Sonnet 5 uses a newer tokenizer, so an identical token cap yields ~26% fewer characters than it did for Claude Sonnet 4.5 (~770 vs ~1036 chars)"
+  }
+ ],
+ "judge": {
+  "judge_model": "gpt-5.4-mini",
+  "endpoint_host": "<azure-openai-resource>",
+  "api_surface": "OpenAI Responses API with the web_search tool (eval.LLMClient._call_responses_api)",
+  "tool_choice_leakage": "required",
+  "tool_choice_rubric": "auto (default)",
+  "two_stage_protocol": [
+   "stage 1: judge_leakage  \u2014 contamination audit, web search forced",
+   "stage 2: judge_frq_combined \u2014 4-dimension rubric, 0-10 each, frq_score = unweighted mean of the four"
+  ],
+  "api_reported_model": "gpt-5.4-mini",
+  "reachable": true
+ }
+}

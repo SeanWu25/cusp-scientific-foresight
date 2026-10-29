@@ -1,0 +1,62 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{\textbf{Fixed-evidence gaps on 1,000 events.}
+The events are the pinned 500-event subset and 500 events published from March to August 2026.
+Each row is one model and one task.
+Values are paired score differences on the same events, with 95\% confidence intervals in brackets.
+The knowledge gap is fixed-packet WS+Cutoff minus Base.
+The forecasting gap is fixed-packet WS minus fixed-packet WS+Cutoff.
+Binary, MCQ and Date gaps use a 0--1 scale.
+FRQ gaps use rubric points on a 0--10 scale.
+$N$ is the number of shared events.
+Post-cutoff events have a publication month after the cutoff month.
+A dash marks a cell with fewer than 20 events.
+Main Fig.~\ref{fig:gaps}a shows these values.}
+\label{tab:si_ret_gaps_1000}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{l l r l l r l l}
+\toprule
+& & \multicolumn{3}{c}{Pre-cutoff events} & \multicolumn{3}{c}{Post-cutoff events} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Model & Task & $N$ & Knowledge gap & Forecasting gap & $N$ & Knowledge gap & Forecasting gap \\
+\midrule
+GPT-4o (cutoff 2023-10) & Binary & -- & -- & -- & 426 & $+$0.291 {\scriptsize[$+$0.238, $+$0.344]} & $+$0.347 {\scriptsize[$+$0.298, $+$0.397]} \\
+ & Binary (perturbed) & -- & -- & -- & 795 & $-$0.148 {\scriptsize[$-$0.187, $-$0.110]} & $-$0.126 {\scriptsize[$-$0.163, $-$0.089]} \\
+ & MCQ & -- & -- & -- & 814 & $+$0.097 {\scriptsize[$+$0.063, $+$0.131]} & $+$0.243 {\scriptsize[$+$0.209, $+$0.277]} \\
+ & FRQ (0--10) & -- & -- & -- & 811 & $+$0.491 {\scriptsize[$+$0.415, $+$0.568]} & $+$0.696 {\scriptsize[$+$0.607, $+$0.784]} \\
+ & Date & -- & -- & -- & 426 & $+$0.079 {\scriptsize[$+$0.043, $+$0.115]} & $+$0.109 {\scriptsize[$+$0.068, $+$0.149]} \\
+\addlinespace
+LLaMA 3.3 70B (cutoff 2023-12) & Binary & -- & -- & -- & 424 & $-$0.050 {\scriptsize[$-$0.080, $-$0.019]} & $+$0.073 {\scriptsize[$+$0.043, $+$0.103]} \\
+ & Binary (perturbed) & -- & -- & -- & 794 & $+$0.120 {\scriptsize[$+$0.091, $+$0.148]} & $+$0.008 {\scriptsize[$-$0.024, $+$0.039]} \\
+ & MCQ & -- & -- & -- & 812 & $+$0.071 {\scriptsize[$+$0.037, $+$0.106]} & $+$0.277 {\scriptsize[$+$0.244, $+$0.310]} \\
+ & FRQ (0--10) & -- & -- & -- & 808 & $+$0.505 {\scriptsize[$+$0.441, $+$0.568]} & $+$0.735 {\scriptsize[$+$0.658, $+$0.811]} \\
+ & Date & -- & -- & -- & 424 & $-$0.049 {\scriptsize[$-$0.078, $-$0.019]} & $+$0.110 {\scriptsize[$+$0.074, $+$0.145]} \\
+\addlinespace
+Claude Sonnet 4.5 (cutoff 2025-01) & Binary & 135 & $+$0.393 {\scriptsize[$+$0.294, $+$0.492]} & $+$0.074 {\scriptsize[$+$0.014, $+$0.135]} & 250 & $+$0.084 {\scriptsize[$+$0.014, $+$0.154]} & $+$0.464 {\scriptsize[$+$0.401, $+$0.527]} \\
+ & Binary (perturbed) & 144 & $+$0.014 {\scriptsize[$-$0.085, $+$0.112]} & $-$0.007 {\scriptsize[$-$0.063, $+$0.049]} & 520 & $+$0.010 {\scriptsize[$-$0.034, $+$0.053]} & $-$0.125 {\scriptsize[$-$0.169, $-$0.081]} \\
+ & MCQ & 158 & $+$0.025 {\scriptsize[$-$0.059, $+$0.110]} & $-$0.019 {\scriptsize[$-$0.086, $+$0.048]} & 479 & $+$0.000 {\scriptsize[$-$0.046, $+$0.046]} & $+$0.098 {\scriptsize[$+$0.054, $+$0.143]} \\
+ & FRQ (0--10) & 162 & $+$0.826 {\scriptsize[$+$0.631, $+$1.020]} & $+$0.080 {\scriptsize[$-$0.049, $+$0.209]} & 556 & $+$0.241 {\scriptsize[$+$0.164, $+$0.319]} & $+$0.454 {\scriptsize[$+$0.377, $+$0.531]} \\
+ & Date & 133 & $+$0.293 {\scriptsize[$+$0.209, $+$0.378]} & $-$0.071 {\scriptsize[$-$0.151, $+$0.009]} & 248 & $-$0.036 {\scriptsize[$-$0.080, $+$0.008]} & $+$0.184 {\scriptsize[$+$0.127, $+$0.241]} \\
+\addlinespace
+GPT-5.4 (cutoff 2025-08) & Binary & 237 & $+$0.270 {\scriptsize[$+$0.203, $+$0.337]} & $+$0.013 {\scriptsize[$-$0.021, $+$0.047]} & 189 & $+$0.132 {\scriptsize[$+$0.059, $+$0.206]} & $+$0.148 {\scriptsize[$+$0.093, $+$0.203]} \\
+ & Binary (perturbed) & 294 & $+$0.058 {\scriptsize[$-$0.016, $+$0.132]} & $+$0.020 {\scriptsize[$-$0.027, $+$0.068]} & 501 & $-$0.070 {\scriptsize[$-$0.116, $-$0.024]} & $+$0.000 {\scriptsize[$-$0.043, $+$0.043]} \\
+ & MCQ & 330 & $+$0.094 {\scriptsize[$+$0.054, $+$0.134]} & $+$0.000 {\scriptsize[$-$0.022, $+$0.022]} & 484 & $-$0.048 {\scriptsize[$-$0.087, $-$0.008]} & $+$0.130 {\scriptsize[$+$0.096, $+$0.164]} \\
+ & FRQ (0--10) & 319 & $+$1.097 {\scriptsize[$+$0.968, $+$1.226]} & $-$0.027 {\scriptsize[$-$0.115, $+$0.060]} & 486 & $+$0.397 {\scriptsize[$+$0.311, $+$0.482]} & $+$0.667 {\scriptsize[$+$0.571, $+$0.763]} \\
+ & Date & 237 & $+$0.454 {\scriptsize[$+$0.397, $+$0.510]} & $+$0.022 {\scriptsize[$-$0.012, $+$0.057]} & 189 & $+$0.095 {\scriptsize[$+$0.053, $+$0.137]} & $+$0.387 {\scriptsize[$+$0.333, $+$0.441]} \\
+\addlinespace
+Claude Sonnet 5 (cutoff 2026-01) & Binary & 271 & $+$0.280 {\scriptsize[$+$0.209, $+$0.352]} & $+$0.026 {\scriptsize[$-$0.014, $+$0.066]} & 144 & $+$0.111 {\scriptsize[$+$0.011, $+$0.212]} & $+$0.438 {\scriptsize[$+$0.354, $+$0.521]} \\
+ & Binary (perturbed) & 356 & $+$0.003 {\scriptsize[$-$0.055, $+$0.061]} & $+$0.011 {\scriptsize[$-$0.021, $+$0.043]} & 408 & $-$0.088 {\scriptsize[$-$0.131, $-$0.045]} & $-$0.051 {\scriptsize[$-$0.095, $-$0.008]} \\
+ & MCQ & 373 & $+$0.056 {\scriptsize[$+$0.022, $+$0.090]} & $+$0.016 {\scriptsize[$-$0.000, $+$0.033]} & 375 & $-$0.013 {\scriptsize[$-$0.047, $+$0.020]} & $+$0.075 {\scriptsize[$+$0.042, $+$0.108]} \\
+ & FRQ (0--10) & 390 & $+$1.426 {\scriptsize[$+$1.299, $+$1.552]} & $+$0.034 {\scriptsize[$-$0.053, $+$0.121]} & 402 & $+$0.412 {\scriptsize[$+$0.313, $+$0.511]} & $+$0.833 {\scriptsize[$+$0.712, $+$0.954]} \\
+ & Date & 271 & $+$0.329 {\scriptsize[$+$0.279, $+$0.380]} & $+$0.019 {\scriptsize[$-$0.009, $+$0.046]} & 144 & $+$0.090 {\scriptsize[$+$0.045, $+$0.136]} & $+$0.383 {\scriptsize[$+$0.325, $+$0.440]} \\
+\addlinespace
+GPT-5.6 Sol (cutoff 2026-02) & Binary & 294 & $+$0.017 {\scriptsize[$-$0.031, $+$0.065]} & $+$0.034 {\scriptsize[$+$0.008, $+$0.060]} & 131 & $+$0.038 {\scriptsize[$-$0.020, $+$0.096]} & $+$0.176 {\scriptsize[$+$0.107, $+$0.244]} \\
+ & Binary (perturbed) & 389 & $+$0.144 {\scriptsize[$+$0.087, $+$0.201]} & $+$0.000 {\scriptsize[$-$0.031, $+$0.031]} & 404 & $-$0.037 {\scriptsize[$-$0.089, $+$0.015]} & $+$0.087 {\scriptsize[$+$0.032, $+$0.142]} \\
+ & MCQ & 425 & $+$0.073 {\scriptsize[$+$0.041, $+$0.105]} & $+$0.014 {\scriptsize[$+$0.001, $+$0.027]} & 379 & $-$0.005 {\scriptsize[$-$0.042, $+$0.031]} & $+$0.084 {\scriptsize[$+$0.050, $+$0.119]} \\
+ & FRQ (0--10) & 410 & $+$1.080 {\scriptsize[$+$0.965, $+$1.196]} & $+$0.066 {\scriptsize[$-$0.008, $+$0.140]} & 380 & $+$0.281 {\scriptsize[$+$0.179, $+$0.383]} & $+$0.711 {\scriptsize[$+$0.589, $+$0.832]} \\
+ & Date & 295 & $+$0.405 {\scriptsize[$+$0.353, $+$0.457]} & $+$0.024 {\scriptsize[$+$0.000, $+$0.048]} & 131 & $+$0.091 {\scriptsize[$+$0.049, $+$0.132]} & $+$0.381 {\scriptsize[$+$0.322, $+$0.440]} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

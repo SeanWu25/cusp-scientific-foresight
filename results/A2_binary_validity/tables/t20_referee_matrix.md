@@ -1,0 +1,8 @@
+### Each referee alone, after the mechanical gates
+
+| referee | R1_certified | R2_certified | verbatim_quote_failures | quote_failure_rate |
+|---|---|---|---|---|
+| sonnet5 | 7 | 10 | 2/12 | 0.167 |
+| opus48 | 8 | 18 | 0/19 | 0.000 |
+| gpt55 | 2 | 17 | 0/18 | 0.000 |
+| gpt54mini | 7 | 4 | 8/13 | 0.615 |

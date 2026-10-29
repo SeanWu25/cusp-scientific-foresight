@@ -1,0 +1,407 @@
+{
+ "per_model": {
+  "Pre-cutoff events": {
+   "DeepSeek R1": {
+    "n_events_ext": 0,
+    "ceiling": "2024-07",
+    "n_events": 101,
+    "n_urls": 1010,
+    "n_dated": 609,
+    "dated_share": 0.602970297029703,
+    "event_leak": 0.009900990099009901,
+    "event_leak_ci": [
+     0.001749866201761846,
+     0.05396847460951917
+    ],
+    "doc_leak": 0.0016420361247947454,
+    "doc_leak_ci": [
+     0.0,
+     0.00505902192242833
+    ],
+    "n_leak_docs": 1,
+    "median_lag": 6
+   },
+   "Claude S4.5": {
+    "n_events_ext": 0,
+    "ceiling": "2025-01",
+    "n_events": 199,
+    "n_urls": 1978,
+    "n_dated": 1118,
+    "dated_share": 0.5652173913043478,
+    "event_leak": 0.010050251256281407,
+    "event_leak_ci": [
+     0.0027604243911927527,
+     0.0358983122782084
+    ],
+    "doc_leak": 0.0017889087656529517,
+    "doc_leak_ci": [
+     0.0,
+     0.004488330341113106
+    ],
+    "n_leak_docs": 2,
+    "median_lag": 0
+   },
+   "GPT-5.4": {
+    "n_events_ext": 0,
+    "ceiling": "2025-08",
+    "n_events": 377,
+    "n_urls": 3763,
+    "n_dated": 2154,
+    "dated_share": 0.5724156258304545,
+    "event_leak": 0.007957559681697613,
+    "event_leak_ci": [
+     0.0027098562312679996,
+     0.023131858539387304
+    ],
+    "doc_leak": 0.001392757660167131,
+    "doc_leak_ci": [
+     0.0,
+     0.003231763619575254
+    ],
+    "n_leak_docs": 3,
+    "median_lag": 0
+   },
+   "Claude Sonnet 5": {
+    "n_events_ext": 0,
+    "ceiling": "2026-01",
+    "n_events": 398,
+    "n_urls": 3959,
+    "n_dated": 1922,
+    "dated_share": 0.48547613033594345,
+    "event_leak": 0.0,
+    "event_leak_ci": [
+     0.0,
+     0.0095599858252605
+    ],
+    "doc_leak": 0.0,
+    "doc_leak_ci": [
+     0.0,
+     0.0
+    ],
+    "n_leak_docs": 0,
+    "median_lag": null
+   },
+   "GPT-5.6 Sol": {
+    "n_events_ext": 0,
+    "ceiling": "2026-02",
+    "n_events": 496,
+    "n_urls": 4431,
+    "n_dated": 2133,
+    "dated_share": 0.4813811780636425,
+    "event_leak": 0.008064516129032258,
+    "event_leak_ci": [
+     0.003140422729647388,
+     0.02055028248576485
+    ],
+    "doc_leak": 0.001875293014533521,
+    "doc_leak_ci": [
+     0.00045871559633027525,
+     0.0038314176245210726
+    ],
+    "n_leak_docs": 4,
+    "median_lag": 0
+   }
+  },
+  "Post-cutoff events": {
+   "GPT-4o": {
+    "n_events_ext": 199,
+    "ceiling": "2023-10",
+    "n_events": 699,
+    "n_urls": 6940,
+    "n_dated": 3993,
+    "dated_share": 0.5753602305475505,
+    "event_leak": 0.002861230329041488,
+    "event_leak_ci": [
+     0.0007849871215413525,
+     0.010372007569723367
+    ],
+    "doc_leak": 0.0005008765339343851,
+    "doc_leak_ci": [
+     0.0,
+     0.001256281407035176
+    ],
+    "n_leak_docs": 2,
+    "median_lag": 1
+   },
+   "LLaMA 3.3 70B": {
+    "n_events_ext": 200,
+    "ceiling": "2023-12",
+    "n_events": 699,
+    "n_urls": 6925,
+    "n_dated": 3658,
+    "dated_share": 0.528231046931408,
+    "event_leak": 0.001430615164520744,
+    "event_leak_ci": [
+     0.00025257686152399235,
+     0.008058826447557316
+    ],
+    "doc_leak": 0.0002733734281027884,
+    "doc_leak_ci": [
+     0.0,
+     0.0008287292817679558
+    ],
+    "n_leak_docs": 1,
+    "median_lag": 0
+   },
+   "DeepSeek R1": {
+    "n_events_ext": 0,
+    "ceiling": "2024-07",
+    "n_events": 297,
+    "n_urls": 2950,
+    "n_dated": 1896,
+    "dated_share": 0.6427118644067796,
+    "event_leak": 0.016835016835016835,
+    "event_leak_ci": [
+     0.0072116971558952025,
+     0.03879789726189808
+    ],
+    "doc_leak": 0.0031645569620253164,
+    "doc_leak_ci": [
+     0.0005333333333333334,
+     0.006376195536663124
+    ],
+    "n_leak_docs": 6,
+    "median_lag": 0
+   },
+   "Claude S4.5": {
+    "n_events_ext": 160,
+    "ceiling": "2025-01",
+    "n_events": 424,
+    "n_urls": 4221,
+    "n_dated": 2469,
+    "dated_share": 0.5849324804548686,
+    "event_leak": 0.009433962264150943,
+    "event_leak_ci": [
+     0.003674567360033897,
+     0.024002965633485196
+    ],
+    "doc_leak": 0.0016200891049007696,
+    "doc_leak_ci": [
+     0.00039556962025316455,
+     0.003270645952575634
+    ],
+    "n_leak_docs": 4,
+    "median_lag": 0
+   },
+   "GPT-5.4": {
+    "n_events_ext": 200,
+    "ceiling": "2025-08",
+    "n_events": 323,
+    "n_urls": 3212,
+    "n_dated": 1913,
+    "dated_share": 0.5955790784557908,
+    "event_leak": 0.006191950464396285,
+    "event_leak_ci": [
+     0.0016996661667518422,
+     0.022292383804855195
+    ],
+    "doc_leak": 0.0010454783063251437,
+    "doc_leak_ci": [
+     0.0,
+     0.002635740643120717
+    ],
+    "n_leak_docs": 2,
+    "median_lag": 0
+   },
+   "Claude Sonnet 5": {
+    "n_events_ext": 188,
+    "ceiling": "2026-01",
+    "n_events": 217,
+    "n_urls": 2157,
+    "n_dated": 1188,
+    "dated_share": 0.5507649513212796,
+    "event_leak": 0.02304147465437788,
+    "event_leak_ci": [
+     0.009881021947313297,
+     0.05279557521554008
+    ],
+    "doc_leak": 0.004208754208754209,
+    "doc_leak_ci": [
+     0.0008431703204047217,
+     0.008403361344537815
+    ],
+    "n_leak_docs": 5,
+    "median_lag": 0
+   },
+   "GPT-5.6 Sol": {
+    "n_events_ext": 200,
+    "ceiling": "2026-02",
+    "n_events": 204,
+    "n_urls": 1841,
+    "n_dated": 1046,
+    "dated_share": 0.5681694731124389,
+    "event_leak": 0.00980392156862745,
+    "event_leak_ci": [
+     0.0026926628164722806,
+     0.03503606906395974
+    ],
+    "doc_leak": 0.0019120458891013384,
+    "doc_leak_ci": [
+     0.0,
+     0.004849660523763337
+    ],
+    "n_leak_docs": 2,
+    "median_lag": 0
+   }
+  },
+  "All events": {
+   "GPT-4o": {
+    "n_events_ext": 199,
+    "ceiling": "2023-10",
+    "n_events": 699,
+    "n_urls": 6940,
+    "n_dated": 3993,
+    "dated_share": 0.5753602305475505,
+    "event_leak": 0.002861230329041488,
+    "event_leak_ci": [
+     0.0007849871215413525,
+     0.010372007569723367
+    ],
+    "doc_leak": 0.0005008765339343851,
+    "doc_leak_ci": [
+     0.0,
+     0.001256281407035176
+    ],
+    "n_leak_docs": 2,
+    "median_lag": 1
+   },
+   "LLaMA 3.3 70B": {
+    "n_events_ext": 200,
+    "ceiling": "2023-12",
+    "n_events": 699,
+    "n_urls": 6925,
+    "n_dated": 3658,
+    "dated_share": 0.528231046931408,
+    "event_leak": 0.001430615164520744,
+    "event_leak_ci": [
+     0.00025257686152399235,
+     0.008058826447557316
+    ],
+    "doc_leak": 0.0002733734281027884,
+    "doc_leak_ci": [
+     0.0,
+     0.0008287292817679558
+    ],
+    "n_leak_docs": 1,
+    "median_lag": 0
+   },
+   "DeepSeek R1": {
+    "n_events_ext": 0,
+    "ceiling": "2024-07",
+    "n_events": 398,
+    "n_urls": 3960,
+    "n_dated": 2505,
+    "dated_share": 0.6325757575757576,
+    "event_leak": 0.01507537688442211,
+    "event_leak_ci": [
+     0.00692692172919579,
+     0.03249557708625786
+    ],
+    "doc_leak": 0.0027944111776447107,
+    "doc_leak_ci": [
+     0.0007920792079207921,
+     0.005295315682281059
+    ],
+    "n_leak_docs": 7,
+    "median_lag": 0
+   },
+   "Claude S4.5": {
+    "n_events_ext": 160,
+    "ceiling": "2025-01",
+    "n_events": 623,
+    "n_urls": 6199,
+    "n_dated": 3587,
+    "dated_share": 0.5786417164058719,
+    "event_leak": 0.009630818619582664,
+    "event_leak_ci": [
+     0.004421094014720194,
+     0.020851000243223117
+    ],
+    "doc_leak": 0.0016727069974909396,
+    "doc_leak_ci": [
+     0.0005509641873278236,
+     0.003073484213467449
+    ],
+    "n_leak_docs": 6,
+    "median_lag": 0
+   },
+   "GPT-5.4": {
+    "n_events_ext": 200,
+    "ceiling": "2025-08",
+    "n_events": 700,
+    "n_urls": 6975,
+    "n_dated": 4067,
+    "dated_share": 0.5830824372759856,
+    "event_leak": 0.007142857142857143,
+    "event_leak_ci": [
+     0.003054703287183512,
+     0.016611085151578844
+    ],
+    "doc_leak": 0.0012294074256208507,
+    "doc_leak_ci": [
+     0.00024770869457517957,
+     0.0024067388688327317
+    ],
+    "n_leak_docs": 5,
+    "median_lag": 0
+   },
+   "Claude Sonnet 5": {
+    "n_events_ext": 188,
+    "ceiling": "2026-01",
+    "n_events": 615,
+    "n_urls": 6116,
+    "n_dated": 3110,
+    "dated_share": 0.5085022890778287,
+    "event_leak": 0.008130081300813009,
+    "event_leak_ci": [
+     0.0034774892887342685,
+     0.01888946212500392
+    ],
+    "doc_leak": 0.001607717041800643,
+    "doc_leak_ci": [
+     0.00032310177705977385,
+     0.0031289111389236545
+    ],
+    "n_leak_docs": 5,
+    "median_lag": 0
+   },
+   "GPT-5.6 Sol": {
+    "n_events_ext": 200,
+    "ceiling": "2026-02",
+    "n_events": 700,
+    "n_urls": 6272,
+    "n_dated": 3179,
+    "dated_share": 0.5068558673469388,
+    "event_leak": 0.008571428571428572,
+    "event_leak_ci": [
+     0.003934060191568017,
+     0.01857327668650228
+    ],
+    "doc_leak": 0.0018873859704309531,
+    "doc_leak_ci": [
+     0.0006230529595015577,
+     0.0034645669291338585
+    ],
+    "n_leak_docs": 6,
+    "median_lag": 0
+   }
+  }
+ },
+ "leak_by_identifier": {
+  "arxiv": 15,
+  "pmc": 2,
+  "doi": 14,
+  "pubmed": 1
+ },
+ "dated_by_identifier": {
+  "undated": 19288,
+  "arxiv": 4389,
+  "nature": 5454,
+  "doi": 6731,
+  "pii": 4029,
+  "pubmed": 2140,
+  "b/medrxiv": 797,
+  "pmc": 281,
+  "elife": 278
+ }
+}

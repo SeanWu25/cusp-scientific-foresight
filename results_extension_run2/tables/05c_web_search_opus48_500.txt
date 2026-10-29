@@ -1,0 +1,13 @@
+Claude Opus 4.8 (pinned 500 subset): shared ids=28  (post-cutoff only)
+
+Metric                     n      base (mean+/-SE)          WS+Cutoff  delta (p)                 WS  delta (p)
+--------------------------------------------------------------------------------------------------------------
+Binary (original)         13    [suppressed, n<20]                            --                            --
+Binary (perturbed)        23         0.652+/-0.102 -0.217+/-0.088 (p=0.062 n.s.) -0.130+/-0.095 (p=0.375 n.s.)
+MCQ                       23         1.000+/-0.000 -0.087+/-0.060 (p=0.500 n.s.) -0.130+/-0.072 (p=0.250 n.s.)
+FRQ score (0-10)          23         5.098+/-0.202 -0.130+/-0.185 (p=0.489 n.s.)   +0.783+/-0.220 (p=0.002 **)
+Date score (0-1)          13    [suppressed, n<20]                            --                            --
+Date exact match          13    [suppressed, n<20]                            --                            --
+Date month error          13    [suppressed, n<20]                            --                            --
+
+wrote results_extension_run2/tables/05c_web_search_opus48_500.json

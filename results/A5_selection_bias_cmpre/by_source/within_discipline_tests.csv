@@ -1,0 +1,633 @@
+model,discipline,partition,task,n_venues,range,min_venue,max_venue,p_raw,p_holm
+GPT-4o,Biology,post,binary,3,0.017264,Nature,Science,0.663867,1.000000
+GPT-4o,Biology,post,mcq,3,0.074653,Science,Nature,0.066987,1.000000
+GPT-4o,Biology,post,date,3,0.016601,Science,Cell,0.786043,1.000000
+GPT-4o,Biology,post,frq,3,0.110706,Science,Nature,0.257948,1.000000
+GPT-4o,Biology,overall,binary,3,0.017264,Nature,Science,0.663867,1.000000
+GPT-4o,Biology,overall,mcq,3,0.074653,Science,Nature,0.066987,1.000000
+GPT-4o,Biology,overall,date,3,0.016601,Science,Cell,0.786043,1.000000
+GPT-4o,Biology,overall,frq,3,0.110706,Science,Nature,0.257948,1.000000
+GPT-4o,Artificial Intelligence,post,binary,2,0.050562,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.044791,1.000000
+GPT-4o,Artificial Intelligence,post,mcq,2,0.057312,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.118576,1.000000
+GPT-4o,Artificial Intelligence,post,date,2,0.084511,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.002999,0.236953
+GPT-4o,Artificial Intelligence,post,frq,2,0.045209,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.430514,1.000000
+GPT-4o,Artificial Intelligence,overall,binary,2,0.050562,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.044791,1.000000
+GPT-4o,Artificial Intelligence,overall,mcq,2,0.057312,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.118576,1.000000
+GPT-4o,Artificial Intelligence,overall,date,2,0.084511,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.002999,0.236953
+GPT-4o,Artificial Intelligence,overall,frq,2,0.045209,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.430514,1.000000
+GPT-4o,Medicine,post,binary,3,0.072616,Science,Cell,0.103179,1.000000
+GPT-4o,Medicine,post,mcq,3,0.077235,Science,Nature,0.253749,1.000000
+GPT-4o,Medicine,post,date,3,0.057837,Science,Cell,0.285943,1.000000
+GPT-4o,Medicine,post,frq,3,0.108710,Nature,Cell,0.426115,1.000000
+GPT-4o,Medicine,overall,binary,3,0.072616,Science,Cell,0.103179,1.000000
+GPT-4o,Medicine,overall,mcq,3,0.077235,Science,Nature,0.253749,1.000000
+GPT-4o,Medicine,overall,date,3,0.057837,Science,Cell,0.285943,1.000000
+GPT-4o,Medicine,overall,frq,3,0.108710,Nature,Cell,0.426115,1.000000
+GPT-4o,Materials Science,post,binary,2,0.018104,Nature,Science,0.435913,1.000000
+GPT-4o,Materials Science,post,mcq,2,0.102058,Science,Nature,0.035393,1.000000
+GPT-4o,Materials Science,post,date,2,0.007589,Nature,Science,0.751050,1.000000
+GPT-4o,Materials Science,post,frq,2,0.151449,Nature,Science,0.056589,1.000000
+GPT-4o,Materials Science,overall,binary,2,0.018104,Nature,Science,0.435913,1.000000
+GPT-4o,Materials Science,overall,mcq,2,0.102058,Science,Nature,0.035393,1.000000
+GPT-4o,Materials Science,overall,date,2,0.007589,Nature,Science,0.751050,1.000000
+GPT-4o,Materials Science,overall,frq,2,0.151449,Nature,Science,0.056589,1.000000
+GPT-4o,Physics,post,binary,2,0.027260,Science,Nature,0.349130,1.000000
+GPT-4o,Physics,post,mcq,2,0.003576,Nature,Science,0.957808,1.000000
+GPT-4o,Physics,post,date,2,0.016860,Science,Nature,0.559488,1.000000
+GPT-4o,Physics,post,frq,2,0.219611,Nature,Science,0.037792,1.000000
+GPT-4o,Physics,overall,binary,2,0.027260,Science,Nature,0.349130,1.000000
+GPT-4o,Physics,overall,mcq,2,0.003576,Nature,Science,0.957808,1.000000
+GPT-4o,Physics,overall,date,2,0.016860,Science,Nature,0.559488,1.000000
+GPT-4o,Physics,overall,frq,2,0.219611,Nature,Science,0.037792,1.000000
+GPT-4o,Neuroscience,post,binary,2,0.000316,Science,Nature,0.994801,1.000000
+GPT-4o,Neuroscience,post,mcq,2,0.072765,Science,Nature,0.224755,1.000000
+GPT-4o,Neuroscience,post,date,2,0.004723,Science,Nature,0.886823,1.000000
+GPT-4o,Neuroscience,post,frq,2,0.207424,Science,Nature,0.074985,1.000000
+GPT-4o,Neuroscience,overall,binary,2,0.000316,Science,Nature,0.994801,1.000000
+GPT-4o,Neuroscience,overall,mcq,2,0.072765,Science,Nature,0.224755,1.000000
+GPT-4o,Neuroscience,overall,date,2,0.004723,Science,Nature,0.886823,1.000000
+GPT-4o,Neuroscience,overall,frq,2,0.207424,Science,Nature,0.074985,1.000000
+GPT-4o,Chemistry,post,binary,2,0.048133,Nature,Science,0.165367,1.000000
+GPT-4o,Chemistry,post,mcq,2,0.008267,Nature,Science,0.927415,1.000000
+GPT-4o,Chemistry,post,date,2,0.072472,Science,Nature,0.050590,1.000000
+GPT-4o,Chemistry,post,frq,2,0.050451,Science,Nature,0.669266,1.000000
+GPT-4o,Chemistry,overall,binary,2,0.048133,Nature,Science,0.165367,1.000000
+GPT-4o,Chemistry,overall,mcq,2,0.008267,Nature,Science,0.927415,1.000000
+GPT-4o,Chemistry,overall,date,2,0.072472,Science,Nature,0.050590,1.000000
+GPT-4o,Chemistry,overall,frq,2,0.050451,Science,Nature,0.669266,1.000000
+LLaMA 3.3 70B,Biology,post,binary,3,0.028159,Science,Cell,0.233353,1.000000
+LLaMA 3.3 70B,Biology,post,mcq,3,0.044162,Cell,Nature,0.411518,1.000000
+LLaMA 3.3 70B,Biology,post,date,3,0.034180,Science,Cell,0.435913,1.000000
+LLaMA 3.3 70B,Biology,post,frq,3,0.040709,Nature,Science,0.696461,1.000000
+LLaMA 3.3 70B,Biology,overall,binary,3,0.028159,Science,Cell,0.233353,1.000000
+LLaMA 3.3 70B,Biology,overall,mcq,3,0.044162,Cell,Nature,0.411518,1.000000
+LLaMA 3.3 70B,Biology,overall,date,3,0.034180,Science,Cell,0.435913,1.000000
+LLaMA 3.3 70B,Biology,overall,frq,3,0.040709,Nature,Science,0.696461,1.000000
+LLaMA 3.3 70B,Artificial Intelligence,post,binary,2,0.006294,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.447910,1.000000
+LLaMA 3.3 70B,Artificial Intelligence,post,mcq,2,0.034667,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.319936,1.000000
+LLaMA 3.3 70B,Artificial Intelligence,post,date,2,0.066515,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.003599,0.273545
+LLaMA 3.3 70B,Artificial Intelligence,post,frq,2,0.021102,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.677864,1.000000
+LLaMA 3.3 70B,Artificial Intelligence,overall,binary,2,0.006294,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.447910,1.000000
+LLaMA 3.3 70B,Artificial Intelligence,overall,mcq,2,0.034667,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.319936,1.000000
+LLaMA 3.3 70B,Artificial Intelligence,overall,date,2,0.066515,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.003599,0.273545
+LLaMA 3.3 70B,Artificial Intelligence,overall,frq,2,0.021102,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.677864,1.000000
+LLaMA 3.3 70B,Medicine,post,binary,3,0.021029,Science,Cell,0.607079,1.000000
+LLaMA 3.3 70B,Medicine,post,mcq,3,0.055382,Science,Cell,0.545891,1.000000
+LLaMA 3.3 70B,Medicine,post,date,3,0.038997,Cell,Science,0.661268,1.000000
+LLaMA 3.3 70B,Medicine,post,frq,3,0.080191,Nature,Cell,0.468706,1.000000
+LLaMA 3.3 70B,Medicine,overall,binary,3,0.021029,Science,Cell,0.607079,1.000000
+LLaMA 3.3 70B,Medicine,overall,mcq,3,0.055382,Science,Cell,0.545891,1.000000
+LLaMA 3.3 70B,Medicine,overall,date,3,0.038997,Cell,Science,0.661268,1.000000
+LLaMA 3.3 70B,Medicine,overall,frq,3,0.080191,Nature,Cell,0.468706,1.000000
+LLaMA 3.3 70B,Materials Science,post,binary,2,0.006825,Nature,Science,0.688662,1.000000
+LLaMA 3.3 70B,Materials Science,post,mcq,2,0.048548,Science,Nature,0.295341,1.000000
+LLaMA 3.3 70B,Materials Science,post,date,2,0.004476,Nature,Science,0.873825,1.000000
+LLaMA 3.3 70B,Materials Science,post,frq,2,0.012751,Science,Nature,0.838432,1.000000
+LLaMA 3.3 70B,Materials Science,overall,binary,2,0.006825,Nature,Science,0.688662,1.000000
+LLaMA 3.3 70B,Materials Science,overall,mcq,2,0.048548,Science,Nature,0.295341,1.000000
+LLaMA 3.3 70B,Materials Science,overall,date,2,0.004476,Nature,Science,0.873825,1.000000
+LLaMA 3.3 70B,Materials Science,overall,frq,2,0.012751,Science,Nature,0.838432,1.000000
+LLaMA 3.3 70B,Physics,post,binary,2,0.000382,Nature,Science,0.988602,1.000000
+LLaMA 3.3 70B,Physics,post,mcq,2,0.024840,Nature,Science,0.663867,1.000000
+LLaMA 3.3 70B,Physics,post,date,2,0.032534,Science,Nature,0.327335,1.000000
+LLaMA 3.3 70B,Physics,post,frq,2,0.047556,Science,Nature,0.594481,1.000000
+LLaMA 3.3 70B,Physics,overall,binary,2,0.000382,Nature,Science,0.988602,1.000000
+LLaMA 3.3 70B,Physics,overall,mcq,2,0.024840,Nature,Science,0.663867,1.000000
+LLaMA 3.3 70B,Physics,overall,date,2,0.032534,Science,Nature,0.327335,1.000000
+LLaMA 3.3 70B,Physics,overall,frq,2,0.047556,Science,Nature,0.594481,1.000000
+LLaMA 3.3 70B,Neuroscience,post,binary,2,0.025182,Nature,Science,0.307339,1.000000
+LLaMA 3.3 70B,Neuroscience,post,mcq,2,0.062475,Science,Nature,0.324335,1.000000
+LLaMA 3.3 70B,Neuroscience,post,date,2,0.003655,Science,Nature,0.922216,1.000000
+LLaMA 3.3 70B,Neuroscience,post,frq,2,0.014406,Nature,Science,0.884223,1.000000
+LLaMA 3.3 70B,Neuroscience,overall,binary,2,0.025182,Nature,Science,0.307339,1.000000
+LLaMA 3.3 70B,Neuroscience,overall,mcq,2,0.062475,Science,Nature,0.324335,1.000000
+LLaMA 3.3 70B,Neuroscience,overall,date,2,0.003655,Science,Nature,0.922216,1.000000
+LLaMA 3.3 70B,Neuroscience,overall,frq,2,0.014406,Nature,Science,0.884223,1.000000
+LLaMA 3.3 70B,Chemistry,post,binary,2,0.045539,Science,Nature,0.084383,1.000000
+LLaMA 3.3 70B,Chemistry,post,mcq,2,0.026146,Nature,Science,0.730054,1.000000
+LLaMA 3.3 70B,Chemistry,post,date,2,0.069766,Science,Nature,0.123775,1.000000
+LLaMA 3.3 70B,Chemistry,post,frq,2,0.106601,Science,Nature,0.247351,1.000000
+LLaMA 3.3 70B,Chemistry,overall,binary,2,0.045539,Science,Nature,0.084383,1.000000
+LLaMA 3.3 70B,Chemistry,overall,mcq,2,0.026146,Nature,Science,0.730054,1.000000
+LLaMA 3.3 70B,Chemistry,overall,date,2,0.069766,Science,Nature,0.123775,1.000000
+LLaMA 3.3 70B,Chemistry,overall,frq,2,0.106601,Science,Nature,0.247351,1.000000
+GPT-OSS 20B,Biology,pre,binary,3,0.023808,Science,Cell,0.914617,1.000000
+GPT-OSS 20B,Biology,pre,mcq,3,0.075388,Cell,Science,0.748850,1.000000
+GPT-OSS 20B,Biology,pre,date,3,0.035511,Cell,Nature,0.319336,1.000000
+GPT-OSS 20B,Biology,pre,frq,3,0.177906,Science,Cell,0.674865,1.000000
+GPT-OSS 20B,Biology,post,binary,3,0.021960,Cell,Nature,0.722456,1.000000
+GPT-OSS 20B,Biology,post,mcq,3,0.079716,Science,Nature,0.059788,1.000000
+GPT-OSS 20B,Biology,post,date,3,0.067073,Science,Nature,0.069586,1.000000
+GPT-OSS 20B,Biology,post,frq,3,0.097087,Nature,Cell,0.420716,1.000000
+GPT-OSS 20B,Biology,overall,binary,3,0.017936,Cell,Nature,0.741452,1.000000
+GPT-OSS 20B,Biology,overall,mcq,3,0.063034,Cell,Nature,0.100180,1.000000
+GPT-OSS 20B,Biology,overall,date,3,0.044124,Science,Nature,0.163167,1.000000
+GPT-OSS 20B,Biology,overall,frq,3,0.101813,Nature,Cell,0.344331,1.000000
+GPT-OSS 20B,Artificial Intelligence,post,binary,2,0.029889,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.212757,1.000000
+GPT-OSS 20B,Artificial Intelligence,post,mcq,2,0.076090,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.048990,1.000000
+GPT-OSS 20B,Artificial Intelligence,post,date,2,0.054664,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.063387,1.000000
+GPT-OSS 20B,Artificial Intelligence,post,frq,2,0.019644,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.714657,1.000000
+GPT-OSS 20B,Artificial Intelligence,overall,binary,2,0.023639,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.298740,1.000000
+GPT-OSS 20B,Artificial Intelligence,overall,mcq,2,0.086825,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.012997,0.922815
+GPT-OSS 20B,Artificial Intelligence,overall,date,2,0.104179,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.000800,0.064787
+GPT-OSS 20B,Artificial Intelligence,overall,frq,2,0.018359,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.734653,1.000000
+GPT-OSS 20B,Medicine,pre,binary,3,0.043237,Nature,Cell,0.835233,1.000000
+GPT-OSS 20B,Medicine,pre,mcq,2,0.029412,Nature,Science,0.791442,1.000000
+GPT-OSS 20B,Medicine,pre,date,2,0.003996,Nature,Science,0.920016,1.000000
+GPT-OSS 20B,Medicine,pre,frq,3,0.105000,Science,Cell,0.898220,1.000000
+GPT-OSS 20B,Medicine,post,binary,3,0.021849,Science,Nature,0.837233,1.000000
+GPT-OSS 20B,Medicine,post,mcq,3,0.115385,Science,Nature,0.093981,1.000000
+GPT-OSS 20B,Medicine,post,date,3,0.034768,Cell,Science,0.826235,1.000000
+GPT-OSS 20B,Medicine,post,frq,3,0.070729,Cell,Science,0.766847,1.000000
+GPT-OSS 20B,Medicine,overall,binary,3,0.018106,Science,Cell,0.872825,1.000000
+GPT-OSS 20B,Medicine,overall,mcq,3,0.088474,Science,Nature,0.175365,1.000000
+GPT-OSS 20B,Medicine,overall,date,3,0.018792,Cell,Science,0.913217,1.000000
+GPT-OSS 20B,Medicine,overall,frq,3,0.049873,Cell,Nature,0.841632,1.000000
+GPT-OSS 20B,Materials Science,pre,binary,2,0.064635,Nature,Science,0.268546,1.000000
+GPT-OSS 20B,Materials Science,pre,mcq,2,0.049645,Science,Nature,0.698460,1.000000
+GPT-OSS 20B,Materials Science,pre,date,2,0.001150,Science,Nature,0.972805,1.000000
+GPT-OSS 20B,Materials Science,pre,frq,2,0.157292,Nature,Science,0.416717,1.000000
+GPT-OSS 20B,Materials Science,post,binary,2,0.021692,Nature,Science,0.443911,1.000000
+GPT-OSS 20B,Materials Science,post,mcq,2,0.047641,Science,Nature,0.368126,1.000000
+GPT-OSS 20B,Materials Science,post,date,2,0.026231,Nature,Science,0.471706,1.000000
+GPT-OSS 20B,Materials Science,post,frq,2,0.105142,Science,Nature,0.213757,1.000000
+GPT-OSS 20B,Materials Science,overall,binary,2,0.029143,Nature,Science,0.246351,1.000000
+GPT-OSS 20B,Materials Science,overall,mcq,2,0.047693,Science,Nature,0.296141,1.000000
+GPT-OSS 20B,Materials Science,overall,date,2,0.022245,Nature,Science,0.460508,1.000000
+GPT-OSS 20B,Materials Science,overall,frq,2,0.065947,Science,Nature,0.403519,1.000000
+GPT-OSS 20B,Physics,pre,binary,2,0.019797,Nature,Science,0.725455,1.000000
+GPT-OSS 20B,Physics,pre,mcq,2,0.050000,Science,Nature,0.742851,1.000000
+GPT-OSS 20B,Physics,pre,date,2,0.010424,Science,Nature,0.781844,1.000000
+GPT-OSS 20B,Physics,pre,frq,2,0.180830,Nature,Science,0.515497,1.000000
+GPT-OSS 20B,Physics,post,binary,2,0.024838,Science,Nature,0.447111,1.000000
+GPT-OSS 20B,Physics,post,mcq,2,0.099702,Nature,Science,0.104979,1.000000
+GPT-OSS 20B,Physics,post,date,2,0.034019,Science,Nature,0.440312,1.000000
+GPT-OSS 20B,Physics,post,frq,2,0.010554,Nature,Science,0.924815,1.000000
+GPT-OSS 20B,Physics,overall,binary,2,0.016990,Science,Nature,0.544691,1.000000
+GPT-OSS 20B,Physics,overall,mcq,2,0.073883,Nature,Science,0.179364,1.000000
+GPT-OSS 20B,Physics,overall,date,2,0.039722,Science,Nature,0.284743,1.000000
+GPT-OSS 20B,Physics,overall,frq,2,0.059774,Nature,Science,0.588082,1.000000
+GPT-OSS 20B,Neuroscience,pre,binary,2,0.054079,Science,Nature,0.358728,1.000000
+GPT-OSS 20B,Neuroscience,pre,mcq,2,0.125455,Science,Nature,0.331534,1.000000
+GPT-OSS 20B,Neuroscience,post,binary,2,0.029894,Nature,Science,0.547091,1.000000
+GPT-OSS 20B,Neuroscience,post,mcq,2,0.073593,Science,Nature,0.293741,1.000000
+GPT-OSS 20B,Neuroscience,post,date,2,0.007255,Nature,Science,0.888822,1.000000
+GPT-OSS 20B,Neuroscience,post,frq,2,0.013462,Science,Nature,0.921216,1.000000
+GPT-OSS 20B,Neuroscience,overall,binary,2,0.011071,Nature,Science,0.771446,1.000000
+GPT-OSS 20B,Neuroscience,overall,mcq,2,0.088151,Science,Nature,0.146571,1.000000
+GPT-OSS 20B,Neuroscience,overall,date,2,0.030703,Nature,Science,0.465707,1.000000
+GPT-OSS 20B,Neuroscience,overall,frq,2,0.005411,Science,Nature,0.966407,1.000000
+GPT-OSS 20B,Chemistry,pre,binary,2,0.139583,Nature,Science,0.051790,1.000000
+GPT-OSS 20B,Chemistry,pre,frq,2,0.223370,Science,Nature,0.359928,1.000000
+GPT-OSS 20B,Chemistry,post,binary,2,0.004071,Science,Nature,0.926815,1.000000
+GPT-OSS 20B,Chemistry,post,mcq,2,0.081602,Nature,Science,0.297740,1.000000
+GPT-OSS 20B,Chemistry,post,date,2,0.091485,Science,Nature,0.139172,1.000000
+GPT-OSS 20B,Chemistry,post,frq,2,0.350918,Science,Nature,0.004999,0.414917
+GPT-OSS 20B,Chemistry,overall,binary,2,0.021883,Nature,Science,0.563287,1.000000
+GPT-OSS 20B,Chemistry,overall,mcq,2,0.075459,Nature,Science,0.267746,1.000000
+GPT-OSS 20B,Chemistry,overall,date,2,0.058822,Science,Nature,0.226155,1.000000
+GPT-OSS 20B,Chemistry,overall,frq,2,0.321735,Science,Nature,0.006399,0.524695
+DeepSeek-R1,Biology,pre,binary,3,0.042328,Nature,Cell,0.754049,1.000000
+DeepSeek-R1,Biology,pre,mcq,3,0.086623,Cell,Nature,0.553289,1.000000
+DeepSeek-R1,Biology,pre,date,3,0.031959,Nature,Science,0.453509,1.000000
+DeepSeek-R1,Biology,pre,frq,3,0.364347,Science,Cell,0.109978,1.000000
+DeepSeek-R1,Biology,post,binary,3,0.076899,Science,Nature,0.040992,1.000000
+DeepSeek-R1,Biology,post,mcq,3,0.029800,Science,Cell,0.822835,1.000000
+DeepSeek-R1,Biology,post,date,3,0.049006,Science,Cell,0.372525,1.000000
+DeepSeek-R1,Biology,post,frq,3,0.108346,Science,Cell,0.382324,1.000000
+DeepSeek-R1,Biology,overall,binary,3,0.058481,Science,Cell,0.138772,1.000000
+DeepSeek-R1,Biology,overall,mcq,3,0.025071,Science,Nature,0.794041,1.000000
+DeepSeek-R1,Biology,overall,date,3,0.048320,Nature,Cell,0.227954,1.000000
+DeepSeek-R1,Biology,overall,frq,3,0.163685,Science,Cell,0.082583,1.000000
+DeepSeek-R1,Artificial Intelligence,post,binary,2,0.037905,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.147171,1.000000
+DeepSeek-R1,Artificial Intelligence,post,mcq,2,0.091972,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.026795,1.000000
+DeepSeek-R1,Artificial Intelligence,post,date,2,0.083801,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.007798,0.577085
+DeepSeek-R1,Artificial Intelligence,post,frq,2,0.059557,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.252949,1.000000
+DeepSeek-R1,Artificial Intelligence,overall,binary,2,0.029015,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.253149,1.000000
+DeepSeek-R1,Artificial Intelligence,overall,mcq,2,0.088859,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.023795,1.000000
+DeepSeek-R1,Artificial Intelligence,overall,date,2,0.132705,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.000200,0.016397
+DeepSeek-R1,Artificial Intelligence,overall,frq,2,0.083132,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.099580,1.000000
+DeepSeek-R1,Medicine,pre,binary,3,0.168932,Science,Cell,0.234153,1.000000
+DeepSeek-R1,Medicine,pre,mcq,2,0.009579,Nature,Science,0.926415,1.000000
+DeepSeek-R1,Medicine,pre,date,2,0.024919,Nature,Science,0.551890,1.000000
+DeepSeek-R1,Medicine,pre,frq,3,0.604425,Science,Cell,0.056389,1.000000
+DeepSeek-R1,Medicine,post,binary,3,0.098075,Science,Nature,0.117177,1.000000
+DeepSeek-R1,Medicine,post,mcq,3,0.191595,Science,Nature,0.008398,0.814637
+DeepSeek-R1,Medicine,post,date,3,0.018285,Nature,Science,0.897421,1.000000
+DeepSeek-R1,Medicine,post,frq,3,0.156323,Nature,Cell,0.306139,1.000000
+DeepSeek-R1,Medicine,overall,binary,3,0.106002,Science,Cell,0.041192,1.000000
+DeepSeek-R1,Medicine,overall,mcq,3,0.153134,Science,Cell,0.027195,1.000000
+DeepSeek-R1,Medicine,overall,date,3,0.053900,Nature,Cell,0.392921,1.000000
+DeepSeek-R1,Medicine,overall,frq,3,0.228510,Science,Cell,0.101180,1.000000
+DeepSeek-R1,Materials Science,pre,binary,2,0.231800,Nature,Science,0.000400,0.038792
+DeepSeek-R1,Materials Science,pre,mcq,2,0.219363,Nature,Science,0.034993,1.000000
+DeepSeek-R1,Materials Science,pre,date,2,0.000283,Science,Nature,0.993601,1.000000
+DeepSeek-R1,Materials Science,pre,frq,2,0.132297,Nature,Science,0.356529,1.000000
+DeepSeek-R1,Materials Science,post,binary,2,0.023846,Nature,Science,0.530494,1.000000
+DeepSeek-R1,Materials Science,post,mcq,2,0.082883,Nature,Science,0.215757,1.000000
+DeepSeek-R1,Materials Science,post,date,2,0.010677,Nature,Science,0.741852,1.000000
+DeepSeek-R1,Materials Science,post,frq,2,0.077155,Science,Nature,0.415917,1.000000
+DeepSeek-R1,Materials Science,overall,binary,2,0.079800,Nature,Science,0.012997,1.000000
+DeepSeek-R1,Materials Science,overall,mcq,2,0.116346,Nature,Science,0.042991,1.000000
+DeepSeek-R1,Materials Science,overall,date,2,0.007128,Nature,Science,0.780244,1.000000
+DeepSeek-R1,Materials Science,overall,frq,2,0.022809,Science,Nature,0.775045,1.000000
+DeepSeek-R1,Physics,pre,binary,2,0.037715,Science,Nature,0.642871,1.000000
+DeepSeek-R1,Physics,pre,date,2,0.001388,Science,Nature,0.963407,1.000000
+DeepSeek-R1,Physics,pre,frq,2,0.110206,Nature,Science,0.561488,1.000000
+DeepSeek-R1,Physics,post,binary,2,0.017013,Science,Nature,0.716057,1.000000
+DeepSeek-R1,Physics,post,mcq,2,0.007909,Nature,Science,0.913417,1.000000
+DeepSeek-R1,Physics,post,date,2,0.024265,Nature,Science,0.593681,1.000000
+DeepSeek-R1,Physics,post,frq,2,0.070270,Nature,Science,0.598080,1.000000
+DeepSeek-R1,Physics,overall,binary,2,0.026160,Science,Nature,0.514497,1.000000
+DeepSeek-R1,Physics,overall,mcq,2,0.008032,Nature,Science,0.917816,1.000000
+DeepSeek-R1,Physics,overall,date,2,0.002082,Nature,Science,0.952210,1.000000
+DeepSeek-R1,Physics,overall,frq,2,0.084077,Nature,Science,0.419916,1.000000
+DeepSeek-R1,Neuroscience,pre,binary,2,0.049406,Science,Nature,0.598480,1.000000
+DeepSeek-R1,Neuroscience,pre,mcq,2,0.053292,Science,Nature,0.669866,1.000000
+DeepSeek-R1,Neuroscience,pre,date,2,0.051941,Nature,Science,0.081184,1.000000
+DeepSeek-R1,Neuroscience,pre,frq,2,0.149405,Nature,Science,0.543491,1.000000
+DeepSeek-R1,Neuroscience,post,binary,2,0.045081,Science,Nature,0.462507,1.000000
+DeepSeek-R1,Neuroscience,post,mcq,2,0.073221,Science,Nature,0.374725,1.000000
+DeepSeek-R1,Neuroscience,post,date,2,0.011635,Science,Nature,0.843631,1.000000
+DeepSeek-R1,Neuroscience,post,frq,2,0.088133,Science,Nature,0.487103,1.000000
+DeepSeek-R1,Neuroscience,overall,binary,2,0.042305,Science,Nature,0.399520,1.000000
+DeepSeek-R1,Neuroscience,overall,mcq,2,0.066181,Science,Nature,0.313137,1.000000
+DeepSeek-R1,Neuroscience,overall,date,2,0.021586,Nature,Science,0.602879,1.000000
+DeepSeek-R1,Neuroscience,overall,frq,2,0.021305,Science,Nature,0.855229,1.000000
+DeepSeek-R1,Chemistry,pre,binary,2,0.062578,Nature,Science,0.520496,1.000000
+DeepSeek-R1,Chemistry,pre,frq,2,0.139214,Science,Nature,0.555289,1.000000
+DeepSeek-R1,Chemistry,post,binary,2,0.014678,Science,Nature,0.779244,1.000000
+DeepSeek-R1,Chemistry,post,mcq,2,0.055975,Nature,Science,0.563487,1.000000
+DeepSeek-R1,Chemistry,post,date,2,0.106514,Science,Nature,0.018996,1.000000
+DeepSeek-R1,Chemistry,post,frq,2,0.200704,Science,Nature,0.126775,1.000000
+DeepSeek-R1,Chemistry,overall,binary,2,0.009616,Nature,Science,0.829434,1.000000
+DeepSeek-R1,Chemistry,overall,mcq,2,0.072222,Nature,Science,0.383323,1.000000
+DeepSeek-R1,Chemistry,overall,date,2,0.052506,Science,Nature,0.129774,1.000000
+DeepSeek-R1,Chemistry,overall,frq,2,0.179233,Science,Nature,0.130174,1.000000
+Claude S4.5,Biology,pre,binary,3,0.041177,Cell,Nature,0.654469,1.000000
+Claude S4.5,Biology,pre,mcq,3,0.116977,Cell,Nature,0.093781,1.000000
+Claude S4.5,Biology,pre,date,3,0.086943,Science,Cell,0.163567,1.000000
+Claude S4.5,Biology,pre,frq,3,0.184451,Science,Cell,0.391722,1.000000
+Claude S4.5,Biology,post,binary,3,0.028220,Nature,Science,0.721056,1.000000
+Claude S4.5,Biology,post,mcq,3,0.049833,Cell,Nature,0.588682,1.000000
+Claude S4.5,Biology,post,date,3,0.024042,Science,Cell,0.817636,1.000000
+Claude S4.5,Biology,post,frq,3,0.152939,Nature,Cell,0.342332,1.000000
+Claude S4.5,Biology,overall,binary,3,0.022601,Cell,Science,0.746451,1.000000
+Claude S4.5,Biology,overall,mcq,3,0.079495,Cell,Nature,0.090382,1.000000
+Claude S4.5,Biology,overall,date,3,0.055286,Science,Cell,0.203559,1.000000
+Claude S4.5,Biology,overall,frq,3,0.163219,Science,Cell,0.218356,1.000000
+Claude S4.5,Artificial Intelligence,post,binary,2,0.016526,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.506099,1.000000
+Claude S4.5,Artificial Intelligence,post,mcq,2,0.015228,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.649070,1.000000
+Claude S4.5,Artificial Intelligence,post,date,2,0.023611,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.423715,1.000000
+Claude S4.5,Artificial Intelligence,post,frq,2,0.032596,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.536693,1.000000
+Claude S4.5,Artificial Intelligence,overall,binary,2,0.018174,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.450310,1.000000
+Claude S4.5,Artificial Intelligence,overall,mcq,2,0.003555,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.896421,1.000000
+Claude S4.5,Artificial Intelligence,overall,date,2,0.024755,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.358328,1.000000
+Claude S4.5,Artificial Intelligence,overall,frq,2,0.008180,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.868826,1.000000
+Claude S4.5,Medicine,pre,binary,3,0.064233,Science,Nature,0.570086,1.000000
+Claude S4.5,Medicine,pre,mcq,3,0.066138,Science,Nature,0.577085,1.000000
+Claude S4.5,Medicine,pre,date,3,0.079219,Cell,Nature,0.291942,1.000000
+Claude S4.5,Medicine,pre,frq,3,0.360204,Science,Cell,0.301740,1.000000
+Claude S4.5,Medicine,post,binary,3,0.081534,Science,Cell,0.434713,1.000000
+Claude S4.5,Medicine,post,mcq,3,0.113755,Science,Nature,0.201560,1.000000
+Claude S4.5,Medicine,post,date,3,0.038921,Cell,Science,0.785643,1.000000
+Claude S4.5,Medicine,post,frq,3,0.005717,Nature,Cell,0.998200,1.000000
+Claude S4.5,Medicine,overall,binary,3,0.070470,Science,Cell,0.268346,1.000000
+Claude S4.5,Medicine,overall,mcq,3,0.089287,Science,Nature,0.119376,1.000000
+Claude S4.5,Medicine,overall,date,3,0.044955,Cell,Nature,0.498500,1.000000
+Claude S4.5,Medicine,overall,frq,3,0.148651,Science,Cell,0.498500,1.000000
+Claude S4.5,Materials Science,pre,binary,2,0.080812,Nature,Science,0.073385,1.000000
+Claude S4.5,Materials Science,pre,mcq,2,0.111015,Science,Nature,0.106779,1.000000
+Claude S4.5,Materials Science,pre,date,2,0.007837,Science,Nature,0.769446,1.000000
+Claude S4.5,Materials Science,pre,frq,2,0.047760,Science,Nature,0.661268,1.000000
+Claude S4.5,Materials Science,post,binary,2,0.032240,Science,Nature,0.374125,1.000000
+Claude S4.5,Materials Science,post,mcq,2,0.024480,Nature,Science,0.705259,1.000000
+Claude S4.5,Materials Science,post,date,2,0.041335,Science,Nature,0.231354,1.000000
+Claude S4.5,Materials Science,post,frq,2,0.119331,Science,Nature,0.188562,1.000000
+Claude S4.5,Materials Science,overall,binary,2,0.020956,Nature,Science,0.449910,1.000000
+Claude S4.5,Materials Science,overall,mcq,2,0.030812,Science,Nature,0.490502,1.000000
+Claude S4.5,Materials Science,overall,date,2,0.031822,Science,Nature,0.152170,1.000000
+Claude S4.5,Materials Science,overall,frq,2,0.090142,Science,Nature,0.203759,1.000000
+Claude S4.5,Physics,pre,binary,2,0.012646,Nature,Science,0.811638,1.000000
+Claude S4.5,Physics,pre,mcq,2,0.018182,Science,Nature,0.832034,1.000000
+Claude S4.5,Physics,pre,date,2,0.080479,Science,Nature,0.050390,1.000000
+Claude S4.5,Physics,pre,frq,2,0.062995,Nature,Science,0.667267,1.000000
+Claude S4.5,Physics,post,binary,2,0.030444,Nature,Science,0.488102,1.000000
+Claude S4.5,Physics,post,mcq,2,0.022619,Science,Nature,0.745851,1.000000
+Claude S4.5,Physics,post,date,2,0.081705,Science,Nature,0.032394,1.000000
+Claude S4.5,Physics,post,frq,2,0.003030,Nature,Science,0.980204,1.000000
+Claude S4.5,Physics,overall,binary,2,0.017217,Nature,Science,0.606279,1.000000
+Claude S4.5,Physics,overall,mcq,2,0.020909,Science,Nature,0.678464,1.000000
+Claude S4.5,Physics,overall,date,2,0.086131,Science,Nature,0.001800,0.160168
+Claude S4.5,Physics,overall,frq,2,0.033271,Nature,Science,0.716657,1.000000
+Claude S4.5,Neuroscience,pre,binary,2,0.132152,Science,Nature,0.037992,1.000000
+Claude S4.5,Neuroscience,pre,mcq,2,0.025550,Science,Nature,0.766447,1.000000
+Claude S4.5,Neuroscience,pre,date,2,0.058672,Science,Nature,0.301940,1.000000
+Claude S4.5,Neuroscience,pre,frq,2,0.041624,Nature,Science,0.810438,1.000000
+Claude S4.5,Neuroscience,post,binary,2,0.014172,Nature,Science,0.799840,1.000000
+Claude S4.5,Neuroscience,post,mcq,2,0.178962,Science,Nature,0.038592,1.000000
+Claude S4.5,Neuroscience,post,date,2,0.007450,Science,Nature,0.885423,1.000000
+Claude S4.5,Neuroscience,post,frq,2,0.051336,Nature,Science,0.757249,1.000000
+Claude S4.5,Neuroscience,overall,binary,2,0.077209,Science,Nature,0.060188,1.000000
+Claude S4.5,Neuroscience,overall,mcq,2,0.092105,Science,Nature,0.098780,1.000000
+Claude S4.5,Neuroscience,overall,date,2,0.039573,Science,Nature,0.332134,1.000000
+Claude S4.5,Neuroscience,overall,frq,2,0.034648,Nature,Science,0.764247,1.000000
+Claude S4.5,Chemistry,pre,binary,2,0.038556,Science,Nature,0.604079,1.000000
+Claude S4.5,Chemistry,pre,mcq,2,0.227575,Nature,Science,0.030994,1.000000
+Claude S4.5,Chemistry,pre,date,2,0.081420,Science,Nature,0.059588,1.000000
+Claude S4.5,Chemistry,pre,frq,2,0.138889,Science,Nature,0.466707,1.000000
+Claude S4.5,Chemistry,post,binary,2,0.009601,Science,Nature,0.892422,1.000000
+Claude S4.5,Chemistry,post,mcq,2,0.104306,Science,Nature,0.287742,1.000000
+Claude S4.5,Chemistry,post,date,2,0.073565,Science,Nature,0.131774,1.000000
+Claude S4.5,Chemistry,post,frq,2,0.114728,Science,Nature,0.420316,1.000000
+Claude S4.5,Chemistry,overall,binary,2,0.016464,Science,Nature,0.743451,1.000000
+Claude S4.5,Chemistry,overall,mcq,2,0.039175,Nature,Science,0.590282,1.000000
+Claude S4.5,Chemistry,overall,date,2,0.079662,Science,Nature,0.018196,1.000000
+Claude S4.5,Chemistry,overall,frq,2,0.132193,Science,Nature,0.232953,1.000000
+GPT-5.4,Biology,pre,binary,3,0.010550,Nature,Science,0.938012,1.000000
+GPT-5.4,Biology,pre,mcq,3,0.073497,Cell,Science,0.062388,1.000000
+GPT-5.4,Biology,pre,date,3,0.094558,Science,Nature,0.003599,0.338332
+GPT-5.4,Biology,pre,frq,3,0.018970,Science,Cell,0.971406,1.000000
+GPT-5.4,Biology,post,binary,3,0.082570,Cell,Nature,0.341732,1.000000
+GPT-5.4,Biology,post,mcq,3,0.170209,Science,Nature,0.001600,0.151970
+GPT-5.4,Biology,post,date,3,0.020534,Science,Nature,0.843031,1.000000
+GPT-5.4,Biology,post,frq,3,0.241204,Nature,Science,0.052390,1.000000
+GPT-5.4,Biology,overall,binary,3,0.027309,Cell,Science,0.668866,1.000000
+GPT-5.4,Biology,overall,mcq,3,0.025096,Cell,Nature,0.679064,1.000000
+GPT-5.4,Biology,overall,date,3,0.079382,Science,Nature,0.004399,0.409118
+GPT-5.4,Biology,overall,frq,3,0.065751,Nature,Science,0.500500,1.000000
+GPT-5.4,Artificial Intelligence,pre,binary,2,0.014714,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.630074,1.000000
+GPT-5.4,Artificial Intelligence,pre,mcq,2,0.010014,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.786643,1.000000
+GPT-5.4,Artificial Intelligence,pre,date,2,0.032363,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.402719,1.000000
+GPT-5.4,Artificial Intelligence,pre,frq,2,0.047110,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.496901,1.000000
+GPT-5.4,Artificial Intelligence,post,binary,2,0.032499,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.373925,1.000000
+GPT-5.4,Artificial Intelligence,post,mcq,2,0.019592,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.654869,1.000000
+GPT-5.4,Artificial Intelligence,post,date,2,0.093553,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.029194,1.000000
+GPT-5.4,Artificial Intelligence,post,frq,2,0.135176,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.094781,1.000000
+GPT-5.4,Artificial Intelligence,overall,binary,2,0.023585,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.290342,1.000000
+GPT-5.4,Artificial Intelligence,overall,mcq,2,0.002899,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.918016,1.000000
+GPT-5.4,Artificial Intelligence,overall,date,2,0.054399,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.057588,1.000000
+GPT-5.4,Artificial Intelligence,overall,frq,2,0.089629,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.091982,1.000000
+GPT-5.4,Medicine,pre,binary,3,0.109215,Science,Cell,0.133773,1.000000
+GPT-5.4,Medicine,pre,mcq,3,0.038446,Science,Cell,0.792442,1.000000
+GPT-5.4,Medicine,pre,date,3,0.132923,Science,Cell,0.025195,1.000000
+GPT-5.4,Medicine,pre,frq,3,0.106196,Science,Cell,0.622675,1.000000
+GPT-5.4,Medicine,post,binary,3,0.034753,Cell,Science,0.920016,1.000000
+GPT-5.4,Medicine,post,mcq,3,0.098177,Cell,Nature,0.326535,1.000000
+GPT-5.4,Medicine,post,date,2,0.019680,Cell,Nature,0.754449,1.000000
+GPT-5.4,Medicine,post,frq,3,0.112217,Nature,Science,0.689662,1.000000
+GPT-5.4,Medicine,overall,binary,3,0.050503,Science,Cell,0.516697,1.000000
+GPT-5.4,Medicine,overall,mcq,3,0.034025,Cell,Nature,0.589282,1.000000
+GPT-5.4,Medicine,overall,date,3,0.103009,Science,Cell,0.035593,1.000000
+GPT-5.4,Medicine,overall,frq,3,0.054679,Science,Cell,0.829234,1.000000
+GPT-5.4,Materials Science,pre,binary,2,0.025301,Nature,Science,0.544091,1.000000
+GPT-5.4,Materials Science,pre,mcq,2,0.031015,Science,Nature,0.505899,1.000000
+GPT-5.4,Materials Science,pre,date,2,0.030430,Science,Nature,0.358128,1.000000
+GPT-5.4,Materials Science,pre,frq,2,0.109025,Science,Nature,0.196161,1.000000
+GPT-5.4,Materials Science,post,binary,2,0.037736,Science,Nature,0.509698,1.000000
+GPT-5.4,Materials Science,post,mcq,2,0.070497,Nature,Science,0.224155,1.000000
+GPT-5.4,Materials Science,post,date,2,0.006084,Science,Nature,0.885823,1.000000
+GPT-5.4,Materials Science,post,frq,2,0.195175,Science,Nature,0.086183,1.000000
+GPT-5.4,Materials Science,overall,binary,2,0.010005,Nature,Science,0.762248,1.000000
+GPT-5.4,Materials Science,overall,mcq,2,0.006714,Nature,Science,0.858828,1.000000
+GPT-5.4,Materials Science,overall,date,2,0.022334,Science,Nature,0.395721,1.000000
+GPT-5.4,Materials Science,overall,frq,2,0.138172,Science,Nature,0.048190,1.000000
+GPT-5.4,Physics,pre,binary,2,0.053330,Nature,Science,0.235353,1.000000
+GPT-5.4,Physics,pre,mcq,2,0.043877,Nature,Science,0.380524,1.000000
+GPT-5.4,Physics,pre,date,2,0.068307,Science,Nature,0.055789,1.000000
+GPT-5.4,Physics,pre,frq,2,0.074722,Nature,Science,0.518496,1.000000
+GPT-5.4,Physics,post,binary,2,0.053264,Nature,Science,0.485303,1.000000
+GPT-5.4,Physics,post,mcq,2,0.012210,Science,Nature,0.942811,1.000000
+GPT-5.4,Physics,post,frq,2,0.070833,Nature,Science,0.770046,1.000000
+GPT-5.4,Physics,overall,binary,2,0.039523,Nature,Science,0.304139,1.000000
+GPT-5.4,Physics,overall,mcq,2,0.021328,Nature,Science,0.605279,1.000000
+GPT-5.4,Physics,overall,date,2,0.066337,Science,Nature,0.029794,1.000000
+GPT-5.4,Physics,overall,frq,2,0.091697,Nature,Science,0.369726,1.000000
+GPT-5.4,Neuroscience,pre,binary,2,0.043514,Science,Nature,0.421116,1.000000
+GPT-5.4,Neuroscience,pre,mcq,2,0.047167,Nature,Science,0.402519,1.000000
+GPT-5.4,Neuroscience,pre,date,2,0.049792,Science,Nature,0.276545,1.000000
+GPT-5.4,Neuroscience,pre,frq,2,0.045428,Nature,Science,0.677864,1.000000
+GPT-5.4,Neuroscience,post,binary,2,0.047896,Science,Nature,0.630474,1.000000
+GPT-5.4,Neuroscience,post,mcq,2,0.005435,Science,Nature,0.939612,1.000000
+GPT-5.4,Neuroscience,post,frq,2,0.054348,Nature,Science,0.765847,1.000000
+GPT-5.4,Neuroscience,overall,binary,2,0.035838,Science,Nature,0.448110,1.000000
+GPT-5.4,Neuroscience,overall,mcq,2,0.031000,Nature,Science,0.516697,1.000000
+GPT-5.4,Neuroscience,overall,date,2,0.038187,Science,Nature,0.326135,1.000000
+GPT-5.4,Neuroscience,overall,frq,2,0.053329,Nature,Science,0.569086,1.000000
+GPT-5.4,Chemistry,pre,binary,2,0.074074,Science,Nature,0.193961,1.000000
+GPT-5.4,Chemistry,pre,mcq,2,0.015130,Nature,Science,0.819036,1.000000
+GPT-5.4,Chemistry,pre,date,2,0.013073,Science,Nature,0.780044,1.000000
+GPT-5.4,Chemistry,pre,frq,2,0.231818,Science,Nature,0.070386,1.000000
+GPT-5.4,Chemistry,post,binary,2,0.104299,Nature,Science,0.227954,1.000000
+GPT-5.4,Chemistry,post,mcq,2,0.090196,Nature,Science,0.391522,1.000000
+GPT-5.4,Chemistry,post,frq,2,0.164719,Science,Nature,0.329934,1.000000
+GPT-5.4,Chemistry,overall,binary,2,0.022043,Science,Nature,0.647870,1.000000
+GPT-5.4,Chemistry,overall,mcq,2,0.035759,Nature,Science,0.526095,1.000000
+GPT-5.4,Chemistry,overall,date,2,0.046477,Science,Nature,0.234553,1.000000
+GPT-5.4,Chemistry,overall,frq,2,0.209670,Science,Nature,0.032793,1.000000
+Claude Sonnet 5,Biology,pre,binary,3,0.007975,Science,Nature,0.951410,1.000000
+Claude Sonnet 5,Biology,pre,mcq,3,0.062840,Science,Cell,0.078384,1.000000
+Claude Sonnet 5,Biology,pre,date,3,0.029844,Science,Nature,0.522296,1.000000
+Claude Sonnet 5,Biology,pre,frq,3,0.026903,Science,Nature,0.920616,1.000000
+Claude Sonnet 5,Biology,post,binary,3,0.077382,Nature,Cell,0.611078,1.000000
+Claude Sonnet 5,Biology,post,mcq,3,0.117589,Science,Nature,0.164367,1.000000
+Claude Sonnet 5,Biology,post,frq,3,0.409811,Nature,Science,0.022795,1.000000
+Claude Sonnet 5,Biology,overall,binary,3,0.006253,Science,Cell,0.974605,1.000000
+Claude Sonnet 5,Biology,overall,mcq,3,0.067650,Science,Cell,0.042991,1.000000
+Claude Sonnet 5,Biology,overall,date,3,0.026251,Science,Nature,0.605679,1.000000
+Claude Sonnet 5,Biology,overall,frq,3,0.041992,Nature,Cell,0.767447,1.000000
+Claude Sonnet 5,Artificial Intelligence,pre,binary,2,0.010150,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.702659,1.000000
+Claude Sonnet 5,Artificial Intelligence,pre,mcq,2,0.047084,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.012597,0.907019
+Claude Sonnet 5,Artificial Intelligence,pre,date,2,0.055017,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.031594,1.000000
+Claude Sonnet 5,Artificial Intelligence,pre,frq,2,0.091281,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.201360,1.000000
+Claude Sonnet 5,Artificial Intelligence,post,binary,2,0.081644,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.314737,1.000000
+Claude Sonnet 5,Artificial Intelligence,post,mcq,2,0.048596,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.075985,1.000000
+Claude Sonnet 5,Artificial Intelligence,post,frq,2,0.032738,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.821236,1.000000
+Claude Sonnet 5,Artificial Intelligence,overall,binary,2,0.008296,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.734253,1.000000
+Claude Sonnet 5,Artificial Intelligence,overall,mcq,2,0.049144,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.003399,0.261748
+Claude Sonnet 5,Artificial Intelligence,overall,date,2,0.045590,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.064387,1.000000
+Claude Sonnet 5,Artificial Intelligence,overall,frq,2,0.061564,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.324735,1.000000
+Claude Sonnet 5,Medicine,pre,binary,3,0.077840,Cell,Nature,0.119376,1.000000
+Claude Sonnet 5,Medicine,pre,mcq,3,0.105608,Science,Nature,0.023995,1.000000
+Claude Sonnet 5,Medicine,pre,date,3,0.062454,Nature,Cell,0.272945,1.000000
+Claude Sonnet 5,Medicine,pre,frq,3,0.032148,Nature,Cell,0.946011,1.000000
+Claude Sonnet 5,Medicine,post,binary,3,0.095202,Cell,Nature,0.758655,1.000000
+Claude Sonnet 5,Medicine,post,mcq,3,0.011730,Cell,Science,0.992601,1.000000
+Claude Sonnet 5,Medicine,post,frq,3,0.088571,Cell,Science,0.875625,1.000000
+Claude Sonnet 5,Medicine,overall,binary,3,0.074592,Cell,Nature,0.092382,1.000000
+Claude Sonnet 5,Medicine,overall,mcq,3,0.087320,Science,Nature,0.043991,1.000000
+Claude Sonnet 5,Medicine,overall,date,3,0.075758,Nature,Cell,0.155369,1.000000
+Claude Sonnet 5,Medicine,overall,frq,3,0.001081,Nature,Cell,1.000000,1.000000
+Claude Sonnet 5,Materials Science,pre,binary,2,0.049635,Science,Nature,0.135573,1.000000
+Claude Sonnet 5,Materials Science,pre,mcq,2,0.036025,Nature,Science,0.197161,1.000000
+Claude Sonnet 5,Materials Science,pre,date,2,0.014604,Nature,Science,0.612677,1.000000
+Claude Sonnet 5,Materials Science,pre,frq,2,0.061638,Science,Nature,0.495701,1.000000
+Claude Sonnet 5,Materials Science,post,binary,2,0.010334,Nature,Science,0.896021,1.000000
+Claude Sonnet 5,Materials Science,post,mcq,2,0.029001,Nature,Science,0.514897,1.000000
+Claude Sonnet 5,Materials Science,post,frq,2,0.022876,Nature,Science,0.902619,1.000000
+Claude Sonnet 5,Materials Science,overall,binary,2,0.038648,Science,Nature,0.201360,1.000000
+Claude Sonnet 5,Materials Science,overall,mcq,2,0.034590,Nature,Science,0.165167,1.000000
+Claude Sonnet 5,Materials Science,overall,date,2,0.015265,Nature,Science,0.588082,1.000000
+Claude Sonnet 5,Materials Science,overall,frq,2,0.044076,Science,Nature,0.579284,1.000000
+Claude Sonnet 5,Physics,pre,binary,2,0.023504,Science,Nature,0.565087,1.000000
+Claude Sonnet 5,Physics,pre,mcq,2,0.057727,Nature,Science,0.085583,1.000000
+Claude Sonnet 5,Physics,pre,date,2,0.012077,Nature,Science,0.744451,1.000000
+Claude Sonnet 5,Physics,pre,frq,2,0.015697,Science,Nature,0.889222,1.000000
+Claude Sonnet 5,Physics,post,binary,2,0.100259,Science,Nature,0.199360,1.000000
+Claude Sonnet 5,Physics,overall,binary,2,0.030479,Science,Nature,0.391722,1.000000
+Claude Sonnet 5,Physics,overall,mcq,2,0.042398,Nature,Science,0.138172,1.000000
+Claude Sonnet 5,Physics,overall,date,2,0.021262,Nature,Science,0.545891,1.000000
+Claude Sonnet 5,Physics,overall,frq,2,0.026756,Science,Nature,0.795841,1.000000
+Claude Sonnet 5,Neuroscience,pre,binary,2,0.018356,Science,Nature,0.699860,1.000000
+Claude Sonnet 5,Neuroscience,pre,mcq,2,0.027090,Science,Nature,0.555289,1.000000
+Claude Sonnet 5,Neuroscience,pre,date,2,0.010264,Science,Nature,0.830434,1.000000
+Claude Sonnet 5,Neuroscience,pre,frq,2,0.029933,Science,Nature,0.802240,1.000000
+Claude Sonnet 5,Neuroscience,post,binary,2,0.018899,Nature,Science,0.875625,1.000000
+Claude Sonnet 5,Neuroscience,overall,binary,2,0.013675,Science,Nature,0.760848,1.000000
+Claude Sonnet 5,Neuroscience,overall,mcq,2,0.024238,Science,Nature,0.519696,1.000000
+Claude Sonnet 5,Neuroscience,overall,date,2,0.006520,Science,Nature,0.885823,1.000000
+Claude Sonnet 5,Neuroscience,overall,frq,2,0.033416,Science,Nature,0.765647,1.000000
+Claude Sonnet 5,Chemistry,pre,binary,2,0.007328,Nature,Science,0.892621,1.000000
+Claude Sonnet 5,Chemistry,pre,mcq,2,0.054704,Nature,Science,0.302939,1.000000
+Claude Sonnet 5,Chemistry,pre,date,2,0.041795,Nature,Science,0.402519,1.000000
+Claude Sonnet 5,Chemistry,pre,frq,2,0.203812,Science,Nature,0.107978,1.000000
+Claude Sonnet 5,Chemistry,overall,binary,2,0.012875,Nature,Science,0.791442,1.000000
+Claude Sonnet 5,Chemistry,overall,mcq,2,0.037255,Nature,Science,0.444911,1.000000
+Claude Sonnet 5,Chemistry,overall,date,2,0.050459,Nature,Science,0.292741,1.000000
+Claude Sonnet 5,Chemistry,overall,frq,2,0.152674,Science,Nature,0.211758,1.000000
+GPT-5.6 Sol,Biology,pre,binary,3,0.016450,Science,Cell,0.844831,1.000000
+GPT-5.6 Sol,Biology,pre,mcq,3,0.030481,Cell,Nature,0.450710,1.000000
+GPT-5.6 Sol,Biology,pre,date,3,0.087728,Science,Nature,0.011398,1.000000
+GPT-5.6 Sol,Biology,pre,frq,3,0.104233,Science,Nature,0.276745,1.000000
+GPT-5.6 Sol,Biology,post,binary,3,0.168247,Cell,Science,0.259348,1.000000
+GPT-5.6 Sol,Biology,post,mcq,3,0.048617,Cell,Nature,0.820636,1.000000
+GPT-5.6 Sol,Biology,post,frq,3,0.405979,Nature,Cell,0.045191,1.000000
+GPT-5.6 Sol,Biology,overall,binary,3,0.001853,Cell,Nature,0.997001,1.000000
+GPT-5.6 Sol,Biology,overall,mcq,3,0.033067,Cell,Nature,0.377125,1.000000
+GPT-5.6 Sol,Biology,overall,date,3,0.090694,Science,Nature,0.004599,0.423115
+GPT-5.6 Sol,Biology,overall,frq,3,0.070927,Science,Cell,0.514697,1.000000
+GPT-5.6 Sol,Artificial Intelligence,pre,binary,2,0.002780,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.889822,1.000000
+GPT-5.6 Sol,Artificial Intelligence,pre,mcq,2,0.055379,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.013997,0.979804
+GPT-5.6 Sol,Artificial Intelligence,pre,date,2,0.107690,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.002599,0.207958
+GPT-5.6 Sol,Artificial Intelligence,pre,frq,2,0.050181,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.462308,1.000000
+GPT-5.6 Sol,Artificial Intelligence,overall,binary,2,0.007559,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.690462,1.000000
+GPT-5.6 Sol,Artificial Intelligence,overall,mcq,2,0.059157,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.008598,0.627674
+GPT-5.6 Sol,Artificial Intelligence,overall,date,2,0.084392,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.016797,1.000000
+GPT-5.6 Sol,Artificial Intelligence,overall,frq,2,0.028595,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.673065,1.000000
+GPT-5.6 Sol,Medicine,pre,binary,3,0.035713,Nature,Cell,0.575285,1.000000
+GPT-5.6 Sol,Medicine,pre,mcq,3,0.047910,Cell,Science,0.523695,1.000000
+GPT-5.6 Sol,Medicine,pre,date,3,0.048554,Cell,Nature,0.660868,1.000000
+GPT-5.6 Sol,Medicine,pre,frq,3,0.138419,Cell,Science,0.406319,1.000000
+GPT-5.6 Sol,Medicine,post,binary,3,0.136977,Cell,Nature,0.652418,1.000000
+GPT-5.6 Sol,Medicine,post,mcq,3,0.016563,Science,Cell,0.987602,1.000000
+GPT-5.6 Sol,Medicine,post,frq,3,0.469309,Cell,Nature,0.067786,1.000000
+GPT-5.6 Sol,Medicine,overall,binary,3,0.028205,Nature,Cell,0.675665,1.000000
+GPT-5.6 Sol,Medicine,overall,mcq,3,0.038448,Cell,Science,0.580084,1.000000
+GPT-5.6 Sol,Medicine,overall,date,3,0.048172,Cell,Nature,0.623675,1.000000
+GPT-5.6 Sol,Medicine,overall,frq,3,0.169805,Cell,Nature,0.147371,1.000000
+GPT-5.6 Sol,Materials Science,pre,binary,2,0.064162,Science,Nature,0.016797,1.000000
+GPT-5.6 Sol,Materials Science,pre,mcq,2,0.006751,Science,Nature,0.837233,1.000000
+GPT-5.6 Sol,Materials Science,pre,date,2,0.104417,Science,Nature,0.006199,0.595081
+GPT-5.6 Sol,Materials Science,pre,frq,2,0.080708,Nature,Science,0.379324,1.000000
+GPT-5.6 Sol,Materials Science,post,binary,2,0.113522,Science,Nature,0.183963,1.000000
+GPT-5.6 Sol,Materials Science,post,mcq,2,0.059621,Nature,Science,0.459708,1.000000
+GPT-5.6 Sol,Materials Science,post,frq,2,0.066176,Science,Nature,0.678064,1.000000
+GPT-5.6 Sol,Materials Science,overall,binary,2,0.069640,Science,Nature,0.006199,0.595081
+GPT-5.6 Sol,Materials Science,overall,mcq,2,0.004029,Nature,Science,0.887622,1.000000
+GPT-5.6 Sol,Materials Science,overall,date,2,0.096534,Science,Nature,0.006599,0.620276
+GPT-5.6 Sol,Materials Science,overall,frq,2,0.049908,Nature,Science,0.537892,1.000000
+GPT-5.6 Sol,Physics,pre,binary,2,0.038622,Nature,Science,0.296941,1.000000
+GPT-5.6 Sol,Physics,pre,mcq,2,0.002222,Science,Nature,0.977804,1.000000
+GPT-5.6 Sol,Physics,pre,date,2,0.125866,Science,Nature,0.004399,0.382723
+GPT-5.6 Sol,Physics,pre,frq,2,0.063170,Science,Nature,0.639872,1.000000
+GPT-5.6 Sol,Physics,post,binary,2,0.027815,Science,Nature,0.803639,1.000000
+GPT-5.6 Sol,Physics,overall,binary,2,0.027111,Nature,Science,0.418316,1.000000
+GPT-5.6 Sol,Physics,overall,mcq,2,0.005172,Nature,Science,0.874825,1.000000
+GPT-5.6 Sol,Physics,overall,date,2,0.117846,Science,Nature,0.003399,0.299140
+GPT-5.6 Sol,Physics,overall,frq,2,0.041353,Science,Nature,0.747051,1.000000
+GPT-5.6 Sol,Neuroscience,pre,binary,2,0.005146,Science,Nature,0.905419,1.000000
+GPT-5.6 Sol,Neuroscience,pre,mcq,2,0.012244,Nature,Science,0.797840,1.000000
+GPT-5.6 Sol,Neuroscience,pre,date,2,0.003996,Science,Nature,0.943011,1.000000
+GPT-5.6 Sol,Neuroscience,pre,frq,2,0.034709,Science,Nature,0.762048,1.000000
+GPT-5.6 Sol,Neuroscience,overall,binary,2,0.011496,Science,Nature,0.780644,1.000000
+GPT-5.6 Sol,Neuroscience,overall,mcq,2,0.015374,Nature,Science,0.719056,1.000000
+GPT-5.6 Sol,Neuroscience,overall,date,2,0.006599,Science,Nature,0.905619,1.000000
+GPT-5.6 Sol,Neuroscience,overall,frq,2,0.054735,Science,Nature,0.620676,1.000000
+GPT-5.6 Sol,Chemistry,pre,binary,2,0.048967,Science,Nature,0.227155,1.000000
+GPT-5.6 Sol,Chemistry,pre,mcq,2,0.043478,Science,Nature,0.389522,1.000000
+GPT-5.6 Sol,Chemistry,pre,date,2,0.086974,Science,Nature,0.079584,1.000000
+GPT-5.6 Sol,Chemistry,pre,frq,2,0.085717,Science,Nature,0.540292,1.000000
+GPT-5.6 Sol,Chemistry,overall,binary,2,0.050647,Science,Nature,0.212757,1.000000
+GPT-5.6 Sol,Chemistry,overall,mcq,2,0.040672,Science,Nature,0.411718,1.000000
+GPT-5.6 Sol,Chemistry,overall,date,2,0.075302,Science,Nature,0.114177,1.000000
+GPT-5.6 Sol,Chemistry,overall,frq,2,0.130838,Science,Nature,0.307938,1.000000
+Claude Opus 4.8,Biology,pre,binary,3,0.057010,Science,Cell,0.100580,1.000000
+Claude Opus 4.8,Biology,pre,mcq,3,0.014186,Science,Nature,0.780644,1.000000
+Claude Opus 4.8,Biology,pre,date,3,0.117266,Science,Nature,0.000400,0.038792
+Claude Opus 4.8,Biology,pre,frq,3,0.048197,Science,Cell,0.792641,1.000000
+Claude Opus 4.8,Biology,post,binary,3,0.126840,Cell,Science,0.384123,1.000000
+Claude Opus 4.8,Biology,post,mcq,3,0.078797,Cell,Nature,0.388322,1.000000
+Claude Opus 4.8,Biology,post,frq,3,0.413980,Nature,Cell,0.013197,1.000000
+Claude Opus 4.8,Biology,overall,binary,3,0.045336,Science,Nature,0.216957,1.000000
+Claude Opus 4.8,Biology,overall,mcq,3,0.022033,Cell,Nature,0.516697,1.000000
+Claude Opus 4.8,Biology,overall,date,3,0.111295,Science,Nature,0.000400,0.038792
+Claude Opus 4.8,Biology,overall,frq,3,0.065819,Nature,Cell,0.632274,1.000000
+Claude Opus 4.8,Artificial Intelligence,pre,binary,2,0.010261,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.701260,1.000000
+Claude Opus 4.8,Artificial Intelligence,pre,mcq,2,0.017642,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.306739,1.000000
+Claude Opus 4.8,Artificial Intelligence,pre,date,2,0.055521,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.025995,1.000000
+Claude Opus 4.8,Artificial Intelligence,pre,frq,2,0.090401,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.173765,1.000000
+Claude Opus 4.8,Artificial Intelligence,post,binary,2,0.052918,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.488902,1.000000
+Claude Opus 4.8,Artificial Intelligence,post,mcq,2,0.005190,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.633673,1.000000
+Claude Opus 4.8,Artificial Intelligence,post,frq,2,0.111111,HF Daily Papers (arXiv),Top-10 AI Paper of Week (arXiv),0.444511,1.000000
+Claude Opus 4.8,Artificial Intelligence,overall,binary,2,0.007082,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.781644,1.000000
+Claude Opus 4.8,Artificial Intelligence,overall,mcq,2,0.016601,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.259348,1.000000
+Claude Opus 4.8,Artificial Intelligence,overall,date,2,0.048191,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.052789,1.000000
+Claude Opus 4.8,Artificial Intelligence,overall,frq,2,0.042913,Top-10 AI Paper of Week (arXiv),HF Daily Papers (arXiv),0.471906,1.000000
+Claude Opus 4.8,Medicine,pre,binary,3,0.033482,Nature,Cell,0.752649,1.000000
+Claude Opus 4.8,Medicine,pre,mcq,3,0.059053,Cell,Science,0.326535,1.000000
+Claude Opus 4.8,Medicine,pre,date,3,0.018402,Science,Cell,0.928614,1.000000
+Claude Opus 4.8,Medicine,pre,frq,3,0.172453,Nature,Science,0.168166,1.000000
+Claude Opus 4.8,Medicine,post,binary,3,0.021284,Cell,Science,0.987400,1.000000
+Claude Opus 4.8,Medicine,post,mcq,3,0.057994,Cell,Science,0.773645,1.000000
+Claude Opus 4.8,Medicine,post,frq,3,0.142857,Nature,Cell,0.699060,1.000000
+Claude Opus 4.8,Medicine,overall,binary,3,0.037940,Nature,Cell,0.653069,1.000000
+Claude Opus 4.8,Medicine,overall,mcq,3,0.058512,Cell,Science,0.251350,1.000000
+Claude Opus 4.8,Medicine,overall,date,3,0.019867,Science,Cell,0.928014,1.000000
+Claude Opus 4.8,Medicine,overall,frq,3,0.130067,Nature,Science,0.210558,1.000000
+Claude Opus 4.8,Materials Science,pre,binary,2,0.011771,Nature,Science,0.729254,1.000000
+Claude Opus 4.8,Materials Science,pre,mcq,2,0.011407,Science,Nature,0.717057,1.000000
+Claude Opus 4.8,Materials Science,pre,date,2,0.052679,Science,Nature,0.127175,1.000000
+Claude Opus 4.8,Materials Science,pre,frq,2,0.015579,Science,Nature,0.864027,1.000000
+Claude Opus 4.8,Materials Science,post,binary,2,0.043237,Science,Nature,0.419116,1.000000
+Claude Opus 4.8,Materials Science,post,mcq,2,0.100000,Nature,Science,0.036593,1.000000
+Claude Opus 4.8,Materials Science,post,frq,2,0.133987,Science,Nature,0.464507,1.000000
+Claude Opus 4.8,Materials Science,overall,binary,2,0.008217,Nature,Science,0.789842,1.000000
+Claude Opus 4.8,Materials Science,overall,mcq,2,0.011197,Nature,Science,0.613877,1.000000
+Claude Opus 4.8,Materials Science,overall,date,2,0.035059,Science,Nature,0.268746,1.000000
+Claude Opus 4.8,Materials Science,overall,frq,2,0.038351,Science,Nature,0.624275,1.000000
+Claude Opus 4.8,Physics,pre,binary,2,0.020095,Nature,Science,0.630074,1.000000
+Claude Opus 4.8,Physics,pre,mcq,2,0.005150,Science,Nature,0.946211,1.000000
+Claude Opus 4.8,Physics,pre,date,2,0.041845,Science,Nature,0.275745,1.000000
+Claude Opus 4.8,Physics,pre,frq,2,0.104041,Science,Nature,0.384123,1.000000
+Claude Opus 4.8,Physics,post,binary,2,0.166643,Science,Nature,0.069386,1.000000
+Claude Opus 4.8,Physics,overall,binary,2,0.008531,Science,Nature,0.827435,1.000000
+Claude Opus 4.8,Physics,overall,mcq,2,0.005107,Science,Nature,0.876625,1.000000
+Claude Opus 4.8,Physics,overall,date,2,0.037887,Science,Nature,0.299140,1.000000
+Claude Opus 4.8,Physics,overall,frq,2,0.082969,Science,Nature,0.455909,1.000000
+Claude Opus 4.8,Neuroscience,pre,binary,2,0.001590,Science,Nature,0.975005,1.000000
+Claude Opus 4.8,Neuroscience,pre,mcq,2,0.027513,Science,Nature,0.444911,1.000000
+Claude Opus 4.8,Neuroscience,pre,date,2,0.024043,Nature,Science,0.646071,1.000000
+Claude Opus 4.8,Neuroscience,pre,frq,2,0.349680,Science,Nature,0.003799,0.326735
+Claude Opus 4.8,Neuroscience,post,binary,2,0.085565,Nature,Science,0.346331,1.000000
+Claude Opus 4.8,Neuroscience,overall,binary,2,0.004696,Nature,Science,0.916217,1.000000
+Claude Opus 4.8,Neuroscience,overall,mcq,2,0.023621,Science,Nature,0.438912,1.000000
+Claude Opus 4.8,Neuroscience,overall,date,2,0.027416,Nature,Science,0.572685,1.000000
+Claude Opus 4.8,Neuroscience,overall,frq,2,0.369078,Science,Nature,0.000800,0.069586
+Claude Opus 4.8,Chemistry,pre,binary,2,0.018927,Nature,Science,0.718656,1.000000
+Claude Opus 4.8,Chemistry,pre,mcq,2,0.034884,Science,Nature,0.450510,1.000000
+Claude Opus 4.8,Chemistry,pre,date,2,0.021757,Science,Nature,0.676065,1.000000
+Claude Opus 4.8,Chemistry,pre,frq,2,0.228193,Science,Nature,0.085383,1.000000
+Claude Opus 4.8,Chemistry,overall,binary,2,0.012698,Nature,Science,0.789842,1.000000
+Claude Opus 4.8,Chemistry,overall,mcq,2,0.030000,Science,Nature,0.505899,1.000000
+Claude Opus 4.8,Chemistry,overall,date,2,0.023875,Science,Nature,0.626875,1.000000
+Claude Opus 4.8,Chemistry,overall,frq,2,0.254876,Science,Nature,0.030194,1.000000

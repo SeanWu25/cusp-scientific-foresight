@@ -1,0 +1,74 @@
+\begin{table}[t]
+\centering
+\caption{
+\textbf{Agreement between the original retrieval experiment and the
+fixed-evidence experiment (1,000 events).}
+Pearson $r$ measures agreement between the two experimental setups, and MAD
+denotes their mean absolute difference. Values in brackets are 95\% confidence
+intervals.
+}
+\label{tab:fixed_packet_agreement}
+
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+
+\begin{tabular}{lcccc}
+\toprule
+&
+\multicolumn{2}{c}{\textbf{Pre- and post-cutoff}}
+&
+\multicolumn{2}{c}{\textbf{Post-cutoff only}}
+\\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-5}
+
+\textbf{Quantity}
+& \boldmath$r$
+& \textbf{MAD}
+& \boldmath$r$
+& \textbf{MAD}
+\\
+\midrule
+
+WS+Cutoff performance
+& 1.00 {\tiny[0.99, 1.00]}
+& 0.015 {\tiny[0.012, 0.019]}
+& 0.99 {\tiny[0.99, 1.00]}
+& 0.016 {\tiny[0.011, 0.020]}
+\\
+
+Unrestricted WS performance
+& 0.96 {\tiny[0.91, 0.99]}
+& 0.037 {\tiny[0.025, 0.052]}
+& 0.95 {\tiny[0.87, 0.99]}
+& 0.043 {\tiny[0.025, 0.065]}
+\\
+
+Knowledge gap
+& \textbf{0.99} {\tiny[0.98, 0.99]}
+& \textbf{0.015} {\tiny[0.012, 0.019]}
+& \textbf{0.97} {\tiny[0.92, 0.99]}
+& \textbf{0.016} {\tiny[0.011, 0.020]}
+\\
+
+Forecasting gap
+& \textbf{0.91} {\tiny[0.79, 0.97]}
+& \textbf{0.037} {\tiny[0.024, 0.053]}
+& \textbf{0.90} {\tiny[0.77, 0.98]}
+& \textbf{0.044} {\tiny[0.025, 0.066]}
+\\
+
+\bottomrule
+\end{tabular}
+
+\vspace{3pt}
+\begin{minipage}{0.96\textwidth}
+\footnotesize
+\textit{Notes.}
+The knowledge gap is defined as $\Delta_{\mathrm{know}}=\mathrm{WS+Cutoff}-\mathrm{Base}$ and the forecasting gap as $\Delta_{\mathrm{fore}}=\mathrm{WS}-\mathrm{WS+Cutoff}$.
+FRQ scores are divided by 10 so that all task scores are within $[0,1]$ scale.
+Each point is one model $\times$ task $\times$ partition cell with at least 20 matched events among the 1,000 events (50 cells; 30 post-cutoff). Confidence intervals are 10,000 cell-level bootstrap resamples.
+\end{minipage}
+
+\end{table}

@@ -1,0 +1,114 @@
+{
+ "2023-10-01": {
+  "n": 996,
+  "n_pre": 0,
+  "n_post": 996,
+  "inc_all": 183,
+  "inc_pre": 0,
+  "inc_post": 183,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 162,
+   "sciencedirect.com": 4,
+   "arxiv.org": 2,
+   "academia.edu": 2,
+   "pubmed.ncbi.nlm.nih.gov": 2
+  }
+ },
+ "2023-12-01": {
+  "n": 995,
+  "n_pre": 0,
+  "n_post": 995,
+  "inc_all": 196,
+  "inc_pre": 0,
+  "inc_post": 196,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 167,
+   "biorxiv.org": 5,
+   "sciencedirect.com": 4,
+   "researchsquare.com": 3,
+   "academia.edu": 3
+  }
+ },
+ "2025-01-01": {
+  "n": 996,
+  "n_pre": 213,
+  "n_post": 783,
+  "inc_all": 345,
+  "inc_pre": 174,
+  "inc_post": 171,
+  "url_match_post": 1,
+  "post_domains": {
+   "researchgate.net": 110,
+   "biorxiv.org": 26,
+   "arxiv.org": 13,
+   "pubmed.ncbi.nlm.nih.gov": 4,
+   "sciencedirect.com": 2
+  }
+ },
+ "2025-08-01": {
+  "n": 997,
+  "n_pre": 376,
+  "n_post": 621,
+  "inc_all": 465,
+  "inc_pre": 301,
+  "inc_post": 164,
+  "url_match_post": 1,
+  "post_domains": {
+   "researchgate.net": 83,
+   "biorxiv.org": 33,
+   "arxiv.org": 17,
+   "pubmed.ncbi.nlm.nih.gov": 6,
+   "huggingface.co": 6
+  }
+ },
+ "2026-01-01": {
+  "n": 996,
+  "n_pre": 467,
+  "n_post": 529,
+  "inc_all": 535,
+  "inc_pre": 382,
+  "inc_post": 153,
+  "url_match_post": 1,
+  "post_domains": {
+   "researchgate.net": 66,
+   "biorxiv.org": 38,
+   "arxiv.org": 21,
+   "huggingface.co": 6,
+   "pubmed.ncbi.nlm.nih.gov": 4
+  }
+ },
+ "2026-02-01": {
+  "n": 995,
+  "n_pre": 493,
+  "n_post": 502,
+  "inc_all": 546,
+  "inc_pre": 394,
+  "inc_post": 152,
+  "url_match_post": 1,
+  "post_domains": {
+   "researchgate.net": 64,
+   "biorxiv.org": 37,
+   "arxiv.org": 22,
+   "pubmed.ncbi.nlm.nih.gov": 6,
+   "huggingface.co": 5
+  }
+ },
+ "unrestricted": {
+  "n": 996,
+  "n_pre": 0,
+  "n_post": 996,
+  "inc_all": 807,
+  "inc_pre": 0,
+  "inc_post": 807,
+  "url_match_post": 374,
+  "post_domains": {
+   "nature.com": 349,
+   "arxiv.org": 133,
+   "science.org": 53,
+   "researchgate.net": 53,
+   "cell.com": 51
+  }
+ }
+}

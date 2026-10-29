@@ -1,0 +1,17 @@
+task_i,task_j,r,ci_low_fisher,ci_high_fisher,ci_low_eventboot,ci_high_eventboot,p,n_models
+Binary (feasibility),Binary (feasibility),1.000,1.000,1.000,1.000,1.000,,8
+Binary (feasibility),MCQ (mechanism),0.738,0.070,0.949,0.548,0.738,0.037,8
+Binary (feasibility),FRQ (solution),0.714,0.019,0.944,0.476,0.786,0.047,8
+Binary (feasibility),Date,0.429,-0.396,0.870,0.357,0.690,0.289,8
+MCQ (mechanism),Binary (feasibility),0.738,0.070,0.949,0.548,0.738,0.037,8
+MCQ (mechanism),MCQ (mechanism),1.000,1.000,1.000,1.000,1.000,,8
+MCQ (mechanism),FRQ (solution),0.810,0.244,0.964,0.810,0.810,0.015,8
+MCQ (mechanism),Date,0.000,-0.705,0.705,0.000,0.048,1.000,8
+FRQ (solution),Binary (feasibility),0.714,0.019,0.944,0.476,0.786,0.047,8
+FRQ (solution),MCQ (mechanism),0.810,0.244,0.964,0.810,0.810,0.015,8
+FRQ (solution),FRQ (solution),1.000,1.000,1.000,1.000,1.000,,8
+FRQ (solution),Date,0.048,-0.680,0.728,0.048,0.143,0.911,8
+Date,Binary (feasibility),0.429,-0.396,0.870,0.357,0.690,0.289,8
+Date,MCQ (mechanism),0.000,-0.705,0.705,0.000,0.048,1.000,8
+Date,FRQ (solution),0.048,-0.680,0.728,0.048,0.143,0.911,8
+Date,Date,1.000,1.000,1.000,1.000,1.000,,8

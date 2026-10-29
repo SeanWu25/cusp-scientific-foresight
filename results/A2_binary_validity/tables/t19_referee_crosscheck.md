@@ -1,0 +1,6 @@
+### Primary pair against the cross-check pair, gates applied to both
+
+| route | cheap_pair_certified | expensive_pair_certified | certified_by_both_pairs | agreement | agreement_rate |
+|---|---|---|---|---|---|
+| R1 achieved elsewhere | 5 | 0 | 0 | 195/200 | 0.975 |
+| R2 perturbation did not bind | 10 | 3 | 2 | 191/200 | 0.955 |

@@ -1,0 +1,8 @@
+**Which mechanical gate rejected how many proposed ACHIEVED verdicts**
+
+| gate | rejections |
+|---|---|
+| source_not_excluded | 4 |
+| direction_ok | 3 |
+| has_value | 2 |
+| value_in_quote | 2 |

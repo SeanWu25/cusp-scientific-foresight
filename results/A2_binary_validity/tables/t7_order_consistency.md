@@ -1,0 +1,6 @@
+### Study 2: order-swap consistency (detection separated from position bias)
+
+| judge | pairs_with_both_orders | consistent | consistency_rate | ci_lo | ci_hi | detected_both_orders | rate_strict | detected_either_order | rate_any |
+|---|---|---|---|---|---|---|---|---|---|
+| gpt54 | 500 | 363 | 0.726 | 0.685 | 0.763 | 297 | 0.594 | 434 | 0.868 |
+| opus48 | 467 | 331 | 0.709 | 0.666 | 0.748 | 281 | 0.602 | 417 | 0.893 |

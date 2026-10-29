@@ -1,0 +1,68 @@
+  SKIP gpt_5_4_eval.json (not found)
+  SKIP claude_sonnet.json (not found)
+  SKIP deepseek_r1.json (not found)
+  SKIP gpt_oss_20B_reeval.json (not found)
+  SKIP llama_3_3_full.json (not found)
+  SKIP gpt_4o_reeval.json (not found)
+
+=== merged_binary by forecast horizon (months after cutoff) ===
+model            cutoff          <= -25      -24..-13       -12..-7        -6..-1          0..2          3..5         6..11        12..23         >= 24
+GPT-4o          2023-10             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.566(845)
+LLaMA 3.3 70B   2023-12             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.271(845)
+GPT-OSS 20B     2024-06             n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.559(365)    0.573(480)
+Claude S4.5     2025-01             n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.558(712)           n=0
+GPT-5.4         2025-08             n=0           n=0           n=0           n=0           n=0           n=0    0.426(718)    0.394(127)           n=0
+Claude Sonnet 5  2026-01             n=0           n=0           n=0           n=0           n=0    0.665(519)    0.639(302)           n=0           n=0
+GPT-5.6 Sol     2026-02             n=0           n=0           n=0           n=0    0.538(184)    0.463(534)    0.417(127)           n=0           n=0
+DeepSeek-V4-Pro  2026-04             n=0           n=0           n=0           n=0    0.675(533)    0.670(312)           n=0           n=0           n=0
+Claude Opus 4.8  2026-01             n=0           n=0           n=0           n=0           n=0    0.634(514)    0.650(300)           n=0           n=0
+
+=== mcq by forecast horizon (months after cutoff) ===
+model            cutoff          <= -25      -24..-13       -12..-7        -6..-1          0..2          3..5         6..11        12..23         >= 24
+GPT-4o          2023-10             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.462(606)
+LLaMA 3.3 70B   2023-12             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.442(606)
+GPT-OSS 20B     2024-06             n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.534(251)    0.507(355)
+Claude S4.5     2025-01             n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.755(473)           n=0
+GPT-5.4         2025-08             n=0           n=0           n=0           n=0           n=0           n=0    0.859(510)    0.854( 96)           n=0
+Claude Sonnet 5  2026-01             n=0           n=0           n=0           n=0           n=0    0.903(359)    0.924(210)           n=0           n=0
+GPT-5.6 Sol     2026-02             n=0           n=0           n=0           n=0    0.881(126)    0.864(381)    0.874( 95)           n=0           n=0
+DeepSeek-V4-Pro  2026-04             n=0           n=0           n=0           n=0    0.656(381)    0.680(225)           n=0           n=0           n=0
+Claude Opus 4.8  2026-01             n=0           n=0           n=0           n=0           n=0    0.922(358)    0.938(211)           n=0           n=0
+
+=== frq by forecast horizon (months after cutoff) ===
+model            cutoff          <= -25      -24..-13       -12..-7        -6..-1          0..2          3..5         6..11        12..23         >= 24
+GPT-4o          2023-10             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    3.400(630)
+LLaMA 3.3 70B   2023-12             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    3.422(630)
+GPT-OSS 20B     2024-06             n=0           n=0           n=0           n=0           n=0           n=0           n=0    3.893(264)    3.816(364)
+Claude S4.5     2025-01             n=0           n=0           n=0           n=0           n=0           n=0           n=0    3.985(558)           n=0
+GPT-5.4         2025-08             n=0           n=0           n=0           n=0           n=0           n=0    4.823(524)    4.861(104)           n=0
+Claude Sonnet 5  2026-01             n=0           n=0           n=0           n=0           n=0    4.440(387)    4.434(231)           n=0           n=0
+GPT-5.6 Sol     2026-02             n=0           n=0           n=0           n=0    4.891(129)    4.798(390)    4.947(104)           n=0           n=0
+DeepSeek-V4-Pro  2026-04             n=0           n=0           n=0           n=0    3.994(395)    3.985(234)           n=0           n=0           n=0
+Claude Opus 4.8  2026-01             n=0           n=0           n=0           n=0           n=0    4.571(390)    4.597(232)           n=0           n=0
+
+=== date_score by forecast horizon (months after cutoff) ===
+model            cutoff          <= -25      -24..-13       -12..-7        -6..-1          0..2          3..5         6..11        12..23         >= 24
+GPT-4o          2023-10             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.506(196)
+LLaMA 3.3 70B   2023-12             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.288(196)
+GPT-OSS 20B     2024-06             n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.352( 87)    0.343(109)
+Claude S4.5     2025-01             n=0           n=0           n=0           n=0           n=0           n=0           n=0    0.317(172)           n=0
+GPT-5.4         2025-08             n=0           n=0           n=0           n=0           n=0           n=0    0.152(168)    0.167( 28)           n=0
+Claude Sonnet 5  2026-01             n=0           n=0           n=0           n=0           n=0    0.238(124)    0.210( 69)           n=0           n=0
+GPT-5.6 Sol     2026-02             n=0           n=0           n=0           n=0    0.232( 41)    0.225(127)    0.187( 28)           n=0           n=0
+DeepSeek-V4-Pro  2026-04             n=0           n=0           n=0           n=0    0.347(126)    0.345( 70)           n=0           n=0           n=0
+Claude Opus 4.8  2026-01             n=0           n=0           n=0           n=0           n=0    0.220(124)    0.163( 69)           n=0           n=0
+
+=== date_signed_error by forecast horizon (months after cutoff) ===
+model            cutoff          <= -25      -24..-13       -12..-7        -6..-1          0..2          3..5         6..11        12..23         >= 24
+GPT-4o          2023-10             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0    7.710(193)
+LLaMA 3.3 70B   2023-12             n=0           n=0           n=0           n=0           n=0           n=0           n=0           n=0  -10.231(195)
+GPT-OSS 20B     2024-06             n=0           n=0           n=0           n=0           n=0           n=0           n=0   14.440( 84)    5.557(106)
+Claude S4.5     2025-01             n=0           n=0           n=0           n=0           n=0           n=0           n=0    4.243(169)           n=0
+GPT-5.4         2025-08             n=0           n=0           n=0           n=0           n=0           n=0    0.295(129)   -2.375( 24)           n=0
+Claude Sonnet 5  2026-01             n=0           n=0           n=0           n=0           n=0  -21.371(124)  -29.507( 69)           n=0           n=0
+GPT-5.6 Sol     2026-02             n=0           n=0           n=0           n=0   11.220( 41)    9.032(125)    1.286( 28)           n=0           n=0
+DeepSeek-V4-Pro  2026-04             n=0           n=0           n=0           n=0   21.750(124)   20.514( 70)           n=0           n=0           n=0
+Claude Opus 4.8  2026-01             n=0           n=0           n=0           n=0           n=0  -18.024(124)  -26.899( 69)           n=0           n=0
+
+wrote results_extension_run2/tables/04_horizon.json

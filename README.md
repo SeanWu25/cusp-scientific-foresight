@@ -18,6 +18,14 @@
 </p>
 <img width="7252" height="3866" alt="CUSP_Fig_1 (1)" src="https://github.com/user-attachments/assets/e2c9cb9d-e526-4a52-bbf9-4df4fac53951" />
 
+## What's new in CUSP v2
+
+- **CUSP v2 data** ([`data/`](data/)): 5,575 scientific events from January 2024 to August 2026 and 19,706 validated questions. The original 4,760 events are unchanged; 815 events from April to August 2026 are new ([`data/README.md`](data/README.md)).
+- **Nine-model evaluation**: GPT-4o, LLaMA 3.3 70B, GPT-OSS 20B, DeepSeek R1, Claude Sonnet 4.5, GPT-5.4, Claude Sonnet 5, Claude Opus 4.8 and GPT-5.6 Sol, with scored per-event results for every model ([`results_*/reports/`](results_extension_run2/), [`run_evaluation/frq_results/`](run_evaluation/frq_results/)).
+- **Model-inference entry point** ([`docs/INFERENCE.md`](docs/INFERENCE.md)) and the decoding settings of every model ([`configs/model_settings.json`](configs/model_settings.json)).
+- **New analyses** ([`docs/REVISION_ANALYSES.md`](docs/REVISION_ANALYSES.md)): forecast horizon, retrieval audit and fixed evidence packets, calibration and elicitation interventions, base-rate injection, binary-task validity, task correlations, benchmark composition and stated reasoning.
+- Full list of changes: [`CHANGELOG.md`](CHANGELOG.md).
+
 ## Load the Dataset
 
 ```python
@@ -41,6 +49,13 @@ Or via the `datasets` library:
 ```python
 from datasets import load_dataset
 ds = load_dataset("SeanWu25/CUSP", data_files="CUSP_final.jsonl", split="train")
+```
+
+**CUSP v2** (5,575 events, January 2024 – August 2026, same fields) is in this repository:
+
+```python
+import json
+records = [json.loads(l) for l in open("data/CUSP_v2_full.jsonl")]
 ```
 
 ## Quickstart Notebook
@@ -77,7 +92,7 @@ python scripts/build_report.py --predictions results/sonnet5/base_run1.jsonl \
   --judged results/sonnet5/frq_judged.jsonl --out results/sonnet5/report.json
 ```
 
-Proprietary models (OpenAI, Anthropic), the FRQ judge (GPT-5 on Azure OpenAI) and the retrieval conditions (You.com) need API keys. LLaMA 3.3 70B, GPT-OSS 20B and DeepSeek R1 have open weights and can run locally behind an OpenAI-compatible server (for example vLLM); see [`docs/INFERENCE.md`](docs/INFERENCE.md#proprietary-api-access-vs-open-weights).
+Proprietary models (OpenAI, Anthropic), the FRQ judge (GPT-5.4-mini on Azure OpenAI) and the retrieval conditions (You.com) need API keys. LLaMA 3.3 70B, GPT-OSS 20B and DeepSeek R1 have open weights and can run locally behind an OpenAI-compatible server (for example vLLM); see [`docs/INFERENCE.md`](docs/INFERENCE.md#proprietary-api-access-vs-open-weights).
 
 ## Dataset Construction
 

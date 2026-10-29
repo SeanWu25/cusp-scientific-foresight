@@ -1,0 +1,35 @@
+\begin{table}[t]
+\centering
+\small
+\caption{\textbf{Effects of model ensembling on calibration and forecasting performance.} Ensembles are constructed from Base-condition predictions and therefore require no additional model inference. The three-model ensemble pools LLaMA 3.3 70B, GPT-5.4 and GPT-4o; the all-model ensemble pools the six panel models with stored confidence (LLaMA 3.3 70B, DeepSeek R1, GPT-4o, GPT-OSS 20B, GPT-5.4, Claude Sonnet 4.5). For Binary forecasting we compare mean-probability, mean-logit and majority-vote aggregation of each member's $P(\mathrm{Yes})$ and report probabilistic calibration and discrimination metrics. For MCQ, predictions are aggregated by option text because candidate order is independently permuted across models, and metrics score confidence in the chosen option against correctness.}
+\label{tab:ensemble}
+\vspace{2pt}\textbf{Binary event-realization forecasting}\\[2pt]
+\begin{tabular}{l r rrrrrrrr}
+\toprule
+Ensemble & $N$ & Brier$\downarrow$ & BSS$\uparrow$ & REL$\downarrow$ & RES$\uparrow$ & Log loss$\downarrow$ & ECE$\downarrow$ & AUROC$\uparrow$ & Bias \\
+\midrule
+3-model mean probability & 656 & 0.271 & $-$0.11 & 0.029 & 0.003 & 0.742 & 0.145 & 0.530 & $+$0.27 \\
+3-model mean logit & 656 & 0.274 & $-$0.12 & 0.031 & 0.002 & 0.751 & 0.155 & \textbf{0.534} & $+$0.30 \\
+3-model majority vote & 656 & 0.335 & $-$0.37 & 0.090 & 0.000 & 1.135 & 0.254 & 0.512 & $+$0.28 \\
+All-model mean probability & 569 & \textbf{0.267} & \textbf{$-$0.09} & \textbf{0.026} & \textbf{0.003} & \textbf{0.733} & \textbf{0.131} & 0.503 & $+$0.05 \\
+All-model mean logit & 569 & 0.271 & $-$0.10 & 0.028 & 0.002 & 0.743 & 0.141 & 0.506 & $+$0.05 \\
+All-model majority vote & 569 & 0.317 & $-$0.29 & 0.072 & 0.001 & 0.963 & 0.211 & 0.495 & $+$0.37 \\
+\bottomrule
+\end{tabular}
+\\[8pt]
+\textbf{MCQ mechanism forecasting}\\[2pt]
+\begin{tabular}{l r rrrrrrrr}
+\toprule
+Ensemble & $N$ & Accuracy$\uparrow$ & Mean conf. & Brier$\downarrow$ & Log loss$\downarrow$ & ECE$\downarrow$ & REL$\downarrow$ & RES$\uparrow$ & AUROC$\uparrow$ \\
+\midrule
+3-model mean probability & 432 & 0.644 & 0.693 & 0.196 & 0.568 & 0.076 & 0.011 & 0.044 & 0.749 \\
+3-model mean logit & 432 & 0.641 & 0.840 & 0.239 & 0.727 & 0.213 & 0.054 & 0.045 & 0.756 \\
+3-model majority vote & 432 & 0.644 & 0.795 & 0.223 & 0.743 & 0.168 & 0.029 & 0.035 & 0.706 \\
+All-model mean probability & 358 & 0.673 & 0.668 & \textbf{0.176} & \textbf{0.527} & \textbf{0.073} & \textbf{0.008} & \textbf{0.053} & 0.770 \\
+All-model mean logit & 358 & \textbf{0.679} & 0.824 & 0.202 & 0.636 & 0.145 & 0.024 & 0.038 & 0.758 \\
+All-model majority vote & 358 & 0.676 & 0.773 & 0.181 & 0.574 & 0.097 & 0.011 & 0.050 & \textbf{0.774} \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize\textit{Notes.} Each ensemble is evaluated on the intersection of items answered by every member: $N=656$ binary and $N=432$ MCQ items for the three-model ensemble, $N=569$ and $N=358$ for the all-model ensemble. Binary metrics score $P(\mathrm{Yes})$ against the event outcome (original question $=1$, perturbed twin $=0$). BSS $=1-\mathrm{Brier}/\mathrm{UNC}$ is the Brier skill score against the constant base-rate forecast; REL and RES are the Murphy reliability and resolution terms; Bias is the response-bias index (accuracy on original minus accuracy on perturbed items). 95\% confidence intervals from 10,000 event-level bootstrap resamples: three-model mean probability Brier 0.271 [0.262, 0.280], BSS -0.11 [-0.15, -0.07], AUROC 0.530 [0.495, 0.566]; all-model mean probability Brier 0.267 [0.258, 0.276], BSS -0.09 [-0.13, -0.05], REL 0.026 [0.018, 0.040], RES 0.003 [0.002, 0.010], AUROC 0.503 [0.464, 0.543], bias +0.05 [-0.04, 0.14]. MCQ mean-probability accuracy 0.644 [0.598, 0.688] (three-model) and 0.673 [0.625, 0.720] (all-model); Brier 0.196 [0.178, 0.215] and 0.176 [0.159, 0.194]; AUROC 0.749 [0.702, 0.794] and 0.770 [0.718, 0.820]. Bold marks the best value in each column. Full intervals for every cell are in \texttt{calibration\_study/tables/ensemble.md}.
+\end{flushleft}
+\end{table}

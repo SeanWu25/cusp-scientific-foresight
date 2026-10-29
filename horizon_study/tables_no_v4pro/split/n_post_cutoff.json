@@ -1,0 +1,327 @@
+{
+ "orig:base": {
+  "gpt4o": {
+   "binary": 2754,
+   "binary_perturbed": 3654,
+   "date": 2573,
+   "frq": 4128,
+   "mcq": 4126
+  },
+  "llama33": {
+   "binary": 2734,
+   "binary_perturbed": 3625,
+   "date": 2731,
+   "frq": 4093,
+   "mcq": 4087
+  },
+  "gptoss20b": {
+   "binary": 2153,
+   "binary_perturbed": 3038,
+   "date": 2126,
+   "frq": 3390,
+   "mcq": 3380
+  },
+  "deepseek_r1": {
+   "binary": 2014,
+   "binary_perturbed": 2871,
+   "date": 1702,
+   "frq": 3231,
+   "mcq": 2818
+  },
+  "claude45": {
+   "binary": 1327,
+   "binary_perturbed": 1932,
+   "date": 1293,
+   "frq": 2181,
+   "mcq": 2129
+  },
+  "gpt54": {
+   "binary": 612,
+   "binary_perturbed": 934,
+   "date": 612,
+   "frq": 1019,
+   "mcq": 1014
+  },
+  "sonnet5": {
+   "binary": 123,
+   "binary_perturbed": 194,
+   "date": 122,
+   "frq": 204,
+   "mcq": 190
+  },
+  "sol": {
+   "binary": 5,
+   "binary_perturbed": 12,
+   "date": 5,
+   "frq": 10,
+   "mcq": 7
+  },
+  "opus48": {
+   "binary": 122,
+   "binary_perturbed": 194,
+   "date": 121,
+   "frq": 205,
+   "mcq": 190
+  }
+ },
+ "ext:base": {
+  "gpt4o": {
+   "binary": 196,
+   "binary_perturbed": 649,
+   "date": 193,
+   "frq": 630,
+   "mcq": 606
+  },
+  "llama33": {
+   "binary": 196,
+   "binary_perturbed": 649,
+   "date": 195,
+   "frq": 630,
+   "mcq": 606
+  },
+  "gptoss20b": {
+   "binary": 196,
+   "binary_perturbed": 649,
+   "date": 190,
+   "frq": 628,
+   "mcq": 606
+  },
+  "deepseek_r1": {
+   "binary": 0,
+   "binary_perturbed": 0,
+   "date": 0,
+   "frq": 0,
+   "mcq": 0
+  },
+  "claude45": {
+   "binary": 174,
+   "binary_perturbed": 538,
+   "date": 169,
+   "frq": 558,
+   "mcq": 473
+  },
+  "gpt54": {
+   "binary": 196,
+   "binary_perturbed": 649,
+   "date": 153,
+   "frq": 628,
+   "mcq": 606
+  },
+  "sonnet5": {
+   "binary": 193,
+   "binary_perturbed": 628,
+   "date": 193,
+   "frq": 618,
+   "mcq": 569
+  },
+  "sol": {
+   "binary": 196,
+   "binary_perturbed": 649,
+   "date": 194,
+   "frq": 623,
+   "mcq": 602
+  },
+  "opus48": {
+   "binary": 192,
+   "binary_perturbed": 622,
+   "date": 193,
+   "frq": 622,
+   "mcq": 569
+  }
+ },
+ "merged:base": {
+  "gpt4o": {
+   "binary": 2950,
+   "binary_perturbed": 4303,
+   "date": 2766,
+   "frq": 4758,
+   "mcq": 4732
+  },
+  "llama33": {
+   "binary": 2930,
+   "binary_perturbed": 4274,
+   "date": 2926,
+   "frq": 4723,
+   "mcq": 4693
+  },
+  "gptoss20b": {
+   "binary": 2349,
+   "binary_perturbed": 3687,
+   "date": 2316,
+   "frq": 4018,
+   "mcq": 3986
+  },
+  "deepseek_r1": {
+   "binary": 2014,
+   "binary_perturbed": 2871,
+   "date": 1702,
+   "frq": 3231,
+   "mcq": 2818
+  },
+  "claude45": {
+   "binary": 1501,
+   "binary_perturbed": 2470,
+   "date": 1462,
+   "frq": 2739,
+   "mcq": 2602
+  },
+  "gpt54": {
+   "binary": 808,
+   "binary_perturbed": 1583,
+   "date": 765,
+   "frq": 1647,
+   "mcq": 1620
+  },
+  "sonnet5": {
+   "binary": 316,
+   "binary_perturbed": 822,
+   "date": 315,
+   "frq": 822,
+   "mcq": 759
+  },
+  "sol": {
+   "binary": 201,
+   "binary_perturbed": 661,
+   "date": 199,
+   "frq": 633,
+   "mcq": 609
+  },
+  "opus48": {
+   "binary": 314,
+   "binary_perturbed": 816,
+   "date": 314,
+   "frq": 827,
+   "mcq": 759
+  }
+ },
+ "ws:base": {
+  "gpt4o": {
+   "binary": 296,
+   "binary_perturbed": 394,
+   "date": 275,
+   "frq": 426,
+   "mcq": 435
+  },
+  "llama33": {
+   "binary": 294,
+   "binary_perturbed": 393,
+   "date": 292,
+   "frq": 423,
+   "mcq": 433
+  },
+  "gptoss20b": {
+   "binary": 0,
+   "binary_perturbed": 0,
+   "date": 0,
+   "frq": 0,
+   "mcq": 0
+  },
+  "deepseek_r1": {
+   "binary": 204,
+   "binary_perturbed": 305,
+   "date": 174,
+   "frq": 329,
+   "mcq": 294
+  },
+  "claude45": {
+   "binary": 141,
+   "binary_perturbed": 219,
+   "date": 139,
+   "frq": 231,
+   "mcq": 220
+  },
+  "gpt54": {
+   "binary": 59,
+   "binary_perturbed": 100,
+   "date": 59,
+   "frq": 107,
+   "mcq": 105
+  },
+  "sonnet5": {
+   "binary": 14,
+   "binary_perturbed": 23,
+   "date": 14,
+   "frq": 24,
+   "mcq": 23
+  },
+  "sol": {
+   "binary": 0,
+   "binary_perturbed": 1,
+   "date": 0,
+   "frq": 1,
+   "mcq": 0
+  },
+  "opus48": {
+   "binary": 14,
+   "binary_perturbed": 23,
+   "date": 13,
+   "frq": 24,
+   "mcq": 22
+  }
+ },
+ "ws:ws_cutoff": {
+  "gpt4o": {
+   "binary": 296,
+   "binary_perturbed": 394,
+   "date": 295,
+   "frq": 425,
+   "mcq": 435
+  },
+  "llama33": {
+   "binary": 296,
+   "binary_perturbed": 394,
+   "date": 296,
+   "frq": 426,
+   "mcq": 435
+  },
+  "gptoss20b": {
+   "binary": 0,
+   "binary_perturbed": 0,
+   "date": 0,
+   "frq": 0,
+   "mcq": 0
+  },
+  "deepseek_r1": {
+   "binary": 204,
+   "binary_perturbed": 307,
+   "date": 193,
+   "frq": 320,
+   "mcq": 327
+  },
+  "claude45": {
+   "binary": 140,
+   "binary_perturbed": 213,
+   "date": 110,
+   "frq": 224,
+   "mcq": 216
+  },
+  "gpt54": {
+   "binary": 59,
+   "binary_perturbed": 100,
+   "date": 59,
+   "frq": 106,
+   "mcq": 105
+  },
+  "sonnet5": {
+   "binary": 15,
+   "binary_perturbed": 23,
+   "date": 15,
+   "frq": 24,
+   "mcq": 23
+  },
+  "sol": {
+   "binary": 0,
+   "binary_perturbed": 1,
+   "date": 0,
+   "frq": 1,
+   "mcq": 0
+  },
+  "opus48": {
+   "binary": 14,
+   "binary_perturbed": 22,
+   "date": 13,
+   "frq": 24,
+   "mcq": 22
+  }
+ }
+}

@@ -1,0 +1,6 @@
+### Study 2: detection accuracy per judge (both orders pooled within judge)
+
+| judge | model | calls | parsed | refused | correct | accuracy | ci_lo | ci_hi | chose_first | cf_lo | cf_hi |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| gpt54 | gpt-5.4 | 1000 | 1000 | 0 | 731 | 0.731 | 0.703 | 0.758 | 0.391 | 0.361 | 0.422 |
+| opus48 | claude-opus-4-8 | 1000 | 945 | 55 | 707 | 0.748 | 0.720 | 0.775 | 0.452 | 0.420 | 0.484 |

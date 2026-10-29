@@ -1,0 +1,30 @@
+### Study 2: strict detection rate by domain, perturbation type and corpus
+
+| judge | split | group | n_pairs | detected | rate_strict | ci_lo | ci_hi |
+|---|---|---|---|---|---|---|---|
+| gpt54 | domain | Artificial Intelligence | 116 | 45 | 0.388 | 0.304 | 0.479 |
+| gpt54 | domain | Biology | 105 | 68 | 0.648 | 0.553 | 0.732 |
+| gpt54 | domain | Chemistry | 27 | 17 | 0.630 | 0.442 | 0.785 |
+| gpt54 | domain | Environmental Science | 25 | 17 | 0.680 | 0.484 | 0.828 |
+| gpt54 | domain | Materials Science | 65 | 45 | 0.692 | 0.572 | 0.791 |
+| gpt54 | domain | Medicine | 54 | 40 | 0.741 | 0.611 | 0.839 |
+| gpt54 | domain | Neuroscience | 40 | 26 | 0.650 | 0.495 | 0.779 |
+| gpt54 | domain | Other | 14 | 8 | 0.571 | 0.326 | 0.786 |
+| gpt54 | domain | Physics | 54 | 31 | 0.574 | 0.442 | 0.697 |
+| gpt54 | ptype | constraint | 234 | 144 | 0.615 | 0.552 | 0.675 |
+| gpt54 | ptype | numeric | 266 | 153 | 0.575 | 0.515 | 0.633 |
+| gpt54 | corpus | ext | 29 | 17 | 0.586 | 0.407 | 0.745 |
+| gpt54 | corpus | orig | 471 | 280 | 0.594 | 0.550 | 0.638 |
+| opus48 | domain | Artificial Intelligence | 116 | 60 | 0.517 | 0.427 | 0.606 |
+| opus48 | domain | Biology | 88 | 52 | 0.591 | 0.486 | 0.688 |
+| opus48 | domain | Chemistry | 27 | 16 | 0.593 | 0.407 | 0.755 |
+| opus48 | domain | Environmental Science | 24 | 12 | 0.500 | 0.314 | 0.686 |
+| opus48 | domain | Materials Science | 65 | 50 | 0.769 | 0.654 | 0.855 |
+| opus48 | domain | Medicine | 42 | 29 | 0.690 | 0.540 | 0.809 |
+| opus48 | domain | Neuroscience | 37 | 22 | 0.595 | 0.435 | 0.737 |
+| opus48 | domain | Other | 14 | 9 | 0.643 | 0.388 | 0.837 |
+| opus48 | domain | Physics | 54 | 31 | 0.574 | 0.442 | 0.697 |
+| opus48 | ptype | constraint | 207 | 123 | 0.594 | 0.526 | 0.659 |
+| opus48 | ptype | numeric | 260 | 158 | 0.608 | 0.547 | 0.665 |
+| opus48 | corpus | ext | 28 | 17 | 0.607 | 0.424 | 0.764 |
+| opus48 | corpus | orig | 439 | 264 | 0.601 | 0.555 | 0.646 |

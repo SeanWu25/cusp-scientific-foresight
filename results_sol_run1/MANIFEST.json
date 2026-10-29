@@ -1,0 +1,152 @@
+{
+ "manifest_version": 1,
+ "created_utc": "2026-09-19T03:22:04.339064+00:00",
+ "run_label": "sol_run1",
+ "corpus_window": "2024-01..2026-03",
+ "repo": {
+  "git_sha": "32d70710a704bd7cfaac176a9f963502204e4c66",
+  "branch": "sonnet5-run1",
+  "dirty": "(working-tree status omitted)"
+ },
+ "datasets": {
+  "corpus": {
+   "path": "archive/data/canonical/merged_validated_cusp_fixed.jsonl",
+   "sha256": "d9a05b199cac2ee846a01836face693a9cc2203d9092de6381023c81dde6a0ba",
+   "md5": "648f325afb0fefa22c8c05a069067152",
+   "n_rows": 4760
+  },
+  "pinned_500_subset": {
+   "path": "archive/data/sample/sample_500_stratified.jsonl",
+   "sha256": "42ca01bbaed4075f421a3fc51443929fa46ec0b67d17e60fd567e2522f935184",
+   "md5": "c46d86a7a36d21f86a17ee136fdaba02",
+   "n_rows": 500
+  }
+ },
+ "prompt_templates": {
+  "BINARY_SYSTEM": {
+   "sha256": "c081ba7a87eb6d3ef4915939d8bfcc2ca7be5a10aaa96b55f0c763233a3294d7",
+   "chars": 348
+  },
+  "MCQ_SYSTEM": {
+   "sha256": "5d735232358a25114b8049cf8e90a241b2342aba71d04029734eff4198d54c00",
+   "chars": 361
+  },
+  "FRQ_SYSTEM": {
+   "sha256": "aac836d590d05cd7dd1a7a9142c46c5941a5d721ce3e02b0b58e6abd382508a2",
+   "chars": 231
+  },
+  "DATE_SYSTEM": {
+   "sha256": "b29900b445b1f80029cb9e3b590e659ef1abc0a8f8fb02315ff1d394ac0e4db4",
+   "chars": 328
+  }
+ },
+ "judge_rubrics": {
+  "judge_frq_combined": {
+   "sha256": "fc24e69dfec1b214eee6bdfc87357b2f65e447fed79969702a7b25fe56474679",
+   "chars": 2697
+  },
+  "judge_leakage": {
+   "sha256": null,
+   "chars": null,
+   "note": "prompt is an f-string; hashed from source text",
+   "source_sha256": "c3b420732a52712ce201a03452ccca151da3e0d171a1be4b4cf5f695be330954"
+  },
+  "judge_mechanistic": {
+   "sha256": "d1d56e1a22a8e57f6748dee22ad73a3e5ca5e7cea7ebe51bcae2d9d1fba81d0f",
+   "chars": 1011
+  },
+  "judge_constraint": {
+   "sha256": "301ddee2c99b74433caa46896ac1f62215a237455a7b74dabf5e4951c7f3568c",
+   "chars": 1578
+  },
+  "grade_frq_legacy": {
+   "sha256": "8438e9ce1622b0cc7c6d21ae70e137ab1073d1e731c1c5adb453bb51642a8ba5",
+   "chars": 1117
+  }
+ },
+ "code_sha256": {
+  "scripts/eval.py": "6ef4d7dc7ed523df3776d23fe76f6246a686d0f8d6c5ce24d6ab233ce5153719",
+  "scripts/test_LLM.py": "9be6d03d0e0903dca9416c50e32e658820666aec2759b435fd8f5a63e3e06b8e",
+  "scripts/web_search.py": "8d1874739cd43f7d96b76138c4532f7d1096354a24e995811a2ac6ce5befcdfe",
+  "scripts/run_cusp.py": "15464286b84ea715e50fe6ef06e4448e7138d754f2fc8a8f916263bf579ba0d6"
+ },
+ "scoring_constants": {
+  "date_score": "exp(-0.1 * |months between predicted and ground truth|)",
+  "frq_scale": "0-10 per dimension; frq_score = mean(alignment, specificity, novelty, feasibility); FRQ pass = score >= 5.0",
+  "merged_binary": "pooled correct counts: (c_orig + c_pert)/(n_orig + n_pert)",
+  "outcome_weight": 0.6,
+  "reasoning_weight": 0.4,
+  "mcq_shuffle_seed": 42
+ },
+ "partition_rule": {
+  "field": "publication_date (YYYY-MM) from the benchmark JSONL",
+  "main_tables": "pre if pub_month < cutoff_month else post (cutoff month counts as POST) \u2014 make_latex_tables.py, compare_models.py",
+  "gap_and_calibration_tables": "post if pub_month > cutoff_month (cutoff month counts as PRE) \u2014 filter_ids_by_cutoff in make_web_search_cutoff_table.py",
+  "note": "These two conventions differ by one month and BOTH are used in the published tables. Each table is reproduced under the convention its own generator used, so every Sonnet 5 row is comparable with the six published rows in that same table."
+ },
+ "model_under_test": {
+  "display_name": "GPT-5.6 Sol",
+  "model_id": "gpt-5.6-sol",
+  "provider": "OPENAI",
+  "knowledge_cutoff": "2026-02",
+  "training_cutoff": "2026-02-16",
+  "cutoff_source": "https://developers.openai.com/api/docs/models/gpt-5.6-sol (Knowledge Cutoff: February 16, 2026)",
+  "released": "2026-07-09",
+  "api_probe": {
+   "requested_model_id": "gpt-5.6-sol",
+   "provider": "OPENAI",
+   "api_reported_model": "gpt-5.6-sol",
+   "is_pinned_snapshot": true,
+   "rejected_sampling_params": {
+    "temperature": "Error code: 400 - {'error': {'message': \"Unsupported value: 'temperature' does not support 0.0 with this model. Only the default (1) value is supported.\", 'type': 'invalid_request_error', 'param': 'temperature', 'code': 'unsupported_value'}}"
+   },
+   "accepted_reasoning_effort": [
+    "none",
+    "low",
+    "medium",
+    "high",
+    "xhigh"
+   ]
+  },
+  "knowledge_cutoff_exact": "2026-02-16",
+  "cutoff_caveat": "The cutoff falls MID-MONTH. CUSP publication dates are YYYY-MM only, so February 2026 (211 events) cannot be cleanly assigned to either side of it. Post-cutoff is 252 events if February counts as post, 41 if it counts as pre. Tables report both, and a February-excluded variant."
+ },
+ "decoding": {
+  "temperature": null,
+  "top_p": null,
+  "top_k": null,
+  "effort": "medium",
+  "thinking": "adaptive (always on for this model; not configurable off in the way older models were effectively greedy)",
+  "max_tokens": 2048,
+  "frq_max_tokens": 2048,
+  "retries": 2,
+  "retry_backoff": "2**attempt seconds",
+  "reasoning_effort": "medium",
+  "frq_cap_note": "2048 is the value the five OpenAI-family published models ran with. For OpenAI reasoning models max_completion_tokens covers reasoning tokens too: at 384 the model returns EMPTY text on 10/15 FRQ items because ~310 tokens go to reasoning."
+ },
+ "unmatchable_parameters": [
+  {
+   "parameter": "temperature",
+   "six_published_models": 0.0,
+   "gpt-5.6-sol": "cannot be sent \u2014 400 'does not support 0.0 with this model. Only the default (1) value is supported.' reasoning_effort is sent instead, which suppresses the temperature argument."
+  }
+ ],
+ "judge": {
+  "judge_model": "gpt-5.4-mini",
+  "endpoint_host": "<azure-openai-resource>",
+  "api_surface": "OpenAI Responses API with the web_search tool (eval.LLMClient._call_responses_api)",
+  "tool_choice_leakage": "required",
+  "tool_choice_rubric": "auto (default)",
+  "two_stage_protocol": [
+   "stage 1: judge_leakage  \u2014 contamination audit, web search forced",
+   "stage 2: judge_frq_combined \u2014 4-dimension rubric, 0-10 each, frq_score = unweighted mean of the four"
+  ],
+  "reachable": false,
+  "probe_error": "RateLimitError: Error code: 429 - {'error': {'message': 'Your requests to gpt-5.4-mini for gpt-5.4-mini in eastus have exceeded rate limit.', 'type': 'too_many_requests', 'param': None, 'code': 'rate_limit_exceeded'}}"
+ },
+ "capture": {
+  "reasoning_trace_source": "The task prompts themselves require a reasoning field in the JSON response ('reasoning': '<1-2 sentence justification>'), and a confidence field. Both are parsed and stored per item. Coverage on the Sonnet 5 full corpus: reasoning 100% of answered items (mean 237-300 chars per task), confidence 99.2-100%. FRQ is free text, stored verbatim (mean 1,046 chars). This is the reasoning record for the benchmark; no separate API thinking trace is used.",
+  "api_thinking_traces": "Not used. Anthropic adaptive thinking returns EMPTY summarized blocks on these prompts (0 of 32 calls across all four task types produced text at effort=medium), and gpt-5.6-sol exposes no reasoning text via chat completions, only a reasoning-token count, which IS stored.",
+  "token_logprobs": "Unavailable on BOTH models. gpt-5.6-sol returns HTTP 400 'logprobs is not supported with this model'; Anthropic exposes logprobs on no model. No logprob-based analysis is possible for either, so none is presented."
+ }
+}

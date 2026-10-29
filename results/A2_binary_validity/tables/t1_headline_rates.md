@@ -1,0 +1,7 @@
+### Study 1 headline rates
+
+| half | metric | n | k | rate | ci_lo | ci_hi | weighted_rate | w_ci_lo | w_ci_hi |
+|---|---|---|---|---|---|---|---|---|---|
+| positives | CONFIRMED | 196 | 159 | 0.811 | 0.751 | 0.860 | 0.808 | 0.753 | 0.859 |
+| negatives | ACHIEVED elsewhere (mislabelled) | 199 | 24 | 0.121 | 0.082 | 0.173 | 0.123 | 0.080 | 0.170 |
+| negatives | SELF_SATISFIED by source (secondary) | 200 | 41 | 0.205 | 0.155 | 0.266 | 0.205 | 0.154 | 0.256 |

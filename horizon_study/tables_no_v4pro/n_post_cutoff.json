@@ -1,0 +1,732 @@
+{
+ "orig:base": {
+  "gpt4o": {
+   "events": {
+    "binary_merged": 4285,
+    "date": 2573,
+    "frq": 4128,
+    "mcq": 4126
+   },
+   "items": {
+    "binary_merged": 6408,
+    "date": 2573,
+    "frq": 4128,
+    "mcq": 4126
+   },
+   "h_min": 3,
+   "h_max": 29
+  },
+  "llama33": {
+   "events": {
+    "binary_merged": 4250,
+    "date": 2731,
+    "frq": 4093,
+    "mcq": 4087
+   },
+   "items": {
+    "binary_merged": 6359,
+    "date": 2731,
+    "frq": 4093,
+    "mcq": 4087
+   },
+   "h_min": 1,
+   "h_max": 27
+  },
+  "gptoss20b": {
+   "events": {
+    "binary_merged": 3500,
+    "date": 2126,
+    "frq": 3390,
+    "mcq": 3380
+   },
+   "items": {
+    "binary_merged": 5191,
+    "date": 2126,
+    "frq": 3390,
+    "mcq": 3380
+   },
+   "h_min": 1,
+   "h_max": 21
+  },
+  "deepseek_r1": {
+   "events": {
+    "binary_merged": 3310,
+    "date": 1702,
+    "frq": 3231,
+    "mcq": 2818
+   },
+   "items": {
+    "binary_merged": 4885,
+    "date": 1702,
+    "frq": 3231,
+    "mcq": 2818
+   },
+   "h_min": 1,
+   "h_max": 20
+  },
+  "claude45": {
+   "events": {
+    "binary_merged": 2206,
+    "date": 1293,
+    "frq": 2181,
+    "mcq": 2129
+   },
+   "items": {
+    "binary_merged": 3259,
+    "date": 1293,
+    "frq": 2181,
+    "mcq": 2129
+   },
+   "h_min": 1,
+   "h_max": 14
+  },
+  "gpt54": {
+   "events": {
+    "binary_merged": 1048,
+    "date": 612,
+    "frq": 1019,
+    "mcq": 1014
+   },
+   "items": {
+    "binary_merged": 1546,
+    "date": 612,
+    "frq": 1019,
+    "mcq": 1014
+   },
+   "h_min": 1,
+   "h_max": 7
+  },
+  "sonnet5": {
+   "events": {
+    "binary_merged": 209,
+    "date": 122,
+    "frq": 204,
+    "mcq": 190
+   },
+   "items": {
+    "binary_merged": 317,
+    "date": 122,
+    "frq": 204,
+    "mcq": 190
+   },
+   "h_min": 1,
+   "h_max": 2
+  },
+  "sol": {
+   "events": {
+    "binary_merged": 12,
+    "date": 5,
+    "frq": 10,
+    "mcq": 7
+   },
+   "items": {
+    "binary_merged": 17,
+    "date": 5,
+    "frq": 10,
+    "mcq": 7
+   },
+   "h_min": 1,
+   "h_max": 1
+  },
+  "opus48": {
+   "events": {
+    "binary_merged": 209,
+    "date": 121,
+    "frq": 205,
+    "mcq": 190
+   },
+   "items": {
+    "binary_merged": 316,
+    "date": 121,
+    "frq": 205,
+    "mcq": 190
+   },
+   "h_min": 1,
+   "h_max": 2
+  }
+ },
+ "ext:base": {
+  "gpt4o": {
+   "events": {
+    "binary_merged": 680,
+    "date": 193,
+    "frq": 630,
+    "mcq": 606
+   },
+   "items": {
+    "binary_merged": 845,
+    "date": 193,
+    "frq": 630,
+    "mcq": 606
+   },
+   "h_min": 30,
+   "h_max": 34
+  },
+  "llama33": {
+   "events": {
+    "binary_merged": 680,
+    "date": 195,
+    "frq": 630,
+    "mcq": 606
+   },
+   "items": {
+    "binary_merged": 845,
+    "date": 195,
+    "frq": 630,
+    "mcq": 606
+   },
+   "h_min": 28,
+   "h_max": 32
+  },
+  "gptoss20b": {
+   "events": {
+    "binary_merged": 680,
+    "date": 190,
+    "frq": 628,
+    "mcq": 606
+   },
+   "items": {
+    "binary_merged": 845,
+    "date": 190,
+    "frq": 628,
+    "mcq": 606
+   },
+   "h_min": 22,
+   "h_max": 26
+  },
+  "deepseek_r1": {
+   "events": {
+    "binary_merged": 0,
+    "date": 0,
+    "frq": 0,
+    "mcq": 0
+   },
+   "items": {
+    "binary_merged": 0,
+    "date": 0,
+    "frq": 0,
+    "mcq": 0
+   },
+   "h_min": null,
+   "h_max": null
+  },
+  "claude45": {
+   "events": {
+    "binary_merged": 573,
+    "date": 169,
+    "frq": 558,
+    "mcq": 473
+   },
+   "items": {
+    "binary_merged": 712,
+    "date": 169,
+    "frq": 558,
+    "mcq": 473
+   },
+   "h_min": 15,
+   "h_max": 19
+  },
+  "gpt54": {
+   "events": {
+    "binary_merged": 680,
+    "date": 153,
+    "frq": 628,
+    "mcq": 606
+   },
+   "items": {
+    "binary_merged": 845,
+    "date": 153,
+    "frq": 628,
+    "mcq": 606
+   },
+   "h_min": 8,
+   "h_max": 12
+  },
+  "sonnet5": {
+   "events": {
+    "binary_merged": 659,
+    "date": 193,
+    "frq": 618,
+    "mcq": 569
+   },
+   "items": {
+    "binary_merged": 821,
+    "date": 193,
+    "frq": 618,
+    "mcq": 569
+   },
+   "h_min": 3,
+   "h_max": 7
+  },
+  "sol": {
+   "events": {
+    "binary_merged": 680,
+    "date": 194,
+    "frq": 623,
+    "mcq": 602
+   },
+   "items": {
+    "binary_merged": 845,
+    "date": 194,
+    "frq": 623,
+    "mcq": 602
+   },
+   "h_min": 2,
+   "h_max": 6
+  },
+  "opus48": {
+   "events": {
+    "binary_merged": 653,
+    "date": 193,
+    "frq": 622,
+    "mcq": 569
+   },
+   "items": {
+    "binary_merged": 814,
+    "date": 193,
+    "frq": 622,
+    "mcq": 569
+   },
+   "h_min": 3,
+   "h_max": 7
+  }
+ },
+ "merged:base": {
+  "gpt4o": {
+   "events": {
+    "binary_merged": 4965,
+    "date": 2766,
+    "frq": 4758,
+    "mcq": 4732
+   },
+   "items": {
+    "binary_merged": 7253,
+    "date": 2766,
+    "frq": 4758,
+    "mcq": 4732
+   },
+   "h_min": 3,
+   "h_max": 34
+  },
+  "llama33": {
+   "events": {
+    "binary_merged": 4930,
+    "date": 2926,
+    "frq": 4723,
+    "mcq": 4693
+   },
+   "items": {
+    "binary_merged": 7204,
+    "date": 2926,
+    "frq": 4723,
+    "mcq": 4693
+   },
+   "h_min": 1,
+   "h_max": 32
+  },
+  "gptoss20b": {
+   "events": {
+    "binary_merged": 4180,
+    "date": 2316,
+    "frq": 4018,
+    "mcq": 3986
+   },
+   "items": {
+    "binary_merged": 6036,
+    "date": 2316,
+    "frq": 4018,
+    "mcq": 3986
+   },
+   "h_min": 1,
+   "h_max": 26
+  },
+  "deepseek_r1": {
+   "events": {
+    "binary_merged": 3310,
+    "date": 1702,
+    "frq": 3231,
+    "mcq": 2818
+   },
+   "items": {
+    "binary_merged": 4885,
+    "date": 1702,
+    "frq": 3231,
+    "mcq": 2818
+   },
+   "h_min": 1,
+   "h_max": 20
+  },
+  "claude45": {
+   "events": {
+    "binary_merged": 2779,
+    "date": 1462,
+    "frq": 2739,
+    "mcq": 2602
+   },
+   "items": {
+    "binary_merged": 3971,
+    "date": 1462,
+    "frq": 2739,
+    "mcq": 2602
+   },
+   "h_min": 1,
+   "h_max": 19
+  },
+  "gpt54": {
+   "events": {
+    "binary_merged": 1728,
+    "date": 765,
+    "frq": 1647,
+    "mcq": 1620
+   },
+   "items": {
+    "binary_merged": 2391,
+    "date": 765,
+    "frq": 1647,
+    "mcq": 1620
+   },
+   "h_min": 1,
+   "h_max": 12
+  },
+  "sonnet5": {
+   "events": {
+    "binary_merged": 868,
+    "date": 315,
+    "frq": 822,
+    "mcq": 759
+   },
+   "items": {
+    "binary_merged": 1138,
+    "date": 315,
+    "frq": 822,
+    "mcq": 759
+   },
+   "h_min": 1,
+   "h_max": 7
+  },
+  "sol": {
+   "events": {
+    "binary_merged": 692,
+    "date": 199,
+    "frq": 633,
+    "mcq": 609
+   },
+   "items": {
+    "binary_merged": 862,
+    "date": 199,
+    "frq": 633,
+    "mcq": 609
+   },
+   "h_min": 1,
+   "h_max": 6
+  },
+  "opus48": {
+   "events": {
+    "binary_merged": 862,
+    "date": 314,
+    "frq": 827,
+    "mcq": 759
+   },
+   "items": {
+    "binary_merged": 1130,
+    "date": 314,
+    "frq": 827,
+    "mcq": 759
+   },
+   "h_min": 1,
+   "h_max": 7
+  }
+ },
+ "ws:base": {
+  "gpt4o": {
+   "events": {
+    "binary_merged": 456,
+    "date": 275,
+    "frq": 426,
+    "mcq": 435
+   },
+   "items": {
+    "binary_merged": 690,
+    "date": 275,
+    "frq": 426,
+    "mcq": 435
+   },
+   "h_min": 3,
+   "h_max": 29
+  },
+  "llama33": {
+   "events": {
+    "binary_merged": 454,
+    "date": 292,
+    "frq": 423,
+    "mcq": 433
+   },
+   "items": {
+    "binary_merged": 687,
+    "date": 292,
+    "frq": 423,
+    "mcq": 433
+   },
+   "h_min": 1,
+   "h_max": 27
+  },
+  "gptoss20b": {
+   "events": {
+    "binary_merged": 0,
+    "date": 0,
+    "frq": 0,
+    "mcq": 0
+   },
+   "items": {
+    "binary_merged": 0,
+    "date": 0,
+    "frq": 0,
+    "mcq": 0
+   },
+   "h_min": null,
+   "h_max": null
+  },
+  "deepseek_r1": {
+   "events": {
+    "binary_merged": 342,
+    "date": 174,
+    "frq": 329,
+    "mcq": 294
+   },
+   "items": {
+    "binary_merged": 509,
+    "date": 174,
+    "frq": 329,
+    "mcq": 294
+   },
+   "h_min": 1,
+   "h_max": 20
+  },
+  "claude45": {
+   "events": {
+    "binary_merged": 241,
+    "date": 139,
+    "frq": 231,
+    "mcq": 220
+   },
+   "items": {
+    "binary_merged": 360,
+    "date": 139,
+    "frq": 231,
+    "mcq": 220
+   },
+   "h_min": 1,
+   "h_max": 14
+  },
+  "gpt54": {
+   "events": {
+    "binary_merged": 108,
+    "date": 59,
+    "frq": 107,
+    "mcq": 105
+   },
+   "items": {
+    "binary_merged": 159,
+    "date": 59,
+    "frq": 107,
+    "mcq": 105
+   },
+   "h_min": 1,
+   "h_max": 7
+  },
+  "sonnet5": {
+   "events": {
+    "binary_merged": 26,
+    "date": 14,
+    "frq": 24,
+    "mcq": 23
+   },
+   "items": {
+    "binary_merged": 37,
+    "date": 14,
+    "frq": 24,
+    "mcq": 23
+   },
+   "h_min": 1,
+   "h_max": 2
+  },
+  "sol": {
+   "events": {
+    "binary_merged": 1,
+    "date": 0,
+    "frq": 1,
+    "mcq": 0
+   },
+   "items": {
+    "binary_merged": 1,
+    "date": 0,
+    "frq": 1,
+    "mcq": 0
+   },
+   "h_min": 1,
+   "h_max": 1
+  },
+  "opus48": {
+   "events": {
+    "binary_merged": 26,
+    "date": 13,
+    "frq": 24,
+    "mcq": 22
+   },
+   "items": {
+    "binary_merged": 37,
+    "date": 13,
+    "frq": 24,
+    "mcq": 22
+   },
+   "h_min": 1,
+   "h_max": 2
+  }
+ },
+ "ws:ws_cutoff": {
+  "gpt4o": {
+   "events": {
+    "binary_merged": 456,
+    "date": 295,
+    "frq": 425,
+    "mcq": 435
+   },
+   "items": {
+    "binary_merged": 690,
+    "date": 295,
+    "frq": 425,
+    "mcq": 435
+   },
+   "h_min": 3,
+   "h_max": 29
+  },
+  "llama33": {
+   "events": {
+    "binary_merged": 456,
+    "date": 296,
+    "frq": 426,
+    "mcq": 435
+   },
+   "items": {
+    "binary_merged": 690,
+    "date": 296,
+    "frq": 426,
+    "mcq": 435
+   },
+   "h_min": 1,
+   "h_max": 27
+  },
+  "gptoss20b": {
+   "events": {
+    "binary_merged": 0,
+    "date": 0,
+    "frq": 0,
+    "mcq": 0
+   },
+   "items": {
+    "binary_merged": 0,
+    "date": 0,
+    "frq": 0,
+    "mcq": 0
+   },
+   "h_min": null,
+   "h_max": null
+  },
+  "deepseek_r1": {
+   "events": {
+    "binary_merged": 342,
+    "date": 193,
+    "frq": 320,
+    "mcq": 327
+   },
+   "items": {
+    "binary_merged": 511,
+    "date": 193,
+    "frq": 320,
+    "mcq": 327
+   },
+   "h_min": 1,
+   "h_max": 20
+  },
+  "claude45": {
+   "events": {
+    "binary_merged": 236,
+    "date": 110,
+    "frq": 224,
+    "mcq": 216
+   },
+   "items": {
+    "binary_merged": 353,
+    "date": 110,
+    "frq": 224,
+    "mcq": 216
+   },
+   "h_min": 1,
+   "h_max": 14
+  },
+  "gpt54": {
+   "events": {
+    "binary_merged": 108,
+    "date": 59,
+    "frq": 106,
+    "mcq": 105
+   },
+   "items": {
+    "binary_merged": 159,
+    "date": 59,
+    "frq": 106,
+    "mcq": 105
+   },
+   "h_min": 1,
+   "h_max": 7
+  },
+  "sonnet5": {
+   "events": {
+    "binary_merged": 26,
+    "date": 15,
+    "frq": 24,
+    "mcq": 23
+   },
+   "items": {
+    "binary_merged": 38,
+    "date": 15,
+    "frq": 24,
+    "mcq": 23
+   },
+   "h_min": 1,
+   "h_max": 2
+  },
+  "sol": {
+   "events": {
+    "binary_merged": 1,
+    "date": 0,
+    "frq": 1,
+    "mcq": 0
+   },
+   "items": {
+    "binary_merged": 1,
+    "date": 0,
+    "frq": 1,
+    "mcq": 0
+   },
+   "h_min": 1,
+   "h_max": 1
+  },
+  "opus48": {
+   "events": {
+    "binary_merged": 26,
+    "date": 13,
+    "frq": 24,
+    "mcq": 22
+   },
+   "items": {
+    "binary_merged": 36,
+    "date": 13,
+    "frq": 24,
+    "mcq": 22
+   },
+   "h_min": 1,
+   "h_max": 2
+  }
+ }
+}

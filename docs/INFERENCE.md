@@ -94,7 +94,7 @@ python scripts/judge_frq.py \
   --endpoint azure --stage both --concurrency 3 --resume
 ```
 
-The paper's judge is GPT-5 on an Azure OpenAI deployment (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_KEY`, `AZURE_OPENAI_DEPLOYMENT`). Stage 1 needs live web search. Keep the concurrency low: when the deployment rate-limits, the script retries until the web-search path succeeds.
+The paper's judge is GPT-5.4-mini on an Azure OpenAI deployment (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_KEY`, `AZURE_OPENAI_DEPLOYMENT`). Stage 1 needs live web search. Keep the concurrency low: when the deployment rate-limits, the script retries until the web-search path succeeds.
 
 ## 4. Score
 
@@ -113,7 +113,7 @@ Binary and MCQ use exact match, Date uses exp(−0.1·|Δmonths|), and FRQ uses 
 |---|---|
 | GPT-4o, GPT-5.4, GPT-5.6 Sol (OpenAI) | LLaMA 3.3 70B (`meta-llama/Llama-3.3-70B-Instruct`) |
 | Claude Sonnet 4.5, Claude Sonnet 5, Claude Opus 4.8 (Anthropic) | GPT-OSS 20B (`openai/gpt-oss-20b`) |
-| FRQ judge (GPT-5, Azure OpenAI) | DeepSeek R1 (open weights; the paper used an Azure AI Foundry deployment that is now retired) |
+| FRQ judge (GPT-5.4-mini, Azure OpenAI) | DeepSeek R1 (open weights; the paper used an Azure AI Foundry deployment that is now retired) |
 | WS+Cutoff and WS retrieval (You.com Search API) | Base-condition inference and Binary/MCQ/Date scoring need no paid service when the model is open-weight |
 
 Proprietary models can change behind a fixed identifier, and the reasoning models (Claude Sonnet 5, Claude Opus 4.8, GPT-5.6 Sol) do not accept temperature 0, so repeated runs of these models are not deterministic.

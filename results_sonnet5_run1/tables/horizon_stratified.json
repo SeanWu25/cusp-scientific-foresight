@@ -1,0 +1,4866 @@
+{
+  "bins": [
+    "<= -25",
+    "-24..-13",
+    "-12..-7",
+    "-6..-1",
+    "0..2",
+    "3..5",
+    "6..11",
+    "12..23",
+    ">= 24"
+  ],
+  "min_n": 20,
+  "horizon_definition": "months(publication_date) - months(model cutoff); negative = inside training window",
+  "observable_date_field": "publication_date",
+  "models": {
+    "GPT-5.4": {
+      "cutoff": "2025-08",
+      "source": "run_evaluation/frq_results/gpt_5_4_eval.json",
+      "metrics": {
+        "binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 728,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 488,
+            "value": 0.6703296703296703,
+            "ci_low": 0.6353648550222102,
+            "ci_high": 0.703506288678831,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 639,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 419,
+            "value": 0.6557120500782473,
+            "ci_low": 0.6180396798020171,
+            "ci_high": 0.6915233602999302,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 660,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 400,
+            "value": 0.6060606060606061,
+            "ci_low": 0.5682714311778918,
+            "ci_high": 0.6426222518934914,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 289,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 173,
+            "value": 0.5986159169550173,
+            "ci_low": 0.5411645586041522,
+            "ci_high": 0.6534799181368571,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 308,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 185,
+            "value": 0.6006493506493507,
+            "ci_low": 0.5450356426347651,
+            "ci_high": 0.6537832449030105,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 131,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 84,
+            "value": 0.6412213740458015,
+            "ci_low": 0.5561398003949266,
+            "ci_high": 0.7182562316901272,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "merged_binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1484,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 774,
+            "value": 0.5215633423180593,
+            "ci_low": 0.4961245740275638,
+            "ci_high": 0.5468907577120515,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 1499,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 747,
+            "value": 0.4983322214809873,
+            "ci_low": 0.4730570672393942,
+            "ci_high": 0.5236159021540535,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 1594,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 780,
+            "value": 0.4893350062735257,
+            "ci_low": 0.46484966987344895,
+            "ci_high": 0.5138716251535423,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 752,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 365,
+            "value": 0.4853723404255319,
+            "ci_low": 0.44981587617582514,
+            "ci_high": 0.5210774961921418,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 743,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 367,
+            "value": 0.4939434724091521,
+            "ci_low": 0.4581171161472457,
+            "ci_high": 0.5298321357423116,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 339,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 168,
+            "value": 0.49557522123893805,
+            "ci_low": 0.4426996022298035,
+            "ci_high": 0.5485500010855469,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary_perturbed": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 756,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 286,
+            "value": 0.3783068783068783,
+            "ci_low": 0.3444336730230685,
+            "ci_high": 0.4134105934661577,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 860,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 328,
+            "value": 0.3813953488372093,
+            "ci_low": 0.3495268357697296,
+            "ci_high": 0.41431875814471036,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 934,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 380,
+            "value": 0.4068522483940043,
+            "ci_low": 0.37579086440431037,
+            "ci_high": 0.43867673865360474,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 463,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 192,
+            "value": 0.4146868250539957,
+            "ci_low": 0.37069178106748596,
+            "ci_high": 0.46008593882722776,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 435,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 182,
+            "value": 0.41839080459770117,
+            "ci_low": 0.37294572932898384,
+            "ci_high": 0.46526468645657526,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 208,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 84,
+            "value": 0.40384615384615385,
+            "ci_low": 0.3394917686902063,
+            "ci_high": 0.4716879051793265,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "mcq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 909,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 757,
+            "value": 0.8327832783278328,
+            "ci_low": 0.8071340225665542,
+            "ci_high": 0.8556315656800815,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 949,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 793,
+            "value": 0.8356164383561644,
+            "ci_low": 0.8106913948814258,
+            "ci_high": 0.8578352521499379,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 1075,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 885,
+            "value": 0.8232558139534883,
+            "ci_low": 0.7993133054496301,
+            "ci_high": 0.8448961873989956,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 497,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 405,
+            "value": 0.8148893360160966,
+            "ci_low": 0.778373366536564,
+            "ci_high": 0.8465747208427592,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 484,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 376,
+            "value": 0.7768595041322314,
+            "ci_low": 0.737668230738314,
+            "ci_high": 0.8116904135429444,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 214,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 165,
+            "value": 0.7710280373831776,
+            "ci_low": 0.7102470371371761,
+            "ci_high": 0.8222499698624053,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "frq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 875,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": 5.009428571428572,
+            "ci_low": 4.9541872567400835,
+            "ci_high": 5.06466988611706,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 955,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 5.017539267015707,
+            "ci_low": 4.964545667980231,
+            "ci_high": 5.070532866051182,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 1084,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 5.080258302583026,
+            "ci_low": 5.035538646495475,
+            "ci_high": 5.124977958670577,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 525,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 4.976666666666667,
+            "ci_low": 4.903603301462005,
+            "ci_high": 5.049730031871328,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 472,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 5.038665254237288,
+            "ci_low": 4.971205161251179,
+            "ci_high": 5.106125347223397,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 217,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 5.168202764976958,
+            "ci_low": 5.06272857205523,
+            "ci_high": 5.273676957898687,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_score": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 728,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": 0.22545590659340659,
+            "ci_low": 0.2022761616749531,
+            "ci_high": 0.24863565151186007,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 639,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 0.22836964006259783,
+            "ci_low": 0.2057511665020912,
+            "ci_high": 0.25098811362310447,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 660,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 0.23960818181818183,
+            "ci_low": 0.21767421609784354,
+            "ci_high": 0.2615421475385201,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 289,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 0.27412698961937715,
+            "ci_low": 0.23730764239480623,
+            "ci_high": 0.31094633684394807,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 308,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 0.25707824675324675,
+            "ci_low": 0.2234547728541477,
+            "ci_high": 0.2907017206523458,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 131,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 0.2896030534351145,
+            "ci_low": 0.23975784094553537,
+            "ci_high": 0.3394482659246936,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_signed_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 728,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": 24.34478021978022,
+            "ci_low": 18.85203580183634,
+            "ci_high": 29.837524637724098,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 639,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 19.97965571205008,
+            "ci_low": 15.466703444472785,
+            "ci_high": 24.492607979627373,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 660,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 16.080303030303032,
+            "ci_low": 12.049712186170337,
+            "ci_high": 20.110893874435725,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 289,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 7.325259515570934,
+            "ci_low": 0.889419324620393,
+            "ci_high": 13.761099706521476,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 308,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 13.935064935064934,
+            "ci_low": 9.40482560914973,
+            "ci_high": 18.46530426098014,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 131,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 3.946564885496183,
+            "ci_low": -6.183022114626301,
+            "ci_high": 14.076151885618668,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_abs_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 728,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": 45.622252747252745,
+            "ci_low": 40.8995876218173,
+            "ci_high": 50.34491787268819,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 639,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 39.95148669796557,
+            "ci_low": 36.323868237730146,
+            "ci_high": 43.579105158200996,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 660,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 35.31060606060606,
+            "ci_low": 32.07260581987146,
+            "ci_high": 38.54860630134066,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 289,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 35.9204152249135,
+            "ci_low": 30.92792638359984,
+            "ci_high": 40.912904066227156,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 308,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 29.551948051948052,
+            "ci_low": 26.084260994574546,
+            "ci_high": 33.01963510932156,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 131,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 28.64885496183206,
+            "ci_low": 19.771084993078844,
+            "ci_high": 37.52662493058528,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        }
+      }
+    },
+    "Claude S4.5": {
+      "cutoff": "2025-01",
+      "source": "run_evaluation/frq_results/claude_sonnet.json",
+      "metrics": {
+        "binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 571,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 210,
+            "value": 0.36777583187390545,
+            "ci_low": 0.3292302490110698,
+            "ci_high": 0.4080886924155772,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 595,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 176,
+            "value": 0.2957983193277311,
+            "ci_low": 0.26052984645370386,
+            "ci_high": 0.3336867209991919,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 309,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 64,
+            "value": 0.20711974110032363,
+            "ci_low": 0.16566602037940076,
+            "ci_high": 0.25576642338766864,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 338,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 66,
+            "value": 0.1952662721893491,
+            "ci_low": 0.15652890527061492,
+            "ci_high": 0.24085280602490905,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 591,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 128,
+            "value": 0.21658206429780033,
+            "ci_low": 0.18525916705083514,
+            "ci_high": 0.2515656952318297,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 214,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 52,
+            "value": 0.24299065420560748,
+            "ci_low": 0.19038802402874808,
+            "ci_high": 0.30465791760957994,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "merged_binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 1157,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 583,
+            "value": 0.5038893690579084,
+            "ci_low": 0.4751140067378786,
+            "ci_high": 0.532638989019682,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 1359,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 663,
+            "value": 0.4878587196467991,
+            "ci_low": 0.4613544866592417,
+            "ci_high": 0.5144314007102077,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 759,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 409,
+            "value": 0.538866930171278,
+            "ci_low": 0.5032959566115223,
+            "ci_high": 0.5740464431737018,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 803,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 418,
+            "value": 0.5205479452054794,
+            "ci_low": 0.4859780980536187,
+            "ci_high": 0.5549221232537606,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 1443,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 753,
+            "value": 0.5218295218295218,
+            "ci_low": 0.4960319260675602,
+            "ci_high": 0.5475111957226896,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 553,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 290,
+            "value": 0.5244122965641953,
+            "ci_low": 0.4827632280017133,
+            "ci_high": 0.5657245286601454,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary_perturbed": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 586,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 373,
+            "value": 0.636518771331058,
+            "ci_low": 0.596801289363625,
+            "ci_high": 0.6744579775310804,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 764,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 487,
+            "value": 0.637434554973822,
+            "ci_low": 0.6027359047401276,
+            "ci_high": 0.6707580033784218,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 450,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 345,
+            "value": 0.7666666666666667,
+            "ci_low": 0.7254309402033686,
+            "ci_high": 0.803387925233383,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 465,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 352,
+            "value": 0.7569892473118279,
+            "ci_low": 0.7160024340399725,
+            "ci_high": 0.7937646173479588,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 852,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 625,
+            "value": 0.7335680751173709,
+            "ci_low": 0.7028819546646423,
+            "ci_high": 0.7621573703693358,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 339,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 238,
+            "value": 0.7020648967551623,
+            "ci_low": 0.6513351657855849,
+            "ci_high": 0.7482662828134182,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "mcq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 698,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 522,
+            "value": 0.7478510028653295,
+            "ci_low": 0.714338549521138,
+            "ci_high": 0.7786501818393284,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 848,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 656,
+            "value": 0.7735849056603774,
+            "ci_low": 0.7442190517745376,
+            "ci_high": 0.8004831557720299,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 486,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 325,
+            "value": 0.668724279835391,
+            "ci_low": 0.6256982437480761,
+            "ci_high": 0.7091038637087018,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 518,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 370,
+            "value": 0.7142857142857143,
+            "ci_low": 0.6739156980700561,
+            "ci_high": 0.7515007501395156,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 938,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 665,
+            "value": 0.7089552238805971,
+            "ci_low": 0.6790798345973129,
+            "ci_high": 0.7371260327162567,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 369,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 255,
+            "value": 0.6910569105691057,
+            "ci_low": 0.6421451906483229,
+            "ci_high": 0.7360314934985106,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "frq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 691,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 3.941389290882779,
+            "ci_low": 3.8681492626778224,
+            "ci_high": 4.014629319087735,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 866,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 3.9630484988452657,
+            "ci_low": 3.8990686945776325,
+            "ci_high": 4.027028303112899,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 487,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 3.9276180698151952,
+            "ci_low": 3.8404379488288534,
+            "ci_high": 4.014798190801537,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 528,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 4.027935606060606,
+            "ci_low": 3.9577773038647743,
+            "ci_high": 4.0980939082564385,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 955,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 4.064659685863874,
+            "ci_low": 4.01137146892763,
+            "ci_high": 4.117947902800118,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 381,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 4.024278215223097,
+            "ci_low": 3.935679237653707,
+            "ci_high": 4.112877192792487,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_score": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 571,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 0.17452959719789843,
+            "ci_low": 0.1521514006861659,
+            "ci_high": 0.19690779370963096,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 595,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 0.2269383193277311,
+            "ci_low": 0.2031749567712174,
+            "ci_high": 0.2507016818842448,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 309,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 0.21436051779935272,
+            "ci_low": 0.1879368344429213,
+            "ci_high": 0.24078420115578414,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 338,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 0.228755325443787,
+            "ci_low": 0.20227719574576855,
+            "ci_high": 0.25523345514180545,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 591,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 0.3096375634517767,
+            "ci_low": 0.2858344507232287,
+            "ci_high": 0.33344067618032464,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 214,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 0.303192523364486,
+            "ci_low": 0.2682854077357332,
+            "ci_high": 0.3380996389932388,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_signed_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 551,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 22.308529945553538,
+            "ci_low": 18.64108599340384,
+            "ci_high": 25.975973897703234,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 579,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 17.0,
+            "ci_low": 12.557045229681615,
+            "ci_high": 21.442954770318387,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 302,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 16.304635761589402,
+            "ci_low": 11.477615824395404,
+            "ci_high": 21.1316556987834,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 332,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 12.885542168674698,
+            "ci_low": 4.762873189207411,
+            "ci_high": 21.008211148141985,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 569,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 10.214411247803163,
+            "ci_low": 5.214159727988405,
+            "ci_high": 15.21466276761792,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 213,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 13.544600938967136,
+            "ci_low": 5.625402407912748,
+            "ci_high": 21.463799470021524,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_abs_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 551,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 33.86206896551724,
+            "ci_low": 30.875888758664512,
+            "ci_high": 36.84824917236996,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 579,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 30.664939550949914,
+            "ci_low": 26.739278790841475,
+            "ci_high": 34.59060031105835,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 302,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 28.814569536423843,
+            "ci_low": 24.802548353890835,
+            "ci_high": 32.82659071895685,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 332,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 30.819277108433734,
+            "ci_low": 23.277324842700367,
+            "ci_high": 38.3612293741671,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 569,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 25.40597539543058,
+            "ci_low": 20.786164639096025,
+            "ci_high": 30.025786151765136,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 213,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 24.023474178403756,
+            "ci_low": 16.568268749559465,
+            "ci_high": 31.478679607248047,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        }
+      }
+    },
+    "DeepSeek R1": {
+      "cutoff": "2024-07",
+      "source": "run_evaluation/frq_results/deepseek_r1.json",
+      "metrics": {
+        "binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 594,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 222,
+            "value": 0.37373737373737376,
+            "ci_low": 0.3357587315530338,
+            "ci_high": 0.4133386882317387,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 344,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 122,
+            "value": 0.3546511627906977,
+            "ci_low": 0.3059544952503721,
+            "ci_high": 0.40655832667777003,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 290,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 122,
+            "value": 0.4206896551724138,
+            "ci_low": 0.3652706467903261,
+            "ci_high": 0.478182424524287,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 672,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 356,
+            "value": 0.5297619047619048,
+            "ci_low": 0.4919624687992647,
+            "ci_high": 0.5672229971442345,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 833,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 455,
+            "value": 0.5462184873949579,
+            "ci_low": 0.512273731695001,
+            "ci_high": 0.579738902476149,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "merged_binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 1198,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 585,
+            "value": 0.48831385642737896,
+            "ci_low": 0.4600904275755527,
+            "ci_high": 0.5166119931095027,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 756,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 369,
+            "value": 0.4880952380952381,
+            "ci_low": 0.45261341230850893,
+            "ci_high": 0.5236974398480457,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 691,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 351,
+            "value": 0.507959479015919,
+            "ci_low": 0.470742402278353,
+            "ci_high": 0.5450885439401809,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 1630,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 784,
+            "value": 0.48098159509202454,
+            "ci_low": 0.4567988770362195,
+            "ci_high": 0.5052537478938838,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 2072,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 967,
+            "value": 0.4666988416988417,
+            "ci_low": 0.4452987072436214,
+            "ci_high": 0.48822223192630354,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary_perturbed": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 604,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 363,
+            "value": 0.6009933774834437,
+            "ci_low": 0.561419739017288,
+            "ci_high": 0.6392904460045993,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 412,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 247,
+            "value": 0.5995145631067961,
+            "ci_low": 0.5514901198602465,
+            "ci_high": 0.6457003488182117,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 401,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 229,
+            "value": 0.571072319201995,
+            "ci_low": 0.5221816366053678,
+            "ci_high": 0.6186141709401018,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 958,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 428,
+            "value": 0.44676409185803756,
+            "ci_low": 0.4155565450934587,
+            "ci_high": 0.47839688757154547,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 1239,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 512,
+            "value": 0.4132364810330912,
+            "ci_low": 0.38612678027199604,
+            "ci_high": 0.4408825506033141,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "mcq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 636,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 394,
+            "value": 0.6194968553459119,
+            "ci_low": 0.5811525812231856,
+            "ci_high": 0.6564062145787753,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 412,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 260,
+            "value": 0.6310679611650486,
+            "ci_low": 0.583464259114403,
+            "ci_high": 0.6762500167060057,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 395,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 224,
+            "value": 0.5670886075949367,
+            "ci_low": 0.5178107501696526,
+            "ci_high": 0.6150740843110035,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 942,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 553,
+            "value": 0.5870488322717622,
+            "ci_low": 0.5553147026516161,
+            "ci_high": 0.6180758523842376,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 1213,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 707,
+            "value": 0.5828524319868096,
+            "ci_low": 0.5548843074280967,
+            "ci_high": 0.6102974220591266,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "frq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 724,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 4.169198895027624,
+            "ci_low": 4.107406740195432,
+            "ci_high": 4.230991049859816,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 460,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 4.051630434782608,
+            "ci_low": 3.9718629989980245,
+            "ci_high": 4.131397870567192,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 458,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 4.21943231441048,
+            "ci_low": 4.14873439417168,
+            "ci_high": 4.29013023464928,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 1064,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 4.191024436090226,
+            "ci_low": 4.141149602243027,
+            "ci_high": 4.240899269937424,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 1394,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 4.206061692969871,
+            "ci_low": 4.163234717896032,
+            "ci_high": 4.24888866804371,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_score": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 599,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 0.1448821368948247,
+            "ci_low": 0.1327585022495384,
+            "ci_high": 0.15700577154011103,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 343,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 0.1948801749271137,
+            "ci_low": 0.1732041158113558,
+            "ci_high": 0.2165562340428716,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 289,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 0.22023875432525952,
+            "ci_low": 0.19601158321093418,
+            "ci_high": 0.24446592543958487,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 672,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 0.3474138392857143,
+            "ci_low": 0.3234621524194351,
+            "ci_high": 0.3713655261519935,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 839,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 0.4039978545887962,
+            "ci_low": 0.3834238465583284,
+            "ci_high": 0.42457186261926405,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_signed_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 520,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 25.842307692307692,
+            "ci_low": 23.81206336601494,
+            "ci_high": 27.872552018600445,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 282,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 25.645390070921987,
+            "ci_low": 19.385961311711505,
+            "ci_high": 31.90481883013247,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 248,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 19.56451612903226,
+            "ci_low": 16.90030611834974,
+            "ci_high": 22.22872613971478,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 573,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 16.54973821989529,
+            "ci_low": 14.412178379107663,
+            "ci_high": 18.687298060682917,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 703,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 9.529160739687056,
+            "ci_low": 7.534362537091162,
+            "ci_high": 11.523958942282949,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_abs_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 520,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 25.934615384615384,
+            "ci_low": 23.913102289366435,
+            "ci_high": 27.956128479864333,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 282,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 26.22695035460993,
+            "ci_low": 20.000552396173156,
+            "ci_high": 32.4533483130467,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 248,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 19.766129032258064,
+            "ci_low": 17.125165920250275,
+            "ci_high": 22.407092144265853,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 573,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 17.219895287958114,
+            "ci_low": 15.118188682359843,
+            "ci_high": 19.321601893556384,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 703,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 13.850640113798008,
+            "ci_low": 11.999608586764168,
+            "ci_high": 15.701671640831847,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        }
+      }
+    },
+    "GPT-OSS 20B": {
+      "cutoff": "2024-06",
+      "source": "run_evaluation/frq_results/gpt_oss_20B_reeval.json",
+      "metrics": {
+        "binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 472,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 65,
+            "value": 0.13771186440677965,
+            "ci_low": 0.10953632384439162,
+            "ci_high": 0.1717371083229515,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 377,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 59,
+            "value": 0.15649867374005305,
+            "ci_low": 0.12330878936361223,
+            "ci_high": 0.19661844547627927,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 305,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 38,
+            "value": 0.12459016393442623,
+            "ci_low": 0.0921320770387904,
+            "ci_high": 0.1663875006346836,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 649,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 134,
+            "value": 0.20647149460708783,
+            "ci_low": 0.17710060398917227,
+            "ci_high": 0.23929688048485637,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 952,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 189,
+            "value": 0.19852941176470587,
+            "ci_low": 0.17442375296442628,
+            "ci_high": 0.22505833695507502,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "merged_binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 949,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 452,
+            "value": 0.47629083245521603,
+            "ci_low": 0.44467403762344565,
+            "ci_high": 0.5080988052079337,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 807,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 413,
+            "value": 0.5117719950433705,
+            "ci_low": 0.4773099010678346,
+            "ci_high": 0.5461225424575097,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 721,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 370,
+            "value": 0.5131761442441054,
+            "ci_low": 0.4767186230064325,
+            "ci_high": 0.5494940005515974,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 1581,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 841,
+            "value": 0.5319418089816572,
+            "ci_low": 0.5072976570024841,
+            "ci_high": 0.5564311093297476,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 2352,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 1246,
+            "value": 0.5297619047619048,
+            "ci_low": 0.5095583380218968,
+            "ci_high": 0.5498684078170425,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary_perturbed": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 477,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 387,
+            "value": 0.8113207547169812,
+            "ci_low": 0.7737737427372532,
+            "ci_high": 0.8438932810809855,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 430,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 354,
+            "value": 0.8232558139534883,
+            "ci_low": 0.7843847764817664,
+            "ci_high": 0.8564020913520236,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 416,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 332,
+            "value": 0.7980769230769231,
+            "ci_low": 0.7568529684664661,
+            "ci_high": 0.833845999906368,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 932,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 707,
+            "value": 0.7585836909871244,
+            "ci_low": 0.7300834098203591,
+            "ci_high": 0.7849610165013602,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 1400,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 1057,
+            "value": 0.755,
+            "ci_low": 0.7317928774283575,
+            "ci_high": 0.7768115121267034,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "mcq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 580,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 288,
+            "value": 0.496551724137931,
+            "ci_low": 0.456017182250134,
+            "ci_high": 0.5371316444179212,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 491,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 243,
+            "value": 0.49490835030549896,
+            "ci_low": 0.45089537115122247,
+            "ci_high": 0.5390003853898606,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 474,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 234,
+            "value": 0.4936708860759494,
+            "ci_low": 0.4488937464075822,
+            "ci_high": 0.5385497913672788,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 1017,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 440,
+            "value": 0.4326450344149459,
+            "ci_low": 0.402504682657193,
+            "ci_high": 0.4632923224805287,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 1565,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 737,
+            "value": 0.470926517571885,
+            "ci_low": 0.4462973713286237,
+            "ci_high": 0.4956980474568038,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "frq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 569,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 3.883567662565905,
+            "ci_low": 3.8048373381489453,
+            "ci_high": 3.9622979869828647,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 481,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 3.8134095634095635,
+            "ci_low": 3.7322428133850565,
+            "ci_high": 3.8945763134340705,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 471,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 3.7929936305732483,
+            "ci_low": 3.710930141513949,
+            "ci_high": 3.875057119632548,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 1034,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 3.873791102514507,
+            "ci_low": 3.8186904587874295,
+            "ci_high": 3.928891746241584,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 1568,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 3.881377551020408,
+            "ci_low": 3.838448859832324,
+            "ci_high": 3.924306242208492,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_score": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 472,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 0.12604957627118646,
+            "ci_low": 0.11477484599524718,
+            "ci_high": 0.13732430654712574,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 377,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 0.1821366047745358,
+            "ci_low": 0.16539043678448578,
+            "ci_high": 0.19888277276458582,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 305,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 0.22213737704918035,
+            "ci_low": 0.19893556852006924,
+            "ci_high": 0.24533918557829146,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 649,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 0.3467730354391371,
+            "ci_low": 0.322194319573361,
+            "ci_high": 0.37135175130491327,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 952,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 0.4270203781512605,
+            "ci_low": 0.4044779179791982,
+            "ci_high": 0.4495628383233228,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_signed_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 467,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 36.40256959314775,
+            "ci_low": 33.303049599079145,
+            "ci_high": 39.50208958721636,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 374,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 32.45454545454545,
+            "ci_low": 28.95595345429424,
+            "ci_high": 35.95313745479667,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 303,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 28.877887788778878,
+            "ci_low": 25.47880147448254,
+            "ci_high": 32.27697410307522,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 640,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 28.5703125,
+            "ci_low": 25.20913403097322,
+            "ci_high": 31.93149096902678,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 939,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 19.861554845580404,
+            "ci_low": 17.573334336087058,
+            "ci_high": 22.14977535507375,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_abs_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 467,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 36.43254817987152,
+            "ci_low": 33.33593326075959,
+            "ci_high": 39.529163098983446,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 374,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 32.529411764705884,
+            "ci_low": 29.037988090402962,
+            "ci_high": 36.020835439008806,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 303,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 29.742574257425744,
+            "ci_low": 26.439695894109455,
+            "ci_high": 33.04545262074203,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 640,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 28.9984375,
+            "ci_low": 25.659373583655302,
+            "ci_high": 32.3375014163447,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 939,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 23.44621938232162,
+            "ci_low": 21.301423711926713,
+            "ci_high": 25.591015052716525,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        }
+      }
+    },
+    "LLaMA 3.3": {
+      "cutoff": "2023-12",
+      "source": "run_evaluation/frq_results/llama_3_3_full.json",
+      "metrics": {
+        "binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 74,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 67,
+            "value": 0.9054054054054054,
+            "ci_low": 0.8173754241201446,
+            "ci_high": 0.9534206540694093,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 395,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 347,
+            "value": 0.8784810126582279,
+            "ci_low": 0.8425630164957992,
+            "ci_high": 0.9071080308573355,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 675,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 615,
+            "value": 0.9111111111111111,
+            "ci_low": 0.8872503147020442,
+            "ci_high": 0.9303189091051002,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 1270,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 1212,
+            "value": 0.9543307086614173,
+            "ci_low": 0.9414143450831907,
+            "ci_high": 0.9645067678715127,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 320,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "correct": 306,
+            "value": 0.95625,
+            "ci_low": 0.9279122574121115,
+            "ci_high": 0.973763129567202,
+            "ci_method": "wilson"
+          }
+        },
+        "merged_binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 138,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 75,
+            "value": 0.5434782608695652,
+            "ci_low": 0.4603182587815556,
+            "ci_high": 0.6242831557540955,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 807,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 398,
+            "value": 0.49318463444857497,
+            "ci_low": 0.4588042909263709,
+            "ci_high": 0.527629557558956,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 1510,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 717,
+            "value": 0.47483443708609274,
+            "ci_low": 0.44974259439002057,
+            "ci_high": 0.5000540025590923,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 3101,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 1348,
+            "value": 0.4346984843598839,
+            "ci_low": 0.4173421457976367,
+            "ci_high": 0.4522164171899245,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 803,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "correct": 343,
+            "value": 0.42714819427148193,
+            "ci_low": 0.39336046481524195,
+            "ci_high": 0.4616296596404133,
+            "ci_method": "wilson"
+          }
+        },
+        "binary_perturbed": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 64,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 8,
+            "value": 0.125,
+            "ci_low": 0.064721653926208,
+            "ci_high": 0.22774786330215924,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 412,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 51,
+            "value": 0.12378640776699029,
+            "ci_low": 0.09541732959214115,
+            "ci_high": 0.15910650833076023,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 835,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 102,
+            "value": 0.12215568862275449,
+            "ci_low": 0.1016580184127216,
+            "ci_high": 0.14611414739307535,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 1831,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 136,
+            "value": 0.07427635172037138,
+            "ci_low": 0.06313624165721005,
+            "ci_high": 0.08719913334191792,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 483,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "correct": 37,
+            "value": 0.07660455486542443,
+            "ci_low": 0.05608482357095152,
+            "ci_high": 0.103806196424053,
+            "ci_method": "wilson"
+          }
+        },
+        "mcq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 79,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 34,
+            "value": 0.43037974683544306,
+            "ci_low": 0.3269364765548295,
+            "ci_high": 0.5402799943969628,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 496,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 226,
+            "value": 0.45564516129032256,
+            "ci_low": 0.41232366335498627,
+            "ci_high": 0.4996484494103377,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 952,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 446,
+            "value": 0.4684873949579832,
+            "ci_low": 0.436978719561278,
+            "ci_high": 0.5002493734616663,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 2036,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 849,
+            "value": 0.4169941060903733,
+            "ci_low": 0.39575254370087953,
+            "ci_high": 0.43854831573840247,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 524,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "correct": 218,
+            "value": 0.41603053435114506,
+            "ci_low": 0.3745876119271581,
+            "ci_high": 0.45869570640167406,
+            "ci_method": "wilson"
+          }
+        },
+        "frq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 77,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 3.4415584415584415,
+            "ci_low": 3.258159926777077,
+            "ci_high": 3.624956956339806,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 487,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 3.5220739219712525,
+            "ci_low": 3.4547559036690987,
+            "ci_high": 3.5893919402734062,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 938,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 3.496535181236674,
+            "ci_low": 3.450271586781136,
+            "ci_high": 3.5427987756922117,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 2073,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 3.4825132657983597,
+            "ci_low": 3.451649616298007,
+            "ci_high": 3.5133769152987124,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 518,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "value": 3.4613899613899615,
+            "ci_low": 3.3974811330474113,
+            "ci_high": 3.5252987897325117,
+            "ci_method": "normal-approx"
+          }
+        },
+        "date_score": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 74,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 0.21949054054054054,
+            "ci_low": 0.18827919447746705,
+            "ci_high": 0.25070188660361403,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 395,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 0.26712962025316456,
+            "ci_low": 0.25221210657161086,
+            "ci_high": 0.28204713393471825,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 675,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 0.40456637037037035,
+            "ci_low": 0.3894182544862533,
+            "ci_high": 0.41971448625448743,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 1270,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 0.651247874015748,
+            "ci_low": 0.6376844879553241,
+            "ci_high": 0.664811260076172,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 320,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "value": 0.449738125,
+            "ci_low": 0.43005803416782606,
+            "ci_high": 0.4694182158321739,
+            "ci_method": "normal-approx"
+          }
+        },
+        "date_signed_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 74,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 15.486486486486486,
+            "ci_low": 12.918593707924074,
+            "ci_high": 18.054379265048897,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 393,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 14.34351145038168,
+            "ci_low": 12.47925564558232,
+            "ci_high": 16.20776725518104,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 674,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 9.253709198813056,
+            "ci_low": 7.227386159092508,
+            "ci_high": 11.280032238533604,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 1270,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 2.1275590551181103,
+            "ci_low": 0.8137596173792738,
+            "ci_high": 3.4413584928569465,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 320,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "value": -7.234375,
+            "ci_low": -8.308041293184385,
+            "ci_high": -6.160708706815615,
+            "ci_method": "normal-approx"
+          }
+        },
+        "date_abs_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 74,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 17.2972972972973,
+            "ci_low": 15.434504120639199,
+            "ci_high": 19.160090473955396,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 393,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 16.64885496183206,
+            "ci_low": 14.982944157568584,
+            "ci_high": 18.314765766095537,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 674,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 13.120178041543026,
+            "ci_low": 11.21960369650731,
+            "ci_high": 15.020752386578742,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 1270,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 7.834645669291339,
+            "ci_low": 6.588069045574348,
+            "ci_high": 9.08122229300833,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 320,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "value": 9.459375,
+            "ci_low": 8.619462723159133,
+            "ci_high": 10.299287276840866,
+            "ci_method": "normal-approx"
+          }
+        }
+      }
+    },
+    "GPT-4o": {
+      "cutoff": "2023-10",
+      "source": "run_evaluation/frq_results/gpt_4o_reeval.json",
+      "metrics": {
+        "binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 193,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 8,
+            "value": 0.04145077720207254,
+            "ci_low": 0.021150699451912076,
+            "ci_high": 0.07964913147813524,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 754,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 81,
+            "value": 0.10742705570291777,
+            "ci_low": 0.08728063160722382,
+            "ci_high": 0.1315534888738899,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 1275,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 269,
+            "value": 0.21098039215686273,
+            "ci_low": 0.18946964755051282,
+            "ci_high": 0.23422754841183308,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 532,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "correct": 165,
+            "value": 0.3101503759398496,
+            "ci_low": 0.27232253880302665,
+            "ci_high": 0.3507003843892002,
+            "ci_method": "wilson"
+          }
+        },
+        "merged_binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 389,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 194,
+            "value": 0.4987146529562982,
+            "ci_low": 0.44928295808707447,
+            "ci_high": 0.5481714866560483,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 1590,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 789,
+            "value": 0.4962264150943396,
+            "ci_low": 0.47168892110960625,
+            "ci_high": 0.5207820998500676,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 3096,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 1628,
+            "value": 0.5258397932816538,
+            "ci_low": 0.5082294927758999,
+            "ci_high": 0.5433860478375301,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 1333,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "correct": 712,
+            "value": 0.5341335333833458,
+            "ci_low": 0.507294629374815,
+            "ci_high": 0.5607762624944984,
+            "ci_method": "wilson"
+          }
+        },
+        "binary_perturbed": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 196,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 186,
+            "value": 0.9489795918367347,
+            "ci_low": 0.9086434180626701,
+            "ci_high": 0.9720540943671743,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 836,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 708,
+            "value": 0.84688995215311,
+            "ci_low": 0.8208974384567086,
+            "ci_high": 0.8697089806585151,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 1821,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 1359,
+            "value": 0.7462932454695222,
+            "ci_low": 0.7258032576416319,
+            "ci_high": 0.7657462554777533,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 801,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "correct": 547,
+            "value": 0.682896379525593,
+            "ci_low": 0.6498617003212687,
+            "ci_high": 0.714185088512708,
+            "ci_method": "wilson"
+          }
+        },
+        "mcq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 238,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "correct": 139,
+            "value": 0.5840336134453782,
+            "ci_low": 0.520563393892939,
+            "ci_high": 0.6448341224979548,
+            "ci_method": "wilson"
+          },
+          "6..11": {
+            "n": 978,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "correct": 542,
+            "value": 0.5541922290388548,
+            "ci_low": 0.522888134530267,
+            "ci_high": 0.5850722533775177,
+            "ci_method": "wilson"
+          },
+          "12..23": {
+            "n": 2034,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "correct": 1073,
+            "value": 0.5275319567354966,
+            "ci_low": 0.50580387726601,
+            "ci_high": 0.5491562334707617,
+            "ci_method": "wilson"
+          },
+          ">= 24": {
+            "n": 876,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "correct": 431,
+            "value": 0.4920091324200913,
+            "ci_low": 0.459009456743042,
+            "ci_high": 0.5250785881959559,
+            "ci_method": "wilson"
+          }
+        },
+        "frq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 229,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 3.1593886462882095,
+            "ci_low": 3.0361463596780363,
+            "ci_high": 3.2826309328983827,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 961,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 3.27003121748179,
+            "ci_low": 3.208662719168376,
+            "ci_high": 3.3313997157952038,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 2070,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 3.2553140096618356,
+            "ci_low": 3.2152546594288993,
+            "ci_high": 3.295373359894772,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 868,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "value": 3.296947004608295,
+            "ci_low": 3.2394595857589152,
+            "ci_high": 3.3544344234576746,
+            "ci_method": "normal-approx"
+          }
+        },
+        "date_score": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 193,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 0.05657046632124352,
+            "ci_low": 0.04473149277948354,
+            "ci_high": 0.06840943986300349,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 754,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 0.09745596816976128,
+            "ci_low": 0.0869687781379616,
+            "ci_high": 0.10794315820156096,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 1275,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 0.20575427450980394,
+            "ci_low": 0.1904170090701546,
+            "ci_high": 0.22109153994945327,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 532,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "value": 0.267859022556391,
+            "ci_low": 0.24584839678564305,
+            "ci_high": 0.2898696483271389,
+            "ci_method": "normal-approx"
+          }
+        },
+        "date_signed_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 182,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 47.285714285714285,
+            "ci_low": 42.88396893006891,
+            "ci_high": 51.68745964135966,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 707,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 44.07779349363508,
+            "ci_low": 41.079161329746576,
+            "ci_high": 47.07642565752358,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 1190,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 33.83697478991596,
+            "ci_low": 31.812049754046175,
+            "ci_high": 35.86189982578575,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 494,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "value": 24.838056680161944,
+            "ci_low": 21.776056118805784,
+            "ci_high": 27.900057241518105,
+            "ci_method": "normal-approx"
+          }
+        },
+        "date_abs_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 0,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-12..-7": {
+            "n": 0,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-6..-1": {
+            "n": 0,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "0..2": {
+            "n": 0,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "3..5": {
+            "n": 182,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "value": 47.285714285714285,
+            "ci_low": 42.88396893006891,
+            "ci_high": 51.68745964135966,
+            "ci_method": "normal-approx"
+          },
+          "6..11": {
+            "n": 707,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "value": 44.10891089108911,
+            "ci_low": 41.11276953973013,
+            "ci_high": 47.10505224244809,
+            "ci_method": "normal-approx"
+          },
+          "12..23": {
+            "n": 1190,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "value": 34.470588235294116,
+            "ci_low": 32.48049176499216,
+            "ci_high": 36.46068470559607,
+            "ci_method": "normal-approx"
+          },
+          ">= 24": {
+            "n": 494,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "value": 27.874493927125506,
+            "ci_low": 25.02341939157302,
+            "ci_high": 30.72556846267799,
+            "ci_method": "normal-approx"
+          }
+        }
+      }
+    },
+    "Claude Sonnet 5": {
+      "cutoff": "2026-01",
+      "source": "results_sonnet5_run1/reports/base_medium_run1.json",
+      "metrics": {
+        "mcq": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1514,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 1389,
+            "value": 0.917437252311757,
+            "ci_low": 0.9024945230881315,
+            "ci_high": 0.9302669455657783,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 976,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 893,
+            "value": 0.9149590163934426,
+            "ci_low": 0.8957905218989695,
+            "ci_high": 0.9308737062783194,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 930,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 837,
+            "value": 0.9,
+            "ci_low": 0.879042684634571,
+            "ci_high": 0.9176663075542543,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 361,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 319,
+            "value": 0.8836565096952909,
+            "ci_low": 0.8464681500191844,
+            "ci_high": 0.9127654461496735,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary_perturbed": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1383,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 829,
+            "value": 0.5994215473608099,
+            "ci_low": 0.5733546005614034,
+            "ci_high": 0.6249376917955609,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 932,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 579,
+            "value": 0.621244635193133,
+            "ci_low": 0.5896640462315507,
+            "ci_high": 0.6518298134130728,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 874,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 557,
+            "value": 0.6372997711670481,
+            "ci_low": 0.6048883645015521,
+            "ci_high": 0.6685094785717312,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 347,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 265,
+            "value": 0.7636887608069164,
+            "ci_low": 0.7162548025298726,
+            "ci_high": 0.8053481088694597,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "merged_binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 2582,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 1464,
+            "value": 0.5670023237800155,
+            "ci_low": 0.5478044171483897,
+            "ci_high": 0.5860011492869247,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 1588,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 920,
+            "value": 0.5793450881612091,
+            "ci_low": 0.554901393655584,
+            "ci_high": 0.6034058148003327,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 1477,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 821,
+            "value": 0.5558564658090724,
+            "ci_low": 0.5304039088320135,
+            "ci_high": 0.5810192170445151,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 566,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 327,
+            "value": 0.5777385159010601,
+            "ci_low": 0.5366568955458909,
+            "ci_high": 0.6177719843393262,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1199,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 635,
+            "value": 0.5296080066722268,
+            "ci_low": 0.5013061451088869,
+            "ci_high": 0.5577207458799183,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 656,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 341,
+            "value": 0.5198170731707317,
+            "ci_low": 0.4815804736930585,
+            "ci_high": 0.557822922515971,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 603,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 264,
+            "value": 0.43781094527363185,
+            "ci_low": 0.3987294175221297,
+            "ci_high": 0.47767984644395317,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 219,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 62,
+            "value": 0.2831050228310502,
+            "ci_low": 0.22757540047497377,
+            "ci_high": 0.34611281572882296,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_score": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1185,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": 0.479200506329114,
+            "ci_low": 0.46142504603010714,
+            "ci_high": 0.4969759666281208,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 651,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 0.42229047619047616,
+            "ci_low": 0.3987234071896078,
+            "ci_high": 0.4458575451913445,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 595,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 0.35565680672268907,
+            "ci_low": 0.3316980073826614,
+            "ci_high": 0.3796156060627167,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 217,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 0.341294470046083,
+            "ci_low": 0.30451379100075304,
+            "ci_high": 0.37807514909141293,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_signed_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1185,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": -5.40084388185654,
+            "ci_low": -6.829465043903361,
+            "ci_high": -3.972222719809719,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 651,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": -11.823348694316437,
+            "ci_low": -14.753068199130269,
+            "ci_high": -8.893629189502605,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 595,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": -14.431932773109244,
+            "ci_low": -16.455648168856023,
+            "ci_high": -12.408217377362467,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 217,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": -15.267281105990783,
+            "ci_low": -18.394935255702617,
+            "ci_high": -12.13962695627895,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_abs_error": {
+          "<= -25": {
+            "n": 0,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1185,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": 13.544303797468354,
+            "ci_low": 12.3031811401067,
+            "ci_high": 14.785426454830008,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 651,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 16.385560675883255,
+            "ci_low": 13.588660787802425,
+            "ci_high": 19.182460563964085,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 595,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 17.97142857142857,
+            "ci_low": 16.140124480622088,
+            "ci_high": 19.802732662235055,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 217,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 17.70046082949309,
+            "ci_low": 14.80986292967283,
+            "ci_high": 20.59105872931335,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        }
+      }
+    },
+    "GPT-5.6 Sol": {
+      "cutoff": "2026-02",
+      "source": "results_sol_run1/reports/base_medium_run1.json",
+      "metrics": {
+        "mcq": {
+          "<= -25": {
+            "n": 22,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "correct": 21,
+            "value": 0.9545454545454546,
+            "ci_low": 0.7820151050048196,
+            "ci_high": 0.9919307806988522,
+            "ci_method": "wilson"
+          },
+          "-24..-13": {
+            "n": 1823,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 1643,
+            "value": 0.9012616566099836,
+            "ci_low": 0.8867122398616442,
+            "ci_high": 0.9141234757253013,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 1072,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 941,
+            "value": 0.8777985074626866,
+            "ci_low": 0.856831825014752,
+            "ci_high": 0.8960671147548203,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 974,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 816,
+            "value": 0.837782340862423,
+            "ci_low": 0.8133106134108534,
+            "ci_high": 0.8596000093321348,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 213,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 181,
+            "value": 0.8497652582159625,
+            "ci_low": 0.7956092286046247,
+            "ci_high": 0.8915282948226145,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary_perturbed": {
+          "<= -25": {
+            "n": 15,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1600,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 521,
+            "value": 0.325625,
+            "ci_low": 0.3031045978353838,
+            "ci_high": 0.3489807452558541,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 934,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 304,
+            "value": 0.32548179871520344,
+            "ci_low": 0.29619986624083267,
+            "ci_high": 0.3561934590285945,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 898,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 317,
+            "value": 0.3530066815144766,
+            "ci_low": 0.3224353333046785,
+            "ci_high": 0.3848303328610871,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 208,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 64,
+            "value": 0.3076923076923077,
+            "ci_low": 0.24892944968140207,
+            "ci_high": 0.37342989805766347,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "merged_binary": {
+          "<= -25": {
+            "n": 34,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "correct": 17,
+            "value": 0.5,
+            "ci_low": 0.34069062628048985,
+            "ci_high": 0.6593093737195102,
+            "ci_method": "wilson"
+          },
+          "-24..-13": {
+            "n": 2947,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 1735,
+            "value": 0.5887343060739735,
+            "ci_low": 0.5708640903748147,
+            "ci_high": 0.6063734814419849,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 1594,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 881,
+            "value": 0.5526976160602258,
+            "ci_low": 0.5281905939999525,
+            "ci_high": 0.5769512423372665,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 1495,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 815,
+            "value": 0.5451505016722408,
+            "ci_low": 0.5198246627522105,
+            "ci_high": 0.5702448949648957,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 338,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 175,
+            "value": 0.5177514792899408,
+            "ci_low": 0.4645804219039613,
+            "ci_high": 0.5705235560788235,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "binary": {
+          "<= -25": {
+            "n": 19,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1347,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "correct": 1214,
+            "value": 0.9012620638455828,
+            "ci_low": 0.8841718424993956,
+            "ci_high": 0.9160700215355881,
+            "ci_method": "wilson"
+          },
+          "-12..-7": {
+            "n": 660,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "correct": 577,
+            "value": 0.8742424242424243,
+            "ci_low": 0.8467603207944563,
+            "ci_high": 0.8973931037574248,
+            "ci_method": "wilson"
+          },
+          "-6..-1": {
+            "n": 597,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "correct": 498,
+            "value": 0.8341708542713567,
+            "ci_low": 0.8022180916304493,
+            "ci_high": 0.861850441573643,
+            "ci_method": "wilson"
+          },
+          "0..2": {
+            "n": 130,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "correct": 111,
+            "value": 0.8538461538461538,
+            "ci_low": 0.7829854119638303,
+            "ci_high": 0.9043942965871731,
+            "ci_method": "wilson"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_score": {
+          "<= -25": {
+            "n": 19,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1348,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": 0.37950571216617207,
+            "ci_low": 0.3580787081235062,
+            "ci_high": 0.40093271620883797,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 660,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 0.40911196969696967,
+            "ci_low": 0.3782084087202535,
+            "ci_high": 0.4400155306736858,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 597,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 0.33682998324958124,
+            "ci_low": 0.3110036483809261,
+            "ci_high": 0.3626563181182364,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 131,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 0.2509038167938931,
+            "ci_low": 0.21706413722906587,
+            "ci_high": 0.28474349635872037,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_signed_error": {
+          "<= -25": {
+            "n": 18,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1329,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": 21.588412340105343,
+            "ci_low": 20.12040164979748,
+            "ci_high": 23.056423030413207,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 655,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 16.941984732824427,
+            "ci_low": 15.158896158145268,
+            "ci_high": 18.725073307503585,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 590,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 13.401694915254238,
+            "ci_low": 11.052969882099061,
+            "ci_high": 15.750419948409414,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 127,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 11.244094488188976,
+            "ci_low": 7.347022294367763,
+            "ci_high": 15.141166682010189,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        },
+        "date_abs_error": {
+          "<= -25": {
+            "n": 18,
+            "horizon_lo": -999,
+            "horizon_hi": -25,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "-24..-13": {
+            "n": 1329,
+            "horizon_lo": -24,
+            "horizon_hi": -13,
+            "value": 23.775018811136192,
+            "ci_low": 22.408228513336688,
+            "ci_high": 25.141809108935696,
+            "ci_method": "normal-approx"
+          },
+          "-12..-7": {
+            "n": 655,
+            "horizon_lo": -12,
+            "horizon_hi": -7,
+            "value": 19.937404580152673,
+            "ci_low": 18.34664759451386,
+            "ci_high": 21.528161565791486,
+            "ci_method": "normal-approx"
+          },
+          "-6..-1": {
+            "n": 590,
+            "horizon_lo": -6,
+            "horizon_hi": -1,
+            "value": 20.235593220338984,
+            "ci_low": 18.231293617813364,
+            "ci_high": 22.239892822864604,
+            "ci_method": "normal-approx"
+          },
+          "0..2": {
+            "n": 127,
+            "horizon_lo": 0,
+            "horizon_hi": 2,
+            "value": 18.96062992125984,
+            "ci_low": 16.117928966598804,
+            "ci_high": 21.803330875920878,
+            "ci_method": "normal-approx"
+          },
+          "3..5": {
+            "n": 0,
+            "horizon_lo": 3,
+            "horizon_hi": 5,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "6..11": {
+            "n": 0,
+            "horizon_lo": 6,
+            "horizon_hi": 11,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          "12..23": {
+            "n": 0,
+            "horizon_lo": 12,
+            "horizon_hi": 23,
+            "suppressed": true,
+            "reason": "n < 20"
+          },
+          ">= 24": {
+            "n": 0,
+            "horizon_lo": 24,
+            "horizon_hi": 999,
+            "suppressed": true,
+            "reason": "n < 20"
+          }
+        }
+      }
+    }
+  }
+}

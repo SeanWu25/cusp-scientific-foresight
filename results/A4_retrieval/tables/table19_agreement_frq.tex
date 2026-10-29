@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\small
+\caption{\textbf{Agreement between the original retrieval experiment and the fixed-evidence replication on the FRQ task.} FRQ is scored on the 0--10 rubric scale, so it is reported separately from the unit-scale tasks. Pearson $r$ measures agreement in effect magnitude between the two experimental setups across model $\times$ partition cells, MAD is their mean absolute difference in rubric points, and $N$ is the number of cells. Confidence intervals are 10,000 cell-level bootstrap resamples; with four cells the post-only forecasting-gap interval is uninformative.}
+\label{tab:agreement_frq}
+\begin{tabular}{l l l r l l r}
+\toprule
+& \multicolumn{3}{c}{Pre- and post-cutoff} & \multicolumn{3}{c}{Post-cutoff only} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Quantity & $r$ [95\% CI] & MAD [95\% CI] & $N$ & $r$ [95\% CI] & MAD [95\% CI] & $N$ \\
+\midrule
+WS+Cutoff performance & 1.00 [1.00, 1.00] & 0.100 [0.065, 0.136] & 9 & 1.00 [0.99, 1.00] & 0.132 [0.097, 0.169] & 5 \\
+Unrestricted WS performance & 0.97 [0.93, 1.00] & 0.228 [0.133, 0.329] & 9 & 0.99 [0.96, 1.00] & 0.305 [0.228, 0.418] & 5 \\
+Knowledge gap & 0.99 [0.98, 1.00] & 0.100 [0.065, 0.136] & 9 & 0.97 [0.94, 1.00] & 0.132 [0.097, 0.169] & 5 \\
+Forecasting gap & 0.89 [0.70, 0.99] & 0.144 [0.077, 0.232] & 9 & 0.67 [0.14, 1.00] & 0.173 [0.100, 0.306] & 5 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize\textit{Notes.} Knowledge gap $=$ WS+Cutoff $-$ Base; forecasting gap $=$ WS $-$ WS+Cutoff. GPT-5.6 Sol has three post-cutoff events, so its post-cutoff cell is suppressed. The WS+Cutoff performance and knowledge-gap rows share a MAD because the Base condition is identical in both setups.\end{flushleft}
+\end{table}

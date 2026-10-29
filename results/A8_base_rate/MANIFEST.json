@@ -1,0 +1,366 @@
+{
+ "study": "A8 base-rate injection sweep (Reviewer 2, C5)",
+ "created_utc": "2026-09-28T04:35:49.367404+00:00",
+ "git_sha": "23ff399e72b207f7e8310b10eb5f9ce019727ce3",
+ "git_branch": "sonnet5-run1",
+ "git_dirty": "?? results/A8_base_rate/",
+ "sample": {
+  "seed": 8,
+  "n": 500,
+  "n_candidates": 2289,
+  "n_from_extension": 36,
+  "ids_sha256": "8dc15de52059ba4345b964495286467a5389c37fed8a3dcc33e3a9f5abbe0dbb",
+  "candidate_pool": "events of the full CUSP corpus (original 4,760 + extension 815) carrying BOTH binary_question and binary_question_perturbed"
+ },
+ "xs": [
+  10,
+  30,
+  50,
+  70,
+  90
+ ],
+ "injected_sentence_template": "Historically, in this field, the probability of this kind of progress happening is X%.",
+ "base_prompt_sha256": "c081ba7a87eb6d3ef4915939d8bfcc2ca7be5a10aaa96b55f0c763233a3294d7",
+ "injected_prompt_sha256": {
+  "10": "bea0eb8238ee1b609258441d6fd027f0990cdc82060a93190340a9358b60588d",
+  "30": "a4d3fd0b671c7723aec3b696285b465b116ec971fe8f37c512801ac5b7edf2f6",
+  "50": "45e4a3b9616789f8425a7a574c45f85817c7cbe6f3082716a596ce5d856fba8f",
+  "70": "4e344f7b07c239fa5ae47559c13e3ab1cce957955d10bf6a663a19de3d67fbd5",
+  "90": "fffd41f8db87562aa1ebf6873768d79bfe9744094316e1c142d576ae05b1ad19"
+ },
+ "baseline": "stored base-condition reports listed in run_evaluation/full_corpus_tables.PANEL, read only",
+ "grader": "scripts/eval.py grade_binary (frozen); parser scripts/test_LLM.py parse_structured_response (frozen)",
+ "frozen_code_sha256": {
+  "scripts/eval.py": "6ef4d7dc7ed523df3776d23fe76f6246a686d0f8d6c5ce24d6ab233ce5153719",
+  "scripts/test_LLM.py": "20070b7f00535cb2d704d6f8cf6f98d33b70e789d628194d1cb967da4c04636f"
+ },
+ "total_cost_usd_at_assumed_prices": 122.67,
+ "probe_cost_note": "ten one-line endpoint probes before the run, < $0.05, not itemised",
+ "models": {
+  "gpt4o": {
+   "display_name": "GPT-4o",
+   "model_id": "gpt-4o",
+   "provider": "azure",
+   "endpoint": "env:AZURE_OPENAI_ENDPOINT (OpenAI-compatible /openai/v1 route of the lab's Azure resource)",
+   "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": true
+   },
+   "knowledge_cutoff": "2023-10",
+   "price_usd_per_mtok": {
+    "input": 2.5,
+    "output": 10.0,
+    "source": "Azure OpenAI gpt-4o-2024-11-20 list price (calibration_study/prices.json), assumed"
+   },
+   "runnable": true,
+   "note": null,
+   "n_records": 5000,
+   "api_reported_snapshots": {
+    "gpt-4o-2024-11-20": 5000
+   },
+   "run_started_utc": "2026-09-28T03:14:04.059755+00:00",
+   "run_finished_utc": "2026-09-28T03:32:03.154719+00:00",
+   "input_tokens": 717490,
+   "output_tokens": 337305,
+   "cost_usd_at_assumed_prices": 5.17,
+   "record_statuses": {
+    "ok": 5000
+   },
+   "raw_sha256": "987eaef4fd9033667cf4f530d1f476525006c4c1a3f248aa1a6830b4f5dc0fd8"
+  },
+  "llama33": {
+   "display_name": "LLaMA 3.3 70B",
+   "model_id": "Llama-3.3-70B-Instruct",
+   "provider": "azure",
+   "endpoint": "env:AZURE_OPENAI_ENDPOINT (OpenAI-compatible /openai/v1 route of the lab's Azure resource)",
+   "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": true
+   },
+   "knowledge_cutoff": "2023-12",
+   "price_usd_per_mtok": {
+    "input": 0.71,
+    "output": 0.71,
+    "source": "Azure AI Foundry serverless list price (calibration_study/prices.json), assumed"
+   },
+   "runnable": true,
+   "note": null,
+   "n_records": 5033,
+   "api_reported_snapshots": {
+    "Llama-3.3-70B-Instruct": 5033
+   },
+   "run_started_utc": "2026-09-28T03:32:05.408548+00:00",
+   "run_finished_utc": "2026-09-28T04:30:14.990835+00:00",
+   "input_tokens": 839405,
+   "output_tokens": 337489,
+   "cost_usd_at_assumed_prices": 0.84,
+   "record_statuses": {
+    "ok": 5000,
+    "error": 33
+   },
+   "raw_sha256": "ba0036eee7d3843ea1aa297595dd6f1cb187b977d6eba260be6d508621804a0a"
+  },
+  "gptoss20b": {
+   "display_name": "GPT-OSS 20B",
+   "model_id": "gpt-oss-20b",
+   "provider": "local",
+   "endpoint": "http://127.0.0.1:8077/v1 (vLLM)",
+   "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": true
+   },
+   "knowledge_cutoff": "2024-06",
+   "price_usd_per_mtok": {
+    "input": 0.0,
+    "output": 0.0,
+    "source": "served locally with vLLM on the lab GPUs (Azure deployment returns 404), no API cost"
+   },
+   "runnable": true,
+   "note": null,
+   "n_records": 5000,
+   "api_reported_snapshots": {
+    "gpt-oss-20b": 5000
+   },
+   "run_started_utc": "2026-09-28T03:18:34.330890+00:00",
+   "run_finished_utc": "2026-09-28T03:57:21.586689+00:00",
+   "input_tokens": 1017490,
+   "output_tokens": 2164568,
+   "cost_usd_at_assumed_prices": 0.0,
+   "record_statuses": {
+    "ok": 4976,
+    "empty": 24
+   },
+   "raw_sha256": "0a7cfc1cbd0017529bdcda2a9d91149aa8e99fe33b4375adceb6402747ea3006"
+  },
+  "deepseek_r1": {
+   "display_name": "DeepSeek-R1",
+   "model_id": "DeepSeek-R1",
+   "provider": null,
+   "endpoint": null,
+   "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": false
+   },
+   "knowledge_cutoff": "2024-07",
+   "price_usd_per_mtok": {
+    "input": 1.35,
+    "output": 5.4,
+    "source": "n/a \u2014 Azure deployment retired (HTTP 410 / 400 'dependent service'); cannot be run"
+   },
+   "runnable": false,
+   "note": null
+  },
+  "sonnet45": {
+   "display_name": "Claude S4.5",
+   "model_id": "claude-sonnet-4-5",
+   "provider": "anthropic",
+   "endpoint": "https://api.anthropic.com",
+   "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": false
+   },
+   "knowledge_cutoff": "2025-01",
+   "price_usd_per_mtok": {
+    "input": 3.0,
+    "output": 15.0,
+    "source": "Anthropic list price for Claude Sonnet 4.5, assumed"
+   },
+   "runnable": true,
+   "note": null,
+   "n_records": 5000,
+   "api_reported_snapshots": {
+    "claude-sonnet-4-5-20250929": 5000
+   },
+   "run_started_utc": "2026-09-28T03:50:19.466767+00:00",
+   "run_finished_utc": "2026-09-28T04:15:12.935088+00:00",
+   "input_tokens": 774935,
+   "output_tokens": 521978,
+   "cost_usd_at_assumed_prices": 10.15,
+   "record_statuses": {
+    "refusal": 673,
+    "ok": 4327
+   },
+   "raw_sha256": "dcbce84b81fbdaef314b08273938c1a0137d91d27a648c57385d25072fd1d62c"
+  },
+  "gpt54": {
+   "display_name": "GPT-5.4",
+   "model_id": "gpt-5.4",
+   "provider": "openai",
+   "endpoint": "https://api.openai.com/v1",
+   "decoding": {
+    "effort": "medium",
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": true
+   },
+   "knowledge_cutoff": "2025-08",
+   "price_usd_per_mtok": {
+    "input": 1.25,
+    "output": 10.0,
+    "source": "scripts/run_cusp.py PRICING, assumed; reasoning tokens bill as output"
+   },
+   "runnable": true,
+   "note": "original-corpus base run's reasoning_effort is not on record; effort=medium matches the extension-half base run",
+   "n_records": 5000,
+   "api_reported_snapshots": {
+    "gpt-5.4-2026-03-05": 5000
+   },
+   "run_started_utc": "2026-09-28T03:14:04.058469+00:00",
+   "run_finished_utc": "2026-09-28T04:22:19.556269+00:00",
+   "input_tokens": 712490,
+   "output_tokens": 3418122,
+   "cost_usd_at_assumed_prices": 35.07,
+   "record_statuses": {
+    "ok": 4923,
+    "empty": 77
+   },
+   "raw_sha256": "4a3180e8140e9346075f32b8c852f6ced2e60a765b124cd448b4ae546e88d7e1"
+  },
+  "sonnet5": {
+   "display_name": "Claude Sonnet 5",
+   "model_id": "claude-sonnet-5",
+   "provider": "anthropic",
+   "endpoint": "https://api.anthropic.com",
+   "decoding": {
+    "effort": "medium",
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": false
+   },
+   "knowledge_cutoff": "2026-01",
+   "price_usd_per_mtok": {
+    "input": 2.0,
+    "output": 10.0,
+    "source": "scripts/run_cusp.py PRICING, assumed"
+   },
+   "runnable": true,
+   "note": null,
+   "n_records": 5000,
+   "api_reported_snapshots": {
+    "claude-sonnet-5": 5000
+   },
+   "run_started_utc": "2026-09-28T03:14:04.074932+00:00",
+   "run_finished_utc": "2026-09-28T03:27:01.256394+00:00",
+   "input_tokens": 1070749,
+   "output_tokens": 599380,
+   "cost_usd_at_assumed_prices": 8.14,
+   "record_statuses": {
+    "ok": 4854,
+    "refusal": 146
+   },
+   "raw_sha256": "34ca8a992dc8d89de2c63af6ae0f0db093161102ca0e648bda71ea2c6f2e9745"
+  },
+  "sol": {
+   "display_name": "GPT-5.6 Sol",
+   "model_id": "gpt-5.6-sol",
+   "provider": "openai",
+   "endpoint": "https://api.openai.com/v1",
+   "decoding": {
+    "effort": "medium",
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": true
+   },
+   "knowledge_cutoff": "2026-02",
+   "price_usd_per_mtok": {
+    "input": 4.0,
+    "output": 20.0,
+    "source": "scripts/run_cusp.py PRICING, assumed; reasoning tokens bill as output"
+   },
+   "runnable": true,
+   "note": null,
+   "n_records": 5000,
+   "api_reported_snapshots": {
+    "gpt-5.6-sol": 5000
+   },
+   "run_started_utc": "2026-09-28T03:14:04.061022+00:00",
+   "run_finished_utc": "2026-09-28T04:15:29.814512+00:00",
+   "input_tokens": 712304,
+   "output_tokens": 2041739,
+   "cost_usd_at_assumed_prices": 43.68,
+   "record_statuses": {
+    "ok": 4994,
+    "refusal": 1,
+    "empty": 5
+   },
+   "raw_sha256": "8709af7c3e4de7aa911ee1898fd978ae45b605a54ec4c455c5c83012ba087ffc"
+  },
+  "dsv4pro": {
+   "display_name": "DeepSeek-V4-Pro",
+   "model_id": "DeepSeek-V4-Pro",
+   "provider": "azure",
+   "endpoint": "env:AZURE_OPENAI_ENDPOINT (OpenAI-compatible /openai/v1 route of the lab's Azure resource)",
+   "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": true
+   },
+   "knowledge_cutoff": "2026-04",
+   "price_usd_per_mtok": {
+    "input": 1.74,
+    "output": 3.48,
+    "source": "Azure AI Foundry price as listed by a third-party calculator (futureagi.com, verified Aug 2026), assumed"
+   },
+   "runnable": true,
+   "note": null,
+   "n_records": 5000,
+   "api_reported_snapshots": {
+    "DeepSeek-V4-Pro": 5000
+   },
+   "run_started_utc": "2026-09-28T03:51:03.310466+00:00",
+   "run_finished_utc": "2026-09-28T04:16:22.005153+00:00",
+   "input_tokens": 693855,
+   "output_tokens": 331456,
+   "cost_usd_at_assumed_prices": 2.36,
+   "record_statuses": {
+    "ok": 5000
+   },
+   "raw_sha256": "507d225106a0449fb3166928fa826583d438ddd18eedd16482f80ee5cb9f4ec1"
+  },
+  "opus48": {
+   "display_name": "Claude Opus 4.8",
+   "model_id": "claude-opus-4-8",
+   "provider": "anthropic",
+   "endpoint": "https://api.anthropic.com",
+   "decoding": {
+    "effort": "medium",
+    "max_tokens": 2048,
+    "retries": 2,
+    "json_mode": false
+   },
+   "knowledge_cutoff": "2026-01",
+   "price_usd_per_mtok": {
+    "input": 5.0,
+    "output": 25.0,
+    "source": "platform.claude.com Opus 4.8 overview ($5/$25), assumed"
+   },
+   "runnable": true,
+   "note": null,
+   "n_records": 5000,
+   "api_reported_snapshots": {
+    "claude-opus-4-8": 5000
+   },
+   "run_started_utc": "2026-09-28T03:27:04.658244+00:00",
+   "run_finished_utc": "2026-09-28T03:50:16.008910+00:00",
+   "input_tokens": 1070655,
+   "output_tokens": 476114,
+   "cost_usd_at_assumed_prices": 17.26,
+   "record_statuses": {
+    "ok": 4845,
+    "refusal": 155
+   },
+   "raw_sha256": "5b9ddeecc3f3bf1baa5d70089fa998eef2672df2b314ba88a883f3525c7c91f8"
+  }
+ }
+}

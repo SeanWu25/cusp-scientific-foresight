@@ -1,0 +1,67 @@
+\begin{table}[p]
+\centering
+\footnotesize
+\caption{\textbf{Post- and pre-cutoff gap estimates under the original and fixed-evidence retrieval designs, all models and tasks.} Values are paired performance differences on the same events with 95\% confidence intervals (normal approximation on the paired differences). Knowledge gap $=$ WS+Cutoff $-$ Base; forecasting gap $=$ WS $-$ WS+Cutoff. Binary, MCQ and Date gaps are in accuracy or score units on $[0,1]$; FRQ gaps are in rubric points on the 0--10 scale. Original: each model wrote its own search query (GPT-4o's unrestricted run used the provider's native search tool). Fixed: identical evidence packets for every model, from queries written by a model outside the panel. Pre $=$ publication month $\le$ cutoff month (recall regime); Post $=$ publication month $>$ cutoff month (forecasting regime). GPT-4o and LLaMA 3.3 have no pre-cutoff events in the 500-event subset. LLaMA 3.3's unrestricted (WS) run was generated on 2026-10-05 with the same harness and endpoint as its WS+Cutoff run. Cells with $n<20$ are suppressed.}
+\label{tab:gaps_full}
+\begin{tabular}{l l l r l l l l}
+\toprule
+Model & Task & Partition & $N$ & \makecell[l]{Knowledge gap\\Original} & \makecell[l]{Knowledge gap\\Fixed} & \makecell[l]{Forecasting gap\\Original} & \makecell[l]{Forecasting gap\\Fixed} \\
+\midrule
+GPT-4o & Binary & Post & 291 & $+$0.292 {\scriptsize[$+$0.230, $+$0.354]} & $+$0.285 {\scriptsize[$+$0.223, $+$0.348]} & $+$0.354 {\scriptsize[$+$0.285, $+$0.423]} & $+$0.361 {\scriptsize[$+$0.300, $+$0.422]} \\
+ & Binary (perturbed) & Post & 388 & $-$0.165 {\scriptsize[$-$0.213, $-$0.117]} & $-$0.180 {\scriptsize[$-$0.235, $-$0.126]} & $+$0.106 {\scriptsize[$+$0.049, $+$0.162]} & $-$0.137 {\scriptsize[$-$0.191, $-$0.083]} \\
+ & MCQ & Post & 426 & $+$0.045 {\scriptsize[$-$0.001, $+$0.091]} & $+$0.094 {\scriptsize[$+$0.046, $+$0.142]} & $+$0.286 {\scriptsize[$+$0.236, $+$0.337]} & $+$0.197 {\scriptsize[$+$0.152, $+$0.243]} \\
+ & FRQ (0--10) & Post & 414 & $+$0.434 {\scriptsize[$+$0.327, $+$0.540]} & $+$0.634 {\scriptsize[$+$0.518, $+$0.751]} & $+$0.532 {\scriptsize[$+$0.362, $+$0.702]} & $+$0.654 {\scriptsize[$+$0.534, $+$0.774]} \\
+ & Date & Post & 291 & $+$0.203 {\scriptsize[$+$0.169, $+$0.237]} & $+$0.173 {\scriptsize[$+$0.140, $+$0.206]} & $+$0.235 {\scriptsize[$+$0.175, $+$0.295]} & $+$0.132 {\scriptsize[$+$0.085, $+$0.179]} \\
+\addlinespace
+GPT-5.4 & Binary & Pre & 237 & $+$0.270 {\scriptsize[$+$0.201, $+$0.339]} & $+$0.270 {\scriptsize[$+$0.203, $+$0.337]} & $+$0.051 {\scriptsize[$+$0.011, $+$0.091]} & $+$0.013 {\scriptsize[$-$0.021, $+$0.047]} \\
+ & Binary & Post & 58 & $+$0.172 {\scriptsize[$+$0.035, $+$0.310]} & $+$0.224 {\scriptsize[$+$0.079, $+$0.369]} & $+$0.172 {\scriptsize[$+$0.063, $+$0.282]} & $+$0.103 {\scriptsize[$+$0.011, $+$0.196]} \\
+ & Binary (perturbed) & Pre & 294 & $+$0.024 {\scriptsize[$-$0.050, $+$0.098]} & $+$0.058 {\scriptsize[$-$0.016, $+$0.132]} & $-$0.061 {\scriptsize[$-$0.126, $+$0.003]} & $+$0.020 {\scriptsize[$-$0.027, $+$0.068]} \\
+ & Binary (perturbed) & Post & 99 & $-$0.162 {\scriptsize[$-$0.266, $-$0.057]} & $-$0.192 {\scriptsize[$-$0.296, $-$0.088]} & $+$0.000 {\scriptsize[$-$0.105, $+$0.105]} & $+$0.071 {\scriptsize[$-$0.036, $+$0.177]} \\
+ & MCQ & Pre & 330 & $+$0.088 {\scriptsize[$+$0.047, $+$0.128]} & $+$0.094 {\scriptsize[$+$0.054, $+$0.134]} & $+$0.030 {\scriptsize[$+$0.004, $+$0.057]} & $+$0.000 {\scriptsize[$-$0.022, $+$0.022]} \\
+ & MCQ & Post & 104 & $-$0.048 {\scriptsize[$-$0.130, $+$0.034]} & $-$0.058 {\scriptsize[$-$0.142, $+$0.026]} & $+$0.154 {\scriptsize[$+$0.075, $+$0.233]} & $+$0.135 {\scriptsize[$+$0.059, $+$0.211]} \\
+ & FRQ (0--10) & Pre & 317 & $+$1.003 {\scriptsize[$+$0.869, $+$1.137]} & $+$1.096 {\scriptsize[$+$0.967, $+$1.225]} & $-$0.294 {\scriptsize[$-$0.432, $-$0.157]} & $-$0.019 {\scriptsize[$-$0.105, $+$0.068]} \\
+ & FRQ (0--10) & Post & 103 & $+$0.235 {\scriptsize[$+$0.044, $+$0.427]} & $+$0.308 {\scriptsize[$+$0.124, $+$0.493]} & $+$0.187 {\scriptsize[$-$0.023, $+$0.397]} & $+$0.624 {\scriptsize[$+$0.420, $+$0.827]} \\
+ & Date & Pre & 237 & $+$0.440 {\scriptsize[$+$0.383, $+$0.498]} & $+$0.454 {\scriptsize[$+$0.397, $+$0.510]} & $+$0.024 {\scriptsize[$-$0.033, $+$0.080]} & $+$0.022 {\scriptsize[$-$0.012, $+$0.057]} \\
+ & Date & Post & 58 & $+$0.070 {\scriptsize[$-$0.009, $+$0.150]} & $+$0.085 {\scriptsize[$+$0.000, $+$0.170]} & $+$0.436 {\scriptsize[$+$0.323, $+$0.550]} & $+$0.373 {\scriptsize[$+$0.281, $+$0.466]} \\
+\addlinespace
+LLaMA 3.3 70B & Binary & Post & 294 & $-$0.068 {\scriptsize[$-$0.107, $-$0.029]} & $-$0.054 {\scriptsize[$-$0.093, $-$0.016]} & $+$0.058 {\scriptsize[$+$0.017, $+$0.099]} & $+$0.085 {\scriptsize[$+$0.046, $+$0.124]} \\
+ & Binary (perturbed) & Post & 392 & $+$0.074 {\scriptsize[$+$0.032, $+$0.116]} & $+$0.089 {\scriptsize[$+$0.047, $+$0.132]} & $+$0.013 {\scriptsize[$-$0.031, $+$0.056]} & $+$0.005 {\scriptsize[$-$0.038, $+$0.048]} \\
+ & MCQ & Post & 430 & $+$0.044 {\scriptsize[$-$0.004, $+$0.092]} & $+$0.093 {\scriptsize[$+$0.043, $+$0.143]} & $+$0.260 {\scriptsize[$+$0.212, $+$0.309]} & $+$0.242 {\scriptsize[$+$0.198, $+$0.286]} \\
+ & FRQ (0--10) & Post & 420 & $+$0.458 {\scriptsize[$+$0.361, $+$0.554]} & $+$0.599 {\scriptsize[$+$0.511, $+$0.686]} & $+$0.599 {\scriptsize[$+$0.485, $+$0.713]} & $+$0.703 {\scriptsize[$+$0.600, $+$0.806]} \\
+ & Date & Post & 294 & $-$0.020 {\scriptsize[$-$0.056, $+$0.015]} & $-$0.041 {\scriptsize[$-$0.080, $-$0.001]} & $+$0.062 {\scriptsize[$+$0.019, $+$0.104]} & $+$0.105 {\scriptsize[$+$0.063, $+$0.148]} \\
+\addlinespace
+Claude S4.5 & Binary & Pre & 129 & $+$0.380 {\scriptsize[$+$0.267, $+$0.492]} & $+$0.380 {\scriptsize[$+$0.278, $+$0.481]} & $+$0.039 {\scriptsize[$-$0.034, $+$0.112]} & $+$0.078 {\scriptsize[$+$0.014, $+$0.141]} \\
+ & Binary & Post & 130 & $+$0.077 {\scriptsize[$-$0.018, $+$0.172]} & $+$0.115 {\scriptsize[$+$0.018, $+$0.213]} & $+$0.438 {\scriptsize[$+$0.345, $+$0.532]} & $+$0.438 {\scriptsize[$+$0.350, $+$0.527]} \\
+ & Binary (perturbed) & Pre & 137 & $-$0.007 {\scriptsize[$-$0.104, $+$0.089]} & $+$0.022 {\scriptsize[$-$0.079, $+$0.122]} & $+$0.015 {\scriptsize[$-$0.056, $+$0.085]} & $-$0.007 {\scriptsize[$-$0.066, $+$0.052]} \\
+ & Binary (perturbed) & Post & 186 & $-$0.022 {\scriptsize[$-$0.087, $+$0.044]} & $-$0.054 {\scriptsize[$-$0.122, $+$0.014]} & $-$0.129 {\scriptsize[$-$0.193, $-$0.065]} & $-$0.108 {\scriptsize[$-$0.173, $-$0.043]} \\
+ & MCQ & Pre & 152 & $+$0.039 {\scriptsize[$-$0.044, $+$0.123]} & $+$0.020 {\scriptsize[$-$0.067, $+$0.106]} & $-$0.013 {\scriptsize[$-$0.084, $+$0.058]} & $-$0.013 {\scriptsize[$-$0.082, $+$0.055]} \\
+ & MCQ & Post & 185 & $-$0.016 {\scriptsize[$-$0.083, $+$0.050]} & $-$0.016 {\scriptsize[$-$0.094, $+$0.061]} & $+$0.124 {\scriptsize[$+$0.059, $+$0.190]} & $+$0.119 {\scriptsize[$+$0.046, $+$0.192]} \\
+ & FRQ (0--10) & Pre & 142 & $+$0.683 {\scriptsize[$+$0.485, $+$0.881]} & $+$0.780 {\scriptsize[$+$0.579, $+$0.981]} & $+$0.130 {\scriptsize[$-$0.021, $+$0.282]} & $+$0.058 {\scriptsize[$-$0.068, $+$0.185]} \\
+ & FRQ (0--10) & Post & 196 & $+$0.102 {\scriptsize[$-$0.028, $+$0.232]} & $+$0.247 {\scriptsize[$+$0.116, $+$0.378]} & $+$0.351 {\scriptsize[$+$0.221, $+$0.481]} & $+$0.443 {\scriptsize[$+$0.314, $+$0.571]} \\
+ & Date & Pre & 129 & $+$0.235 {\scriptsize[$+$0.145, $+$0.325]} & $+$0.287 {\scriptsize[$+$0.201, $+$0.372]} & $+$0.083 {\scriptsize[$-$0.000, $+$0.167]} & $-$0.072 {\scriptsize[$-$0.155, $+$0.010]} \\
+ & Date & Post & 128 & $+$0.016 {\scriptsize[$-$0.037, $+$0.070]} & $-$0.024 {\scriptsize[$-$0.081, $+$0.032]} & $+$0.118 {\scriptsize[$+$0.043, $+$0.193]} & $+$0.235 {\scriptsize[$+$0.155, $+$0.315]} \\
+\addlinespace
+Claude Sonnet 5 & Binary & Pre & 266 & $+$0.267 {\scriptsize[$+$0.195, $+$0.339]} & $+$0.286 {\scriptsize[$+$0.214, $+$0.357]} & $+$0.004 {\scriptsize[$-$0.046, $+$0.053]} & $+$0.026 {\scriptsize[$-$0.013, $+$0.066]} \\
+ & Binary & Post & n = 14, suppressed & --- & --- & --- & --- \\
+ & Binary (perturbed) & Pre & 349 & $+$0.011 {\scriptsize[$-$0.050, $+$0.073]} & $-$0.003 {\scriptsize[$-$0.061, $+$0.055]} & $+$0.032 {\scriptsize[$-$0.003, $+$0.066]} & $+$0.011 {\scriptsize[$-$0.021, $+$0.044]} \\
+ & Binary (perturbed) & Post & 24 & $-$0.083 {\scriptsize[$-$0.247, $+$0.080]} & $-$0.125 {\scriptsize[$-$0.260, $+$0.010]} & $-$0.125 {\scriptsize[$-$0.304, $+$0.054]} & $-$0.042 {\scriptsize[$-$0.185, $+$0.102]} \\
+ & MCQ & Pre & 371 & $+$0.062 {\scriptsize[$+$0.030, $+$0.094]} & $+$0.057 {\scriptsize[$+$0.022, $+$0.091]} & $+$0.011 {\scriptsize[$-$0.006, $+$0.027]} & $+$0.016 {\scriptsize[$-$0.000, $+$0.033]} \\
+ & MCQ & Post & 24 & $+$0.042 {\scriptsize[$-$0.102, $+$0.185]} & $+$0.000 {\scriptsize[$-$0.167, $+$0.167]} & $+$0.000 {\scriptsize[$+$0.000, $+$0.000]} & $+$0.083 {\scriptsize[$-$0.030, $+$0.196]} \\
+ & FRQ (0--10) & Pre & 381 & $+$1.394 {\scriptsize[$+$1.262, $+$1.526]} & $+$1.430 {\scriptsize[$+$1.303, $+$1.558]} & $-$0.044 {\scriptsize[$-$0.141, $+$0.053]} & $+$0.029 {\scriptsize[$-$0.060, $+$0.117]} \\
+ & FRQ (0--10) & Post & 25 & $+$0.300 {\scriptsize[$-$0.131, $+$0.731]} & $+$0.400 {\scriptsize[$-$0.048, $+$0.848]} & $+$0.680 {\scriptsize[$+$0.170, $+$1.190]} & $+$0.790 {\scriptsize[$+$0.386, $+$1.194]} \\
+ & Date & Pre & 268 & $+$0.325 {\scriptsize[$+$0.274, $+$0.376]} & $+$0.326 {\scriptsize[$+$0.275, $+$0.376]} & $+$0.011 {\scriptsize[$-$0.023, $+$0.045]} & $+$0.020 {\scriptsize[$-$0.008, $+$0.048]} \\
+ & Date & Post & n = 14, suppressed & --- & --- & --- & --- \\
+\addlinespace
+GPT-5.6 Sol & Binary & Pre & 294 & $+$0.034 {\scriptsize[$-$0.013, $+$0.081]} & $+$0.017 {\scriptsize[$-$0.031, $+$0.065]} & $-$0.007 {\scriptsize[$-$0.041, $+$0.027]} & $+$0.034 {\scriptsize[$+$0.008, $+$0.060]} \\
+ & Binary & Post & n = 1, suppressed & --- & --- & --- & --- \\
+ & Binary (perturbed) & Pre & 388 & $+$0.168 {\scriptsize[$+$0.106, $+$0.229]} & $+$0.144 {\scriptsize[$+$0.087, $+$0.202]} & $+$0.010 {\scriptsize[$-$0.030, $+$0.050]} & $+$0.003 {\scriptsize[$-$0.028, $+$0.033]} \\
+ & Binary (perturbed) & Post & n = 4, suppressed & --- & --- & --- & --- \\
+ & MCQ & Pre & 423 & $+$0.059 {\scriptsize[$+$0.026, $+$0.092]} & $+$0.073 {\scriptsize[$+$0.041, $+$0.106]} & $+$0.014 {\scriptsize[$-$0.005, $+$0.034]} & $+$0.014 {\scriptsize[$+$0.001, $+$0.027]} \\
+ & MCQ & Post & n = 3, suppressed & --- & --- & --- & --- \\
+ & FRQ (0--10) & Pre & 407 & $+$1.094 {\scriptsize[$+$0.978, $+$1.210]} & $+$1.080 {\scriptsize[$+$0.963, $+$1.197]} & $+$0.079 {\scriptsize[$-$0.018, $+$0.175]} & $+$0.065 {\scriptsize[$-$0.009, $+$0.139]} \\
+ & FRQ (0--10) & Post & n = 3, suppressed & --- & --- & --- & --- \\
+ & Date & Pre & 295 & $+$0.417 {\scriptsize[$+$0.366, $+$0.468]} & $+$0.405 {\scriptsize[$+$0.353, $+$0.457]} & $+$0.016 {\scriptsize[$-$0.016, $+$0.049]} & $+$0.024 {\scriptsize[$+$0.000, $+$0.048]} \\
+ & Date & Post & n = 1, suppressed & --- & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}

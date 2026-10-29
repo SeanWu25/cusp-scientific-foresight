@@ -1,0 +1,9 @@
+{
+  "snapshot_date": "2026-09-25",
+  "openalex": "https://api.openalex.org/works (batched DOI filter)",
+  "crossref": "https://api.crossref.org/works/<doi> (polite pool)",
+  "n_events": 5575,
+  "n_linked": 5516,
+  "n_journal_doi": 4326,
+  "n_arxiv": 1190
+}

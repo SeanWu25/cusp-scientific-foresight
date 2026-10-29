@@ -1,0 +1,8 @@
+### Strict rates scaled to the 4305 negatives in the corpus
+
+| quantity | rate | ci_lo | ci_hi | items | lo | hi |
+|---|---|---|---|---|---|---|
+| R1 achieved elsewhere | 2.5% | 0.6% | 4.9% | 108 | 24 | 212 |
+| R2 perturbation did not bind | 4.8% | 2.2% | 7.9% | 209 | 95 | 342 |
+| Either route | 7.4% | 4.1% | 11.0% | 316 | 175 | 475 |
+| Undecidable | 9.3% | 5.6% | 13.1% | 399 | 240 | 566 |

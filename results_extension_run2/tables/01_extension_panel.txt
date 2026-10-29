@@ -1,0 +1,94 @@
+====================================================================================================
+EXTENSION CORPUS: April-August 2026, 815 events
+100% POST-CUTOFF for every model except DeepSeek-V4-Pro (cutoff 2026-04).
+NOT PROSPECTIVE: all outcomes resolved before the models were run. The corpus
+is uncontaminated by training data, but it is not the Time Capsule.
+FRQ quality REPORTED (published rubric, 4 dims, pass >= 5.0).
+  Judge noise floor: re-grading the same response gives MAD 0.392,
+  so differences below ~0.4 between models are not meaningful.
+  Claude FRQ responses are truncated at their token caps (S4.5 99.6%,
+  Sonnet 5 97.4%) while the rest of the panel answered to completion.
+  Whether that depresses their scores is not established -- Sonnet 5
+  scores specificity 5.40 on the original corpus despite 96% truncation.
+====================================================================================================
+
+=== 1. FULL PANEL ON THE EXTENSION (all post-cutoff) ===
+model              cutoff             merged binary                       MCQ                date score
+GPT-4o            2023-10    0.566[0.53,0.60] n=845    0.462[0.42,0.50] n=606    0.506[0.46,0.56] n=196
+LLaMA 3.3 70B     2023-12    0.271[0.24,0.30] n=845    0.442[0.40,0.48] n=606    0.288[0.27,0.30] n=196
+GPT-OSS 20B       2024-06    0.567[0.53,0.60] n=845    0.518[0.48,0.56] n=606    0.347[0.31,0.39] n=196
+Claude S4.5       2025-01    0.558[0.52,0.59] n=712    0.755[0.71,0.79] n=473    0.317[0.28,0.36] n=172
+GPT-5.4           2025-08    0.421[0.39,0.45] n=845    0.858[0.83,0.88] n=606    0.154[0.13,0.18] n=196
+Claude Sonnet 5   2026-01    0.655[0.62,0.69] n=821    0.910[0.88,0.93] n=569    0.228[0.19,0.27] n=193
+GPT-5.6 Sol       2026-02    0.472[0.44,0.51] n=845    0.869[0.84,0.89] n=602    0.221[0.20,0.24] n=196
+DeepSeek-V4-Pro   2026-04    0.669[0.63,0.70] n=661    0.665[0.62,0.71] n=478    0.343[0.28,0.40] n=155  [May-Aug only]
+Claude Opus 4.8   2026-01    0.640[0.61,0.67] n=814    0.928[0.90,0.95] n=569    0.200[0.17,0.23] n=193
+
+=== 2. EXTENSION vs ORIGINAL POST-CUTOFF (same model, same task) ===
+  MCQ is differenced (templates and generator verified identical).
+  Binary is shown side by side. Date is NOT differenced -- see block 4.
+
+model            task                       original post               extension             delta
+GPT-4o           merged_binary    0.519[0.51,0.53] n=6408  0.566[0.53,0.60] n=845   not differenced
+GPT-4o           mcq              0.530[0.51,0.54] n=4126  0.462[0.42,0.50] n=606    -0.068+/-0.042
+GPT-4o           date_score       0.178[0.17,0.19] n=2754  0.506[0.46,0.56] n=196   not differenced
+LLaMA 3.3 70B    merged_binary    0.453[0.44,0.47] n=6359  0.271[0.24,0.30] n=845   not differenced
+LLaMA 3.3 70B    mcq              0.434[0.42,0.45] n=4087  0.442[0.40,0.48] n=606    +0.008+/-0.042
+LLaMA 3.3 70B    date_score       0.500[0.49,0.51] n=2734  0.288[0.27,0.30] n=196   not differenced
+GPT-OSS 20B      merged_binary    0.526[0.51,0.54] n=5461  0.567[0.53,0.60] n=845   not differenced
+GPT-OSS 20B      mcq              0.466[0.45,0.48] n=3547  0.518[0.48,0.56] n=606    +0.052+/-0.043
+GPT-OSS 20B      date_score       0.336[0.32,0.35] n=2283  0.347[0.31,0.39] n=196   not differenced
+Claude S4.5      merged_binary    0.526[0.51,0.54] n=3558  0.558[0.52,0.59] n=712   not differenced
+Claude S4.5      mcq              0.699[0.68,0.72] n=2311  0.755[0.71,0.79] n=473    +0.056+/-0.043
+Claude S4.5      date_score       0.270[0.26,0.28] n=1452  0.317[0.28,0.36] n=172   not differenced
+GPT-5.4          merged_binary    0.491[0.47,0.51] n=1834  0.421[0.39,0.45] n=845   not differenced
+GPT-5.4          mcq              0.792[0.77,0.81] n=1195  0.858[0.83,0.88] n=606    +0.066+/-0.036
+GPT-5.4          date_score        0.270[0.25,0.29] n=728  0.154[0.13,0.18] n=196   not differenced
+Claude Sonnet 5  merged_binary     0.578[0.54,0.62] n=566  0.655[0.62,0.69] n=821   not differenced
+Claude Sonnet 5  mcq               0.884[0.85,0.91] n=361  0.910[0.88,0.93] n=569    +0.027+/-0.041
+Claude Sonnet 5  date_score        0.341[0.30,0.38] n=217  0.228[0.19,0.27] n=193   not differenced
+GPT-5.6 Sol      merged_binary     0.518[0.46,0.57] n=338  0.472[0.44,0.51] n=845   not differenced
+GPT-5.6 Sol      mcq               0.850[0.80,0.89] n=213  0.869[0.84,0.89] n=602    +0.019+/-0.055
+GPT-5.6 Sol      date_score        0.251[0.22,0.28] n=131  0.221[0.20,0.24] n=196   not differenced
+Claude Opus 4.8  merged_binary     0.552[0.51,0.59] n=560  0.640[0.61,0.67] n=814   not differenced
+Claude Opus 4.8  mcq               0.929[0.90,0.95] n=353  0.928[0.90,0.95] n=569    -0.001+/-0.034
+Claude Opus 4.8  date_score        0.293[0.26,0.32] n=214  0.200[0.17,0.23] n=193   not differenced
+
+=== 4. DATE TASK vs THE CONSTANT-GUESS BASELINE ===
+  Extension targets span 5 months. Best constant guess = 2026-06, score 0.893.
+  ANY model scoring at or below 0.893 has shown no date-forecasting skill here.
+
+model                date score   vs baseline   mean signed err      n
+GPT-4o                    0.506        -0.388              +7.7    196
+LLaMA 3.3 70B             0.288        -0.606             -10.2    196
+GPT-OSS 20B               0.347        -0.546              +9.5    196
+Claude S4.5               0.317        -0.576              +4.2    172
+GPT-5.4                   0.154        -0.739              -0.1    196
+Claude Sonnet 5           0.228        -0.665             -24.3    193
+GPT-5.6 Sol               0.221        -0.672              +8.4    196
+DeepSeek-V4-Pro           0.343        -0.551             +23.7    155
+Claude Opus 4.8           0.200        -0.694             -21.2    193
+
+=== FRQ (quality, generation and stage-1 leakage) ===
+model              responses   score   pass%   align    spec   novel    feas      n
+GPT-4o                   630    3.40     2.7    2.22    2.96    2.43    5.99    630
+LLaMA 3.3 70B            630    3.42     1.9    2.16    3.29    2.33    5.91    630
+GPT-OSS 20B              630    3.85    10.7    2.00    5.15    3.84    4.41    628
+Claude S4.5              559    3.99    11.1    2.26    4.65    4.09    4.94    558
+GPT-5.4                  629    4.83    50.0    3.32    5.73    4.63    5.64    628
+Claude Sonnet 5          618    4.44    30.1    2.84    5.22    4.22    5.48    618
+GPT-5.6 Sol              623    4.84    49.3    3.37    5.91    4.41    5.68    623
+DeepSeek-V4-Pro          498    4.00    15.5    2.07    5.27    3.80    4.85    497
+Claude Opus 4.8          622    4.58    38.6    3.19    5.35    4.40    5.38    622
+  differences below ~0.4 are within the judge noise floor
+
+model              responses  leak fail%  leak unclear%  n judged
+GPT-4o                   630        0.00            2.1       630
+LLaMA 3.3 70B            630        0.16            2.2       630
+GPT-OSS 20B              630        0.64            1.3       627
+Claude S4.5              559        0.18            3.0       559
+GPT-5.4                  629        0.00            2.2       629
+Claude Sonnet 5          618        0.32            2.9       617
+GPT-5.6 Sol              623        0.32            1.0       623
+DeepSeek-V4-Pro          498        0.00            1.8       497
+Claude Opus 4.8          622        0.00            1.1       622

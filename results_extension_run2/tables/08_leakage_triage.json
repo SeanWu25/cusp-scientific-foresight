@@ -1,0 +1,353 @@
+{
+  "judged": 5845,
+  "verdicts": {
+    "pass": 5699,
+    "unclear": 119,
+    "fail": 27
+  },
+  "categories": {
+    "evidence is the target paper": 7,
+    "other / needs eyes": 4,
+    "model had live web access": 13,
+    "entity was in the prompt": 3
+  },
+  "failures": [
+    {
+      "run": "gptoss20b_base",
+      "id": "cff56993-fb1e-4bf3-a959-d5b427ac69b7",
+      "category": "evidence is the target paper",
+      "indicators": [
+        "Recursive Synthesis for Long-Horizon Terminal Tasks"
+      ],
+      "reason": "\"Recursive Synthesis for Long-Horizon Terminal Tasks\"",
+      "urls": [
+        "https://arxiv.org/abs/2608.05466"
+      ]
+    },
+    {
+      "run": "gptoss20b_base",
+      "id": "387089c9-95e7-41d8-a031-ca0bd5547852",
+      "category": "evidence is the target paper",
+      "indicators": [
+        "a digitally controlled silicon quantum processing unit"
+      ],
+      "reason": "\"a digitally controlled silicon quantum processing unit\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10754-7"
+      ]
+    },
+    {
+      "run": "gptoss20b_base",
+      "id": "d53c55e8-dbc8-4575-85cf-1a67e10b1c94",
+      "category": "evidence is the target paper",
+      "indicators": [
+        "Restoring cortical disinhibition improves Huntington\u2019s disease phenotypes"
+      ],
+      "reason": "\"by July\u202f2026\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10671-9"
+      ]
+    },
+    {
+      "run": "gptoss20b_base",
+      "id": "2e32e023-66e0-426c-a1d2-b75c4fe0c42b",
+      "category": "evidence is the target paper",
+      "indicators": [
+        "Whole-genome duplication shaped cell-type evolution in the vertebrate brain"
+      ],
+      "reason": "\"Whole-genome duplication shaped cell-type evolution in the vertebrate brain\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10629-x"
+      ]
+    },
+    {
+      "run": "llama33_base",
+      "id": "0ab1fd03-ec27-444f-8705-8c4ad982c0c1",
+      "category": "other / needs eyes",
+      "indicators": [
+        "Token-Level Credit Assignment"
+      ],
+      "reason": "\"Token-Level Credit Assignment\"",
+      "urls": [
+        "https://arxiv.org/abs/2608.12049"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "73ec53e1-548c-45b7-8e12-2cade996a70a",
+      "category": "model had live web access",
+      "indicators": [
+        "\"Psychedelics align brain activity with context\""
+      ],
+      "reason": "\"Psychedelics align brain activity with context\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10910-z",
+        "https://drrichardchambers.com/media/Stoliker-2026-Psychedelics-Align-Brain-Activity-With-Context.pdf"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "0f750485-1705-4ba3-ae85-a7bc286a43a1",
+      "category": "model had live web access",
+      "indicators": [
+        "\"Upcycling of polyvinyl chloride into polyalphaolefin lubricants\""
+      ],
+      "reason": "\"Upcycling of polyvinyl chloride into polyalphaolefin lubricants\" appears verbatim and was first published after 2026-08.",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10867-z"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "73c84435-a746-4995-b6f3-4260f8746fb5",
+      "category": "model had live web access",
+      "indicators": [
+        "OsALA5\u2013OsALIS2"
+      ],
+      "reason": "\"OsALA5\u2013OsALIS2\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10726-x"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "5f7c9690-609f-4ba8-bf40-4067c9d56312",
+      "category": "model had live web access",
+      "indicators": [
+        "THP3-T"
+      ],
+      "reason": "\"THP3-T\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10575-8",
+        "https://english.cas.cn/newsroom/research-news/202606/t20260604_1161121.shtml"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "04c8b475-c216-4d61-a77e-ec233fcd1068",
+      "category": "model had live web access",
+      "indicators": [
+        "\"Quantum coherent manipulation and readout of superconducting vortex ...\""
+      ],
+      "reason": "\"Quantum coherent manipulation and readout of superconducting vortex ...\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10441-7"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "f45069ad-eded-4d33-9da6-8c2b2af0cf9e",
+      "category": "model had live web access",
+      "indicators": [
+        "\"Early fibrotic niches establish tumour-permissive microenvironments\""
+      ],
+      "reason": "\"Early fibrotic niches establish tumour-permissive microenvironments\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10399-6"
+      ]
+    },
+    {
+      "run": "opus48_ws",
+      "id": "2c1a9031-897e-4287-bcd7-b67ad9bccbd6",
+      "category": "model had live web access",
+      "indicators": [
+        "FXT-001"
+      ],
+      "reason": "\"FXT-001\"",
+      "urls": [
+        "https://www.sciencedirect.com/science/article/pii/S0092867426004599"
+      ]
+    },
+    {
+      "run": "opus48_ws_cutoff",
+      "id": "eb005c52-3f37-446b-86a0-425a7381a9b6",
+      "category": "other / needs eyes",
+      "indicators": [
+        "\"Verifiability-Gated On-Policy Distillation (VG-OPD)\"",
+        "\"VG-OPD\""
+      ],
+      "reason": "The LLM response explicitly names a post-cutoff entity: \"Verifiability-Gated On-Policy Distillation (VG-OPD)\" / \"VG-OPD\". That name corresponds to a publicly released method first submitted on 14 Sep 2026, after the 2026-07 cutoff.",
+      "urls": [
+        "https://arxiv.org/abs/2609.15404",
+        "https://github.com/SeanXunX/vg-opd"
+      ]
+    },
+    {
+      "run": "opus48_ws_cutoff",
+      "id": "04c8b475-c216-4d61-a77e-ec233fcd1068",
+      "category": "entity was in the prompt",
+      "indicators": [
+        "granular aluminum",
+        "coherent control and quantum non-demolition readout are achieved by dispersively coupling the vortex TLS"
+      ],
+      "reason": "The LLM_RESPONSE explicitly names \"granular aluminum\" in a way that aligns with a specific post-cutoff paper title and topic, including coherent manipulation and quantum non-demolition readout of vortex states. The named entity is \"granular aluminum\" in the context of the specific 2026 Nature work on superconducting vortex states.",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10441-7"
+      ]
+    },
+    {
+      "run": "sol_base",
+      "id": "2f558875-6d43-4a37-a60c-0d4f5e19843b",
+      "category": "evidence is the target paper",
+      "indicators": [
+        "SkillOpt"
+      ],
+      "reason": "\"SkillOpt\" appears verbatim in the LLM response and was first publicly released after 2026-05.",
+      "urls": [
+        "https://arxiv.org/abs/2605.23904"
+      ]
+    },
+    {
+      "run": "sol_base",
+      "id": "7d66d8ce-5f4f-48f1-b935-4988c3cdef5a",
+      "category": "other / needs eyes",
+      "indicators": [
+        "Imaging hidden objects with consumer LiDAR via motion-induced sampling"
+      ],
+      "reason": "\"Imaging hidden objects with consumer LiDAR via motion-induced sampling\"",
+      "urls": [
+        "https://arxiv.org/abs/2605.17865"
+      ]
+    },
+    {
+      "run": "sonnet45_base",
+      "id": "bac4a95a-97b7-4d6b-b240-a872c3fa84fe",
+      "category": "evidence is the target paper",
+      "indicators": [
+        "Glycerol-driven TNAP activation in thermogenesis and mineralization"
+      ],
+      "reason": "The exact post-cutoff paper title \"Glycerol-driven TNAP activation in thermogenesis and mineralization\" appears verbatim in the LLM response and was first publicly released on 2026-04-22, after the 2026-04 cutoff.",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10396-9"
+      ]
+    },
+    {
+      "run": "sonnet5_base_run1",
+      "id": "e91289f0-c072-4d1c-9b28-80df479fbfde",
+      "category": "entity was in the prompt",
+      "indicators": [
+        "CASP5"
+      ],
+      "reason": "The verbatim name \"CASP5\" appears in the LLM response and corresponds to a post-cutoff discovery first publicly released on 2026-04-22.",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10343-8",
+        "https://news.cornell.edu/stories/2026/04/scientists-uncover-how-intestine-balances-cell-growth-and-maintenance"
+      ]
+    },
+    {
+      "run": "sonnet5_base_run1",
+      "id": "a3c59ebd-3d1f-40d8-826c-cdbc2dc33b50",
+      "category": "other / needs eyes",
+      "indicators": [
+        "Perturb-multiome"
+      ],
+      "reason": "\"Perturb-multiome\"",
+      "urls": [
+        "https://ngdc.cncb.ac.cn/gsa-human/browse/HRA016755"
+      ]
+    },
+    {
+      "run": "sonnet5_ws",
+      "id": "92cd7699-1235-4a5b-95f4-317c96738e23",
+      "category": "model had live web access",
+      "indicators": [
+        "nitrogen transposition"
+      ],
+      "reason": "\"nitrogen transposition\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-11006-4.pdf"
+      ]
+    },
+    {
+      "run": "sonnet5_ws",
+      "id": "e112f5a6-570e-4059-9fda-0a4b3e41f7a7",
+      "category": "model had live web access",
+      "indicators": [
+        "CHPO"
+      ],
+      "reason": "\"CHPO\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10682-6"
+      ]
+    },
+    {
+      "run": "sonnet5_ws",
+      "id": "61b09cbb-9cb3-4710-a509-be209172a7b0",
+      "category": "model had live web access",
+      "indicators": [
+        "Protected quantum gates using qubit doublons in dynamical optical lattices"
+      ],
+      "reason": "\"Protected quantum gates using qubit doublons in dynamical optical lattices\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10285-1"
+      ]
+    },
+    {
+      "run": "sonnet5_ws",
+      "id": "f45069ad-eded-4d33-9da6-8c2b2af0cf9e",
+      "category": "model had live web access",
+      "indicators": [
+        "Early fibrotic niches establish tumour-permissive microenvironments"
+      ],
+      "reason": "The LLM response explicitly names the post-cutoff title \"Early fibrotic niches establish tumour-permissive microenvironments,\" which was publicly released after 2026-04.",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10399-6"
+      ]
+    },
+    {
+      "run": "sonnet5_ws",
+      "id": "c5ea1875-23f0-411c-a145-d9126ee367af",
+      "category": "model had live web access",
+      "indicators": [
+        "MSA Pairformer"
+      ],
+      "reason": "The LLM response explicitly names \"MSA Pairformer,\" a specific system first publicly released after 2026-07.",
+      "urls": [
+        "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900749-X"
+      ]
+    },
+    {
+      "run": "sonnet5_ws",
+      "id": "2c1a9031-897e-4287-bcd7-b67ad9bccbd6",
+      "category": "model had live web access",
+      "indicators": [
+        "FXT-001",
+        "FXT-002",
+        "FXT-003",
+        "FXT-001 (and optimized analogs FXT-002/003)"
+      ],
+      "reason": "\"FXT-001 (and optimized analogs FXT-002/003)\" appears verbatim in the LLM response, and these names were first publicly released after 2026-05 in 2026 publications.",
+      "urls": [
+        "https://www.cell.com/cell/fulltext/S0092-8674%2826%2900459-9"
+      ]
+    },
+    {
+      "run": "sonnet5_ws_cutoff",
+      "id": "05d718cb-9c9c-4dc2-bead-4ab297404bcb",
+      "category": "entity was in the prompt",
+      "indicators": [
+        "R4P",
+        "SWE-RM"
+      ],
+      "reason": "\"similar to R4P/SWE-RM\" names post-cutoff systems first released after 2026-07.",
+      "urls": [
+        "https://arxiv.org/abs/2510.22775",
+        "https://en.papernotes.org/ICLR2026/code_intelligence/swe-rm_execution-free_feedback_for_software_engineering_agents/",
+        "https://github.com/R2E-Gym/R2E-Gym",
+        "https://arxiv.org/html/2409.12186v2"
+      ]
+    },
+    {
+      "run": "sonnet5_ws_cutoff",
+      "id": "04c8b475-c216-4d61-a77e-ec233fcd1068",
+      "category": "evidence is the target paper",
+      "indicators": [
+        "Quantum coherent manipulation and readout of superconducting vortex ..."
+      ],
+      "reason": "\"Quantum coherent manipulation and readout of superconducting vortex ...\"",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10441-7"
+      ]
+    }
+  ]
+}

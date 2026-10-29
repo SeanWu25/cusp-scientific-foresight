@@ -1,0 +1,280 @@
+{
+  "definition": {
+    "delta_know": "mean(WS+cutoff) - mean(base), post-cutoff instances",
+    "delta_fore": "mean(WS unrestricted) - mean(WS+cutoff), post-cutoff instances",
+    "post_cutoff_rule": "publication_date > cutoff (cutoff month counts as pre)"
+  },
+  "min_n": 20,
+  "models": {
+    "GPT-5.4": {
+      "cutoff": "2025-08",
+      "n_shared_ids": 500,
+      "n_post_cutoff_ids": 0,
+      "tasks": {
+        "Binary": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Binary (pert.)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "MCQ": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "FRQ (0-10)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Date (0-1)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        }
+      }
+    },
+    "DeepSeek-R1": {
+      "cutoff": "2024-07",
+      "n_shared_ids": 500,
+      "n_post_cutoff_ids": 0,
+      "tasks": {
+        "Binary": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Binary (pert.)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "MCQ": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "FRQ (0-10)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Date (0-1)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        }
+      }
+    },
+    "Claude Sonnet": {
+      "cutoff": "2025-01",
+      "n_shared_ids": 500,
+      "n_post_cutoff_ids": 0,
+      "tasks": {
+        "Binary": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Binary (pert.)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "MCQ": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "FRQ (0-10)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        },
+        "Date (0-1)": {
+          "n": 0,
+          "suppressed": true,
+          "reason": "n < 20"
+        }
+      }
+    },
+    "Claude Sonnet 5 (ext)": {
+      "cutoff": "2026-01",
+      "n_shared_ids": 83,
+      "n_post_cutoff_ids": 83,
+      "tasks": {
+        "Binary": {
+          "n": 23,
+          "delta_know": 0.0,
+          "delta_fore": 0.43478260869565216,
+          "delta_know_ci": [
+            -0.21343047854034458,
+            0.21343047854034458
+          ],
+          "delta_fore_ci": [
+            0.2276308756050827,
+            0.6419343417862217
+          ],
+          "mean_base": 0.391304347826087,
+          "mean_wscut": 0.391304347826087,
+          "mean_ws": 0.8260869565217391
+        },
+        "Binary (pert.)": {
+          "n": 70,
+          "delta_know": -0.014285714285714285,
+          "delta_fore": -0.12857142857142856,
+          "delta_know_ci": [
+            -0.12346021892744884,
+            0.09488879035602026
+          ],
+          "delta_fore_ci": [
+            -0.23350039004785667,
+            -0.02364246709500044
+          ],
+          "mean_base": 0.7571428571428571,
+          "mean_wscut": 0.7428571428571429,
+          "mean_ws": 0.6142857142857143
+        },
+        "MCQ": {
+          "n": 59,
+          "delta_know": -0.0847457627118644,
+          "delta_fore": 0.0847457627118644,
+          "delta_know_ci": [
+            -0.15642146303561166,
+            -0.013070062388117143
+          ],
+          "delta_fore_ci": [
+            0.013070062388117143,
+            0.15642146303561166
+          ],
+          "mean_base": 0.9661016949152542,
+          "mean_wscut": 0.8813559322033898,
+          "mean_ws": 0.9661016949152542
+        },
+        "FRQ (0-10)": {
+          "n": 70,
+          "delta_know": 0.014285714285714285,
+          "delta_fore": 1.1607142857142858,
+          "delta_know_ci": [
+            -0.18031070941200436,
+            0.20888213798343294
+          ],
+          "delta_fore_ci": [
+            0.831969086818391,
+            1.4894594846101805
+          ],
+          "mean_base": 4.564285714285714,
+          "mean_wscut": 4.578571428571428,
+          "mean_ws": 5.739285714285714
+        },
+        "Date (0-1)": {
+          "n": 23,
+          "delta_know": 0.05477826086956521,
+          "delta_fore": 0.25782173913043477,
+          "delta_know_ci": [
+            -0.09759204878313273,
+            0.20714857052226315
+          ],
+          "delta_fore_ci": [
+            0.09821996281816875,
+            0.4174235154427008
+          ],
+          "mean_base": 0.22493043478260868,
+          "mean_wscut": 0.27970869565217393,
+          "mean_ws": 0.5375304347826088
+        }
+      }
+    },
+    "Claude Opus 4.8 (ext)": {
+      "cutoff": "2026-01",
+      "n_shared_ids": 80,
+      "n_post_cutoff_ids": 80,
+      "tasks": {
+        "Binary": {
+          "n": 23,
+          "delta_know": 0.30434782608695654,
+          "delta_fore": 0.30434782608695654,
+          "delta_know_ci": [
+            0.0759744677703715,
+            0.5327211844035415
+          ],
+          "delta_fore_ci": [
+            0.11207145971429186,
+            0.4966241924596212
+          ],
+          "mean_base": 0.21739130434782608,
+          "mean_wscut": 0.5217391304347826,
+          "mean_ws": 0.8260869565217391
+        },
+        "Binary (pert.)": {
+          "n": 69,
+          "delta_know": -0.17391304347826086,
+          "delta_fore": -0.07246376811594203,
+          "delta_know_ci": [
+            -0.2880572029258413,
+            -0.05976888403068044
+          ],
+          "delta_fore_ci": [
+            -0.18917790649888022,
+            0.04425037026699617
+          ],
+          "mean_base": 0.7681159420289855,
+          "mean_wscut": 0.5942028985507246,
+          "mean_ws": 0.5217391304347826
+        },
+        "MCQ": {
+          "n": 56,
+          "delta_know": 0.017857142857142856,
+          "delta_fore": 0.05357142857142857,
+          "delta_know_ci": [
+            -0.060972362463459724,
+            0.09668664817774544
+          ],
+          "delta_fore_ci": [
+            -0.005937928981511256,
+            0.1130807861243684
+          ],
+          "mean_base": 0.9107142857142857,
+          "mean_wscut": 0.9285714285714286,
+          "mean_ws": 0.9821428571428571
+        },
+        "FRQ (0-10)": {
+          "n": 67,
+          "delta_know": 0.14925373134328357,
+          "delta_fore": 1.1082089552238805,
+          "delta_know_ci": [
+            -0.08190516279921783,
+            0.38041262548578497
+          ],
+          "delta_fore_ci": [
+            0.81564117074118,
+            1.400776739706581
+          ],
+          "mean_base": 4.597014925373134,
+          "mean_wscut": 4.746268656716418,
+          "mean_ws": 5.854477611940299
+        },
+        "Date (0-1)": {
+          "n": 23,
+          "delta_know": 0.14137826086956523,
+          "delta_fore": 0.3361217391304348,
+          "delta_know_ci": [
+            0.03699519014288567,
+            0.2457613315962448
+          ],
+          "delta_fore_ci": [
+            0.19672013662460763,
+            0.475523341636262
+          ],
+          "mean_base": 0.17587391304347824,
+          "mean_wscut": 0.3172521739130435,
+          "mean_ws": 0.6533739130434782
+        }
+      }
+    }
+  }
+}

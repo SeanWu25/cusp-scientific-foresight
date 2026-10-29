@@ -1,0 +1,11 @@
+### Perturbation soundness judged independently by two models
+
+| quantity | count | value |
+|---|---|---|
+| judge A (Claude Opus 4.8) SELF_SATISFIED | 41/199 | 0.206 |
+| judge B (GPT-5.5, independent) SELF_SATISFIED | 36/199 | 0.181 |
+| raw agreement | 190/199 | 0.955 |
+| Cohen's kappa |  | 0.855 |
+| BOTH judges agree SELF_SATISFIED (strict) | 34/199 | 0.171 [0.125, 0.229] |
+| EITHER judge says SELF_SATISFIED (permissive) | 43/199 | 0.216 [0.165, 0.278] |
+| BOTH, design-weighted |  | 0.168 [0.123, 0.216] |

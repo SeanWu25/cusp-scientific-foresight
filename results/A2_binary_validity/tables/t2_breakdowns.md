@@ -1,0 +1,40 @@
+### Study 1 rates by domain, perturbation type and corpus
+
+| split | group | n | k | rate | wilson_lo | wilson_hi | boot_lo | boot_hi |
+|---|---|---|---|---|---|---|---|---|
+| positives/domain | Artificial Intelligence | 36 | 30 | 0.833 | 0.681 | 0.921 | 0.694 | 0.944 |
+| positives/domain | Biology | 42 | 33 | 0.786 | 0.641 | 0.883 | 0.667 | 0.905 |
+| positives/domain | Chemistry | 14 | 10 | 0.714 | 0.454 | 0.883 | 0.500 | 0.929 |
+| positives/domain | Environmental Science | 12 | 12 | 1.000 | 0.758 | 1.000 | 1.000 | 1.000 |
+| positives/domain | Materials Science | 23 | 18 | 0.783 | 0.581 | 0.903 | 0.609 | 0.957 |
+| positives/domain | Medicine | 22 | 18 | 0.818 | 0.615 | 0.927 | 0.636 | 0.955 |
+| positives/domain | Neuroscience | 17 | 13 | 0.765 | 0.527 | 0.904 | 0.529 | 0.941 |
+| positives/domain | Other | 8 | 6 | 0.750 | 0.409 | 0.929 | 0.375 | 1.000 |
+| positives/domain | Physics | 22 | 19 | 0.864 | 0.667 | 0.953 | 0.727 | 1.000 |
+| positives/ptype | constraint | 69 | 57 | 0.826 | 0.720 | 0.898 | 0.739 | 0.913 |
+| positives/ptype | numeric | 78 | 63 | 0.808 | 0.707 | 0.880 | 0.718 | 0.897 |
+| positives/ptype | unpaired | 49 | 39 | 0.796 | 0.664 | 0.885 | 0.673 | 0.898 |
+| negatives/domain | Artificial Intelligence | 48 | 5 | 0.104 | 0.045 | 0.222 | 0.021 | 0.188 |
+| negatives/domain | Biology | 43 | 5 | 0.116 | 0.051 | 0.245 | 0.023 | 0.209 |
+| negatives/domain | Chemistry | 10 | 1 | 0.100 | 0.018 | 0.404 | 0.000 | 0.300 |
+| negatives/domain | Environmental Science | 12 | 1 | 0.083 | 0.015 | 0.354 | 0.000 | 0.250 |
+| negatives/domain | Materials Science | 19 | 1 | 0.053 | 0.009 | 0.246 | 0.000 | 0.158 |
+| negatives/domain | Medicine | 28 | 5 | 0.179 | 0.079 | 0.356 | 0.036 | 0.321 |
+| negatives/domain | Neuroscience | 16 | 4 | 0.250 | 0.102 | 0.495 | 0.062 | 0.500 |
+| negatives/domain | Other | 7 | 1 | 0.143 | 0.026 | 0.513 | 0.000 | 0.429 |
+| negatives/domain | Physics | 16 | 1 | 0.062 | 0.011 | 0.283 | 0.000 | 0.188 |
+| negatives/ptype | constraint | 113 | 20 | 0.177 | 0.118 | 0.258 | 0.106 | 0.248 |
+| negatives/ptype | numeric | 86 | 4 | 0.047 | 0.018 | 0.114 | 0.012 | 0.093 |
+| negatives/corpus | ext | 32 | 2 | 0.062 | 0.017 | 0.201 | 0.000 | 0.156 |
+| negatives/corpus | orig | 167 | 22 | 0.132 | 0.089 | 0.191 | 0.084 | 0.186 |
+| soundness/domain | Artificial Intelligence | 48 | 3 | 0.062 | 0.021 | 0.168 | 0.000 | 0.146 |
+| soundness/domain | Biology | 44 | 11 | 0.250 | 0.146 | 0.394 | 0.136 | 0.386 |
+| soundness/domain | Chemistry | 10 | 2 | 0.200 | 0.057 | 0.510 | 0.000 | 0.500 |
+| soundness/domain | Environmental Science | 12 | 3 | 0.250 | 0.089 | 0.532 | 0.000 | 0.500 |
+| soundness/domain | Materials Science | 19 | 4 | 0.211 | 0.085 | 0.433 | 0.053 | 0.421 |
+| soundness/domain | Medicine | 28 | 9 | 0.321 | 0.179 | 0.507 | 0.143 | 0.500 |
+| soundness/domain | Neuroscience | 16 | 5 | 0.312 | 0.142 | 0.556 | 0.125 | 0.562 |
+| soundness/domain | Other | 7 | 1 | 0.143 | 0.026 | 0.513 | 0.000 | 0.429 |
+| soundness/domain | Physics | 16 | 3 | 0.188 | 0.066 | 0.430 | 0.000 | 0.375 |
+| soundness/ptype | constraint | 114 | 36 | 0.316 | 0.238 | 0.406 | 0.237 | 0.404 |
+| soundness/ptype | numeric | 86 | 5 | 0.058 | 0.025 | 0.129 | 0.012 | 0.116 |

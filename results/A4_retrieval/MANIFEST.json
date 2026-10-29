@@ -1,0 +1,275 @@
+{
+ "created_utc": "2026-10-05T15:23:36.298093",
+ "git_sha": "2904f99d84e9e87029480741f0d0c7f4605c4d1d",
+ "repo": ".",
+ "a4_1": {
+  "verified_files": {
+   "scripts/web_search.py": "e5ec34c66dc65c63",
+   "scripts/test_LLM.py": "20070b7f00535cb2",
+   "scripts/run_cusp.py": "3e4b91c2cbdc637c"
+  }
+ },
+ "a4_2": {
+  "seed": 20260921,
+  "judge_model": "claude-sonnet-5",
+  "judge_prompt_sha": "3e856ad61d9718b3",
+  "retrieval_api": "you.com search.unified",
+  "runs": {
+   "gpt4o:ws_cutoff": {
+    "model": "GPT-4o",
+    "condition": "ws_cutoff",
+    "dataset": "orig",
+    "predictions": "archive/model_outputs/benchmark_logs_model_outputs/gpt_4o_web_search.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2023-10-01"
+   },
+   "gpt4o:ws": {
+    "model": "GPT-4o",
+    "condition": "ws",
+    "dataset": "orig",
+    "predictions": "archive/model_outputs/benchmark_logs_model_outputs/gpt_4o_web_search_no_cutoff.jsonl",
+    "mechanism": "native",
+    "freshness_to": null
+   },
+   "gpt54:ws_cutoff": {
+    "model": "GPT-5.4",
+    "condition": "ws_cutoff",
+    "dataset": "orig",
+    "predictions": "archive/model_outputs/predictions_gpt-5.4_20260506_055209.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2025-08-01"
+   },
+   "gpt54:ws": {
+    "model": "GPT-5.4",
+    "condition": "ws",
+    "dataset": "orig",
+    "predictions": "archive/model_outputs/benchmark_logs_model_outputs/gpt-5_4_web_search_subset.jsonl",
+    "mechanism": "native",
+    "freshness_to": null
+   },
+   "deepseek_r1:ws_cutoff": {
+    "model": "DeepSeek R1",
+    "condition": "ws_cutoff",
+    "dataset": "orig",
+    "predictions": "archive/backup_20260508/benchmark_logs/predictions_deepseek-r1_20260510_120503.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2024-07-01"
+   },
+   "deepseek_r1:ws": {
+    "model": "DeepSeek R1",
+    "condition": "ws",
+    "dataset": "orig",
+    "predictions": "archive/backup_20260508/benchmark_logs/predictions_deepseek-r1_20260510_123317.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2026-05-11"
+   },
+   "claude45:ws_cutoff": {
+    "model": "Claude S4.5",
+    "condition": "ws_cutoff",
+    "dataset": "orig",
+    "predictions": "archive/backup_20260508/benchmark_logs/model_outputs/claude_500_web_constrained.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2025-01-01"
+   },
+   "claude45:ws": {
+    "model": "Claude S4.5",
+    "condition": "ws",
+    "dataset": "orig",
+    "predictions": "archive/backup_20260508/benchmark_logs/model_outputs/claude_web_search_full.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2026-05-11"
+   },
+   "sonnet5:ws_cutoff": {
+    "model": "Claude Sonnet 5",
+    "condition": "ws_cutoff",
+    "dataset": "orig",
+    "predictions": "results_sonnet5_run1/raw/ws_cutoff_500.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2026-01-01"
+   },
+   "sonnet5:ws": {
+    "model": "Claude Sonnet 5",
+    "condition": "ws",
+    "dataset": "orig",
+    "predictions": "results_sonnet5_run1/raw/ws_500.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2026-09-19"
+   },
+   "sonnet5:ws_cutoff:ext": {
+    "model": "Claude Sonnet 5",
+    "condition": "ws_cutoff",
+    "dataset": "ext",
+    "predictions": "results_extension_run2/raw/sonnet5_ws_cutoff.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2026-01-01"
+   },
+   "sonnet5:ws:ext": {
+    "model": "Claude Sonnet 5",
+    "condition": "ws",
+    "dataset": "ext",
+    "predictions": "results_extension_run2/raw/sonnet5_ws.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2026-09-19"
+   },
+   "sol:ws_cutoff": {
+    "model": "GPT-5.6 Sol",
+    "condition": "ws_cutoff",
+    "dataset": "orig",
+    "predictions": "results_sol_run1/raw/ws_cutoff_500.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2026-02-01"
+   },
+   "sol:ws": {
+    "model": "GPT-5.6 Sol",
+    "condition": "ws",
+    "dataset": "orig",
+    "predictions": "results_sol_run1/raw/ws_500.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2026-09-20"
+   },
+   "llama33:ws_cutoff": {
+    "model": "LLaMA 3.3 70B",
+    "condition": "ws_cutoff",
+    "dataset": "orig",
+    "predictions": "results_llama33_run1/raw/ws_cutoff_500.jsonl",
+    "mechanism": "youcom",
+    "freshness_to": "2023-12-01"
+   }
+  },
+  "usage": {
+   "records": 6226,
+   "input_tokens": 29043389,
+   "output_tokens": 987185,
+   "snapshots": {}
+  },
+  "usd_list_price_judge": 67.96
+ },
+ "a4_3": {
+  "query_prompt_sha": "9dec837113206e16",
+  "evidence_bounds": [
+   "2023-10-01",
+   "2023-12-01",
+   "2025-01-01",
+   "2025-08-01",
+   "2026-01-01",
+   "2026-02-01",
+   "unrestricted"
+  ],
+  "mcq_permutation_seed": 42,
+  "harness": "scripts/run_cusp.py process_row (unmodified)",
+  "scoring": "scripts/build_report.py (scoring_v1)",
+  "query_models": {
+   "claude-opus-4-8": 458,
+   "gpt-5.4-mini": 42
+  },
+  "model_runs": {
+   "llama33|fixed_ws_cutoff": {
+    "records": 500,
+    "input_tokens": 4737688,
+    "output_tokens": 175756,
+    "snapshots": {},
+    "model": "Llama-3.3-70B-Instruct",
+    "usd_list_price": 3.49
+   },
+   "sol|fixed_ws_cutoff": {
+    "records": 500,
+    "input_tokens": 4619175,
+    "output_tokens": 417936,
+    "snapshots": {},
+    "model": "gpt-5.6-sol",
+    "usd_list_price": 26.84
+   },
+   "claude45|fixed_ws_cutoff": {
+    "records": 500,
+    "input_tokens": 5441766,
+    "output_tokens": 408645,
+    "snapshots": {},
+    "model": "claude-sonnet-4-5-20250929",
+    "usd_list_price": 22.45
+   },
+   "llama33|fixed_ws": {
+    "records": 500,
+    "input_tokens": 4779675,
+    "output_tokens": 166136,
+    "snapshots": {},
+    "model": "Llama-3.3-70B-Instruct",
+    "usd_list_price": 3.51
+   },
+   "sol|fixed_ws": {
+    "records": 500,
+    "input_tokens": 4629694,
+    "output_tokens": 416455,
+    "snapshots": {},
+    "model": "gpt-5.6-sol",
+    "usd_list_price": 26.85
+   },
+   "claude45|fixed_ws": {
+    "records": 500,
+    "input_tokens": 5437076,
+    "output_tokens": 409147,
+    "snapshots": {},
+    "model": "claude-sonnet-4-5-20250929",
+    "usd_list_price": 22.45
+   },
+   "sonnet5|fixed_ws_cutoff": {
+    "records": 500,
+    "input_tokens": 7835754,
+    "output_tokens": 319061,
+    "snapshots": {},
+    "model": "claude-sonnet-5",
+    "usd_list_price": 18.86
+   },
+   "sonnet5|fixed_ws": {
+    "records": 500,
+    "input_tokens": 7855064,
+    "output_tokens": 319576,
+    "snapshots": {},
+    "model": "claude-sonnet-5",
+    "usd_list_price": 18.91
+   },
+   "gpt4o|fixed_ws_cutoff": {
+    "records": 500,
+    "input_tokens": 4634902,
+    "output_tokens": 183292,
+    "snapshots": {},
+    "model": "gpt-4o",
+    "usd_list_price": 13.42
+   },
+   "gpt54|fixed_ws_cutoff": {
+    "records": 500,
+    "input_tokens": 4679983,
+    "output_tokens": 220696,
+    "snapshots": {},
+    "model": "gpt-5.4",
+    "usd_list_price": 15.01
+   },
+   "gpt4o|fixed_ws": {
+    "records": 500,
+    "input_tokens": 4673899,
+    "output_tokens": 180196,
+    "snapshots": {},
+    "model": "gpt-4o",
+    "usd_list_price": 13.49
+   },
+   "gpt54|fixed_ws": {
+    "records": 500,
+    "input_tokens": 4669482,
+    "output_tokens": 218909,
+    "snapshots": {},
+    "model": "gpt-5.4",
+    "usd_list_price": 14.96
+   }
+  },
+  "usd_list_price_total_model_runs": 200.24,
+  "inclusion_usage": {
+   "records": 3500,
+   "input_tokens": 17812680,
+   "output_tokens": 557024,
+   "snapshots": {}
+  }
+ },
+ "notes": [
+  "Prices are list prices, not invoice figures.",
+  "You.com calls: A4.2 = one per You.com-run case; A4.3 = 500 events x 7 bounds; $5 per 1,000 calls list price."
+ ]
+}

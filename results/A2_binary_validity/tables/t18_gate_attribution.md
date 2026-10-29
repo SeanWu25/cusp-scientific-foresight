@@ -1,0 +1,8 @@
+### What the mechanical gates reject, per referee
+
+| route | referee | proposed_WRONG_LABEL | survived_all_gates | gate_failures |
+|---|---|---|---|---|
+| binding | sonnet5 | 12 | 10 | quotes_in_source=2 |
+| binding | opus48 | 19 | 18 | numeric_direction=1 |
+| achieved | sonnet5 | 9 | 7 | source_dated=1; numeric_direction=1 |
+| achieved | opus48 | 8 | 8 | none |

@@ -1,0 +1,114 @@
+{
+ "2023-10-01": {
+  "n": 497,
+  "n_pre": 0,
+  "n_post": 497,
+  "inc_all": 110,
+  "inc_pre": 0,
+  "inc_post": 110,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 92,
+   "sciencedirect.com": 4,
+   "arxiv.org": 2,
+   "academia.edu": 2,
+   "pubmed.ncbi.nlm.nih.gov": 2
+  }
+ },
+ "2023-12-01": {
+  "n": 496,
+  "n_pre": 0,
+  "n_post": 496,
+  "inc_all": 122,
+  "inc_pre": 0,
+  "inc_post": 122,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 96,
+   "biorxiv.org": 5,
+   "sciencedirect.com": 4,
+   "researchsquare.com": 3,
+   "academia.edu": 3
+  }
+ },
+ "2025-01-01": {
+  "n": 497,
+  "n_pre": 199,
+  "n_post": 298,
+  "inc_all": 253,
+  "inc_pre": 168,
+  "inc_post": 85,
+  "url_match_post": 0,
+  "post_domains": {
+   "researchgate.net": 48,
+   "biorxiv.org": 11,
+   "arxiv.org": 9,
+   "pubmed.ncbi.nlm.nih.gov": 4,
+   "sciencedirect.com": 3
+  }
+ },
+ "2025-08-01": {
+  "n": 498,
+  "n_pre": 355,
+  "n_post": 143,
+  "inc_all": 333,
+  "inc_pre": 295,
+  "inc_post": 38,
+  "url_match_post": 1,
+  "post_domains": {
+   "researchgate.net": 17,
+   "biorxiv.org": 6,
+   "arxiv.org": 5,
+   "pubmed.ncbi.nlm.nih.gov": 4,
+   "huggingface.co": 1
+  }
+ },
+ "2026-01-01": {
+  "n": 497,
+  "n_pre": 450,
+  "n_post": 47,
+  "inc_all": 391,
+  "inc_pre": 371,
+  "inc_post": 20,
+  "url_match_post": 1,
+  "post_domains": {
+   "researchgate.net": 7,
+   "arxiv.org": 6,
+   "biorxiv.org": 2,
+   "medrxiv.org": 1,
+   "pubmed.ncbi.nlm.nih.gov": 1
+  }
+ },
+ "2026-02-01": {
+  "n": 497,
+  "n_pre": 467,
+  "n_post": 30,
+  "inc_all": 394,
+  "inc_pre": 386,
+  "inc_post": 8,
+  "url_match_post": 1,
+  "post_domains": {
+   "biorxiv.org": 2,
+   "researchgate.net": 2,
+   "arxiv.org": 2,
+   "medrxiv.org": 1,
+   "chemrxiv.org": 1
+  }
+ },
+ "unrestricted": {
+  "n": 498,
+  "n_pre": 0,
+  "n_post": 498,
+  "inc_all": 406,
+  "inc_pre": 0,
+  "inc_post": 406,
+  "url_match_post": 106,
+  "post_domains": {
+   "nature.com": 177,
+   "arxiv.org": 70,
+   "researchgate.net": 32,
+   "cell.com": 28,
+   "science.org": 16
+  }
+ }
+}

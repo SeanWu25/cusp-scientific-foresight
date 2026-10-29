@@ -1,0 +1,133 @@
+============================================================================================================
+FULL CUSP CORPUS: original (Jan 2024-Mar 2026) + extension (Apr-Aug 2026)
+publication dates loaded for 5575 events; partition rule = main (cutoff month counts as POST)
+NOT PROSPECTIVE: every outcome in both halves had resolved before the models ran.
+FRQ quality scores omitted throughout (stage-2 rubric under revision).
+============================================================================================================
+
+=== ENTIRE CORPUS ===
+model            cutoff                merged binary                       MCQ                date score
+GPT-4o           2023-10     0.524[0.51,0.54] n=7253   0.521[0.51,0.54] n=4732   0.199[0.19,0.21] n=2950
+LLaMA 3.3 70B    2023-12     0.432[0.42,0.44] n=7204   0.435[0.42,0.45] n=4693   0.485[0.48,0.49] n=2930
+GPT-OSS 20B      2024-06     0.524[0.51,0.54] n=7255   0.477[0.46,0.49] n=4733   0.303[0.29,0.31] n=2951
+DeepSeek-R1      2024-07     0.481[0.47,0.49] n=6347   0.594[0.58,0.61] n=3598   0.288[0.28,0.30] n=2742
+Claude S4.5      2025-01     0.518[0.51,0.53] n=6786   0.727[0.71,0.74] n=4330   0.244[0.23,0.25] n=2790
+GPT-5.4          2025-08     0.490[0.48,0.50] n=7256   0.824[0.81,0.83] n=4734   0.235[0.22,0.25] n=2951
+Claude Sonnet 5  2026-01     0.579[0.57,0.59] n=7034   0.909[0.90,0.92] n=4350   0.413[0.40,0.42] n=2841
+GPT-5.6 Sol      2026-02     0.555[0.54,0.57] n=7253   0.877[0.87,0.89] n=4706   0.360[0.35,0.37] n=2951
+DeepSeek-V4-Pro  2026-04     0.558[0.55,0.57] n=7256   0.668[0.65,0.68] n=4734   0.201[0.19,0.21] n=2951
+Claude Opus 4.8  2026-01     0.575[0.56,0.59] n=6993   0.934[0.93,0.94] n=4298   0.457[0.44,0.47] n=2819
+
+=== POST-CUTOFF ONLY ===
+model            cutoff                merged binary                       MCQ                date score
+GPT-4o           2023-10     0.524[0.51,0.54] n=7253   0.521[0.51,0.54] n=4732   0.199[0.19,0.21] n=2950
+LLaMA 3.3 70B    2023-12     0.432[0.42,0.44] n=7204   0.435[0.42,0.45] n=4693   0.485[0.48,0.49] n=2930
+GPT-OSS 20B      2024-06     0.531[0.52,0.54] n=6306   0.474[0.46,0.49] n=4153   0.337[0.32,0.35] n=2479
+DeepSeek-R1      2024-07     0.480[0.47,0.49] n=5149   0.589[0.57,0.61] n=2962   0.328[0.32,0.34] n=2143
+Claude S4.5      2025-01     0.531[0.52,0.55] n=4270   0.708[0.69,0.72] n=2784   0.275[0.26,0.29] n=1624
+GPT-5.4          2025-08     0.469[0.45,0.49] n=2679   0.814[0.80,0.83] n=1801    0.245[0.23,0.26] n=924
+Claude Sonnet 5  2026-01     0.624[0.60,0.65] n=1387    0.900[0.88,0.92] n=930    0.288[0.26,0.31] n=410
+GPT-5.6 Sol      2026-02     0.485[0.46,0.51] n=1183    0.864[0.84,0.89] n=815    0.233[0.21,0.25] n=327
+DeepSeek-V4-Pro  2026-04      0.673[0.64,0.70] n=845    0.665[0.63,0.70] n=606    0.346[0.29,0.40] n=196
+Claude Opus 4.8  2026-01     0.604[0.58,0.63] n=1374    0.928[0.91,0.94] n=922    0.249[0.23,0.27] n=407
+
+=== PRE-CUTOFF ONLY (retrospective) ===
+model            cutoff                merged binary                       MCQ                date score
+GPT-4o           2023-10                          --                        --                        --
+LLaMA 3.3 70B    2023-12                          --                        --                        --
+GPT-OSS 20B      2024-06      0.476[0.44,0.51] n=949    0.497[0.46,0.54] n=580    0.126[0.11,0.14] n=472
+DeepSeek-R1      2024-07     0.488[0.46,0.52] n=1198    0.619[0.58,0.66] n=636    0.145[0.13,0.16] n=599
+Claude S4.5      2025-01     0.495[0.48,0.51] n=2516   0.762[0.74,0.78] n=1546   0.201[0.18,0.22] n=1166
+GPT-5.4          2025-08     0.503[0.49,0.52] n=4577   0.830[0.82,0.84] n=2933   0.231[0.22,0.24] n=2027
+Claude Sonnet 5  2026-01     0.568[0.55,0.58] n=5647   0.912[0.90,0.92] n=3420   0.434[0.42,0.45] n=2431
+GPT-5.6 Sol      2026-02     0.568[0.56,0.58] n=6070   0.879[0.87,0.89] n=3891   0.376[0.36,0.39] n=2624
+DeepSeek-V4-Pro  2026-04     0.543[0.53,0.56] n=6411   0.668[0.65,0.68] n=4128   0.191[0.18,0.20] n=2755
+Claude Opus 4.8  2026-01     0.568[0.56,0.58] n=5619   0.935[0.93,0.94] n=3376   0.492[0.48,0.51] n=2412
+
+=== BIAS-IMMUNE BINARY METRICS (post-cutoff, full corpus) ===
+model                  n    bias  bal_acc  macroF1     MCC
+GPT-4o              7253  -0.551    0.472    0.449  -0.067
+LLaMA 3.3 70B       7204  +0.845    0.511    0.363  +0.040
+GPT-OSS 20B         6306  -0.555    0.470    0.450  -0.069
+DeepSeek-R1         5149  +0.029    0.482    0.477  -0.036
+Claude S4.5         4270  -0.481    0.472    0.461  -0.062
+GPT-5.4             2679  +0.230    0.505    0.468  +0.010
+Claude Sonnet 5     1387  -0.498    0.527    0.527  +0.057
+GPT-5.6 Sol         1183  +0.331    0.574    0.483  +0.141
+DeepSeek-V4-Pro      845  -0.740    0.465    0.449  -0.088
+Claude Opus 4.8     1374  -0.547    0.491    0.487  -0.020
+
+=== COVERAGE ===
+model              original  extension   union  dupes
+GPT-4o                 4760        815    5575      0
+LLaMA 3.3 70B          4760        815    5575      0
+GPT-OSS 20B            4760        815    5575      0
+DeepSeek-R1            4760          0    4760      0
+Claude S4.5            4760        815    5575      0
+GPT-5.4                4760        815    5575      0
+Claude Sonnet 5        4760        815    5575      0
+GPT-5.6 Sol            4760        815    5575      0
+DeepSeek-V4-Pro        4760        815    5575      0
+Claude Opus 4.8        4760        815    5575      0
+
+=== MCC BY FORECAST HORIZON (pooled corpus, post-cutoff only) ===
+model                                 0-2                     3-5                    6-11                   12-23                    >=24
+GPT-4o                                 -- -0.023[-0.11,+0.07] 389-0.068[-0.11,-0.03] 1590-0.050[-0.08,-0.02] 3096-0.040[-0.07,-0.00] 2178
+LLaMA 3.3 70B     +0.049[-0.09,+0.18] 138 +0.003[-0.06,+0.07] 807+0.053[+0.01,+0.10] 1510+0.058[+0.03,+0.09] 3101+0.064[+0.02,+0.10] 1648
+GPT-OSS 20B       -0.027[-0.09,+0.03] 807 -0.102[-0.17,-0.04] 721-0.041[-0.09,+0.01] 1581-0.070[-0.10,-0.04] 2717 -0.070[-0.15,+0.01] 480
+DeepSeek-R1       -0.047[-0.11,+0.01] 756 -0.008[-0.07,+0.06] 691-0.023[-0.07,+0.02] 1630-0.040[-0.08,-0.00] 2072                      --
+Claude S4.5       -0.031[-0.10,+0.04] 759 -0.057[-0.12,+0.01] 803-0.057[-0.10,-0.01] 1443-0.062[-0.11,-0.01] 1265                      --
+GPT-5.4           +0.013[-0.05,+0.08] 752 +0.019[-0.05,+0.08] 743+0.025[-0.03,+0.08] 1057 -0.030[-0.20,+0.14] 127                      --
+Claude Sonnet 5   +0.052[-0.02,+0.13] 566 +0.088[-0.00,+0.18] 519 +0.012[-0.09,+0.12] 302                      --                      --
+GPT-5.6 Sol       +0.210[+0.14,+0.28] 522 +0.104[+0.02,+0.18] 534 -0.047[-0.20,+0.09] 127                      --                      --
+DeepSeek-V4-Pro   -0.078[-0.14,-0.00] 533 -0.104[-0.19,-0.02] 312                      --                      --                      --
+Claude Opus 4.8   -0.023[-0.10,+0.05] 560 -0.016[-0.10,+0.07] 514 -0.036[-0.13,+0.08] 300                      --                      --
+
+cell = MCC [95% event-clustered bootstrap CI] n; bins with n<50 suppressed
+
+=== PAIRED DISCRIMINATION GAP: P(yes|real) - P(yes|corrupted) ===  [post-cutoff only]
+    paired within event; only events carrying BOTH questions count
+model              P(yes|real)  P(yes|corrupt)      gap            95% CI   pairs
+GPT-4o                   0.208           0.209   -0.001   [-0.019,+0.017]    2288
+LLaMA 3.3 70B            0.935           0.899   +0.036   [+0.023,+0.050]    2274  *
+GPT-OSS 20B              0.189           0.191   -0.002   [-0.023,+0.020]    1953
+DeepSeek-R1              0.483           0.467   +0.016   [-0.012,+0.042]    1668
+Claude S4.5              0.233           0.239   -0.006   [-0.032,+0.024]    1295
+GPT-5.4                  0.629           0.561   +0.068   [+0.028,+0.108]     760  *
+Claude Sonnet 5          0.295           0.156   +0.139   [+0.086,+0.189]     339  *
+GPT-5.6 Sol              0.762           0.623   +0.139   [+0.078,+0.203]     281  *
+DeepSeek-V4-Pro          0.079           0.115   -0.036   [-0.097,+0.030]     165
+Claude Opus 4.8          0.213           0.171   +0.042   [-0.006,+0.093]     334
+  * = CI excludes zero. Negative gap means the model endorses the
+  fabricated finding MORE readily than the genuine one.
+
+=== MCQ ACCURACY EXTENSION-vs-ORIGINAL DELTA: crude vs domain-stratified ===
+    post-cutoff only; stratified pools per-area deltas, so mix cancels
+model                           crude     domain-stratified  areas
+GPT-4o                 -0.068+/-0.043        -0.074+/-0.042      9
+LLaMA 3.3 70B          +0.008+/-0.042        +0.007+/-0.042      9
+GPT-OSS 20B            +0.052+/-0.043        +0.040+/-0.043      9
+Claude S4.5            +0.056+/-0.043        +0.066+/-0.042      9
+GPT-5.4                +0.066+/-0.036        +0.059+/-0.036      9
+Claude Sonnet 5        +0.027+/-0.041        +0.045+/-0.041      7
+GPT-5.6 Sol            +0.019+/-0.055        +0.025+/-0.054      7
+Claude Opus 4.8        -0.001+/-0.034        +0.014+/-0.034      7
+    report the stratified column; the crude one belongs in the supplement
+
+=== FRQ MEAN SCORE (0-10) EXTENSION-vs-ORIGINAL DELTA: crude vs domain-stratified ===
+    post-cutoff only; stratified pools per-area deltas, so mix cancels
+    FRQ: same rubric and judge on both corpora; judge noise cancels in the
+    difference, so sampling CIs are the right bar. Not shown where the
+    original corpus is not yet rubric-graded.
+model                           crude     domain-stratified  areas
+GPT-4o                 +0.137+/-0.066        +0.156+/-0.065      9
+LLaMA 3.3 70B          -0.065+/-0.060        -0.061+/-0.059      9
+GPT-OSS 20B            -0.010+/-0.070        +0.002+/-0.070      9
+Claude S4.5            -0.036+/-0.071        -0.007+/-0.071      9
+GPT-5.4                -0.206+/-0.080        -0.177+/-0.080      9
+Claude Sonnet 5        -0.087+/-0.111        -0.037+/-0.110      8
+GPT-5.6 Sol            -0.152+/-0.132        -0.066+/-0.140      6
+Claude Opus 4.8        -0.155+/-0.112        -0.087+/-0.106      8
+    report the stratified column; the crude one belongs in the supplement
+
+wrote results_extension_run2/tables/02_full_corpus.json

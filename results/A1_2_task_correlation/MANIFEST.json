@@ -1,0 +1,124 @@
+{
+  "generated_utc": "2026-09-23T00:20:59.429669+00:00",
+  "git_sha": "f22f2b96f05d3082b46c5fc8128dd74cdc919930",
+  "tag": "",
+  "models": [
+    {
+      "name": "GPT-4o",
+      "cutoff": "2023-10",
+      "reports": [
+        "run_evaluation/frq_results/gpt_4o_reeval.json",
+        "results_extension_run2/reports/gpt4o_base.json"
+      ],
+      "n_events": 5575
+    },
+    {
+      "name": "LLaMA 3.3 70B",
+      "cutoff": "2023-12",
+      "reports": [
+        "run_evaluation/frq_results/llama_3_3_full.json",
+        "results_extension_run2/reports/llama33_base.json"
+      ],
+      "n_events": 5575
+    },
+    {
+      "name": "GPT-OSS 20B",
+      "cutoff": "2024-06",
+      "reports": [
+        "run_evaluation/frq_results/gpt_oss_20B_reeval.json",
+        "results_extension_run2/reports/gptoss20b_base.json"
+      ],
+      "n_events": 5575
+    },
+    {
+      "name": "DeepSeek-R1",
+      "cutoff": "2024-07",
+      "reports": [
+        "run_evaluation/frq_results/deepseek_r1.json"
+      ],
+      "n_events": 4760
+    },
+    {
+      "name": "Claude S4.5",
+      "cutoff": "2025-01",
+      "reports": [
+        "run_evaluation/frq_results/claude_sonnet.json",
+        "results_extension_run2/reports/sonnet45_base.json"
+      ],
+      "n_events": 5575
+    },
+    {
+      "name": "GPT-5.4",
+      "cutoff": "2025-08",
+      "reports": [
+        "run_evaluation/frq_results/gpt_5_4_eval.json",
+        "results_extension_run2/reports/gpt54_base.json"
+      ],
+      "n_events": 5575
+    },
+    {
+      "name": "Claude Sonnet 5",
+      "cutoff": "2026-01",
+      "reports": [
+        "results_sonnet5_run1/reports/base_medium_run1.json",
+        "results_extension_run2/reports/sonnet5_base_run1.json"
+      ],
+      "n_events": 5575
+    },
+    {
+      "name": "GPT-5.6 Sol",
+      "cutoff": "2026-02",
+      "reports": [
+        "results_sol_run1/reports/base_medium_run1.json",
+        "results_extension_run2/reports/sol_base.json"
+      ],
+      "n_events": 5575
+    },
+    {
+      "name": "DeepSeek-V4-Pro",
+      "cutoff": "2026-04",
+      "reports": [
+        "results_dsv4pro_run1/reports/base_run1.json",
+        "results_extension_run2/reports/deepseekv4pro_base.json"
+      ],
+      "n_events": 5575
+    },
+    {
+      "name": "Claude Opus 4.8",
+      "cutoff": "2026-01",
+      "reports": [
+        "results_opus48_run1/reports/base_medium_run1.json",
+        "results_extension_run2/reports/opus48_base_run1.json"
+      ],
+      "n_events": 5575
+    }
+  ],
+  "binary_metric": "balanced accuracy (bias-corrected merged binary); MCC and raw merged accuracy as sensitivity",
+  "frq_scores": "finalized published-rubric scores, judge_frq_combined sha256 fc24e69dfec1b214..., graded 2026-09-20/21; NOT the legacy archive",
+  "refusals": "excluded from denominators (matches published tables)",
+  "bootstrap": {
+    "events_resampled_within_model": 2000,
+    "seed": 7
+  },
+  "outputs": [
+    "MANIFEST.json",
+    "MANIFEST_8models.json",
+    "__pycache__",
+    "compute_task_correlation.py",
+    "item_level_correlation.csv",
+    "item_level_correlation_8models.csv",
+    "model_task_performance.csv",
+    "model_task_performance_8models.csv",
+    "response_A1_2.md",
+    "task_correlation.md",
+    "task_correlation_8models.md",
+    "task_correlation_heatmap.pdf",
+    "task_correlation_heatmap.png",
+    "task_correlation_heatmap_8models.pdf",
+    "task_correlation_heatmap_8models.png",
+    "task_correlation_pearson.csv",
+    "task_correlation_pearson_8models.csv",
+    "task_correlation_spearman.csv",
+    "task_correlation_spearman_8models.csv"
+  ]
+}
