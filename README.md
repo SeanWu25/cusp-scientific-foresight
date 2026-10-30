@@ -24,7 +24,6 @@
 - **Nine-model evaluation**: GPT-4o, LLaMA 3.3 70B, GPT-OSS 20B, DeepSeek R1, Claude Sonnet 4.5, GPT-5.4, Claude Sonnet 5, Claude Opus 4.8 and GPT-5.6 Sol, with scored per-event results for every model ([`results_*/reports/`](results_extension_run2/), [`run_evaluation/frq_results/`](run_evaluation/frq_results/)).
 - **Model-inference entry point** ([`docs/INFERENCE.md`](docs/INFERENCE.md)) and the decoding settings of every model ([`configs/model_settings.json`](configs/model_settings.json)).
 - **New analyses** ([`docs/REVISION_ANALYSES.md`](docs/REVISION_ANALYSES.md)): forecast horizon, retrieval audit and fixed evidence packets, calibration and elicitation interventions, base-rate injection, binary-task validity, task correlations, benchmark composition and stated reasoning.
-- Full list of changes: [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Load the Dataset
 
