@@ -43,14 +43,14 @@ python scripts/run_cusp.py \
   <decoding flags> --concurrency 8 --resume
 ```
 
-The decoding flags of every model in the paper are in [`configs/model_settings.json`](../configs/model_settings.json).
+Recommended decoding flags for each model are in [`configs/model_settings.json`](../configs/model_settings.json).
 Examples:
 
 ```bash
 # Claude Sonnet 5 (Anthropic API)
 python scripts/run_cusp.py --input CUSP_final.jsonl --output results/sonnet5/base_run1.jsonl \
   --provider ANTHROPIC --model claude-sonnet-5 --condition base \
-  --effort medium --max-tokens 2048 --frq-max-tokens 384 --concurrency 8 --resume
+  --effort medium --max-tokens 2048 --frq-max-tokens 2048 --concurrency 8 --resume
 
 # GPT-5.4 (OpenAI API; reasoning model, no temperature is sent when --effort is set)
 python scripts/run_cusp.py --input CUSP_final.jsonl --output results/gpt54/base_run1.jsonl \

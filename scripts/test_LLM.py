@@ -189,8 +189,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--frq-max-tokens",
         type=int,
         default=None,
-        help="Override the FRQ max_tokens cap (default: 250 for ANTHROPIC, "
-        "2048 otherwise — the values the six published models were run with).",
+        help="Maximum output tokens for FRQ answers (default 2048).",
     )
 
     p.add_argument(
@@ -1619,9 +1618,7 @@ def run_benchmark():
 
             print("\n[FRQ Question]")
 
-            frq_max_tokens = args.frq_max_tokens or (
-                250 if args.provider == "ANTHROPIC" else 2048
-            )
+            frq_max_tokens = args.frq_max_tokens or 2048
 
             frq_prompt = data["frq_prompt"]
 

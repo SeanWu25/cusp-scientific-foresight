@@ -1,5 +1,5 @@
 {
-  "_description": "Decoding and provider settings used for the base runs reported in the paper (Supplementary Section R). Each entry gives the flags for scripts/run_cusp.py. 'cutoff' is the knowledge cutoff (YYYY-MM) used to split events and, for the ws_cutoff condition, as --ws-cutoff. 'access' is 'api' (proprietary API key needed) or 'open-weight' (can run locally).",
+  "_description": "Recommended decoding and provider settings for running CUSP. Each entry gives the flags for scripts/run_cusp.py. 'cutoff' is the knowledge cutoff (YYYY-MM) used to split events and, for the ws_cutoff condition, as --ws-cutoff. 'access' is 'api' (proprietary API key needed) or 'open-weight' (can run locally).",
   "models": {
     "gpt-4o": {
       "display_name": "GPT-4o",
@@ -8,7 +8,14 @@
       "cutoff": "2023-10",
       "access": "api",
       "provider": "OPENAI",
-      "run_cusp_flags": ["--temperature", "0", "--max-tokens", "2048", "--frq-max-tokens", "2048"]
+      "run_cusp_flags": [
+        "--temperature",
+        "0",
+        "--max-tokens",
+        "2048",
+        "--frq-max-tokens",
+        "2048"
+      ]
     },
     "llama-3.3-70b": {
       "display_name": "LLaMA 3.3 70B",
@@ -17,7 +24,14 @@
       "access": "open-weight",
       "provider": "OPENAI",
       "notes": "Serve the checkpoint behind any OpenAI-compatible endpoint (e.g. vLLM) and set OPENAI_API_BASE; the original-corpus run used local Hugging Face Transformers through scripts/test_LLM.py --model_path.",
-      "run_cusp_flags": ["--temperature", "0", "--max-tokens", "2048", "--frq-max-tokens", "2048"]
+      "run_cusp_flags": [
+        "--temperature",
+        "0",
+        "--max-tokens",
+        "2048",
+        "--frq-max-tokens",
+        "2048"
+      ]
     },
     "gpt-oss-20b": {
       "display_name": "GPT-OSS 20B",
@@ -26,7 +40,14 @@
       "access": "open-weight",
       "provider": "OPENAI",
       "notes": "Serve locally behind an OpenAI-compatible endpoint (vLLM) and set OPENAI_API_BASE; the original-corpus run used local Hugging Face Transformers through scripts/test_LLM.py --model_path.",
-      "run_cusp_flags": ["--temperature", "0", "--max-tokens", "2048", "--frq-max-tokens", "2048"]
+      "run_cusp_flags": [
+        "--temperature",
+        "0",
+        "--max-tokens",
+        "2048",
+        "--frq-max-tokens",
+        "2048"
+      ]
     },
     "deepseek-r1": {
       "display_name": "DeepSeek R1",
@@ -35,7 +56,14 @@
       "access": "open-weight",
       "provider": "AZURE_DEEPSEEK",
       "notes": "The paper's run used an Azure AI Foundry deployment that has since been retired. The open weights can be served behind an OpenAI-compatible endpoint (provider OPENAI with OPENAI_API_BASE).",
-      "run_cusp_flags": ["--temperature", "0", "--max-tokens", "2048", "--frq-max-tokens", "2048"]
+      "run_cusp_flags": [
+        "--temperature",
+        "0",
+        "--max-tokens",
+        "2048",
+        "--frq-max-tokens",
+        "2048"
+      ]
     },
     "claude-sonnet-4.5": {
       "display_name": "Claude Sonnet 4.5",
@@ -43,7 +71,14 @@
       "cutoff": "2025-01",
       "access": "api",
       "provider": "ANTHROPIC",
-      "run_cusp_flags": ["--temperature", "0", "--max-tokens", "2048", "--frq-max-tokens", "250"]
+      "run_cusp_flags": [
+        "--temperature",
+        "0",
+        "--max-tokens",
+        "2048",
+        "--frq-max-tokens",
+        "2048"
+      ]
     },
     "gpt-5.4": {
       "display_name": "GPT-5.4",
@@ -53,7 +88,14 @@
       "access": "api",
       "provider": "OPENAI",
       "notes": "Reasoning model: when --effort is set, no temperature is sent.",
-      "run_cusp_flags": ["--effort", "medium", "--max-tokens", "2048", "--frq-max-tokens", "2048"]
+      "run_cusp_flags": [
+        "--effort",
+        "medium",
+        "--max-tokens",
+        "2048",
+        "--frq-max-tokens",
+        "2048"
+      ]
     },
     "claude-sonnet-5": {
       "display_name": "Claude Sonnet 5",
@@ -62,7 +104,14 @@
       "access": "api",
       "provider": "ANTHROPIC",
       "notes": "The API rejects temperature/top_p/top_k for this model; it runs at its default sampling with adaptive thinking.",
-      "run_cusp_flags": ["--effort", "medium", "--max-tokens", "2048", "--frq-max-tokens", "384"]
+      "run_cusp_flags": [
+        "--effort",
+        "medium",
+        "--max-tokens",
+        "2048",
+        "--frq-max-tokens",
+        "2048"
+      ]
     },
     "claude-opus-4.8": {
       "display_name": "Claude Opus 4.8",
@@ -71,7 +120,14 @@
       "access": "api",
       "provider": "ANTHROPIC",
       "notes": "The API rejects temperature/top_p/top_k for this model; it runs at its default sampling with adaptive thinking.",
-      "run_cusp_flags": ["--effort", "medium", "--max-tokens", "2048", "--frq-max-tokens", "384"]
+      "run_cusp_flags": [
+        "--effort",
+        "medium",
+        "--max-tokens",
+        "2048",
+        "--frq-max-tokens",
+        "2048"
+      ]
     },
     "gpt-5.6-sol": {
       "display_name": "GPT-5.6 Sol",
@@ -80,7 +136,14 @@
       "access": "api",
       "provider": "OPENAI",
       "notes": "Only the default temperature is accepted; runs with reasoning effort medium.",
-      "run_cusp_flags": ["--effort", "medium", "--max-tokens", "2048", "--frq-max-tokens", "2048"]
+      "run_cusp_flags": [
+        "--effort",
+        "medium",
+        "--max-tokens",
+        "2048",
+        "--frq-max-tokens",
+        "2048"
+      ]
     }
   }
 }

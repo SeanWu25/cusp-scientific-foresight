@@ -185,7 +185,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--model", default="claude-sonnet-5")
     ap.add_argument("--effort", default=None)
-    ap.add_argument("--frq-max-tokens", type=int, default=250)
+    ap.add_argument("--frq-max-tokens", type=int, default=2048)
     ap.add_argument("--max-tokens", type=int, default=2048)
     ap.add_argument("--no-probe", action="store_true")
     a = ap.parse_args()

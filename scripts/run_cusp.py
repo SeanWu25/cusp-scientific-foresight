@@ -140,8 +140,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--temperature", type=float, default=0.0,
                    help="Sent only to models that still accept it.")
     p.add_argument("--max-tokens", type=int, default=2048)
-    p.add_argument("--frq-max-tokens", type=int, default=250,
-                   help="250 matches how Claude Sonnet 4.5 was run.")
+    p.add_argument("--frq-max-tokens", type=int, default=2048,
+                   help="Maximum output tokens for FRQ answers (default 2048).")
     p.add_argument("--ws-cutoff", default=None,
                    help="YYYY-MM date ceiling for retrieval (condition ws_cutoff)")
     p.add_argument("--concurrency", type=int, default=8)
