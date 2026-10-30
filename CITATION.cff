@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use CUSP in your research, please cite it as below."
 type: software
 title: "CUSP: Cutoff-conditioned Unseen Scientific Progress"
-version: "1.0.0"
-date-released: "2026-08-16"
+version: "2.0.0"
+date-released: "2026-10-30"
 license: MIT
 repository-code: "https://github.com/SeanWu25/cusp-scientific-foresight"
 
@@ -44,6 +44,8 @@ abstract: >
   under historical knowledge cutoffs. Each item is grounded to a published scientific paper
   and includes binary, multiple-choice, free-response, and date-prediction task variants.
   Evaluation uses a two-track LLM-as-judge framework with leakage detection.
+  Version 2.0.0 (CUSP v2) adds the April-August 2026 extension: 5,575 scientific events
+  (January 2024 - August 2026) and 19,706 validated questions, with scored results for nine models.
 
 keywords:
   - scientific forecasting
