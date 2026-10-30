@@ -85,7 +85,7 @@ Set `OPENAI_API_KEY` or `AZURE_OPENAI_KEY` in your environment or a `.env` file.
 ```bash
 python scripts/run_cusp.py --input CUSP_final.jsonl --output results/sonnet5/base_run1.jsonl \
   --provider ANTHROPIC --model claude-sonnet-5 --condition base \
-  --effort medium --max-tokens 2048 --frq-max-tokens 384 --resume
+  --effort medium --max-tokens 2048 --frq-max-tokens 2048 --resume
 python scripts/judge_frq.py --predictions results/sonnet5/base_run1.jsonl --output results/sonnet5/frq_judged.jsonl
 python scripts/build_report.py --predictions results/sonnet5/base_run1.jsonl \
   --judged results/sonnet5/frq_judged.jsonl --out results/sonnet5/report.json
