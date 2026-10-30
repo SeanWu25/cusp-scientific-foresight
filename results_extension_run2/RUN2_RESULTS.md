@@ -521,7 +521,7 @@ flagging.
   training), sourced from the official model page — the freeze script's Sonnet 5
   default happened to match but its provenance was wrong and was corrected by
   hand. Decoding mirrors Sonnet 5: the API rejects `temperature` (400), so
-  effort=medium, no sampling params, FRQ cap 384, three extension passes
+  effort=medium, no sampling params, three extension passes
   (MCQ sd 0.0026, merged binary sd 0.0043). Gate: 150-event pilot on Sonnet 5's
   pilot events — refusals 5.0% (Bio 14.7%, Med 10.0%) vs Sonnet 5's 4.5% /
   11.6% / 11.7%. Full

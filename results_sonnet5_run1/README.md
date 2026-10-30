@@ -50,13 +50,6 @@ own generator used, so every new row is comparable with the six published rows
 in that same table. With a Jan 2026 cutoff the choice moves the post-cutoff
 partition between 455 and 252 events, so it is stated explicitly everywhere.
 
-**FRQ is capped at 384 output tokens.** Not neutral, and chosen deliberately.
-At 384 Sonnet 5 retains a mean of 1,019 characters, against Claude Sonnet 4.5's
-1,036 and GPT-5.4's 1,089, so the judge sees the same amount of text from each.
-The harness default of 250 (what Sonnet 4.5 ran with) would give Sonnet 5 only
-~720 characters because of the newer tokenizer; 1024 would give it ~1,744 and
-inflate its specificity score against the rest of the panel.
-
 **Temperature cannot be matched.** Both models reject `temperature`, `top_p`
 and `top_k` with HTTP 400. The six published models all ran at temperature 0.
 The three repeated Sonnet 5 passes exist to bound the resulting stochasticity;

@@ -150,7 +150,6 @@ Knowledge gap / forecasting gap per task family. Feasibility Assessment is the m
 
 - **Added events, original design.** Each model was re-run on the 500 added events with the harness, prompts and decoding settings of its original retrieval run. The retired Azure OpenAI deployments of GPT-4o, GPT-5.4 and LLaMA 3.3 were replaced by the Azure AI Foundry deployments of the same models.
 - **Retrieval dates.** Fixed packets were retrieved on 2026-09-21 (first 500) and 2026-10-18 (added 500); the added original-design runs were made on 2026-10-19/20.
-- **FRQ token limits.** The fixed-packet FRQ answers of GPT-4o, GPT-5.4 and Claude Sonnet 4.5 were capped at 250 tokens (their original runs: 2,048 for GPT-4o and GPT-5.4).
 - **Claude Sonnet 4.5 query failures.** It returned no search query for 84–85 of the added events (37 in the first 500). As in its original runs, those events keep the answer given without retrieved evidence.
 - **Query writer.** Claude Opus 4.8 wrote the fixed queries; it is evaluated elsewhere in the paper but not in this experiment.
 - **DeepSeek R1** is not included: its deployment was retired before the fixed-evidence runs.
